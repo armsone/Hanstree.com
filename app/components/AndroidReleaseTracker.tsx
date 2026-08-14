@@ -76,7 +76,7 @@ export function AndroidReleaseTracker() {
       <section className="android-install-guide" aria-labelledby="android-install-title">
         <div className="install-guide-lead">
           <p className="eyebrow">SAFE APK INSTALL</p>
-          <h3 id="android-install-title">막혔을 때만,<br />필요한 문 하나만 엽니다.</h3>
+          <h3 id="android-install-title">막혔을 때만,<br />필요한 문<br />하나만 엽니다.</h3>
           <p>APK 직접 설치는 Play 스토어 설치보다 위험할 수 있습니다. NasFinder.com이 연결한 공식 GitHub 릴리스를 확인한 경우에만 진행하세요.</p>
         </div>
         <ol className="install-steps">

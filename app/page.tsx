@@ -123,7 +123,7 @@ export default function Home() {
       <section className="principles shell reveal">
         <div className="principles-lead">
           <p className="eyebrow">BUILT WITH INTENT</p>
-          <h2>소란스럽지 않게,<br />필요한 만큼 정확하게.</h2>
+          <h2>소란스럽지 않게,<br />필요한 만큼<br />정확하게.</h2>
         </div>
         <div className="principle-grid">
           <article>
