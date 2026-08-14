@@ -37,7 +37,7 @@ export const apps: AppData[] = [
     artwork: "files",
     platforms: [
       { name: "iOS · iPadOS", status: "개발 중", detail: "iOS 17 이상" },
-      { name: "Android", status: "준비 중", detail: "개발 계획" },
+      { name: "Android", status: "개발 중", detail: "첫 공개판 준비 중" },
     ],
     features: [
       { title: "여러 저장공간을 한곳에서", body: "Synology, SFTP, SMB, WebDAV, FTP와 Dropbox·OneDrive·Google Drive를 한 앱에서 탐색합니다." },
@@ -57,7 +57,7 @@ export const apps: AppData[] = [
       { state: "done", title: "핵심 탐색과 미리보기", body: "다양한 원격 저장소 탐색, 미디어 썸네일과 미리보기 구현" },
       { state: "active", title: "실제 환경 검증", body: "서버별 파일 작업, 파일 앱 연동과 네트워크 예외를 검증 중" },
       { state: "next", title: "Google Photos Picker", body: "별도 OAuth로 사용자가 직접 선택한 사진·영상만 가져오는 흐름 준비" },
-      { state: "next", title: "Android", body: "iOS 경험을 바탕으로 별도 Android 버전 준비" },
+      { state: "active", title: "Android 첫 공개판", body: "iOS 경험을 바탕으로 Android 버전을 개발하고 첫 공개를 준비 중" },
     ],
     github: ["https://github.com/armsone/NasFinder"],
     privacy: [

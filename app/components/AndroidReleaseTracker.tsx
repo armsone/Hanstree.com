@@ -6,6 +6,7 @@ type Release = {
   appName: string;
   repo: string;
   available: boolean;
+  planned?: boolean;
   tagName?: string;
   releaseName?: string;
   publishedAt?: string | null;
@@ -47,7 +48,10 @@ export function AndroidReleaseTracker() {
     { appName: "한클립", repo: "HanClip-Android", available: false },
     { appName: "에스텐드", repo: "S.tand-Android", available: false },
   ];
-  const releases = data?.releases || placeholders;
+  const releases: Release[] = [
+    { appName: "나스파인더", repo: "GitHub 저장소 연결 예정", available: false, planned: true },
+    ...(data?.releases || placeholders),
+  ];
 
   return (
     <div>
@@ -64,7 +68,7 @@ export function AndroidReleaseTracker() {
                 <div><dt>SHA-256</dt><dd className="digest">{release.asset?.digest?.replace(/^sha256:/, "").slice(0, 12) || "GitHub 정보 없음"}</dd></div>
               </dl>
               <a className="android-release-link" href={release.releaseUrl}>GitHub에서 확인하고 받기 <span aria-hidden="true">↗</span></a>
-            </> : <div className="android-release-loading"><strong>{failed ? "정보를 불러오지 못했습니다" : "최신 릴리스 확인 중"}</strong><p>{failed ? "잠시 뒤 다시 확인하거나 GitHub 저장소를 이용해 주세요." : "GitHub 공식 배포 정보를 안전하게 확인하고 있습니다."}</p></div>}
+            </> : <div className="android-release-loading"><strong>{release.planned ? "첫 공개판 준비 중" : failed ? "정보를 불러오지 못했습니다" : "최신 릴리스 확인 중"}</strong><p>{release.planned ? "나스파인더 Android를 개발하고 있습니다. 첫 GitHub 릴리스가 공개되면 최신 버전과 APK 정보를 자동으로 연결합니다." : failed ? "잠시 뒤 다시 확인하거나 GitHub 저장소를 이용해 주세요." : "GitHub 공식 배포 정보를 안전하게 확인하고 있습니다."}</p></div>}
           </article>
         ))}
       </div>
