@@ -1,4 +1,5 @@
 import type { AppData, Platform } from "../data";
+import { LiveFlipClock } from "./LiveFlipClock";
 
 export function AppIcon({ app, priority = false }: { app: AppData; priority?: boolean }) {
   if (app.icon) {
@@ -30,7 +31,7 @@ export function AppArtwork({ app }: { app: AppData }) {
     return (
       <div className="artwork artwork-clock" aria-label="에스텐드 플립시계 화면 표현">
         <div className="clock-weather">SEOUL&nbsp;&nbsp; 23°</div>
-        <div className="flip-clock"><span>2</span><span>3</span><i>:</i><span>4</span><span>8</span></div>
+        <LiveFlipClock />
         <div className="clock-mode"><span /> MATE MODE</div>
       </div>
     );
