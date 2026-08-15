@@ -56,9 +56,13 @@ export function LiveSeoulWeather() {
     let active = true;
     const update = async () => {
       try {
-        const response = await fetch("/api/seoul-weather", { cache: "no-store" });
+        const response = await fetch("https://api.open-meteo.com/v1/forecast?latitude=37.5665&longitude=126.9780&current=temperature_2m,weather_code&timezone=Asia%2FSeoul", { cache: "no-store" });
         if (!response.ok) return;
-        const next = await response.json() as SeoulWeather;
+        const payload = await response.json() as { current?: { temperature_2m?: number; weather_code?: number } };
+        const next = {
+          temperature: payload.current?.temperature_2m,
+          weatherCode: payload.current?.weather_code,
+        } as SeoulWeather;
         if (active && Number.isFinite(next.temperature) && Number.isFinite(next.weatherCode)) setWeather(next);
       } catch {
         // Keep the quiet loading state when the weather service is temporarily unavailable.
