@@ -10,6 +10,6 @@ export type TestFlightBuild = {
 // 확인되지 않은 날짜를 추정해서 입력하지 않습니다.
 export const testFlightBuilds: TestFlightBuild[] = [
   { slug: "nasfinder", appName: "나스파인더", build: "202608151224", uploadedAt: "2026-08-15T12:42:06+09:00", inviteUrl: null },
-  { slug: "hanclip", appName: "한클립", build: null, uploadedAt: null, inviteUrl: null },
-  { slug: "stand", appName: "S.tand", build: null, uploadedAt: null, inviteUrl: null },
+  { slug: "hanclip", appName: "한클립", build: "3.11.49", uploadedAt: "2026-08-15T13:02:25+09:00", inviteUrl: null },
+  { slug: "stand", appName: "S.tand", build: "0.30.0", uploadedAt: "2026-08-15T13:23:25+09:00", inviteUrl: null },
 ];

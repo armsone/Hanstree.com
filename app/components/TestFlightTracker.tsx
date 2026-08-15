@@ -22,7 +22,14 @@ function getBuildState(build: TestFlightBuild) {
 }
 
 function formatDate(date: Date) {
-  return new Intl.DateTimeFormat("ko-KR", { year: "numeric", month: "long", day: "numeric", hour: "2-digit", minute: "2-digit" }).format(date);
+  return new Intl.DateTimeFormat("ko-KR", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    timeZone: "Asia/Seoul",
+  }).format(date);
 }
 
 export function TestFlightTracker({ builds }: { builds: TestFlightBuild[] }) {
