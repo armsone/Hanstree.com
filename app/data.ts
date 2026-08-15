@@ -146,7 +146,7 @@ export const apps: AppData[] = [
       { src: "/apps/hanclip/screens/android-quick-select.png", alt: "한클립 Android 퀵모드 사진 선택" },
       { src: "/apps/hanclip/screens/android-duration.png", alt: "한클립 Android 장면 길이 설정" },
       { src: "/apps/hanclip/screens/android-editor-pets.png", alt: "고양이와 강아지 사진으로 꾸민 한클립 Android 편집 화면" },
-      { src: "/apps/hanclip/screens/android-home-dark.png", alt: "한클립 Android 다크 테마 홈" },
+      { src: "/apps/hanclip/screens/android-editor-finish-pets.png", alt: "고양이와 강아지 영화의 한클립 Android 편집 완료 화면" },
     ],
     github: ["https://github.com/armsone/HanClip", "https://github.com/armsone/HanClip-Android"],
     privacy: [
@@ -267,7 +267,7 @@ export const apps: AppData[] = [
       { state: "active", title: "안정성 개선", body: "Codex 변화와 네트워크·절전 예외에 맞춰 지속 개선" },
     ],
     screenshots: [
-      { src: "/apps/ccmb/screens/macos-menubar.png", alt: "CCMB macOS 메뉴 막대의 실제 사용량 표시", layout: "wide" },
+      { src: "/apps/ccmb/screens/macos-menubar.png", alt: "CCMB macOS 메뉴 막대의 실제 사용량 표시" },
     ],
     github: ["https://github.com/armsone/CCMB"],
     privacy: [
