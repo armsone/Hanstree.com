@@ -42,7 +42,7 @@ export default function Home() {
               aria-label={`${app.name} 자세히 보기`}
             >
               <AppIcon app={app} priority={index < 2} />
-              <span>{app.name}</span>
+              <span>{app.english}</span>
             </Link>
           ))}
           <div className="orbit-center">
