@@ -72,12 +72,13 @@ export const apps: AppData[] = [
     english: "HanClip",
     eyebrow: "MOMENTS INTO A MOVIE",
     tagline: "고르는 순간부터, 한 편의 영화까지.",
-    summary: "사진과 영상, Live Photo를 고르면 복잡한 편집을 줄여 한 편의 MP4 영화로 만드는 iPhone·iPad·Android 앱입니다.",
+    summary: "사진과 영상, Live Photo를 고르면 복잡한 편집을 줄여 한 편의 MP4 영화로 만드는 iPhone·iPad·Apple Silicon Mac·Android 앱입니다.",
     theme: "coral",
     icon: "/apps/hanclip/icon.png",
     artwork: "phones",
     platforms: [
       { name: "iOS · iPadOS", status: "개발 중", detail: "iOS 17 이상" },
+      { name: "Mac", status: "준비 중", detail: "Apple Silicon · iPad 앱 호환 모드" },
       { name: "Android", status: "공개", detail: "APK v544", url: "https://github.com/armsone/HanClip-Android/releases/tag/android-v544" },
     ],
     features: [
@@ -87,6 +88,7 @@ export const apps: AppData[] = [
       { title: "사진부터 Live Photo까지", body: "사진·영상·Live Photo와 Android Motion Photo, 파일과 공유 항목을 가져옵니다." },
       { title: "시사회 후 결정", body: "완성된 영화를 먼저 확인한 뒤 다시 편집하거나 사진 앱·갤러리·파일로 저장합니다." },
       { title: "프로젝트 보관", body: "만들던 영화와 컬렉션을 저장해 다음에 이어서 작업할 수 있습니다." },
+      { title: "Mac에서도 이어서", body: "Apple Silicon Mac에서 iPad 앱 호환 모드로 실행해 트랙패드와 키보드로 같은 영화 제작 흐름을 사용합니다." },
     ],
     guide: [
       { title: "프리셋 선택", body: "새 영화, 퀵모드, AiShot 또는 여행·인생·골프 프리셋에서 시작합니다." },
@@ -98,6 +100,7 @@ export const apps: AppData[] = [
       { state: "done", title: "iOS 핵심 제작 흐름", body: "선택, 편집, 렌더링, 시사회와 저장 흐름 구현" },
       { state: "done", title: "Android 공개 빌드", body: "GitHub Release를 통한 Android APK 배포" },
       { state: "active", title: "플랫폼 경험 정렬", body: "iOS와 Android의 기능과 화면 동등성을 계속 다듬는 중" },
+      { state: "active", title: "Apple Silicon Mac 지원", body: "iPhone·iPad와 같은 빌드를 Mac의 ‘iPhone 및 iPad용 앱’으로 설치하는 흐름을 검증 중" },
       { state: "next", title: "현장 감도 검증", body: "다양한 영상과 실제 골프 환경에서 AiShot을 추가 검증" },
     ],
     screenshots: [
