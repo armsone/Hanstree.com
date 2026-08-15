@@ -51,3 +51,16 @@ test("keeps the support address out of the public source", async () => {
   assert.match(route, /process\.env\.SUPPORT_EMAIL/);
   assert.match(component, /\/api\/support-contact/);
 });
+
+test("shows the CCMB menu bar before the detailed usage menu", async () => {
+  const response = await render("/apps/ccmb");
+  assert.equal(response.status, 200);
+
+  const html = await response.text();
+  const menuBarIndex = html.indexOf("/apps/ccmb/screens/macos-menubar.png");
+  const usageMenuIndex = html.indexOf("/apps/ccmb/screens/ccmb-usage-menu.png");
+
+  assert.notEqual(menuBarIndex, -1);
+  assert.notEqual(usageMenuIndex, -1);
+  assert.ok(menuBarIndex < usageMenuIndex);
+});
