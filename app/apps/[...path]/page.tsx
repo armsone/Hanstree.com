@@ -120,9 +120,9 @@ export default async function AppRoute({ params }: RouteProps) {
       </section>
 
       <section className="download-section shell reveal" id="download">
-        <div><p className="eyebrow">DOWNLOAD & TEST</p><h2>사용 가능한 버전부터.</h2><p>공개된 배포만 다운로드로 표시합니다. TestFlight가 준비되면 참여 단계와 빌드 만료 안내를 함께 제공합니다.</p></div>
+        <div><p className="eyebrow">DOWNLOAD & TEST</p><h2>완성된 앱과 전용 도구.</h2><p>플랫폼별 현재 상태와 공식 배포 파일을 구분해 표시합니다. 별도 도구는 용도까지 확인한 뒤 내려받을 수 있습니다.</p></div>
         <div className="download-list">
-          {app.platforms.map((platform) => <article key={platform.name}><div><span className={`status-dot status-${platform.status.replace(" ", "-")}`} /><h3>{platform.name}</h3></div><p>{platform.detail} · {platform.status}</p>{platform.url ? <Link href={platform.url}>{platform.downloadLabel ?? "다운로드 페이지"} <span aria-hidden="true">↗</span></Link> : <span>공개 링크 준비 중</span>}{platform.checksum && <small className="download-checksum">SHA-256 {platform.checksum}</small>}</article>)}
+          {app.platforms.map((platform) => <article key={platform.name}><div><span className={`status-dot status-${platform.status.replace(" ", "-")}`} /><h3>{platform.name}</h3></div><p>{platform.detail} · {platform.status}</p>{platform.url ? <Link href={platform.url}>{platform.downloadLabel ?? "다운로드 페이지"} <span aria-hidden="true">↗</span></Link> : <span>{platform.availabilityNote ?? "공개 링크 준비 중"}</span>}{platform.checksum && <small className="download-checksum">SHA-256 {platform.checksum}</small>}</article>)}
         </div>
       </section>
 

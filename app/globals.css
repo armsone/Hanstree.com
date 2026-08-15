@@ -89,6 +89,7 @@ img { display: block; max-width: 100%; }
 .platform-chip small { color: #888893; font-size: .68rem; }
 .status-dot { width: 7px; height: 7px; display: inline-block; border-radius: 50%; background: #a2a2aa; box-shadow: 0 0 0 3px rgba(162,162,170,.13); }
 .status-공개 { background: #25a96c; box-shadow: 0 0 0 3px rgba(37,169,108,.13); }
+.status-완료 { background: #25a96c; box-shadow: 0 0 0 3px rgba(37,169,108,.13); }
 .status-개발-중 { background: #ec9736; box-shadow: 0 0 0 3px rgba(236,151,54,.14); }
 .text-link { margin-top: 42px; display: inline-flex; gap: 24px; align-items: center; padding-bottom: 6px; border-bottom: 1px solid var(--ink); font-weight: 650; font-size: .88rem; }
 .artwork { min-height: 420px; position: relative; overflow: hidden; }
