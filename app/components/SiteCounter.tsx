@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 
 type SiteStats = {
   todayVisits: number;
@@ -70,7 +69,8 @@ export function SiteCounter() {
       <dl className="counter-downloads">
         {repoLabels.map(([repo, label]) => <div key={repo}><dt>{label}</dt><dd>{number(stats?.downloads[repo])}회</dd></div>)}
       </dl>
-      <Link className="counter-detail-link" href="/insights">날짜별 그래프와 표 보기 <span aria-hidden="true">→</span></Link>
+      {/* Native navigation avoids the current vinext client-router issue. */}
+      <a className="counter-detail-link" href="/insights">날짜별 그래프와 표 보기 <span aria-hidden="true">→</span></a>
       <p className="counter-note">이 숫자는 방문자 수를 정확히 식별하는 분석 도구가 아닌 간단한 참고용 집계입니다. GitHub에서 직접 받은 횟수와는 다를 수 있습니다.</p>
     </section>
   );

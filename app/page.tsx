@@ -179,7 +179,7 @@ export function SiteHeader() {
           {/* Native anchors preserve same-page hash scrolling in the deployed vinext runtime. */}
           {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
           <a href="/#apps">앱</a>
-          <Link href="/insights">기록</Link>
+          <a href="/insights">기록</a>
           {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
           <a href="/#contact">소통</a>
           <Link href="https://github.com/armsone">GitHub <span aria-hidden="true">↗</span></Link>
@@ -200,7 +200,7 @@ export function SiteFooter() {
         <div className="footer-links">
           {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
           <a href="/#apps">모든 앱</a>
-          <Link href="/insights">사이트 기록</Link>
+          <a href="/insights">사이트 기록</a>
           <Link href="/apps/nasfinder/privacy">개인정보처리방침</Link>
           <Link href="/apps/nasfinder/support">지원</Link>
           <Link href="https://github.com/armsone">GitHub</Link>
