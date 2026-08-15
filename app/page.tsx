@@ -32,17 +32,17 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="hero-orbit" aria-label="나스파인더, 한클립, 에스텐드, CCMB">
+        <div className="hero-orbit" aria-label="NasFinder, HanClip, S.tand, CCMB">
           <div className="orbit-glow" />
           {apps.map((app, index) => (
             <Link
               className={`orbit-app orbit-app-${index + 1}`}
               href={`/apps/${app.slug}`}
               key={app.slug}
-              aria-label={`${app.name} 자세히 보기`}
+              aria-label={`${app.english} 자세히 보기`}
             >
               <AppIcon app={app} priority={index < 2} />
-              <span>{app.name}</span>
+              <span>{app.english}</span>
             </Link>
           ))}
           <div className="orbit-center">
