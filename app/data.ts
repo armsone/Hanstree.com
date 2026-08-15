@@ -161,12 +161,12 @@ export const apps: AppData[] = [
     english: "S.tand",
     eyebrow: "A QUIET COMPANION AT NIGHT",
     tagline: "낮에는 오브제, 밤에는 조용한 케어.",
-    summary: "플립시계와 날씨를 보여주는 오브제이자, 밤에는 움직임에 불빛으로 반응하고 수면 소리 후보를 기기 안에 기록하는 앱입니다.",
+    summary: "플립시계와 날씨를 보여주는 오브제이자, 밤에는 움직임에 불빛으로 반응하고 수면 소리 후보를 기록하며 앱을 벗어나지 않고 음악을 이어 듣는 앱입니다.",
     theme: "amber",
     icon: "/apps/stand/icon.png",
     artwork: "clock",
     platforms: [
-      { name: "iOS · iPadOS", status: "개발 중", detail: "주요 기능 구현" },
+      { name: "iOS · iPadOS", status: "개발 중", detail: "주요 기능 · 음악 채널 구현" },
       {
         name: "macOS",
         status: "공개",
@@ -183,15 +183,16 @@ export const apps: AppData[] = [
       { title: "로컬 수면 기록", body: "코골이·잠꼬대·뒤척임 후보를 기기 안에 기록하고 타임라인으로 확인합니다." },
       { title: "내 화면 만들기", body: "밝기, 시계 글꼴과 배치, 테마를 화면 방향에 맞게 편집합니다." },
       { title: "보이소", body: "QR로 가까운 기기를 연결해 움직임과 소리 이벤트를 조용히 나눕니다." },
-      { title: "라디오와 위젯", body: "인터넷 라디오를 듣고 위젯에서 원하는 모드로 빠르게 시작합니다." },
+      { title: "음악 채널과 위젯", body: "홈의 두 버튼에 Apple Music, Apple Music Classical 또는 인터넷 라디오를 배치해 S.tand를 벗어나지 않고 재생하고, 위젯에서 원하는 모드로 빠르게 시작합니다." },
       { title: "재현 가능한 화면 매치업", body: "한국어·서울 시간대·고정 시각 조건에서 iOS와 Android의 공통 화면 상태를 같은 의미 ID로 캡처하고 비교합니다." },
     ],
     guide: [
       { title: "권한 선택", body: "카메라·마이크·대략적 위치를 왜 사용하는지 확인하고 필요한 권한만 허용합니다." },
       { title: "세 가지 모드", body: "오브제, 매이트와 화들짝 모드의 역할과 밝기·제스처를 익힙니다." },
       { title: "수면 기록", body: "날짜별 타임라인에서 후보 녹음을 듣고 병합·공유하거나 삭제합니다." },
+      { title: "음악 채널", body: "홈의 두 버튼에 원하는 음악 채널을 정합니다. Apple Music과 Classical은 재생 중인 곡을 먼저 이어 듣고, 없으면 보관함을 무작위 재생하며, 보관함도 비어 있으면 Apple 추천 음악을 재생합니다." },
       { title: "보이소 연결", body: "공간을 만들고 QR로 참여해 볼 사람·말할 사람 역할을 선택합니다." },
-      { title: "Mac에서 시작", body: "공증된 ZIP을 내려받아 압축을 풀고 STand.app을 응용 프로그램 폴더로 옮긴 뒤 실행합니다. Developer ID 서명과 Apple 공증을 마쳐 macOS Gatekeeper 검증을 통과합니다." },
+      { title: "Mac에서 시작", body: "공증된 ZIP을 내려받아 압축을 풀고 S.tand 앱을 응용 프로그램 폴더로 옮긴 뒤 실행합니다. Developer ID 서명과 Apple 공증을 마쳐 macOS Gatekeeper 검증을 통과합니다." },
     ],
     progress: [
       { state: "done", title: "시계와 수면 케어", body: "오브제 화면, 반응형 조명과 로컬 수면 기록 구현" },
@@ -213,6 +214,7 @@ export const apps: AppData[] = [
     privacy: [
       "수면 녹음은 앱 전용 저장공간에 보관되며 사용자가 공유할 때만 선택한 파일을 전달합니다.",
       "대략적 위치는 날씨를 가져올 때 사용하고, 카메라는 플래시와 주변 밝기 판단을 위해 사용합니다.",
+      "Apple Music 기능은 사용자가 허용한 뒤 MusicKit으로 현재 재생 대기열, 보관함과 추천 항목을 조회합니다. S.tand는 Apple 계정의 로그인 정보나 암호를 저장하지 않습니다.",
       "의료용 진단 앱이 아니며 소리 분류 결과는 주변 환경에 따라 달라질 수 있습니다.",
     ],
     matchup: {
