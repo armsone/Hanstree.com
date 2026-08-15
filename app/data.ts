@@ -22,7 +22,7 @@ export type AppData = {
   features: { title: string; body: string }[];
   guide: { title: string; body: string }[];
   progress: { state: "done" | "active" | "next"; title: string; body: string }[];
-  screenshots?: { src: string; alt: string; layout?: "phone" | "landscape" | "wide" }[];
+  screenshots?: { src: string; alt: string; layout?: "phone" | "menu" | "landscape" | "wide" }[];
   github: string[];
   privacy: string[];
   matchup?: {
@@ -267,7 +267,8 @@ export const apps: AppData[] = [
       { state: "active", title: "안정성 개선", body: "Codex 변화와 네트워크·절전 예외에 맞춰 지속 개선" },
     ],
     screenshots: [
-      { src: "/apps/ccmb/screens/macos-menubar.png", alt: "CCMB macOS 메뉴 막대의 실제 사용량 표시" },
+      { src: "/apps/ccmb/screens/ccmb-usage-menu.png", alt: "CCMB macOS 사용량 메뉴와 새로고침 설정", layout: "menu" },
+      { src: "/apps/ccmb/screens/macos-menubar.png", alt: "CCMB macOS 메뉴 막대의 실제 사용량 표시", layout: "wide" },
     ],
     github: ["https://github.com/armsone/CCMB"],
     privacy: [
