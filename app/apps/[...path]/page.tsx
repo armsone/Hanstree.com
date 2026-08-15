@@ -122,7 +122,7 @@ export default async function AppRoute({ params }: RouteProps) {
       <section className="download-section shell reveal" id="download">
         <div><p className="eyebrow">DOWNLOAD & TEST</p><h2>사용 가능한 버전부터.</h2><p>공개된 배포만 다운로드로 표시합니다. TestFlight가 준비되면 참여 단계와 빌드 만료 안내를 함께 제공합니다.</p></div>
         <div className="download-list">
-          {app.platforms.map((platform) => <article key={platform.name}><div><span className={`status-dot status-${platform.status.replace(" ", "-")}`} /><h3>{platform.name}</h3></div><p>{platform.detail} · {platform.status}</p>{platform.url ? <Link href={platform.url}>다운로드 페이지 <span aria-hidden="true">↗</span></Link> : <span>공개 링크 준비 중</span>}</article>)}
+          {app.platforms.map((platform) => <article key={platform.name}><div><span className={`status-dot status-${platform.status.replace(" ", "-")}`} /><h3>{platform.name}</h3></div><p>{platform.detail} · {platform.status}</p>{platform.url ? <Link href={platform.url}>{platform.downloadLabel ?? "다운로드 페이지"} <span aria-hidden="true">↗</span></Link> : <span>공개 링크 준비 중</span>}{platform.checksum && <small className="download-checksum">SHA-256 {platform.checksum}</small>}</article>)}
         </div>
       </section>
 

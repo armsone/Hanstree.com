@@ -3,6 +3,8 @@ export type Platform = {
   status: "공개" | "개발 중" | "준비 중";
   detail: string;
   url?: string;
+  downloadLabel?: string;
+  checksum?: string;
 };
 
 export type AppData = {
@@ -136,7 +138,14 @@ export const apps: AppData[] = [
     artwork: "clock",
     platforms: [
       { name: "iOS · iPadOS", status: "개발 중", detail: "주요 기능 구현" },
-      { name: "Mac", status: "개발 중", detail: "Mac Catalyst · 빌드 0.30.0 검증" },
+      {
+        name: "macOS",
+        status: "공개",
+        detail: "0.30.0 · macOS 14+ · Apple 공증 완료",
+        url: "https://github.com/armsone/S.tand/releases/download/macos-v0.30.0/S.tand-macOS-0.30.0.zip",
+        downloadLabel: "Mac용 ZIP 바로 받기",
+        checksum: "8d38c2f99cca96b4742c2f7e3ab2c325df3ee92b6da92ada0be7a7003b8f172e",
+      },
       { name: "Android", status: "공개", detail: "APK v52", url: "https://github.com/armsone/S.tand-Android/releases/tag/android-v52" },
     ],
     features: [
@@ -153,13 +162,13 @@ export const apps: AppData[] = [
       { title: "세 가지 모드", body: "오브제, 매이트와 화들짝 모드의 역할과 밝기·제스처를 익힙니다." },
       { title: "수면 기록", body: "날짜별 타임라인에서 후보 녹음을 듣고 병합·공유하거나 삭제합니다." },
       { title: "보이소 연결", body: "공간을 만들고 QR로 참여해 볼 사람·말할 사람 역할을 선택합니다." },
-      { title: "Mac에서 시작", body: "Mac Catalyst 앱은 iPhone·iPad와 같은 흐름을 큰 창에서 사용할 수 있도록 빌드와 첫 실행 화면을 검증했습니다. 공개 설치 링크는 준비 중입니다." },
+      { title: "Mac에서 시작", body: "공증된 ZIP을 내려받아 압축을 풀고 STand.app을 응용 프로그램 폴더로 옮긴 뒤 실행합니다. Developer ID 서명과 Apple 공증을 마쳐 macOS Gatekeeper 검증을 통과합니다." },
     ],
     progress: [
       { state: "done", title: "시계와 수면 케어", body: "오브제 화면, 반응형 조명과 로컬 수면 기록 구현" },
       { state: "done", title: "Android 공개 빌드", body: "GitHub Release를 통한 Android APK 배포" },
       { state: "active", title: "보이소 안정화", body: "근거리 연결, 재연결과 백그라운드 알림을 개선 중" },
-      { state: "done", title: "Mac Catalyst 지원", body: "iPhone·iPad 경험을 유지한 Mac 빌드와 첫 실행 화면 검증" },
+      { state: "done", title: "Mac Catalyst 공개", body: "Developer ID 서명, Apple 공증과 Gatekeeper 검증을 마친 macOS 0.30.0 ZIP 공개" },
       { state: "active", title: "iOS·Android 화면 매치업", body: "15개 공통 상태를 자동 캡처하고 남은 아이콘·세부 기하 차이를 추적 중" },
       { state: "next", title: "장시간 실기기 검증", body: "오디오·센서 흐름과 접근성을 다양한 기기에서 추가 검증" },
     ],
