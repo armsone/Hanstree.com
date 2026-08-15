@@ -173,8 +173,8 @@ export function SiteHeader() {
           <span>NasFinder</span>.com
         </Link>
         <nav aria-label="주요 메뉴">
-          <Link href="/#apps">앱</Link>
-          <Link href="/#contact">소통</Link>
+          <a href="/#apps">앱</a>
+          <a href="/#contact">소통</a>
           <Link href="https://github.com/armsone">GitHub <span aria-hidden="true">↗</span></Link>
         </nav>
       </div>
@@ -191,7 +191,7 @@ export function SiteFooter() {
           <p>한병기 · 바이브 코더가 만드는 앱을 소개합니다.</p>
         </div>
         <div className="footer-links">
-          <Link href="/#apps">모든 앱</Link>
+          <a href="/#apps">모든 앱</a>
           <Link href="/apps/nasfinder/privacy">개인정보처리방침</Link>
           <Link href="/apps/nasfinder/support">지원</Link>
           <Link href="https://github.com/armsone">GitHub</Link>
