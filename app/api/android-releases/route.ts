@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
 
 const RELEASE_SOURCES = [
-  { appName: "한클립", repo: "HanClip-Android" },
-  { appName: "에스텐드", repo: "S.tand-Android" },
+  { appName: "나스파인더", repo: "NasFinder-Android", planned: true },
+  { appName: "한클립", repo: "HanClip-Android", planned: false },
+  { appName: "에스텐드", repo: "S.tand-Android", planned: false },
 ] as const;
 
 type GitHubAsset = {
@@ -46,9 +47,11 @@ async function readLatestRelease(source: (typeof RELEASE_SOURCES)[number]) {
 
   const apk = release.assets.find((asset) =>
     asset.state === "uploaded" &&
+    asset.size > 0 &&
     asset.name.toLowerCase().endsWith(".apk") &&
     asset.browser_download_url.startsWith(assetPrefix)
   );
+  if (!apk) throw new Error("Release does not contain a verified APK asset");
 
   return {
     appName: source.appName,
@@ -57,14 +60,14 @@ async function readLatestRelease(source: (typeof RELEASE_SOURCES)[number]) {
     releaseName: release.name || release.tag_name,
     publishedAt: release.published_at,
     releaseUrl: release.html_url,
-    asset: apk ? {
+    asset: {
       name: apk.name,
       size: apk.size,
       contentType: apk.content_type,
       digest: apk.digest || null,
       downloadCount: apk.download_count,
       downloadUrl: apk.browser_download_url,
-    } : null,
+    },
   };
 }
 
@@ -73,7 +76,12 @@ export async function GET() {
   const settled = await Promise.allSettled(RELEASE_SOURCES.map(readLatestRelease));
   const releases = settled.map((result, index) => result.status === "fulfilled"
     ? { ...result.value, available: true as const }
-    : { appName: RELEASE_SOURCES[index].appName, repo: RELEASE_SOURCES[index].repo, available: false as const }
+    : {
+        appName: RELEASE_SOURCES[index].appName,
+        repo: RELEASE_SOURCES[index].repo,
+        available: false as const,
+        planned: RELEASE_SOURCES[index].planned,
+      }
   );
 
   return NextResponse.json(

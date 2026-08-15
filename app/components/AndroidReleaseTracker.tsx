@@ -45,13 +45,11 @@ export function AndroidReleaseTracker() {
   }, []);
 
   const placeholders: Release[] = [
+    { appName: "나스파인더", repo: "NasFinder-Android", available: false, planned: true },
     { appName: "한클립", repo: "HanClip-Android", available: false },
     { appName: "에스텐드", repo: "S.tand-Android", available: false },
   ];
-  const releases: Release[] = [
-    { appName: "나스파인더", repo: "GitHub 저장소 연결 예정", available: false, planned: true },
-    ...(data?.releases || placeholders),
-  ];
+  const releases = data?.releases || placeholders;
 
   return (
     <div>
@@ -68,17 +66,13 @@ export function AndroidReleaseTracker() {
                 <div><dt>SHA-256</dt><dd className="digest">{release.asset?.digest?.replace(/^sha256:/, "").slice(0, 12) || "GitHub 정보 없음"}</dd></div>
               </dl>
               <div className="android-release-actions">
-                {release.asset?.downloadUrl ? <>
-                  <a className="android-download-link" href={release.asset.downloadUrl}>
-                    <span>APK 바로 받기</span><b aria-hidden="true">↓</b>
-                  </a>
-                  <p className="android-download-note">홈페이지가 확인한 공식 GitHub APK가 바로 다운로드됩니다.</p>
-                </> : null}
-                <a className="android-release-link" href={release.releaseUrl}>
-                  릴리스 설명 보기 <span aria-hidden="true">↗</span>
-                </a>
+                {release.asset?.downloadUrl && <a className="android-download-link" href={release.asset.downloadUrl} aria-label={`${release.appName} Android ${release.tagName} APK 바로 받기`}>
+                  <span>APK 바로 받기</span><b aria-hidden="true">↓</b>
+                </a>}
+                <a className="android-release-link" href={release.releaseUrl}>릴리스 설명 보기 <span aria-hidden="true">↗</span></a>
               </div>
-            </> : <div className="android-release-loading"><strong>{release.planned ? "첫 공개판 준비 중" : failed ? "정보를 불러오지 못했습니다" : "최신 릴리스 확인 중"}</strong><p>{release.planned ? "나스파인더 Android를 개발하고 있습니다. 첫 GitHub 릴리스가 공개되면 최신 버전과 APK 정보를 자동으로 연결합니다." : failed ? "잠시 뒤 다시 확인하거나 GitHub 저장소를 이용해 주세요." : "GitHub 공식 배포 정보를 안전하게 확인하고 있습니다."}</p></div>}
+              <p className="android-download-note">홈페이지가 확인한 공식 GitHub APK가 바로 다운로드됩니다.</p>
+            </> : <div className="android-release-loading"><strong>{release.planned ? "첫 공개판 준비 중" : failed ? "정보를 불러오지 못했습니다" : data ? "공개 APK를 찾지 못했습니다" : "최신 릴리스 확인 중"}</strong><p>{release.planned ? "아직 공개된 버전이나 다운로드 주소가 없습니다. 첫 GitHub Release에 공식 APK가 올라오면 이 카드가 자동으로 최신 버전과 파일 정보로 바뀝니다." : failed ? "잠시 뒤 다시 확인해 주세요. 확인되지 않은 주소나 APK는 표시하지 않습니다." : data ? "공식 GitHub Release에 검증 가능한 APK가 게시되면 다운로드 정보를 표시합니다." : "GitHub 공식 배포 정보를 안전하게 확인하고 있습니다."}</p></div>}
           </article>
         ))}
       </div>
@@ -96,6 +90,7 @@ export function AndroidReleaseTracker() {
           <li><span>04</span><div><h4>설치 직후 두 설정 되돌리기</h4><ol className="tap-sequence compact"><li><span><b>설정 → 보안 및 개인정보 보호 → 기타 보안 설정 → 알 수 없는 앱 설치</b>로 돌아갑니다.</span></li><li><span>조금 전에 허용한 앱을 선택하고 <b>이 출처 허용</b>을 끕니다.</span></li><li><span><b>설정 → 보안 및 개인정보 보호 → 자동 차단</b>으로 이동해 다시 켭니다.</span></li></ol><p>Google의 앱 검사나 Play Protect는 끄지 않습니다. 경고가 계속되거나 서명이 다르다는 메시지가 나오면 설치를 중단합니다.</p></div></li>
         </ol>
         <div className="install-warning"><strong>꼭 기억하세요</strong><p>보호 기능 해제는 필수가 아니라 마지막 수단입니다. 출처를 확신할 수 없거나 예상과 다른 권한을 요구하면 설치하지 말고 GitHub 공개 문의로 확인해 주세요.</p></div>
+        <div className="install-update-note"><strong>새 버전으로 업데이트할 때</strong><p>이 페이지에 더 새로운 태그가 표시되면 같은 공식 GitHub Release의 APK를 받아 기존 앱 위에 설치합니다. 앱을 먼저 삭제하면 앱 안의 설정과 파일이 사라질 수 있습니다. Android가 서명이 다르다고 알리면 삭제로 우회하지 말고 업데이트를 중단해 주세요.</p></div>
         <div className="install-source-links"><a href="https://www.samsung.com/uk/support/mobile-devices/protect-your-galaxy-device-with-the-new-auto-blocker-feature/">Samsung 자동 차단 공식 안내 <span aria-hidden="true">↗</span></a><a href="https://support.google.com/android/answer/17065026?hl=ko">Android 개발자 확인 공식 안내 <span aria-hidden="true">↗</span></a></div>
       </section>
     </div>
