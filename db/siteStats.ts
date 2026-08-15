@@ -40,12 +40,14 @@ function daysInMonth(month: string) {
 
 export async function readSiteStats(month = today().slice(0, 7)) {
   const days = daysInMonth(month);
-  const dailyKeys = days.flatMap((day) => [`visits:${day}`, ...DOWNLOAD_REPOS.map((repo) => `${downloadKey(repo)}:${day}`)]);
-  const keys = ["visits:total", `visits:${today()}`, ...DOWNLOAD_REPOS.map(downloadKey), ...dailyKeys];
+  const keys = ["visits:total", `visits:${today()}`, ...DOWNLOAD_REPOS.map(downloadKey)];
   const placeholders = keys.map(() => "?").join(",");
   const result = await getD1().prepare(
-    `SELECT key, value FROM site_counters WHERE key IN (${placeholders})`
-  ).bind(...keys).all<{ key: string; value: number }>();
+    `SELECT key, value FROM site_counters
+     WHERE key IN (${placeholders})
+        OR key LIKE ?
+        OR key LIKE ?`
+  ).bind(...keys, `visits:${month}-%`, `download:%:${month}-%`).all<{ key: string; value: number }>();
   const values = new Map(result.results.map((row) => [row.key, row.value]));
   const downloads = Object.fromEntries(DOWNLOAD_REPOS.map((repo) => [repo, values.get(downloadKey(repo)) || 0]));
 
