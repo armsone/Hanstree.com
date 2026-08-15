@@ -88,6 +88,14 @@ export const apps: AppData[] = [
       { state: "done", title: "Android 공개", body: "NasFinder Android v2 APK를 GitHub Releases에 공개" },
       { state: "done", title: "Mac 전용 Super Thumbnail", body: "네이티브 Mac 앱에서 16,540개 미디어·1.57TB 폴더 검색, 진행률·용량·이어하기와 iPhone 호환 NAS 보관본 검증" },
     ],
+    screenshots: [
+      { src: "/apps/nasfinder/screens/android-home.png", alt: "나스파인더 Android 저장공간 홈" },
+      { src: "/apps/nasfinder/screens/android-received.png", alt: "나스파인더 Android 받은 파일" },
+      { src: "/apps/nasfinder/screens/android-add-connection.png", alt: "나스파인더 Android 연결 추가" },
+      { src: "/apps/nasfinder/screens/android-thumbnail-cache.png", alt: "나스파인더 Android 썸네일 캐시 관리" },
+      { src: "/apps/nasfinder/screens/android-theme.png", alt: "나스파인더 Android 테마와 앱 아이콘" },
+      { src: "/apps/nasfinder/screens/android-super-thumbnail.png", alt: "나스파인더 Android Super Thumbnail" },
+    ],
     github: ["https://github.com/armsone/NasFinder"],
     privacy: [
       "연결 정보는 앱 그룹에, 비밀번호·세션·OAuth 자격증명은 기기 전용 Keychain에 저장합니다.",
@@ -133,9 +141,12 @@ export const apps: AppData[] = [
       { state: "next", title: "현장 감도 검증", body: "다양한 영상과 실제 골프 환경에서 AiShot을 추가 검증" },
     ],
     screenshots: [
-      { src: "/apps/hanclip/screen-home.png", alt: "한클립 미디어 선택 화면" },
-      { src: "/apps/hanclip/screen-ratios.png", alt: "한클립 화면비 선택 화면" },
-      { src: "/apps/hanclip/screen-preview.png", alt: "한클립 영화 미리보기 화면" },
+      { src: "/apps/hanclip/screens/ios-home.png", alt: "한클립 iOS 홈" },
+      { src: "/apps/hanclip/screens/ios-add-media.png", alt: "한클립 iOS 미디어 추가" },
+      { src: "/apps/hanclip/screens/android-quick-select.png", alt: "한클립 Android 퀵모드 사진 선택" },
+      { src: "/apps/hanclip/screens/android-duration.png", alt: "한클립 Android 장면 길이 설정" },
+      { src: "/apps/hanclip/screens/android-editor-pets.png", alt: "고양이와 강아지 사진으로 꾸민 한클립 Android 편집 화면" },
+      { src: "/apps/hanclip/screens/android-editor-finish-pets.png", alt: "고양이와 강아지 영화의 한클립 Android 편집 완료 화면" },
     ],
     github: ["https://github.com/armsone/HanClip", "https://github.com/armsone/HanClip-Android"],
     privacy: [
@@ -190,7 +201,14 @@ export const apps: AppData[] = [
       { state: "active", title: "iOS·Android 화면 매치업", body: "15개 공통 상태를 자동 캡처하고 남은 아이콘·세부 기하 차이를 추적 중" },
       { state: "next", title: "장시간 실기기 검증", body: "오디오·센서 흐름과 접근성을 다양한 기기에서 추가 검증" },
     ],
-    screenshots: [{ src: "/apps/stand/widget.png", alt: "S.tand 잠금화면 원형 위젯" }],
+    screenshots: [
+      { src: "/apps/stand/screens/ios-home-portrait.png", alt: "S.tand iOS 세로 오브제 시계" },
+      { src: "/apps/stand/screens/ios-home-landscape.png", alt: "S.tand iOS 가로 오브제 시계" },
+      { src: "/apps/stand/screens/ios-sleep-report.png", alt: "S.tand iOS 수면 기록 리포트" },
+      { src: "/apps/stand/screens/android-editor.png", alt: "S.tand Android 내 화면 편집" },
+      { src: "/apps/stand/screens/android-recordings.png", alt: "S.tand Android 잠소리 관리" },
+      { src: "/apps/stand/screens/android-boyiso.png", alt: "S.tand Android 보이소 연결" },
+    ],
     github: ["https://github.com/armsone/S.tand", "https://github.com/armsone/S.tand-Android"],
     privacy: [
       "수면 녹음은 앱 전용 저장공간에 보관되며 사용자가 공유할 때만 선택한 파일을 전달합니다.",
@@ -244,6 +262,9 @@ export const apps: AppData[] = [
       { state: "done", title: "서명된 자동 업데이트", body: "Sparkle 기반 업데이트와 무결성 확인" },
       { state: "done", title: "로컬 사용량 공유", body: "다른 앱과 대화를 위한 최신성 포함 JSON 및 명령 제공" },
       { state: "active", title: "안정성 개선", body: "Codex 변화와 네트워크·절전 예외에 맞춰 지속 개선" },
+    ],
+    screenshots: [
+      { src: "/apps/ccmb/screens/macos-menubar.png", alt: "CCMB macOS 메뉴 막대의 실제 사용량 표시" },
     ],
     github: ["https://github.com/armsone/CCMB"],
     privacy: [
