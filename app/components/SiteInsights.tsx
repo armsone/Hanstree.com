@@ -55,6 +55,10 @@ export function SiteInsights() {
   }, [stats]);
 
   const number = (value: number) => value.toLocaleString("ko-KR");
+  const [selectedYear, selectedMonth] = month.split("-");
+  const [thisYear, thisMonth] = currentMonth().split("-").map(Number);
+  const years = Array.from({ length: 6 }, (_, index) => String(thisYear - index));
+  const months = Array.from({ length: 12 }, (_, index) => String(index + 1).padStart(2, "0"));
 
   return (
     <main>
@@ -66,7 +70,10 @@ export function SiteInsights() {
       <section className="insights-shell shell">
         <div className="insights-toolbar">
           <div><span>기간 선택</span><strong>{month.replace("-", ". ")}</strong></div>
-          <label>연·월 선택<input type="month" value={month} max={currentMonth()} onInput={(event) => event.currentTarget.value && setMonth(event.currentTarget.value)} /></label>
+          <div className="period-selectors">
+            <label>연도<select value={selectedYear} onChange={(event) => setMonth(`${event.target.value}-${selectedMonth}`)}>{years.map((year) => <option key={year} value={year}>{year}년</option>)}</select></label>
+            <label>월<select value={selectedMonth} onChange={(event) => setMonth(`${selectedYear}-${event.target.value}`)}>{months.map((value) => <option key={value} value={value} disabled={Number(selectedYear) === thisYear && Number(value) > thisMonth}>{Number(value)}월</option>)}</select></label>
+          </div>
         </div>
         <div className="insights-summary">
           <article><span>월 방문</span><strong>{number(summary.visits)}</strong></article>
