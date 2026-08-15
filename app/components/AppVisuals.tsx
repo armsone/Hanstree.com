@@ -1,5 +1,5 @@
 import type { AppData, Platform } from "../data";
-import { LiveFlipClock } from "./LiveFlipClock";
+import { LiveFlipClock, LiveSeoulWeather } from "./LiveFlipClock";
 
 export function AppIcon({ app, priority = false }: { app: AppData; priority?: boolean }) {
   if (app.icon) {
@@ -30,7 +30,7 @@ export function AppArtwork({ app }: { app: AppData }) {
   if (app.artwork === "clock") {
     return (
       <div className="artwork artwork-clock" aria-label="S.tand 플립시계 화면 표현">
-        <div className="clock-weather">SEOUL&nbsp;&nbsp; 23°</div>
+        <LiveSeoulWeather />
         <LiveFlipClock />
         <div className="clock-mode"><span /> MATE MODE</div>
       </div>

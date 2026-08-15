@@ -22,7 +22,7 @@ export type AppData = {
   features: { title: string; body: string }[];
   guide: { title: string; body: string }[];
   progress: { state: "done" | "active" | "next"; title: string; body: string }[];
-  screenshots?: { src: string; alt: string; layout?: "phone" | "wide" }[];
+  screenshots?: { src: string; alt: string; layout?: "phone" | "landscape" | "wide" }[];
   github: string[];
   privacy: string[];
   matchup?: {
@@ -204,11 +204,12 @@ export const apps: AppData[] = [
     ],
     screenshots: [
       { src: "/apps/stand/screens/ios-home-portrait.png", alt: "S.tand iOS 세로 오브제 시계" },
-      { src: "/apps/stand/screens/ios-home-landscape.png", alt: "S.tand iOS 가로 오브제 시계" },
       { src: "/apps/stand/screens/ios-sleep-report.png", alt: "S.tand iOS 수면 기록 리포트" },
       { src: "/apps/stand/screens/android-editor.png", alt: "S.tand Android 내 화면 편집" },
+      { src: "/apps/stand/screens/ios-home-landscape-flat.png", alt: "S.tand iOS 가로 오브제 시계", layout: "landscape" },
       { src: "/apps/stand/screens/android-recordings.png", alt: "S.tand Android 잠소리 관리" },
       { src: "/apps/stand/screens/android-boyiso.png", alt: "S.tand Android 보이소 연결" },
+      { src: "/apps/stand/screens/ios-clock-fonts.png", alt: "S.tand iOS 시계 글꼴 선택" },
     ],
     github: ["https://github.com/armsone/S.tand", "https://github.com/armsone/S.tand-Android"],
     privacy: [
