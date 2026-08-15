@@ -267,8 +267,8 @@ export const apps: AppData[] = [
       { state: "active", title: "안정성 개선", body: "Codex 변화와 네트워크·절전 예외에 맞춰 지속 개선" },
     ],
     screenshots: [
-      { src: "/apps/ccmb/screens/ccmb-usage-menu.png", alt: "CCMB macOS 사용량 메뉴와 새로고침 설정", layout: "menu" },
       { src: "/apps/ccmb/screens/macos-menubar.png", alt: "CCMB macOS 메뉴 막대의 실제 사용량 표시", layout: "wide" },
+      { src: "/apps/ccmb/screens/ccmb-usage-menu.png", alt: "CCMB macOS 사용량 메뉴와 새로고침 설정", layout: "menu" },
     ],
     github: ["https://github.com/armsone/CCMB"],
     privacy: [
