@@ -42,7 +42,7 @@ export const apps: AppData[] = [
     artwork: "files",
     platforms: [
       { name: "iOS · iPadOS", status: "개발 중", detail: "iOS 17 이상" },
-      { name: "Mac", status: "개발 중", detail: "Apple Silicon · TestFlight 빌드 202608151224" },
+      { name: "Mac", status: "베타", detail: "Apple Silicon · TestFlight 빌드 202608151322" },
       { name: "Android", status: "개발 중", detail: "첫 공개판 준비 중" },
     ],
     features: [
@@ -66,7 +66,7 @@ export const apps: AppData[] = [
       { state: "active", title: "실제 환경 검증", body: "서버별 파일 작업, 파일 앱 연동과 네트워크 예외를 검증 중" },
       { state: "next", title: "Google Photos Picker", body: "별도 OAuth로 사용자가 직접 선택한 사진·영상만 가져오는 흐름 준비" },
       { state: "active", title: "Android 첫 공개판", body: "iOS 경험을 바탕으로 Android 버전을 개발하고 첫 공개를 준비 중" },
-      { state: "active", title: "Apple Silicon Mac 지원", body: "동일한 iPhone·iPad 앱을 Mac의 ‘iPhone 및 iPad용 앱’으로 설치하고 실행하는 흐름을 검증 중" },
+      { state: "active", title: "Apple Silicon Mac 지원", body: "동일한 iPhone·iPad 앱을 Mac의 ‘iPhone 및 iPad용 앱’으로 설치해 Super Thumbnail 실행까지 검증" },
     ],
     github: ["https://github.com/armsone/NasFinder"],
     privacy: [
