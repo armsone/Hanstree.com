@@ -64,3 +64,26 @@ test("shows the CCMB menu bar before the detailed usage menu", async () => {
   assert.notEqual(usageMenuIndex, -1);
   assert.ok(menuBarIndex < usageMenuIndex);
 });
+
+test("renders current app release and TestFlight information", async () => {
+  const [homeResponse, nasFinderResponse, hanClipResponse, standResponse] = await Promise.all([
+    render(),
+    render("/apps/nasfinder"),
+    render("/apps/hanclip"),
+    render("/apps/stand"),
+  ]);
+  const [home, nasFinder, hanClip, stand] = await Promise.all([
+    homeResponse.text(),
+    nasFinderResponse.text(),
+    hanClipResponse.text(),
+    standResponse.text(),
+  ]);
+
+  assert.match(home, /3\.11\.51/);
+  assert.match(home, /0\.31\.0/);
+  assert.match(nasFinder, /APK v3/);
+  assert.match(hanClip, /APK v547/);
+  assert.match(stand, /APK v53/);
+  assert.doesNotMatch(home + nasFinder + hanClip + stand, /첫 공개판 준비 중|APK v2\b|APK v544\b|APK v52\b/);
+  assert.doesNotMatch(hanClip, /android-editor-finish-pets\.png/);
+});

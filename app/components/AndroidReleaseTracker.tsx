@@ -6,7 +6,6 @@ type Release = {
   appName: string;
   repo: string;
   available: boolean;
-  planned?: boolean;
   tagName?: string;
   releaseName?: string;
   publishedAt?: string | null;
@@ -54,7 +53,7 @@ export function AndroidReleaseTracker() {
   }, []);
 
   const placeholders: Release[] = [
-    { appName: "나스파인더", repo: "NasFinder-Android", available: false, planned: true },
+    { appName: "나스파인더", repo: "NasFinder-Android", available: false },
     { appName: "한클립", repo: "HanClip-Android", available: false },
     { appName: "S.tand", repo: "S.tand-Android", available: false },
   ];
@@ -81,7 +80,7 @@ export function AndroidReleaseTracker() {
                 <a className="android-release-link" href={release.releaseUrl}>릴리스 설명 보기 <span aria-hidden="true">↗</span></a>
               </div>
               <p className="android-download-note">홈페이지가 확인한 공식 GitHub APK가 바로 다운로드됩니다.</p>
-            </> : <div className="android-release-loading"><strong>{release.planned ? "첫 공개판 준비 중" : failed ? "정보를 불러오지 못했습니다" : data ? "공개 APK를 찾지 못했습니다" : "최신 릴리스 확인 중"}</strong><p>{release.planned ? "아직 공개된 버전이나 다운로드 주소가 없습니다. 첫 GitHub Release에 공식 APK가 올라오면 이 카드가 자동으로 최신 버전과 파일 정보로 바뀝니다." : failed ? "잠시 뒤 다시 확인해 주세요. 확인되지 않은 주소나 APK는 표시하지 않습니다." : data ? "공식 GitHub Release에 검증 가능한 APK가 게시되면 다운로드 정보를 표시합니다." : "GitHub 공식 배포 정보를 안전하게 확인하고 있습니다."}</p></div>}
+            </> : <div className="android-release-loading"><strong>{failed ? "정보를 불러오지 못했습니다" : data ? "공개 APK를 찾지 못했습니다" : "최신 릴리스 확인 중"}</strong><p>{failed ? "잠시 뒤 다시 확인해 주세요. 확인되지 않은 주소나 APK는 표시하지 않습니다." : data ? "공식 GitHub Release에 검증 가능한 APK가 게시되면 다운로드 정보를 표시합니다." : "GitHub 공식 배포 정보를 안전하게 확인하고 있습니다."}</p></div>}
           </article>
         ))}
       </div>

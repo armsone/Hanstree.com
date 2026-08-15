@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AppArtwork, AppIcon, AppStatus } from "../../components/AppVisuals";
@@ -75,7 +76,16 @@ export default async function AppRoute({ params }: RouteProps) {
         <div className="shell">
           <div className="section-heading reveal"><div><p className="eyebrow">IN THE APP</p><h2>화면으로 먼저 만나보세요.</h2></div><p>실제 공개 자료를 우선 사용하고, 개인 정보가 담긴 화면은 데모 데이터로 교체합니다.</p></div>
           {app.screenshots && app.screenshots.length > 0 ? (
-            <div className="screenshot-rail">{app.screenshots.map((screen) => <figure className={`screen-${screen.layout ?? "phone"}`} key={screen.src}><div className="screenshot-media"><img src={screen.src} alt={screen.alt} loading="lazy" /></div><figcaption>{screen.alt}</figcaption></figure>)}</div>
+            <div className="screenshot-rail">{app.screenshots.map((screen) => {
+              const dimensions = screen.layout === "menu"
+                ? { width: 700, height: 968 }
+                : screen.layout === "landscape"
+                  ? { width: 2622, height: 1206 }
+                  : screen.layout === "wide"
+                    ? { width: 860, height: 60 }
+                    : { width: 1206, height: 2622 };
+              return <figure className={`screen-${screen.layout ?? "phone"}`} key={screen.src}><div className="screenshot-media"><Image src={screen.src} alt={screen.alt} width={dimensions.width} height={dimensions.height} sizes={screen.layout ? "(max-width: 640px) 92vw, 1080px" : "(max-width: 640px) 78vw, 360px"} unoptimized /></div><figcaption>{screen.alt}</figcaption></figure>;
+            })}</div>
           ) : (
             <div className="single-artwork reveal"><AppArtwork app={app} /><p>대표 화면 이미지는 현재 제품 상태에 맞춰 계속 보강합니다.</p></div>
           )}
@@ -204,7 +214,7 @@ function InfoPage({ app, section }: { app: NonNullable<ReturnType<typeof findApp
             <ContactReveal />
           </div>
         </>}
-        <p className="policy-note">시행일: 2026년 8월 14일 · 마지막 변경일: 2026년 8월 14일</p>
+        <p className="policy-note">시행일: 2026년 8월 14일 · 마지막 변경일: 2026년 8월 15일</p>
       </article>
       <SiteFooter />
     </main>
@@ -236,7 +246,7 @@ function GoogleOAuthPage() {
           <Link className="button button-primary" href="/apps/nasfinder/privacy">Korean privacy notice</Link>
           <Link className="button button-quiet" href="/apps/nasfinder/support">Support</Link>
         </div>
-        <p className="policy-note">Draft for implementation and OAuth review readiness · Last reviewed August 14, 2026</p>
+        <p className="policy-note">Draft for implementation and OAuth review readiness · Last reviewed August 15, 2026</p>
       </article>
       <SiteFooter />
     </main>
