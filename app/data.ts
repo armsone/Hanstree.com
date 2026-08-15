@@ -124,7 +124,7 @@ export const apps: AppData[] = [
     artwork: "clock",
     platforms: [
       { name: "iOS · iPadOS", status: "개발 중", detail: "주요 기능 구현" },
-      { name: "Android", status: "공개", detail: "APK v50", url: "https://github.com/armsone/S.tand-Android/releases/tag/android-v50" },
+      { name: "Android", status: "공개", detail: "APK v52", url: "https://github.com/armsone/S.tand-Android/releases/tag/android-v52" },
     ],
     features: [
       { title: "오브제 모드", body: "플립시계, 날씨와 배터리를 가로·세로 화면에 차분하게 표시합니다." },
