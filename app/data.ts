@@ -22,7 +22,7 @@ export type AppData = {
   features: { title: string; body: string }[];
   guide: { title: string; body: string }[];
   progress: { state: "done" | "active" | "next"; title: string; body: string }[];
-  screenshots?: { src: string; alt: string }[];
+  screenshots?: { src: string; alt: string; layout?: "phone" | "wide" }[];
   github: string[];
   privacy: string[];
   matchup?: {
@@ -146,7 +146,7 @@ export const apps: AppData[] = [
       { src: "/apps/hanclip/screens/android-quick-select.png", alt: "한클립 Android 퀵모드 사진 선택" },
       { src: "/apps/hanclip/screens/android-duration.png", alt: "한클립 Android 장면 길이 설정" },
       { src: "/apps/hanclip/screens/android-editor-pets.png", alt: "고양이와 강아지 사진으로 꾸민 한클립 Android 편집 화면" },
-      { src: "/apps/hanclip/screens/android-editor-finish-pets.png", alt: "고양이와 강아지 영화의 한클립 Android 편집 완료 화면" },
+      { src: "/apps/hanclip/screens/android-home-dark.png", alt: "한클립 Android 다크 테마 홈" },
     ],
     github: ["https://github.com/armsone/HanClip", "https://github.com/armsone/HanClip-Android"],
     privacy: [
@@ -183,14 +183,14 @@ export const apps: AppData[] = [
       { title: "로컬 수면 기록", body: "코골이·잠꼬대·뒤척임 후보를 기기 안에 기록하고 타임라인으로 확인합니다." },
       { title: "내 화면 만들기", body: "밝기, 시계 글꼴과 배치, 테마를 화면 방향에 맞게 편집합니다." },
       { title: "보이소", body: "QR로 가까운 기기를 연결해 움직임과 소리 이벤트를 조용히 나눕니다." },
-      { title: "음악 채널과 위젯", body: "홈의 두 버튼에 Apple Music, Apple Music Classical 또는 인터넷 라디오를 배치해 S.tand를 벗어나지 않고 재생하고, 위젯에서 원하는 모드로 빠르게 시작합니다." },
+      { title: "음악 채널과 위젯", body: "홈의 두 버튼에 Apple Music, Apple Music Classical 또는 인터넷 라디오를 배치해 S.tand를 벗어나지 않고 재생합니다. 일반 음악과 클래식은 서로 섞지 않습니다." },
       { title: "재현 가능한 화면 매치업", body: "한국어·서울 시간대·고정 시각 조건에서 iOS와 Android의 공통 화면 상태를 같은 의미 ID로 캡처하고 비교합니다." },
     ],
     guide: [
       { title: "권한 선택", body: "카메라·마이크·대략적 위치를 왜 사용하는지 확인하고 필요한 권한만 허용합니다." },
       { title: "세 가지 모드", body: "오브제, 매이트와 화들짝 모드의 역할과 밝기·제스처를 익힙니다." },
       { title: "수면 기록", body: "날짜별 타임라인에서 후보 녹음을 듣고 병합·공유하거나 삭제합니다." },
-      { title: "음악 채널", body: "홈의 두 버튼에 원하는 음악 채널을 정합니다. Apple Music과 Classical은 재생 중인 곡을 먼저 이어 듣고, 없으면 보관함을 무작위 재생하며, 보관함도 비어 있으면 Apple 추천 음악을 재생합니다." },
+      { title: "음악 채널", body: "홈의 두 버튼에 원하는 음악 채널을 정합니다. Apple Music은 일반 음악을, Classical은 클래식 음악만 대상으로 현재곡 이어 듣기 → 보관함 무작위 재생 → Apple 추천 순서로 재생합니다." },
       { title: "보이소 연결", body: "공간을 만들고 QR로 참여해 볼 사람·말할 사람 역할을 선택합니다." },
       { title: "Mac에서 시작", body: "공증된 ZIP을 내려받아 압축을 풀고 S.tand 앱을 응용 프로그램 폴더로 옮긴 뒤 실행합니다. Developer ID 서명과 Apple 공증을 마쳐 macOS Gatekeeper 검증을 통과합니다." },
     ],
@@ -266,7 +266,7 @@ export const apps: AppData[] = [
       { state: "active", title: "안정성 개선", body: "Codex 변화와 네트워크·절전 예외에 맞춰 지속 개선" },
     ],
     screenshots: [
-      { src: "/apps/ccmb/screens/macos-menubar.png", alt: "CCMB macOS 메뉴 막대의 실제 사용량 표시" },
+      { src: "/apps/ccmb/screens/macos-menubar.png", alt: "CCMB macOS 메뉴 막대의 실제 사용량 표시", layout: "wide" },
     ],
     github: ["https://github.com/armsone/CCMB"],
     privacy: [
