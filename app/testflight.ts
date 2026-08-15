@@ -9,7 +9,7 @@ export type TestFlightBuild = {
 // TestFlight 업로드가 확인되면 이 목록의 빌드 번호와 ISO 8601 시각만 갱신합니다.
 // 확인되지 않은 날짜를 추정해서 입력하지 않습니다.
 export const testFlightBuilds: TestFlightBuild[] = [
-  { slug: "nasfinder", appName: "나스파인더", build: null, uploadedAt: null, inviteUrl: null },
+  { slug: "nasfinder", appName: "나스파인더", build: "202608151224", uploadedAt: "2026-08-15T12:42:06+09:00", inviteUrl: null },
   { slug: "hanclip", appName: "한클립", build: null, uploadedAt: null, inviteUrl: null },
   { slug: "stand", appName: "S.tand", build: null, uploadedAt: null, inviteUrl: null },
 ];

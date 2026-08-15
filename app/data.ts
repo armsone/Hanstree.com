@@ -22,6 +22,11 @@ export type AppData = {
   screenshots?: { src: string; alt: string }[];
   github: string[];
   privacy: string[];
+  matchup?: {
+    metrics: { value: string; label: string }[];
+    scope: string[];
+    note: string;
+  };
 };
 
 export const apps: AppData[] = [
@@ -30,13 +35,14 @@ export const apps: AppData[] = [
     name: "나스파인더",
     english: "NasFinder",
     eyebrow: "YOUR STORAGE, WITHIN REACH",
-    tagline: "내 저장공간을, iPhone과 iPad에서 한눈에.",
-    summary: "NAS·서버·클라우드의 파일을 탐색하고 사진과 영상을 미리 본 뒤, 필요한 파일을 옮기고 공유하는 네이티브 파일 브라우저입니다.",
+    tagline: "내 저장공간을, iPhone과 iPad 그리고 Mac에서 한눈에.",
+    summary: "NAS·서버·클라우드의 파일을 iPhone, iPad와 Apple Silicon Mac에서 탐색하고 사진과 영상을 미리 본 뒤, 필요한 파일을 옮기고 공유하는 네이티브 파일 브라우저입니다.",
     theme: "violet",
     icon: "/apps/nasfinder/icon.png",
     artwork: "files",
     platforms: [
       { name: "iOS · iPadOS", status: "개발 중", detail: "iOS 17 이상" },
+      { name: "Mac", status: "개발 중", detail: "Apple Silicon · TestFlight 빌드 202608151224" },
       { name: "Android", status: "개발 중", detail: "첫 공개판 준비 중" },
     ],
     features: [
@@ -46,18 +52,21 @@ export const apps: AppData[] = [
       { title: "기기 안에서 안전하게", body: "비밀번호와 로그인 토큰은 Keychain에, 받은 파일과 캐시는 앱 전용 저장공간에 보관합니다." },
       { title: "폰하드", body: "같은 Wi‑Fi의 컴퓨터에서 웹 브라우저만으로 iPhone에 파일을 보냅니다." },
       { title: "Apple 파일 앱 연동", body: "Synology와 SFTP 위치를 Apple 파일 앱에서도 익숙한 방식으로 사용합니다." },
+      { title: "Super Thumbnail", body: "사진과 영상의 썸네일을 미리 만들고 남은 시간·네트워크 사용량을 확인하며, 중단된 작업은 다음 실행에서 이어갑니다." },
     ],
     guide: [
       { title: "연결 추가", body: "서비스를 선택하고 서버 주소와 계정을 입력하거나 OAuth로 로그인한 뒤 연결을 확인합니다." },
       { title: "탐색과 미리보기", body: "보기 방식, 검색과 정렬을 선택하고 사진·영상·PDF·일반 문서를 앱 안에서 확인합니다." },
       { title: "받은 파일과 전송", body: "다른 앱의 공유 메뉴에서 받은 파일을 보관하고, 원하는 NAS 위치로 전송합니다." },
       { title: "데이터 관리", body: "연결 삭제, 받은 파일 삭제, 캐시 정리와 OAuth 연결 해제 방법을 안내합니다." },
+      { title: "Mac에서 시작", body: "Apple Silicon Mac에 TestFlight를 설치하고 초대 링크를 연 뒤 NasFinder를 설치합니다. 실행 후 로컬 네트워크 접근을 허용하고 NAS 연결을 추가합니다." },
     ],
     progress: [
       { state: "done", title: "핵심 탐색과 미리보기", body: "다양한 원격 저장소 탐색, 미디어 썸네일과 미리보기 구현" },
       { state: "active", title: "실제 환경 검증", body: "서버별 파일 작업, 파일 앱 연동과 네트워크 예외를 검증 중" },
       { state: "next", title: "Google Photos Picker", body: "별도 OAuth로 사용자가 직접 선택한 사진·영상만 가져오는 흐름 준비" },
       { state: "active", title: "Android 첫 공개판", body: "iOS 경험을 바탕으로 Android 버전을 개발하고 첫 공개를 준비 중" },
+      { state: "active", title: "Apple Silicon Mac 지원", body: "동일한 iPhone·iPad 앱을 Mac의 ‘iPhone 및 iPad용 앱’으로 설치하고 실행하는 흐름을 검증 중" },
     ],
     github: ["https://github.com/armsone/NasFinder"],
     privacy: [
@@ -127,6 +136,7 @@ export const apps: AppData[] = [
     artwork: "clock",
     platforms: [
       { name: "iOS · iPadOS", status: "개발 중", detail: "주요 기능 구현" },
+      { name: "Mac", status: "개발 중", detail: "Mac Catalyst · 빌드 0.30.0 검증" },
       { name: "Android", status: "공개", detail: "APK v50", url: "https://github.com/armsone/S.tand-Android/releases/tag/android-v50" },
     ],
     features: [
@@ -136,17 +146,21 @@ export const apps: AppData[] = [
       { title: "내 화면 만들기", body: "밝기, 시계 글꼴과 배치, 테마를 화면 방향에 맞게 편집합니다." },
       { title: "보이소", body: "QR로 가까운 기기를 연결해 움직임과 소리 이벤트를 조용히 나눕니다." },
       { title: "라디오와 위젯", body: "인터넷 라디오를 듣고 위젯에서 원하는 모드로 빠르게 시작합니다." },
+      { title: "재현 가능한 화면 매치업", body: "한국어·서울 시간대·고정 시각 조건에서 iOS와 Android의 공통 화면 상태를 같은 의미 ID로 캡처하고 비교합니다." },
     ],
     guide: [
       { title: "권한 선택", body: "카메라·마이크·대략적 위치를 왜 사용하는지 확인하고 필요한 권한만 허용합니다." },
       { title: "세 가지 모드", body: "오브제, 매이트와 화들짝 모드의 역할과 밝기·제스처를 익힙니다." },
       { title: "수면 기록", body: "날짜별 타임라인에서 후보 녹음을 듣고 병합·공유하거나 삭제합니다." },
       { title: "보이소 연결", body: "공간을 만들고 QR로 참여해 볼 사람·말할 사람 역할을 선택합니다." },
+      { title: "Mac에서 시작", body: "Mac Catalyst 앱은 iPhone·iPad와 같은 흐름을 큰 창에서 사용할 수 있도록 빌드와 첫 실행 화면을 검증했습니다. 공개 설치 링크는 준비 중입니다." },
     ],
     progress: [
       { state: "done", title: "시계와 수면 케어", body: "오브제 화면, 반응형 조명과 로컬 수면 기록 구현" },
       { state: "done", title: "Android 공개 빌드", body: "GitHub Release를 통한 Android APK 배포" },
       { state: "active", title: "보이소 안정화", body: "근거리 연결, 재연결과 백그라운드 알림을 개선 중" },
+      { state: "done", title: "Mac Catalyst 지원", body: "iPhone·iPad 경험을 유지한 Mac 빌드와 첫 실행 화면 검증" },
+      { state: "active", title: "iOS·Android 화면 매치업", body: "15개 공통 상태를 자동 캡처하고 남은 아이콘·세부 기하 차이를 추적 중" },
       { state: "next", title: "장시간 실기기 검증", body: "오디오·센서 흐름과 접근성을 다양한 기기에서 추가 검증" },
     ],
     screenshots: [{ src: "/apps/stand/widget.png", alt: "S.tand 잠금화면 원형 위젯" }],
@@ -156,6 +170,21 @@ export const apps: AppData[] = [
       "대략적 위치는 날씨를 가져올 때 사용하고, 카메라는 플래시와 주변 밝기 판단을 위해 사용합니다.",
       "의료용 진단 앱이 아니며 소리 분류 결과는 주변 환경에 따라 달라질 수 있습니다.",
     ],
+    matchup: {
+      metrics: [
+        { value: "15", label: "iOS·Android 공통 상태" },
+        { value: "2×", label: "Android 반복 해시 일치" },
+        { value: "12", label: "iOS 정확 해시 안정 상태" },
+      ],
+      scope: [
+        "첫 실행 권한과 홈 세로·가로·편집",
+        "수면 리포트와 잠소리 관리",
+        "보이소, 설정, 테마와 시계 글꼴",
+        "인터넷 라디오 편집·삭제와 설정 복원",
+        "폰트 저작권과 라이선스 전문",
+      ],
+      note: "기능·문구·주요 구조는 정렬했습니다. 플랫폼 고유 아이콘 경로와 일부 세부 색상·입력창·대화상자 기하, 추가 상태는 엄격 패리티의 후속 검증 항목입니다.",
+    },
   },
   {
     slug: "ccmb",

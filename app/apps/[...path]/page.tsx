@@ -14,7 +14,14 @@ export async function generateMetadata({ params }: RouteProps): Promise<Metadata
   if (!app) return {};
   const section = path[1];
   const suffix = section === "privacy" ? "개인정보처리방침" : section === "terms" ? "이용약관" : section === "support" ? "지원" : section === "data-deletion" ? "데이터 삭제" : section === "google-oauth" ? "Google API Use & Data Handling" : null;
-  return { title: suffix ? `${app.name} ${suffix}` : `${app.name} — ${app.tagline}`, description: app.summary };
+  const title = suffix ? `${app.name} ${suffix}` : `${app.name} — ${app.tagline}`;
+  const socialImage = !suffix && app.slug === "stand" ? "/og-stand.png" : "/og.png";
+  return {
+    title,
+    description: app.summary,
+    openGraph: { title, description: app.summary, images: [socialImage] },
+    twitter: { card: "summary_large_image", title, description: app.summary, images: [socialImage] },
+  };
 }
 
 export default async function AppRoute({ params }: RouteProps) {
@@ -53,7 +60,7 @@ export default async function AppRoute({ params }: RouteProps) {
 
       <nav className="section-nav" aria-label={`${app.name} 페이지 내부 메뉴`}>
         <div className="shell">
-          <Link href="#features">특징</Link><Link href="#screens">화면</Link><Link href="#progress">진행 상황</Link><Link href="#guide">설명서</Link><Link href="#download">다운로드</Link>
+          <Link href="#features">특징</Link><Link href="#screens">화면</Link>{app.matchup && <Link href="#matchup">매치업</Link>}<Link href="#progress">진행 상황</Link><Link href="#guide">설명서</Link><Link href="#download">다운로드</Link>
         </div>
       </nav>
 
@@ -75,8 +82,29 @@ export default async function AppRoute({ params }: RouteProps) {
         </div>
       </section>
 
+      {app.matchup && (
+        <section className="matchup-section" id="matchup">
+          <div className="shell">
+            <div className="section-heading reveal">
+              <div><p className="eyebrow">DETERMINISTIC UI MATCHUP</p><h2>느낌이 아니라,<br />재현 가능한 화면으로.</h2></div>
+              <p>한국어·서울 시간대·고정 시각·애니메이션 비활성 조건에서 iOS와 Android를 같은 의미 ID로 캡처하고 비교합니다.</p>
+            </div>
+            <div className="matchup-layout">
+              <div className="matchup-metrics reveal">
+                {app.matchup.metrics.map((metric) => <article key={metric.label}><strong>{metric.value}</strong><span>{metric.label}</span></article>)}
+              </div>
+              <div className="matchup-scope reveal">
+                <h3>검증 범위</h3>
+                <ul>{app.matchup.scope.map((item) => <li key={item}>{item}</li>)}</ul>
+                <p><strong>현재 상태</strong>{app.matchup.note}</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
       <section className="progress-section shell" id="progress">
-        <div className="section-heading reveal"><div><p className="eyebrow">BUILDING IN PUBLIC</p><h2>현재 진행 상황</h2></div><p>숫자보다 실제 상태를 보여드립니다. 마지막 내용 확인: 2026년 8월 14일.</p></div>
+        <div className="section-heading reveal"><div><p className="eyebrow">BUILDING IN PUBLIC</p><h2>현재 진행 상황</h2></div><p>숫자보다 실제 상태를 보여드립니다. 마지막 내용 확인: 2026년 8월 15일.</p></div>
         <div className="progress-list">
           {app.progress.map((item, index) => <article className="progress-item reveal" key={item.title}><div className={`progress-marker marker-${item.state}`}><span>{index + 1}</span></div><div><p>{item.state === "done" ? "구현됨" : item.state === "active" ? "검증 중" : "다음 단계"}</p><h3>{item.title}</h3><span>{item.body}</span></div></article>)}
         </div>
