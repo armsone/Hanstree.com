@@ -66,7 +66,7 @@ export function SiteInsights() {
       <section className="insights-shell shell">
         <div className="insights-toolbar">
           <div><span>기간 선택</span><strong>{month.replace("-", ". ")}</strong></div>
-          <label>연·월 선택<input type="month" value={month} max={currentMonth()} onChange={(event) => event.target.value && setMonth(event.target.value)} /></label>
+          <label>연·월 선택<input type="month" value={month} max={currentMonth()} onInput={(event) => event.currentTarget.value && setMonth(event.currentTarget.value)} /></label>
         </div>
         <div className="insights-summary">
           <article><span>월 방문</span><strong>{number(summary.visits)}</strong></article>
