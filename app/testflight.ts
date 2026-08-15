@@ -3,6 +3,7 @@ export type TestFlightBuild = {
   appName: string;
   build: string | null;
   uploadedAt: string | null;
+  expiresAt?: string | null;
   inviteUrl: string | null;
 };
 

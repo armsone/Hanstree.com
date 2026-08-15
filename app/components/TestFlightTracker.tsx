@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import type { TestFlightBuild } from "../testflight";
 
 const LIFE_MS = 90 * 24 * 60 * 60 * 1000;
@@ -8,7 +9,7 @@ const LIFE_MS = 90 * 24 * 60 * 60 * 1000;
 function getBuildState(build: TestFlightBuild) {
   if (!build.uploadedAt) return null;
   const uploaded = new Date(build.uploadedAt);
-  const expires = new Date(uploaded.getTime() + LIFE_MS);
+  const expires = build.expiresAt ? new Date(build.expiresAt) : new Date(uploaded.getTime() + LIFE_MS);
   const now = new Date();
   const elapsed = Math.max(0, now.getTime() - uploaded.getTime());
   const remaining = Math.max(0, expires.getTime() - now.getTime());
@@ -33,9 +34,24 @@ function formatDate(date: Date) {
 }
 
 export function TestFlightTracker({ builds }: { builds: TestFlightBuild[] }) {
+  const [currentBuilds, setCurrentBuilds] = useState(builds);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    fetch("/api/testflight-builds", { signal: controller.signal })
+      .then((response) => response.ok ? response.json() : Promise.reject(new Error("TestFlight lookup failed")))
+      .then((payload: { builds?: TestFlightBuild[] }) => {
+        if (Array.isArray(payload.builds) && payload.builds.length === builds.length) {
+          setCurrentBuilds(payload.builds);
+        }
+      })
+      .catch(() => undefined);
+    return () => controller.abort();
+  }, [builds]);
+
   return (
     <div className="testflight-grid">
-      {builds.map((build) => {
+      {currentBuilds.map((build) => {
         const state = getBuildState(build);
         return (
           <article className="testflight-card" key={build.slug}>
