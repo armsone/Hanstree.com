@@ -1,10 +1,11 @@
 export type Platform = {
   name: string;
-  status: "공개" | "개발 중" | "준비 중";
+  status: "공개" | "완료" | "개발 중" | "준비 중";
   detail: string;
   url?: string;
   downloadLabel?: string;
   checksum?: string;
+  availabilityNote?: string;
 };
 
 export type AppData = {
@@ -37,15 +38,30 @@ export const apps: AppData[] = [
     name: "나스파인더",
     english: "NasFinder",
     eyebrow: "YOUR STORAGE, WITHIN REACH",
-    tagline: "내 저장공간을, iPhone과 iPad 그리고 Mac에서 한눈에.",
-    summary: "iPhone·iPad에서는 NAS·서버·클라우드 파일을 탐색하고, Apple Silicon Mac에서는 전용 도구로 대량의 사진·영상 썸네일을 빠르게 준비합니다.",
+    tagline: "내 저장공간을, iPhone·iPad·Mac·Android에서.",
+    summary: "iPhone·iPad·Apple Silicon Mac·Android에서 NAS와 원격 저장공간의 파일을 탐색하는 앱입니다. 대량 썸네일 작업을 위한 별도의 Mac 전용 생성기도 제공합니다.",
     theme: "violet",
     icon: "/apps/nasfinder/icon.png",
     artwork: "files",
     platforms: [
-      { name: "iOS · iPadOS", status: "개발 중", detail: "iOS 17 이상" },
-      { name: "Mac", status: "공개", detail: "v1.0.0 · macOS 14+ · Apple Silicon", url: "https://github.com/armsone/NasFinder/releases/download/mac-super-thumbnail-v1.0.0/NasFinder-Super-Thumbnail-1.0.0.zip" },
-      { name: "Android", status: "개발 중", detail: "첫 공개판 준비 중" },
+      { name: "iPhone · iPad", status: "완료", detail: "iOS 17+ · TestFlight 빌드 202608151322", availabilityNote: "TestFlight 배포 완료" },
+      { name: "Mac용 NasFinder", status: "완료", detail: "Apple Silicon · iPhone·iPad 호환 앱", availabilityNote: "같은 TestFlight 빌드로 설치" },
+      {
+        name: "Mac용 썸네일 생성기",
+        status: "공개",
+        detail: "생성 전용 v1.0.0 · macOS 14+ · Apple Silicon",
+        url: "https://github.com/armsone/NasFinder/releases/download/mac-super-thumbnail-v1.0.0/NasFinder-Super-Thumbnail-1.0.0.zip",
+        downloadLabel: "Mac용 생성기 ZIP 바로 받기",
+        checksum: "17820e7bded3c5a37d19042a99e5972eb7d512e097fbff5111fb3a1df5fe01ac",
+      },
+      {
+        name: "Android",
+        status: "공개",
+        detail: "v2 APK",
+        url: "https://github.com/armsone/NasFinder-Android/releases/download/android-v2/NasFinder-Android-v2.apk",
+        downloadLabel: "Android APK 바로 받기",
+        checksum: "b63038cd19a9094f75c700033f432cafdd98d7eb20e78e1e8de2ec7daecb5f44",
+      },
     ],
     features: [
       { title: "여러 저장공간을 한곳에서", body: "Synology, SFTP, SMB, WebDAV, FTP와 Dropbox·OneDrive·Google Drive를 한 앱에서 탐색합니다." },
@@ -54,7 +70,7 @@ export const apps: AppData[] = [
       { title: "기기 안에서 안전하게", body: "비밀번호와 로그인 토큰은 Keychain에, 받은 파일과 캐시는 앱 전용 저장공간에 보관합니다." },
       { title: "폰하드", body: "같은 Wi‑Fi의 컴퓨터에서 웹 브라우저만으로 iPhone에 파일을 보냅니다." },
       { title: "Apple 파일 앱 연동", body: "Synology와 SFTP 위치를 Apple 파일 앱에서도 익숙한 방식으로 사용합니다." },
-      { title: "Mac 전용 Super Thumbnail", body: "Mac에 연결한 NAS 폴더를 직접 읽어 대량의 사진·영상 썸네일을 빠르게 만들고, 예상시간·대상 용량·썸네일 용량을 확인하며 중단된 작업도 이어갑니다." },
+      { title: "별도 Mac 썸네일 생성기", body: "NasFinder Mac 앱과 별개의 생성 전용 도구입니다. Mac에 연결한 NAS 폴더를 직접 읽어 대량의 사진·영상 썸네일을 빠르게 만들고 중단된 작업도 이어갑니다." },
     ],
     guide: [
       { title: "연결 추가", body: "서비스를 선택하고 서버 주소와 계정을 입력하거나 OAuth로 로그인한 뒤 연결을 확인합니다." },
@@ -68,7 +84,8 @@ export const apps: AppData[] = [
       { state: "done", title: "핵심 탐색과 미리보기", body: "다양한 원격 저장소 탐색, 미디어 썸네일과 미리보기 구현" },
       { state: "active", title: "실제 환경 검증", body: "서버별 파일 작업, 파일 앱 연동과 네트워크 예외를 검증 중" },
       { state: "next", title: "Google Photos Picker", body: "별도 OAuth로 사용자가 직접 선택한 사진·영상만 가져오는 흐름 준비" },
-      { state: "active", title: "Android 첫 공개판", body: "iOS 경험을 바탕으로 Android 버전을 개발하고 첫 공개를 준비 중" },
+      { state: "done", title: "iPhone·iPad·Mac 지원", body: "iPhone과 iPad 앱 완성, 동일 앱의 Apple Silicon Mac 설치와 실행 검증" },
+      { state: "done", title: "Android 공개", body: "NasFinder Android v2 APK를 GitHub Releases에 공개" },
       { state: "done", title: "Mac 전용 Super Thumbnail", body: "네이티브 Mac 앱에서 16,540개 미디어·1.57TB 폴더 검색, 진행률·용량·이어하기와 iPhone 호환 NAS 보관본 검증" },
     ],
     github: ["https://github.com/armsone/NasFinder"],
