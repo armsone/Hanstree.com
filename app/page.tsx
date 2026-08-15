@@ -104,7 +104,7 @@ export default function Home() {
       <section className="testflight-section" id="testflight">
         <div className="shell">
           <div className="section-heading reveal">
-            <div><p className="eyebrow">90 DAY WINDOW</p><h2>TestFlight 만료 시계</h2></div>
+            <div><p className="eyebrow">90 DAY WINDOW</p><h2 className="section-brand-title"><img src="/brands/testflight.jpg" alt="" aria-hidden="true" /><span>TestFlight 만료 시계</span></h2></div>
             <p>업로드한 시각부터 90일을 계산합니다. 날짜가 흐르면 남은 기간과 진행 바가 자동으로 바뀌어 다음 빌드를 준비할 때를 놓치지 않습니다.</p>
           </div>
           <TestFlightTracker builds={testFlightBuilds} />
@@ -114,7 +114,7 @@ export default function Home() {
       <section className="android-release-section" id="android-releases">
         <div className="shell">
           <div className="section-heading reveal">
-            <div><p className="eyebrow">LATEST ANDROID RELEASES</p><h2>Android 최신 배포</h2></div>
+            <div><p className="eyebrow">LATEST ANDROID RELEASES</p><h2 className="section-brand-title"><span className="android-title-icon"><img src="/brands/android.svg" alt="" aria-hidden="true" /></span><span>Android 최신 배포</span></h2></div>
             <p>나스파인더, 한클립과 S.tand의 GitHub 공식 릴리스를 자동으로 확인합니다. 링크와 APK 정보가 정해진 저장소와 일치할 때만 표시합니다.</p>
           </div>
           <AndroidReleaseTracker />

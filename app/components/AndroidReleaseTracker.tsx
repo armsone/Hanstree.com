@@ -64,7 +64,7 @@ export function AndroidReleaseTracker() {
       <div className="android-release-grid" aria-live="polite">
         {releases.map((release) => (
           <article className="android-release-card" key={release.repo}>
-            <div className="android-release-head"><span className="android-mark">A</span><div><p>{release.repo}</p><h3>{release.appName} Android</h3></div></div>
+            <div className="android-release-head"><span className="android-mark"><img src="/brands/android.svg" alt="" aria-hidden="true" /></span><div><p>{release.repo}</p><h3>{release.appName} Android</h3></div></div>
             {release.available ? <>
               <div className="android-version"><strong>{release.tagName}</strong><span>최신 공개판</span></div>
               <dl>
