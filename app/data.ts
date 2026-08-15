@@ -114,7 +114,7 @@ export const apps: AppData[] = [
   },
   {
     slug: "stand",
-    name: "에스텐드",
+    name: "S.tand",
     english: "S.tand",
     eyebrow: "A QUIET COMPANION AT NIGHT",
     tagline: "낮에는 오브제, 밤에는 조용한 케어.",
@@ -146,7 +146,7 @@ export const apps: AppData[] = [
       { state: "active", title: "보이소 안정화", body: "근거리 연결, 재연결과 백그라운드 알림을 개선 중" },
       { state: "next", title: "장시간 실기기 검증", body: "오디오·센서 흐름과 접근성을 다양한 기기에서 추가 검증" },
     ],
-    screenshots: [{ src: "/apps/stand/widget.png", alt: "에스텐드 잠금화면 원형 위젯" }],
+    screenshots: [{ src: "/apps/stand/widget.png", alt: "S.tand 잠금화면 원형 위젯" }],
     github: ["https://github.com/armsone/S.tand", "https://github.com/armsone/S.tand-Android"],
     privacy: [
       "수면 녹음은 앱 전용 저장공간에 보관되며 사용자가 공유할 때만 선택한 파일을 전달합니다.",

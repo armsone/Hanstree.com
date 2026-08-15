@@ -11,5 +11,5 @@ export type TestFlightBuild = {
 export const testFlightBuilds: TestFlightBuild[] = [
   { slug: "nasfinder", appName: "나스파인더", build: null, uploadedAt: null, inviteUrl: null },
   { slug: "hanclip", appName: "한클립", build: null, uploadedAt: null, inviteUrl: null },
-  { slug: "stand", appName: "에스텐드", build: null, uploadedAt: null, inviteUrl: null },
+  { slug: "stand", appName: "S.tand", build: null, uploadedAt: null, inviteUrl: null },
 ];

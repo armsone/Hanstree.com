@@ -2,6 +2,7 @@ import Link from "next/link";
 import { AppArtwork, AppIcon, AppStatus } from "./components/AppVisuals";
 import { AndroidReleaseTracker } from "./components/AndroidReleaseTracker";
 import { ContactReveal } from "./components/ContactReveal";
+import { SiteCounter } from "./components/SiteCounter";
 import { TestFlightTracker } from "./components/TestFlightTracker";
 import { apps } from "./data";
 import { testFlightBuilds } from "./testflight";
@@ -114,11 +115,13 @@ export default function Home() {
         <div className="shell">
           <div className="section-heading reveal">
             <div><p className="eyebrow">LATEST ANDROID RELEASES</p><h2>Android 최신 배포</h2></div>
-            <p>나스파인더 Android의 첫 공개를 준비하고, 한클립과 에스텐드의 GitHub 공식 릴리스를 자동으로 확인합니다. 링크와 파일 정보가 정해진 저장소와 일치할 때만 표시합니다.</p>
+            <p>나스파인더 Android의 첫 공개를 준비하고, 한클립과 S.tand의 GitHub 공식 릴리스를 자동으로 확인합니다. 링크와 파일 정보가 정해진 저장소와 일치할 때만 표시합니다.</p>
           </div>
           <AndroidReleaseTracker />
         </div>
       </section>
+
+      <SiteCounter />
 
       <section className="principles shell reveal">
         <div className="principles-lead">
@@ -173,7 +176,11 @@ export function SiteHeader() {
           <span>NasFinder</span>.com
         </Link>
         <nav aria-label="주요 메뉴">
+          {/* Native anchors preserve same-page hash scrolling in the deployed vinext runtime. */}
+          {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
           <a href="/#apps">앱</a>
+          <Link href="/insights">기록</Link>
+          {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
           <a href="/#contact">소통</a>
           <Link href="https://github.com/armsone">GitHub <span aria-hidden="true">↗</span></Link>
         </nav>
@@ -191,7 +198,9 @@ export function SiteFooter() {
           <p>한병기 · 바이브 코더가 만드는 앱을 소개합니다.</p>
         </div>
         <div className="footer-links">
+          {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
           <a href="/#apps">모든 앱</a>
+          <Link href="/insights">사이트 기록</Link>
           <Link href="/apps/nasfinder/privacy">개인정보처리방침</Link>
           <Link href="/apps/nasfinder/support">지원</Link>
           <Link href="https://github.com/armsone">GitHub</Link>

@@ -29,7 +29,7 @@ export function AppArtwork({ app }: { app: AppData }) {
 
   if (app.artwork === "clock") {
     return (
-      <div className="artwork artwork-clock" aria-label="에스텐드 플립시계 화면 표현">
+      <div className="artwork artwork-clock" aria-label="S.tand 플립시계 화면 표현">
         <div className="clock-weather">SEOUL&nbsp;&nbsp; 23°</div>
         <LiveFlipClock />
         <div className="clock-mode"><span /> MATE MODE</div>

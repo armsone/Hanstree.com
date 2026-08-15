@@ -26,6 +26,15 @@ function formatBytes(bytes?: number) {
   return `${(bytes / 1024 / 1024).toFixed(1)} MB`;
 }
 
+function recordDownload(repo: string) {
+  void fetch("/api/site-stats", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ event: "download", repo }),
+    keepalive: true,
+  });
+}
+
 export function AndroidReleaseTracker() {
   const [data, setData] = useState<ReleaseResponse | null>(null);
   const [failed, setFailed] = useState(false);
@@ -47,7 +56,7 @@ export function AndroidReleaseTracker() {
   const placeholders: Release[] = [
     { appName: "나스파인더", repo: "NasFinder-Android", available: false, planned: true },
     { appName: "한클립", repo: "HanClip-Android", available: false },
-    { appName: "에스텐드", repo: "S.tand-Android", available: false },
+    { appName: "S.tand", repo: "S.tand-Android", available: false },
   ];
   const releases = data?.releases || placeholders;
 
@@ -66,7 +75,7 @@ export function AndroidReleaseTracker() {
                 <div><dt>SHA-256</dt><dd className="digest">{release.asset?.digest?.replace(/^sha256:/, "").slice(0, 12) || "GitHub 정보 없음"}</dd></div>
               </dl>
               <div className="android-release-actions">
-                {release.asset?.downloadUrl && <a className="android-download-link" href={release.asset.downloadUrl} aria-label={`${release.appName} Android ${release.tagName} APK 바로 받기`}>
+                {release.asset?.downloadUrl && <a className="android-download-link" href={release.asset.downloadUrl} onClick={() => recordDownload(release.repo)} aria-label={`${release.appName} Android ${release.tagName} APK 바로 받기`}>
                   <span>APK 바로 받기</span><b aria-hidden="true">↓</b>
                 </a>}
                 <a className="android-release-link" href={release.releaseUrl}>릴리스 설명 보기 <span aria-hidden="true">↗</span></a>

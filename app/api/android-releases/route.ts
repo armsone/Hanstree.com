@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 const RELEASE_SOURCES = [
   { appName: "나스파인더", repo: "NasFinder-Android", planned: true },
   { appName: "한클립", repo: "HanClip-Android", planned: false },
-  { appName: "에스텐드", repo: "S.tand-Android", planned: false },
+  { appName: "S.tand", repo: "S.tand-Android", planned: false },
 ] as const;
 
 type GitHubAsset = {
