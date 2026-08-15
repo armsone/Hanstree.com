@@ -172,17 +172,20 @@ export function SiteHeader() {
   return (
     <header className="site-header">
       <div className="shell header-inner">
-        <Link className="wordmark" href="/" aria-label="NasFinder.com 홈">
+        {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+        <a className="wordmark" href="/" aria-label="NasFinder.com 홈">
           <span>NasFinder</span>.com
-        </Link>
+        </a>
         <nav aria-label="주요 메뉴">
           {/* Native anchors preserve same-page hash scrolling in the deployed vinext runtime. */}
+          {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+          <a href="/">홈</a>
           {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
           <a href="/#apps">앱</a>
           <a href="/insights">기록</a>
           {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
           <a href="/#contact">소통</a>
-          <Link href="https://github.com/armsone">GitHub <span aria-hidden="true">↗</span></Link>
+          <a href="https://github.com/armsone">GitHub <span aria-hidden="true">↗</span></a>
         </nav>
       </div>
     </header>
