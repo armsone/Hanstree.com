@@ -11,7 +11,7 @@ type Release = {
   releaseName?: string;
   publishedAt?: string | null;
   releaseUrl?: string;
-  asset?: { name: string; size: number; contentType: string; digest: string | null; downloadCount: number } | null;
+  asset?: { name: string; size: number; contentType: string; digest: string | null; downloadCount: number; downloadUrl?: string } | null;
 };
 
 type ReleaseResponse = { checkedAt: string; releases: Release[] };
@@ -67,7 +67,17 @@ export function AndroidReleaseTracker() {
                 <div><dt>크기</dt><dd>{formatBytes(release.asset?.size)}</dd></div>
                 <div><dt>SHA-256</dt><dd className="digest">{release.asset?.digest?.replace(/^sha256:/, "").slice(0, 12) || "GitHub 정보 없음"}</dd></div>
               </dl>
-              <a className="android-release-link" href={release.releaseUrl}>GitHub에서 확인하고 받기 <span aria-hidden="true">↗</span></a>
+              <div className="android-release-actions">
+                {release.asset?.downloadUrl ? <>
+                  <a className="android-download-link" href={release.asset.downloadUrl}>
+                    <span>APK 바로 받기</span><b aria-hidden="true">↓</b>
+                  </a>
+                  <p className="android-download-note">홈페이지가 확인한 공식 GitHub APK가 바로 다운로드됩니다.</p>
+                </> : null}
+                <a className="android-release-link" href={release.releaseUrl}>
+                  릴리스 설명 보기 <span aria-hidden="true">↗</span>
+                </a>
+              </div>
             </> : <div className="android-release-loading"><strong>{release.planned ? "첫 공개판 준비 중" : failed ? "정보를 불러오지 못했습니다" : "최신 릴리스 확인 중"}</strong><p>{release.planned ? "나스파인더 Android를 개발하고 있습니다. 첫 GitHub 릴리스가 공개되면 최신 버전과 APK 정보를 자동으로 연결합니다." : failed ? "잠시 뒤 다시 확인하거나 GitHub 저장소를 이용해 주세요." : "GitHub 공식 배포 정보를 안전하게 확인하고 있습니다."}</p></div>}
           </article>
         ))}
