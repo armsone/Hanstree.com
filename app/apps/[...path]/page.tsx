@@ -75,7 +75,7 @@ export default async function AppRoute({ params }: RouteProps) {
         <div className="shell">
           <div className="section-heading reveal"><div><p className="eyebrow">IN THE APP</p><h2>화면으로 먼저 만나보세요.</h2></div><p>실제 공개 자료를 우선 사용하고, 개인 정보가 담긴 화면은 데모 데이터로 교체합니다.</p></div>
           {app.screenshots && app.screenshots.length > 0 ? (
-            <div className="screenshot-rail">{app.screenshots.map((screen) => <figure className={`screen-${screen.layout ?? "phone"}`} key={screen.src}><img src={screen.src} alt={screen.alt} loading="lazy" /><figcaption>{screen.alt}</figcaption></figure>)}</div>
+            <div className="screenshot-rail">{app.screenshots.map((screen) => <figure className={`screen-${screen.layout ?? "phone"}`} key={screen.src}><div className="screenshot-media"><img src={screen.src} alt={screen.alt} loading="lazy" /></div><figcaption>{screen.alt}</figcaption></figure>)}</div>
           ) : (
             <div className="single-artwork reveal"><AppArtwork app={app} /><p>대표 화면 이미지는 현재 제품 상태에 맞춰 계속 보강합니다.</p></div>
           )}
