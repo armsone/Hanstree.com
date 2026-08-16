@@ -21,7 +21,7 @@ export default function Home() {
           </h1>
           <p className="hero-lede">
             NasFinder.com은 나스파인더를 시작으로, 작지만 분명한 문제를
-            해결하는 앱을 만들고 기록하는 공간입니다.
+            해결하는 앱과 웹 서비스를 만들고 기록하는 공간입니다.
           </p>
           <div className="hero-actions">
             <Link className="button button-primary" href="#apps">
@@ -33,7 +33,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="hero-orbit" aria-label="NasFinder, HanClip, S.tand, CCMB">
+        <div className="hero-orbit" aria-label={apps.map((app) => app.english).join(", ")}>
           <div className="orbit-glow" />
           {apps.map((app, index) => (
             <Link
@@ -55,8 +55,8 @@ export default function Home() {
 
       <section className="signal-bar" aria-label="사이트 요약">
         <div className="shell signal-grid">
-          <p><strong>04</strong><span>현재 공개할 제품</span></p>
-          <p><strong>03</strong><span>Apple · Android · macOS</span></p>
+          <p><strong>06</strong><span>현재 공개한 제품</span></p>
+          <p><strong>04</strong><span>Apple · Android · macOS · Web</span></p>
           <p><strong>01</strong><span>한 사람의 꾸준한 기록</span></p>
         </div>
       </section>
@@ -68,7 +68,7 @@ export default function Home() {
             <h2>지금 만들고 있는 것들</h2>
           </div>
           <p>
-            각 앱의 화면과 기능, 개발 진행 상황, 사용법과 참여 방법을
+            각 제품의 화면과 기능, 개발 진행 상황, 사용법과 참여 방법을
             숨김없이 한곳에 모읍니다.
           </p>
         </div>
@@ -198,7 +198,7 @@ export function SiteFooter() {
       <div className="shell footer-inner">
         <div>
           <Link className="wordmark" href="/"><span>NasFinder</span>.com</Link>
-          <p>한병기 · 바이브 코더가 만드는 앱을 소개합니다.</p>
+          <p>한병기 · 바이브 코더가 만드는 앱과 웹 서비스를 소개합니다.</p>
         </div>
         <div className="footer-links">
           {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}

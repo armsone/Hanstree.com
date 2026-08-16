@@ -35,8 +35,25 @@ test("server-renders the NasFinder.com homepage", async () => {
   assert.match(html, /HanClip/);
   assert.match(html, /S\.tand/);
   assert.match(html, /CCMB/);
+  assert.match(html, /intoSharp/);
+  assert.match(html, /airChurch/);
   assert.match(html, /개인정보처리방침/);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|Building your site/i);
+});
+
+test("renders the intoSharp and airChurch product pages", async () => {
+  const [intoResponse, churchResponse] = await Promise.all([
+    render("/apps/intosharp"),
+    render("/apps/airchurch"),
+  ]);
+  assert.equal(intoResponse.status, 200);
+  assert.equal(churchResponse.status, 200);
+
+  const [intoSharp, airChurch] = await Promise.all([intoResponse.text(), churchResponse.text()]);
+  assert.match(intoSharp, /주소 대신 이름으로 여는 첫 화면/);
+  assert.match(intoSharp, /https:\/\/intosharp\.com\//);
+  assert.match(airChurch, /좋은 말씀과 선한 마음이 만나는 곳/);
+  assert.match(airChurch, /https:\/\/airchurch\.net\//);
 });
 
 test("keeps the support address out of the public source", async () => {

@@ -17,7 +17,7 @@ export type AppData = {
   summary: string;
   theme: "violet" | "coral" | "amber" | "blue";
   icon?: string;
-  artwork: "files" | "phones" | "clock" | "menubar";
+  artwork: "files" | "phones" | "clock" | "menubar" | "search" | "church";
   platforms: Platform[];
   features: { title: string; body: string }[];
   guide: { title: string; body: string }[];
@@ -273,6 +273,84 @@ export const apps: AppData[] = [
       "현재 Mac 사용자의 Codex CLI 세션을 이용하며 API 키나 로그인 자격증명을 앱에 포함하지 않습니다.",
       "사용량 정보는 사용자의 Mac에서 표시되고, 앱 자체 분석이나 원격 측정 기능을 추가하지 않습니다.",
       "진단 로그의 문자열은 비공개로 처리하며 원시 요청과 응답 본문을 기록하지 않습니다.",
+    ],
+  },
+  {
+    slug: "intosharp",
+    name: "인투샾",
+    english: "intoSharp",
+    eyebrow: "OPEN THE WEB BY NAME",
+    tagline: "주소 대신 이름으로 여는 첫 화면.",
+    summary: "검색과 자주 가는 사이트를 한 화면에 모으고, 사이트 이름과 검색어만으로 빠르게 이동하는 개인화 웹 시작 페이지입니다.",
+    theme: "blue",
+    icon: "/apps/intosharp/icon.png",
+    artwork: "search",
+    platforms: [
+      { name: "Web", status: "공개", detail: "PC · 모바일 반응형", url: "https://intosharp.com/", downloadLabel: "인투샾 열기" },
+    ],
+    features: [
+      { title: "이름으로 바로 이동", body: "주소를 외울 필요 없이 등록된 사이트 이름을 입력하면 해당 페이지를 바로 엽니다." },
+      { title: "검색까지 한 줄에서", body: "네이버·Google·YouTube·지도·쇼핑을 고르고 검색어를 입력해 원하는 곳에서 바로 찾습니다." },
+      { title: "자주 가는 곳을 한눈에", body: "일, 이야기마당, 볼거리, 연장 등 쓰임에 따라 나눈 이음말을 한 화면에서 확인합니다." },
+      { title: "내 시작 화면으로", body: "검색 서비스와 밝고 어두운 화면을 기기에 기억해 다음 방문에도 이어서 사용합니다." },
+    ],
+    guide: [
+      { title: "사이트 열기", body: "검색줄에 등록된 사이트 이름을 입력하고 Enter를 누르면 바로 이동합니다." },
+      { title: "원하는 곳에서 검색", body: "검색 서비스를 선택한 뒤 검색어를 입력하거나 ‘네이버 우리집’처럼 이름과 검색어를 함께 씁니다." },
+      { title: "이음말 둘러보기", body: "화면 아래의 분야별 카드에서 자주 쓰는 사이트를 찾아 엽니다." },
+      { title: "첫 화면으로 사용", body: "브라우저의 시작 페이지나 홈 화면 바로가기에 인투샾을 등록해 사용합니다." },
+    ],
+    progress: [
+      { state: "done", title: "공개 웹 서비스", body: "intosharp.com에서 PC와 모바일로 바로 이용 가능" },
+      { state: "done", title: "통합 이동과 검색", body: "사이트 이름 이동과 서비스별 검색 문법 구현" },
+      { state: "active", title: "개인화 관리", body: "이음말과 화면 구성을 더 편하게 관리하는 흐름을 다듬는 중" },
+      { state: "next", title: "이음말 확장", body: "개인 시작 페이지에서 검증한 이름 기반 연결 경험을 확장" },
+    ],
+    github: [],
+    privacy: [
+      "선택한 검색 서비스와 화면 테마는 다음 방문을 위해 브라우저에 저장될 수 있습니다.",
+      "검색을 실행하면 입력한 검색어가 사용자가 선택한 외부 검색 서비스로 전달되며 해당 서비스의 개인정보처리방침이 적용됩니다.",
+      "관리 기능의 인증정보 원문은 공개 페이지 데이터에 저장하지 않습니다.",
+    ],
+  },
+  {
+    slug: "airchurch",
+    name: "에어처치",
+    english: "airChurch",
+    eyebrow: "FAITH MEETS GOOD WILL",
+    tagline: "좋은 말씀과 선한 마음이 만나는 곳.",
+    summary: "검증한 교회의 설교와 찬양을 발견하고, 우리 교회를 응원하며, 가진 달란트로 이웃의 필요를 잇는 크리스천 웹 포털입니다.",
+    theme: "coral",
+    icon: "/apps/airchurch/icon.png",
+    artwork: "church",
+    platforms: [
+      { name: "Web", status: "공개", detail: "PC · 모바일 반응형", url: "https://airchurch.net/", downloadLabel: "에어처치 열기" },
+    ],
+    features: [
+      { title: "오늘의 말씀과 찬양", body: "교단 소속과 공식 채널을 확인한 교회의 최신 설교와 찬양을 한곳에서 발견합니다." },
+      { title: "경쟁보다 발견", body: "목회자의 서열을 만들기보다 작은 교회와 지역의 꾸준한 사역이 발견되도록 보여줍니다." },
+      { title: "착한나눔", body: "시간, 경험, 공간, 기술과 기도를 필요한 교회와 이웃에게 연결합니다." },
+      { title: "서로를 지키는 광장", body: "개인정보를 최소화한 별칭으로 이야기를 나누고 운영 원칙에 따라 첫 글을 검토합니다." },
+      { title: "분명한 검증 기준", body: "교단·노회·공식 홈페이지와 영상 채널을 교차 확인하고 신고·재검토·이의제기 절차를 둡니다." },
+    ],
+    guide: [
+      { title: "말씀 찾기", body: "교회명, 목사님 또는 지역을 검색하고 공식 채널의 설교를 확인합니다." },
+      { title: "찬양 듣기", body: "여러 교회의 최신 찬양을 둘러보고 공식 YouTube 영상으로 이어서 듣습니다." },
+      { title: "교회 응원하기", body: "건강한 발견에 도움이 되도록 마음을 전하고, 지역별 교회를 살펴봅니다." },
+      { title: "달란트 나누기", body: "도울 수 있는 일과 활동 지역을 남기면 공개 전 확인을 거쳐 실제 필요와 연결합니다." },
+      { title: "광장 참여하기", body: "공동체 원칙을 확인하고 별칭으로 신앙과 삶의 이야기를 나눕니다." },
+    ],
+    progress: [
+      { state: "done", title: "공개 웹 포털", body: "airchurch.net에서 PC와 모바일로 이용 가능" },
+      { state: "done", title: "설교·찬양 발견", body: "공식 채널 기반 콘텐츠 검색과 지역 필터 구현" },
+      { state: "active", title: "검증과 운영 안정화", body: "교회 정보 검토, 콘텐츠 동기화와 운영자 관리 흐름을 개선 중" },
+      { state: "active", title: "착한나눔과 광장", body: "접수·검토·공개 절차와 안전 장치를 실제 운영에 맞춰 다듬는 중" },
+    ],
+    github: [],
+    privacy: [
+      "공개 콘텐츠를 둘러보는 데 회원 가입이나 개인 연락처 입력을 요구하지 않습니다.",
+      "달란트 나눔과 광장에 사용자가 직접 입력한 내용은 접수와 공개 전 검토를 위해 처리합니다.",
+      "외부 설교와 찬양을 열면 YouTube 등 해당 서비스의 개인정보처리방침이 적용됩니다.",
     ],
   },
 ];
