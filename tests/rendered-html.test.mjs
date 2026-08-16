@@ -64,3 +64,40 @@ test("shows the CCMB menu bar before the detailed usage menu", async () => {
   assert.notEqual(usageMenuIndex, -1);
   assert.ok(menuBarIndex < usageMenuIndex);
 });
+test("publishes browser and home-screen app icons", async () => {
+  const response = await render();
+  const html = await response.text();
+  const manifest = JSON.parse(await readFile(new URL("../public/site.webmanifest", import.meta.url), "utf8"));
+
+  assert.match(html, /rel="manifest" href="\/site\.webmanifest"/);
+  assert.match(html, /rel="icon" href="\/favicon\.ico"/);
+  assert.match(html, /rel="apple-touch-icon" href="\/apple-touch-icon\.png"[^>]*sizes="180x180"/);
+  assert.equal(manifest.name, "NasFinder.com");
+  assert.equal(manifest.start_url, "/");
+  assert.equal(manifest.theme_color, "#17171a");
+  assert.equal(manifest.background_color, "#f6f5f1");
+  assert.deepEqual(manifest.icons.map(({ sizes }) => sizes), ["192x192", "512x512"]);
+});
+
+test("renders current app release and TestFlight information", async () => {
+  const [homeResponse, nasFinderResponse, hanClipResponse, standResponse] = await Promise.all([
+    render(),
+    render("/apps/nasfinder"),
+    render("/apps/hanclip"),
+    render("/apps/stand"),
+  ]);
+  const [home, nasFinder, hanClip, stand] = await Promise.all([
+    homeResponse.text(),
+    nasFinderResponse.text(),
+    hanClipResponse.text(),
+    standResponse.text(),
+  ]);
+
+  assert.match(home, /3\.11\.51/);
+  assert.match(home, /0\.31\.0/);
+  assert.match(nasFinder, /APK v3/);
+  assert.match(hanClip, /APK v547/);
+  assert.match(stand, /APK v53/);
+  assert.doesNotMatch(home + nasFinder + hanClip + stand, /첫 공개판 준비 중|APK v2\b|APK v544\b|APK v52\b/);
+  assert.doesNotMatch(hanClip, /android-editor-finish-pets\.png/);
+});
