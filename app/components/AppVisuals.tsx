@@ -51,6 +51,28 @@ export function AppArtwork({ app }: { app: AppData }) {
     );
   }
 
+  if (app.artwork === "search") {
+    return (
+      <div className="artwork artwork-search" aria-label="인투샾 이름 검색 화면 표현">
+        <div className="search-brand"><b>#</b><span>intoSharp</span></div>
+        <div className="search-command"><span>⌕</span><strong>네이버 우리집</strong><b>↵</b></div>
+        <p>이름으로 이동하고, 이어서 검색하세요.</p>
+        <div className="search-links"><span>일</span><span>이야기마당</span><span>볼거리</span><span>연장</span></div>
+      </div>
+    );
+  }
+
+  if (app.artwork === "church") {
+    return (
+      <div className="artwork artwork-church" aria-label="에어처치 말씀과 착한나눔 화면 표현">
+        <div className="church-brand"><span />airchurch</div>
+        <p>오늘의 말씀을 가장 가까이</p>
+        <h3>좋은 말씀과<br />선한 마음이 만나는 곳</h3>
+        <div className="church-cards"><span><small>오늘의 말씀</small><strong>교회와 지역으로 찾기</strong></span><span><small>goodshare</small><strong>달란트로 마음 잇기</strong></span></div>
+      </div>
+    );
+  }
+
   return (
     <div className="artwork artwork-files" aria-label="나스파인더 파일 탐색 화면 표현">
       <div className="file-toolbar"><span>‹</span><strong>Photos</strong><span>•••</span></div>
