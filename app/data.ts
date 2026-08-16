@@ -307,7 +307,7 @@ export const apps: AppData[] = [
     icon: "/apps/trackpadguard/icon.png",
     artwork: "trackpad",
     platforms: [
-      { name: "macOS", status: "공개", detail: "v0.1.0 · macOS 13+ · Universal", url: "https://github.com/armsone/TrackpadGuard/releases/tag/v0.1.0", downloadLabel: "DMG 다운로드" },
+      { name: "macOS", status: "공개", detail: "v0.1.1 · macOS 13+ · Universal", url: "https://github.com/armsone/TrackpadGuard/releases/tag/v0.1.1", downloadLabel: "DMG 다운로드" },
     ],
     features: [
       { title: "키 입력과 동시에 잠금", body: "문자를 입력하기 시작하면 트랙패드의 커서 이동, 클릭과 스크롤을 바로 차단합니다." },
@@ -329,7 +329,7 @@ export const apps: AppData[] = [
       { state: "done", title: "입력 잠금과 터치 해제", body: "Quartz 이벤트 필터와 물리적 멀티터치 좌표 기반 해제 흐름 구현" },
       { state: "done", title: "사다리꼴 기본 영역과 편집", body: "상단 1/3을 제거한 기본값, 네 꼭짓점 드래그와 설정 저장 구현" },
       { state: "done", title: "Universal 배포 기반", body: "Apple Silicon·Intel 앱 번들, DMG, Sparkle와 GitHub Release 관리 흐름 구성" },
-      { state: "done", title: "서명·공증 첫 공개", body: "Developer ID 서명, Apple 공증과 v0.1.0 DMG 공개 완료" },
+      { state: "done", title: "서명·공증 첫 공개", body: "Developer ID 서명, Apple 공증과 v0.1.1 DMG 공개 완료" },
       { state: "next", title: "macOS 호환성 관리", body: "macOS 업데이트마다 비공개 멀티터치 프레임워크 호환성을 확인" },
     ],
     github: ["https://github.com/armsone/TrackpadGuard"],
