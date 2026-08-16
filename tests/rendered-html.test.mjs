@@ -65,6 +65,21 @@ test("shows the CCMB menu bar before the detailed usage menu", async () => {
   assert.ok(menuBarIndex < usageMenuIndex);
 });
 
+test("publishes browser and home-screen app icons", async () => {
+  const response = await render();
+  const html = await response.text();
+  const manifest = JSON.parse(await readFile(new URL("../public/site.webmanifest", import.meta.url), "utf8"));
+
+  assert.match(html, /rel="manifest" href="\/site\.webmanifest"/);
+  assert.match(html, /rel="icon" href="\/favicon\.ico"/);
+  assert.match(html, /rel="apple-touch-icon" href="\/apple-touch-icon\.png"[^>]*sizes="180x180"/);
+  assert.equal(manifest.name, "NasFinder.com");
+  assert.equal(manifest.start_url, "/");
+  assert.equal(manifest.theme_color, "#17171a");
+  assert.equal(manifest.background_color, "#f6f5f1");
+  assert.deepEqual(manifest.icons.map(({ sizes }) => sizes), ["192x192", "512x512"]);
+});
+
 test("renders current app release and TestFlight information", async () => {
   const [homeResponse, nasFinderResponse, hanClipResponse, standResponse] = await Promise.all([
     render(),
