@@ -51,6 +51,19 @@ export function AppArtwork({ app }: { app: AppData }) {
     );
   }
 
+  if (app.artwork === "trackpad") {
+    return (
+      <div className="artwork artwork-trackpad" aria-label="TrackpadGuard 트랙패드 해제 영역 표현">
+        <div className="guard-status"><span /> INPUT LOCKED</div>
+        <div className="guard-trackpad">
+          <div className="guard-cutout"><span>상단 1/3 제외</span></div>
+          <div className="guard-active-zone"><strong>TOUCH TO UNLOCK</strong></div>
+        </div>
+        <p>⌃⌥⌘ Esc · 긴급 해제</p>
+      </div>
+    );
+  }
+
   if (app.artwork === "search") {
     return (
       <div className="artwork artwork-search" aria-label="인투샾 이름 검색 화면 표현">

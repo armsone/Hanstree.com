@@ -17,7 +17,7 @@ export type AppData = {
   summary: string;
   theme: "violet" | "coral" | "amber" | "blue";
   icon?: string;
-  artwork: "files" | "phones" | "clock" | "menubar" | "search" | "church";
+  artwork: "files" | "phones" | "clock" | "menubar" | "trackpad" | "search" | "church";
   platforms: Platform[];
   features: { title: string; body: string }[];
   guide: { title: string; body: string }[];
@@ -294,6 +294,48 @@ export const apps: AppData[] = [
       "현재 Mac 사용자의 Codex CLI 세션을 이용하며 API 키나 로그인 자격증명을 앱에 포함하지 않습니다.",
       "사용량 정보는 사용자의 Mac에서 표시되고, 앱 자체 분석이나 원격 측정 기능을 추가하지 않습니다.",
       "진단 로그의 문자열은 비공개로 처리하며 원시 요청과 응답 본문을 기록하지 않습니다.",
+    ],
+  },
+  {
+    slug: "trackpadguard",
+    name: "트랙패드가드",
+    english: "TrackpadGuard",
+    eyebrow: "TYPE WITHOUT THE CURSOR JUMP",
+    tagline: "타이핑할 때는 잠그고, 원하는 곳을 터치해 다시 켜세요.",
+    summary: "키 입력이 시작되면 트랙패드의 커서 이동·클릭·스크롤을 막고, 사용자가 지정한 물리적 영역을 새로 터치하면 즉시 해제하는 macOS 메뉴 막대 앱입니다.",
+    theme: "blue",
+    icon: "/apps/trackpadguard/icon.png",
+    artwork: "trackpad",
+    platforms: [
+      { name: "macOS", status: "준비 중", detail: "v0.1.0 · macOS 13+ · Universal", availabilityNote: "Developer ID 서명·Apple 공증 배포 준비 중" },
+    ],
+    features: [
+      { title: "키 입력과 동시에 잠금", body: "문자를 입력하기 시작하면 트랙패드의 커서 이동, 클릭과 스크롤을 바로 차단합니다." },
+      { title: "터치로 자연스럽게 해제", body: "기본 사다리꼴 또는 사용자가 정한 영역을 새로 터치하면 트랙패드가 즉시 다시 작동합니다." },
+      { title: "눈으로 편집하는 영역", body: "설정 화면에서 네 꼭짓점을 직접 드래그해 손과 사용 습관에 맞는 해제 영역을 만듭니다." },
+      { title: "실패 안전 설계", body: "멀티터치 좌표를 읽지 못하면 잠금을 시작하지 않으며, 긴급 단축키로 언제든 즉시 해제할 수 있습니다." },
+      { title: "서명된 자동 업데이트", body: "Sparkle과 GitHub Releases를 통해 서명된 새 버전을 확인하고 설치하도록 준비합니다." },
+      { title: "조용한 메뉴 막대 앱", body: "필요할 때만 상태와 설정을 열고 로그인과 함께 자동 실행할 수 있습니다." },
+    ],
+    guide: [
+      { title: "앱 설치", body: "공식 GitHub Release의 DMG를 열고 TrackpadGuard를 Applications 폴더로 옮깁니다." },
+      { title: "손쉬운 사용 권한", body: "시스템 설정의 개인정보 보호 및 보안에서 TrackpadGuard의 손쉬운 사용 권한을 허용합니다." },
+      { title: "작동 영역 조절", body: "설정의 작동 영역 탭에서 초록색 꼭짓점을 드래그합니다. 기본값은 상단 1/3을 제거한 사다리꼴입니다." },
+      { title: "타이핑과 해제", body: "키를 누르면 트랙패드가 잠깁니다. 설정한 초록색 영역을 새로 터치하면 다시 작동합니다." },
+      { title: "긴급 해제", body: "영역 인식에 문제가 생기면 Control-Option-Command-Escape를 눌러 즉시 잠금을 해제합니다." },
+    ],
+    progress: [
+      { state: "done", title: "입력 잠금과 터치 해제", body: "Quartz 이벤트 필터와 물리적 멀티터치 좌표 기반 해제 흐름 구현" },
+      { state: "done", title: "사다리꼴 기본 영역과 편집", body: "상단 1/3을 제거한 기본값, 네 꼭짓점 드래그와 설정 저장 구현" },
+      { state: "done", title: "Universal 배포 기반", body: "Apple Silicon·Intel 앱 번들, DMG, Sparkle와 GitHub Release 관리 흐름 구성" },
+      { state: "active", title: "서명·공증 첫 공개", body: "Developer ID 서명, Apple 공증과 첫 공개 DMG 검증 준비" },
+      { state: "next", title: "macOS 호환성 관리", body: "macOS 업데이트마다 비공개 멀티터치 프레임워크 호환성을 확인" },
+    ],
+    github: ["https://github.com/armsone/TrackpadGuard"],
+    privacy: [
+      "키 입력 내용은 저장하거나 전송하지 않고 키가 눌렸다는 상태만 잠금 시작에 사용합니다.",
+      "트랙패드 접촉 좌표는 잠금 해제 영역 판정에만 사용하며 앱 밖으로 보내거나 기록하지 않습니다.",
+      "앱 자체 분석, 광고 추적과 원격 측정 기능을 포함하지 않습니다.",
     ],
   },
   {

@@ -16,12 +16,15 @@ export async function generateMetadata({ params }: RouteProps): Promise<Metadata
   const section = path[1];
   const suffix = section === "privacy" ? "개인정보처리방침" : section === "terms" ? "이용약관" : section === "support" ? "지원" : section === "data-deletion" ? "데이터 삭제" : section === "google-oauth" ? "Google API Use & Data Handling" : null;
   const title = suffix ? `${app.name} ${suffix}` : `${app.name} — ${app.tagline}`;
-  const socialImage = !suffix && app.slug === "stand" ? "/og-stand.png" : "/og.png";
+  const socialImage = !suffix
+    ? app.icon ?? (app.slug === "stand" ? "/og-stand.png" : undefined)
+    : undefined;
+  const socialImages = socialImage ? [new URL(socialImage, "https://nasfinder.com").toString()] : [];
   return {
     title,
     description: app.summary,
-    openGraph: { title, description: app.summary, images: [socialImage] },
-    twitter: { card: "summary_large_image", title, description: app.summary, images: [socialImage] },
+    openGraph: { title, description: app.summary, images: socialImages },
+    twitter: { card: "summary_large_image", title, description: app.summary, images: socialImages },
   };
 }
 
