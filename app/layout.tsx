@@ -8,7 +8,7 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"]
 export const metadata: Metadata = {
   metadataBase: new URL("https://nasfinder.com"),
   title: { default: "NasFinder.com — 일상 가까이, 꼭 필요한 앱", template: "%s · NasFinder.com" },
-  description: "나스파인더, 한클립, S.tand, CCMB, 인투샾과 에어처치의 기능, 개발 과정과 사용법을 소개합니다.",
+  description: "나스파인더, 한클립, S.tand, CCMB, TrackpadGuard, 인투샾과 에어처치의 기능, 개발 과정과 사용법을 소개합니다.",
   manifest: "/site.webmanifest",
   icons: {
     icon: [{ url: "/favicon.ico", sizes: "any" }],

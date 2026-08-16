@@ -10,6 +10,7 @@ NasFinder.com은 armsone이 만드는 앱의 기능, 화면, 진행 상황, 사�
 - 한클립 (HanClip)
 - 에스텐드 (S.tand)
 - CCMB
+- TrackpadGuard
 
 ## 로컬 실행
 

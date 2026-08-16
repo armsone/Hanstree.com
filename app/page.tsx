@@ -55,7 +55,7 @@ export default function Home() {
 
       <section className="signal-bar" aria-label="사이트 요약">
         <div className="shell signal-grid">
-          <p><strong>06</strong><span>현재 공개한 제품</span></p>
+          <p><strong>07</strong><span>현재 소개하는 제품</span></p>
           <p><strong>04</strong><span>Apple · Android · macOS · Web</span></p>
           <p><strong>01</strong><span>한 사람의 꾸준한 기록</span></p>
         </div>

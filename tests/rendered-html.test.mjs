@@ -35,10 +35,29 @@ test("server-renders the NasFinder.com homepage", async () => {
   assert.match(html, /HanClip/);
   assert.match(html, /S\.tand/);
   assert.match(html, /CCMB/);
+  assert.match(html, /TrackpadGuard/);
   assert.match(html, /intoSharp/);
   assert.match(html, /airChurch/);
   assert.match(html, /개인정보처리방침/);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|Building your site/i);
+});
+
+test("renders the TrackpadGuard product, support link, and requested default region", async () => {
+  const [detailResponse, supportResponse] = await Promise.all([
+    render("/apps/trackpadguard"),
+    render("/apps/trackpadguard/support"),
+  ]);
+  assert.equal(detailResponse.status, 200);
+  assert.equal(supportResponse.status, 200);
+
+  const [html, supportHTML] = await Promise.all([
+    detailResponse.text(),
+    supportResponse.text(),
+  ]);
+  assert.match(html, /타이핑할 때는 잠그고/);
+  assert.match(html, /상단 1\/3을 제거한 사다리꼴/);
+  assert.match(html, /Control-Option-Command-Escape/);
+  assert.match(supportHTML, /https:\/\/github\.com\/armsone\/TrackpadGuard/);
 });
 
 test("renders the intoSharp and airChurch product pages", async () => {
