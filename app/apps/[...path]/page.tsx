@@ -74,7 +74,7 @@ export default async function AppRoute({ params }: RouteProps) {
 
       <section className="screens-section" id="screens">
         <div className="shell">
-          <div className="section-heading reveal"><div><p className="eyebrow">IN THE APP</p><h2>화면으로 먼저 만나보세요.</h2></div><p>실제 공개 자료를 우선 사용하고, 개인 정보가 담긴 화면은 데모 데이터로 교체합니다.</p></div>
+          <div className="section-heading reveal"><div><p className="eyebrow">IN THE PRODUCT</p><h2>화면으로 먼저 만나보세요.</h2></div><p>실제 공개 자료를 우선 사용하고, 개인 정보가 담긴 화면은 데모 데이터로 교체합니다.</p></div>
           {app.screenshots && app.screenshots.length > 0 ? (
             <div className="screenshot-rail">{app.screenshots.map((screen) => {
               const dimensions = screen.layout === "menu"
@@ -122,7 +122,7 @@ export default async function AppRoute({ params }: RouteProps) {
 
       <section className="guide-section" id="guide">
         <div className="shell guide-layout">
-          <div className="guide-sticky reveal"><p className="eyebrow">QUICK GUIDE</p><h2>처음부터<br />차근차근.</h2><p>더 자세한 설명과 문제 해결 문서는 앱 개발 진행에 맞춰 계속 추가됩니다.</p></div>
+          <div className="guide-sticky reveal"><p className="eyebrow">QUICK GUIDE</p><h2>처음부터<br />차근차근.</h2><p>더 자세한 설명과 문제 해결 문서는 제품 개발 진행에 맞춰 계속 추가됩니다.</p></div>
           <div className="guide-steps">
             {app.guide.map((step, index) => <article className="guide-step reveal" key={step.title}><span>{String(index + 1).padStart(2, "0")}</span><div><h3>{step.title}</h3><p>{step.body}</p></div></article>)}
           </div>
@@ -130,7 +130,7 @@ export default async function AppRoute({ params }: RouteProps) {
       </section>
 
       <section className="download-section shell reveal" id="download">
-        <div><p className="eyebrow">DOWNLOAD & TEST</p><h2>완성된 앱과 전용 도구.</h2><p>플랫폼별 현재 상태와 공식 배포 파일을 구분해 표시합니다. 별도 도구는 용도까지 확인한 뒤 내려받을 수 있습니다.</p></div>
+        <div><p className="eyebrow">OPEN, DOWNLOAD & TEST</p><h2>공개된 제품과 전용 도구.</h2><p>플랫폼별 현재 상태와 공식 주소·배포 파일을 구분해 표시합니다. 별도 도구는 용도까지 확인한 뒤 내려받을 수 있습니다.</p></div>
         <div className="download-list">
           {app.platforms.map((platform) => <article key={platform.name}><div><span className={`status-dot status-${platform.status.replace(" ", "-")}`} /><h3>{platform.name}</h3></div><p>{platform.detail} · {platform.status}</p>{platform.url ? <Link href={platform.url}>{platform.downloadLabel ?? "다운로드 페이지"} <span aria-hidden="true">↗</span></Link> : <span>{platform.availabilityNote ?? "공개 링크 준비 중"}</span>}{platform.checksum && <small className="download-checksum">SHA-256 {platform.checksum}</small>}</article>)}
         </div>
@@ -167,9 +167,9 @@ function InfoPage({ app, section }: { app: NonNullable<ReturnType<typeof findApp
             <h2 id="privacy-summary-title">먼저, 핵심만 쉽게 알려드립니다.</h2>
             <div>
               <article><span>01</span><h3>무엇을</h3><p>사용자가 기능을 위해 선택하거나 연결한 정보만 다룹니다.</p></article>
-              <article><span>02</span><h3>왜</h3><p>앱 안에서 요청한 탐색·편집·전송 기능을 제공하는 데 사용합니다.</p></article>
-              <article><span>03</span><h3>어디에</h3><p>기기 저장공간과 Keychain을 우선 사용하며 외부 서비스는 직접 연결합니다.</p></article>
-              <article><span>04</span><h3>어떻게 삭제</h3><p>앱의 관리 기능과 연결 해제, 앱 삭제로 정리할 수 있습니다.</p></article>
+              <article><span>02</span><h3>왜</h3><p>제품에서 사용자가 요청한 기능을 제공하는 데 사용합니다.</p></article>
+              <article><span>03</span><h3>어디에</h3><p>브라우저 또는 기기 저장공간을 우선 사용하며 외부 서비스는 필요한 기능에서 직접 연결합니다.</p></article>
+              <article><span>04</span><h3>어떻게 삭제</h3><p>제품의 관리 기능과 연결 해제, 브라우저 데이터 또는 앱 삭제로 정리할 수 있습니다.</p></article>
             </div>
           </section>
           <LegalSection title="핵심 원칙"><ul>{app.privacy.map((item) => <li key={item}>{item}</li>)}</ul></LegalSection>
