@@ -81,6 +81,7 @@ test("shows the CCMB menu bar before the detailed usage menu", async () => {
   assert.notEqual(usageMenuIndex, -1);
   assert.ok(menuBarIndex < usageMenuIndex);
 });
+
 test("publishes browser and home-screen app icons", async () => {
   const response = await render();
   const html = await response.text();

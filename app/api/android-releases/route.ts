@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
 
 const RELEASE_SOURCES = [
-  { appName: "나스파인더", repo: "NasFinder-Android", planned: true },
-  { appName: "한클립", repo: "HanClip-Android", planned: false },
-  { appName: "S.tand", repo: "S.tand-Android", planned: false },
+  { appName: "나스파인더", repo: "NasFinder-Android" },
+  { appName: "한클립", repo: "HanClip-Android" },
+  { appName: "S.tand", repo: "S.tand-Android" },
 ] as const;
 
 type GitHubAsset = {
@@ -80,7 +80,6 @@ export async function GET() {
         appName: RELEASE_SOURCES[index].appName,
         repo: RELEASE_SOURCES[index].repo,
         available: false as const,
-        planned: RELEASE_SOURCES[index].planned,
       }
   );
 

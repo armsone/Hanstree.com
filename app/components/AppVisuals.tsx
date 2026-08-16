@@ -1,9 +1,10 @@
+import Image from "next/image";
 import type { AppData, Platform } from "../data";
 import { LiveFlipClock, LiveSeoulWeather } from "./LiveFlipClock";
 
 export function AppIcon({ app, priority = false }: { app: AppData; priority?: boolean }) {
   if (app.icon) {
-    return <img className="app-icon" src={app.icon} alt="" width="128" height="128" fetchPriority={priority ? "high" : "auto"} />;
+    return <Image className="app-icon" src={app.icon} alt="" width={128} height={128} priority={priority} sizes="(max-width: 640px) 58px, 72px" unoptimized />;
   }
 
   return <span className={`app-icon app-icon-letter theme-${app.theme}`} aria-hidden="true">C</span>;
@@ -20,7 +21,7 @@ export function AppArtwork({ app }: { app: AppData }) {
       <div className="artwork artwork-phones" aria-label="한클립 앱 화면">
         {app.screenshots?.slice(0, 3).map((screen, index) => (
           <div className={`phone-shot phone-shot-${index + 1}`} key={screen.src}>
-            <img src={screen.src} alt={screen.alt} loading="lazy" />
+            <Image src={screen.src} alt={screen.alt} width={1206} height={2622} sizes="(max-width: 640px) 39vw, 220px" unoptimized />
           </div>
         ))}
       </div>
