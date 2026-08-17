@@ -20,7 +20,7 @@ function compactPlatforms(platforms: (typeof apps)[number]["platforms"]) {
 }
 
 export default function Home() {
-  const productCount = apps.reduce(
+  const productCount = 1 + apps.reduce(
     (total, app) => total + app.platforms.reduce((count, platform) => {
       const includesIPhone = /iPhone|iOS/i.test(platform.name);
       const includesIPad = /iPad|iPadOS/i.test(platform.name);
