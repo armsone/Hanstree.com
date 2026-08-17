@@ -19,8 +19,7 @@ function compactPlatforms(platforms: (typeof apps)[number]["platforms"]) {
 }
 
 export default function Home() {
-  const productCount = apps.length;
-  const platformVersionCount = apps.reduce((total, app) => total + app.platforms.length, 0);
+  const productCount = apps.reduce((total, app) => total + app.platforms.length, 0);
 
   return (
     <main>
@@ -73,7 +72,6 @@ export default function Home() {
       <section className="signal-bar" aria-label="사이트 요약">
         <div className="shell signal-grid">
           <p><strong>{String(productCount).padStart(2, "0")}</strong><span>현재 소개하는 제품</span></p>
-          <p><strong>{String(platformVersionCount).padStart(2, "0")}</strong><span>플랫폼별 제공 버전</span></p>
           <p><strong>04</strong><span>iOS·iPadOS · macOS · Android · Web</span></p>
         </div>
       </section>

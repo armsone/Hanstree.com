@@ -32,6 +32,7 @@ test("server-renders the NasFinder.com homepage", async () => {
   assert.match(html, /<html lang="ko">/i);
   assert.match(html, /<title>NasFinder\.com — 일상 가까이, 꼭 필요한 앱<\/title>/i);
   assert.match(html, /NasFinder/);
+  assert.match(html, /Super Thumbnail/);
   assert.match(html, /HanClip/);
   assert.match(html, /S\.tand/);
   assert.match(html, /CCMB/);
@@ -39,10 +40,25 @@ test("server-renders the NasFinder.com homepage", async () => {
   assert.match(html, /intoSharp/);
   assert.match(html, /airChurch/);
   assert.match(html, /14/);
-  assert.match(html, /플랫폼별 제공 버전/);
+  assert.match(html, />14<\/strong><span>현재 소개하는 제품/);
+  assert.doesNotMatch(html, /플랫폼별 제공 버전/);
   assert.match(html, /iOS·iPadOS · macOS · Android · Web/);
   assert.match(html, /개인정보처리방침/);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|Building your site/i);
+});
+
+test("renders Super Thumbnail as an independent Mac product", async () => {
+  const [detailResponse, nasFinderResponse] = await Promise.all([
+    render("/apps/super-thumbnail"),
+    render("/apps/nasfinder"),
+  ]);
+  assert.equal(detailResponse.status, 200);
+
+  const [detail, nasFinder] = await Promise.all([detailResponse.text(), nasFinderResponse.text()]);
+  assert.match(detail, /큰 미디어 폴더의 미리보기를/);
+  assert.match(detail, /NasFinder-Super-Thumbnail-1\.0\.0\.zip/);
+  assert.match(detail, /16,540/);
+  assert.doesNotMatch(nasFinder, /NasFinder-Super-Thumbnail-1\.0\.0\.zip/);
 });
 
 test("renders the TrackpadGuard product, support link, and requested default region", async () => {

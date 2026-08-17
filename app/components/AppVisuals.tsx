@@ -51,6 +51,22 @@ export function AppArtwork({ app }: { app: AppData }) {
     );
   }
 
+  if (app.artwork === "thumbnail") {
+    return (
+      <div className="artwork artwork-thumbnail" aria-label="Super Thumbnail for Mac 생성 화면 표현">
+        <div className="thumbnail-window">
+          <div className="thumbnail-titlebar"><span aria-hidden="true">● ● ●</span><strong>Super Thumbnail</strong></div>
+          <div className="thumbnail-folder"><span>NAS</span><div><strong>Photos</strong><small>16,540개 미디어 · 1.57 TB</small></div></div>
+          <div className="thumbnail-progress">
+            <div><strong>수퍼썸네일 생성</strong><small>12,408 / 16,540</small></div>
+            <span><i /></span>
+          </div>
+          <div className="thumbnail-metrics"><span><small>남은 시간</small><strong>약 42분</strong></span><span><small>생성 용량</small><strong>8.6 GB</strong></span></div>
+        </div>
+      </div>
+    );
+  }
+
   if (app.artwork === "trackpad") {
     return (
       <div className="artwork artwork-trackpad" aria-label="TrackpadGuard 트랙패드 해제 영역 표현">

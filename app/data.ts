@@ -17,7 +17,7 @@ export type AppData = {
   summary: string;
   theme: "violet" | "coral" | "amber" | "blue";
   icon?: string;
-  artwork: "files" | "phones" | "clock" | "menubar" | "trackpad" | "search" | "church";
+  artwork: "files" | "phones" | "clock" | "menubar" | "trackpad" | "thumbnail" | "search" | "church";
   platforms: Platform[];
   features: { title: string; body: string }[];
   guide: { title: string; body: string }[];
@@ -39,21 +39,13 @@ export const apps: AppData[] = [
     english: "NasFinder",
     eyebrow: "YOUR STORAGE, WITHIN REACH",
     tagline: "내 저장공간을, iPhone·iPad·Mac·Android에서.",
-    summary: "iPhone·iPad·Apple Silicon Mac·Android에서 NAS와 원격 저장공간의 파일을 탐색하는 앱입니다. 대량 썸네일 작업을 위한 별도의 Mac 전용 생성기도 제공합니다.",
+    summary: "iPhone·iPad·Apple Silicon Mac·Android에서 NAS와 원격 저장공간의 파일을 탐색하는 앱입니다.",
     theme: "violet",
     icon: "/apps/nasfinder/icon.png",
     artwork: "files",
     platforms: [
       { name: "iPhone · iPad", status: "완료", detail: "1.0 · iOS·iPadOS 17+", availabilityNote: "TestFlight 배포 완료" },
       { name: "Mac용 NasFinder", status: "완료", detail: "Apple Silicon · iPhone·iPad 호환 앱", availabilityNote: "같은 TestFlight 빌드로 설치" },
-      {
-        name: "Mac용 썸네일 생성기",
-        status: "공개",
-        detail: "생성 전용 v1.0.0 · macOS 14+ · Apple Silicon",
-        url: "https://github.com/armsone/NasFinder/releases/download/mac-super-thumbnail-v1.0.0/NasFinder-Super-Thumbnail-1.0.0.zip",
-        downloadLabel: "Mac용 생성기 ZIP 바로 받기",
-        checksum: "17820e7bded3c5a37d19042a99e5972eb7d512e097fbff5111fb3a1df5fe01ac",
-      },
       {
         name: "Android",
         status: "공개",
@@ -70,7 +62,6 @@ export const apps: AppData[] = [
       { title: "기기 안에서 안전하게", body: "Apple 기기는 Keychain, Android는 Keystore로 비밀번호와 로그인 토큰을 보호하고 받은 파일과 캐시는 앱 전용 저장공간에 보관합니다." },
       { title: "폰하드", body: "같은 Wi‑Fi의 컴퓨터에서 웹 브라우저만으로 iPhone·iPad 또는 Android 기기에 파일을 보냅니다." },
       { title: "시스템 파일 앱 연동", body: "iPhone·iPad에서는 Synology와 SFTP 위치를 Apple 파일 앱에서 사용합니다. Android에서는 지원 연결을 시스템 파일 선택기의 NasFinder 위치로 엽니다." },
-      { title: "별도 Mac 썸네일 생성기", body: "NasFinder Mac 앱과 별개의 생성 전용 도구입니다. Mac에 연결한 NAS 폴더를 직접 읽어 대량의 사진·영상 썸네일을 빠르게 만들고 중단된 작업도 이어갑니다." },
       { title: "안전한 앱 아이콘 변경", body: "Android의 앱 아이콘 선택은 저장 즉시 화면을 종료하지 않고 다음 앱 실행부터 적용됩니다. 내부 화면의 뒤로가기는 홈으로 모이고, 홈에서만 앱을 닫습니다." },
     ],
     guide: [
@@ -79,8 +70,6 @@ export const apps: AppData[] = [
       { title: "받은 파일과 전송", body: "다른 앱의 공유 메뉴에서 받은 파일을 보관하고, 원하는 NAS 위치로 전송합니다." },
       { title: "데이터 관리", body: "연결 삭제, 받은 파일 삭제, 캐시 정리와 OAuth 연결 해제 방법을 안내합니다." },
       { title: "앱 정보 확인", body: "설정에서 만든 사람과 공식 홈페이지를 확인하고, 오픈소스 구성요소는 실제 라이선스와 원문 링크가 있는 공개 페이지에서 살펴봅니다." },
-      { title: "Mac 앱 설치", body: "공식 GitHub ZIP을 받아 압축을 풀고 NasFinder Super Thumbnail을 응용 프로그램으로 옮깁니다. Apple Developer ID 서명과 Apple 공증을 완료한 배포본입니다." },
-      { title: "Mac에서 대량 작업", body: "Finder에서 NAS 공유 폴더를 먼저 연결한 뒤 Mac 전용 NasFinder Super Thumbnail에서 폴더를 선택합니다. 각 미디어 폴더의 .NasFinder-Vault에 iPhone과 호환되는 JPEG를 저장합니다." },
     ],
     progress: [
       { state: "done", title: "핵심 탐색과 미리보기", body: "다양한 원격 저장소 탐색, 미디어 썸네일과 미리보기 구현" },
@@ -88,7 +77,6 @@ export const apps: AppData[] = [
       { state: "next", title: "Google Photos Picker", body: "별도 OAuth로 사용자가 직접 선택한 사진·영상만 가져오는 흐름 준비" },
       { state: "done", title: "iPhone·iPad·Mac 지원", body: "iPhone과 iPad 앱 완성, 동일 앱의 Apple Silicon Mac 설치와 실행 검증" },
       { state: "done", title: "Android 공개", body: "NasFinder Android v3 APK를 GitHub Releases에 공개" },
-      { state: "done", title: "Mac 전용 Super Thumbnail", body: "네이티브 Mac 앱에서 16,540개 미디어·1.57TB 폴더 검색, 진행률·용량·이어하기와 iPhone 호환 NAS 보관본 검증" },
     ],
     screenshots: [
       { src: "/apps/nasfinder/screens/android-home.png", alt: "나스파인더 Android 저장공간 홈" },
@@ -103,6 +91,53 @@ export const apps: AppData[] = [
       "Apple 앱은 연결 정보를 App Group에, 비밀번호·세션·OAuth 자격증명을 Keychain에 저장합니다. Android 앱은 자격증명을 Android Keystore로 보호한 기기 전용 저장공간에 보관합니다.",
       "받은 파일, 다운로드 파일과 썸네일 캐시는 사용자의 기기 안에 저장됩니다.",
       "사용자가 선택한 외부 저장소 서비스와 직접 통신하며 각 서비스의 정책이 함께 적용됩니다.",
+    ],
+  },
+  {
+    slug: "super-thumbnail",
+    name: "수퍼썸네일 for Mac",
+    english: "Super Thumbnail",
+    eyebrow: "PREPARE ON MAC, BROWSE IN NASFINDER",
+    tagline: "큰 미디어 폴더의 미리보기를, Mac에서 미리.",
+    summary: "Finder에 연결한 NAS 또는 Mac 폴더를 직접 읽어 NasFinder와 호환되는 수퍼썸네일을 대량으로 만드는 macOS 전용 앱입니다.",
+    theme: "violet",
+    icon: "/apps/super-thumbnail/icon.png",
+    artwork: "thumbnail",
+    platforms: [
+      {
+        name: "macOS",
+        status: "공개",
+        detail: "v1.0.0 · macOS 14+ · Apple Silicon · Apple 공증 완료",
+        url: "https://github.com/armsone/NasFinder/releases/download/mac-super-thumbnail-v1.0.0/NasFinder-Super-Thumbnail-1.0.0.zip",
+        downloadLabel: "Mac용 ZIP 바로 받기",
+        checksum: "17820e7bded3c5a37d19042a99e5972eb7d512e097fbff5111fb3a1df5fe01ac",
+      },
+    ],
+    features: [
+      { title: "대량 미디어 재귀 검색", body: "선택한 폴더 아래의 사진과 영상을 찾아 큰 NAS 미디어 보관함도 한 번에 확인합니다." },
+      { title: "NasFinder와 바로 호환", body: "iPhone·iPad·Mac·Android NasFinder가 읽을 수 있는 JPEG 이름과 .NasFinder-Vault 저장 구조를 사용합니다." },
+      { title: "중단 후 이어서", body: "이미 만든 썸네일은 건너뛰고 다시 검사하므로 긴 작업을 멈췄다가 안전하게 이어갈 수 있습니다." },
+      { title: "진행 상태를 한눈에", body: "전체 파일 수, 완료 수, 예상 남은 시간, 확인한 원본 용량과 생성된 썸네일 용량을 표시합니다." },
+      { title: "Mac에서 직접 처리", body: "파일을 개발자 서버로 보내지 않고 사용자가 선택한 Finder 폴더를 Mac에서 직접 읽고 씁니다." },
+    ],
+    guide: [
+      { title: "앱 설치", body: "공식 ZIP을 받아 압축을 풀고 NasFinder Super Thumbnail을 응용 프로그램 폴더로 옮깁니다." },
+      { title: "NAS 연결", body: "Finder에서 사용할 NAS 공유 폴더를 먼저 연결합니다. Mac 내부 미디어 폴더도 선택할 수 있습니다." },
+      { title: "작업 폴더 선택", body: "앱에서 폴더 선택을 누르고 사진과 영상이 들어 있는 최상위 폴더를 고릅니다." },
+      { title: "생성과 확인", body: "시작을 누르면 검색과 생성이 진행됩니다. 진행률과 용량, 남은 예상시간을 확인할 수 있습니다." },
+      { title: "NasFinder에서 보기", body: "작업을 마친 뒤 NasFinder에서 같은 NAS 폴더를 열면 준비된 수퍼썸네일을 사용합니다." },
+    ],
+    progress: [
+      { state: "done", title: "Mac 전용 네이티브 앱", body: "Finder 폴더 선택, 재귀 검색, 생성·일시정지·중단과 이어하기 구현" },
+      { state: "done", title: "대규모 폴더 검증", body: "16,540개 미디어·1.57TB 폴더의 검색, 진행률과 용량 표시 검증" },
+      { state: "done", title: "공개 배포", body: "Developer ID 서명과 Apple 공증을 마친 v1.0.0 ZIP 공개" },
+      { state: "active", title: "다양한 NAS 환경 확인", body: "Finder 연결 방식과 파일 권한에 따른 예외를 계속 점검 중" },
+    ],
+    github: ["https://github.com/armsone/NasFinder"],
+    privacy: [
+      "사용자가 직접 선택한 Finder의 NAS 또는 Mac 폴더만 읽고 썸네일을 생성합니다.",
+      "생성한 JPEG는 원본 폴더 안의 .NasFinder-Vault에 저장되며 개발자 서버로 전송하지 않습니다.",
+      "마지막으로 선택한 폴더 경로는 다음 작업을 이어가기 위해 Mac의 앱 설정에 저장될 수 있습니다.",
     ],
   },
   {
