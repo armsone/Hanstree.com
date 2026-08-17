@@ -49,10 +49,10 @@ export const apps: AppData[] = [
       {
         name: "Android",
         status: "공개",
-        detail: "1.1 · APK v3 · Android 8.0+",
+        detail: "1.1 · APK v4 · Android 8.0+",
         url: "https://github.com/armsone/NasFinder-Android/releases/download/android-v4/NasFinder-Android-v4.apk",
         downloadLabel: "Android APK 바로 받기",
-        checksum: "aa314accf5aaabde1a3480e84b1a289674e5f8e6bf422acf32007853ce1f7f18",
+        checksum: "6b689417e542ac238d46b7e420756db10885a5b30fae97499170dfacdb1900aa",
       },
     ],
     features: [
@@ -156,10 +156,10 @@ export const apps: AppData[] = [
       {
         name: "Android",
         status: "공개",
-        detail: "1.0.1 · APK v548 · Android 8.0+",
+        detail: "1.0.1 · APK v549 · Android 8.0+",
         url: "https://github.com/armsone/HanClip-Android/releases/download/android-v549/HanClip-Android-v549.apk",
         downloadLabel: "Android APK 바로 받기",
-        checksum: "d385d36972ee9ad84ea9463b24a1c6fc94fa2e31a5b6f445546b971fd5e7aebb",
+        checksum: "a99bee254146e2f80962404da7dd6d65286f1812d1b5fa39a9f4d65d21100971",
       },
     ],
     features: [
@@ -222,10 +222,10 @@ export const apps: AppData[] = [
       {
         name: "Android",
         status: "공개",
-        detail: "0.0.1 · APK v53 · Android 8.0+",
+        detail: "0.0.1 · APK v54 · Android 8.0+",
         url: "https://github.com/armsone/S.tand-Android/releases/download/android-v54/S.tand-Android-v54.apk",
         downloadLabel: "Android APK 바로 받기",
-        checksum: "d6609f0a611b440fc8513c0759e846b205532f19c8021ea1b717c91961471900",
+        checksum: "b32d593aa91ec502787ce0d51788990fd467b637bfedd4e2832d0d3903d4c23d",
       },
     ],
     features: [

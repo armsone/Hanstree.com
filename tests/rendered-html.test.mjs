@@ -151,9 +151,12 @@ test("renders current app release and TestFlight information", async () => {
 
   assert.match(home, /3\.11\.52/);
   assert.match(home, /0\.31\.0/);
-  assert.match(nasFinder, /APK v3/);
-  assert.match(hanClip, /APK v548/);
-  assert.match(stand, /APK v53/);
-  assert.doesNotMatch(home + nasFinder + hanClip + stand, /첫 공개판 준비 중|APK v2\b|APK v544\b|APK v52\b/);
+  assert.match(nasFinder, /APK v4/);
+  assert.match(nasFinder, /6b689417e542ac238d46b7e420756db10885a5b30fae97499170dfacdb1900aa/);
+  assert.match(hanClip, /APK v549/);
+  assert.match(hanClip, /a99bee254146e2f80962404da7dd6d65286f1812d1b5fa39a9f4d65d21100971/);
+  assert.match(stand, /APK v54/);
+  assert.match(stand, /b32d593aa91ec502787ce0d51788990fd467b637bfedd4e2832d0d3903d4c23d/);
+  assert.doesNotMatch(home + nasFinder + hanClip + stand, /첫 공개판 준비 중|APK v2\b|APK v3\b|APK v544\b|APK v548\b|APK v52\b|APK v53\b/);
   assert.doesNotMatch(hanClip, /android-editor-finish-pets\.png/);
 });
