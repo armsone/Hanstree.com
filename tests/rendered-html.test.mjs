@@ -42,7 +42,8 @@ test("server-renders the NasFinder.com homepage", async () => {
   assert.match(html, /14/);
   assert.match(html, />14<\/strong><span>현재 소개하는 제품/);
   assert.doesNotMatch(html, /플랫폼별 제공 버전/);
-  assert.match(html, /iOS·iPadOS · macOS · Android · Web/);
+  assert.match(html, />06<\/strong><span>iPhone · iPad · macOS · Android · Web · Windows \(커밍\)/);
+  assert.match(html, />01<\/strong><span>한 사람의 꾸준한 기록/);
   assert.match(html, /개인정보처리방침/);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|Building your site/i);
 });

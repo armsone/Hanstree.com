@@ -10,7 +10,8 @@ import { testFlightBuilds } from "./testflight";
 function compactPlatforms(platforms: (typeof apps)[number]["platforms"]) {
   const names = new Set<string>();
   for (const platform of platforms) {
-    if (/iPhone|iPad|iOS|iPadOS/i.test(platform.name)) names.add("iOS·iPadOS");
+    if (/iPhone|iOS/i.test(platform.name)) names.add("iPhone");
+    if (/iPad|iPadOS/i.test(platform.name)) names.add("iPad");
     if (/Mac|macOS/i.test(platform.name)) names.add("macOS");
     if (/Android/i.test(platform.name)) names.add("Android");
     if (/Web/i.test(platform.name)) names.add("Web");
@@ -72,7 +73,8 @@ export default function Home() {
       <section className="signal-bar" aria-label="사이트 요약">
         <div className="shell signal-grid">
           <p><strong>{String(productCount).padStart(2, "0")}</strong><span>현재 소개하는 제품</span></p>
-          <p><strong>04</strong><span>iOS·iPadOS · macOS · Android · Web</span></p>
+          <p><strong>06</strong><span>iPhone · iPad · macOS · Android · Web · Windows (커밍)</span></p>
+          <p><strong>01</strong><span>한 사람의 꾸준한 기록</span></p>
         </div>
       </section>
 

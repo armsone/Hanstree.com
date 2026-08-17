@@ -64,7 +64,7 @@ img { display: block; max-width: 100%; }
 .orbit-app-8 { top: 25%; left: -2%; animation-delay: -1.6s; }
 
 .signal-bar { border-block: 1px solid var(--line); background: rgba(255,255,255,.34); }
-.signal-grid { min-height: 132px; display: grid; grid-template-columns: repeat(2,1fr); align-items: center; }
+.signal-grid { min-height: 132px; display: grid; grid-template-columns: repeat(3,1fr); align-items: center; }
 .signal-grid p { margin: 0; padding: 12px 32px; display: flex; align-items: baseline; gap: 16px; border-right: 1px solid var(--line); }
 .signal-grid p:first-child { padding-left: 0; }
 .signal-grid p:last-child { border: 0; }
