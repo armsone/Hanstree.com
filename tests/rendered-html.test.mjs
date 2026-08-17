@@ -38,6 +38,9 @@ test("server-renders the NasFinder.com homepage", async () => {
   assert.match(html, /TrackpadGuard/);
   assert.match(html, /intoSharp/);
   assert.match(html, /airChurch/);
+  assert.match(html, /14/);
+  assert.match(html, /플랫폼별 제공 버전/);
+  assert.match(html, /iOS·iPadOS · macOS · Android · Web/);
   assert.match(html, /개인정보처리방침/);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|Building your site/i);
 });
@@ -130,10 +133,10 @@ test("renders current app release and TestFlight information", async () => {
     standResponse.text(),
   ]);
 
-  assert.match(home, /3\.11\.51/);
+  assert.match(home, /3\.11\.52/);
   assert.match(home, /0\.31\.0/);
   assert.match(nasFinder, /APK v3/);
-  assert.match(hanClip, /APK v547/);
+  assert.match(hanClip, /APK v548/);
   assert.match(stand, /APK v53/);
   assert.doesNotMatch(home + nasFinder + hanClip + stand, /첫 공개판 준비 중|APK v2\b|APK v544\b|APK v52\b/);
   assert.doesNotMatch(hanClip, /android-editor-finish-pets\.png/);

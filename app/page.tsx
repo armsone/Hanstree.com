@@ -7,7 +7,21 @@ import { TestFlightTracker } from "./components/TestFlightTracker";
 import { apps } from "./data";
 import { testFlightBuilds } from "./testflight";
 
+function compactPlatforms(platforms: (typeof apps)[number]["platforms"]) {
+  const names = new Set<string>();
+  for (const platform of platforms) {
+    if (/iPhone|iPad|iOS|iPadOS/i.test(platform.name)) names.add("iOS·iPadOS");
+    if (/Mac|macOS/i.test(platform.name)) names.add("macOS");
+    if (/Android/i.test(platform.name)) names.add("Android");
+    if (/Web/i.test(platform.name)) names.add("Web");
+  }
+  return [...names].join(" · ");
+}
+
 export default function Home() {
+  const productCount = apps.length;
+  const platformVersionCount = apps.reduce((total, app) => total + app.platforms.length, 0);
+
   return (
     <main>
       <SiteHeader />
@@ -35,17 +49,20 @@ export default function Home() {
 
         <div className="hero-orbit" aria-label={apps.map((app) => app.english).join(", ")}>
           <div className="orbit-glow" />
-          {apps.map((app, index) => (
+          {apps.map((app, index) => {
+            const platforms = compactPlatforms(app.platforms);
+            return (
             <Link
               className={`orbit-app orbit-app-${index + 1}`}
               href={`/apps/${app.slug}`}
               key={app.slug}
-              aria-label={`${app.english} 자세히 보기`}
+              aria-label={`${app.english} · ${platforms} 자세히 보기`}
             >
               <AppIcon app={app} priority={index < 2} />
-              <span>{app.english}</span>
+              <span className="orbit-copy"><strong>{app.english}</strong><small>{platforms}</small></span>
             </Link>
-          ))}
+            );
+          })}
           <div className="orbit-center">
             <span>NasFinder</span>
             <strong>.com</strong>
@@ -55,9 +72,9 @@ export default function Home() {
 
       <section className="signal-bar" aria-label="사이트 요약">
         <div className="shell signal-grid">
-          <p><strong>07</strong><span>현재 소개하는 제품</span></p>
-          <p><strong>04</strong><span>Apple · Android · macOS · Web</span></p>
-          <p><strong>01</strong><span>한 사람의 꾸준한 기록</span></p>
+          <p><strong>{String(productCount).padStart(2, "0")}</strong><span>현재 소개하는 제품</span></p>
+          <p><strong>{String(platformVersionCount).padStart(2, "0")}</strong><span>플랫폼별 제공 버전</span></p>
+          <p><strong>04</strong><span>iOS·iPadOS · macOS · Android · Web</span></p>
         </div>
       </section>
 
