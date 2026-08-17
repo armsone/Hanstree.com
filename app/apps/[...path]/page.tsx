@@ -71,7 +71,7 @@ export default async function AppRoute({ params }: RouteProps) {
       <section className="feature-section shell" id="features">
         <div className="section-heading reveal"><div><p className="eyebrow">FEATURES</p><h2>복잡함은 덜고,<br />쓰임은 선명하게.</h2></div></div>
         <div className="feature-grid">
-          {app.features.map((feature, index) => <article className="feature-card reveal" key={feature.title}><span>0{index + 1}</span><h3>{feature.title}</h3><p>{feature.body}</p></article>)}
+          {app.features.map((feature, index) => <article className={`feature-card reveal${feature.icon ? " feature-card-branded" : ""}`} key={feature.title}><span>0{index + 1}</span>{feature.icon && <Image className="feature-icon" src={feature.icon} alt="" width={72} height={72} unoptimized />}<h3>{feature.title}</h3><p>{feature.body}</p></article>)}
         </div>
       </section>
 

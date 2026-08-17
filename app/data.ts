@@ -19,7 +19,7 @@ export type AppData = {
   icon?: string;
   artwork: "files" | "phones" | "clock" | "menubar" | "trackpad" | "thumbnail" | "search" | "church";
   platforms: Platform[];
-  features: { title: string; body: string }[];
+  features: { title: string; body: string; icon?: string }[];
   guide: { title: string; body: string }[];
   progress: { state: "done" | "active" | "next"; title: string; body: string }[];
   screenshots?: { src: string; alt: string; layout?: "phone" | "menu" | "landscape" | "wide" }[];
@@ -50,7 +50,7 @@ export const apps: AppData[] = [
         name: "Android",
         status: "공개",
         detail: "1.1 · APK v3 · Android 8.0+",
-        url: "https://github.com/armsone/NasFinder-Android/releases/download/android-v3/NasFinder-Android-v3.apk",
+        url: "https://github.com/armsone/NasFinder-Android/releases/download/android-v4/NasFinder-Android-v4.apk",
         downloadLabel: "Android APK 바로 받기",
         checksum: "aa314accf5aaabde1a3480e84b1a289674e5f8e6bf422acf32007853ce1f7f18",
       },
@@ -60,7 +60,7 @@ export const apps: AppData[] = [
       { title: "사진과 영상을 먼저 보고", body: "썸네일, 전체화면 미리보기와 원격 영상 스트리밍으로 내려받기 전에 필요한 파일을 찾습니다." },
       { title: "파일 작업을 자연스럽게", body: "연결이 지원하는 범위에서 업로드, 폴더 생성, 이름 변경, 복사·이동·삭제까지 처리합니다." },
       { title: "기기 안에서 안전하게", body: "Apple 기기는 Keychain, Android는 Keystore로 비밀번호와 로그인 토큰을 보호하고 받은 파일과 캐시는 앱 전용 저장공간에 보관합니다." },
-      { title: "폰하드", body: "같은 Wi‑Fi의 컴퓨터에서 웹 브라우저만으로 iPhone·iPad 또는 Android 기기에 파일을 보냅니다." },
+      { title: "폰하드", body: "같은 Wi‑Fi의 컴퓨터에서 웹 브라우저만으로 iPhone·iPad 또는 Android 기기에 파일을 보냅니다.", icon: "/apps/nasfinder/phone-hard.png" },
       { title: "시스템 파일 앱 연동", body: "iPhone·iPad에서는 Synology와 SFTP 위치를 Apple 파일 앱에서 사용합니다. Android에서는 지원 연결을 시스템 파일 선택기의 NasFinder 위치로 엽니다." },
       { title: "안전한 앱 아이콘 변경", body: "Android의 앱 아이콘 선택은 저장 즉시 화면을 종료하지 않고 다음 앱 실행부터 적용됩니다. 내부 화면의 뒤로가기는 홈으로 모이고, 홈에서만 앱을 닫습니다." },
     ],
@@ -76,7 +76,7 @@ export const apps: AppData[] = [
       { state: "active", title: "실제 환경 검증", body: "서버별 파일 작업, 파일 앱 연동과 네트워크 예외를 검증 중" },
       { state: "next", title: "Google Photos Picker", body: "별도 OAuth로 사용자가 직접 선택한 사진·영상만 가져오는 흐름 준비" },
       { state: "done", title: "iPhone·iPad·Mac 지원", body: "iPhone과 iPad 앱 완성, 동일 앱의 Apple Silicon Mac 설치와 실행 검증" },
-      { state: "done", title: "Android 공개", body: "NasFinder Android v3 APK를 GitHub Releases에 공개" },
+      { state: "done", title: "Android 공개", body: "NasFinder Android v4 APK를 GitHub Releases에 공개" },
     ],
     screenshots: [
       { src: "/apps/nasfinder/screens/android-home.png", alt: "나스파인더 Android 저장공간 홈" },
@@ -157,7 +157,7 @@ export const apps: AppData[] = [
         name: "Android",
         status: "공개",
         detail: "1.0.1 · APK v548 · Android 8.0+",
-        url: "https://github.com/armsone/HanClip-Android/releases/download/android-v548/HanClip-Android-v548.apk",
+        url: "https://github.com/armsone/HanClip-Android/releases/download/android-v549/HanClip-Android-v549.apk",
         downloadLabel: "Android APK 바로 받기",
         checksum: "d385d36972ee9ad84ea9463b24a1c6fc94fa2e31a5b6f445546b971fd5e7aebb",
       },
@@ -180,7 +180,7 @@ export const apps: AppData[] = [
     ],
     progress: [
       { state: "done", title: "iOS 핵심 제작 흐름", body: "선택, 편집, 렌더링, 시사회와 저장 흐름 구현" },
-      { state: "done", title: "Android 공개 빌드", body: "HanClip Android v548 APK를 GitHub Releases에 공개" },
+      { state: "done", title: "Android 공개 빌드", body: "HanClip Android v549 APK를 GitHub Releases에 공개" },
       { state: "active", title: "플랫폼 경험 정렬", body: "iOS와 Android의 기능과 화면 동등성을 계속 다듬는 중" },
       { state: "done", title: "Apple Silicon Mac 지원", body: "iPhone·iPad와 같은 빌드를 Mac의 ‘iPhone 및 iPad용 앱’으로 실행하도록 지원" },
       { state: "next", title: "현장 감도 검증", body: "다양한 영상과 실제 골프 환경에서 AiShot을 추가 검증" },
@@ -223,7 +223,7 @@ export const apps: AppData[] = [
         name: "Android",
         status: "공개",
         detail: "0.0.1 · APK v53 · Android 8.0+",
-        url: "https://github.com/armsone/S.tand-Android/releases/download/android-v53/S.tand-Android-v53.apk",
+        url: "https://github.com/armsone/S.tand-Android/releases/download/android-v54/S.tand-Android-v54.apk",
         downloadLabel: "Android APK 바로 받기",
         checksum: "d6609f0a611b440fc8513c0759e846b205532f19c8021ea1b717c91961471900",
       },
@@ -250,7 +250,7 @@ export const apps: AppData[] = [
     ],
     progress: [
       { state: "done", title: "시계와 수면 케어", body: "오브제 화면, 반응형 조명과 로컬 수면 기록 구현" },
-      { state: "done", title: "Android 공개 빌드", body: "S.tand Android v53 APK를 GitHub Releases에 공개" },
+      { state: "done", title: "Android 공개 빌드", body: "S.tand Android v54 APK를 GitHub Releases에 공개" },
       { state: "active", title: "보이소 안정화", body: "근거리 연결, 재연결과 백그라운드 알림을 개선 중" },
       { state: "done", title: "Mac Catalyst 공개", body: "Developer ID 서명, Apple 공증과 Gatekeeper 검증을 마친 macOS 0.30.0 ZIP 공개" },
       { state: "active", title: "iOS·Android 화면 매치업", body: "15개 공통 상태를 자동 캡처하고 남은 아이콘·세부 기하 차이를 추적 중" },
