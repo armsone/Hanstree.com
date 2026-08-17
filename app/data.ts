@@ -116,19 +116,19 @@ export const apps: AppData[] = [
     icon: "/apps/hanclip/icon.png",
     artwork: "phones",
     platforms: [
-      { name: "iOS · iPadOS", status: "완료", detail: "1.0.1 (3.11.51) · iOS·iPadOS 17+", availabilityNote: "TestFlight 업로드 완료" },
+      { name: "iOS · iPadOS", status: "완료", detail: "1.0.1 (3.11.52) · iOS·iPadOS 17+", availabilityNote: "TestFlight 업로드 완료" },
       { name: "Mac", status: "완료", detail: "Apple Silicon · iPad 앱 호환 모드", availabilityNote: "iPhone·iPad용 앱으로 지원" },
       {
         name: "Android",
         status: "공개",
-        detail: "1.0.1 · APK v547 · Android 8.0+",
-        url: "https://github.com/armsone/HanClip-Android/releases/download/android-v547/HanClip-Android-v547.apk",
+        detail: "1.0.1 · APK v548 · Android 8.0+",
+        url: "https://github.com/armsone/HanClip-Android/releases/download/android-v548/HanClip-Android-v548.apk",
         downloadLabel: "Android APK 바로 받기",
-        checksum: "cf3e78eb14d64f7e33c0fe32313e77ed9ac2b96587f857893e819b88ca6027de",
+        checksum: "d385d36972ee9ad84ea9463b24a1c6fc94fa2e31a5b6f445546b971fd5e7aebb",
       },
     ],
     features: [
-      { title: "빠른 영화 만들기", body: "일상·여행·인생 기록과 골프 영상을 프리셋으로 시작하고 결과를 세밀하게 다듬습니다." },
+      { title: "빠른 영화 만들기", body: "실제 장면 수와 짧은 영상 길이에 맞춰 시간을 고르게 배분하고, 예상 완성시간을 확인한 뒤 결과를 세밀하게 다듬습니다." },
       { title: "AiShot", body: "소리와 장면 변화를 참고해 필요한 순간을 자동으로 찾아 짧은 클립으로 남깁니다." },
       { title: "장면을 내 방식으로", body: "순서, 길이, 화면비, 자막과 음악, 워터마크와 엔딩 카드를 조절합니다." },
       { title: "사진부터 Live Photo까지", body: "사진·영상·Live Photo와 Android Motion Photo, 파일과 공유 항목을 가져옵니다." },
@@ -145,7 +145,7 @@ export const apps: AppData[] = [
     ],
     progress: [
       { state: "done", title: "iOS 핵심 제작 흐름", body: "선택, 편집, 렌더링, 시사회와 저장 흐름 구현" },
-      { state: "done", title: "Android 공개 빌드", body: "HanClip Android v547 APK를 GitHub Releases에 공개" },
+      { state: "done", title: "Android 공개 빌드", body: "HanClip Android v548 APK를 GitHub Releases에 공개" },
       { state: "active", title: "플랫폼 경험 정렬", body: "iOS와 Android의 기능과 화면 동등성을 계속 다듬는 중" },
       { state: "done", title: "Apple Silicon Mac 지원", body: "iPhone·iPad와 같은 빌드를 Mac의 ‘iPhone 및 iPad용 앱’으로 실행하도록 지원" },
       { state: "next", title: "현장 감도 검증", body: "다양한 영상과 실제 골프 환경에서 AiShot을 추가 검증" },
