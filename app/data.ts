@@ -298,7 +298,7 @@ export const apps: AppData[] = [
     theme: "blue",
     artwork: "menubar",
     platforms: [
-      { name: "macOS", status: "공개", detail: "v0.3.25 · macOS 10.15+", url: "https://github.com/armsone/CCMB/releases/tag/v0.3.25" },
+      { name: "macOS", status: "공개", detail: "v0.3.26 · macOS 10.15+", url: "https://github.com/armsone/CCMB/releases/tag/v0.3.26", downloadLabel: "DMG 다운로드", checksum: "f3af902293d15b9275032945f2843e6f807444558b6d9573ff27a4e8273c30d6" },
     ],
     features: [
       { title: "메뉴 막대에서 바로", body: "남은 주간 사용량과 크레딧을 작업 흐름을 끊지 않고 확인합니다." },
