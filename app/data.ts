@@ -44,15 +44,15 @@ export const apps: AppData[] = [
     icon: "/apps/nasfinder/icon.png",
     artwork: "files",
     platforms: [
-      { name: "iPhone · iPad", status: "완료", detail: "1.0 · iOS·iPadOS 17+", availabilityNote: "TestFlight 배포 완료" },
+      { name: "iPhone · iPad", status: "완료", detail: "1.0 (202608190036) · iOS·iPadOS 17+", availabilityNote: "TestFlight 업로드 완료" },
       { name: "Mac용 NasFinder", status: "완료", detail: "Apple Silicon · iPhone·iPad 호환 앱", availabilityNote: "같은 TestFlight 빌드로 설치" },
       {
         name: "Android",
         status: "공개",
-        detail: "1.1 · APK v4 · Android 8.0+",
-        url: "https://github.com/armsone/NasFinder-Android/releases/download/android-v4/NasFinder-Android-v4.apk",
+        detail: "1.1 · APK v5 · Android 8.0+",
+        url: "https://github.com/armsone/NasFinder-Android/releases/download/android-v5/NasFinder-Android-v5.apk",
         downloadLabel: "Android APK 바로 받기",
-        checksum: "6b689417e542ac238d46b7e420756db10885a5b30fae97499170dfacdb1900aa",
+        checksum: "b97001ff53f091052f3518d3aa51cb56bbfc97739a29c1b8767265e58ea2baa6",
       },
     ],
     features: [
@@ -77,7 +77,7 @@ export const apps: AppData[] = [
       { state: "active", title: "실제 환경 검증", body: "서버별 파일 작업, 파일 앱 연동과 네트워크 예외를 검증 중" },
       { state: "next", title: "Google Photos Picker", body: "별도 OAuth로 사용자가 직접 선택한 사진·영상만 가져오는 흐름 준비" },
       { state: "done", title: "iPhone·iPad·Mac 지원", body: "iPhone과 iPad 앱 완성, 동일 앱의 Apple Silicon Mac 설치와 실행 검증" },
-      { state: "done", title: "Android 공개", body: "NasFinder Android v4 APK를 GitHub Releases에 공개" },
+      { state: "done", title: "Android 공개", body: "NasFinder Android v5 APK를 GitHub Releases에 공개" },
     ],
     screenshots: [
       { src: "/apps/nasfinder/screens/android-home.png", alt: "나스파인더 Android 저장공간 홈" },
@@ -152,15 +152,15 @@ export const apps: AppData[] = [
     icon: "/apps/hanclip/icon.png",
     artwork: "phones",
     platforms: [
-      { name: "iOS · iPadOS", status: "완료", detail: "1.0.1 (3.11.52) · iOS·iPadOS 17+", availabilityNote: "TestFlight 업로드 완료" },
+      { name: "iOS · iPadOS", status: "완료", detail: "1.0.1 (3.11.55) · iOS·iPadOS 17+", availabilityNote: "TestFlight 업로드 완료" },
       { name: "Mac", status: "완료", detail: "Apple Silicon · iPad 앱 호환 모드", availabilityNote: "iPhone·iPad용 앱으로 지원" },
       {
         name: "Android",
         status: "공개",
-        detail: "1.0.1 · APK v549 · Android 8.0+",
-        url: "https://github.com/armsone/HanClip-Android/releases/download/android-v549/HanClip-Android-v549.apk",
+        detail: "1.0.1 · APK v550 · Android 8.0+",
+        url: "https://github.com/armsone/HanClip-Android/releases/download/android-v550/HanClip-Android-v550.apk",
         downloadLabel: "Android APK 바로 받기",
-        checksum: "a99bee254146e2f80962404da7dd6d65286f1812d1b5fa39a9f4d65d21100971",
+        checksum: "ffe0491151ce8b09cf6f96b148b4a2e212937dca99138d82d25755c81b7078df",
       },
     ],
     features: [
@@ -182,7 +182,7 @@ export const apps: AppData[] = [
     ],
     progress: [
       { state: "done", title: "iOS 핵심 제작 흐름", body: "선택, 편집, 렌더링, 시사회와 저장 흐름 구현" },
-      { state: "done", title: "Android 공개 빌드", body: "HanClip Android v549 APK를 GitHub Releases에 공개" },
+      { state: "done", title: "Android 공개 빌드", body: "HanClip Android v550 APK를 GitHub Releases에 공개" },
       { state: "active", title: "플랫폼 경험 정렬", body: "iOS와 Android의 기능과 화면 동등성을 계속 다듬는 중" },
       { state: "done", title: "Apple Silicon Mac 지원", body: "iPhone·iPad와 같은 빌드를 Mac의 ‘iPhone 및 iPad용 앱’으로 실행하도록 지원" },
       { state: "next", title: "현장 감도 검증", body: "다양한 영상과 실제 골프 환경에서 AiShot을 추가 검증" },
@@ -300,7 +300,7 @@ export const apps: AppData[] = [
     theme: "blue",
     artwork: "menubar",
     platforms: [
-      { name: "macOS", status: "공개", detail: "v0.3.27 · macOS 10.15+", url: "https://github.com/armsone/CCMB/releases/tag/v0.3.27", downloadLabel: "DMG 다운로드", checksum: "ddaf840f82efb4ce15994e3cf9e2ca9e517b6651e3f2a00ab35ed0d943c4d494" },
+      { name: "macOS", status: "공개", detail: "v0.3.28 · macOS 10.15+", url: "https://github.com/armsone/CCMB/releases/tag/v0.3.28", downloadLabel: "DMG 다운로드", checksum: "6d976733ef3e0b5be39c185976257fbe97f027b8e777f8b96886a0b51034028d" },
     ],
     features: [
       { title: "Codex·Claude를 한눈에", body: "Codex의 남은 주간 사용량·크레딧과 Claude의 세션·주간 사용량을 작업 흐름을 끊지 않고 확인합니다." },
