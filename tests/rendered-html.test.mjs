@@ -61,6 +61,24 @@ test("renders Super Thumbnail as an independent Mac product", async () => {
   assert.doesNotMatch(nasFinder, /NasFinder-Super-Thumbnail-1\.0\.0\.zip/);
 });
 
+test("renders the latest NasFinder and HanClip capabilities", async () => {
+  const [nasFinderResponse, hanClipResponse] = await Promise.all([
+    render("/apps/nasfinder"),
+    render("/apps/hanclip"),
+  ]);
+  assert.equal(nasFinderResponse.status, 200);
+  assert.equal(hanClipResponse.status, 200);
+
+  const [nasFinder, hanClip] = await Promise.all([
+    nasFinderResponse.text(),
+    hanClipResponse.text(),
+  ]);
+  assert.match(nasFinder, /파일 앱에서 바로 가져오기/);
+  assert.match(nasFinder, /네트워크 NAS 다섯 아이콘/);
+  assert.match(hanClip, /완성시간을 음악 길이에 맞춘/);
+  assert.match(hanClip, /개봉영화 보관함/);
+});
+
 test("renders the TrackpadGuard product, support link, and requested default region", async () => {
   const [detailResponse, supportResponse] = await Promise.all([
     render("/apps/trackpadguard"),
