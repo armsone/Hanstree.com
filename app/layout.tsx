@@ -14,8 +14,8 @@ export const metadata: Metadata = {
     icon: [{ url: "/favicon.ico", sizes: "any" }],
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
-  openGraph: { type: "website", locale: "ko_KR", siteName: "NasFinder.com", title: "NasFinder.com — 일상 가까이, 꼭 필요한 앱", description: "armsone이 만드는 앱과 그 과정을 소개합니다.", images: [{ url: "/og.png", width: 1200, height: 630, alt: "NasFinder.com — 일상 가까이, 꼭 필요한 앱" }] },
-  twitter: { card: "summary_large_image", title: "NasFinder.com — 일상 가까이, 꼭 필요한 앱", description: "armsone이 만드는 앱과 그 과정을 소개합니다.", images: ["/og.png"] },
+  openGraph: { type: "website", locale: "ko_KR", siteName: "NasFinder.com", title: "NasFinder.com — 일상 가까이, 꼭 필요한 앱", description: "armsone이 만드는 앱과 그 과정을 소개합니다.", images: [{ url: "/og.png", width: 1024, height: 1024, alt: "Wi-Fi 신호와 NAS를 표현한 NasFinder.com 대표 이미지" }] },
+  twitter: { card: "summary", title: "NasFinder.com — 일상 가까이, 꼭 필요한 앱", description: "armsone이 만드는 앱과 그 과정을 소개합니다.", images: ["/og.png"] },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
