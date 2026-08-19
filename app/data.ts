@@ -300,10 +300,10 @@ export const apps: AppData[] = [
     theme: "blue",
     artwork: "menubar",
     platforms: [
-      { name: "macOS", status: "공개", detail: "v0.3.29 · macOS 10.15+", url: "https://github.com/armsone/CCMB/releases/tag/v0.3.29", downloadLabel: "DMG 다운로드", checksum: "85f5e77c8ca09bd8153d49d4dea60aef4e8aa7f149e4bc0db82f4639925c3206" },
+      { name: "macOS", status: "공개", detail: "v0.3.30 · macOS 10.15+", url: "https://github.com/armsone/CCMB/releases/tag/v0.3.30", downloadLabel: "DMG 다운로드", checksum: "093ca06cff91bba82c41036dff7d0a4f3e54fc90249fbee0b0be6510a284509d" },
     ],
     features: [
-      { title: "Codex·Claude를 한눈에", body: "Codex의 남은 주간 사용량·크레딧과 Claude의 세션·주간 사용량을 작업 흐름을 끊지 않고 확인합니다." },
+      { title: "Codex·Claude를 한눈에", body: "Codex의 남은 주간 사용량·크레딧과 Claude의 5시간 세션·주간 사용량을 좌우 링으로 나란히 확인합니다." },
       { title: "신뢰할 수 있는 새로고침", body: "직접 또는 자동으로 갱신하고, 오래된 Claude 값과 인증·네트워크·요청 제한 오류를 구분합니다." },
       { title: "정렬된 계정·갱신 정보", body: "Codex와 Claude의 계정 정보와 상대 갱신 시각을 사용량 그래프 바로 위에서 같은 기준으로 비교합니다." },
       { title: "로컬 공유", body: "최신성 근거가 포함된 로컬 JSON을 다른 앱과 Codex 대화에서 안전하게 읽습니다." },
@@ -325,7 +325,7 @@ export const apps: AppData[] = [
     ],
     screenshots: [
       { src: "/apps/ccmb/screens/macos-menubar.png", alt: "CCMB macOS 메뉴 막대의 실제 사용량 표시", layout: "wide" },
-      { src: "/apps/ccmb/screens/ccmb-usage-menu.png", alt: "Codex와 Claude 계정 및 갱신 정보를 나란히 정렬한 최신 CCMB 사용량 메뉴", layout: "menu" },
+      { src: "/apps/ccmb/screens/ccmb-usage-menu.png", alt: "Codex 사용량과 Claude의 5시간 세션·주간 사용량 링을 나란히 표시한 최신 CCMB 메뉴", layout: "menu" },
     ],
     github: ["https://github.com/armsone/CCMB"],
     privacy: [
