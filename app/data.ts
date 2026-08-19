@@ -325,7 +325,7 @@ export const apps: AppData[] = [
     ],
     screenshots: [
       { src: "/apps/ccmb/screens/macos-menubar.png", alt: "CCMB macOS 메뉴 막대의 실제 사용량 표시", layout: "wide" },
-      { src: "/apps/ccmb/screens/ccmb-usage-menu.png", alt: "CCMB macOS 사용량 메뉴와 새로고침 설정", layout: "menu" },
+      { src: "/apps/ccmb/screens/ccmb-usage-menu.png", alt: "Codex와 Claude 계정 및 갱신 정보를 나란히 정렬한 최신 CCMB 사용량 메뉴", layout: "menu" },
     ],
     github: ["https://github.com/armsone/CCMB"],
     privacy: [
