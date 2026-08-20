@@ -9,6 +9,8 @@ import { SiteFooter, SiteHeader } from "../../page";
 
 type RouteProps = { params: Promise<{ path: string[] }> };
 
+const campaignSlugs = new Set(["super-thumbnail", "hanclip", "stand", "ccmb", "trackpadguard", "intosharp", "airchurch"]);
+
 export async function generateMetadata({ params }: RouteProps): Promise<Metadata> {
   const { path } = await params;
   const app = findApp(path[0]);
@@ -64,9 +66,12 @@ export default async function AppRoute({ params }: RouteProps) {
 
       <nav className="section-nav" aria-label={`${app.name} 페이지 내부 메뉴`}>
         <div className="shell">
-          <Link href="#features">특징</Link><Link href="#screens">화면</Link>{app.matchup && <Link href="#matchup">매치업</Link>}<Link href="#progress">진행 상황</Link><Link href="#guide">설명서</Link><Link href="#download">다운로드</Link>
+          {app.slug === "nasfinder" && <Link href="#why-nasfinder">왜 나스파인더</Link>}{campaignSlugs.has(app.slug) && <Link href="#product-campaign">왜 {app.name}</Link>}<Link href="#features">특징</Link><Link href="#screens">화면</Link>{app.matchup && <Link href="#matchup">매치업</Link>}<Link href="#progress">진행 상황</Link><Link href="#guide">설명서</Link><Link href="#download">다운로드</Link>
         </div>
       </nav>
+
+      {app.slug === "nasfinder" && <NasFinderPromotion />}
+      {campaignSlugs.has(app.slug) && <ProductPromotion app={app} />}
 
       <section className="feature-section shell" id="features">
         <div className="section-heading reveal"><div><p className="eyebrow">FEATURES</p><h2>복잡함은 덜고,<br />쓰임은 선명하게.</h2></div></div>
@@ -146,6 +151,434 @@ export default async function AppRoute({ params }: RouteProps) {
       </section>
       <SiteFooter />
     </main>
+  );
+}
+
+const productCampaigns = {
+  "super-thumbnail": {
+    tone: "vault",
+    eyebrow: "PREPARE ONCE, BROWSE VISUALLY",
+    headline: <>수만 개의 파일을.<br /><span>이름 대신 장면으로.</span></>,
+    description: "Finder에 연결한 NAS나 Mac 폴더를 고르면 수퍼썸네일을 미리 준비합니다. 큰 미디어 보관함도 NasFinder에서 표지를 보며 탐색할 수 있게 만드세요.",
+    image: "/apps/super-thumbnail/super-thumbnail-campaign.png",
+    imageAlt: "Mac의 큰 미디어 폴더에서 수많은 미리보기 타일이 수퍼썸네일 보관함으로 만들어지는 캠페인 이미지",
+    imageLabel: "MAC FOLDER → .NASFINDER-VAULT → ALL DEVICES",
+    facts: [["16,540", "검증한 미디어 파일"], ["1.57TB", "검증한 원본 폴더"], ["04", "NasFinder 지원 플랫폼"]],
+    advantages: [
+      ["01", "CHOOSE IN FINDER", "지금 쓰는 NAS 폴더에서 바로 시작합니다.", "Finder에 연결한 NAS 공유나 Mac 폴더를 사용자가 직접 선택합니다.", "별도 업로드 공간을 만들지 않고 이미 정리한 보관함을 그대로 대상으로 삼습니다."],
+      ["02", "RECURSIVE SCAN", "깊숙한 하위 폴더까지 한 번에 찾습니다.", "선택한 폴더 아래의 사진과 영상을 재귀적으로 찾아 JPEG 수퍼썸네일을 만듭니다.", "폴더를 하나씩 열어 작업하지 않고 큰 미디어 트리 전체를 준비합니다."],
+      ["03", "NASFINDER READY", "한 번 준비해 여러 기기에서 봅니다.", "수퍼썸네일을 NasFinder가 읽는 이름과 .NasFinder-Vault 구조로 저장합니다.", "iPhone·iPad·Mac·Android NasFinder가 같은 준비된 미리보기를 활용합니다."],
+      ["04", "RESUME", "긴 작업은 멈췄다가 그대로 이어갑니다.", "이미 만든 썸네일은 건너뛰고 남은 미디어를 다시 검사합니다.", "처음부터 다시 만드는 대신 완료된 결과를 보존하며 대형 작업을 나눠 진행합니다."],
+      ["05", "VISIBLE PROGRESS", "얼마나 남았는지 숫자로 확인합니다.", "전체·완료 파일 수, 예상 남은 시간, 확인한 원본과 생성된 썸네일 용량을 표시합니다.", "작업 규모와 진행 상태를 보며 중단하거나 계속할 시점을 판단합니다."],
+      ["06", "ON YOUR MAC", "원본 미디어는 Mac에서 직접 처리합니다.", "사용자가 고른 Finder 폴더를 Mac에서 읽고 쓰며 파일을 개발자 서버로 보내지 않습니다.", "수퍼썸네일을 만들기 위해 대형 원본 보관함을 별도 서버에 업로드하지 않습니다."],
+    ],
+    stories: [
+      ["01", "가족 사진 NAS를 준비할 때", "Finder에 연결한 가족 사진 폴더를 고르고 수퍼썸네일 생성을 시작합니다. 다음에는 iPhone NasFinder에서 파일명 대신 장면을 보며 원하는 사진을 찾습니다.", "NAS · 가족 사진 · 시각 탐색"],
+      ["02", "하룻밤에 끝나지 않는 보관함", "큰 영상 폴더 작업을 멈췄다가 다시 엽니다. 이미 만든 썸네일은 건너뛰고 남은 파일부터 이어가며 완료 수와 예상 시간을 확인합니다.", "이어하기 · 진행률 · 대형 폴더"],
+      ["03", "한 번 만들어 여러 기기에서", "Mac에서 .NasFinder-Vault를 준비한 뒤 같은 NAS를 iPad와 Android NasFinder에서 엽니다. 각 기기에서 준비된 표지를 보며 미디어를 탐색합니다.", "Mac 준비 · iPad · Android"],
+    ],
+    ctaEyebrow: "YOUR ARCHIVE, READY TO SEE",
+    ctaTitle: <>폴더는 그대로 두고.<br /><span>찾는 경험만 바꾸세요.</span></>,
+    ctaBody: "공증된 Apple Silicon Mac 앱으로 NAS와 Mac의 큰 미디어 폴더에 NasFinder용 미리보기를 준비하세요.",
+    ctaLabel: "Mac용 수퍼썸네일 받기",
+  },
+  hanclip: {
+    tone: "coral",
+    eyebrow: "TURN MOMENTS INTO A MOVIE",
+    headline: <>찍어 둔 순간을,<br /><span>오늘 한 편의 영화로.</span></>,
+    description: "사진, 영상, Live Photo와 Motion Photo를 고르세요. 장면은 음악 길이에 맞춰 이어지고, 자막부터 엔딩까지 내가 원하는 한 편의 MP4로 완성됩니다.",
+    image: "/apps/hanclip/hanclip-campaign.png",
+    imageAlt: "사진과 움직이는 장면, 음악 파형이 하나의 영화로 이어지는 HanClip 캠페인 이미지",
+    imageLabel: "PHOTO · VIDEO · LIVE · MOTION → MP4",
+    facts: [["04", "iPhone · iPad · Mac · Android"], ["30", "완성 영화 보관함"], ["MP4", "공유하기 쉬운 한 편"]],
+    advantages: [
+      ["01", "ONE MOVIE", "고른 순간이 곧 영화가 됩니다.", "사진·영상·Live Photo·Motion Photo를 한 흐름에 담아 MP4로 만듭니다.", "서로 다른 촬영 형식을 따로 정리하지 않고 한 편으로 묶습니다."],
+      ["02", "QUICK MOVIE", "음악이 끝나면, 영화도 정확히 끝납니다.", "빠른 영화가 장면 길이를 나누고 엔딩을 포함한 전체 시간을 선택한 음악 길이에 맞춥니다.", "컷마다 시간을 계산하는 대신 음악과 함께 끝나는 흐름을 빠르게 만듭니다."],
+      ["03", "AISHOT", "소리와 장면이 바뀌는 순간을 찾습니다.", "AiShot이 소리와 장면 전환을 참고해 짧은 클립으로 쓸 지점을 제안합니다.", "긴 영상 전체를 훑는 부담을 줄이고 다시 보고 싶은 순간부터 확인합니다."],
+      ["04", "FULL CONTROL", "자동으로 시작하고, 내 취향으로 끝냅니다.", "순서·길이·화면비·자막·음악·워터마크·엔딩 카드를 직접 조정합니다.", "빠른 초안 위에 나만의 이야기와 마무리를 더합니다."],
+      ["05", "PREVIEW & EXPORT", "저장하기 전에, 완성본처럼 봅니다.", "미리보기로 결과를 확인한 뒤 사진·갤러리·파일로 저장합니다.", "내보낸 뒤 다시 만드는 일을 줄이고 원하는 곳으로 바로 보냅니다."],
+      ["06", "KEEP CREATING", "완성작도, 다음 편도 이어집니다.", "완성 영화는 앱 안에 최대 30편 보관하고 프로젝트와 컬렉션은 다시 열어 편집합니다.", "한 번 만든 소재를 버리지 않고 다른 화면비와 구성으로 다시 활용합니다."],
+    ],
+    stories: [
+      ["01", "여행의 마지막 밤", "여행 사진과 짧은 영상을 고르고 음악 한 곡을 선택합니다. 빠른 영화로 길이를 맞춘 뒤 엔딩까지 미리 보고, 가족에게 보낼 MP4를 완성합니다.", "여행 · 음악 길이 · 빠른 영화"],
+      ["02", "움직이는 사진만 모을 때", "Live Photo와 Motion Photo를 넣고 AiShot이 찾은 순간을 살펴봅니다. 마음에 드는 컷의 순서와 자막만 다듬어 움직이는 기록을 한 편으로 남깁니다.", "Live Photo · Motion Photo · AiShot"],
+      ["03", "같은 이야기, 다른 화면", "저장해 둔 프로젝트를 다시 열어 화면비와 엔딩 카드를 바꿉니다. 미리보기로 확인한 뒤 새 버전을 파일과 갤러리에 각각 저장합니다.", "프로젝트 · 화면비 · 다시 만들기"],
+    ],
+    ctaEyebrow: "YOUR MOMENTS, NOW PLAYING",
+    ctaTitle: <>카메라 롤에 머문 순간을.<br /><span>지금 재생되는 이야기로.</span></>,
+    ctaBody: "사진 몇 장과 영상 몇 개면 충분합니다. HanClip에서 고르고, 음악을 얹고, 한 편으로 완성하세요.",
+    ctaLabel: "HanClip 시작하기",
+  },
+  trackpadguard: {
+    tone: "guard",
+    eyebrow: "TYPE WITHOUT THE JUMP",
+    headline: <>타이핑할 때,<br /><span>커서는 제자리에.</span></>,
+    description: "손바닥이 트랙패드에 닿아도 글쓰기 흐름을 놓치지 않도록. 입력 중에는 이동·클릭·스크롤을 막고, 내가 원할 때 즉시 다시 엽니다.",
+    image: "/apps/trackpadguard/trackpadguard-campaign.png",
+    imageAlt: "타이핑 중 트랙패드의 잠금 구역과 즉시 해제 구역을 표현한 TrackpadGuard 캠페인 이미지",
+    imageLabel: "TYPE → LOCK · TOUCH → RELEASE",
+    facts: [["1s", "마지막 키 입력 후 자동 해제"], ["4P", "네 점으로 그리는 해제 구역"], ["SAFE", "좌표를 못 읽으면 잠금 안 함"]],
+    advantages: [
+      ["01", "LOCK WHILE TYPING", "글을 쓰는 동안, 실수 입력은 멈춥니다.", "키보드 입력 중 트랙패드의 포인터 이동·클릭·스크롤을 막습니다.", "커서가 다른 문단으로 뛰거나 원치 않는 클릭이 생기는 순간을 줄입니다."],
+      ["02", "AUTO RELEASE", "손을 멈추면 1초 뒤, 다시 움직입니다.", "마지막 키 입력 후 1초가 지나면 트랙패드 잠금을 자동으로 풉니다.", "설정을 다시 열지 않고 타이핑과 포인터 작업을 자연스럽게 오갑니다."],
+      ["03", "TOUCH TO RELEASE", "기다릴 틈이 없을 땐, 정한 곳을 터치하세요.", "네 점으로 편집한 물리적 구역을 새로 터치하면 즉시 해제됩니다.", "자주 쓰는 손동작에 맞춰 나만의 빠른 해제 지점을 만듭니다."],
+      ["04", "OTHER POINTERS", "마우스와 펜은 바로 알아봅니다.", "마우스·트랙볼·펜 태블릿의 이동·클릭·스크롤이 들어오면 잠금을 풉니다.", "트랙패드 보호 때문에 다른 입력 장치의 흐름까지 끊기지 않습니다."],
+      ["05", "FAIL SAFE", "잠글 수 없는 상태라면, 잠그지 않습니다.", "멀티터치 좌표를 읽지 못하면 잠금을 시작하지 않고 비상 단축키도 제공합니다.", "예외 상황에서도 포인터를 잃지 않도록 빠져나올 길을 남깁니다."],
+      ["06", "LOCAL BY DESIGN", "키 내용도, 터치 좌표도 쌓지 않습니다.", "키 입력 내용과 터치 좌표를 저장하거나 전송하지 않으며 서명된 업데이트를 사용합니다.", "입력 보호 기능이 내 작업 내용을 수집하는 도구가 되지 않습니다."],
+    ],
+    stories: [
+      ["01", "긴 원고에 집중할 때", "손을 노트북에 편하게 올리고 문장을 이어갑니다. 입력 중 커서는 제자리에 있고, 잠깐 멈추면 1초 뒤 다시 포인터를 사용합니다.", "글쓰기 · 커서 보호 · 자동 해제"],
+      ["02", "커서를 바로 꺼내야 할 때", "트랙패드 아래쪽에 해제 구역을 그려 둡니다. 타이핑 중에도 그 지점만 새로 터치해 잠금을 즉시 풀고, 빨간 메뉴 아이콘으로 상태를 확인합니다.", "사용자 구역 · 즉시 해제 · 상태 표시"],
+      ["03", "마우스와 펜을 함께 쓸 때", "키보드로 입력하다 마우스를 움직이거나 펜으로 클릭합니다. 다른 포인팅 장치가 들어오는 순간 잠금이 풀려 작업 도구를 바로 바꿉니다.", "마우스 · 트랙볼 · 펜 태블릿"],
+    ],
+    ctaEyebrow: "KEEP YOUR FLOW",
+    ctaTitle: <>문장은 계속 쓰고.<br /><span>커서는 흔들리지 않게.</span></>,
+    ctaBody: "macOS 13 이상에서 나만의 해제 구역을 정하고, 다음 타이핑부터 TrackpadGuard의 차이를 확인하세요.",
+    ctaLabel: "TrackpadGuard 받기",
+  },
+  ccmb: {
+    tone: "meter",
+    eyebrow: "FOUR SERVICES, ONE GLANCE",
+    headline: <>AI 사용량,<br /><span>메뉴 막대 한 칸이면 끝.</span></>,
+    description: "Codex·Claude·Gemini·Grok의 사용량과 갱신 시간을 네 칸 링에 모읍니다. 작업을 시작하기 전에, 지금 어디에 여유가 있는지 한눈에 확인하세요.",
+    image: "/apps/ccmb/ccmb-campaign.png",
+    imageAlt: "네 개의 사용량 링이 메뉴와 항상 표시 패널에 나란히 보이는 CCMB 캠페인 이미지",
+    imageLabel: "CODEX · CLAUDE · GEMINI · GROK",
+    facts: [["04", "AI 서비스 한 패널"], ["02", "메뉴 · 항상 표시 패널"], ["LOCAL", "기존 CLI 세션 읽기 전용"]],
+    advantages: [
+      ["01", "FOUR RINGS", "네 서비스의 남은 여유를 한눈에.", "Codex·Claude·Gemini·Grok의 사용량과 크레딧 정보를 4열 링으로 모읍니다.", "서비스를 하나씩 열지 않고 다음 작업에 쓸 도구를 빠르게 가늠합니다."],
+      ["02", "REFRESH CLOCK", "언제 갱신되는지도 함께 봅니다.", "서비스별 새로고침 간격과 다음 갱신까지 남은 시간을 표시합니다.", "오래된 수치를 새 정보처럼 읽지 않고 확인 시점을 함께 판단합니다."],
+      ["03", "TWO VIEWS", "메뉴에서도, 항상 보이는 패널에서도.", "메뉴 패널과 항상 표시 패널이 같은 정보를 보여 주며 불투명도는 95–100%로 조절합니다.", "작업 방식에 맞는 위치에 두고 같은 현황을 계속 확인합니다."],
+      ["04", "FRESH LOCAL DATA", "다른 도구도 같은 상태를 읽습니다.", "계정·플랜·갱신 상태를 정렬하고 신선도 정보가 포함된 로컬 JSON을 노출합니다.", "앱과 Codex 대화가 서로 다른 오래된 수치를 보지 않도록 연결합니다."],
+      ["05", "RECOVERY", "잠자기에서 깨어나도 다시 이어집니다.", "네트워크 변화와 잠자기·깨우기 뒤 복구하며 로그인 시 실행과 서명된 업데이트를 지원합니다.", "매번 앱 상태를 되돌리는 대신 메뉴 막대의 모니터링 흐름을 유지합니다."],
+      ["06", "NO BUILT-IN KEYS", "새 API 키를 앱에 넣지 않습니다.", "이미 로그인된 로컬 CLI 세션을 읽기 전용으로 사용하며 분석·원격 텔레메트리를 보내지 않습니다.", "사용량 확인을 위해 별도의 키 보관과 원격 분석을 추가하지 않습니다."],
+    ],
+    stories: [
+      ["01", "큰 작업을 시작하기 전에", "메뉴 막대의 네 칸 링을 열어 각 서비스의 남은 사용량과 갱신 시간을 봅니다. 여유가 있는 도구를 확인하고 오늘의 작업을 배분합니다.", "네 서비스 · 잔량 · 갱신 시간"],
+      ["02", "패널을 늘 보이는 곳에", "작업 화면 옆에 항상 표시 패널을 두고 메뉴와 같은 수치를 확인합니다. 맥이 잠자기에서 깨어나거나 네트워크가 돌아온 뒤에도 흐름을 이어갑니다.", "항상 표시 · 복구 · 한눈에"],
+      ["03", "같은 데이터를 다른 도구로", "신선도가 포함된 로컬 JSON을 다른 앱과 Codex 대화에서 읽습니다. CCMB에는 새 API 키를 넣지 않고 기존 CLI 세션만 사용합니다.", "로컬 JSON · 신선도 · 읽기 전용"],
+    ],
+    ctaEyebrow: "KNOW BEFORE YOU START",
+    ctaTitle: <>열어 보기 전에.<br /><span>남은 여유부터 보세요.</span></>,
+    ctaBody: "네 개의 AI 서비스를 오가는 작업이라면, 비공식 macOS 메뉴 막대 앱 CCMB로 사용량 확인부터 한곳에 모으세요.",
+    ctaLabel: "CCMB 다운로드",
+  },
+  stand: {
+    tone: "night",
+    eyebrow: "MORE THAN A BEDSIDE CLOCK",
+    headline: <>낮에는 시계.<br /><span>밤에는 조용한 메이트.</span></>,
+    description: "플립 클록·날씨·배터리·음악을 한자리에 두고, 밤에는 움직임과 큰 소리에 화면과 조명으로 반응합니다. 아침에는 기기에 남은 후보 소리 타임라인을 확인하세요.",
+    image: "/apps/stand/stand-campaign.png",
+    imageAlt: "어두운 침실에서 플립 클록과 소리 타임라인이 은은하게 빛나는 S.tand 캠페인 이미지",
+    imageLabel: "CLOCK · MATE · MUSIC · LOCAL TIMELINE",
+    facts: [["2min", "메이트 모드 준비 시간"], ["06", "음악 스트립 슬롯"], ["LOCAL", "후보 소리 기기 내 타임라인"]],
+    advantages: [
+      ["01", "FLIP CLOCK", "세로로도, 가로로도 자리에 맞습니다.", "플립 클록과 날씨, 배터리를 iPhone·iPad·Mac·Android에서 세로와 가로로 보여 줍니다.", "책상과 침대 옆, 충전 중인 화면을 필요한 정보가 있는 오브제로 바꿉니다."],
+      ["02", "MATE MODE", "어두운 밤에는 낮게, 필요할 때는 반응하게.", "최소 밝기를 유지하고 메이트 모드 진입 2분 뒤 움직임이나 큰 소리에 화면·조명이 반응할 수 있습니다.", "밤새 밝은 화면을 켜 두지 않으면서 필요한 순간의 시각 반응을 둡니다."],
+      ["03", "LOCAL TIMELINE", "밤의 후보 소리를 아침에 훑어봅니다.", "코골이·잠꼬대·움직임으로 보이는 후보 소리를 기기 안에서 기록해 타임라인으로 보여 줍니다.", "밤새 앱을 지켜보지 않고 기록된 시점부터 확인합니다. 의료 진단 기능은 아닙니다."],
+      ["04", "MAKE IT YOURS", "시간을 보는 화면도 내 공간답게.", "밝기·시계 글꼴·레이아웃·테마를 조정합니다.", "같은 앱을 침실에는 차분하게, 책상에는 선명하게 맞춥니다."],
+      ["05", "SIX-SLOT MUSIC", "자주 듣는 소리를 여섯 칸에 둡니다.", "Apple Music·Classical 또는 Spotify·YouTube Music과 인터넷 라디오를 플랫폼에 맞춰 음악 스트립에 배치합니다.", "시계 화면을 떠나지 않고 자주 듣는 음악과 라디오로 들어갑니다."],
+      ["06", "YOU CONTROL BACKGROUND", "감지와 재생의 범위는 내가 정합니다.", "배경 동작은 기본으로 꺼져 있고, QR로 근처 보이소를 연결하면 움직임·소리 이벤트를 공유합니다.", "앱 밖에서도 이어갈지, 가까운 기기와 연결할지를 사용자가 선택합니다."],
+    ],
+    stories: [
+      ["01", "침대 옆 가로 시계", "태블릿을 가로로 세워 플립 클록과 날씨, 배터리를 봅니다. 방이 어두워지면 화면은 낮은 밝기를 유지하고, 메이트 모드는 2분 뒤부터 반응을 준비합니다.", "침실 · 플립 클록 · 메이트 모드"],
+      ["02", "아침에 밤의 흐름을 볼 때", "기기 안에 남은 코골이·잠꼬대·움직임 후보의 시점을 타임라인으로 훑습니다. 의료 판단이 아니라 밤의 흐름을 되짚는 참고 기록으로 봅니다.", "로컬 기록 · 후보 소리 · 타임라인"],
+      ["03", "시계와 음악을 한자리에", "여섯 칸 음악 스트립에 자주 듣는 서비스와 라디오를 둡니다. 배경 동작은 꺼 둔 채 앱 안에서만 감지와 재생을 사용합니다.", "음악 스트립 · 라디오 · 사용자 제어"],
+    ],
+    ctaEyebrow: "SET THE NIGHT YOUR WAY",
+    ctaTitle: <>밤을 더 밝히지 말고.<br /><span>필요한 만큼만 곁에.</span></>,
+    ctaBody: "시계와 음악, 메이트 모드와 로컬 타임라인을 내 공간에 맞춰 S.tand로 세워 보세요.",
+    ctaLabel: "S.tand 만나보기",
+  },
+  intosharp: {
+    tone: "web",
+    eyebrow: "OPEN THE WEB BY NAME",
+    headline: <>주소는 잊고.<br /><span>이름만 입력하세요.</span></>,
+    description: "검색과 자주 가는 사이트를 하나의 시작 화면에 모았습니다. 브라우저를 열고, 사이트 이름이나 검색어 한 줄로 바로 출발하세요.",
+    image: "/apps/intosharp/intosharp-campaign.png",
+    imageAlt: "하나의 검색줄에서 검색, 영상, 지도, 쇼핑과 자주 가는 사이트로 이어지는 인투샾 캠페인 이미지",
+    imageLabel: "ONE LINE → SEARCH · VIDEO · MAP · SHOPPING",
+    facts: [["01", "하나의 시작 화면"], ["05", "선택 가능한 검색 목적"], ["2X", "PC · 모바일 반응형"]],
+    advantages: [
+      ["01", "NAME, NOT URL", "사이트 주소 대신 이름으로 엽니다.", "등록된 사이트 이름을 검색줄에 입력하면 해당 페이지로 이동합니다.", "긴 주소를 외우거나 즐겨찾기 폴더를 헤매지 않고 기억나는 이름부터 입력합니다."],
+      ["02", "ONE-LINE SEARCH", "검색도 같은 한 줄에서 시작합니다.", "네이버·Google·YouTube·지도·쇼핑을 고르고 검색어를 입력합니다.", "찾으려는 종류에 맞춰 검색 목적지만 바꾸고 입력 흐름은 그대로 유지합니다."],
+      ["03", "PURPOSE GROUPS", "자주 가는 곳을 쓰임별로 펼쳐 봅니다.", "일·이야기마당·볼거리·연장처럼 목적에 따라 나눈 이음말을 한 화면에 모읍니다.", "링크 이름을 몰라도 지금 하려는 일의 카테고리부터 찾아갑니다."],
+      ["04", "YOUR DEFAULTS", "내가 고른 검색과 화면을 기억합니다.", "선택한 검색 서비스와 밝고 어두운 테마를 같은 브라우저에 저장합니다.", "매번 같은 설정을 되풀이하지 않고 익숙한 시작 화면으로 돌아옵니다."],
+      ["05", "START PAGE", "브라우저를 여는 순간 바로 만납니다.", "인투샾을 브라우저의 시작 페이지로 등록해 사용할 수 있습니다.", "새 탭에서 무엇을 할지 다시 고르는 대신 내 인터넷 입구에서 곧바로 시작합니다."],
+      ["06", "DESKTOP & MOBILE", "PC에서도, 휴대폰 첫 화면에서도.", "PC·모바일에 반응하는 공개 웹 서비스이며 홈 화면 바로가기로도 열 수 있습니다.", "기기에 맞는 화면으로 같은 이름 기반 시작 경험을 이어갑니다."],
+    ],
+    stories: [
+      ["01", "출근해서 브라우저를 열 때", "시작 페이지로 지정한 인투샾이 먼저 열립니다. 자주 쓰는 사이트 이름을 입력해 바로 이동하고, 다음 업무도 같은 한 줄에서 검색합니다.", "시작 페이지 · 이름 이동 · 업무"],
+      ["02", "찾는 목적이 계속 바뀔 때", "같은 검색줄에서 지도와 쇼핑, YouTube를 차례로 바꿔 검색합니다. 입력 방식은 그대로 두고 결과를 볼 서비스만 고릅니다.", "통합 검색 · 지도 · 쇼핑 · 영상"],
+      ["03", "휴대폰에서 자주 가는 곳으로", "홈 화면 바로가기로 인투샾을 열고 목적별 이음말에서 자주 쓰는 사이트를 찾습니다. 선택한 테마와 검색 서비스는 같은 브라우저에서 이어집니다.", "모바일 · 이음말 · 개인화"],
+    ],
+    ctaEyebrow: "MAKE THE WEB YOURS",
+    ctaTitle: <>인터넷의 첫 화면을.<br /><span>내가 기억하는 방식으로.</span></>,
+    ctaBody: "설치 없이 바로 열고, 이름과 검색어만으로 나만의 웹 시작점을 만들어 보세요.",
+    ctaLabel: "인투샾 바로 열기",
+  },
+  airchurch: {
+    tone: "faith",
+    eyebrow: "DISCOVER FAITH, SHARE GOOD WILL",
+    headline: <>큰 곳보다.<br /><span>좋은 말씀과 선한 마음이 보이게.</span></>,
+    description: "교단과 공식 채널을 대조한 설교와 찬양을 발견하고, 작은 교회와 지역의 꾸준한 사역을 만납니다. 내가 가진 달란트는 필요한 교회와 이웃을 향해 연결하세요.",
+    image: "/apps/airchurch/airchurch-campaign.png",
+    imageAlt: "여러 지역 교회의 말씀과 찬양, 나눔과 기도가 따뜻한 빛으로 이어지는 에어처치 캠페인 이미지",
+    imageLabel: "SERMON · WORSHIP · COMMUNITY · GOOD SHARING",
+    facts: [["NO", "목회자 순위"], ["CROSS", "여러 공식 출처 대조"], ["OPEN", "가입 없이 공개 콘텐츠 탐색"]],
+    advantages: [
+      ["01", "SERMON & WORSHIP", "오늘 필요한 말씀과 찬양을 발견합니다.", "교단 소속과 공식 채널을 확인한 교회의 최신 설교와 찬양을 한곳에서 찾습니다.", "흩어진 공식 채널을 하나씩 찾기 전에 교회와 지역을 기준으로 둘러봅니다."],
+      ["02", "DISCOVERY, NOT RANKING", "경쟁보다 발견을 앞에 둡니다.", "목회자의 서열을 만들지 않고 작은 교회와 지역의 꾸준한 사역이 보이도록 구성합니다.", "규모와 인기 순위 밖에 있던 가까운 교회의 말씀도 함께 살펴봅니다."],
+      ["03", "GOOD SHARING", "가진 달란트를 필요한 곳으로 잇습니다.", "시간·경험·공간·기술·기도를 교회와 이웃의 필요에 연결하고 공개 전 내용을 검토합니다.", "돈만이 아니라 내가 이미 가진 것으로 참여할 가능성을 엽니다. 연결 성사를 보장하지는 않습니다."],
+      ["04", "SAFER COMMUNITY", "적은 개인정보로 이야기를 나눕니다.", "별칭을 사용하고 공동체 운영 원칙에 따라 첫 글을 검토합니다.", "공개 대화에 불필요한 연락처를 먼저 내놓지 않고 참여합니다."],
+      ["05", "CHECKED SOURCES", "확인하고, 틀리면 다시 살펴봅니다.", "교단·노회·공식 홈페이지·영상 채널을 교차 확인하고 신고·재검토·이의제기 절차를 둡니다.", "정보의 출처와 수정 경로를 함께 두되 검증의 완전성을 보장한다고 주장하지 않습니다."],
+      ["06", "BROWSE FIRST", "가입 전에 먼저 둘러보세요.", "공개 설교와 찬양을 보는 데 회원 가입이나 개인 연락처를 요구하지 않습니다.", "개인정보를 입력하기 전에 포털의 콘텐츠와 운영 방향부터 확인합니다."],
+    ],
+    stories: [
+      ["01", "새로운 동네에서 교회를 찾을 때", "지역과 교회 이름으로 말씀을 찾아 공식 채널을 확인합니다. 순위 없이 작은 교회와 지역 교회의 최신 설교와 찬양을 함께 살펴봅니다.", "지역 교회 · 말씀 · 공식 채널"],
+      ["02", "내 달란트를 나누고 싶을 때", "할 수 있는 일과 가능한 지역을 착한나눔에 남깁니다. 공개 전 검토를 거친 뒤 실제 필요와 이어질 가능성을 기다립니다.", "시간 · 기술 · 공간 · 기도"],
+      ["03", "가입 전에 먼저 보고 싶을 때", "연락처를 입력하지 않고 설교와 찬양을 둘러봅니다. 출처가 잘못된 것 같다면 신고와 재검토 절차를 확인합니다.", "공개 탐색 · 최소 개인정보 · 재검토"],
+    ],
+    ctaEyebrow: "FAITH MEETS GOOD WILL",
+    ctaTitle: <>좋은 말씀을 발견하고.<br /><span>선한 마음을 이어 보세요.</span></>,
+    ctaBody: "가입 없이 먼저 둘러보고, 우리 교회를 응원하고, 내가 가진 달란트로 가까운 필요에 참여하세요.",
+    ctaLabel: "에어처치 바로 열기",
+  },
+} as const;
+
+function ProductPromotion({ app }: { app: NonNullable<ReturnType<typeof findApp>> }) {
+  const campaign = productCampaigns[app.slug as keyof typeof productCampaigns];
+  if (!campaign) return null;
+
+  return (
+    <section className={`product-promo campaign-${campaign.tone}`} id="product-campaign">
+      <div className="shell product-promo-hero">
+        <div className="product-promo-copy reveal">
+          <p className="eyebrow">{campaign.eyebrow}</p>
+          <h2>{campaign.headline}</h2>
+          <p>{campaign.description}</p>
+          <div className="product-promo-actions">
+            <Link className="button product-promo-primary" href="#download">{campaign.ctaLabel} <span aria-hidden="true">↓</span></Link>
+            <Link className="button product-promo-secondary" href="#campaign-stories">내가 쓰는 장면 보기 <span aria-hidden="true">→</span></Link>
+          </div>
+        </div>
+        <div className="product-promo-image reveal">
+          <Image src={campaign.image} alt={campaign.imageAlt} width={1672} height={941} sizes="(max-width: 920px) 100vw, 58vw" unoptimized />
+          <div className="product-promo-image-label"><span>CAMPAIGN FEATURE</span><strong>{campaign.imageLabel}</strong></div>
+        </div>
+        <div className="product-promo-facts reveal" aria-label={`${app.name} 핵심 지원 범위`}>
+          {campaign.facts.map(([value, label]) => <p key={label}><strong>{value}</strong><span>{label}</span></p>)}
+        </div>
+      </div>
+
+      <div className="shell product-advantages">
+        <div className="product-section-intro reveal">
+          <p className="eyebrow">FEATURES WITH A PURPOSE</p>
+          <h2>기능을 나열하지 않고.<br /><span>달라지는 일을 보여드립니다.</span></h2>
+          <p>{app.name}의 기능 하나하나가 실제 사용에서 어떤 이점으로 이어지는지 확인하세요.</p>
+        </div>
+        <div className="product-advantage-grid">
+          {campaign.advantages.map(([number, kicker, title, body, benefit]) => (
+            <article className="product-advantage-card reveal" key={number}>
+              <div><span>{number}</span><small>{kicker}</small></div>
+              <h3>{title}</h3><p>{body}</p><strong>{benefit}</strong>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div className="product-story-band" id="campaign-stories">
+        <div className="shell">
+          <div className="product-section-intro product-story-intro reveal">
+            <p className="eyebrow">IN YOUR DAY</p>
+            <h2>내가 쓰는 순간에는.<br /><span>이렇게 작동합니다.</span></h2>
+            <p>실제 기능으로 가능한 대표 사용 장면이며, 사용자 후기를 인용한 내용은 아닙니다.</p>
+          </div>
+          <div className="product-story-grid">
+            {campaign.stories.map(([number, title, quote, tag]) => (
+              <article className="product-story-card reveal" key={number}>
+                <div><span>{number}</span><small>{tag}</small></div><h3>{title}</h3><blockquote>“{quote}”</blockquote>
+              </article>
+            ))}
+          </div>
+          <div className="product-promo-cta reveal">
+            <p className="eyebrow">{campaign.ctaEyebrow}</p><h2>{campaign.ctaTitle}</h2><p>{campaign.ctaBody}</p>
+            <div><Link className="button product-promo-primary" href="#download">{campaign.ctaLabel} <span aria-hidden="true">↓</span></Link><Link className="button product-promo-secondary" href="#guide">사용법 먼저 보기 <span aria-hidden="true">→</span></Link></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function NasFinderPromotion() {
+  const advantages = [
+    {
+      number: "01",
+      kicker: "NAS · CLOUD · NETWORK",
+      title: "저장공간이 많을수록, 나스파인더 하나면 됩니다.",
+      body: "Synology NAS부터 SFTP·SMB·WebDAV·FTP 네트워크 장비, Dropbox·OneDrive·Google Drive 클라우드까지 한곳에서 연결하고 탐색합니다.",
+      benefit: "장비와 서비스마다 다른 앱을 찾아다니지 않고, 내 모든 저장공간으로 바로 들어갑니다.",
+    },
+    {
+      number: "02",
+      kicker: "SUPER THUMBNAIL",
+      title: "큰 NAS 폴더도, 표지부터 펼쳐 보세요.",
+      body: "Mac용 Super Thumbnail이 NAS와 Mac의 큰 미디어 폴더를 미리 훑어 나스파인더와 호환되는 수퍼썸네일을 만들고, 앱은 준비된 미리보기를 활용합니다.",
+      benefit: "수많은 사진과 영상 사이에서 파일명 대신 화면을 보고 원하는 항목을 찾습니다.",
+    },
+    {
+      number: "03",
+      kicker: "VLC PLAYBACK",
+      title: "영상은 내려받기 전에 재생하세요.",
+      body: "강력한 VLC 기반 재생과 원격 스트리밍으로 NAS의 영상을 먼저 확인하고, 정말 보관할 파일만 내려받습니다.",
+      benefit: "용량 큰 영상을 무작정 기다리지 않고, 지금 보고 싶은 콘텐츠부터 바로 확인합니다.",
+    },
+    {
+      number: "04",
+      kicker: "FILES APP PREVIEW",
+      title: "파일 앱에서도, 미리보기는 더 강력하게.",
+      body: "iPhone·iPad의 Apple 파일 앱에서 Synology와 SFTP 위치를 열고, 나스파인더의 연결과 강화된 미리보기를 익숙한 시스템 흐름 안에서 사용합니다.",
+      benefit: "나스파인더를 다시 찾아 열지 않아도, 다른 앱에서 파일을 고르는 순간까지 연결이 이어집니다.",
+    },
+    {
+      number: "05",
+      kicker: "PHONE HARD",
+      title: "내 휴대폰을, 진짜 휴대용 하드처럼.",
+      body: "같은 Wi‑Fi의 컴퓨터에서 웹 브라우저로 폰하드를 열고 iPhone·iPad 또는 Android 기기에 파일을 보냅니다.",
+      benefit: "케이블과 전용 PC 프로그램을 찾지 않고, 손에 든 휴대폰에 필요한 파일을 바로 담습니다.",
+    },
+    {
+      number: "06",
+      kicker: "LIVE ⇄ MOTION",
+      title: "움직이는 추억을 포기하지 마세요.",
+      body: "iPhone Live Photo와 Android Motion Photo를 QR로 연결해 양방향 전송하고, 받는 기기에 맞춰 원본을 보존하거나 자동 변환합니다.",
+      benefit: "가족과 친구의 휴대폰이 달라도 움직이는 순간을 사진 보관함으로 이어갑니다.",
+    },
+    {
+      number: "07",
+      kicker: "GET IT DONE",
+      title: "찾았다면, 그 자리에서 끝내세요.",
+      body: "연결이 허용하는 범위에서 업로드, 폴더 생성, 이름 변경, 복사·이동·삭제까지 처리합니다.",
+      benefit: "보기만 하는 탐색기를 넘어 실제 파일 정리까지 한 흐름으로 마칩니다.",
+    },
+    {
+      number: "08",
+      kicker: "DEVICE SECURITY",
+      title: "연결 정보는 기기 보안에 맡기세요.",
+      body: "Apple 기기는 Keychain, Android는 Keystore로 비밀번호와 로그인 토큰을 보호하고, 받은 파일과 캐시는 앱 전용 저장공간에 보관합니다.",
+      benefit: "편리함을 위해 기기의 기본 보안 방식을 포기하지 않습니다.",
+    },
+  ];
+
+  const stories = [
+    {
+      number: "01",
+      title: "가족의 휴대폰이 서로 달라도",
+      quote: "여행에서 나는 Android로 Motion Photo를 찍고, 가족은 iPhone을 썼습니다. 나스파인더로 QR만 맞추니 서로의 움직이는 사진이 각자의 사진 보관함에 맞는 형태로 들어왔습니다.",
+      tag: "가족 · 여행 · 움직이는 사진",
+    },
+    {
+      number: "02",
+      title: "NAS 속 영상을 소파에서 찾을 때",
+      quote: "Mac용 Super Thumbnail으로 큰 미디어 폴더의 미리보기를 준비해 뒀습니다. iPad에서 Synology를 열어 화면으로 영상을 찾고, VLC 기반 재생으로 먼저 확인한 뒤 필요한 파일만 내려받았습니다.",
+      tag: "Super Thumbnail · VLC · NAS",
+    },
+    {
+      number: "03",
+      title: "컴퓨터의 파일을 폰에서 써야 할 때",
+      quote: "같은 Wi‑Fi에서 컴퓨터 브라우저로 폰하드를 열어 자료를 보냈습니다. 케이블이나 별도 전송 프로그램을 찾지 않고, 받은 파일을 폰에서 바로 다음 작업에 사용했습니다.",
+      tag: "휴대용 하드 · 같은 Wi‑Fi · 업무 파일",
+    },
+    {
+      number: "04",
+      title: "다른 앱에서 NAS 파일이 필요할 때",
+      quote: "문서 앱에서 파일을 첨부하려고 Apple 파일 앱을 열었습니다. Synology 위치로 바로 들어가 강화된 미리보기로 내용을 확인하고, 필요한 파일을 골라 작업을 이어갔습니다.",
+      tag: "파일 앱 · 강화된 미리보기 · 시스템 연동",
+    },
+  ];
+
+  return (
+    <section className="nas-promo" id="why-nasfinder">
+      <div className="shell nas-promo-hero">
+        <div className="nas-promo-copy reveal">
+          <p className="eyebrow">NOT JUST A FILE BROWSER</p>
+          <h2>내 파일도,<br />움직이는 추억도.<br /><span>기기 경계 없이.</span></h2>
+          <p>
+            저장소가 흩어져 있어도, 사용하는 기기가 달라도 괜찮습니다.
+            나스파인더는 찾기·보기·정리·전송을 한 흐름으로 묶어
+            파일이 있는 곳과 지금 손에 든 기기를 바로 연결합니다.
+          </p>
+          <div className="nas-promo-actions">
+            <Link className="button nas-promo-primary" href="#download">지금 나스파인더 받기 <span aria-hidden="true">↓</span></Link>
+            <Link className="button nas-promo-secondary" href="#stories">내가 쓰는 장면 보기 <span aria-hidden="true">→</span></Link>
+          </div>
+        </div>
+        <div className="nas-promo-image reveal">
+          <Image
+            src="/apps/nasfinder/live-motion-campaign.png"
+            alt="Live Photo와 Motion Photo가 iPhone과 Android 사이에서 양방향으로 이동하는 모습을 표현한 나스파인더 캠페인 이미지"
+            width={1672}
+            height={941}
+            sizes="(max-width: 920px) 100vw, 58vw"
+            priority
+            unoptimized
+          />
+          <div className="nas-promo-image-label"><span>FLAGSHIP FEATURE</span><strong>Live Photo ⇄ Motion Photo</strong></div>
+        </div>
+        <div className="nas-promo-facts reveal" aria-label="나스파인더 핵심 지원 범위">
+          <p><strong>08</strong><span>지원 저장소·연결</span></p>
+          <p><strong>04</strong><span>iPhone · iPad · Mac · Android</span></p>
+          <p><strong>⇄</strong><span>움직이는 사진 양방향 변환</span></p>
+        </div>
+      </div>
+
+      <div className="shell nas-advantages">
+        <div className="nas-section-intro reveal">
+          <p className="eyebrow">FEATURES THAT PAY OFF</p>
+          <h2>기능은 많게.<br /><span>사용은 단순하게.</span></h2>
+          <p>네트워크 연결부터 수퍼썸네일, VLC 재생, 파일 앱, 폰하드와 움직이는 사진까지. 기능이 내 일상을 어떻게 바꾸는지 바로 보여드립니다.</p>
+        </div>
+        <div className="nas-advantage-grid">
+          {advantages.map((advantage) => (
+            <article className="nas-advantage-card reveal" key={advantage.number}>
+              <div><span>{advantage.number}</span><small>{advantage.kicker}</small></div>
+              <h3>{advantage.title}</h3>
+              <p>{advantage.body}</p>
+              <strong>{advantage.benefit}</strong>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div className="nas-story-band" id="stories">
+        <div className="shell">
+          <div className="nas-section-intro nas-story-intro reveal">
+            <p className="eyebrow">USE IT YOUR WAY</p>
+            <h2>내 일상에서는,<br /><span>이렇게 달라집니다.</span></h2>
+            <p>실제 기능으로 가능한 사용 장면을 사용자 목소리로 구성했습니다.</p>
+          </div>
+          <div className="nas-story-grid">
+            {stories.map((story) => (
+              <article className="nas-story-card reveal" key={story.number}>
+                <div><span>{story.number}</span><small>{story.tag}</small></div>
+                <h3>{story.title}</h3>
+                <blockquote>“{story.quote}”</blockquote>
+              </article>
+            ))}
+          </div>
+          <div className="nas-promo-cta reveal">
+            <p className="eyebrow">YOUR STORAGE, WITHIN REACH</p>
+            <h2>파일이 있는 곳에 연결하세요.<br /><span>받기 전에 먼저 여세요.</span></h2>
+            <p>iPhone·iPad·Mac·Android에서 지금 쓰는 저장공간을 연결하고, 나스파인더의 차이를 직접 확인해 보세요.</p>
+            <div>
+              <Link className="button nas-promo-primary" href="#download">다운로드와 설치 방법 <span aria-hidden="true">↓</span></Link>
+              <Link className="button nas-promo-secondary" href="#guide">처음부터 사용해 보기 <span aria-hidden="true">→</span></Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 

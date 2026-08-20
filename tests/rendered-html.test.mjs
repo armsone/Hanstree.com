@@ -43,6 +43,11 @@ test("server-renders the NasFinder.com homepage", async () => {
   assert.doesNotMatch(html, /플랫폼별 제공 버전/);
   assert.match(html, />06<\/strong><span>iPhone · iPad · macOS · Android · Web · Windows \(커밍\)/);
   assert.match(html, />01<\/strong><span>한 사람의 꾸준한 기록/);
+  assert.match(html, /id="motion-bridge"/);
+  assert.match(html, /움직이는 순간을/);
+  assert.match(html, /Live Photo → Motion Photo/);
+  assert.match(html, /Motion Photo → Live Photo/);
+  assert.match(html, /QR 연결 · 사진 보관함 저장/);
   assert.match(html, /개인정보처리방침/);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|Building your site/i);
 });
@@ -75,8 +80,71 @@ test("renders the latest NasFinder and HanClip capabilities", async () => {
   ]);
   assert.match(nasFinder, /파일 앱에서 바로 가져오기/);
   assert.match(nasFinder, /네트워크 NAS 다섯 아이콘/);
+  assert.match(nasFinder, /NOT JUST A FILE BROWSER/);
+  assert.match(nasFinder, /내 파일도/);
+  assert.match(nasFinder, /움직이는 추억도/);
+  assert.match(nasFinder, /live-motion-campaign\.png/);
+  assert.match(nasFinder, /가족의 휴대폰이 서로 달라도/);
+  assert.match(nasFinder, /Super Thumbnail과 VLC 미리보기/);
+  assert.match(nasFinder, /내 휴대폰을, 진짜 휴대용 하드처럼/);
+  assert.match(nasFinder, /파일 앱에서도, 미리보기는 더 강력하게/);
+  assert.match(nasFinder, /다운로드와 설치 방법/);
   assert.match(hanClip, /완성시간을 음악 길이에 맞춘/);
   assert.match(hanClip, /개봉영화 보관함/);
+});
+
+test("renders full promotional campaigns for HanClip, TrackpadGuard, CCMB, and S.tand", async () => {
+  const responses = await Promise.all([
+    render("/apps/hanclip"),
+    render("/apps/trackpadguard"),
+    render("/apps/ccmb"),
+    render("/apps/stand"),
+  ]);
+  responses.forEach((response) => assert.equal(response.status, 200));
+
+  const [hanClip, trackpadGuard, ccmb, stand] = await Promise.all(responses.map((response) => response.text()));
+  assert.match(hanClip, /찍어 둔 순간을/);
+  assert.match(hanClip, /hanclip-campaign\.png/);
+  assert.match(hanClip, /여행의 마지막 밤/);
+  assert.match(trackpadGuard, /타이핑할 때/);
+  assert.match(trackpadGuard, /trackpadguard-campaign\.png/);
+  assert.match(trackpadGuard, /키 내용도, 터치 좌표도 쌓지 않습니다/);
+  assert.match(ccmb, /AI 사용량/);
+  assert.match(ccmb, /ccmb-campaign\.png/);
+  assert.match(ccmb, /네 서비스의 남은 여유를 한눈에/);
+  assert.match(stand, /밤에는 조용한 메이트/);
+  assert.match(stand, /stand-campaign\.png/);
+  assert.match(stand, /의료 진단 기능은 아닙니다/);
+  for (const html of [hanClip, trackpadGuard, ccmb, stand]) {
+    assert.match(html, /실제 기능으로 가능한 대표 사용 장면이며, 사용자 후기를 인용한 내용은 아닙니다/);
+    assert.match(html, /id="product-campaign"/);
+    assert.match(html, /id="campaign-stories"/);
+  }
+});
+
+test("renders full promotional campaigns for every remaining product", async () => {
+  const responses = await Promise.all([
+    render("/apps/super-thumbnail"),
+    render("/apps/intosharp"),
+    render("/apps/airchurch"),
+  ]);
+  responses.forEach((response) => assert.equal(response.status, 200));
+
+  const [superThumbnail, intoSharp, airChurch] = await Promise.all(responses.map((response) => response.text()));
+  assert.match(superThumbnail, /수만 개의 파일을/);
+  assert.match(superThumbnail, /super-thumbnail-campaign\.png/);
+  assert.match(superThumbnail, /16,540/);
+  assert.match(superThumbnail, /하룻밤에 끝나지 않는 보관함/);
+  assert.match(intoSharp, /주소는 잊고/);
+  assert.match(intoSharp, /intosharp-campaign\.png/);
+  assert.match(intoSharp, /인터넷의 첫 화면을/);
+  assert.match(airChurch, /좋은 말씀과 선한 마음이 보이게/);
+  assert.match(airChurch, /airchurch-campaign\.png/);
+  assert.match(airChurch, /연결 성사를 보장하지는 않습니다/);
+  for (const html of [superThumbnail, intoSharp, airChurch]) {
+    assert.match(html, /id="product-campaign"/);
+    assert.match(html, /실제 기능으로 가능한 대표 사용 장면이며, 사용자 후기를 인용한 내용은 아닙니다/);
+  }
 });
 
 test("renders the TrackpadGuard product, support link, and requested default region", async () => {

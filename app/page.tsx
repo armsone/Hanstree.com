@@ -44,6 +44,11 @@ export default function Home() {
             NasFinder.com은 나스파인더를 시작으로, 작지만 분명한 문제를
             해결하는 앱과 웹 서비스를 만들고 기록하는 공간입니다.
           </p>
+          <a className="hero-feature-callout" href="#motion-bridge">
+            <span>NASFINDER 핵심 기능</span>
+            <strong>Live Photo <b aria-hidden="true">⇄</b> Motion Photo</strong>
+            <i aria-hidden="true">↓</i>
+          </a>
           <div className="hero-actions">
             <Link className="button button-primary" href="#apps">
               앱 둘러보기 <span aria-hidden="true">↘</span>
@@ -82,6 +87,59 @@ export default function Home() {
           <p><strong>{String(productCount).padStart(2, "0")}</strong><span>현재 소개하는 제품</span></p>
           <p><strong>06</strong><span>iPhone · iPad · macOS · Android · Web · Windows (커밍)</span></p>
           <p><strong>01</strong><span>한 사람의 꾸준한 기록</span></p>
+        </div>
+      </section>
+
+      <section className="motion-bridge-section" id="motion-bridge">
+        <div className="shell motion-bridge-shell">
+          <div className="motion-bridge-copy reveal">
+            <p className="eyebrow">NASFINDER FLAGSHIP FEATURE</p>
+            <h2>움직이는 순간을,<br /><span>기기 경계 없이.</span></h2>
+            <p className="motion-bridge-lede">
+              iPhone의 Live Photo와 Android의 Motion Photo를 양방향으로
+              주고받습니다. QR로 두 기기를 연결하면 받는 기기에 맞춰
+              원본을 보존하거나 자동 변환해 사진 보관함에 저장합니다.
+            </p>
+            <Link className="button motion-bridge-button" href="/apps/nasfinder#why-nasfinder">
+              나스파인더 기능 자세히 보기 <span aria-hidden="true">→</span>
+            </Link>
+          </div>
+
+          <div className="motion-bridge-visual reveal" aria-label="Live Photo와 Motion Photo의 양방향 변환">
+            <div className="motion-device motion-device-apple">
+              <div className="motion-device-top"><span>iPhone</span><b>LIVE</b></div>
+              <div className="motion-frame">
+                <i className="motion-sun" />
+                <i className="motion-hill motion-hill-back" />
+                <i className="motion-hill motion-hill-front" />
+                <span className="motion-play" aria-hidden="true">▶</span>
+              </div>
+              <strong>Live Photo</strong>
+            </div>
+
+            <div className="motion-swap" aria-hidden="true">
+              <span>자동 변환</span>
+              <strong>⇄</strong>
+              <small>QR로 연결</small>
+            </div>
+
+            <div className="motion-device motion-device-android">
+              <div className="motion-device-top"><span>Android</span><b>MOTION</b></div>
+              <div className="motion-frame">
+                <i className="motion-sun" />
+                <i className="motion-hill motion-hill-back" />
+                <i className="motion-hill motion-hill-front" />
+                <span className="motion-play" aria-hidden="true">▶</span>
+              </div>
+              <strong>Motion Photo</strong>
+            </div>
+          </div>
+
+          <div className="motion-bridge-proof reveal" aria-label="핵심 기능 요약">
+            <p><span>01</span><strong>Live Photo → Motion Photo</strong><small>Android에 맞춰 전달</small></p>
+            <p><span>02</span><strong>Motion Photo → Live Photo</strong><small>iPhone에 맞춰 전달</small></p>
+            <p><span>03</span><strong>QR 연결 · 사진 보관함 저장</strong><small>고르고, 연결하고, 받기</small></p>
+          </div>
         </div>
       </section>
 
