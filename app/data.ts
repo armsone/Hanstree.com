@@ -300,11 +300,13 @@ export const apps: AppData[] = [
     theme: "blue",
     artwork: "menubar",
     platforms: [
-      { name: "macOS", status: "공개", detail: "v0.4.0 · macOS 10.15+", url: "https://github.com/armsone/CCMB/releases/tag/v0.4.0", downloadLabel: "DMG 다운로드", checksum: "8e508de4a55258b50768e8b5e5664a1cefc002fd4c59923e0f61f75416829a77" },
+      { name: "macOS", status: "공개", detail: "v0.4.1 · macOS 10.15+", url: "https://github.com/armsone/CCMB/releases/tag/v0.4.1", downloadLabel: "DMG 다운로드", checksum: "65922977b77b20fe0a3c0117eec4a21b445d9e1439037fdd64fc2eec1ba2d904" },
     ],
     features: [
       { title: "세 AI를 한눈에", body: "Codex의 남은 주간 사용량·크레딧과 Claude·Gemini의 세션·주간 사용량을 통일된 링과 패널로 나란히 확인합니다." },
-      { title: "서비스별 새로고침", body: "Codex·Claude·Gemini의 갱신 주기를 각각 설정하고, Claude 요청 제한 시 남은 대기 시간을 확인합니다." },
+      { title: "서비스별 새로고침", body: "Codex·Claude·Gemini의 갱신 주기를 목록에서 각각 선택하고, 다음 갱신까지 남은 시간을 확인합니다." },
+      { title: "같은 모양의 두 패널", body: "메뉴 막대에서 여는 패널과 항상 보기 패널에 같은 정보·간격·하단 설정을 제공합니다." },
+      { title: "배경 불투명도", body: "두 패널의 전체 배경 불투명도를 95%~100% 범위에서 수치를 보며 조절합니다." },
       { title: "정렬된 계정·갱신 정보", body: "세 서비스의 요금제·계정 정보·상대 갱신 시각을 같은 기준선에서 비교합니다." },
       { title: "로컬 공유", body: "최신성 근거가 포함된 로컬 JSON을 다른 앱과 Codex 대화에서 안전하게 읽습니다." },
       { title: "오프라인 복구", body: "네트워크 단절과 Mac의 잠자기·깨우기 이후에도 상태를 회복합니다." },
@@ -314,13 +316,14 @@ export const apps: AppData[] = [
     guide: [
       { title: "설치 준비", body: "macOS 10.15 이상과 로그인된 Codex CLI가 필요하며, Claude는 Claude Code, Gemini는 Antigravity agy CLI에서 정보를 가져옵니다." },
       { title: "DMG로 설치", body: "GitHub Release에서 DMG를 받아 앱을 Applications 폴더로 옮깁니다." },
-      { title: "표시와 새로고침", body: "메뉴 막대 값과 상세 정보, 자동 새로고침 간격을 설정합니다." },
+      { title: "표시와 새로고침", body: "메뉴 막대 값과 상세 정보, 패널 배경 불투명도와 자동 새로고침 간격을 설정합니다." },
       { title: "다른 대화와 공유", body: "로컬 ccmb-usage 명령으로 최신성 여부가 포함된 사용량 정보를 확인합니다." },
     ],
     progress: [
       { state: "done", title: "공개 배포", body: "Universal DMG와 GitHub Releases 배포 흐름 제공" },
       { state: "done", title: "서명된 자동 업데이트", body: "Sparkle 기반 업데이트와 무결성 확인" },
       { state: "done", title: "로컬 사용량 공유", body: "다른 앱과 대화를 위한 최신성 포함 JSON 및 명령 제공" },
+      { state: "done", title: "통합 사용량 패널", body: "메뉴 패널과 항상 보기의 레이아웃·설정 통합 및 배경 불투명도 조절" },
       { state: "active", title: "안정성 개선", body: "Codex·Claude·Gemini 변화와 인증·요청 제한·네트워크·절전 예외에 맞춰 지속 개선" },
     ],
     screenshots: [
