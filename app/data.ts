@@ -230,10 +230,10 @@ export const apps: AppData[] = [
       {
         name: "Android",
         status: "공개",
-        detail: "0.0.1 · APK v58 · Android 8.0+",
-        url: "https://github.com/armsone/S.tand-Android/releases/download/android-v58/S.tand-Android-v58.apk",
+        detail: "0.0.1 · APK v59 · Android 8.0+",
+        url: "https://github.com/armsone/S.tand-Android/releases/download/android-v59/S.tand-Android-v59.apk",
         downloadLabel: "Android APK 바로 받기",
-        checksum: "79b958230a5d682696aad151f02ffa4dbc244fdb7f29832850247c99fd63faa1",
+        checksum: "f7741edb208f249cb29cff70b96db73d9fbb0e38b5d091964401d0cfe9ebd9dc",
       },
     ],
     features: [
@@ -242,7 +242,7 @@ export const apps: AppData[] = [
       { title: "로컬 수면 기록", body: "코골이·잠꼬대·뒤척임 후보를 기기 안에 기록하고 타임라인으로 확인합니다." },
       { title: "내 화면 만들기", body: "밝기, 시계 글꼴과 배치, 테마를 화면 방향에 맞게 편집합니다. Mac에서는 음악 카드를 오른쪽 클릭해 순서를 바꾸거나 인터넷 라디오를 바로 수정합니다." },
       { title: "보이소", body: "QR로 가까운 기기를 연결해 움직임·소리 이벤트를 나누거나, 무전기 역할에서 버튼을 눌러 연결된 화면을 직접 부릅니다." },
-      { title: "여섯 칸 음악 스트립", body: "로고 아래 한 줄의 음악 채널을 좌우로 넘깁니다. 휴대전화 가로 화면에서는 iPhone과 Android 모두 잠소리·보이소·설정을 오른쪽에 고정하고 남은 폭만 음악 스트립으로 사용합니다." },
+      { title: "여섯 칸 음악 스트립", body: "로고 아래 한 줄의 음악 채널을 터치와 접근성 입력으로 좌우로 넘깁니다. 휴대전화 가로 화면에서는 iPhone과 Android 모두 잠소리·보이소·설정을 오른쪽에 고정하고 남은 폭만 음악 스트립으로 사용합니다." },
       { title: "Apple Music 재생 제어", body: "Apple Music과 Classical의 재생 상태를 분리해 유지합니다. 왼쪽 아이콘은 재생·일시정지를 바꾸고, 제목은 멈춘 상태에서 재생하며 재생 중에는 다음 곡으로 넘깁니다." },
       { title: "선택하는 백그라운드 동작", body: "백그라운드 모드는 권한 설정에서 켜고 끕니다. 기본값은 꺼짐이며, 꺼진 상태에서는 다른 앱으로 나갈 때 감지와 재생을 멈춥니다." },
       { title: "재현 가능한 화면 매치업", body: "한국어·서울 시간대·고정 시각 조건에서 iOS와 Android의 공통 화면 상태를 같은 의미 ID로 캡처하고 비교합니다." },
@@ -258,7 +258,7 @@ export const apps: AppData[] = [
     ],
     progress: [
       { state: "done", title: "시계와 수면 케어", body: "오브제 화면, 반응형 조명과 로컬 수면 기록 구현" },
-      { state: "done", title: "Android 공개 빌드", body: "S.tand Android v58 APK를 GitHub Releases에 공개" },
+      { state: "done", title: "Android 공개 빌드", body: "S.tand Android v59 APK를 GitHub Releases에 공개" },
       { state: "done", title: "보이소 무전기", body: "주변 소리 없이 버튼으로 연결된 화면을 부르는 무전기 역할과 3초 연타 방지·고시인성 알림 적용" },
       { state: "done", title: "Mac Catalyst 공개", body: "Developer ID 서명, Apple 공증과 Gatekeeper 검증을 마친 macOS 0.30.0 ZIP 공개" },
       { state: "done", title: "휴대전화 가로 음악 배치", body: "iPhone 대표 가로 배치를 Android에도 적용하고 음악 스트립과 오른쪽 고정 제어 패널이 겹치지 않게 정리" },
