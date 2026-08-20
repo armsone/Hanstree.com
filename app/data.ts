@@ -156,7 +156,7 @@ export const apps: AppData[] = [
     icon: "/apps/hanclip/icon.png",
     artwork: "phones",
     platforms: [
-      { name: "iOS · iPadOS", status: "완료", detail: "1.0.1 (3.11.55) · iOS·iPadOS 17+", availabilityNote: "TestFlight 업로드 완료" },
+      { name: "iOS · iPadOS", status: "완료", detail: "1.0.1 (3.12.55) · iOS·iPadOS 17+", availabilityNote: "TestFlight 업로드 완료" },
       { name: "Mac", status: "완료", detail: "Apple Silicon · iPad 앱 호환 모드", availabilityNote: "iPhone·iPad용 앱으로 지원" },
       {
         name: "Android",
@@ -169,7 +169,8 @@ export const apps: AppData[] = [
     ],
     features: [
       { title: "빠른 영화 만들기", body: "실제 장면 수와 영상 분량에 맞춰 시간을 고르게 배분하고, 엔딩을 포함한 완성시간을 음악 길이에 맞춘 뒤 결과를 다듬습니다." },
-      { title: "AiShot", body: "소리와 장면 변화를 참고해 필요한 순간을 자동으로 찾아 짧은 클립으로 남깁니다." },
+      { title: "AiShot", body: "골프 스윙의 준비·동작·임팩트 흐름과 타격음을 함께 살펴 실제 샷 순간을 자동으로 찾아 짧은 클립으로 남깁니다." },
+      { title: "무음 영상도 장면 분석", body: "타임랩스·슬로 모션처럼 오디오 트랙이 없는 영상은 화면 움직임을 분석하고, 뚜렷한 변화가 없으면 영상 중앙을 기준으로 하이라이트를 제안합니다." },
       { title: "장면을 내 방식으로", body: "순서, 길이, 화면비, 자막과 음악, 워터마크와 엔딩 카드를 조절합니다." },
       { title: "사진부터 Live Photo까지", body: "사진·영상·Live Photo와 Android Motion Photo, 파일과 공유 항목을 가져옵니다." },
       { title: "시사회 후 결정", body: "완성된 영화를 먼저 확인한 뒤 다시 편집하거나 사진 앱·갤러리·파일로 저장합니다." },
@@ -189,7 +190,8 @@ export const apps: AppData[] = [
       { state: "done", title: "Android 공개 빌드", body: "HanClip Android v551 APK를 GitHub Releases에 공개" },
       { state: "active", title: "플랫폼 경험 정렬", body: "iOS와 Android의 기능과 화면 동등성을 계속 다듬는 중" },
       { state: "done", title: "Apple Silicon Mac 지원", body: "iPhone·iPad와 같은 빌드를 Mac의 ‘iPhone 및 iPad용 앱’으로 실행하도록 지원" },
-      { state: "next", title: "현장 감도 검증", body: "다양한 영상과 실제 골프 환경에서 AiShot을 추가 검증" },
+      { state: "done", title: "AiShot 동작 인식 강화", body: "소리 단독 반응을 줄이고 화면 움직임과 기기 내 신체 자세 분석을 결합" },
+      { state: "active", title: "현장 감도 검증", body: "실제 골프 연습장 영상으로 레디 음성·인접 타석·연습 스윙과 실제 샷을 추가 검증 중" },
     ],
     screenshots: [
       { src: "/apps/hanclip/screens/ios-home.png", alt: "한클립 iOS 홈" },
@@ -201,7 +203,7 @@ export const apps: AppData[] = [
     github: ["https://github.com/armsone/HanClip", "https://github.com/armsone/HanClip-Android"],
     privacy: [
       "사용자가 고른 사진·영상·음원과 프로젝트 정보는 영화 제작을 위해 처리합니다.",
-      "카메라와 마이크는 AiShot에서 순간을 감지하고 촬영할 때 사용합니다.",
+      "카메라와 마이크는 AiShot에서 순간을 감지하고 촬영할 때 사용하며, 화면 움직임과 신체 자세 분석은 기기 안에서 처리합니다.",
       "기기에 내보낸 완성본은 앱을 삭제해도 남을 수 있으므로 사진 앱·갤러리에서 별도로 삭제해야 합니다.",
     ],
   },

@@ -110,6 +110,9 @@ test("renders the latest NasFinder and HanClip capabilities", async () => {
   assert.match(nasFinder, /다운로드와 설치 방법/);
   assert.match(hanClip, /완성시간을 음악 길이에 맞춘/);
   assert.match(hanClip, /개봉영화 보관함/);
+  assert.match(hanClip, /무음 영상도 장면 분석/);
+  assert.match(hanClip, /실제 스윙과 임팩트가 만나는 순간/);
+  assert.match(hanClip, /기기 내 신체 자세 분석/);
 });
 
 test("renders full promotional campaigns for HanClip, TrackpadGuard, CCMB, and S.tand", async () => {
@@ -258,7 +261,7 @@ test("renders current app release and TestFlight information", async () => {
   ]);
 
   assert.match(home, /202608201901/);
-  assert.match(home, /3\.11\.55/);
+  assert.match(home, /3\.12\.55/);
   assert.match(home, /0\.33\.0/);
   assert.match(home, /스타메니저/);
   assert.match(home, /2026년 8월 21일/);
