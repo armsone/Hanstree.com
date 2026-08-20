@@ -178,8 +178,8 @@ test("renders current app release and TestFlight information", async () => {
   assert.match(nasFinder, /Live Photos &amp; Motion Photos/);
   assert.match(hanClip, /APK v551/);
   assert.match(hanClip, /f548c579111041f09b3dc15c00c0a5781873789c97f350c13fcca1369c253132/);
-  assert.match(stand, /APK v55/);
-  assert.match(stand, /6b4711de0524f0772f1c27173175728f569aa3536350535e6eb7932ad7b21b08/);
+  assert.match(stand, /APK v57/);
+  assert.match(stand, /9099aae7532bc18bd35345a6939a256740925f0c41215eb1c7730f204a1055b7/);
   assert.doesNotMatch(home + nasFinder + hanClip + stand, /첫 공개판 준비 중|APK v2\b|APK v3\b|APK v544\b|APK v548\b|APK v52\b|APK v53\b/);
   assert.doesNotMatch(hanClip, /android-editor-finish-pets\.png/);
 });
