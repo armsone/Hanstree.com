@@ -560,7 +560,10 @@ export const apps: AppData[] = [
       { src: "/apps/starmanager/screens/android-composer.png", alt: "스타매니저 Android 만들기 화면" },
       { src: "/apps/starmanager/screens/android-result.png", alt: "스타매니저 Android 게시물 생성 결과" },
     ],
-    github: ["https://github.com/armsone/StarManager-Android"],
+    github: [
+      "https://github.com/armsone/StarManager",
+      "https://github.com/armsone/StarManager-Android",
+    ],
     privacy: [
       "프로필, 프리셋과 작성 설정은 사용자의 기기 안에 저장합니다.",
       "Apple AI를 사용할 수 있는 기기에서는 글 생성이 기기 안에서 처리됩니다.",

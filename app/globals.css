@@ -207,3 +207,7 @@ img { display: block; max-width: 100%; }
 @media (prefers-reduced-motion: reduce) {
   html{scroll-behavior:auto}.reveal,.orbit-app,.orbit-glow{animation:none!important}.button,.hero-feature-callout,.phone-shot,.nas-advantage-card,.support-cards>a{transition:none!important}
 }
+
+@media (min-width: 721px) {
+  .testflight-grid{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+}
