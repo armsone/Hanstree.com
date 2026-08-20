@@ -212,7 +212,7 @@ export const apps: AppData[] = [
     icon: "/apps/stand/icon.png",
     artwork: "clock",
     platforms: [
-      { name: "iOS · iPadOS", status: "완료", detail: "1.0.0 (0.32.2) · iOS·iPadOS 17+", availabilityNote: "TestFlight 업로드 완료" },
+      { name: "iOS · iPadOS", status: "완료", detail: "1.0.0 (0.32.5) · iOS·iPadOS 17+", availabilityNote: "TestFlight 업로드 완료" },
       {
         name: "macOS",
         status: "공개",
@@ -236,7 +236,7 @@ export const apps: AppData[] = [
       { title: "로컬 수면 기록", body: "코골이·잠꼬대·뒤척임 후보를 기기 안에 기록하고 타임라인으로 확인합니다." },
       { title: "내 화면 만들기", body: "밝기, 시계 글꼴과 배치, 테마를 화면 방향에 맞게 편집합니다. Mac에서는 음악 카드를 오른쪽 클릭해 순서를 바꾸거나 인터넷 라디오를 바로 수정합니다." },
       { title: "보이소", body: "QR로 가까운 기기를 연결해 움직임과 소리 이벤트를 조용히 나눕니다." },
-      { title: "여섯 칸 음악 스트립", body: "로고 아래 한 줄에 Apple Music, Apple Music Classical과 인터넷 라디오 네 칸을 고정해 좌우로 넘깁니다. iPad와 Mac의 넓은 화면에서는 더 많은 채널이 한 번에 보입니다." },
+      { title: "여섯 칸 음악 스트립", body: "로고 아래 한 줄에 Apple Music, Apple Music Classical과 인터넷 라디오 네 칸을 고정해 좌우로 넘깁니다. iPhone 가로 화면에서는 잠소리·보이소·설정을 오른쪽에 고정하고 남은 폭을 음악에 사용하며, 재생 중인 라디오도 자동으로 앞으로 정렬합니다." },
       { title: "Apple Music 재생 제어", body: "Apple Music과 Classical의 재생 상태를 분리해 유지합니다. 왼쪽 아이콘은 재생·일시정지를 바꾸고, 제목은 멈춘 상태에서 재생하며 재생 중에는 다음 곡으로 넘깁니다." },
       { title: "선택하는 백그라운드 동작", body: "백그라운드 모드는 권한 설정에서 켜고 끕니다. 기본값은 꺼짐이며, 꺼진 상태에서는 다른 앱으로 나갈 때 감지와 재생을 멈춥니다." },
       { title: "재현 가능한 화면 매치업", body: "한국어·서울 시간대·고정 시각 조건에서 iOS와 Android의 공통 화면 상태를 같은 의미 ID로 캡처하고 비교합니다." },
@@ -255,7 +255,7 @@ export const apps: AppData[] = [
       { state: "done", title: "Android 공개 빌드", body: "S.tand Android v54 APK를 GitHub Releases에 공개" },
       { state: "active", title: "보이소 안정화", body: "근거리 연결, 재연결과 백그라운드 알림을 개선 중" },
       { state: "done", title: "Mac Catalyst 공개", body: "Developer ID 서명, Apple 공증과 Gatekeeper 검증을 마친 macOS 0.30.0 ZIP 공개" },
-      { state: "active", title: "iOS·Android 화면 매치업", body: "15개 공통 상태를 자동 캡처하고 남은 아이콘·세부 기하 차이를 추적 중" },
+      { state: "done", title: "iPhone 가로 음악 배치", body: "대표 가로 배치를 공통 기본값으로 적용하고 음악 스트립과 고정 제어 패널이 겹치지 않게 정리" },
       { state: "next", title: "장시간 실기기 검증", body: "오디오·센서 흐름과 접근성을 다양한 기기에서 추가 검증" },
     ],
     screenshots: [
