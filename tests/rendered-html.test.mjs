@@ -170,11 +170,12 @@ test("renders current app release and TestFlight information", async () => {
     standResponse.text(),
   ]);
 
-  assert.match(home, /202608190036/);
+  assert.match(home, /202608201901/);
   assert.match(home, /3\.11\.55/);
   assert.match(home, /0\.32\.6/);
-  assert.match(nasFinder, /APK v6/);
-  assert.match(nasFinder, /7841018458ed575862a509707a15171c5175937b91c50292b5b7396421323736/);
+  assert.match(nasFinder, /APK v7/);
+  assert.match(nasFinder, /a4f43c3a5230be640b10c70ddf46295e20da7ca53679d266afe55875929baaca/);
+  assert.match(nasFinder, /Live Photos &amp; Motion Photos/);
   assert.match(hanClip, /APK v551/);
   assert.match(hanClip, /f548c579111041f09b3dc15c00c0a5781873789c97f350c13fcca1369c253132/);
   assert.match(stand, /APK v55/);
