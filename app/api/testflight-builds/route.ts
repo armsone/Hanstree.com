@@ -6,6 +6,7 @@ const APP_SOURCES = [
   { slug: "nasfinder", appName: "나스파인더", bundleId: "com.armsone.nasfinder" },
   { slug: "hanclip", appName: "한클립", bundleId: "com.intosharp.hanclip" },
   { slug: "stand", appName: "S.tand", bundleId: "com.armsone.stand" },
+  { slug: "htoms-brief", appName: "HtOMS 브리프", bundleId: "com.htoms.brief" },
 ] as const;
 
 type AppStoreResource<T> = { id: string; attributes: T };

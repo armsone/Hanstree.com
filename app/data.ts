@@ -392,6 +392,48 @@ export const apps: AppData[] = [
     ],
   },
   {
+    slug: "htoms-brief",
+    name: "HtOMS 브리프",
+    english: "HtOMS Brief",
+    eyebrow: "TODAY'S OMS, AT A GLANCE",
+    tagline: "오늘의 매출과 서버 상태를, 한 페이지에서.",
+    summary: "HtOMS의 실제 OMS 데이터를 읽어 오늘·이번 달 매출, 시간대·월간 추이, 출고 현황과 외부 서버 상태를 한 화면에 보여주는 iPhone·iPad용 읽기 전용 브리프 앱입니다.",
+    theme: "blue",
+    icon: "/apps/htoms-brief/icon.png",
+    artwork: "files",
+    platforms: [
+      { name: "iOS · iPadOS", status: "완료", detail: "1.0 (202608210644) · iOS·iPadOS 17+", availabilityNote: "TestFlight 업로드 완료" },
+    ],
+    features: [
+      { title: "실제 OMS 매출 데이터", body: "로그인한 계정으로 오늘·이번 달 매출과 시간대·월간 추이를 실제 API에서 읽어 표시합니다." },
+      { title: "한 페이지 브리프", body: "오늘의 매출, 위치별 현황, 외부 서버 상태와 출고 현황을 세로 한 화면 흐름으로 확인합니다." },
+      { title: "10분 자동 갱신", body: "다음 갱신까지 남은 시간을 역타이머로 보여주고 0초가 되면 자동으로 다시 가져옵니다. 화면을 누르면 즉시 갱신합니다." },
+      { title: "외부 서버 이상 표시", body: "장항·인천·삼송·초월 서버는 평소 회색, 문제가 생기면 빨간색으로 바뀝니다." },
+      { title: "안전한 로그인", body: "아이디와 비밀번호는 Apple Keychain으로 보호하며 앱 화면과 저장 데이터에 원문을 노출하지 않습니다." },
+      { title: "홈 화면 위젯", body: "앱에서 갱신한 핵심 브리프를 iPhone·iPad 홈 화면에서도 빠르게 확인합니다." },
+    ],
+    guide: [
+      { title: "로그인", body: "회사 OMS 계정으로 로그인하면 실제 조회 권한에 따라 브리프 데이터를 가져옵니다." },
+      { title: "한 화면에서 확인", body: "오늘의 매출 아래 위치별 현황과 서버 상태를 보고, 이어서 매출 추이와 출고 현황을 확인합니다." },
+      { title: "즉시 갱신", body: "다음 자동 갱신까지 남은 시간이 표시되며, 기다리지 않고 화면을 눌러 바로 새로 가져올 수 있습니다." },
+    ],
+    progress: [
+      { state: "done", title: "실제 OMS 연동", body: "로그인, 매출·출고·위치·외부 서버 데이터 조회 구현" },
+      { state: "done", title: "한 페이지 대시보드", body: "분리됐던 정보를 한 화면의 읽기 흐름으로 통합" },
+      { state: "done", title: "자동·수동 갱신", body: "10분 역타이머와 터치 즉시 갱신 구현" },
+      { state: "done", title: "iPhone·iPad 검증", body: "공통 빌드와 실제 iPhone 설치·실행 검증" },
+    ],
+    screenshots: [
+      { src: "/apps/htoms-brief/screens/login.png", alt: "HtOMS 브리프의 사내 계정 로그인과 Keychain 안내 화면" },
+    ],
+    github: ["https://github.com/armsone/HtOMS-BK"],
+    privacy: [
+      "OMS 로그인 자격증명은 Apple Keychain으로 보호하며 홈페이지나 앱의 일반 설정에 원문으로 저장하지 않습니다.",
+      "앱은 업무 현황 확인을 위한 읽기 전용 API 요청만 수행하며 주문을 생성하거나 변경하지 않습니다.",
+      "화면에는 매출·출고 집계와 서버 상태를 표시하고 개별 주문의 개인정보를 별도로 보관하지 않습니다.",
+    ],
+  },
+  {
     slug: "intosharp",
     name: "인투샾",
     english: "intoSharp",
