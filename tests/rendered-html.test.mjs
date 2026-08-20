@@ -172,7 +172,7 @@ test("renders current app release and TestFlight information", async () => {
 
   assert.match(home, /202608190036/);
   assert.match(home, /3\.11\.55/);
-  assert.match(home, /0\.32\.2/);
+  assert.match(home, /0\.32\.5/);
   assert.match(nasFinder, /APK v6/);
   assert.match(nasFinder, /7841018458ed575862a509707a15171c5175937b91c50292b5b7396421323736/);
   assert.match(hanClip, /APK v551/);
