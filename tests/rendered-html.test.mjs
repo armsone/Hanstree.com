@@ -136,6 +136,9 @@ test("shows the CCMB menu bar before the detailed usage menu", async () => {
   assert.notEqual(menuBarIndex, -1);
   assert.notEqual(usageMenuIndex, -1);
   assert.ok(menuBarIndex < usageMenuIndex);
+  assert.match(html, /v0\.4\.2/);
+  assert.match(html, /Codex·Claude·Gemini·Grok/);
+  assert.match(html, /07dde1deab3aa041013ea7afa50d194c6be026296ee6a2fc06d0cb88749b0af6/);
 });
 
 test("publishes browser and home-screen app icons", async () => {
