@@ -283,8 +283,8 @@ test("renders current app release and TestFlight information", async () => {
   assert.match(hanClip, /APK v552/);
   assert.match(hanClip, /edea0d6de726493a720f58c5f469a6e4c9d57d011f9ac2b3cd0f05e5ce4894cf/);
   assert.match(hanClip, /오디오 트랙이 없는 영상은 화면 움직임/);
-  assert.match(stand, /APK v57/);
-  assert.match(stand, /9099aae7532bc18bd35345a6939a256740925f0c41215eb1c7730f204a1055b7/);
+  assert.match(stand, /APK v58/);
+  assert.match(stand, /79b958230a5d682696aad151f02ffa4dbc244fdb7f29832850247c99fd63faa1/);
   assert.doesNotMatch(home + nasFinder + hanClip + stand, /첫 공개판 준비 중|APK v2\b|APK v3\b|APK v544\b|APK v548\b|APK v52\b|APK v53\b/);
   assert.doesNotMatch(hanClip, /android-editor-finish-pets\.png/);
 });

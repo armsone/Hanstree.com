@@ -230,10 +230,10 @@ export const apps: AppData[] = [
       {
         name: "Android",
         status: "공개",
-        detail: "0.0.1 · APK v57 · Android 8.0+",
-        url: "https://github.com/armsone/S.tand-Android/releases/download/android-v57/S.tand-Android-v57.apk",
+        detail: "0.0.1 · APK v58 · Android 8.0+",
+        url: "https://github.com/armsone/S.tand-Android/releases/download/android-v58/S.tand-Android-v58.apk",
         downloadLabel: "Android APK 바로 받기",
-        checksum: "9099aae7532bc18bd35345a6939a256740925f0c41215eb1c7730f204a1055b7",
+        checksum: "79b958230a5d682696aad151f02ffa4dbc244fdb7f29832850247c99fd63faa1",
       },
     ],
     features: [
@@ -258,8 +258,8 @@ export const apps: AppData[] = [
     ],
     progress: [
       { state: "done", title: "시계와 수면 케어", body: "오브제 화면, 반응형 조명과 로컬 수면 기록 구현" },
-      { state: "done", title: "Android 공개 빌드", body: "S.tand Android v57 APK를 GitHub Releases에 공개" },
-      { state: "active", title: "보이소 무전기", body: "주변 소리 없이 버튼으로 연결된 화면을 부르는 무전기 역할과 3초 연타 방지·고시인성 알림 적용" },
+      { state: "done", title: "Android 공개 빌드", body: "S.tand Android v58 APK를 GitHub Releases에 공개" },
+      { state: "done", title: "보이소 무전기", body: "주변 소리 없이 버튼으로 연결된 화면을 부르는 무전기 역할과 3초 연타 방지·고시인성 알림 적용" },
       { state: "done", title: "Mac Catalyst 공개", body: "Developer ID 서명, Apple 공증과 Gatekeeper 검증을 마친 macOS 0.30.0 ZIP 공개" },
       { state: "done", title: "휴대전화 가로 음악 배치", body: "iPhone 대표 가로 배치를 Android에도 적용하고 음악 스트립과 오른쪽 고정 제어 패널이 겹치지 않게 정리" },
       { state: "next", title: "장시간 실기기 검증", body: "오디오·센서 흐름과 접근성을 다양한 기기에서 추가 검증" },
