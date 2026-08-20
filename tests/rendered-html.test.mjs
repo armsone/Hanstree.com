@@ -259,7 +259,7 @@ test("renders current app release and TestFlight information", async () => {
 
   assert.match(home, /202608201901/);
   assert.match(home, /3\.11\.55/);
-  assert.match(home, /0\.32\.6/);
+  assert.match(home, /0\.33\.0/);
   assert.match(home, /스타메니저/);
   assert.match(home, /2026년 8월 21일/);
   assert.match(nasFinder, /APK v7/);
