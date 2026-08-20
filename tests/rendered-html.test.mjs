@@ -42,7 +42,7 @@ test("server-renders the NasFinder.com homepage", async () => {
   assert.match(html, /StarManager/);
   assert.match(html, /HtOMS Brief/);
   assert.match(html, /Button/);
-  assert.match(html, />24<\/strong><span>현재 소개하는 제품/);
+  assert.match(html, />25<\/strong><span>현재 소개하는 제품/);
   assert.doesNotMatch(html, /플랫폼별 제공 버전/);
   assert.match(html, />06<\/strong><span>iPhone · iPad · macOS · Android · Web · Windows \(커밍\)/);
   assert.match(html, />01<\/strong><span>한 사람의 꾸준한 기록/);
@@ -64,6 +64,9 @@ test("renders the Button family calling app and release", async () => {
   assert.match(html, /조용히 알림/);
   assert.match(html, /Synology NAS/);
   assert.match(html, /1\.0 \(13\)/);
+  assert.match(html, /Button-Android-v1\.0-build13\.apk/);
+  assert.match(html, /05da916dbf24c753a7f5ceeef581255be3977aac8c2ee2007014d0b78086b29f/);
+  assert.match(html, /버튼 Android에서 한 가족 구성원을 선택한 부모 홈/);
 });
 
 test("renders the StarManager product and matchup disclosure", async () => {
