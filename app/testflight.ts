@@ -1,5 +1,5 @@
 export type TestFlightBuild = {
-  slug: "nasfinder" | "hanclip" | "stand" | "htoms-brief" | "starmanager";
+  slug: "nasfinder" | "hanclip" | "stand" | "htoms-brief" | "starmanager" | "button";
   appName: string;
   build: string | null;
   uploadedAt: string | null;
@@ -15,4 +15,5 @@ export const testFlightBuilds: TestFlightBuild[] = [
   { slug: "stand", appName: "S.tand", build: "0.33.0", uploadedAt: "2026-08-21T07:09:41+09:00", inviteUrl: null },
   { slug: "htoms-brief", appName: "HtOMS 브리프", build: "202608210644", uploadedAt: "2026-08-21T07:04:31+09:00", inviteUrl: null },
   { slug: "starmanager", appName: "스타메니저", build: "1", uploadedAt: "2026-08-21T06:51:45+09:00", inviteUrl: null },
+  { slug: "button", appName: "버튼", build: "13", uploadedAt: "2026-08-21T07:32:24+09:00", inviteUrl: null },
 ];
