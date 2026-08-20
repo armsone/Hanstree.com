@@ -212,7 +212,7 @@ export const apps: AppData[] = [
     icon: "/apps/stand/icon.png",
     artwork: "clock",
     platforms: [
-      { name: "iOS · iPadOS", status: "완료", detail: "1.0.0 (0.32.5) · iOS·iPadOS 17+", availabilityNote: "TestFlight 업로드 완료" },
+      { name: "iOS · iPadOS", status: "완료", detail: "1.0.0 (0.32.6) · iOS·iPadOS 17+", availabilityNote: "TestFlight 업로드 완료" },
       {
         name: "macOS",
         status: "공개",
@@ -224,10 +224,10 @@ export const apps: AppData[] = [
       {
         name: "Android",
         status: "공개",
-        detail: "0.0.1 · APK v54 · Android 8.0+",
-        url: "https://github.com/armsone/S.tand-Android/releases/download/android-v54/S.tand-Android-v54.apk",
+        detail: "0.0.1 · APK v55 · Android 8.0+",
+        url: "https://github.com/armsone/S.tand-Android/releases/download/android-v55/S.tand-Android-v55.apk",
         downloadLabel: "Android APK 바로 받기",
-        checksum: "b32d593aa91ec502787ce0d51788990fd467b637bfedd4e2832d0d3903d4c23d",
+        checksum: "6b4711de0524f0772f1c27173175728f569aa3536350535e6eb7932ad7b21b08",
       },
     ],
     features: [
@@ -245,14 +245,14 @@ export const apps: AppData[] = [
       { title: "권한 선택", body: "카메라·마이크·대략적 위치를 왜 사용하는지 확인하고 필요한 권한만 허용합니다." },
       { title: "세 가지 모드", body: "오브제, 매이트와 화들짝 모드의 역할과 밝기·제스처를 익힙니다." },
       { title: "수면 기록", body: "날짜별 타임라인에서 후보 녹음을 듣고 병합·공유하거나 삭제합니다." },
-      { title: "음악 채널", body: "Apple 기기에서는 홈의 음악 스트립을 좌우로 넘겨 Apple Music·Apple Music Classical·인터넷 라디오를 선택합니다. 설정에서는 같은 목록에서 순서와 라디오 이름·주소를 함께 편집합니다. Android에서는 Spotify와 YouTube Music을 엽니다." },
+      { title: "음악 채널", body: "Apple 기기에서는 Apple Music·Apple Music Classical과 인터넷 라디오 네 칸을, Android에서는 Spotify·YouTube Music과 인터넷 라디오 네 칸을 한 줄에서 좌우로 넘깁니다. 설정에서는 같은 여섯 칸의 순서와 라디오 이름·주소를 편집합니다." },
       { title: "백그라운드 모드", body: "권한 설정의 세그먼트에서 켜짐 또는 꺼짐을 선택합니다. 기본 꺼짐은 앱을 벗어날 때 감지·재생을 중지하고, 필요할 때만 직접 켭니다." },
       { title: "보이소 연결", body: "공간을 만들고 QR로 참여해 볼 사람·말할 사람 역할을 선택합니다." },
       { title: "Mac에서 시작", body: "공증된 ZIP을 내려받아 압축을 풀고 S.tand 앱을 응용 프로그램 폴더로 옮긴 뒤 실행합니다. Developer ID 서명과 Apple 공증을 마쳐 macOS Gatekeeper 검증을 통과합니다." },
     ],
     progress: [
       { state: "done", title: "시계와 수면 케어", body: "오브제 화면, 반응형 조명과 로컬 수면 기록 구현" },
-      { state: "done", title: "Android 공개 빌드", body: "S.tand Android v54 APK를 GitHub Releases에 공개" },
+      { state: "done", title: "Android 공개 빌드", body: "S.tand Android v55 APK를 GitHub Releases에 공개" },
       { state: "active", title: "보이소 안정화", body: "근거리 연결, 재연결과 백그라운드 알림을 개선 중" },
       { state: "done", title: "Mac Catalyst 공개", body: "Developer ID 서명, Apple 공증과 Gatekeeper 검증을 마친 macOS 0.30.0 ZIP 공개" },
       { state: "done", title: "iPhone 가로 음악 배치", body: "대표 가로 배치를 공통 기본값으로 적용하고 음악 스트립과 고정 제어 패널이 겹치지 않게 정리" },
@@ -277,7 +277,7 @@ export const apps: AppData[] = [
     matchup: {
       metrics: [
         { value: "15", label: "iOS·Android 공통 상태" },
-        { value: "2×", label: "Android 반복 해시 일치" },
+        { value: "11", label: "Android 실기기 카탈로그" },
         { value: "12", label: "iOS 정확 해시 안정 상태" },
       ],
       scope: [
@@ -287,7 +287,7 @@ export const apps: AppData[] = [
         "인터넷 라디오 편집·삭제와 설정 복원",
         "폰트 저작권과 라이선스 전문",
       ],
-      note: "기능·문구·주요 구조는 정렬했습니다. 플랫폼 고유 아이콘 경로와 일부 세부 색상·입력창·대화상자 기하, 추가 상태는 엄격 패리티의 후속 검증 항목입니다.",
+      note: "기능·문구·주요 구조는 정렬했습니다. Android 실기기 카탈로그 11개 상태는 두 차례 모두 통과했으며, 트라이폴드 다중 디스플레이의 캡처 프레임 차이로 홈 세로 화면의 반복 해시는 후속 검증 항목입니다.",
     },
   },
   {

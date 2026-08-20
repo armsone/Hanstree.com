@@ -12,5 +12,5 @@ export type TestFlightBuild = {
 export const testFlightBuilds: TestFlightBuild[] = [
   { slug: "nasfinder", appName: "나스파인더", build: "202608190036", uploadedAt: "2026-08-19T00:42:50+09:00", inviteUrl: null },
   { slug: "hanclip", appName: "한클립", build: "3.11.55", uploadedAt: "2026-08-19T00:35:53+09:00", inviteUrl: null },
-  { slug: "stand", appName: "S.tand", build: "0.32.5", uploadedAt: "2026-08-20T15:12:00+09:00", inviteUrl: null },
+  { slug: "stand", appName: "S.tand", build: "0.32.6", uploadedAt: "2026-08-20T16:20:20+09:00", inviteUrl: null },
 ];
