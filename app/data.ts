@@ -469,6 +469,76 @@ export const apps: AppData[] = [
       "외부 설교와 찬양을 열면 YouTube 등 해당 서비스의 개인정보처리방침이 적용됩니다.",
     ],
   },
+  {
+    slug: "starmanager",
+    name: "스타메니저",
+    english: "StarManager",
+    eyebrow: "YOUR STORY, READY TO SHARE",
+    tagline: "오늘의 이야기를, 내 목소리로 완성합니다.",
+    summary: "전하고 싶은 이야기를 적고 스타일·분위기·글자 수를 고르면, 설정한 말투와 기준에 맞는 소셜 게시물 초안을 만들고 사진·영상과 함께 공유하는 iPhone·iPad·Android 앱입니다.",
+    theme: "violet",
+    icon: "/apps/starmanager/icon.png",
+    artwork: "phones",
+    platforms: [
+      { name: "iPhone · iPad", status: "완료", detail: "0.1.0 (1) · iOS·iPadOS 18+", availabilityNote: "TestFlight 업로드 완료" },
+      {
+        name: "Android",
+        status: "공개",
+        detail: "0.1.0 · APK v0.1.0 · Android 8.0+",
+        url: "https://github.com/armsone/StarManager-Android/releases/download/v0.1.0/StarManager-Android-v0.1.0.apk",
+        downloadLabel: "Android APK 바로 받기",
+        checksum: "b2d525ee6a17113b77efc046c6da1f782b9625d3946bc5920c5c27fc915c368f",
+      },
+    ],
+    features: [
+      { title: "한 문장부터 게시물까지", body: "오늘 전하고 싶은 생각을 적으면 선택한 스타일과 분위기, 이야기 비중을 반영해 정해진 글자 수의 초안을 만듭니다." },
+      { title: "네 가지 말투", body: "MZ·X·386·꼰대 스타일과 따뜻하게·재치 있게·담백하게 분위기를 조합해 같은 이야기도 다른 결로 표현합니다." },
+      { title: "내 목소리와 프리셋", body: "주제·독자·말투·이모지와 세부 어조를 저장하고 자주 쓰는 설정은 프리셋으로 다시 불러옵니다." },
+      { title: "글자 수를 정확하게", body: "한글과 이모지를 실제 글자 단위로 세어 목표 길이와 해시태그·마무리 기준을 함께 검증합니다." },
+      { title: "AI를 바로 선택", body: "지원 기기에서는 Apple AI로 바로 만들고, ChatGPT·Gemini·Grok에는 완성된 요청문을 보내 결과를 다시 가져올 수 있습니다." },
+      { title: "미디어와 공유", body: "사진·영상을 최대 10개까지 담아 순서를 바꾸거나 삭제하고, 미리보기 뒤 문구 자동 복사와 iOS 공유 화면으로 Instagram 게시를 준비합니다." },
+    ],
+    guide: [
+      { title: "이야기 입력", body: "만들기 탭에서 오늘 전하고 싶은 이야기와 스타일·분위기·비중·글자 수를 고릅니다." },
+      { title: "초안 만들기", body: "Apple AI 버튼으로 기기에서 바로 만들거나 ChatGPT·Gemini·Grok으로 요청문을 보냅니다." },
+      { title: "결과 확인", body: "목표 글자 수와 구성 기준을 확인하고, 외부 결과가 있으면 후보끼리 비교해 사용할 문장을 고릅니다." },
+      { title: "미디어 추가", body: "사진·영상 또는 카메라로 미디어를 추가하고 순서와 대표 항목, 미리보기 화면비를 정합니다." },
+      { title: "공유", body: "초안이 현재 설정과 일치하는지 확인한 뒤 캡션과 미디어를 원하는 앱으로 공유합니다." },
+    ],
+    progress: [
+      { state: "done", title: "iPhone·iPad 원본 분석", body: "실제로 도달 가능한 만들기·내 설정 화면과 상태·문구·동작을 소스 기준으로 정리" },
+      { state: "done", title: "Android 구현과 실기기 검증", body: "휴대전화·태블릿 반응형 화면, 생성·검증·미디어·설정 흐름 구현과 테스트 완료" },
+      { state: "done", title: "첫 공개 APK", body: "검증된 Android 0.1.0 APK를 GitHub Releases에 공개" },
+      { state: "done", title: "iPhone 실기기 설치", body: "대표 iPhone에 0.1.0 (1) 설치와 실행 확인" },
+      { state: "active", title: "TestFlight 처리", body: "0.1.0 (1) 업로드 완료, Apple의 빌드 처리 결과 대기" },
+      { state: "next", title: "시각 매치업 보강", body: "동일한 iOS·Android 무손실 캡처가 준비되면 화면별 시각 차이를 추가 검증" },
+    ],
+    screenshots: [
+      { src: "/apps/starmanager/screens/ios-composer.png", alt: "스타메니저 iPhone 만들기 화면" },
+      { src: "/apps/starmanager/screens/android-composer.png", alt: "스타매니저 Android 만들기 화면" },
+      { src: "/apps/starmanager/screens/android-result.png", alt: "스타매니저 Android 게시물 생성 결과" },
+    ],
+    github: ["https://github.com/armsone/StarManager-Android"],
+    privacy: [
+      "프로필, 프리셋과 작성 설정은 사용자의 기기 안에 저장합니다.",
+      "Apple AI를 사용할 수 있는 기기에서는 글 생성이 기기 안에서 처리됩니다.",
+      "ChatGPT·Gemini·Grok을 선택하면 사용자가 확인한 프롬프트를 해당 외부 앱으로 공유하며 각 서비스의 개인정보처리방침이 적용됩니다.",
+      "사용자가 고른 사진과 영상은 미리보기와 공유를 위해 앱 전용 임시 공간에서 처리합니다.",
+    ],
+    matchup: {
+      metrics: [
+        { value: "02", label: "도달 가능한 탭" },
+        { value: "04", label: "글쓰기 스타일" },
+        { value: "10", label: "미디어 최대 개수" },
+      ],
+      scope: [
+        "만들기와 내 설정의 화면 구조·옵션·상태 흐름을 iOS 소스 기준으로 구현",
+        "브랜드 색상과 AI 로고 원본, 프로필 마이그레이션과 글자 수 검증 규칙을 동일하게 적용",
+        "휴대전화 세로 화면과 600dp 이상 태블릿의 2열 레이아웃을 각각 제공",
+      ],
+      note: "소스와 결정적 테스트 기준 구현은 완료했습니다. 동일 조건의 최신 iOS 무손실 캡처가 없어 픽셀 단위 시각 패리티는 아직 검증하지 않았습니다.",
+    },
+  },
 ];
 
 export function findApp(slug: string) {

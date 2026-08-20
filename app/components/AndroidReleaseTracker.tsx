@@ -56,6 +56,7 @@ export function AndroidReleaseTracker() {
     { appName: "나스파인더", repo: "NasFinder-Android", available: false },
     { appName: "한클립", repo: "HanClip-Android", available: false },
     { appName: "S.tand", repo: "S.tand-Android", available: false },
+    { appName: "스타매니저", repo: "StarManager-Android", available: false },
   ];
   const releases = data?.releases || placeholders;
 

@@ -197,7 +197,7 @@ export default function Home() {
         <div className="shell">
           <div className="section-heading reveal">
             <div><p className="eyebrow">LATEST ANDROID RELEASES</p><h2 className="section-brand-title"><span className="android-title-icon"><img src="/brands/android.svg" alt="" aria-hidden="true" /></span><span>Android 최신 배포</span></h2></div>
-            <p>나스파인더, 한클립과 S.tand의 GitHub 공식 릴리스를 자동으로 확인합니다. 링크와 APK 정보가 정해진 저장소와 일치할 때만 표시합니다.</p>
+            <p>나스파인더, 한클립, S.tand와 스타매니저의 GitHub 공식 릴리스를 자동으로 확인합니다. 링크와 APK 정보가 정해진 저장소와 일치할 때만 표시합니다.</p>
           </div>
           <AndroidReleaseTracker />
         </div>

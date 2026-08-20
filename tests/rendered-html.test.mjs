@@ -39,7 +39,8 @@ test("server-renders the NasFinder.com homepage", async () => {
   assert.match(html, /TrackpadGuard/);
   assert.match(html, /intoSharp/);
   assert.match(html, /airChurch/);
-  assert.match(html, />18<\/strong><span>현재 소개하는 제품/);
+  assert.match(html, /StarManager/);
+  assert.match(html, />21<\/strong><span>현재 소개하는 제품/);
   assert.doesNotMatch(html, /플랫폼별 제공 버전/);
   assert.match(html, />06<\/strong><span>iPhone · iPad · macOS · Android · Web · Windows \(커밍\)/);
   assert.match(html, />01<\/strong><span>한 사람의 꾸준한 기록/);
@@ -50,6 +51,23 @@ test("server-renders the NasFinder.com homepage", async () => {
   assert.match(html, /QR 연결 · 사진 보관함 저장/);
   assert.match(html, /개인정보처리방침/);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|Building your site/i);
+});
+
+test("renders the StarManager product and matchup disclosure", async () => {
+  const response = await render("/apps/starmanager");
+  assert.equal(response.status, 200);
+
+  const html = await response.text();
+  assert.match(html, /오늘의 이야기를, 내 목소리로 완성합니다/);
+  assert.match(html, /스타메니저 iPhone 만들기 화면/);
+  assert.match(html, /TestFlight 업로드 완료/);
+  assert.match(html, /Apple AI/);
+  assert.match(html, /스타매니저 Android 만들기 화면/);
+  assert.match(html, /도달 가능한 탭/);
+  assert.match(html, /픽셀 단위 시각 패리티는 아직 검증하지 않았습니다/);
+  assert.match(html, /첫 공개 APK/);
+  assert.match(html, /StarManager-Android-v0\.1\.0\.apk/);
+  assert.match(html, /b2d525ee6a17113b77efc046c6da1f782b9625d3946bc5920c5c27fc915c368f/);
 });
 
 test("renders Super Thumbnail as an independent Mac product", async () => {
@@ -241,6 +259,8 @@ test("renders current app release and TestFlight information", async () => {
   assert.match(home, /202608201901/);
   assert.match(home, /3\.11\.55/);
   assert.match(home, /0\.32\.6/);
+  assert.match(home, /스타메니저/);
+  assert.match(home, /2026년 8월 21일/);
   assert.match(nasFinder, /APK v7/);
   assert.match(nasFinder, /a4f43c3a5230be640b10c70ddf46295e20da7ca53679d266afe55875929baaca/);
   assert.match(nasFinder, /Live Photos &amp; Motion Photos/);

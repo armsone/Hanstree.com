@@ -18,7 +18,7 @@ export function AppStatus({ platform }: { platform: Platform }) {
 export function AppArtwork({ app }: { app: AppData }) {
   if (app.artwork === "phones") {
     return (
-      <div className="artwork artwork-phones" aria-label="한클립 앱 화면">
+      <div className="artwork artwork-phones" aria-label={`${app.name} 앱 화면`}>
         {app.screenshots?.slice(0, 3).map((screen, index) => (
           <div className={`phone-shot phone-shot-${index + 1}`} key={screen.src}>
             <Image src={screen.src} alt={screen.alt} width={1206} height={2622} sizes="(max-width: 640px) 39vw, 220px" unoptimized />
