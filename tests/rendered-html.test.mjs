@@ -268,8 +268,9 @@ test("renders current app release and TestFlight information", async () => {
   assert.match(nasFinder, /APK v7/);
   assert.match(nasFinder, /a4f43c3a5230be640b10c70ddf46295e20da7ca53679d266afe55875929baaca/);
   assert.match(nasFinder, /Live Photos &amp; Motion Photos/);
-  assert.match(hanClip, /APK v551/);
-  assert.match(hanClip, /f548c579111041f09b3dc15c00c0a5781873789c97f350c13fcca1369c253132/);
+  assert.match(hanClip, /APK v552/);
+  assert.match(hanClip, /edea0d6de726493a720f58c5f469a6e4c9d57d011f9ac2b3cd0f05e5ce4894cf/);
+  assert.match(hanClip, /오디오 트랙이 없는 영상은 화면 움직임/);
   assert.match(stand, /APK v57/);
   assert.match(stand, /9099aae7532bc18bd35345a6939a256740925f0c41215eb1c7730f204a1055b7/);
   assert.doesNotMatch(home + nasFinder + hanClip + stand, /첫 공개판 준비 중|APK v2\b|APK v3\b|APK v544\b|APK v548\b|APK v52\b|APK v53\b/);
