@@ -172,8 +172,8 @@ test("renders current app release and TestFlight information", async () => {
   assert.match(home, /0\.32\.2/);
   assert.match(nasFinder, /APK v5/);
   assert.match(nasFinder, /b97001ff53f091052f3518d3aa51cb56bbfc97739a29c1b8767265e58ea2baa6/);
-  assert.match(hanClip, /APK v550/);
-  assert.match(hanClip, /ffe0491151ce8b09cf6f96b148b4a2e212937dca99138d82d25755c81b7078df/);
+  assert.match(hanClip, /APK v551/);
+  assert.match(hanClip, /f548c579111041f09b3dc15c00c0a5781873789c97f350c13fcca1369c253132/);
   assert.match(stand, /APK v54/);
   assert.match(stand, /b32d593aa91ec502787ce0d51788990fd467b637bfedd4e2832d0d3903d4c23d/);
   assert.doesNotMatch(home + nasFinder + hanClip + stand, /첫 공개판 준비 중|APK v2\b|APK v3\b|APK v544\b|APK v548\b|APK v52\b|APK v53\b/);

@@ -157,10 +157,10 @@ export const apps: AppData[] = [
       {
         name: "Android",
         status: "공개",
-        detail: "1.0.1 · APK v550 · Android 8.0+",
-        url: "https://github.com/armsone/HanClip-Android/releases/download/android-v550/HanClip-Android-v550.apk",
+        detail: "1.0.1 · APK v551 · Android 8.0+",
+        url: "https://github.com/armsone/HanClip-Android/releases/download/android-v551/HanClip-Android-v551.apk",
         downloadLabel: "Android APK 바로 받기",
-        checksum: "ffe0491151ce8b09cf6f96b148b4a2e212937dca99138d82d25755c81b7078df",
+        checksum: "f548c579111041f09b3dc15c00c0a5781873789c97f350c13fcca1369c253132",
       },
     ],
     features: [
@@ -182,7 +182,7 @@ export const apps: AppData[] = [
     ],
     progress: [
       { state: "done", title: "iOS 핵심 제작 흐름", body: "선택, 편집, 렌더링, 시사회와 저장 흐름 구현" },
-      { state: "done", title: "Android 공개 빌드", body: "HanClip Android v550 APK를 GitHub Releases에 공개" },
+      { state: "done", title: "Android 공개 빌드", body: "HanClip Android v551 APK를 GitHub Releases에 공개" },
       { state: "active", title: "플랫폼 경험 정렬", body: "iOS와 Android의 기능과 화면 동등성을 계속 다듬는 중" },
       { state: "done", title: "Apple Silicon Mac 지원", body: "iPhone·iPad와 같은 빌드를 Mac의 ‘iPhone 및 iPad용 앱’으로 실행하도록 지원" },
       { state: "next", title: "현장 감도 검증", body: "다양한 영상과 실제 골프 환경에서 AiShot을 추가 검증" },
