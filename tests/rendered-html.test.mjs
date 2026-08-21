@@ -80,9 +80,10 @@ test("renders the Button family calling app and release", async () => {
   assert.match(html, /가족을 부르는 가장 간단한 버튼/);
   assert.match(html, /조용히 알림/);
   assert.match(html, /Synology NAS/);
-  assert.match(html, /1\.1 \(14\)/);
-  assert.match(html, /Button-Android-v1\.1-build14\.apk/);
-  assert.match(html, /95490c8c293dc042e7d9c425704c576b1f408fc28b21cdf2781e4257debf27ca/);
+  assert.match(html, /1\.1 \(15\)/);
+  assert.match(html, /Button-Android-v1\.1\.2-build16\.apk/);
+  assert.match(html, /3e928af5638a27ec70ecad88fa5b0e61f783b1890e34d790f257081fe2b71b03/);
+  assert.match(html, /연속 호출 방지/);
   assert.match(html, /APNs와 FCM/);
   assert.match(html, /버튼 Android에서 한 가족 구성원을 선택한 부모 홈/);
 });
@@ -99,9 +100,9 @@ test("renders the StarManager product and matchup disclosure", async () => {
   assert.match(html, /스타매니저 Android 만들기 화면/);
   assert.match(html, /도달 가능한 탭/);
   assert.match(html, /픽셀 단위 시각 패리티는 아직 검증하지 않았습니다/);
-  assert.match(html, /첫 공개 APK/);
-  assert.match(html, /StarManager-Android-v0\.1\.0\.apk/);
-  assert.match(html, /b2d525ee6a17113b77efc046c6da1f782b9625d3946bc5920c5c27fc915c368f/);
+  assert.match(html, /Android 0\.1\.1 공개/);
+  assert.match(html, /StarManager-Android-v0\.1\.1\.apk/);
+  assert.match(html, /2594ee32cd8029c6fca0a0e188ebace3b137bf403a3d06f21b9bb4330a9c8833/);
 });
 
 test("renders Super Thumbnail as an independent Mac product", async () => {
@@ -319,13 +320,13 @@ test("renders current app release and TestFlight information", async () => {
     standResponse.text(),
   ]);
 
-  assert.match(home, /202608201901/);
+  assert.match(home, /202608211740/);
   assert.match(home, /3\.12\.55/);
   assert.match(home, /0\.33\.0/);
   assert.match(home, /스타메니저/);
   assert.match(home, /2026년 8월 21일/);
-  assert.match(nasFinder, /APK v7/);
-  assert.match(nasFinder, /a4f43c3a5230be640b10c70ddf46295e20da7ca53679d266afe55875929baaca/);
+  assert.match(nasFinder, /APK v8/);
+  assert.match(nasFinder, /8f99582fc3625d74a845b6cc5a3d1b918fe5dcb5dc1b1427559aa0319a0d8241/);
   assert.match(nasFinder, /Live Photos &amp; Motion Photos/);
   assert.match(hanClip, /APK v552/);
   assert.match(hanClip, /edea0d6de726493a720f58c5f469a6e4c9d57d011f9ac2b3cd0f05e5ce4894cf/);

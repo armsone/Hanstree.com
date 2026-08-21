@@ -44,15 +44,15 @@ export const apps: AppData[] = [
     icon: "/apps/nasfinder/icon.png",
     artwork: "files",
     platforms: [
-      { name: "iPhone · iPad", status: "완료", detail: "1.1 (202608201901) · iOS·iPadOS 17+", availabilityNote: "TestFlight 업로드 완료" },
+      { name: "iPhone · iPad", status: "완료", detail: "1.1 (202608211740) · iOS·iPadOS 17+", availabilityNote: "TestFlight 업로드 완료" },
       { name: "Mac용 NasFinder", status: "완료", detail: "Apple Silicon · iPhone·iPad 호환 앱", availabilityNote: "같은 TestFlight 빌드로 설치" },
       {
         name: "Android",
         status: "공개",
-        detail: "1.2 · APK v7 · Android 8.0+",
-        url: "https://github.com/armsone/NasFinder-Android/releases/download/android-v7/NasFinder-Android-v7.apk",
+        detail: "1.2 · APK v8 · Android 8.0+",
+        url: "https://github.com/armsone/NasFinder-Android/releases/download/android-v8/NasFinder-Android-v8.apk",
         downloadLabel: "Android APK 바로 받기",
-        checksum: "a4f43c3a5230be640b10c70ddf46295e20da7ca53679d266afe55875929baaca",
+        checksum: "8f99582fc3625d74a845b6cc5a3d1b918fe5dcb5dc1b1427559aa0319a0d8241",
       },
     ],
     features: [
@@ -81,7 +81,7 @@ export const apps: AppData[] = [
       { state: "done", title: "Google Photos Picker", body: "iPhone·iPad에서 별도 Google Photos OAuth로 사용자가 Picker에서 직접 선택한 사진·영상만 받은 파일함으로 가져오는 흐름 구현" },
       { state: "done", title: "iPhone·iPad·Mac 지원", body: "iPhone과 iPad 앱 완성, 동일 앱의 Apple Silicon Mac 설치와 실행 검증" },
       { state: "done", title: "Live Photo·Motion Photo 전송", body: "iPhone과 Android를 QR로 연결해 사진·영상·움직이는 사진의 원본 보존과 교차 변환 구현" },
-      { state: "done", title: "Android 공개", body: "NasFinder Android v7 APK를 GitHub Releases에 공개" },
+      { state: "done", title: "Android 공개", body: "전체화면 웹 영상 재생을 보강한 NasFinder Android v8 APK를 GitHub Releases에 공개" },
     ],
     screenshots: [
       { src: "/apps/nasfinder/screens/android-home.png", alt: "나스파인더 Android 저장공간 홈" },
@@ -580,14 +580,14 @@ export const apps: AppData[] = [
     icon: "/apps/button/icon.png",
     artwork: "phones",
     platforms: [
-      { name: "iPhone", status: "완료", detail: "1.1 (14) · iOS 17+", availabilityNote: "TestFlight 업로드 완료" },
+      { name: "iPhone", status: "완료", detail: "1.1 (15) · iOS 17+", availabilityNote: "TestFlight 업로드 완료" },
       {
         name: "Android",
         status: "공개",
-        detail: "1.1 (14) · Android 8.0+",
-        url: "https://github.com/armsone/button-Android/releases/download/v1.1.0/Button-Android-v1.1-build14.apk",
+        detail: "1.1.2 (16) · Android 8.0+",
+        url: "https://github.com/armsone/button-Android/releases/download/v1.1.2/Button-Android-v1.1.2-build16.apk",
         downloadLabel: "Android APK 바로 받기",
-        checksum: "95490c8c293dc042e7d9c425704c576b1f408fc28b21cdf2781e4257debf27ca",
+        checksum: "3e928af5638a27ec70ecad88fa5b0e61f783b1890e34d790f257081fe2b71b03",
       },
     ],
     features: [
@@ -596,6 +596,7 @@ export const apps: AppData[] = [
       { title: "잠금화면 원격 수신", body: "iPhone은 APNs, Android는 FCM을 사용해 앱이 화면에 없거나 잠겨 있을 때도 대상 호출을 안전하게 전달합니다." },
       { title: "근거리 연결과 원거리 중계", body: "가까운 기기는 직접 연결하고, 개인 Synology NAS 중계 서버가 iPhone과 Android의 원거리 호출을 함께 이어줍니다." },
       { title: "호출과 확인 기록", body: "내가 보낸 호출과 상대가 확인한 사실을 앱 화면에서 이어서 확인합니다." },
+      { title: "연속 호출 방지", body: "조용한 알림·띵동·목소리 전달 뒤 10초 동안 남은 시간을 표시하고 버튼을 잠가 실수로 연속 전송하는 일을 막습니다." },
       { title: "가족 역할에 맞춘 기능", body: "부모와 자녀가 서로 호출할 수 있고, 자녀 역할에서는 목소리 전달 버튼을 제한합니다." },
     ],
     guide: [
@@ -610,8 +611,8 @@ export const apps: AppData[] = [
       { state: "done", title: "세 가지 호출과 확인", body: "조용한 알림·띵동·목소리 전달, 개별 전송과 확인 기록 구현" },
       { state: "done", title: "원거리 푸시 중계", body: "Synology NAS에서 APNs와 FCM을 함께 운영해 iPhone·Android 잠금·백그라운드 호출 지원" },
       { state: "active", title: "가족 iPhone 실기기 검증", body: "세 대의 iPhone에 빌드 14 설치 확인, 한 대는 잠금 해제 후 설치 대기" },
-      { state: "done", title: "Android 1.1 공개", body: "서명된 build 14 APK와 체크섬을 GitHub Releases에 공개하고 태블릿 설치·FCM 실전 수신 검증" },
-      { state: "active", title: "TestFlight 처리", body: "1.1 (14) 업로드 완료, Apple의 빌드 처리 결과 대기" },
+      { state: "done", title: "Android 1.1.2 공개", body: "10초 연속 호출 방지를 포함한 서명된 build 16 APK와 체크섬을 GitHub Releases에 공개" },
+      { state: "active", title: "TestFlight 처리", body: "1.1 (15) 업로드 완료, Apple의 빌드 처리 결과 대기" },
       { state: "done", title: "Android 원격 수신", body: "FCM 등록·백그라운드 대상 검증·원본 띵동 소리·호출 기록까지 NAS 실전 전달 확인" },
     ],
     screenshots: [
@@ -639,14 +640,14 @@ export const apps: AppData[] = [
     icon: "/apps/starmanager/icon.png",
     artwork: "phones",
     platforms: [
-      { name: "iPhone · iPad", status: "완료", detail: "0.1.0 (1) · iOS·iPadOS 18+", availabilityNote: "TestFlight 업로드 완료" },
+      { name: "iPhone · iPad", status: "완료", detail: "0.1.1 (2) · iOS·iPadOS 18+", availabilityNote: "TestFlight 업로드 완료" },
       {
         name: "Android",
         status: "공개",
-        detail: "0.1.0 · APK v0.1.0 · Android 8.0+",
-        url: "https://github.com/armsone/StarManager-Android/releases/download/v0.1.0/StarManager-Android-v0.1.0.apk",
+        detail: "0.1.1 · APK v0.1.1 · Android 8.0+",
+        url: "https://github.com/armsone/StarManager-Android/releases/download/v0.1.1/StarManager-Android-v0.1.1.apk",
         downloadLabel: "Android APK 바로 받기",
-        checksum: "b2d525ee6a17113b77efc046c6da1f782b9625d3946bc5920c5c27fc915c368f",
+        checksum: "2594ee32cd8029c6fca0a0e188ebace3b137bf403a3d06f21b9bb4330a9c8833",
       },
     ],
     features: [
@@ -655,7 +656,7 @@ export const apps: AppData[] = [
       { title: "내 목소리와 프리셋", body: "주제·독자·말투·이모지와 세부 어조를 저장하고 자주 쓰는 설정은 프리셋으로 다시 불러옵니다." },
       { title: "글자 수를 정확하게", body: "한글과 이모지를 실제 글자 단위로 세어 목표 길이와 해시태그·마무리 기준을 함께 검증합니다." },
       { title: "AI를 바로 선택", body: "지원 기기에서는 Apple AI로 바로 만들고, ChatGPT·Gemini·Grok에는 완성된 요청문을 보내 결과를 다시 가져올 수 있습니다." },
-      { title: "미디어와 공유", body: "사진·영상을 최대 10개까지 담아 순서를 바꾸거나 삭제하고, 미리보기 뒤 문구 자동 복사와 iOS 공유 화면으로 Instagram 게시를 준비합니다." },
+      { title: "미디어와 공유", body: "사진·영상을 최대 8개까지 담고 외부에서 끌어 놓거나 순서를 바꾸고 삭제한 뒤, 문구 자동 복사와 공유 화면으로 게시를 준비합니다." },
     ],
     guide: [
       { title: "이야기 입력", body: "만들기 탭에서 오늘 전하고 싶은 이야기와 스타일·분위기·비중·글자 수를 고릅니다." },
@@ -667,9 +668,9 @@ export const apps: AppData[] = [
     progress: [
       { state: "done", title: "iPhone·iPad 원본 분석", body: "실제로 도달 가능한 만들기·내 설정 화면과 상태·문구·동작을 소스 기준으로 정리" },
       { state: "done", title: "Android 구현과 실기기 검증", body: "휴대전화·태블릿 반응형 화면, 생성·검증·미디어·설정 흐름 구현과 테스트 완료" },
-      { state: "done", title: "첫 공개 APK", body: "검증된 Android 0.1.0 APK를 GitHub Releases에 공개" },
+      { state: "done", title: "Android 0.1.1 공개", body: "미디어 8개 제한과 외부 끌어 놓기를 맞춘 Android 0.1.1 APK를 GitHub Releases에 공개" },
       { state: "done", title: "iPhone 실기기 설치", body: "대표 iPhone에 0.1.0 (1) 설치와 실행 확인" },
-      { state: "active", title: "TestFlight 처리", body: "0.1.0 (1) 업로드 완료, Apple의 빌드 처리 결과 대기" },
+      { state: "active", title: "TestFlight 처리", body: "0.1.1 (2) 업로드 완료, Apple의 빌드 처리 결과 대기" },
       { state: "next", title: "시각 매치업 보강", body: "동일한 iOS·Android 무손실 캡처가 준비되면 화면별 시각 차이를 추가 검증" },
     ],
     screenshots: [
