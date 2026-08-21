@@ -141,11 +141,37 @@ test("renders the latest NasFinder and HanClip capabilities", async () => {
   assert.match(nasFinder, /내 휴대폰을, 진짜 휴대용 하드처럼/);
   assert.match(nasFinder, /파일 앱에서도, 미리보기는 더 강력하게/);
   assert.match(nasFinder, /다운로드와 설치 방법/);
+  assert.match(nasFinder, /Google Photos에서 직접 선택/);
+  assert.match(nasFinder, /받은 파일함으로 가져오는 흐름 구현/);
+  assert.doesNotMatch(nasFinder, /Google Photos Picker[\s\S]*흐름 준비/);
   assert.match(hanClip, /완성시간을 음악 길이에 맞춘/);
   assert.match(hanClip, /개봉영화 보관함/);
   assert.match(hanClip, /무음 영상도 장면 분석/);
   assert.match(hanClip, /실제 스윙과 임팩트가 만나는 순간/);
   assert.match(hanClip, /기기 내 신체 자세 분석/);
+});
+
+test("renders the production Google Photos OAuth disclosure", async () => {
+  const [privacyResponse, oauthResponse] = await Promise.all([
+    render("/apps/nasfinder/privacy"),
+    render("/apps/nasfinder/google-oauth"),
+  ]);
+  assert.equal(privacyResponse.status, 200);
+  assert.equal(oauthResponse.status, 200);
+
+  const [privacy, oauth] = await Promise.all([privacyResponse.text(), oauthResponse.text()]);
+  assert.match(privacy, /photospicker\.mediaitems\.readonly/);
+  assert.match(privacy, /Google Drive와 분리된 별도 OAuth 연결/);
+  assert.match(privacy, /직접 선택한 사진·영상만/);
+  assert.match(privacy, /Limited Use requirements/);
+  assert.doesNotMatch(privacy, /도입할 예정|확정하여 표시합니다/);
+  assert.match(oauth, /photospicker\.mediaitems\.readonly/);
+  assert.match(oauth, /Received Files/);
+  assert.match(oauth, /disconnect Google Photos/);
+  assert.match(oauth, /separately from Google Drive/);
+  assert.match(oauth, /adheres to the/);
+  assert.match(oauth, /advertising, tracking, face recognition, data sales, or AI training/);
+  assert.doesNotMatch(oauth, /not yet publicly available|intended flow|Draft/i);
 });
 
 test("renders full promotional campaigns for HanClip, TrackpadGuard, CCMB, and S.tand", async () => {
