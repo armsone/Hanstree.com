@@ -578,7 +578,7 @@ export const apps: AppData[] = [
     icon: "/apps/button/icon.png",
     artwork: "phones",
     platforms: [
-      { name: "iPhone", status: "업데이트 준비", detail: "1.1 (14) · iOS 17+", availabilityNote: "TestFlight 아카이브 준비 완료" },
+      { name: "iPhone", status: "완료", detail: "1.1 (14) · iOS 17+", availabilityNote: "TestFlight 업로드 완료" },
       {
         name: "Android",
         status: "공개",
@@ -607,9 +607,9 @@ export const apps: AppData[] = [
       { state: "done", title: "가족 공간과 근거리 연결", body: "QR 참여, 가족 목록, 직접 연결과 징검다리 중계 구현" },
       { state: "done", title: "세 가지 호출과 확인", body: "조용한 알림·띵동·목소리 전달, 개별 전송과 확인 기록 구현" },
       { state: "done", title: "원거리 푸시 중계", body: "Synology NAS에서 APNs와 FCM을 함께 운영해 iPhone·Android 잠금·백그라운드 호출 지원" },
-      { state: "done", title: "가족 iPhone 실기기 검증", body: "네 대의 iPhone에 빌드 13 설치와 자동 테스트 완료" },
+      { state: "active", title: "가족 iPhone 실기기 검증", body: "세 대의 iPhone에 빌드 14 설치 확인, 한 대는 잠금 해제 후 설치 대기" },
       { state: "done", title: "Android 1.1 공개", body: "서명된 build 14 APK와 체크섬을 GitHub Releases에 공개하고 태블릿 설치·FCM 실전 수신 검증" },
-      { state: "active", title: "TestFlight 처리", body: "1.1 (14) 아카이브 완료, App Store Connect 업로드 준비" },
+      { state: "active", title: "TestFlight 처리", body: "1.1 (14) 업로드 완료, Apple의 빌드 처리 결과 대기" },
       { state: "done", title: "Android 원격 수신", body: "FCM 등록·백그라운드 대상 검증·원본 띵동 소리·호출 기록까지 NAS 실전 전달 확인" },
     ],
     screenshots: [
