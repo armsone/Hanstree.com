@@ -275,17 +275,20 @@ test("keeps the support address out of the public source", async () => {
   assert.match(component, /\/api\/support-contact/);
 });
 
-test("shows the CCMB menu bar before the detailed usage menu", async () => {
+test("shows the real CCMB four-service panel in the hero", async () => {
   const response = await render("/apps/ccmb");
   assert.equal(response.status, 200);
 
   const html = await response.text();
   const menuBarIndex = html.indexOf("/apps/ccmb/screens/macos-menubar.png");
   const usageMenuIndex = html.indexOf("/apps/ccmb/screens/ccmb-usage-menu.png");
+  const campaignIndex = html.indexOf('id="product-campaign"');
 
   assert.notEqual(menuBarIndex, -1);
   assert.notEqual(usageMenuIndex, -1);
-  assert.ok(menuBarIndex < usageMenuIndex);
+  assert.ok(usageMenuIndex < campaignIndex);
+  assert.doesNotMatch(html, /WEEKLY REMAINING/);
+  assert.doesNotMatch(html, /81% · ₩12\.4/);
   assert.match(html, /v0\.4\.3/);
   assert.match(html, /Codex·Claude·Gemini·Grok/);
   assert.match(html, /24시간 토큰/);
