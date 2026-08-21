@@ -304,7 +304,7 @@ export const apps: AppData[] = [
     english: "CCMB",
     eyebrow: "AI USAGE AT A GLANCE",
     tagline: "Codex·Claude·Gemini·Grok 사용량을 메뉴 막대에서 한눈에.",
-    summary: "터미널을 열지 않고도 Codex의 남은 주간 사용량·크레딧, Claude·Gemini의 세션·주간 사용량, Grok의 주간·월간 크레딧 정보를 함께 확인하는 비공식 macOS 메뉴 막대 앱입니다.",
+    summary: "터미널을 열지 않고도 Codex의 남은 주간 사용량·크레딧, Claude·Gemini의 세션·주간 사용량, Grok의 요금제·월간 크레딧 정보를 함께 확인하는 비공식 macOS 메뉴 막대 앱입니다.",
     theme: "blue",
     artwork: "menubar",
     platforms: [
@@ -312,7 +312,8 @@ export const apps: AppData[] = [
     ],
     features: [
       { title: "네 AI를 한눈에", body: "Codex·Claude·Gemini·Grok의 사용량을 통일된 4열 링과 패널로 나란히 확인합니다." },
-      { title: "Grok 크레딧 정보", body: "Grok 요금제, 월간 사용 크레딧, 주간 초기화 시각과 추가 사용 크레딧 잔액을 함께 표시합니다." },
+      { title: "정직한 Grok 사용량", body: "Grok 요금제, 월간 사용 크레딧, 주간 초기화 시각과 추가 크레딧을 표시하고, 제공되지 않는 주간 잔량은 링을 유지한 채 ‘—’로 구분합니다." },
+      { title: "앱 안에서 Grok 인증", body: "인증이 만료되면 공식 Grok CLI로 자동 갱신하고, 실패하면 앱의 Grok 로그인 버튼에서 브라우저 인증을 시작한 뒤 사용량을 다시 불러옵니다." },
       { title: "서비스별 새로고침", body: "네 서비스의 갱신 주기를 각각 선택하고, 다음 갱신까지 남은 시간을 확인합니다." },
       { title: "같은 모양의 두 패널", body: "메뉴 막대에서 여는 패널과 항상 보기 패널에 같은 정보·간격·하단 설정을 제공합니다." },
       { title: "배경 불투명도", body: "두 패널의 전체 배경 불투명도를 95%~100% 범위에서 수치를 보며 조절합니다." },
@@ -323,7 +324,7 @@ export const apps: AppData[] = [
       { title: "로그인 시 시작", body: "선택하면 Mac 로그인과 함께 조용히 실행됩니다." },
     ],
     guide: [
-      { title: "설치 준비", body: "macOS 10.15 이상과 로그인된 Codex CLI가 필요하며, Claude Code·Antigravity agy CLI·Grok CLI의 기존 로그인 정보도 읽기 전용으로 활용합니다." },
+      { title: "설치 준비", body: "macOS 10.15 이상과 로그인된 Codex CLI가 필요하며, Claude Code·Antigravity agy CLI·Grok CLI의 기존 로그인 정보를 활용합니다." },
       { title: "DMG로 설치", body: "GitHub Release에서 DMG를 받아 앱을 Applications 폴더로 옮깁니다." },
       { title: "표시와 새로고침", body: "메뉴 막대 값과 상세 정보, 패널 배경 불투명도와 자동 새로고침 간격을 설정합니다." },
       { title: "다른 대화와 공유", body: "로컬 ccmb-usage 명령으로 최신성 여부가 포함된 사용량 정보를 확인합니다." },
@@ -341,7 +342,7 @@ export const apps: AppData[] = [
     ],
     github: ["https://github.com/armsone/CCMB"],
     privacy: [
-      "현재 Mac 사용자의 Codex CLI·Claude Code·Antigravity CLI·Grok CLI 로그인 세션을 이용하며 API 키나 로그인 자격증명을 앱에 포함하지 않습니다.",
+      "현재 Mac 사용자의 Codex CLI·Claude Code·Antigravity CLI·Grok CLI 로그인 세션을 이용하며 API 키나 로그인 자격증명을 앱에 포함하지 않습니다. Grok 갱신과 브라우저 로그인은 공식 Grok CLI에 맡깁니다.",
       "사용량 정보는 사용자의 Mac에서 표시되고, 앱 자체 분석이나 원격 측정 기능을 추가하지 않습니다.",
       "진단 로그의 문자열은 비공개로 처리하며 원시 요청과 응답 본문을 기록하지 않습니다.",
     ],
