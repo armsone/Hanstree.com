@@ -61,10 +61,12 @@ test("renders the notarized BackToNormal cleanup release", async () => {
   assert.equal(response.status, 200);
 
   const html = await response.text();
-  assert.match(html, /개발 도구가 빌려 쓴 공간을/);
-  assert.match(html, /BackToNormal-1\.1\.0\.dmg/);
+  assert.match(html, /개발 도구가 빌려 쓴 공간과 메모리를/);
+  assert.match(html, /BackToNormal-1\.2\.0\.dmg/);
   assert.match(html, /Apple 공증 완료/);
-  assert.match(html, /74394081025df706f1bf96400224416147e05d00e6f3d8540a8c12b929c3168b/);
+  assert.match(html, /5dbc1e7fd851c30cd56ca5b4b0e5ba9636ae35ea4952248e2cb43e5adff886c8/);
+  assert.match(html, /유휴 프로세스 메모리 회수/);
+  assert.match(html, /정상 종료\(SIGTERM\)/);
   assert.match(html, /기본은 선택 안 함/);
   assert.match(html, /candidates\.png/);
   assert.match(html, /confirmation\.png/);
