@@ -36,13 +36,14 @@ test("server-renders the NasFinder.com homepage", async () => {
   assert.match(html, /HanClip/);
   assert.match(html, /S\.tand/);
   assert.match(html, /CCMB/);
+  assert.match(html, /BackToNormal/);
   assert.match(html, /TrackpadGuard/);
   assert.match(html, /intoSharp/);
   assert.match(html, /airChurch/);
   assert.match(html, /StarManager/);
   assert.match(html, /HtOMS Brief/);
   assert.match(html, /Button/);
-  assert.match(html, />25<\/strong><span>현재 소개하는 제품/);
+  assert.match(html, />26<\/strong><span>현재 소개하는 제품/);
   assert.doesNotMatch(html, /플랫폼별 제공 버전/);
   assert.match(html, />06<\/strong><span>iPhone · iPad · macOS · Android · Web · Windows \(커밍\)/);
   assert.match(html, />01<\/strong><span>한 사람의 꾸준한 기록/);
@@ -53,6 +54,20 @@ test("server-renders the NasFinder.com homepage", async () => {
   assert.match(html, /QR 연결 · 사진 보관함 저장/);
   assert.match(html, /개인정보처리방침/);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|Building your site/i);
+});
+
+test("renders the notarized BackToNormal cleanup release", async () => {
+  const response = await render("/apps/backtonormal");
+  assert.equal(response.status, 200);
+
+  const html = await response.text();
+  assert.match(html, /개발 도구가 빌려 쓴 공간을/);
+  assert.match(html, /BackToNormal-1\.1\.0\.dmg/);
+  assert.match(html, /Apple 공증 완료/);
+  assert.match(html, /74394081025df706f1bf96400224416147e05d00e6f3d8540a8c12b929c3168b/);
+  assert.match(html, /기본은 선택 안 함/);
+  assert.match(html, /candidates\.png/);
+  assert.match(html, /confirmation\.png/);
 });
 
 test("renders the Button family calling app and release", async () => {
