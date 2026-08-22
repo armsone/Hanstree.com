@@ -162,7 +162,7 @@ test("renders the latest NasFinder and HanClip capabilities", async () => {
   assert.match(nasFinder, /파일 앱의 강화된 미리보기/);
   assert.match(nasFinder, /플랫폼별 설치 보기/);
   assert.match(nasFinder, /Google Photos에서 직접 선택/);
-  assert.match(nasFinder, /받은 파일함으로 가져오는 흐름 구현/);
+  assert.match(nasFinder, /폰하드로 가져오는 흐름 구현/);
   assert.doesNotMatch(nasFinder, /Google Photos Picker[\s\S]*흐름 준비/);
   assert.match(hanClip, /완성시간을 음악 길이에 맞춘/);
   assert.match(hanClip, /개봉영화 보관함/);

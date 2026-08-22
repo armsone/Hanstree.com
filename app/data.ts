@@ -71,15 +71,15 @@ export const apps: AppData[] = [
     guide: [
       { title: "연결 추가", body: "서비스를 선택하고 서버 주소와 계정을 입력하거나 OAuth로 로그인한 뒤 연결을 확인합니다." },
       { title: "탐색과 미리보기", body: "보기 방식, 검색과 정렬을 선택하고 사진·영상·PDF·일반 문서를 앱 안에서 확인합니다." },
-      { title: "받은 파일과 전송", body: "다른 앱의 공유 메뉴나 시스템 파일 선택기에서 가져온 파일을 보관하고, 원하는 NAS 위치로 전송합니다." },
+      { title: "폰하드와 전송", body: "다른 앱의 공유 메뉴나 시스템 파일 선택기에서 가져온 파일을 폰하드에 보관하고, 원하는 NAS 위치로 전송합니다." },
       { title: "기기 간 미디어 전송", body: "보낼 미디어를 썸네일과 종류·영상 길이로 확인하고 필요 없는 항목을 뺀 뒤, 받을 기기의 QR을 스캔해 전송합니다. 받는 쪽은 QR만 표시하면 됩니다." },
-      { title: "데이터 관리", body: "연결 삭제, 받은 파일 삭제와 캐시 정리를 할 수 있고, 설정에서 Google Photos를 Google Drive와 별도로 연결 해제할 수 있습니다." },
+      { title: "데이터 관리", body: "연결 삭제, 폰하드 파일 삭제와 캐시 정리를 할 수 있고, 설정에서 Google Photos를 Google Drive와 별도로 연결 해제할 수 있습니다." },
       { title: "앱 정보 확인", body: "설정에서 만든 사람과 공식 홈페이지를 확인하고, 오픈소스 구성요소는 실제 라이선스와 원문 링크가 있는 공개 페이지에서 살펴봅니다." },
     ],
     progress: [
       { state: "done", title: "핵심 탐색과 미리보기", body: "다양한 원격 저장소 탐색, 미디어 썸네일과 미리보기 구현" },
       { state: "active", title: "실제 환경 검증", body: "서버별 파일 작업, 파일 앱 연동과 네트워크 예외를 검증 중" },
-      { state: "done", title: "Google Photos Picker", body: "iPhone·iPad에서 별도 Google Photos OAuth로 사용자가 Picker에서 직접 선택한 사진·영상만 받은 파일함으로 가져오는 흐름 구현" },
+      { state: "done", title: "Google Photos Picker", body: "iPhone·iPad에서 별도 Google Photos OAuth로 사용자가 Picker에서 직접 선택한 사진·영상만 폰하드로 가져오는 흐름 구현" },
       { state: "done", title: "iPhone·iPad·Mac 지원", body: "iPhone과 iPad 앱 완성, 동일 앱의 Apple Silicon Mac 설치와 실행 검증" },
       { state: "done", title: "Live Photo·Motion Photo 전송", body: "iPhone과 Android를 QR로 연결해 사진·영상·움직이는 사진의 원본 보존과 교차 변환 구현" },
       { state: "done", title: "iPhone·iPad 1.4 업로드", body: "폰하드와 Cover Flow를 담은 build 202608221534를 TestFlight에 업로드" },
@@ -87,7 +87,7 @@ export const apps: AppData[] = [
     ],
     screenshots: [
       { src: "/apps/nasfinder/screens/android-home.png", alt: "나스파인더 Android 저장공간 홈" },
-      { src: "/apps/nasfinder/screens/android-received.png", alt: "나스파인더 Android 받은 파일" },
+      { src: "/apps/nasfinder/screens/android-received.png", alt: "나스파인더 Android 폰하드" },
       { src: "/apps/nasfinder/screens/android-add-connection.png", alt: "나스파인더 Android 연결 추가" },
       { src: "/apps/nasfinder/screens/android-thumbnail-cache.png", alt: "나스파인더 Android 썸네일 캐시 관리" },
       { src: "/apps/nasfinder/screens/android-theme.png", alt: "나스파인더 Android 테마와 앱 아이콘" },
@@ -96,8 +96,8 @@ export const apps: AppData[] = [
     github: ["https://github.com/armsone/NasFinder", "https://github.com/armsone/NasFinder-Android"],
     privacy: [
       "Apple 앱은 연결 정보를 App Group에, 비밀번호·세션·OAuth 자격증명을 Keychain에 저장합니다. Android 앱은 자격증명을 Android Keystore로 보호한 기기 전용 저장공간에 보관합니다.",
-      "받은 파일, 다운로드 파일과 썸네일 캐시는 사용자의 기기 안에 저장됩니다.",
-      "Google Photos에서는 Picker로 사용자가 직접 선택한 사진·영상만 iPhone·iPad의 받은 파일함으로 내려받으며 전체 보관함을 탐색하지 않습니다.",
+      "폰하드 파일과 썸네일 캐시는 사용자의 기기 안에 저장됩니다.",
+      "Google Photos에서는 Picker로 사용자가 직접 선택한 사진·영상만 iPhone·iPad의 폰하드로 내려받으며 전체 보관함을 탐색하지 않습니다.",
       "기기 간 미디어 전송은 같은 로컬 네트워크에서 두 기기가 직접 연결되며 별도 중계 서버로 사진과 영상을 보내지 않습니다.",
       "사용자가 선택한 외부 저장소 서비스와 직접 통신하며 각 서비스의 정책이 함께 적용됩니다.",
     ],
