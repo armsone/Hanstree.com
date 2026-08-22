@@ -121,7 +121,7 @@ export const apps: AppData[] = [
         detail: "v1.0.0 · macOS 14+ · Apple Silicon·Intel · Apple 공증 완료",
         url: releaseDownloadPath("NasFinder-Super-Thumbnail"),
         downloadLabel: "Mac용 DMG 바로 받기",
-        checksum: "f248615725ae47acb9a38239b1027963008314f07d60914365efd2ef7dabd02a",
+        checksum: "9d981c10dae8e770b40a0712f95741d48e02e0cbb7996bb4e21780299a6949e3",
       },
     ],
     features: [
