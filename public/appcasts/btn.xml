@@ -1,0 +1,15 @@
+<?xml version="1.0" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>BTN</title>
+        <item>
+            <title>1.2.2</title>
+            <pubDate>Sun, 23 Aug 2026 06:55:27 +0900</pubDate>
+            <link>https://github.com/armsone/BTN/releases/tag/v1.2.2</link>
+            <sparkle:version>11</sparkle:version>
+            <sparkle:shortVersionString>1.2.2</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/armsone/BTN/releases/download/v1.2.2/BTN-1.2.2.dmg" length="3817084" type="application/octet-stream" sparkle:edSignature="jl79vHlGOr9CM24HcOzz+j3upukKq7rx83EpHb73Il9Vp/DClGIAz9B/L4vE+Rx9ywYNDT/CtaVPCyt2+bwwAg=="/>
+        </item>
+    </channel>
+</rss>

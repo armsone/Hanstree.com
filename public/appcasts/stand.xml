@@ -1,0 +1,15 @@
+<?xml version="1.0" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>S.tand</title>
+        <item>
+            <title>1.0.0</title>
+            <pubDate>Sun, 23 Aug 2026 07:02:22 +0900</pubDate>
+            <link>https://github.com/armsone/S.tand/releases/tag/macos-v0.33.0</link>
+            <sparkle:version>0.33.0</sparkle:version>
+            <sparkle:shortVersionString>1.0.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/armsone/S.tand/releases/download/macos-v0.33.0/S.tand-macOS-0.33.0.dmg" length="13629732" type="application/octet-stream" sparkle:edSignature="Hjgo/d9QhucUFizosYh510/jo+RFfIs2g+jwr9iD15qATztx+T/IiUy/LCWpwNRmFvP+1p37oU1qwWPsrTr+CA=="/>
+        </item>
+    </channel>
+</rss>
