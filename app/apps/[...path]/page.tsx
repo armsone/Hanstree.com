@@ -597,6 +597,8 @@ function InfoPage({ app, section }: { app: NonNullable<ReturnType<typeof findApp
           <LegalSection title="사용자의 권리"><p>사용자는 운영체제 설정에서 앱 권한을 철회하고, 앱에서 연결·프로젝트·파일·캐시를 삭제하거나 외부 계정을 연결 해제할 수 있습니다. 개인정보 열람·정정·삭제·처리정지에 관한 문의는 아래 개인정보 보호책임자에게 요청할 수 있습니다.</p></LegalSection>
           {app.slug === "nasfinder" && <>
             <LegalSection title="Google 서비스"><p>Google 계정 연결 기능은 사용자가 요청한 파일 작업에 필요한 정보만 처리합니다. Google Photos는 iPhone·iPad에서 Google Drive와 분리된 별도 OAuth 연결을 사용하며, 민감 범위인 https://www.googleapis.com/auth/photospicker.mediaitems.readonly 하나만 요청합니다. 전체 보관함을 탐색하거나 복제하지 않고, Google Photos Picker에서 사용자가 직접 선택한 사진·영상만 해당 기기의 받은 파일함으로 내려받습니다. 내려받은 항목은 미리보기·공유·삭제할 수 있으며, 사용자가 NAS 또는 연결된 저장소를 직접 선택했을 때만 그 대상으로 전송합니다. Google Photos 데이터는 광고, 추적, 얼굴 인식, 데이터 판매 또는 AI 학습에 사용하지 않습니다. Google Photos OAuth 토큰은 Google Drive와 별도로 Keychain에서 보호되며, 설정에서 Google Photos 연결을 해제할 수 있습니다. 기기 안의 받은 파일과 캐시는 앱에서 삭제할 수 있고, 외부로 내보낸 파일은 해당 대상에서 별도로 삭제해야 합니다.</p></LegalSection>
+            <LegalSection title="Google 사진 데이터의 공유와 제공 (Data sharing and disclosure)"><p>Google Photos에서 받은 사용자 데이터가 전달되는 대상은 다음 두 경우뿐입니다. 첫째, 사용자가 요청한 기능을 수행하기 위해 앱이 Google API와 통신할 때 Google에 전달됩니다. 둘째, 사용자가 공유 동작을 시작하거나 NAS 또는 연결된 저장소를 전송 대상으로 직접 선택했을 때 그 선택한 대상에만 전달됩니다. Google Photos 데이터는 판매하지 않으며, 위와 무관한 제3자에게 제공·이전·공개하지 않습니다. 선택한 사진·영상은 Google에서 사용자의 기기로 직접 내려받으며, 운영자는 이를 운영자가 관리하는 서버로 수신하거나 보관하지 않습니다.</p></LegalSection>
+            <LegalSection title="보안과 데이터 보호 (Security and data protection)"><p>Google API와의 모든 통신은 HTTPS/TLS로 암호화하여 전송합니다. Google Photos OAuth 자격 증명은 Google Drive 자격 증명과 분리해 iOS·iPadOS Keychain에 해당 기기에서만 접근하도록 보관합니다. 기기에 내려받은 사진·영상과 캐시는 앱의 저장공간에 두며, 기기 잠금 등 운영체제와 앱의 접근 제어로 보호됩니다.</p></LegalSection>
             <section className="limited-use" lang="en" aria-labelledby="google-limited-use-title">
               <p className="eyebrow">ENGLISH SUMMARY FOR GOOGLE API USERS</p>
               <h2 id="google-limited-use-title">Google API Data Use &amp; Limited Use</h2>
@@ -630,7 +632,7 @@ function InfoPage({ app, section }: { app: NonNullable<ReturnType<typeof findApp
             <ContactReveal />
           </div>
         </>}
-        <p className="policy-note">시행일: 2026년 8월 14일 · 마지막 변경일: {app.slug === "nasfinder" ? "2026년 8월 21일" : "2026년 8월 15일"}</p>
+        <p className="policy-note">시행일: 2026년 8월 14일 · 마지막 변경일: {app.slug === "nasfinder" ? "2026년 8월 22일" : "2026년 8월 15일"}</p>
       </article>
       <SiteFooter />
     </main>
@@ -654,7 +656,8 @@ function GoogleOAuthPage() {
         <LegalSection title="Product purpose"><p>NasFinder is a native file browser for iPhone and iPad. It helps users browse their own storage services, preview media, and move or share files they choose.</p></LegalSection>
         <LegalSection title="Google Drive"><p>NasFinder includes a Google Drive connection for user-requested file browsing and file operations. Google Drive uses its own OAuth connection and credentials, separate from Google Photos.</p></LegalSection>
         <LegalSection title="Google Photos Picker"><p>The production Google Photos integration on iPhone and iPad uses a dedicated Google Photos OAuth connection and requests only the sensitive scope https://www.googleapis.com/auth/photospicker.mediaitems.readonly. The user opens Google Photos Picker and explicitly selects photos or videos; NasFinder downloads only those selected items into Received Files on that iPhone or iPad. Downloaded items can be previewed, shared, or deleted, and are transferred to a NAS or connected storage destination only when the user explicitly chooses one. NasFinder does not browse or recreate the user&apos;s complete Google Photos library and does not use this data for advertising, tracking, face recognition, data sales, or AI training.</p></LegalSection>
-        <LegalSection title="Storage and sharing"><p>Google Photos OAuth tokens are stored separately from Google Drive credentials and protected in the device Keychain. Selected media and related local cache are stored on the user&apos;s device to complete the requested operation. Google Photos data is shared only when the user starts a share action or explicitly chooses a NAS or connected storage destination for transfer.</p></LegalSection>
+        <LegalSection title="Data sharing and disclosure"><p>Google Photos user data is shared, transferred, or disclosed only to: (1) Google, when NasFinder calls Google APIs to complete the user&apos;s request, and (2) the destination the user explicitly chooses — a share action target or a NAS or connected storage destination the user selects for transfer. Google Photos user data is not sold and is not disclosed to any unrelated third party. Selected media is downloaded from Google directly to the user&apos;s device; the operator does not receive or retain selected Google Photos media on any operator-controlled server.</p></LegalSection>
+        <LegalSection title="Security and data protection"><p>All Google API traffic is encrypted in transit using HTTPS/TLS. Google Photos OAuth credentials are stored separately from Google Drive credentials in the iOS/iPadOS Keychain with device-only access. Selected media and related local cache are stored in the app&apos;s storage on the user&apos;s device to complete the requested operation and are protected by the device and app access controls of iOS and iPadOS, such as the device passcode and app sandbox.</p></LegalSection>
         <LegalSection title="Limited Use"><p>NasFinder&apos;s use and transfer of information received from Google APIs adheres to the <Link className="inline-link" href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</Link>, including the Limited Use requirements.</p></LegalSection>
         <LegalSection title="Control and deletion"><p>Users can disconnect Google Photos in NasFinder Settings, separately from Google Drive, and revoke NasFinder&apos;s access from their Google Account. Locally downloaded files and caches can be deleted in the app; exported files must be deleted from their destination separately.</p><p><Link className="inline-link" href="/apps/nasfinder/data-deletion">Open connection removal and data deletion instructions</Link></p></LegalSection>
 
@@ -662,7 +665,7 @@ function GoogleOAuthPage() {
           <Link className="button button-primary" href="/apps/nasfinder/privacy">Korean privacy notice</Link>
           <Link className="button button-quiet" href="/apps/nasfinder/support">Support</Link>
         </div>
-        <p className="policy-note">Production disclosure for the Google Photos Picker integration · Last reviewed August 21, 2026</p>
+        <p className="policy-note">Production disclosure for the Google Photos Picker integration · Last reviewed August 22, 2026</p>
       </article>
       <SiteFooter />
     </main>
