@@ -36,7 +36,7 @@ test("server-renders the NasFinder.com homepage", async () => {
   assert.match(html, /HanClip/);
   assert.match(html, /S\.tand/);
   assert.match(html, /CCMB/);
-  assert.match(html, /BackToNormal/);
+  assert.match(html, /BTN/);
   assert.match(html, /TrackpadGuard/);
   assert.match(html, /intoSharp/);
   assert.match(html, /airChurch/);
@@ -56,15 +56,15 @@ test("server-renders the NasFinder.com homepage", async () => {
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|Building your site/i);
 });
 
-test("renders the notarized BackToNormal cleanup release", async () => {
-  const response = await render("/apps/backtonormal");
+test("renders the notarized BTN cleanup release", async () => {
+  const response = await render("/apps/btn");
   assert.equal(response.status, 200);
 
   const html = await response.text();
   assert.match(html, /개발 도구가 빌려 쓴 공간과 메모리를/);
-  assert.match(html, /BackToNormal-1\.2\.1\.dmg/);
+  assert.match(html, /BTN-1\.2\.2\.dmg/);
   assert.match(html, /Apple 공증 완료/);
-  assert.match(html, /3b03bea144ac01338ac422c3e08344ad590996ac96d055b3d79fe99875a660c7/);
+  assert.match(html, /36f438210f7e66b065d7d51ba89572ad6a10b5fde9602758bb032124b9273dbb/);
   assert.match(html, /메모리 압박 해결 동선/);
   assert.match(html, /기기 데이터를 유지한 채 종료/);
   assert.match(html, /안전한 파일 자동 정리/);
@@ -73,8 +73,15 @@ test("renders the notarized BackToNormal cleanup release", async () => {
   assert.match(html, /로컬 개발 서버는 관찰만/);
   assert.match(html, /정상 종료\(SIGTERM\)/);
   assert.match(html, /기본은 선택 안 함/);
-  assert.match(html, /candidates\.png/);
-  assert.match(html, /confirmation\.png/);
+  assert.match(html, /overview\.png/);
+});
+
+test("keeps the former BackToNormal route compatible", async () => {
+  const response = await render("/apps/backtonormal");
+  assert.equal(response.status, 200);
+
+  const html = await response.text();
+  assert.match(html, /BTN-1\.2\.2\.dmg/);
 });
 
 test("renders the Button family calling app and release", async () => {

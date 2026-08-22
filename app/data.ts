@@ -350,23 +350,23 @@ export const apps: AppData[] = [
     ],
   },
   {
-    slug: "backtonormal",
-    name: "원상복구",
-    english: "BackToNormal",
-    eyebrow: "RETURN YOUR MAC TO NORMAL",
+    slug: "btn",
+    name: "BTN",
+    english: "BTN",
+    eyebrow: "BRING YOUR MAC BACK TO NORMAL",
     tagline: "개발 도구가 빌려 쓴 공간과 메모리를, 안전하게 돌려놓습니다.",
     summary: "AI·개발 작업 뒤 남은 시뮬레이터·작업 산출물과 유휴 개발 프로세스를 찾아 위험도와 이유를 설명하고, 안전한 파일은 자동으로 정리하거나 사용자가 고른 항목만 다시 확인한 뒤 처리하는 macOS 메뉴 막대 앱입니다.",
     theme: "blue",
-    icon: "/apps/backtonormal/icon.png",
+    icon: "/apps/btn/icon.png",
     artwork: "cleanup",
     platforms: [
       {
         name: "macOS",
         status: "공개",
-        detail: "v1.2.1 · macOS 13+ · Universal · Apple 공증 완료",
-        url: "https://github.com/armsone/BackToNormal/releases/download/v1.2.1/BackToNormal-1.2.1.dmg",
+        detail: "v1.2.2 · macOS 13+ · Universal · Apple 공증 완료",
+        url: "https://github.com/armsone/BTN/releases/download/v1.2.2/BTN-1.2.2.dmg",
         downloadLabel: "Mac용 DMG 바로 받기",
-        checksum: "3b03bea144ac01338ac422c3e08344ad590996ac96d055b3d79fe99875a660c7",
+        checksum: "36f438210f7e66b065d7d51ba89572ad6a10b5fde9602758bb032124b9273dbb",
       },
     ],
     features: [
@@ -382,7 +382,7 @@ export const apps: AppData[] = [
       { title: "로컬에서만 작동", body: "진단과 정리 판단은 Mac 안에서 규칙으로 수행하며 원격 분석이나 사용자 파일 업로드를 하지 않습니다." },
     ],
     guide: [
-      { title: "DMG로 설치", body: "공식 DMG를 열고 BackToNormal을 응용 프로그램 폴더로 옮긴 뒤 실행합니다." },
+      { title: "DMG로 설치", body: "공식 DMG를 열고 BTN을 응용 프로그램 폴더로 옮긴 뒤 실행합니다." },
       { title: "메모리 압박 낮추기", body: "경고가 보이면 해결할 항목 찾기로 실행 중인 시뮬레이터와 유휴 개발 프로세스를 확인하거나 활동 모니터를 엽니다." },
       { title: "남은 자원 찾기", body: "메뉴 막대에서 자세히 보기를 열고 정리 후보 찾기를 눌러 파일·시뮬레이터와 유휴 개발 프로세스를 확인합니다." },
       { title: "이유와 위험도 확인", body: "디스크 예상 확보량과 메모리 예상 회수량, 감지 이유와 위험도를 구분해 확인합니다." },
@@ -394,14 +394,13 @@ export const apps: AppData[] = [
       { state: "done", title: "선택형 안전 정리", body: "실행 직전 재검증, 휴지통 이동과 개별 시뮬레이터 삭제 흐름 구현" },
       { state: "done", title: "메모리 원상복구", body: "유휴 개발 프로세스의 실행 직전 재검증과 정확한 PID별 정상 종료(SIGTERM) 구현" },
       { state: "done", title: "메모리 압박 해결", body: "데이터를 유지하는 실행 중 시뮬레이터 종료와 활동 모니터 연결 구현" },
-      { state: "done", title: "서명·공증 DMG 공개", body: "Developer ID 서명과 Apple 공증을 마친 v1.2.1 Universal DMG를 GitHub Releases에 공개" },
+      { state: "done", title: "BTN 1.2.2 공개", body: "앱·프로젝트·저장소 이름을 BTN으로 통일하고 기존 설정과 정리 이력을 이어 쓰는 Apple 공증 Universal DMG를 공개" },
       { state: "next", title: "작업 세션 연동", body: "Codex·Claude·Gemini 작업별로 생성된 자원을 더 정밀하게 구분하는 추적 기능 준비" },
     ],
     screenshots: [
-      { src: "/apps/backtonormal/screens/candidates.png", alt: "BackToNormal이 오래된 DerivedData 후보와 예상 확보 용량을 보여주는 실제 화면", layout: "menu" },
-      { src: "/apps/backtonormal/screens/confirmation.png", alt: "BackToNormal이 선택한 정리 항목과 위험도를 실행 전에 다시 확인하는 실제 화면", layout: "menu" },
+      { src: "/apps/btn/screens/overview.png", alt: "BTN이 메모리 압박 경고와 안전한 해결 동선을 보여주는 실제 화면", layout: "menu" },
     ],
-    github: ["https://github.com/armsone/BackToNormal"],
+    github: ["https://github.com/armsone/BTN"],
     privacy: [
       "프로세스, 시뮬레이터와 개발 산출물 상태는 진단을 위해 Mac 안에서만 확인합니다.",
       "선택한 파일은 우선 macOS 휴지통으로 이동하며, 시뮬레이터 데이터 초기화·삭제처럼 복구할 수 없는 조치는 실행 전에 별도로 알립니다. 실행 중 시뮬레이터 종료는 기기 데이터를 유지합니다.",
@@ -714,5 +713,5 @@ export const apps: AppData[] = [
 ];
 
 export function findApp(slug: string) {
-  return apps.find((app) => app.slug === slug);
+  return apps.find((app) => app.slug === (slug === "backtonormal" ? "btn" : slug));
 }

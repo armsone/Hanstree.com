@@ -57,10 +57,10 @@ export function AppArtwork({ app }: { app: AppData }) {
 
   if (app.artwork === "cleanup") {
     return (
-      <div className="artwork artwork-cleanup" aria-label="BackToNormal 정리 후보 진단 화면">
+      <div className="artwork artwork-cleanup" aria-label="BTN 메모리 압박 진단 화면">
         <div className="cleanup-glow" />
         <div className="cleanup-window">
-          <Image src="/apps/backtonormal/screens/candidates.png" alt="" width={1576} height={1776} sizes="(max-width: 640px) 84vw, 520px" unoptimized />
+          <Image src="/apps/btn/screens/overview.png" alt="" width={1520} height={1000} sizes="(max-width: 640px) 84vw, 520px" unoptimized />
         </div>
         <div className="cleanup-proof"><span />선택 전에는 아무것도 지우지 않음</div>
       </div>
