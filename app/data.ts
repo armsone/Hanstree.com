@@ -621,7 +621,7 @@ export const apps: AppData[] = [
       { state: "done", title: "가족 실기기 설치", body: "가족 iPhone 네 대에 iOS 1.1 build 16, SM-F968N에 Android 1.1.3 build 17 설치 확인" },
       { state: "done", title: "Android 1.1.3 공개", body: "사이렌·즉시 음성 전달·기능별 아이콘을 반영한 서명 build 17 APK와 체크섬을 GitHub Releases에 공개" },
       { state: "active", title: "TestFlight 처리", body: "1.1 (16) 업로드 완료, Apple의 빌드 처리 결과 대기" },
-      { state: "active", title: "NAS 사이렌 중계 반영", body: "서버 파일 업데이트 완료, Container Manager 재빌드 대기" },
+      { state: "done", title: "NAS 사이렌 중계 반영", body: "Container Manager 재빌드와 APNs·FCM 상태, 사이렌 호출 수락까지 운영 서버에서 확인" },
       { state: "done", title: "Android 원격 수신", body: "FCM 등록·백그라운드 대상 검증·원본 띵동 소리·호출 기록까지 NAS 실전 전달 확인" },
     ],
     screenshots: [
