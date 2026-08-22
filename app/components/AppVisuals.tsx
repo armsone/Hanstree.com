@@ -40,11 +40,14 @@ export function AppArtwork({ app }: { app: AppData }) {
 
   if (app.artwork === "menubar") {
     return (
-      <div className="artwork artwork-menubar" aria-label="CCMB의 실제 네 서비스 사용량 패널">
+      <div className="artwork artwork-menubar" aria-label="CCMB의 Codex, Claude, Gemini 사용량 패널">
+        <div className="ccmb-menubar-preview" aria-label="메뉴 막대에 대표 색상으로 표시된 세 서비스의 남은 사용량">
+          <span className="ccmb-number-codex">50%</span><i>·</i><span className="ccmb-number-claude">63%</span><i>·</i><span className="ccmb-number-gemini">100%</span>
+        </div>
         <div className="ccmb-panel-shot">
           <Image
             src="/apps/ccmb/screens/ccmb-usage-menu.png"
-            alt="Codex·Claude·Gemini·Grok 사용량 링과 갱신 정보를 4열로 표시한 CCMB 패널"
+            alt="Codex·Claude·Gemini 사용량 링과 갱신 정보를 3열로 표시한 CCMB 패널"
             width={1636}
             height={1206}
             sizes="(max-width: 640px) 92vw, 720px"
