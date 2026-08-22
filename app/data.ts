@@ -19,7 +19,7 @@ export type AppData = {
   summary: string;
   theme: "violet" | "coral" | "amber" | "blue";
   icon?: string;
-  artwork: "files" | "phones" | "clock" | "menubar" | "cleanup" | "trackpad" | "thumbnail" | "search" | "church";
+  artwork: "files" | "phones" | "clock" | "menubar" | "cleanup" | "trackpad" | "thumbnail" | "htoms" | "search" | "church";
   platforms: Platform[];
   features: { title: string; body: string; icon?: string }[];
   guide: { title: string; body: string }[];
@@ -46,15 +46,15 @@ export const apps: AppData[] = [
     icon: "/apps/nasfinder/icon.png",
     artwork: "files",
     platforms: [
-      { name: "iPhone · iPad", status: "TestFlight", detail: "1.4 (202608221534) · iOS·iPadOS 17+", availabilityNote: "TestFlight로 설치 · 공개 스토어 링크 준비 중" },
-      { name: "Mac용 NasFinder", status: "TestFlight", detail: "Apple Silicon · iPhone·iPad 호환 앱", availabilityNote: "같은 TestFlight 빌드로 설치 · 공개 스토어 링크 준비 중" },
+      { name: "iPhone · iPad", status: "TestFlight", detail: "2.0.0 (202608230737) · iOS·iPadOS 17+", availabilityNote: "TestFlight 처리 완료" },
+      { name: "Mac용 NasFinder", status: "TestFlight", detail: "2.0.0 · Apple Silicon · iPhone·iPad 호환 앱", availabilityNote: "같은 TestFlight 빌드 · 처리 완료" },
       {
         name: "Android",
         status: "공개",
-        detail: "1.4 · APK v10 · Android 8.0+",
+        detail: "2.0.0 · build 202608230737 · APK code 337417 · Android 8.0+",
         url: releaseDownloadPath("NasFinder-Android"),
         downloadLabel: "Android APK 바로 받기",
-        checksum: "1e069226a046b6db2dfcb63fb03249abc283fcbf9969a4aba5152a11c66b7d52",
+        checksum: "b75e22a98ef00fb35c657292b95fb1516ac2f098185e4ca611fd30bad02b775d",
       },
     ],
     features: [
@@ -84,8 +84,8 @@ export const apps: AppData[] = [
       { state: "done", title: "Google Photos Picker", body: "iPhone·iPad에서 별도 Google Photos OAuth로 사용자가 Picker에서 직접 선택한 사진·영상만 폰하드로 가져오는 흐름 구현" },
       { state: "done", title: "iPhone·iPad·Mac 지원", body: "iPhone과 iPad 앱 완성, 동일 앱의 Apple Silicon Mac 설치와 실행 검증" },
       { state: "done", title: "Live Photo·Motion Photo 전송", body: "iPhone과 Android를 QR로 연결해 사진·영상·움직이는 사진의 원본 보존과 교차 변환 구현" },
-      { state: "done", title: "iPhone·iPad 1.4 업로드", body: "폰하드와 Cover Flow를 담은 build 202608221534를 TestFlight에 업로드" },
-      { state: "done", title: "Android 공개", body: "같은 폰하드·보기 경험을 담은 NasFinder Android v10 APK를 GitHub Releases에 공개" },
+      { state: "done", title: "iPhone·iPad 2.0.0 업로드", body: "build 202608230737 TestFlight 처리 완료" },
+      { state: "done", title: "Android 2.0.0 공개", body: "build 202608230737, code 337417의 서명 APK를 GitHub Releases에 공개" },
     ],
     screenshots: [
       { src: "/apps/nasfinder/screens/android-home.png", alt: "나스파인더 Android 저장공간 홈" },
@@ -118,10 +118,10 @@ export const apps: AppData[] = [
       {
         name: "macOS",
         status: "공개",
-        detail: "v1.0.0 · macOS 14+ · Apple Silicon·Intel · Apple 공증 완료",
+        detail: "2.0.0 (202608230737) · macOS 14+ · Apple Silicon·Intel · Apple 공증 완료",
         url: releaseDownloadPath("NasFinder-Super-Thumbnail"),
         downloadLabel: "Mac용 DMG 바로 받기",
-        checksum: "9d981c10dae8e770b40a0712f95741d48e02e0cbb7996bb4e21780299a6949e3",
+        checksum: "c8b825c09b9b7800d8733951ae8b94be0c1553daf85455a0f77a3a2f74527691",
       },
     ],
     features: [
@@ -141,7 +141,7 @@ export const apps: AppData[] = [
     progress: [
       { state: "done", title: "Mac 전용 네이티브 앱", body: "Finder 폴더 선택, 재귀 검색, 생성·일시정지·중단과 이어하기 구현" },
       { state: "done", title: "대규모 폴더 검증", body: "16,540개 미디어·1.57TB 폴더의 검색, 진행률과 용량 표시 검증" },
-      { state: "done", title: "공개 배포", body: "Developer ID 서명과 Apple 공증을 마친 v1.0.0 Universal DMG 공개" },
+      { state: "done", title: "2.0.0 공개 배포", body: "build 202608230737의 Developer ID 서명·Apple 공증 Universal DMG와 자동 업데이트 공개" },
       { state: "active", title: "다양한 NAS 환경 확인", body: "Finder 연결 방식과 파일 권한에 따른 예외를 계속 점검 중" },
     ],
     github: ["https://github.com/armsone/NasFinder"],
@@ -162,15 +162,15 @@ export const apps: AppData[] = [
     icon: "/apps/hanclip/icon.png",
     artwork: "phones",
     platforms: [
-      { name: "iOS · iPadOS", status: "완료", detail: "1.0.1 (3.12.55) · iOS·iPadOS 17+", availabilityNote: "TestFlight 업로드 완료" },
-      { name: "Mac", status: "완료", detail: "Apple Silicon · iPad 앱 호환 모드", availabilityNote: "iPhone·iPad용 앱으로 지원" },
+      { name: "iOS · iPadOS", status: "TestFlight", detail: "2.0.0 (202608230737) · iOS·iPadOS 17+", availabilityNote: "TestFlight 처리 완료" },
+      { name: "Mac", status: "TestFlight", detail: "2.0.0 · Apple Silicon · iPad 앱 호환 모드", availabilityNote: "같은 TestFlight 빌드 · 처리 완료" },
       {
         name: "Android",
         status: "공개",
-        detail: "1.0.1 · APK v552 · Android 8.0+",
+        detail: "2.0.0 · build 202608230737 · APK code 337417 · Android 8.0+",
         url: releaseDownloadPath("HanClip-Android"),
         downloadLabel: "Android APK 바로 받기",
-        checksum: "edea0d6de726493a720f58c5f469a6e4c9d57d011f9ac2b3cd0f05e5ce4894cf",
+        checksum: "2cbfade3507cc4dd3fb87d99d8f2c56fc6e8b57cd90a64764a7e9be146675f9f",
       },
     ],
     features: [
@@ -193,7 +193,8 @@ export const apps: AppData[] = [
     ],
     progress: [
       { state: "done", title: "iOS 핵심 제작 흐름", body: "선택, 편집, 렌더링, 시사회와 저장 흐름 구현" },
-      { state: "done", title: "Android 공개 빌드", body: "화면 움직임·포즈 보조를 더한 HanClip Android v552 APK를 GitHub Releases에 공개" },
+      { state: "done", title: "iOS·iPadOS 2.0.0 업로드", body: "build 202608230737 TestFlight 처리 완료" },
+      { state: "done", title: "Android 2.0.0 공개", body: "build 202608230737, code 337417의 서명 APK를 GitHub Releases에 공개" },
       { state: "active", title: "플랫폼 경험 정렬", body: "iOS와 Android의 기능과 화면 동등성을 계속 다듬는 중" },
       { state: "done", title: "Apple Silicon Mac 지원", body: "iPhone·iPad와 같은 빌드를 Mac의 ‘iPhone 및 iPad용 앱’으로 실행하도록 지원" },
       { state: "done", title: "AiShot 동작 인식 강화", body: "소리 단독 반응을 줄이고 화면 움직임과 기기 내 신체 자세 분석을 결합" },
@@ -224,22 +225,22 @@ export const apps: AppData[] = [
     icon: "/apps/stand/icon.png",
     artwork: "clock",
     platforms: [
-      { name: "iOS · iPadOS", status: "완료", detail: "1.0.0 (0.33.0) · iOS·iPadOS 17+", availabilityNote: "TestFlight 업로드 완료" },
+      { name: "iOS · iPadOS", status: "TestFlight", detail: "2.0.0 (202608230737) · 내부 build 337417 · iOS·iPadOS 17+", availabilityNote: "TestFlight 처리 완료" },
       {
         name: "macOS",
         status: "공개",
-        detail: "1.0.0 (0.33.0) · macOS 14+ · Apple 공증 완료",
+        detail: "2.0.0 (202608230737) · macOS 14+ · Apple 공증 완료",
         url: releaseDownloadPath("S.tand-macOS"),
         downloadLabel: "Mac용 DMG 바로 받기",
-        checksum: "e8aad4381a373cb014f5cb6306fc3e34827ca97f957ad3ff46218d6f42fcc68e",
+        checksum: "a5a8a12f090b3501c0b4a034a0d15e4faf59b10e3d4ac82e61d83a74fad2bd64",
       },
       {
         name: "Android",
         status: "공개",
-        detail: "0.0.1 · APK v59 · Android 8.0+",
+        detail: "2.0.0 · build 202608230737 · APK code 337417 · Android 8.0+",
         url: releaseDownloadPath("S.tand-Android"),
         downloadLabel: "Android APK 바로 받기",
-        checksum: "f7741edb208f249cb29cff70b96db73d9fbb0e38b5d091964401d0cfe9ebd9dc",
+        checksum: "66d77953761b8e0a8e2b37ab890ce6726d6beed8e34388e936d65f4d92cde91e",
       },
     ],
     features: [
@@ -264,9 +265,10 @@ export const apps: AppData[] = [
     ],
     progress: [
       { state: "done", title: "시계와 수면 케어", body: "오브제 화면, 반응형 조명과 로컬 수면 기록 구현" },
-      { state: "done", title: "Android 공개 빌드", body: "S.tand Android v59 APK를 GitHub Releases에 공개" },
+      { state: "done", title: "iOS·iPadOS 2.0.0 업로드", body: "내부 build 337417, 표시 build 202608230737 TestFlight 처리 완료" },
+      { state: "done", title: "Android 2.0.0 공개", body: "build 202608230737, code 337417의 서명 APK를 GitHub Releases에 공개" },
       { state: "done", title: "보이소 무전기", body: "주변 소리 없이 버튼으로 연결된 화면을 부르는 무전기 역할과 3초 연타 방지·고시인성 알림 적용" },
-      { state: "done", title: "Mac Catalyst 공개", body: "Developer ID 서명, Apple 공증과 Gatekeeper 검증을 마친 macOS 0.33.0 Universal DMG와 자동 업데이트 공개" },
+      { state: "done", title: "Mac 2.0.0 공개", body: "Developer ID 서명, Apple 공증과 Gatekeeper 검증을 마친 build 202608230737 DMG와 자동 업데이트 공개" },
       { state: "done", title: "휴대전화 가로 음악 배치", body: "iPhone 대표 가로 배치를 Android에도 적용하고 음악 스트립과 오른쪽 고정 제어 패널이 겹치지 않게 정리" },
       { state: "next", title: "장시간 실기기 검증", body: "오디오·센서 흐름과 접근성을 다양한 기기에서 추가 검증" },
     ],
@@ -312,7 +314,7 @@ export const apps: AppData[] = [
     theme: "blue",
     artwork: "menubar",
     platforms: [
-      { name: "macOS", status: "공개", detail: "v0.4.5 · macOS 10.15+ · Universal", url: releaseDownloadPath("CCMB"), downloadLabel: "DMG 다운로드", checksum: "bfc50723c640507384750c153bd700dbe994f38fa66a0a298571bb393b900cd1" },
+      { name: "macOS", status: "공개", detail: "2.0.0 (202608230737) · macOS 10.15+ · Universal", url: releaseDownloadPath("CCMB"), downloadLabel: "DMG 다운로드", checksum: "a5ac16e68bdb0bb4062066802b8268d7a3f3fee900958e2c7a497f09a50294e0" },
     ],
     features: [
       { title: "세 AI를 한눈에", body: "Codex·Claude·Gemini 사용량을 정밀 눈금·은은한 발광·끝점 표시가 있는 3열 링으로 나란히 확인합니다." },
@@ -363,10 +365,10 @@ export const apps: AppData[] = [
       {
         name: "macOS",
         status: "공개",
-        detail: "v1.2.2 · macOS 13+ · Universal · Apple 공증 완료",
+        detail: "2.0.0 (202608230737) · macOS 13+ · Universal · Apple 공증 완료",
         url: releaseDownloadPath("BTN"),
         downloadLabel: "Mac용 DMG 바로 받기",
-        checksum: "36f438210f7e66b065d7d51ba89572ad6a10b5fde9602758bb032124b9273dbb",
+        checksum: "e4447bdd93262c95046f6156e84f3dd2912f3fc192dc1059fc5ee1c3337b1b97",
       },
     ],
     features: [
@@ -394,7 +396,7 @@ export const apps: AppData[] = [
       { state: "done", title: "선택형 안전 정리", body: "실행 직전 재검증, 휴지통 이동과 개별 시뮬레이터 삭제 흐름 구현" },
       { state: "done", title: "메모리 원상복구", body: "유휴 개발 프로세스의 실행 직전 재검증과 정확한 PID별 정상 종료(SIGTERM) 구현" },
       { state: "done", title: "메모리 압박 해결", body: "데이터를 유지하는 실행 중 시뮬레이터 종료와 활동 모니터 연결 구현" },
-      { state: "done", title: "BTN 1.2.2 공개", body: "앱·프로젝트·저장소 이름을 BTN으로 통일하고 기존 설정과 정리 이력을 이어 쓰는 Apple 공증 Universal DMG를 공개" },
+      { state: "done", title: "BTN 2.0.0 공개", body: "build 202608230737의 Apple 공증 Universal DMG와 자동 업데이트를 공개" },
       { state: "next", title: "작업 세션 연동", body: "Codex·Claude·Gemini 작업별로 생성된 자원을 더 정밀하게 구분하는 추적 기능 준비" },
     ],
     screenshots: [
@@ -418,7 +420,7 @@ export const apps: AppData[] = [
     icon: "/apps/trackpadguard/icon.png",
     artwork: "trackpad",
     platforms: [
-      { name: "macOS", status: "공개", detail: "v0.1.3 · macOS 13+ · Universal", url: releaseDownloadPath("TrackpadGuard"), downloadLabel: "Mac용 DMG 바로 받기", checksum: "e4a1d568c3fbd63b51cdea9cb1a2e335f4cc8b9ab141e704f55d38a763a59644" },
+      { name: "macOS", status: "공개", detail: "2.0.0 (202608230737) · macOS 13+ · Universal", url: releaseDownloadPath("TrackpadGuard"), downloadLabel: "Mac용 DMG 바로 받기", checksum: "16f871a51950d4d7c167dd29223238ed11fafc09866558b5203b8bbe8ac6fad4" },
     ],
     features: [
       { title: "키 입력과 동시에 잠금", body: "문자를 입력하기 시작하면 트랙패드의 커서 이동, 클릭과 스크롤을 바로 차단합니다." },
@@ -443,7 +445,7 @@ export const apps: AppData[] = [
       { state: "done", title: "자동 해제와 상태 표시", body: "마지막 키 입력 1초 후 자동 해제와 잠금 중 빨간 메뉴 막대 아이콘 구현" },
       { state: "done", title: "사다리꼴 기본 영역과 편집", body: "상단 1/3을 제거한 기본값, 네 꼭짓점 드래그와 설정 저장 구현" },
       { state: "done", title: "Universal 배포 기반", body: "Apple Silicon·Intel 앱 번들, DMG, Sparkle와 GitHub Release 관리 흐름 구성" },
-      { state: "done", title: "서명·공증 배포", body: "Developer ID 서명, Apple 공증과 v0.1.3 DMG 공개 완료" },
+      { state: "done", title: "2.0.0 서명·공증 배포", body: "build 202608230737의 Developer ID 서명·Apple 공증 DMG와 자동 업데이트 공개 완료" },
       { state: "next", title: "macOS 호환성 관리", body: "macOS 업데이트마다 비공개 멀티터치 프레임워크 호환성을 확인" },
     ],
     screenshots: [
@@ -465,9 +467,9 @@ export const apps: AppData[] = [
     summary: "HtOMS의 실제 OMS 데이터를 읽어 오늘·이번 달 매출, 시간대·월간 추이, 출고 현황과 외부 서버 상태를 한 화면에 보여주는 iPhone·iPad용 읽기 전용 브리프 앱입니다.",
     theme: "blue",
     icon: "/apps/htoms-brief/icon.png",
-    artwork: "files",
+    artwork: "htoms",
     platforms: [
-      { name: "iOS · iPadOS", status: "완료", detail: "1.0 (202608210644) · iOS·iPadOS 17+", availabilityNote: "TestFlight 업로드 완료" },
+      { name: "iOS · iPadOS", status: "TestFlight", detail: "2.0.0 (202608230737) · iOS·iPadOS 17+", availabilityNote: "TestFlight 처리 완료" },
     ],
     features: [
       { title: "실제 OMS 매출 데이터", body: "로그인한 계정으로 오늘·이번 달 매출과 시간대·월간 추이를 실제 API에서 읽어 표시합니다." },
@@ -484,6 +486,7 @@ export const apps: AppData[] = [
     ],
     progress: [
       { state: "done", title: "실제 OMS 연동", body: "로그인, 매출·출고·위치·외부 서버 데이터 조회 구현" },
+      { state: "done", title: "iOS·iPadOS 2.0.0 업로드", body: "build 202608230737 TestFlight 처리 완료" },
       { state: "done", title: "한 페이지 대시보드", body: "분리됐던 정보를 한 화면의 읽기 흐름으로 통합" },
       { state: "done", title: "자동·수동 갱신", body: "10분 역타이머와 터치 즉시 갱신 구현" },
       { state: "done", title: "iPhone·iPad 검증", body: "공통 빌드와 실제 iPhone 설치·실행 검증" },
@@ -587,7 +590,7 @@ export const apps: AppData[] = [
     icon: "/apps/button/icon.png",
     artwork: "phones",
     platforms: [
-      { name: "iPhone", status: "완료", detail: "1.2.2 (20) · iOS 17+", availabilityNote: "TestFlight 업로드 완료" },
+      { name: "iPhone", status: "TestFlight", detail: "2.0.0 (202608230737) · iOS 17+", availabilityNote: "TestFlight 처리 완료" },
       {
         name: "Android",
         status: "공개",
@@ -622,10 +625,11 @@ export const apps: AppData[] = [
       { state: "done", title: "원거리 푸시 중계", body: "Synology NAS에서 APNs와 FCM을 함께 운영해 iPhone·Android 잠금·백그라운드 호출 지원" },
       { state: "done", title: "여러 사람 선택과 화면 유지", body: "한 명 이상을 골라 보내는 대상 전송과 앱이 앞에 있는 동안 화면 꺼짐 방지 구현" },
       { state: "done", title: "밝고 직관적인 가족 화면", body: "우리 공간을 먼저 보고 민트·노랑·로즈의 큰 버튼을 누르도록 밝고 따뜻한 BK 스타일 적용" },
-      { state: "done", title: "iPhone 1.2.2 업로드", body: "새 가족 화면을 반영한 build 20을 TestFlight에 업로드" },
+      { state: "done", title: "iPhone 2.0.0 업로드", body: "build 202608230737 TestFlight 처리 완료" },
       { state: "done", title: "Android 1.2.3 공개", body: "새 가족 화면을 반영한 서명 build 21 APK와 체크섬을 GitHub Releases에 공개" },
       { state: "done", title: "NAS 여러 공간 중계 반영", body: "운영 서버를 최신 여러 공간 서버로 교체하고 원거리 가족 목록 경로까지 확인" },
       { state: "done", title: "Android 원격 수신", body: "FCM 등록·백그라운드 대상 검증·원본 띵동 소리·호출 기록까지 NAS 실전 전달 확인" },
+      { state: "active", title: "Android 2.0.0 배포 준비", body: "소스와 build 202608230737 적용을 마쳤으며 기존 설치와 호환되는 배포 서명 확인 후 APK를 공개할 예정" },
     ],
     screenshots: [
       { src: "/apps/button/screens/android-voice_recording.png", alt: "버튼 Android 부모 홈에서 방 이름 아래 녹음 중 상태가 표시된 화면" },
@@ -654,14 +658,14 @@ export const apps: AppData[] = [
     icon: "/apps/starmanager/icon.png",
     artwork: "phones",
     platforms: [
-      { name: "iPhone · iPad", status: "완료", detail: "0.1.2 (3) · iOS·iPadOS 18+", availabilityNote: "TestFlight 업로드 완료" },
+      { name: "iPhone · iPad", status: "TestFlight", detail: "2.0.0 (202608230737) · iOS·iPadOS 18+", availabilityNote: "TestFlight 처리 완료" },
       {
         name: "Android",
         status: "공개",
-        detail: "0.1.4 · APK code 5 · Android 8.0+",
+        detail: "2.0.0 · build 202608230737 · APK code 337417 · Android 8.0+",
         url: releaseDownloadPath("StarManager-Android"),
         downloadLabel: "Android APK 바로 받기",
-        checksum: "a13094c3e33aa229761de1a5ccf7ec3e4539d8e3357d845d1dcf4ca8498ac548",
+        checksum: "9a5cb0653e03cefe48d814603f38f1c18a687bcacefeeacbbf5d0c24eb9856ed",
       },
     ],
     features: [
@@ -685,9 +689,9 @@ export const apps: AppData[] = [
     progress: [
       { state: "done", title: "iPhone·iPad 원본 분석", body: "실제로 도달 가능한 만들기·내 설정 화면과 상태·문구·동작을 소스 기준으로 정리" },
       { state: "done", title: "Android 구현과 실기기 검증", body: "휴대전화·태블릿 반응형 화면, 생성·검증·미디어·설정 흐름 구현과 테스트 완료" },
-      { state: "done", title: "Android 0.1.4 공개", body: "카메라 사진 보관, 게시물 취소 확인과 Gemini 공유 흐름을 반영한 Android 0.1.4 code 5 APK를 GitHub Releases에 공개" },
+      { state: "done", title: "Android 2.0.0 공개", body: "build 202608230737, code 337417의 서명 APK를 GitHub Releases에 공개" },
       { state: "done", title: "iPhone 실기기 설치", body: "대표 iPhone에 0.1.0 (1) 설치와 실행 확인" },
-      { state: "done", title: "iOS 0.1.2 업로드", body: "카메라 연속 촬영, 사진 앱 보관, 게시물 취소 확인과 붙여넣기 안내를 반영한 build 3을 TestFlight에 업로드" },
+      { state: "done", title: "iOS·iPadOS 2.0.0 업로드", body: "build 202608230737 TestFlight 처리 완료" },
       { state: "next", title: "게시 흐름 다듬기", body: "실제 공유 앱별 게시 결과와 사용자 피드백을 바탕으로 다음 개선 항목을 정리" },
     ],
     screenshots: [

@@ -29,50 +29,49 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     label: "NasFinder Android",
     repo: "NasFinder-Android",
     assetPattern: /\.apk$/i,
-    fallbackUrl: "https://github.com/armsone/NasFinder-Android/releases/download/android-v10/NasFinder-Android-v10.apk",
+    fallbackUrl: "https://github.com/armsone/NasFinder-Android/releases/download/android-v337417/NasFinder-Android-v337417.apk",
   },
   "NasFinder-Super-Thumbnail": {
     label: "Super Thumbnail",
     repo: "NasFinder",
     assetPattern: /^NasFinder-Super-Thumbnail-.*\.dmg$/i,
-    fallbackUrl: "https://github.com/armsone/NasFinder/releases/download/mac-super-thumbnail-v1.0.0/NasFinder-Super-Thumbnail-1.0.0.dmg",
+    fallbackUrl: "https://github.com/armsone/NasFinder/releases/download/mac-super-thumbnail-v2.0.0/NasFinder-Super-Thumbnail-2.0.0.dmg",
   },
   "HanClip-Android": {
     label: "HanClip Android",
     repo: "HanClip-Android",
     assetPattern: /\.apk$/i,
-    fallbackUrl: "https://github.com/armsone/HanClip-Android/releases/download/android-v552/HanClip-Android-v552.apk",
+    fallbackUrl: "https://github.com/armsone/HanClip-Android/releases/download/android-v337417/HanClip-Android-v337417.apk",
   },
   "S.tand-macOS": {
     label: "S.tand Mac",
     repo: "S.tand",
     assetPattern: /^S\.tand-macOS-.*\.dmg$/i,
-    fallbackUrl: "https://github.com/armsone/S.tand/releases/download/macos-v0.33.0/S.tand-macOS-0.33.0.dmg",
+    fallbackUrl: "https://github.com/armsone/S.tand/releases/download/macos-v2.0.0/S.tand-macOS-2.0.0.dmg",
   },
   "S.tand-Android": {
     label: "S.tand Android",
     repo: "S.tand-Android",
     assetPattern: /\.apk$/i,
-    fallbackUrl: "https://github.com/armsone/S.tand-Android/releases/download/android-v59/S.tand-Android-v59.apk",
+    fallbackUrl: "https://github.com/armsone/S.tand-Android/releases/download/android-v337417/S.tand-Android-v337417.apk",
   },
   CCMB: {
     label: "CCMB Mac",
     repo: "CCMB",
     assetPattern: /\.dmg$/i,
-    fallbackUrl: "https://github.com/armsone/CCMB/releases/download/v0.4.5/CCMB-0.4.5.dmg",
+    fallbackUrl: "https://github.com/armsone/CCMB/releases/download/v2.0.0/CCMB-2.0.0.dmg",
   },
   BTN: {
     label: "BTN Mac",
     repo: "BTN",
     assetPattern: /\.dmg$/i,
-    fallbackUrl: "https://github.com/armsone/BTN/releases/download/v1.2.2/BTN-1.2.2.dmg",
+    fallbackUrl: "https://github.com/armsone/BTN/releases/download/v2.0.0/BTN-2.0.0.dmg",
   },
   TrackpadGuard: {
     label: "TrackpadGuard Mac",
     repo: "TrackpadGuard",
     assetPattern: /\.dmg$/i,
-    // DMG 자산 파일명은 릴리스 조회로 확인하므로, 실패 시에만 공식 릴리스 페이지로 안내합니다.
-    fallbackUrl: "https://github.com/armsone/TrackpadGuard/releases/tag/v0.1.3",
+    fallbackUrl: "https://github.com/armsone/TrackpadGuard/releases/download/v2.0.0/TrackpadGuard-2.0.0.dmg",
   },
   "button-Android": {
     label: "버튼 Android",
@@ -84,7 +83,7 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     label: "스타매니저 Android",
     repo: "StarManager-Android",
     assetPattern: /\.apk$/i,
-    fallbackUrl: "https://github.com/armsone/StarManager-Android/releases/download/v0.1.4/StarManager-Android-v0.1.4.apk",
+    fallbackUrl: "https://github.com/armsone/StarManager-Android/releases/download/v2.0.0/StarManager-Android-v2.0.0.apk",
   },
 };
 

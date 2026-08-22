@@ -64,7 +64,7 @@ test("renders the notarized BTN cleanup release", async () => {
   assert.match(html, /개발 도구가 빌려 쓴 공간과 메모리를/);
   assert.match(html, /release-download\?app=BTN/);
   assert.match(html, /Apple 공증 완료/);
-  assert.match(html, /36f438210f7e66b065d7d51ba89572ad6a10b5fde9602758bb032124b9273dbb/);
+  assert.match(html, /e4447bdd93262c95046f6156e84f3dd2912f3fc192dc1059fc5ee1c3337b1b97/);
   assert.match(html, /메모리 압박 해결 동선/);
   assert.match(html, /기기 데이터를 유지한 채 종료/);
   assert.match(html, /안전한 파일 자동 정리/);
@@ -92,7 +92,7 @@ test("renders the Button family calling app and release", async () => {
   assert.match(html, /가족을 부르는 가장 간단한 버튼/);
   assert.match(html, /톡톡에서 사이렌까지/);
   assert.match(html, /Synology NAS/);
-  assert.match(html, /1\.2\.2 \(20\)/);
+  assert.match(html, /2\.0\.0 \(202608230737\)/);
   assert.match(html, /release-download\?app=button-Android/);
   assert.match(html, /5c0c2ab5e30cd22765f021aaeae88cda1fcbbd585923615624d4d4b20c7251b2/);
   assert.match(html, /한 명·여러 명 또는 모두에게/);
@@ -111,16 +111,29 @@ test("renders the StarManager product and matchup disclosure", async () => {
   const html = await response.text();
   assert.match(html, /오늘의 이야기를, 내 목소리로 완성합니다/);
   assert.match(html, /스타메니저 iPhone 스튜디오의 AI 선택과 새 캔버스 화면/);
-  assert.match(html, /TestFlight 업로드 완료/);
+  assert.match(html, /TestFlight 처리 완료/);
   assert.match(html, /기기 AI/);
   assert.match(html, /스타매니저 Android 만들기 화면/);
   assert.match(html, /도달 가능한 탭/);
   assert.match(html, /픽셀 단위 시각 패리티는 아직 검증하지 않았습니다/);
-  assert.match(html, /Android 0\.1\.4 공개/);
+  assert.match(html, /Android 2\.0\.0 공개/);
   assert.match(html, /release-download\?app=StarManager-Android/);
-  assert.match(html, /a13094c3e33aa229761de1a5ccf7ec3e4539d8e3357d845d1dcf4ca8498ac548/);
+  assert.match(html, /9a5cb0653e03cefe48d814603f38f1c18a687bcacefeeacbbf5d0c24eb9856ed/);
   assert.match(html, /다른 앱에서 붙여넣기/);
   assert.match(html, /사진 앱·갤러리/);
+});
+
+test("renders HtOMS with its own sales dashboard artwork", async () => {
+  const response = await render("/apps/htoms-brief");
+  assert.equal(response.status, 200);
+
+  const html = await response.text();
+  assert.match(html, /오늘의 매출과 서버 상태를/);
+  assert.match(html, /매출 요약/);
+  assert.match(html, /서버 상태 · SERVER/);
+  assert.match(html, /TestFlight 처리 완료/);
+  assert.doesNotMatch(html, />Photos</);
+  assert.doesNotMatch(html, /IMG_2048\.HEIC/);
 });
 
 test("renders Super Thumbnail as an independent Mac product", async () => {
@@ -304,10 +317,10 @@ test("shows the current CCMB three-service release", async () => {
   assert.doesNotMatch(html, /WEEKLY REMAINING/);
   assert.doesNotMatch(html, /81% · ₩12\.4/);
   assert.doesNotMatch(html, /v0\.4\.3/);
-  assert.match(html, /v0\.4\.5/);
+  assert.match(html, /2\.0\.0/);
   assert.match(html, /Codex·Claude·Gemini/);
   assert.match(html, /release-download\?app=CCMB/);
-  assert.match(html, /bfc50723c640507384750c153bd700dbe994f38fa66a0a298571bb393b900cd1/);
+  assert.match(html, /a5ac16e68bdb0bb4062066802b8268d7a3f3fee900958e2c7a497f09a50294e0/);
 });
 
 test("publishes browser and home-screen app icons", async () => {
@@ -339,19 +352,18 @@ test("renders current app release and TestFlight information", async () => {
     standResponse.text(),
   ]);
 
-  assert.match(home, /202608221534/);
-  assert.match(home, /3\.12\.55/);
-  assert.match(home, /0\.33\.0/);
+  assert.match(home, /202608230737/);
+  assert.match(home, /337417/);
   assert.match(home, /스타메니저/);
-  assert.match(home, /2026년 8월 21일/);
-  assert.match(nasFinder, /APK v10/);
-  assert.match(nasFinder, /1e069226a046b6db2dfcb63fb03249abc283fcbf9969a4aba5152a11c66b7d52/);
+  assert.match(home, /2026년 8월 23일/);
+  assert.match(nasFinder, /APK code 337417/);
+  assert.match(nasFinder, /b75e22a98ef00fb35c657292b95fb1516ac2f098185e4ca611fd30bad02b775d/);
   assert.match(nasFinder, /Live Photos &amp; Motion Photos/);
-  assert.match(hanClip, /APK v552/);
-  assert.match(hanClip, /edea0d6de726493a720f58c5f469a6e4c9d57d011f9ac2b3cd0f05e5ce4894cf/);
+  assert.match(hanClip, /APK code 337417/);
+  assert.match(hanClip, /2cbfade3507cc4dd3fb87d99d8f2c56fc6e8b57cd90a64764a7e9be146675f9f/);
   assert.match(hanClip, /오디오 트랙이 없는 영상은 화면 움직임/);
-  assert.match(stand, /APK v59/);
-  assert.match(stand, /f7741edb208f249cb29cff70b96db73d9fbb0e38b5d091964401d0cfe9ebd9dc/);
+  assert.match(stand, /APK code 337417/);
+  assert.match(stand, /66d77953761b8e0a8e2b37ab890ce6726d6beed8e34388e936d65f4d92cde91e/);
   assert.doesNotMatch(home + nasFinder + hanClip + stand, /첫 공개판 준비 중|APK v2\b|APK v3\b|APK v544\b|APK v548\b|APK v52\b|APK v53\b/);
   assert.doesNotMatch(hanClip, /android-editor-finish-pets\.png/);
 });
@@ -384,11 +396,10 @@ test("keeps verified TestFlight fallback data for StarManager and Button", async
 
   const payload = await response.json();
   const bySlug = new Map(payload.builds.map((build) => [build.slug, build]));
-  assert.equal(bySlug.get("starmanager")?.build, "3");
-  assert.equal(bySlug.get("starmanager")?.uploadedAt, "2026-08-22T02:06:32-07:00");
-  assert.equal(bySlug.get("starmanager")?.expiresAt, "2026-11-20T01:06:32-08:00");
-  assert.equal(bySlug.get("button")?.build, "20");
-  assert.equal(bySlug.get("button")?.uploadedAt, "2026-08-22T16:12:03+09:00");
+  assert.equal(bySlug.get("starmanager")?.build, "202608230737");
+  assert.equal(bySlug.get("starmanager")?.uploadedAt, "2026-08-23T08:13:38+09:00");
+  assert.equal(bySlug.get("button")?.build, "202608230737");
+  assert.equal(bySlug.get("button")?.uploadedAt, "2026-08-23T08:14:39+09:00");
 });
 
 test("tracks every public download in the site counter with download wording", async () => {

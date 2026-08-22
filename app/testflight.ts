@@ -10,10 +10,10 @@ export type TestFlightBuild = {
 // TestFlight 업로드가 확인되면 이 목록의 빌드 번호와 ISO 8601 시각만 갱신합니다.
 // 확인되지 않은 날짜를 추정해서 입력하지 않습니다.
 export const testFlightBuilds: TestFlightBuild[] = [
-  { slug: "nasfinder", appName: "나스파인더", build: "202608221534", uploadedAt: "2026-08-22T18:02:36+09:00", inviteUrl: null },
-  { slug: "hanclip", appName: "한클립", build: "3.12.55", uploadedAt: "2026-08-21T07:25:31+09:00", inviteUrl: null },
-  { slug: "stand", appName: "S.tand", build: "0.33.0", uploadedAt: "2026-08-21T07:09:41+09:00", inviteUrl: null },
-  { slug: "htoms-brief", appName: "HtOMS 브리프", build: "202608210644", uploadedAt: "2026-08-21T07:04:31+09:00", inviteUrl: null },
-  { slug: "starmanager", appName: "스타메니저", build: "3", uploadedAt: "2026-08-22T02:06:32-07:00", expiresAt: "2026-11-20T01:06:32-08:00", inviteUrl: null },
-  { slug: "button", appName: "버튼", build: "20", uploadedAt: "2026-08-22T16:12:03+09:00", inviteUrl: null },
+  { slug: "nasfinder", appName: "나스파인더", build: "202608230737", uploadedAt: "2026-08-23T08:16:10+09:00", inviteUrl: null },
+  { slug: "hanclip", appName: "한클립", build: "202608230737", uploadedAt: "2026-08-23T08:08:47+09:00", inviteUrl: null },
+  { slug: "stand", appName: "S.tand", build: "337417", uploadedAt: "2026-08-23T08:21:11+09:00", inviteUrl: null },
+  { slug: "htoms-brief", appName: "HtOMS 브리프", build: "202608230737", uploadedAt: "2026-08-23T08:12:19+09:00", inviteUrl: null },
+  { slug: "starmanager", appName: "스타메니저", build: "202608230737", uploadedAt: "2026-08-23T08:13:38+09:00", inviteUrl: null },
+  { slug: "button", appName: "버튼", build: "202608230737", uploadedAt: "2026-08-23T08:14:39+09:00", inviteUrl: null },
 ];

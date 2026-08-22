@@ -99,6 +99,24 @@ export function AppArtwork({ app }: { app: AppData }) {
     );
   }
 
+  if (app.artwork === "htoms") {
+    return (
+      <div className="artwork artwork-htoms" aria-label="HtOMS 브리프의 매출 요약과 서버 상태 화면">
+        <div className="htoms-window">
+          <div className="htoms-toolbar"><strong>HTOMS BRIEF</strong><span>↻&nbsp; 로그아웃</span></div>
+          <div className="htoms-heading"><i /><strong>매출 요약</strong><small>BRIEF · 오늘과 월간 판매</small></div>
+          <div className="htoms-card htoms-sales">
+            <div><small>오늘 매출 · TODAY</small><span>보통</span></div>
+            <strong>1,067<small>만원</small></strong><b>20일</b>
+          </div>
+          <div className="htoms-card htoms-refresh"><small>다음 갱신 · REFRESH</small><strong>09:59</strong></div>
+          <div className="htoms-card htoms-server"><small>서버 상태 · SERVER</small><strong>장항&nbsp;&nbsp; 인천&nbsp;&nbsp; 삼송&nbsp;&nbsp; 초월</strong></div>
+          <div className="htoms-card htoms-channel"><small>판매 채널</small><span><i /><i /><i /></span><p>스토어 20% · 방판 1% · 전화 79%</p></div>
+        </div>
+      </div>
+    );
+  }
+
   if (app.artwork === "search") {
     return (
       <div className="artwork artwork-search" aria-label="인투샾 이름 검색 화면 표현">
