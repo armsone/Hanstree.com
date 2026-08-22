@@ -92,10 +92,11 @@ test("renders the Button family calling app and release", async () => {
   assert.match(html, /가족을 부르는 가장 간단한 버튼/);
   assert.match(html, /조용히 알림/);
   assert.match(html, /Synology NAS/);
-  assert.match(html, /1\.1 \(15\)/);
-  assert.match(html, /Button-Android-v1\.1\.2-build16\.apk/);
-  assert.match(html, /3e928af5638a27ec70ecad88fa5b0e61f783b1890e34d790f257081fe2b71b03/);
-  assert.match(html, /연속 호출 방지/);
+  assert.match(html, /1\.1 \(16\)/);
+  assert.match(html, /Button-Android-v1\.1\.3-build17\.apk/);
+  assert.match(html, /9519793f5fcb774a74eae83fddf06f6cfde46d6e06bd973aa7ef6fea4a54d03f/);
+  assert.match(html, /조용함에서 사이렌까지/);
+  assert.match(html, /누르고 말하면 바로 전달/);
   assert.match(html, /APNs와 FCM/);
   assert.match(html, /버튼 Android에서 한 가족 구성원을 선택한 부모 홈/);
 });
