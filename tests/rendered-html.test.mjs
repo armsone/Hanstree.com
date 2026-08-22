@@ -148,6 +148,9 @@ test("renders the latest NasFinder and HanClip capabilities", async () => {
     hanClipResponse.text(),
   ]);
   assert.match(nasFinder, /파일 앱에서 바로 가져오기/);
+  assert.match(nasFinder, /폰하드로 모으고 관리/);
+  assert.match(nasFinder, /자세히·썸네일·포스터/);
+  assert.match(nasFinder, /Cover Flow/);
   assert.match(nasFinder, /BK Style과 앱 아이콘/);
   assert.match(nasFinder, /NOT JUST A FILE BROWSER/);
   assert.match(nasFinder, /내 파일도/);
@@ -340,13 +343,13 @@ test("renders current app release and TestFlight information", async () => {
     standResponse.text(),
   ]);
 
-  assert.match(home, /202608221416/);
+  assert.match(home, /202608221534/);
   assert.match(home, /3\.12\.55/);
   assert.match(home, /0\.33\.0/);
   assert.match(home, /스타메니저/);
   assert.match(home, /2026년 8월 21일/);
-  assert.match(nasFinder, /APK v9/);
-  assert.match(nasFinder, /2297ebff6024f9bfdfcfec4c02a3f6bd370e3157ae98e1e27781ef1884149168/);
+  assert.match(nasFinder, /APK v10/);
+  assert.match(nasFinder, /1e069226a046b6db2dfcb63fb03249abc283fcbf9969a4aba5152a11c66b7d52/);
   assert.match(nasFinder, /Live Photos &amp; Motion Photos/);
   assert.match(hanClip, /APK v552/);
   assert.match(hanClip, /edea0d6de726493a720f58c5f469a6e4c9d57d011f9ac2b3cd0f05e5ce4894cf/);
