@@ -308,10 +308,10 @@ export const apps: AppData[] = [
     theme: "blue",
     artwork: "menubar",
     platforms: [
-      { name: "macOS", status: "공개", detail: "v0.4.4 · macOS 10.15+ · Universal", url: "https://github.com/armsone/CCMB/releases/download/v0.4.4/CCMB-0.4.4.dmg", downloadLabel: "DMG 다운로드", checksum: "dd47d0ebe18c7f970d07e48d27afa113a0efc21b9021afdf7bb76e0e5f373cf7" },
+      { name: "macOS", status: "공개", detail: "v0.4.5 · macOS 10.15+ · Universal", url: "https://github.com/armsone/CCMB/releases/download/v0.4.5/CCMB-0.4.5.dmg", downloadLabel: "DMG 다운로드", checksum: "bfc50723c640507384750c153bd700dbe994f38fa66a0a298571bb393b900cd1" },
     ],
     features: [
-      { title: "세 AI를 한눈에", body: "Codex·Claude·Gemini의 사용량을 통일된 3열 링과 패널로 나란히 확인합니다." },
+      { title: "세 AI를 한눈에", body: "Codex·Claude·Gemini 사용량을 정밀 눈금·은은한 발광·끝점 표시가 있는 3열 링으로 나란히 확인합니다." },
       { title: "색으로 구분한 메뉴 막대 숫자", body: "아이콘 없이 남은 사용량 숫자만 표시하고 Codex·Claude·Gemini의 대표 색상으로 빠르게 구분합니다." },
       { title: "서비스별 새로고침", body: "세 서비스의 갱신 주기를 각각 선택하고, 다음 갱신까지 남은 시간을 확인합니다." },
       { title: "같은 모양의 두 패널", body: "메뉴 막대에서 여는 패널과 항상 보기 패널에 같은 정보·간격·하단 설정을 제공합니다." },
@@ -334,7 +334,7 @@ export const apps: AppData[] = [
       { state: "done", title: "서명된 자동 업데이트", body: "Sparkle 기반 업데이트와 무결성 확인" },
       { state: "done", title: "로컬 사용량 공유", body: "다른 앱과 대화를 위한 최신성 포함 JSON 및 명령 제공" },
       { state: "done", title: "통합 사용량 패널", body: "메뉴 패널과 항상 보기의 레이아웃·설정 통합 및 배경 불투명도 조절" },
-      { state: "done", title: "집중된 3열 패널", body: "신뢰할 수 있는 사용량을 제공하는 Codex·Claude·Gemini만 노출하고 하단 조작을 3열에 맞게 재구성" },
+      { state: "done", title: "집중된 3열 패널", body: "Codex·Claude·Gemini만 노출하고 퍼센트 굵기를 통일한 정밀 원형 링과 하단 조작을 3열에 맞게 재구성" },
       { state: "active", title: "안정성 개선", body: "Codex·Claude·Gemini 변화와 인증·요청 제한·네트워크·절전 예외에 맞춰 지속 개선" },
     ],
     github: ["https://github.com/armsone/CCMB"],
