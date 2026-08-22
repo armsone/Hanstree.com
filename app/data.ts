@@ -618,7 +618,7 @@ export const apps: AppData[] = [
       { state: "done", title: "가족 실기기 설치", body: "연결된 가족 iPhone에 iOS 1.2 build 18, SM-F968N에 Android 1.2.1 build 19 설치와 실행 확인" },
       { state: "done", title: "Android 1.2.1 공개", body: "큰 정사각형 버튼과 음성 명칭을 반영한 서명 build 19 APK와 체크섬을 GitHub Releases에 공개" },
       { state: "active", title: "TestFlight 처리", body: "1.2 (18) 업로드 완료, Apple의 빌드 처리 결과 대기" },
-      { state: "active", title: "NAS 여러 공간 중계 반영", body: "운영 서버의 원격 가족 목록 경로를 최신 여러 공간 서버와 맞추는 작업 진행 중" },
+      { state: "done", title: "NAS 여러 공간 중계 반영", body: "운영 서버를 최신 여러 공간 서버로 교체하고 원거리 가족 목록 경로까지 확인" },
       { state: "done", title: "Android 원격 수신", body: "FCM 등록·백그라운드 대상 검증·원본 띵동 소리·호출 기록까지 NAS 실전 전달 확인" },
     ],
     screenshots: [
