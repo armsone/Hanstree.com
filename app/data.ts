@@ -594,10 +594,10 @@ export const apps: AppData[] = [
       {
         name: "Android",
         status: "공개",
-        detail: "1.2.3 (21) · Android 8.0+",
+        detail: "2.0.0 · build 202608230737 · APK code 337417 · Android 8.0+",
         url: releaseDownloadPath("button-Android"),
         downloadLabel: "Android APK 바로 받기",
-        checksum: "5c0c2ab5e30cd22765f021aaeae88cda1fcbbd585923615624d4d4b20c7251b2",
+        checksum: "9b719f737aac49c6ac28ef1d5f1dae87304cfb64bfd845da4a189be8d5434e2a",
       },
     ],
     features: [
@@ -626,10 +626,9 @@ export const apps: AppData[] = [
       { state: "done", title: "여러 사람 선택과 화면 유지", body: "한 명 이상을 골라 보내는 대상 전송과 앱이 앞에 있는 동안 화면 꺼짐 방지 구현" },
       { state: "done", title: "밝고 직관적인 가족 화면", body: "우리 공간을 먼저 보고 민트·노랑·로즈의 큰 버튼을 누르도록 밝고 따뜻한 BK 스타일 적용" },
       { state: "done", title: "iPhone 2.0.0 업로드", body: "build 202608230737 TestFlight 처리 완료" },
-      { state: "done", title: "Android 1.2.3 공개", body: "새 가족 화면을 반영한 서명 build 21 APK와 체크섬을 GitHub Releases에 공개" },
+      { state: "done", title: "Android 2.0.0 공개", body: "build 202608230737, code 337417의 기존 설치 호환 서명 APK와 체크섬을 GitHub Releases에 공개" },
       { state: "done", title: "NAS 여러 공간 중계 반영", body: "운영 서버를 최신 여러 공간 서버로 교체하고 원거리 가족 목록 경로까지 확인" },
       { state: "done", title: "Android 원격 수신", body: "FCM 등록·백그라운드 대상 검증·원본 띵동 소리·호출 기록까지 NAS 실전 전달 확인" },
-      { state: "active", title: "Android 2.0.0 배포 준비", body: "소스와 build 202608230737 적용을 마쳤으며 기존 설치와 호환되는 배포 서명 확인 후 APK를 공개할 예정" },
     ],
     screenshots: [
       { src: "/apps/button/screens/android-voice_recording.png", alt: "버튼 Android 부모 홈에서 방 이름 아래 녹음 중 상태가 표시된 화면" },

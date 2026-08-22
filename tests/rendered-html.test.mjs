@@ -94,7 +94,8 @@ test("renders the Button family calling app and release", async () => {
   assert.match(html, /Synology NAS/);
   assert.match(html, /2\.0\.0 \(202608230737\)/);
   assert.match(html, /release-download\?app=button-Android/);
-  assert.match(html, /5c0c2ab5e30cd22765f021aaeae88cda1fcbbd585923615624d4d4b20c7251b2/);
+  assert.match(html, /9b719f737aac49c6ac28ef1d5f1dae87304cfb64bfd845da4a189be8d5434e2a/);
+  assert.match(html, /APK code 337417/);
   assert.match(html, /한 명·여러 명 또는 모두에게/);
   assert.match(html, /앱을 보는 동안 화면 유지/);
   assert.match(html, /톡톡에서 사이렌까지/);

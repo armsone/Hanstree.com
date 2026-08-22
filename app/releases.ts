@@ -77,7 +77,7 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     label: "버튼 Android",
     repo: "button-Android",
     assetPattern: /\.apk$/i,
-    fallbackUrl: "https://github.com/armsone/button-Android/releases/download/v1.2.3/Button-Android-v1.2.3-build21.apk",
+    fallbackUrl: "https://github.com/armsone/button-Android/releases/download/v2.0.0/Button-Android-v2.0.0-build337417.apk",
   },
   "StarManager-Android": {
     label: "스타매니저 Android",
