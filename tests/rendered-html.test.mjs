@@ -145,7 +145,7 @@ test("renders the latest NasFinder and HanClip capabilities", async () => {
     hanClipResponse.text(),
   ]);
   assert.match(nasFinder, /파일 앱에서 바로 가져오기/);
-  assert.match(nasFinder, /네트워크 NAS 다섯 아이콘/);
+  assert.match(nasFinder, /BK Style과 앱 아이콘/);
   assert.match(nasFinder, /NOT JUST A FILE BROWSER/);
   assert.match(nasFinder, /내 파일도/);
   assert.match(nasFinder, /움직이는 추억도/);
@@ -153,8 +153,8 @@ test("renders the latest NasFinder and HanClip capabilities", async () => {
   assert.match(nasFinder, /가족의 휴대폰이 서로 달라도/);
   assert.match(nasFinder, /Super Thumbnail과 VLC 미리보기/);
   assert.match(nasFinder, /내 휴대폰을, 진짜 휴대용 하드처럼/);
-  assert.match(nasFinder, /파일 앱에서도, 미리보기는 더 강력하게/);
-  assert.match(nasFinder, /다운로드와 설치 방법/);
+  assert.match(nasFinder, /파일 앱의 강화된 미리보기/);
+  assert.match(nasFinder, /플랫폼별 설치 보기/);
   assert.match(nasFinder, /Google Photos에서 직접 선택/);
   assert.match(nasFinder, /받은 파일함으로 가져오는 흐름 구현/);
   assert.doesNotMatch(nasFinder, /Google Photos Picker[\s\S]*흐름 준비/);
@@ -337,13 +337,13 @@ test("renders current app release and TestFlight information", async () => {
     standResponse.text(),
   ]);
 
-  assert.match(home, /202608211740/);
+  assert.match(home, /202608221416/);
   assert.match(home, /3\.12\.55/);
   assert.match(home, /0\.33\.0/);
   assert.match(home, /스타메니저/);
   assert.match(home, /2026년 8월 21일/);
-  assert.match(nasFinder, /APK v8/);
-  assert.match(nasFinder, /8f99582fc3625d74a845b6cc5a3d1b918fe5dcb5dc1b1427559aa0319a0d8241/);
+  assert.match(nasFinder, /APK v9/);
+  assert.match(nasFinder, /2297ebff6024f9bfdfcfec4c02a3f6bd370e3157ae98e1e27781ef1884149168/);
   assert.match(nasFinder, /Live Photos &amp; Motion Photos/);
   assert.match(hanClip, /APK v552/);
   assert.match(hanClip, /edea0d6de726493a720f58c5f469a6e4c9d57d011f9ac2b3cd0f05e5ce4894cf/);
