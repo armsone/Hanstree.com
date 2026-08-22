@@ -116,9 +116,11 @@ test("renders the StarManager product and matchup disclosure", async () => {
   assert.match(html, /스타매니저 Android 만들기 화면/);
   assert.match(html, /도달 가능한 탭/);
   assert.match(html, /픽셀 단위 시각 패리티는 아직 검증하지 않았습니다/);
-  assert.match(html, /Android 0\.1\.2 공개/);
-  assert.match(html, /StarManager-Android-v0\.1\.2\.apk/);
-  assert.match(html, /5ac2be5759e8574ec991ec64c1605bfe867f161f5b537984c276aeafe31b1807/);
+  assert.match(html, /Android 0\.1\.4 공개/);
+  assert.match(html, /StarManager-Android-v0\.1\.4\.apk/);
+  assert.match(html, /a13094c3e33aa229761de1a5ccf7ec3e4539d8e3357d845d1dcf4ca8498ac548/);
+  assert.match(html, /다른 앱에서 붙여넣기/);
+  assert.match(html, /사진 앱·갤러리/);
 });
 
 test("renders Super Thumbnail as an independent Mac product", async () => {
