@@ -99,9 +99,12 @@ export async function GET() {
   try {
     const token = await createToken();
     const settled = await Promise.allSettled(APP_SOURCES.map((source) => readLatestBuild(source, token)));
-    const builds = settled.map((result, index) =>
-      result.status === "fulfilled" ? result.value : testFlightBuilds[index],
-    );
+    // slug 기준으로 병합해, 일부 앱만 조회에 성공해도 나머지는 검증된 정적 정보를 유지합니다.
+    const liveBySlug = new Map<TestFlightBuild["slug"], TestFlightBuild>();
+    for (const result of settled) {
+      if (result.status === "fulfilled") liveBySlug.set(result.value.slug, result.value);
+    }
+    const builds = testFlightBuilds.map((fallback) => liveBySlug.get(fallback.slug) ?? fallback);
     return NextResponse.json(
       { checkedAt, builds, source: "app-store-connect" },
       { headers: { "Cache-Control": "public, max-age=300, s-maxage=900, stale-while-revalidate=3600" } },

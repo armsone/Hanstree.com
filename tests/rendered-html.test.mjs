@@ -62,7 +62,7 @@ test("renders the notarized BTN cleanup release", async () => {
 
   const html = await response.text();
   assert.match(html, /개발 도구가 빌려 쓴 공간과 메모리를/);
-  assert.match(html, /BTN-1\.2\.2\.dmg/);
+  assert.match(html, /release-download\?app=BTN/);
   assert.match(html, /Apple 공증 완료/);
   assert.match(html, /36f438210f7e66b065d7d51ba89572ad6a10b5fde9602758bb032124b9273dbb/);
   assert.match(html, /메모리 압박 해결 동선/);
@@ -81,7 +81,7 @@ test("keeps the former BackToNormal route compatible", async () => {
   assert.equal(response.status, 200);
 
   const html = await response.text();
-  assert.match(html, /BTN-1\.2\.2\.dmg/);
+  assert.match(html, /release-download\?app=BTN/);
 });
 
 test("renders the Button family calling app and release", async () => {
@@ -93,7 +93,7 @@ test("renders the Button family calling app and release", async () => {
   assert.match(html, /톡톡에서 사이렌까지/);
   assert.match(html, /Synology NAS/);
   assert.match(html, /1\.2\.2 \(20\)/);
-  assert.match(html, /Button-Android-v1\.2\.3-build21\.apk/);
+  assert.match(html, /release-download\?app=button-Android/);
   assert.match(html, /5c0c2ab5e30cd22765f021aaeae88cda1fcbbd585923615624d4d4b20c7251b2/);
   assert.match(html, /한 명·여러 명 또는 모두에게/);
   assert.match(html, /앱을 보는 동안 화면 유지/);
@@ -117,7 +117,7 @@ test("renders the StarManager product and matchup disclosure", async () => {
   assert.match(html, /도달 가능한 탭/);
   assert.match(html, /픽셀 단위 시각 패리티는 아직 검증하지 않았습니다/);
   assert.match(html, /Android 0\.1\.4 공개/);
-  assert.match(html, /StarManager-Android-v0\.1\.4\.apk/);
+  assert.match(html, /release-download\?app=StarManager-Android/);
   assert.match(html, /a13094c3e33aa229761de1a5ccf7ec3e4539d8e3357d845d1dcf4ca8498ac548/);
   assert.match(html, /다른 앱에서 붙여넣기/);
   assert.match(html, /사진 앱·갤러리/);
@@ -132,9 +132,9 @@ test("renders Super Thumbnail as an independent Mac product", async () => {
 
   const [detail, nasFinder] = await Promise.all([detailResponse.text(), nasFinderResponse.text()]);
   assert.match(detail, /큰 미디어 폴더의 미리보기를/);
-  assert.match(detail, /NasFinder-Super-Thumbnail-1\.0\.0\.zip/);
+  assert.match(detail, /release-download\?app=NasFinder-Super-Thumbnail/);
   assert.match(detail, /16,540/);
-  assert.doesNotMatch(nasFinder, /NasFinder-Super-Thumbnail-1\.0\.0\.zip/);
+  assert.doesNotMatch(nasFinder, /release-download\?app=NasFinder-Super-Thumbnail/);
 });
 
 test("renders the latest NasFinder and HanClip capabilities", async () => {
@@ -214,7 +214,7 @@ test("renders full promotional campaigns for HanClip, TrackpadGuard, CCMB, and S
   assert.match(trackpadGuard, /키 내용도, 터치 좌표도 쌓지 않습니다/);
   assert.match(ccmb, /AI 사용량/);
   assert.match(ccmb, /ccmb-campaign\.png/);
-  assert.match(ccmb, /네 서비스의 남은 여유를 한눈에/);
+  assert.match(ccmb, /세 서비스의 남은 여유를 한눈에/);
   assert.match(stand, /밤에는 조용한 메이트/);
   assert.match(stand, /stand-campaign\.png/);
   assert.match(stand, /의료 진단 기능은 아닙니다/);
@@ -296,24 +296,18 @@ test("keeps the support address out of the public source", async () => {
   assert.match(component, /\/api\/support-contact/);
 });
 
-test("shows the real CCMB four-service panel in the hero", async () => {
+test("shows the current CCMB three-service release", async () => {
   const response = await render("/apps/ccmb");
   assert.equal(response.status, 200);
 
   const html = await response.text();
-  const menuBarIndex = html.indexOf("/apps/ccmb/screens/macos-menubar.png");
-  const usageMenuIndex = html.indexOf("/apps/ccmb/screens/ccmb-usage-menu.png");
-  const campaignIndex = html.indexOf('id="product-campaign"');
-
-  assert.notEqual(menuBarIndex, -1);
-  assert.notEqual(usageMenuIndex, -1);
-  assert.ok(usageMenuIndex < campaignIndex);
   assert.doesNotMatch(html, /WEEKLY REMAINING/);
   assert.doesNotMatch(html, /81% · ₩12\.4/);
-  assert.match(html, /v0\.4\.3/);
-  assert.match(html, /Codex·Claude·Gemini·Grok/);
-  assert.match(html, /24시간 토큰/);
-  assert.match(html, /1b6d2fc19e0523b748321d80b1c30e79efcc946cd14d1bfc1d87eac4fa0bc714/);
+  assert.doesNotMatch(html, /v0\.4\.3/);
+  assert.match(html, /v0\.4\.5/);
+  assert.match(html, /Codex·Claude·Gemini/);
+  assert.match(html, /release-download\?app=CCMB/);
+  assert.match(html, /bfc50723c640507384750c153bd700dbe994f38fa66a0a298571bb393b900cd1/);
 });
 
 test("publishes browser and home-screen app icons", async () => {
@@ -360,4 +354,75 @@ test("renders current app release and TestFlight information", async () => {
   assert.match(stand, /f7741edb208f249cb29cff70b96db73d9fbb0e38b5d091964401d0cfe9ebd9dc/);
   assert.doesNotMatch(home + nasFinder + hanClip + stand, /첫 공개판 준비 중|APK v2\b|APK v3\b|APK v544\b|APK v548\b|APK v52\b|APK v53\b/);
   assert.doesNotMatch(hanClip, /android-editor-finish-pets\.png/);
+});
+
+test("routes public download buttons through the allowlisted release redirect", async () => {
+  const [unknown, missing] = await Promise.all([
+    render("/api/release-download?app=Unknown-Repo"),
+    render("/api/release-download"),
+  ]);
+  assert.equal(unknown.status, 404);
+  assert.equal(missing.status, 404);
+
+  const [ccmb, trackpadGuard, standMac] = await Promise.all([
+    render("/api/release-download?app=CCMB"),
+    render("/api/release-download?app=TrackpadGuard"),
+    render("/api/release-download?app=S.tand-macOS"),
+  ]);
+  assert.equal(ccmb.status, 302);
+  assert.match(ccmb.headers.get("location") ?? "", /^https:\/\/github\.com\/armsone\/CCMB\/releases\//);
+  // TrackpadGuard must resolve to a downloadable asset path, never an arbitrary host.
+  assert.equal(trackpadGuard.status, 302);
+  assert.match(trackpadGuard.headers.get("location") ?? "", /^https:\/\/github\.com\/armsone\/TrackpadGuard\/releases\//);
+  assert.equal(standMac.status, 302);
+  assert.match(standMac.headers.get("location") ?? "", /^https:\/\/github\.com\/armsone\/S\.tand\/releases\//);
+});
+
+test("keeps verified TestFlight fallback data for StarManager and Button", async () => {
+  const response = await render("/api/testflight-builds");
+  assert.equal(response.status, 200);
+
+  const payload = await response.json();
+  const bySlug = new Map(payload.builds.map((build) => [build.slug, build]));
+  assert.equal(bySlug.get("starmanager")?.build, "3");
+  assert.equal(bySlug.get("starmanager")?.uploadedAt, "2026-08-22T02:06:32-07:00");
+  assert.equal(bySlug.get("starmanager")?.expiresAt, "2026-11-20T01:06:32-08:00");
+  assert.equal(bySlug.get("button")?.build, "20");
+  assert.equal(bySlug.get("button")?.uploadedAt, "2026-08-22T16:12:03+09:00");
+});
+
+test("tracks every public download in the site counter with download wording", async () => {
+  const response = await render();
+  const html = await response.text();
+
+  for (const label of [
+    "NasFinder Android",
+    "Super Thumbnail",
+    "HanClip Android",
+    "S.tand Mac",
+    "S.tand Android",
+    "CCMB Mac",
+    "BTN Mac",
+    "TrackpadGuard Mac",
+    "버튼 Android",
+    "스타매니저 Android",
+  ]) {
+    assert.ok(html.includes(label), `missing download counter label: ${label}`);
+  }
+  assert.match(html, /다운로드 버튼/);
+  assert.doesNotMatch(html, /APK 버튼/);
+  assert.doesNotMatch(html, /업로드 기록 대기/);
+});
+
+test("shows the refreshed progress review date and TrackpadGuard DMG download", async () => {
+  const [btnResponse, trackpadResponse] = await Promise.all([
+    render("/apps/btn"),
+    render("/apps/trackpadguard"),
+  ]);
+  const [btn, trackpadGuard] = await Promise.all([btnResponse.text(), trackpadResponse.text()]);
+
+  assert.match(btn, /마지막 내용 확인: 2026년 8월 23일/);
+  assert.match(trackpadGuard, /마지막 내용 확인: 2026년 8월 23일/);
+  assert.match(trackpadGuard, /release-download\?app=TrackpadGuard/);
+  assert.doesNotMatch(trackpadGuard, /releases\/tag\/v0\.1\.3/);
 });

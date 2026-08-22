@@ -1,3 +1,5 @@
+import { releaseDownloadPath } from "./releases";
+
 export type Platform = {
   name: string;
   status: "공개" | "완료" | "TestFlight" | "개발 중" | "준비 중";
@@ -50,7 +52,7 @@ export const apps: AppData[] = [
         name: "Android",
         status: "공개",
         detail: "1.4 · APK v10 · Android 8.0+",
-        url: "https://github.com/armsone/NasFinder-Android/releases/download/android-v10/NasFinder-Android-v10.apk",
+        url: releaseDownloadPath("NasFinder-Android"),
         downloadLabel: "Android APK 바로 받기",
         checksum: "1e069226a046b6db2dfcb63fb03249abc283fcbf9969a4aba5152a11c66b7d52",
       },
@@ -116,10 +118,10 @@ export const apps: AppData[] = [
       {
         name: "macOS",
         status: "공개",
-        detail: "v1.0.0 · macOS 14+ · Apple Silicon · Apple 공증 완료",
-        url: "https://github.com/armsone/NasFinder/releases/download/mac-super-thumbnail-v1.0.0/NasFinder-Super-Thumbnail-1.0.0.zip",
-        downloadLabel: "Mac용 ZIP 바로 받기",
-        checksum: "17820e7bded3c5a37d19042a99e5972eb7d512e097fbff5111fb3a1df5fe01ac",
+        detail: "v1.0.0 · macOS 14+ · Apple Silicon·Intel · Apple 공증 완료",
+        url: releaseDownloadPath("NasFinder-Super-Thumbnail"),
+        downloadLabel: "Mac용 DMG 바로 받기",
+        checksum: "f248615725ae47acb9a38239b1027963008314f07d60914365efd2ef7dabd02a",
       },
     ],
     features: [
@@ -130,7 +132,7 @@ export const apps: AppData[] = [
       { title: "Mac에서 직접 처리", body: "파일을 개발자 서버로 보내지 않고 사용자가 선택한 Finder 폴더를 Mac에서 직접 읽고 씁니다." },
     ],
     guide: [
-      { title: "앱 설치", body: "공식 ZIP을 받아 압축을 풀고 NasFinder Super Thumbnail을 응용 프로그램 폴더로 옮깁니다." },
+      { title: "앱 설치", body: "공식 DMG를 열고 NasFinder Super Thumbnail을 응용 프로그램 폴더로 옮깁니다." },
       { title: "NAS 연결", body: "Finder에서 사용할 NAS 공유 폴더를 먼저 연결합니다. Mac 내부 미디어 폴더도 선택할 수 있습니다." },
       { title: "작업 폴더 선택", body: "앱에서 폴더 선택을 누르고 사진과 영상이 들어 있는 최상위 폴더를 고릅니다." },
       { title: "생성과 확인", body: "시작을 누르면 검색과 생성이 진행됩니다. 진행률과 용량, 남은 예상시간을 확인할 수 있습니다." },
@@ -139,7 +141,7 @@ export const apps: AppData[] = [
     progress: [
       { state: "done", title: "Mac 전용 네이티브 앱", body: "Finder 폴더 선택, 재귀 검색, 생성·일시정지·중단과 이어하기 구현" },
       { state: "done", title: "대규모 폴더 검증", body: "16,540개 미디어·1.57TB 폴더의 검색, 진행률과 용량 표시 검증" },
-      { state: "done", title: "공개 배포", body: "Developer ID 서명과 Apple 공증을 마친 v1.0.0 ZIP 공개" },
+      { state: "done", title: "공개 배포", body: "Developer ID 서명과 Apple 공증을 마친 v1.0.0 Universal DMG 공개" },
       { state: "active", title: "다양한 NAS 환경 확인", body: "Finder 연결 방식과 파일 권한에 따른 예외를 계속 점검 중" },
     ],
     github: ["https://github.com/armsone/NasFinder"],
@@ -166,7 +168,7 @@ export const apps: AppData[] = [
         name: "Android",
         status: "공개",
         detail: "1.0.1 · APK v552 · Android 8.0+",
-        url: "https://github.com/armsone/HanClip-Android/releases/download/android-v552/HanClip-Android-v552.apk",
+        url: releaseDownloadPath("HanClip-Android"),
         downloadLabel: "Android APK 바로 받기",
         checksum: "edea0d6de726493a720f58c5f469a6e4c9d57d011f9ac2b3cd0f05e5ce4894cf",
       },
@@ -226,16 +228,16 @@ export const apps: AppData[] = [
       {
         name: "macOS",
         status: "공개",
-        detail: "0.30.0 · macOS 14+ · Apple 공증 완료",
-        url: "https://github.com/armsone/S.tand/releases/download/macos-v0.30.0/S.tand-macOS-0.30.0.zip",
-        downloadLabel: "Mac용 ZIP 바로 받기",
-        checksum: "8d38c2f99cca96b4742c2f7e3ab2c325df3ee92b6da92ada0be7a7003b8f172e",
+        detail: "1.0.0 (0.33.0) · macOS 14+ · Apple 공증 완료",
+        url: releaseDownloadPath("S.tand-macOS"),
+        downloadLabel: "Mac용 DMG 바로 받기",
+        checksum: "e8aad4381a373cb014f5cb6306fc3e34827ca97f957ad3ff46218d6f42fcc68e",
       },
       {
         name: "Android",
         status: "공개",
         detail: "0.0.1 · APK v59 · Android 8.0+",
-        url: "https://github.com/armsone/S.tand-Android/releases/download/android-v59/S.tand-Android-v59.apk",
+        url: releaseDownloadPath("S.tand-Android"),
         downloadLabel: "Android APK 바로 받기",
         checksum: "f7741edb208f249cb29cff70b96db73d9fbb0e38b5d091964401d0cfe9ebd9dc",
       },
@@ -258,13 +260,13 @@ export const apps: AppData[] = [
       { title: "음악 채널", body: "Apple 기기에서는 Apple Music·Apple Music Classical과 인터넷 라디오 네 칸을, Android에서는 Spotify·YouTube Music과 인터넷 라디오 네 칸을 한 줄에서 좌우로 넘깁니다. 설정에서는 같은 여섯 칸의 순서와 라디오 이름·주소를 편집합니다." },
       { title: "백그라운드 모드", body: "권한 설정의 세그먼트에서 켜짐 또는 꺼짐을 선택합니다. 기본 꺼짐은 앱을 벗어날 때 감지·재생을 중지하고, 필요할 때만 직접 켭니다." },
       { title: "보이소 연결", body: "공간을 만들고 QR로 참여해 볼 사람·말할 사람·무전기 역할을 선택합니다. 무전기는 주변 소리를 보내지 않고 호출 버튼을 눌렀을 때만 연결된 화면을 부릅니다." },
-      { title: "Mac에서 시작", body: "공증된 ZIP을 내려받아 압축을 풀고 S.tand 앱을 응용 프로그램 폴더로 옮긴 뒤 실행합니다. Developer ID 서명과 Apple 공증을 마쳐 macOS Gatekeeper 검증을 통과합니다." },
+      { title: "Mac에서 시작", body: "공증된 DMG를 열고 S.tand를 응용 프로그램 폴더로 옮긴 뒤 실행합니다. 이후에는 앱이 업데이트를 확인하고 종료·교체 설치·재실행까지 이어서 처리합니다." },
     ],
     progress: [
       { state: "done", title: "시계와 수면 케어", body: "오브제 화면, 반응형 조명과 로컬 수면 기록 구현" },
       { state: "done", title: "Android 공개 빌드", body: "S.tand Android v59 APK를 GitHub Releases에 공개" },
       { state: "done", title: "보이소 무전기", body: "주변 소리 없이 버튼으로 연결된 화면을 부르는 무전기 역할과 3초 연타 방지·고시인성 알림 적용" },
-      { state: "done", title: "Mac Catalyst 공개", body: "Developer ID 서명, Apple 공증과 Gatekeeper 검증을 마친 macOS 0.30.0 ZIP 공개" },
+      { state: "done", title: "Mac Catalyst 공개", body: "Developer ID 서명, Apple 공증과 Gatekeeper 검증을 마친 macOS 0.33.0 Universal DMG와 자동 업데이트 공개" },
       { state: "done", title: "휴대전화 가로 음악 배치", body: "iPhone 대표 가로 배치를 Android에도 적용하고 음악 스트립과 오른쪽 고정 제어 패널이 겹치지 않게 정리" },
       { state: "next", title: "장시간 실기기 검증", body: "오디오·센서 흐름과 접근성을 다양한 기기에서 추가 검증" },
     ],
@@ -310,7 +312,7 @@ export const apps: AppData[] = [
     theme: "blue",
     artwork: "menubar",
     platforms: [
-      { name: "macOS", status: "공개", detail: "v0.4.5 · macOS 10.15+ · Universal", url: "https://github.com/armsone/CCMB/releases/download/v0.4.5/CCMB-0.4.5.dmg", downloadLabel: "DMG 다운로드", checksum: "bfc50723c640507384750c153bd700dbe994f38fa66a0a298571bb393b900cd1" },
+      { name: "macOS", status: "공개", detail: "v0.4.5 · macOS 10.15+ · Universal", url: releaseDownloadPath("CCMB"), downloadLabel: "DMG 다운로드", checksum: "bfc50723c640507384750c153bd700dbe994f38fa66a0a298571bb393b900cd1" },
     ],
     features: [
       { title: "세 AI를 한눈에", body: "Codex·Claude·Gemini 사용량을 정밀 눈금·은은한 발광·끝점 표시가 있는 3열 링으로 나란히 확인합니다." },
@@ -362,7 +364,7 @@ export const apps: AppData[] = [
         name: "macOS",
         status: "공개",
         detail: "v1.2.2 · macOS 13+ · Universal · Apple 공증 완료",
-        url: "https://github.com/armsone/BTN/releases/download/v1.2.2/BTN-1.2.2.dmg",
+        url: releaseDownloadPath("BTN"),
         downloadLabel: "Mac용 DMG 바로 받기",
         checksum: "36f438210f7e66b065d7d51ba89572ad6a10b5fde9602758bb032124b9273dbb",
       },
@@ -416,7 +418,7 @@ export const apps: AppData[] = [
     icon: "/apps/trackpadguard/icon.png",
     artwork: "trackpad",
     platforms: [
-      { name: "macOS", status: "공개", detail: "v0.1.3 · macOS 13+ · Universal", url: "https://github.com/armsone/TrackpadGuard/releases/tag/v0.1.3", downloadLabel: "DMG 다운로드", checksum: "e4a1d568c3fbd63b51cdea9cb1a2e335f4cc8b9ab141e704f55d38a763a59644" },
+      { name: "macOS", status: "공개", detail: "v0.1.3 · macOS 13+ · Universal", url: releaseDownloadPath("TrackpadGuard"), downloadLabel: "Mac용 DMG 바로 받기", checksum: "e4a1d568c3fbd63b51cdea9cb1a2e335f4cc8b9ab141e704f55d38a763a59644" },
     ],
     features: [
       { title: "키 입력과 동시에 잠금", body: "문자를 입력하기 시작하면 트랙패드의 커서 이동, 클릭과 스크롤을 바로 차단합니다." },
@@ -590,7 +592,7 @@ export const apps: AppData[] = [
         name: "Android",
         status: "공개",
         detail: "1.2.3 (21) · Android 8.0+",
-        url: "https://github.com/armsone/button-Android/releases/download/v1.2.3/Button-Android-v1.2.3-build21.apk",
+        url: releaseDownloadPath("button-Android"),
         downloadLabel: "Android APK 바로 받기",
         checksum: "5c0c2ab5e30cd22765f021aaeae88cda1fcbbd585923615624d4d4b20c7251b2",
       },
@@ -657,7 +659,7 @@ export const apps: AppData[] = [
         name: "Android",
         status: "공개",
         detail: "0.1.4 · APK code 5 · Android 8.0+",
-        url: "https://github.com/armsone/StarManager-Android/releases/download/v0.1.4/StarManager-Android-v0.1.4.apk",
+        url: releaseDownloadPath("StarManager-Android"),
         downloadLabel: "Android APK 바로 받기",
         checksum: "a13094c3e33aa229761de1a5ccf7ec3e4539d8e3357d845d1dcf4ca8498ac548",
       },

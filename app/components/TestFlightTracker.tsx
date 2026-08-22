@@ -41,9 +41,13 @@ export function TestFlightTracker({ builds }: { builds: TestFlightBuild[] }) {
     fetch("/api/testflight-builds", { signal: controller.signal })
       .then((response) => response.ok ? response.json() : Promise.reject(new Error("TestFlight lookup failed")))
       .then((payload: { builds?: TestFlightBuild[] }) => {
-        if (Array.isArray(payload.builds) && payload.builds.length === builds.length) {
-          setCurrentBuilds(payload.builds);
-        }
+        if (!Array.isArray(payload.builds)) return;
+        // slug 기준으로 병합해, 일부만 도착한 응답이 검증된 정적 빌드를 지우지 않게 합니다.
+        const liveBySlug = new Map(payload.builds.filter((build) => build?.slug).map((build) => [build.slug, build] as const));
+        setCurrentBuilds(builds.map((build) => {
+          const live = liveBySlug.get(build.slug);
+          return live?.uploadedAt ? live : build;
+        }));
       })
       .catch(() => undefined);
     return () => controller.abort();

@@ -1,7 +1,9 @@
+import { DOWNLOAD_KEYS, type DownloadKey } from "../app/releases";
 import { getD1 } from "./index";
 
-export const DOWNLOAD_REPOS = ["NasFinder-Android", "HanClip-Android", "S.tand-Android"] as const;
-export type DownloadRepo = (typeof DOWNLOAD_REPOS)[number];
+// 기존 키(NasFinder-Android 등)를 그대로 포함하므로 누적된 집계는 계속 읽힙니다.
+export const DOWNLOAD_REPOS = DOWNLOAD_KEYS;
+export type DownloadRepo = DownloadKey;
 
 function today() {
   return new Date(Date.now() + 9 * 60 * 60 * 1000).toISOString().slice(0, 10);

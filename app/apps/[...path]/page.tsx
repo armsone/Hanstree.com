@@ -130,7 +130,7 @@ export default async function AppRoute({ params }: RouteProps) {
       )}
 
       <section className="progress-section shell" id="progress">
-        <div className="section-heading reveal"><div><p className="eyebrow">BUILDING IN PUBLIC</p><h2>현재 진행 상황</h2></div><p>숫자보다 실제 상태를 보여드립니다. 마지막 내용 확인: 2026년 8월 15일.</p></div>
+        <div className="section-heading reveal"><div><p className="eyebrow">BUILDING IN PUBLIC</p><h2>현재 진행 상황</h2></div><p>숫자보다 실제 상태를 보여드립니다. 마지막 내용 확인: 2026년 8월 23일.</p></div>
         <div className="progress-list">
           {app.progress.map((item, index) => <article className="progress-item reveal" key={item.title}><div className={`progress-marker marker-${item.state}`}><span>{index + 1}</span></div><div><p>{item.state === "done" ? "구현됨" : item.state === "active" ? "검증 중" : "다음 단계"}</p><h3>{item.title}</h3><span>{item.body}</span></div></article>)}
         </div>
@@ -148,7 +148,7 @@ export default async function AppRoute({ params }: RouteProps) {
       <section className="download-section shell reveal" id="download">
         <div><p className="eyebrow">OPEN, DOWNLOAD & TEST</p><h2>공개된 제품과 전용 도구.</h2><p>플랫폼별 현재 상태와 공식 주소·배포 파일을 구분해 표시합니다. 별도 도구는 용도까지 확인한 뒤 내려받을 수 있습니다.</p></div>
         <div className="download-list">
-          {app.platforms.map((platform) => <article key={platform.name}><div><span className={`status-dot status-${platform.status.replace(" ", "-")}`} /><h3>{platform.name}</h3></div><p>{platform.detail} · {platform.status}</p>{platform.url ? <Link href={platform.url}>{platform.downloadLabel ?? "다운로드 페이지"} <span aria-hidden="true">↗</span></Link> : <span>{platform.availabilityNote ?? "공개 링크 준비 중"}</span>}{platform.checksum && <small className="download-checksum">SHA-256 {platform.checksum}</small>}</article>)}
+          {app.platforms.map((platform) => <article key={platform.name}><div><span className={`status-dot status-${platform.status.replace(" ", "-")}`} /><h3>{platform.name}</h3></div><p>{platform.detail} · {platform.status}</p>{platform.url ? <a href={platform.url}>{platform.downloadLabel ?? "다운로드 페이지"} <span aria-hidden="true">↗</span></a> : <span>{platform.availabilityNote ?? "공개 링크 준비 중"}</span>}{platform.checksum && <small className="download-checksum">SHA-256 {platform.checksum}</small>}</article>)}
         </div>
       </section>
 
