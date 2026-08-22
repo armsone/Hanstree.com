@@ -42,7 +42,7 @@ export default async function AppRoute({ params }: RouteProps) {
   if (section) return <InfoPage app={app} section={section} />;
 
   return (
-    <main className={`app-page theme-${app.theme}`}>
+    <main className={`app-page app-${app.slug} theme-${app.theme}`}>
       <SiteHeader />
       <section className="app-hero shell">
         <div className="app-hero-copy reveal">
@@ -55,7 +55,9 @@ export default async function AppRoute({ params }: RouteProps) {
             {app.platforms.map((platform) => <AppStatus key={platform.name} platform={platform} />)}
           </div>
           <div className="hero-actions">
-            {app.platforms.find((platform) => platform.url) ? (
+            {app.slug === "nasfinder" ? (
+              <Link className="button button-primary" href="#download">플랫폼별 설치 보기 <span aria-hidden="true">↓</span></Link>
+            ) : app.platforms.find((platform) => platform.url) ? (
               <Link className="button button-primary" href={app.platforms.find((platform) => platform.url)!.url!}>지금 다운로드 <span aria-hidden="true">↗</span></Link>
             ) : <Link className="button button-primary" href="#progress">진행 상황 보기 <span aria-hidden="true">↓</span></Link>}
             <Link className="button button-quiet" href="#guide">사용법 보기</Link>
@@ -66,7 +68,11 @@ export default async function AppRoute({ params }: RouteProps) {
 
       <nav className="section-nav" aria-label={`${app.name} 페이지 내부 메뉴`}>
         <div className="shell">
-          {app.slug === "nasfinder" && <Link href="#why-nasfinder">왜 나스파인더</Link>}{campaignSlugs.has(app.slug) && <Link href="#product-campaign">왜 {app.name}</Link>}<Link href="#features">특징</Link><Link href="#screens">화면</Link>{app.matchup && <Link href="#matchup">매치업</Link>}<Link href="#progress">진행 상황</Link><Link href="#guide">설명서</Link><Link href="#download">다운로드</Link>
+          {app.slug === "nasfinder" ? (
+            <><Link href="#why-nasfinder">왜 나스파인더</Link><Link href="#features">특징</Link><Link href="#screens">화면</Link><Link href="#download">설치</Link></>
+          ) : (
+            <>{campaignSlugs.has(app.slug) && <Link href="#product-campaign">왜 {app.name}</Link>}<Link href="#features">특징</Link><Link href="#screens">화면</Link>{app.matchup && <Link href="#matchup">매치업</Link>}<Link href="#progress">진행 상황</Link><Link href="#guide">설명서</Link><Link href="#download">다운로드</Link></>
+          )}
         </div>
       </nav>
 
@@ -85,14 +91,16 @@ export default async function AppRoute({ params }: RouteProps) {
           <div className="section-heading reveal"><div><p className="eyebrow">IN THE PRODUCT</p><h2>화면으로 먼저 만나보세요.</h2></div><p>실제 공개 자료를 우선 사용하고, 개인 정보가 담긴 화면은 데모 데이터로 교체합니다.</p></div>
           {app.screenshots && app.screenshots.length > 0 ? (
             <div className="screenshot-rail">{app.screenshots.map((screen) => {
-              const dimensions = screen.layout === "menu"
-                ? { width: 700, height: 968 }
-                : screen.layout === "landscape"
-                  ? { width: 2622, height: 1206 }
-                  : screen.layout === "wide"
-                    ? { width: 860, height: 60 }
-                    : { width: 1206, height: 2622 };
-              return <figure className={`screen-${screen.layout ?? "phone"}`} key={screen.src}><div className="screenshot-media"><Image src={screen.src} alt={screen.alt} width={dimensions.width} height={dimensions.height} sizes={screen.layout ? "(max-width: 640px) 92vw, 1080px" : "(max-width: 640px) 78vw, 360px"} unoptimized /></div><figcaption>{screen.alt}</figcaption></figure>;
+              const dimensions = app.slug === "nasfinder"
+                ? { width: 1080, height: 2424 }
+                : screen.layout === "menu"
+                  ? { width: 700, height: 968 }
+                  : screen.layout === "landscape"
+                    ? { width: 2622, height: 1206 }
+                    : screen.layout === "wide"
+                      ? { width: 860, height: 60 }
+                      : { width: 1206, height: 2622 };
+              return <figure className={`screen-${screen.layout ?? "phone"}`} key={screen.src}><div className="screenshot-media"><Image src={screen.src} alt="" width={dimensions.width} height={dimensions.height} sizes={screen.layout ? "(max-width: 640px) 92vw, 1080px" : "(max-width: 640px) 78vw, 360px"} unoptimized /></div><figcaption>{screen.alt}</figcaption></figure>;
             })}</div>
           ) : (
             <div className="single-artwork reveal"><AppArtwork app={app} /><p>대표 화면 이미지는 현재 제품 상태에 맞춰 계속 보강합니다.</p></div>
@@ -241,7 +249,7 @@ const productCampaigns = {
     eyebrow: "THREE SERVICES, ONE GLANCE",
     headline: <>AI 사용량,<br /><span>메뉴 막대 한 칸이면 끝.</span></>,
     description: "Codex·Claude·Gemini의 사용량과 갱신 시간을 세 칸 링에 모으고, 메뉴 막대에서는 대표 색상의 숫자만으로 남은 여유를 빠르게 보여 줍니다.",
-    image: "/apps/ccmb/ccmb-campaign.png",
+    image: "/apps/ccmb/ccmb-campaign-v044.png",
     imageAlt: "세 개의 사용량 링이 메뉴와 항상 표시 패널에 나란히 보이는 CCMB 캠페인 이미지",
     imageLabel: "CODEX · CLAUDE · GEMINI",
     facts: [["03", "AI 서비스 한 패널"], ["02", "메뉴 · 항상 표시 패널"], ["LOCAL", "기존 CLI 세션 활용"]],
@@ -422,52 +430,24 @@ function NasFinderPromotion() {
     },
     {
       number: "02",
-      kicker: "SUPER THUMBNAIL",
-      title: "큰 NAS 폴더도, 표지부터 펼쳐 보세요.",
-      body: "Mac용 Super Thumbnail이 NAS와 Mac의 큰 미디어 폴더를 미리 훑어 나스파인더와 호환되는 수퍼썸네일을 만들고, 앱은 준비된 미리보기를 활용합니다.",
-      benefit: "수많은 사진과 영상 사이에서 파일명 대신 화면을 보고 원하는 항목을 찾습니다.",
-    },
-    {
-      number: "03",
       kicker: "VLC PLAYBACK",
       title: "영상은 내려받기 전에 재생하세요.",
       body: "강력한 VLC 기반 재생과 원격 스트리밍으로 NAS의 영상을 먼저 확인하고, 정말 보관할 파일만 내려받습니다.",
       benefit: "용량 큰 영상을 무작정 기다리지 않고, 지금 보고 싶은 콘텐츠부터 바로 확인합니다.",
     },
     {
-      number: "04",
-      kicker: "FILES APP PREVIEW",
-      title: "파일 앱에서도, 미리보기는 더 강력하게.",
-      body: "iPhone·iPad의 Apple 파일 앱에서 Synology와 SFTP 위치를 열고, 나스파인더의 연결과 강화된 미리보기를 익숙한 시스템 흐름 안에서 사용합니다.",
-      benefit: "나스파인더를 다시 찾아 열지 않아도, 다른 앱에서 파일을 고르는 순간까지 연결이 이어집니다.",
-    },
-    {
-      number: "05",
+      number: "03",
       kicker: "PHONE HARD",
       title: "내 휴대폰을, 진짜 휴대용 하드처럼.",
       body: "같은 Wi‑Fi의 컴퓨터에서 웹 브라우저로 폰하드를 열고 iPhone·iPad 또는 Android 기기에 파일을 보냅니다.",
       benefit: "케이블과 전용 PC 프로그램을 찾지 않고, 손에 든 휴대폰에 필요한 파일을 바로 담습니다.",
     },
     {
-      number: "06",
+      number: "04",
       kicker: "LIVE ⇄ MOTION",
       title: "움직이는 추억을 포기하지 마세요.",
       body: "iPhone Live Photo와 Android Motion Photo를 QR로 연결해 양방향 전송하고, 받는 기기에 맞춰 원본을 보존하거나 자동 변환합니다.",
       benefit: "가족과 친구의 휴대폰이 달라도 움직이는 순간을 사진 보관함으로 이어갑니다.",
-    },
-    {
-      number: "07",
-      kicker: "GET IT DONE",
-      title: "찾았다면, 그 자리에서 끝내세요.",
-      body: "연결이 허용하는 범위에서 업로드, 폴더 생성, 이름 변경, 복사·이동·삭제까지 처리합니다.",
-      benefit: "보기만 하는 탐색기를 넘어 실제 파일 정리까지 한 흐름으로 마칩니다.",
-    },
-    {
-      number: "08",
-      kicker: "DEVICE SECURITY",
-      title: "연결 정보는 기기 보안에 맡기세요.",
-      body: "Apple 기기는 Keychain, Android는 Keystore로 비밀번호와 로그인 토큰을 보호하고, 받은 파일과 캐시는 앱 전용 저장공간에 보관합니다.",
-      benefit: "편리함을 위해 기기의 기본 보안 방식을 포기하지 않습니다.",
     },
   ];
 
@@ -475,25 +455,25 @@ function NasFinderPromotion() {
     {
       number: "01",
       title: "가족의 휴대폰이 서로 달라도",
-      quote: "여행에서 나는 Android로 Motion Photo를 찍고, 가족은 iPhone을 썼습니다. 나스파인더로 QR만 맞추니 서로의 움직이는 사진이 각자의 사진 보관함에 맞는 형태로 들어왔습니다.",
+      scenario: "여행에서 한 사람은 Android로 Motion Photo를 찍고, 가족은 iPhone을 사용합니다. 나스파인더로 QR만 맞추면 서로의 움직이는 사진이 각자의 사진 보관함에 맞는 형태로 들어옵니다.",
       tag: "가족 · 여행 · 움직이는 사진",
     },
     {
       number: "02",
       title: "NAS 속 영상을 소파에서 찾을 때",
-      quote: "Mac용 Super Thumbnail으로 큰 미디어 폴더의 미리보기를 준비해 뒀습니다. iPad에서 Synology를 열어 화면으로 영상을 찾고, VLC 기반 재생으로 먼저 확인한 뒤 필요한 파일만 내려받았습니다.",
+      scenario: "Mac용 Super Thumbnail로 큰 미디어 폴더의 미리보기를 준비해 둡니다. iPad에서 Synology를 열어 화면으로 영상을 찾고, VLC 기반 재생으로 먼저 확인한 뒤 필요한 파일만 내려받습니다.",
       tag: "Super Thumbnail · VLC · NAS",
     },
     {
       number: "03",
       title: "컴퓨터의 파일을 폰에서 써야 할 때",
-      quote: "같은 Wi‑Fi에서 컴퓨터 브라우저로 폰하드를 열어 자료를 보냈습니다. 케이블이나 별도 전송 프로그램을 찾지 않고, 받은 파일을 폰에서 바로 다음 작업에 사용했습니다.",
+      scenario: "같은 Wi‑Fi에서 컴퓨터 브라우저로 폰하드를 열어 자료를 보냅니다. 케이블이나 별도 전송 프로그램 없이, 받은 파일을 폰에서 바로 다음 작업에 사용합니다.",
       tag: "휴대용 하드 · 같은 Wi‑Fi · 업무 파일",
     },
     {
       number: "04",
       title: "다른 앱에서 NAS 파일이 필요할 때",
-      quote: "문서 앱에서 파일을 첨부하려고 Apple 파일 앱을 열었습니다. Synology 위치로 바로 들어가 강화된 미리보기로 내용을 확인하고, 필요한 파일을 골라 작업을 이어갔습니다.",
+      scenario: "문서 앱에서 파일을 첨부하려고 Apple 파일 앱을 엽니다. Synology 위치로 바로 들어가 강화된 미리보기로 내용을 확인하고, 필요한 파일을 골라 작업을 이어갑니다.",
       tag: "파일 앱 · 강화된 미리보기 · 시스템 연동",
     },
   ];
@@ -510,7 +490,7 @@ function NasFinderPromotion() {
             파일이 있는 곳과 지금 손에 든 기기를 바로 연결합니다.
           </p>
           <div className="nas-promo-actions">
-            <Link className="button nas-promo-primary" href="#download">지금 나스파인더 받기 <span aria-hidden="true">↓</span></Link>
+            <Link className="button nas-promo-primary" href="#download">플랫폼별 설치 보기 <span aria-hidden="true">↓</span></Link>
             <Link className="button nas-promo-secondary" href="#stories">내가 쓰는 장면 보기 <span aria-hidden="true">→</span></Link>
           </div>
         </div>
@@ -537,7 +517,7 @@ function NasFinderPromotion() {
         <div className="nas-section-intro reveal">
           <p className="eyebrow">FEATURES THAT PAY OFF</p>
           <h2>기능은 많게.<br /><span>사용은 단순하게.</span></h2>
-          <p>네트워크 연결부터 수퍼썸네일, VLC 재생, 파일 앱, 폰하드와 움직이는 사진까지. 기능이 내 일상을 어떻게 바꾸는지 바로 보여드립니다.</p>
+          <p>연결, 재생, 폰하드와 움직이는 사진. 가장 중요한 네 가지 이점을 먼저 보여드리고, 전체 기능은 아래 특징에서 이어서 소개합니다.</p>
         </div>
         <div className="nas-advantage-grid">
           {advantages.map((advantage) => (
@@ -556,14 +536,14 @@ function NasFinderPromotion() {
           <div className="nas-section-intro nas-story-intro reveal">
             <p className="eyebrow">USE IT YOUR WAY</p>
             <h2>내 일상에서는,<br /><span>이렇게 달라집니다.</span></h2>
-            <p>실제 기능으로 가능한 사용 장면을 사용자 목소리로 구성했습니다.</p>
+            <p>실제 기능으로 가능한 예시 사용 장면입니다. 사용자 후기를 인용한 내용이 아닙니다.</p>
           </div>
           <div className="nas-story-grid">
             {stories.map((story) => (
               <article className="nas-story-card reveal" key={story.number}>
                 <div><span>{story.number}</span><small>{story.tag}</small></div>
                 <h3>{story.title}</h3>
-                <blockquote>“{story.quote}”</blockquote>
+                <p className="story-scenario">{story.scenario}</p>
               </article>
             ))}
           </div>
@@ -572,7 +552,7 @@ function NasFinderPromotion() {
             <h2>파일이 있는 곳에 연결하세요.<br /><span>받기 전에 먼저 여세요.</span></h2>
             <p>iPhone·iPad·Mac·Android에서 지금 쓰는 저장공간을 연결하고, 나스파인더의 차이를 직접 확인해 보세요.</p>
             <div>
-              <Link className="button nas-promo-primary" href="#download">다운로드와 설치 방법 <span aria-hidden="true">↓</span></Link>
+              <Link className="button nas-promo-primary" href="#download">플랫폼별 설치 보기 <span aria-hidden="true">↓</span></Link>
               <Link className="button nas-promo-secondary" href="#guide">처음부터 사용해 보기 <span aria-hidden="true">→</span></Link>
             </div>
           </div>
