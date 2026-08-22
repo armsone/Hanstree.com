@@ -107,7 +107,7 @@ test("renders the StarManager product and matchup disclosure", async () => {
   assert.match(html, /픽셀 단위 시각 패리티는 아직 검증하지 않았습니다/);
   assert.match(html, /Android 0\.1\.2 공개/);
   assert.match(html, /StarManager-Android-v0\.1\.2\.apk/);
-  assert.match(html, /b8559e321f1a6d743ac1e7d60f7afae3639b4a9c9663f1fa7417365b75be2aa9/);
+  assert.match(html, /5ac2be5759e8574ec991ec64c1605bfe867f161f5b537984c276aeafe31b1807/);
 });
 
 test("renders Super Thumbnail as an independent Mac product", async () => {

@@ -655,7 +655,7 @@ export const apps: AppData[] = [
         detail: "0.1.2 · APK v0.1.2 · Android 8.0+",
         url: "https://github.com/armsone/StarManager-Android/releases/download/v0.1.2/StarManager-Android-v0.1.2.apk",
         downloadLabel: "Android APK 바로 받기",
-        checksum: "b8559e321f1a6d743ac1e7d60f7afae3639b4a9c9663f1fa7417365b75be2aa9",
+        checksum: "5ac2be5759e8574ec991ec64c1605bfe867f161f5b537984c276aeafe31b1807",
       },
     ],
     features: [
