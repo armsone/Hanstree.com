@@ -46,10 +46,10 @@ export function AppArtwork({ app }: { app: AppData }) {
         </div>
         <div className="ccmb-panel-shot">
           <Image
-            src="/apps/ccmb/screens/ccmb-usage-menu.png"
-            alt="Codex·Claude·Gemini 사용량 링과 갱신 정보를 3열로 표시한 CCMB 패널"
-            width={1636}
-            height={1206}
+            src="/apps/ccmb/ccmb-campaign.png"
+            alt="메뉴 막대의 색상 숫자와 Codex·Claude·Gemini 원형 사용량 링"
+            width={1672}
+            height={941}
             sizes="(max-width: 640px) 92vw, 720px"
             unoptimized
           />

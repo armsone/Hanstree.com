@@ -249,7 +249,7 @@ const productCampaigns = {
     eyebrow: "THREE SERVICES, ONE GLANCE",
     headline: <>AI 사용량,<br /><span>메뉴 막대 한 칸이면 끝.</span></>,
     description: "Codex·Claude·Gemini의 사용량과 갱신 시간을 세 칸 링에 모으고, 메뉴 막대에서는 대표 색상의 숫자만으로 남은 여유를 빠르게 보여 줍니다.",
-    image: "/apps/ccmb/ccmb-campaign-v044.png",
+    image: "/apps/ccmb/ccmb-campaign.png",
     imageAlt: "세 개의 사용량 링이 메뉴와 항상 표시 패널에 나란히 보이는 CCMB 캠페인 이미지",
     imageLabel: "CODEX · CLAUDE · GEMINI",
     facts: [["03", "AI 서비스 한 패널"], ["02", "메뉴 · 항상 표시 패널"], ["LOCAL", "기존 CLI 세션 활용"]],
