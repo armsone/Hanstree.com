@@ -99,15 +99,15 @@ test("renders the StarManager product and matchup disclosure", async () => {
 
   const html = await response.text();
   assert.match(html, /오늘의 이야기를, 내 목소리로 완성합니다/);
-  assert.match(html, /스타메니저 iPhone 만들기 화면/);
+  assert.match(html, /스타메니저 iPhone 스튜디오의 AI 선택과 새 캔버스 화면/);
   assert.match(html, /TestFlight 업로드 완료/);
-  assert.match(html, /Apple AI/);
+  assert.match(html, /기기 AI/);
   assert.match(html, /스타매니저 Android 만들기 화면/);
   assert.match(html, /도달 가능한 탭/);
   assert.match(html, /픽셀 단위 시각 패리티는 아직 검증하지 않았습니다/);
-  assert.match(html, /Android 0\.1\.1 공개/);
-  assert.match(html, /StarManager-Android-v0\.1\.1\.apk/);
-  assert.match(html, /2594ee32cd8029c6fca0a0e188ebace3b137bf403a3d06f21b9bb4330a9c8833/);
+  assert.match(html, /Android 0\.1\.2 공개/);
+  assert.match(html, /StarManager-Android-v0\.1\.2\.apk/);
+  assert.match(html, /b8559e321f1a6d743ac1e7d60f7afae3639b4a9c9663f1fa7417365b75be2aa9/);
 });
 
 test("renders Super Thumbnail as an independent Mac product", async () => {
