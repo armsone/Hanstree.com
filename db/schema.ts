@@ -6,3 +6,15 @@ export const siteCounters = sqliteTable("site_counters", {
   value: integer("value").notNull().default(0),
   updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
 });
+
+export const whattoeatRedTablePhotoShards = sqliteTable("whattoeat_redtable_photo_shards", {
+  shardId: integer("shard_id").primaryKey(),
+  entriesJSON: text("entries_json").notNull(),
+  updatedAt: text("updated_at").notNull(),
+});
+
+export const whattoeatRedTablePhotoShardsNext = sqliteTable("whattoeat_redtable_photo_shards_next", {
+  shardId: integer("shard_id").primaryKey(),
+  entriesJSON: text("entries_json").notNull(),
+  updatedAt: text("updated_at").notNull(),
+});

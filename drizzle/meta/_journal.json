@@ -8,6 +8,13 @@
       "when": 1786755355774,
       "tag": "0000_slim_moonstone",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1787494408055,
+      "tag": "0001_easy_blockbuster",
+      "breakpoints": true
     }
   ]
 }

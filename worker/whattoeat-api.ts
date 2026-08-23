@@ -1,7 +1,12 @@
 // @ts-expect-error The photo matcher is shared JavaScript from the iOS backend.
 import { createPhotoProvider } from "./whattoeat-photos.js";
+import {
+  enrichWithRedTable,
+  handleRedTableSync,
+  type RedTableEnv,
+} from "./whattoeat-redtable";
 
-export interface WhattoEatEnv {
+export interface WhattoEatEnv extends RedTableEnv {
   KAKAO_REST_API_KEY?: string;
   TOUR_API_SERVICE_KEY?: string;
   SEARCH_RADIUS_METERS?: string;
@@ -83,6 +88,8 @@ export async function handleWhattoEatAPI(
 ): Promise<Response | null> {
   const url = new URL(request.url);
   if (url.pathname === "/api/whattoeat/health") return json(200, { status: "ok" });
+  const syncResponse = await handleRedTableSync(request, env);
+  if (syncResponse) return syncResponse;
   if (url.pathname !== "/api/restaurants") return null;
   if (request.method !== "GET") {
     return json(405, { error: "method_not_allowed", message: "GET만 지원합니다." });
@@ -136,6 +143,11 @@ export async function handleWhattoEatAPI(
   }
 
   let restaurants = [...byID.values()];
+  try {
+    restaurants = await enrichWithRedTable(restaurants, env);
+  } catch {
+    // RedTable 캐시가 비어 있거나 실패해도 기존 사진 공급자로 이어간다.
+  }
   try {
     const photos = createPhotoProvider({ tourApiServiceKey: env.TOUR_API_SERVICE_KEY || "" });
     restaurants = await photos.enrichRestaurants(restaurants);
