@@ -206,6 +206,10 @@ export const apps: AppData[] = [
       { src: "/apps/hanclip/screens/android-quick-select.png", alt: "한클립 Android 퀵모드 사진 선택" },
       { src: "/apps/hanclip/screens/android-duration.png", alt: "한클립 Android 장면 길이 설정" },
       { src: "/apps/hanclip/screens/android-editor-pets.png", alt: "고양이와 강아지 사진으로 꾸민 한클립 Android 편집 화면" },
+      { src: "/apps/hanclip/screens/android-home-dark.png", alt: "한클립 Android 다크 모드 홈" },
+      { src: "/apps/hanclip/screen-home.png", alt: "한클립 영화 만들기 홈" },
+      { src: "/apps/hanclip/screen-preview.png", alt: "한클립 완성 영화 미리보기" },
+      { src: "/apps/hanclip/screen-ratios.png", alt: "한클립 영화 화면비 선택" },
     ],
     github: ["https://github.com/armsone/HanClip", "https://github.com/armsone/HanClip-Android"],
     privacy: [
@@ -280,6 +284,7 @@ export const apps: AppData[] = [
       { src: "/apps/stand/screens/android-recordings.png", alt: "S.tand Android 잠소리 관리" },
       { src: "/apps/stand/screens/ios-boyiso-walkie.png", alt: "볼 사람·말할 사람·무전기 역할을 고르는 S.tand iOS 보이소 연결 화면" },
       { src: "/apps/stand/screens/ios-clock-fonts.png", alt: "S.tand iOS 시계 글꼴 선택" },
+      { src: "/apps/stand/screens/android-boyiso.png", alt: "S.tand Android 보이소 연결 화면" },
     ],
     github: ["https://github.com/armsone/S.tand", "https://github.com/armsone/S.tand-Android"],
     privacy: [
@@ -312,6 +317,7 @@ export const apps: AppData[] = [
     tagline: "Codex·Claude·Gemini 사용량을 메뉴 막대에서 한눈에.",
     summary: "터미널을 열지 않고도 Codex의 남은 주간 사용량·크레딧과 Claude·Gemini의 세션·주간 사용량을 대표 색상의 메뉴 막대 숫자와 3열 패널로 확인하는 비공식 macOS 앱입니다.",
     theme: "blue",
+    icon: "/apps/ccmb/icon.png",
     artwork: "menubar",
     platforms: [
       { name: "macOS", status: "공개", detail: "2.0.0 (202608230737) · macOS 10.15+ · Universal", url: releaseDownloadPath("CCMB"), downloadLabel: "DMG 다운로드", checksum: "a5ac16e68bdb0bb4062066802b8268d7a3f3fee900958e2c7a497f09a50294e0" },
@@ -342,6 +348,10 @@ export const apps: AppData[] = [
       { state: "done", title: "통합 사용량 패널", body: "메뉴 패널과 항상 보기의 레이아웃·설정 통합 및 배경 불투명도 조절" },
       { state: "done", title: "집중된 3열 패널", body: "Codex·Claude·Gemini만 노출하고 퍼센트 굵기를 통일한 정밀 원형 링과 하단 조작을 3열에 맞게 재구성" },
       { state: "active", title: "안정성 개선", body: "Codex·Claude·Gemini 변화와 인증·요청 제한·네트워크·절전 예외에 맞춰 지속 개선" },
+    ],
+    screenshots: [
+      { src: "/apps/ccmb/screens/ccmb-usage-menu.png", alt: "CCMB의 Codex·Claude·Gemini 사용량 메뉴", layout: "menu" },
+      { src: "/apps/ccmb/screens/macos-menubar.png", alt: "macOS 메뉴 막대에 표시된 CCMB 사용량", layout: "wide" },
     ],
     github: ["https://github.com/armsone/CCMB"],
     privacy: [
@@ -697,6 +707,7 @@ export const apps: AppData[] = [
       { src: "/apps/starmanager/screens/ios-composer.png", alt: "스타메니저 iPhone 스튜디오의 AI 선택과 새 캔버스 화면" },
       { src: "/apps/starmanager/screens/android-composer.png", alt: "스타매니저 Android 만들기 화면" },
       { src: "/apps/starmanager/screens/android-result.png", alt: "스타매니저 Android 게시물 생성 결과" },
+      { src: "/apps/starmanager/screens/android-settings.png", alt: "스타매니저 Android 내 설정 화면" },
     ],
     github: [
       "https://github.com/armsone/StarManager",

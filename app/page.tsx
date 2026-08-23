@@ -147,11 +147,11 @@ export default function Home() {
         <div className="section-heading reveal">
           <div>
             <p className="eyebrow">THE APPS</p>
-            <h2>지금 만들고 있는 것들</h2>
+            <h2>일상의 문제를 해결하는 제품들</h2>
           </div>
           <p>
-            각 제품의 화면과 기능, 개발 진행 상황, 사용법과 참여 방법을
-            숨김없이 한곳에 모읍니다.
+            먼저 갖고 싶어지는 이유와 실제 화면을 보여드리고,
+            설치·지원·개인정보 정보까지 한곳에서 이어드립니다.
           </p>
         </div>
 
@@ -174,7 +174,7 @@ export default function Home() {
                   ))}
                 </div>
                 <Link className="text-link" href={`/apps/${app.slug}`}>
-                  기능과 진행 상황 보기 <span aria-hidden="true">→</span>
+                  제품 자세히 보기 <span aria-hidden="true">→</span>
                 </Link>
               </div>
               <AppArtwork app={app} />
@@ -186,8 +186,8 @@ export default function Home() {
       <section className="testflight-section" id="testflight">
         <div className="shell">
           <div className="section-heading reveal">
-            <div><p className="eyebrow">90 DAY WINDOW</p><h2 className="section-brand-title"><img src="/brands/testflight.jpg" alt="" aria-hidden="true" /><span>TestFlight 만료 시계</span></h2></div>
-            <p>업로드한 시각부터 90일을 계산합니다. 날짜가 흐르면 남은 기간과 진행 바가 자동으로 바뀌어 다음 빌드를 준비할 때를 놓치지 않습니다.</p>
+            <div><p className="eyebrow">EARLY ACCESS</p><h2 className="section-brand-title"><img src="/brands/testflight.jpg" alt="" aria-hidden="true" /><span>새로운 앱을 가장 먼저</span></h2></div>
+            <p>TestFlight에서 지금 체험할 수 있는 앱과 남은 기간을 함께 보여드립니다. 마음에 드는 앱의 다음 모습을 먼저 만나보세요.</p>
           </div>
           <TestFlightTracker builds={testFlightBuilds} />
         </div>
@@ -196,8 +196,8 @@ export default function Home() {
       <section className="android-release-section" id="android-releases">
         <div className="shell">
           <div className="section-heading reveal">
-            <div><p className="eyebrow">LATEST ANDROID RELEASES</p><h2 className="section-brand-title"><span className="android-title-icon"><img src="/brands/android.svg" alt="" aria-hidden="true" /></span><span>Android 최신 배포</span></h2></div>
-            <p>나스파인더, 한클립, S.tand, 버튼과 스타매니저의 GitHub 공식 릴리스를 자동으로 확인합니다. 링크와 APK 정보가 정해진 저장소와 일치할 때만 표시합니다.</p>
+            <div><p className="eyebrow">READY FOR ANDROID</p><h2 className="section-brand-title"><span className="android-title-icon"><img src="/brands/android.svg" alt="" aria-hidden="true" /></span><span>Android에서 바로 시작</span></h2></div>
+            <p>앱 아이콘으로 원하는 제품을 고르고 공식 최신판을 바로 받으세요. 출처와 APK 정보는 홈페이지가 확인한 경우에만 표시합니다.</p>
           </div>
           <AndroidReleaseTracker />
         </div>

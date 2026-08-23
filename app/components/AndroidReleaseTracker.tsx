@@ -1,6 +1,16 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
+import { findApp } from "../data";
+
+const ANDROID_APP_SLUGS: Record<string, string> = {
+  "NasFinder-Android": "nasfinder",
+  "HanClip-Android": "hanclip",
+  "S.tand-Android": "stand",
+  "button-Android": "button",
+  "StarManager-Android": "starmanager",
+};
 
 type Release = {
   appName: string;
@@ -64,9 +74,10 @@ export function AndroidReleaseTracker() {
   return (
     <div>
       <div className="android-release-grid" aria-live="polite">
-        {releases.map((release) => (
-          <article className="android-release-card" key={release.repo}>
-            <div className="android-release-head"><span className="android-mark"><img src="/brands/android.svg" alt="" aria-hidden="true" /></span><div><p>{release.repo}</p><h3>{release.appName} Android</h3></div></div>
+        {releases.map((release) => {
+          const app = findApp(ANDROID_APP_SLUGS[release.repo]);
+          return <article className="android-release-card" key={release.repo}>
+            <div className="android-release-head"><span className="android-app-mark">{app?.icon && <Image className="release-app-icon" src={app.icon} alt="" width={56} height={56} unoptimized />}<span className="android-platform-badge"><img src="/brands/android.svg" alt="" aria-hidden="true" /></span></span><div><p>{release.repo}</p><h3>{release.appName} Android</h3></div></div>
             {release.available ? <>
               <div className="android-version"><strong>{release.tagName}</strong><span>최신 공개판</span></div>
               <dl>
@@ -83,8 +94,8 @@ export function AndroidReleaseTracker() {
               </div>
               <p className="android-download-note">홈페이지가 확인한 공식 GitHub APK가 바로 다운로드됩니다.</p>
             </> : <div className="android-release-loading"><strong>{failed ? "정보를 불러오지 못했습니다" : data ? "공개 APK를 찾지 못했습니다" : "최신 릴리스 확인 중"}</strong><p>{failed ? "잠시 뒤 다시 확인해 주세요. 확인되지 않은 주소나 APK는 표시하지 않습니다." : data ? "공식 GitHub Release에 검증 가능한 APK가 게시되면 다운로드 정보를 표시합니다." : "GitHub 공식 배포 정보를 안전하게 확인하고 있습니다."}</p></div>}
-          </article>
-        ))}
+          </article>;
+        })}
       </div>
       <p className="release-check-note">{data ? `GitHub 확인: ${formatDate(data.checkedAt)} · 30분 동안 캐시` : "공개 저장소만 조회하며 GitHub 비밀키는 사용하지 않습니다."}</p>
       <section className="android-install-guide" aria-labelledby="android-install-title">

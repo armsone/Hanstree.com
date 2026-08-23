@@ -71,13 +71,13 @@ export default async function AppRoute({ params }: RouteProps) {
           {app.slug === "nasfinder" ? (
             <><Link href="#why-nasfinder">왜 나스파인더</Link><Link href="#features">특징</Link><Link href="#screens">화면</Link><Link href="#download">설치</Link></>
           ) : (
-            <>{campaignSlugs.has(app.slug) && <Link href="#product-campaign">왜 {app.name}</Link>}<Link href="#features">특징</Link><Link href="#screens">화면</Link>{app.matchup && <Link href="#matchup">매치업</Link>}<Link href="#progress">진행 상황</Link><Link href="#guide">설명서</Link><Link href="#download">다운로드</Link></>
+            <><Link href="#product-campaign">왜 {app.name}</Link><Link href="#features">특징</Link><Link href="#screens">화면</Link>{app.matchup && <Link href="#matchup">매치업</Link>}<Link href="#progress">진행 상황</Link><Link href="#guide">설명서</Link><Link href="#download">다운로드</Link></>
           )}
         </div>
       </nav>
 
       {app.slug === "nasfinder" && <NasFinderPromotion />}
-      {campaignSlugs.has(app.slug) && <ProductPromotion app={app} />}
+      {campaignSlugs.has(app.slug) ? <ProductPromotion app={app} /> : app.slug !== "nasfinder" && <ProductSpotlight app={app} />}
 
       <section className="feature-section shell" id="features">
         <div className="section-heading reveal"><div><p className="eyebrow">FEATURES</p><h2>복잡함은 덜고,<br />쓰임은 선명하게.</h2></div></div>
@@ -159,6 +159,31 @@ export default async function AppRoute({ params }: RouteProps) {
       </section>
       <SiteFooter />
     </main>
+  );
+}
+
+function ProductSpotlight({ app }: { app: NonNullable<ReturnType<typeof findApp>> }) {
+  return (
+    <section className="product-promo" id="product-campaign">
+      <div className="shell product-promo-hero">
+        <div className="product-promo-copy reveal">
+          <p className="eyebrow">MADE FOR A REAL MOMENT</p>
+          <h2>{app.name}.<br /><span>쓰는 이유가 먼저.</span></h2>
+          <p>{app.summary}</p>
+          <div className="product-promo-actions"><Link className="button product-promo-primary" href="#screens">실제 화면 보기 <span aria-hidden="true">↓</span></Link><Link className="button product-promo-secondary" href="#download">지금 만나는 방법 <span aria-hidden="true">→</span></Link></div>
+        </div>
+        <div className="product-promo-image product-promo-artwork reveal"><AppArtwork app={app} /><div className="product-promo-image-label"><span>{app.eyebrow}</span><strong>{app.tagline}</strong></div></div>
+        <div className="product-promo-facts reveal" aria-label={`${app.name}이 주는 핵심 가치`}>
+          {app.features.slice(0, 3).map((feature, index) => <p key={feature.title}><strong>{String(index + 1).padStart(2, "0")}</strong><span>{feature.title}</span></p>)}
+        </div>
+      </div>
+      <div className="shell product-advantages">
+        <div className="product-section-intro reveal"><p className="eyebrow">WHY IT MATTERS</p><h2>기능보다 먼저.<br /><span>달라지는 일.</span></h2><p>{app.tagline} 실제 사용에서 바로 느낄 수 있는 핵심 이점을 먼저 소개합니다.</p></div>
+        <div className="product-advantage-grid">
+          {app.features.slice(0, 4).map((feature, index) => <article className="product-advantage-card reveal" key={feature.title}><div><span>{String(index + 1).padStart(2, "0")}</span><small>{app.english.toUpperCase()}</small></div><h3>{feature.title}</h3><p>{feature.body}</p><strong>아래 실제 화면과 사용법에서 이어서 확인할 수 있습니다.</strong></article>)}
+        </div>
+      </div>
+    </section>
   );
 }
 

@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
+import { findApp } from "../data";
 import type { TestFlightBuild } from "../testflight";
 
 const LIFE_MS = 90 * 24 * 60 * 60 * 1000;
@@ -57,10 +59,11 @@ export function TestFlightTracker({ builds }: { builds: TestFlightBuild[] }) {
     <div className="testflight-grid">
       {currentBuilds.map((build) => {
         const state = getBuildState(build);
+        const app = findApp(build.slug);
         return (
           <article className="testflight-card" key={build.slug}>
             <div className="testflight-card-head">
-              <div><span className="flight-dot" /><h3>{build.appName}</h3></div>
+              <div>{app?.icon && <Image className="release-app-icon" src={app.icon} alt="" width={52} height={52} unoptimized />}<div><span className="flight-dot" /><h3>{build.appName}</h3></div></div>
               <Link href={`/apps/${build.slug}`}>앱 보기</Link>
             </div>
             {state ? <>
