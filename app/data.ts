@@ -744,8 +744,8 @@ export const apps: AppData[] = [
     icon: "/apps/whattoeat/icon.png",
     artwork: "phones",
     platforms: [
-      { name: "iPhone · iPad", status: "TestFlight", detail: "0.2.2 (202608240716) · iOS·iPadOS 17+", availabilityNote: "App Store Connect 처리 중" },
-      { name: "Mac", status: "TestFlight", detail: "0.2.2 (202608240716) · Mac Catalyst", availabilityNote: "App Store Connect 처리 중" },
+      { name: "iPhone · iPad", status: "TestFlight", detail: "0.2.3 (202608240838) · iOS·iPadOS 17+", availabilityNote: "App Store Connect 처리 중" },
+      { name: "Mac", status: "TestFlight", detail: "0.2.3 (202608240838) · Mac Catalyst", availabilityNote: "App Store Connect 처리 중" },
     ],
     features: [
       { title: "가까운 13곳에서 한 끼 고르기", body: "현 위치 또는 직접 고른 지역에서 가까운 음식점 13곳을 추린 뒤, 오늘의 한 끼와 함께 볼 맛집을 한 화면에 보여줍니다." },
@@ -763,7 +763,7 @@ export const apps: AppData[] = [
     progress: [
       { state: "done", title: "iPhone·iPad·Mac 앱 완성", body: "한 소스로 iPhone, iPad와 Mac Catalyst 화면·기능 구현" },
       { state: "done", title: "추천과 사진·지도 연결", body: "위치 기반 후보 선정, 메뉴 사진 대체, 외부 지도 앱 연결 구현" },
-      { state: "active", title: "0.2.2 Apple 처리", body: "build 202608240716 iOS·iPadOS와 macOS 패키지 업로드 완료" },
+      { state: "active", title: "0.2.3 Apple 처리", body: "build 202608240838 iOS·iPadOS와 macOS 패키지 업로드 완료" },
     ],
     screenshots: [
       { src: "/apps/whattoeat/screens/home.png", alt: "오늘 뭐 먹지 홈에서 현재 위치와 지역 지정을 고르는 화면" },
