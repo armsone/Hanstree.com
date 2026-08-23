@@ -722,6 +722,53 @@ export const apps: AppData[] = [
       note: "소스와 결정적 테스트 기준 구현은 완료했습니다. 동일 조건의 최신 iOS 무손실 캡처가 없어 픽셀 단위 시각 패리티는 아직 검증하지 않았습니다.",
     },
   },
+  {
+    slug: "whattoeat",
+    name: "오늘 뭐 먹지??",
+    english: "What to Eat",
+    eyebrow: "ONE GOOD MEAL, NEARBY",
+    tagline: "오늘의 한 끼를, 가까운 곳에서.",
+    summary: "현재 위치나 고른 지역을 기준으로 가까운 음식점 13곳을 추리고, 사진과 함께 오늘의 한 끼를 제안합니다. 최근 선택과 찜을 지역별로 모아 다음 선택도 가볍게 이어갑니다.",
+    theme: "coral",
+    icon: "/apps/whattoeat/icon.png",
+    artwork: "phones",
+    platforms: [
+      { name: "iPhone · iPad", status: "TestFlight", detail: "0.2.2 (202608240716) · iOS·iPadOS 17+", availabilityNote: "App Store Connect 처리 중" },
+      { name: "Mac", status: "TestFlight", detail: "0.2.2 (202608240716) · Mac Catalyst", availabilityNote: "App Store Connect 처리 중" },
+    ],
+    features: [
+      { title: "가까운 13곳에서 한 끼 고르기", body: "현 위치 또는 직접 고른 지역에서 가까운 음식점 13곳을 추린 뒤, 오늘의 한 끼와 함께 볼 맛집을 한 화면에 보여줍니다." },
+      { title: "사진으로 먼저 맛보기", body: "식당 사진을 우선하고, 없을 때는 대표 메뉴와 이름을 함께 판단한 서로 다른 예시 사진으로 빈 화면 없이 제안합니다." },
+      { title: "원하는 지도 앱으로 바로", body: "네이버 지도, Apple 지도, 카카오맵과 Google 지도 중 하나를 정해 두고 식당 위치와 길 찾기를 이어갑니다." },
+      { title: "최근과 찜을 지역별로", body: "오늘 결정한 한 끼와 다시 가고 싶은 식당을 지역별로 모아 보고, 하트나 밀기로 간단히 정리합니다." },
+      { title: "점심 전에 가볍게 알림", body: "점심시간과 몇 분 전에 받을지 정하면 이 기기에서 오늘의 한 끼 알림을 받을 수 있습니다." },
+    ],
+    guide: [
+      { title: "지역 정하기", body: "현 위치를 다시 잡거나 지역 이름과 장소를 검색해 먹을 동네를 고릅니다." },
+      { title: "메뉴 추천 받기", body: "추천 탭에서 가까운 후보와 사진을 보고, 옆으로 밀어 더 많은 식당을 살펴봅니다." },
+      { title: "오늘은 여기로", body: "마음에 든 식당을 열어 지도와 정보를 확인한 뒤 오늘의 한 끼로 남깁니다." },
+      { title: "다음 선택 이어가기", body: "최근과 찜에서 지역별 식당을 다시 보고, 필요 없는 항목은 바로 지웁니다." },
+    ],
+    progress: [
+      { state: "done", title: "iPhone·iPad·Mac 앱 완성", body: "한 소스로 iPhone, iPad와 Mac Catalyst 화면·기능 구현" },
+      { state: "done", title: "추천과 사진·지도 연결", body: "위치 기반 후보 선정, 메뉴 사진 대체, 외부 지도 앱 연결 구현" },
+      { state: "active", title: "0.2.2 Apple 처리", body: "build 202608240716 iOS·iPadOS와 macOS 패키지 업로드 완료" },
+    ],
+    screenshots: [
+      { src: "/apps/whattoeat/screens/home.png", alt: "오늘 뭐 먹지 홈에서 현재 위치와 지역 지정을 고르는 화면" },
+      { src: "/apps/whattoeat/screens/recommendation.png", alt: "오늘의 한 끼와 함께 보면 좋은 맛집을 사진으로 보여주는 추천 화면" },
+      { src: "/apps/whattoeat/screens/decision.png", alt: "선택한 음식점 사진과 지도, 오늘은 여기로 버튼이 있는 결정 화면" },
+      { src: "/apps/whattoeat/screens/region.png", alt: "현 위치 주변과 자주 찾는 지역을 보여주는 지역 화면" },
+      { src: "/apps/whattoeat/screens/settings.png", alt: "지도 앱과 점심 알림을 정하는 설정 화면" },
+    ],
+    github: [],
+    privacy: [
+      "현재 위치는 주변 음식점 검색 요청에만 사용하며 앱 서버에 저장하지 않습니다.",
+      "최근 한 끼, 찜, 자주 찾는 지역과 알림 설정은 사용자의 기기 안에 보관합니다.",
+      "식당 검색과 사진 표시에는 카카오 로컬, RedTable 및 사진 제공처의 공개 데이터를 사용할 수 있으며 각 제공처의 정책이 함께 적용됩니다.",
+      "지도 열기를 선택하면 사용자가 정한 외부 지도 앱으로 식당 이름과 위치가 전달됩니다.",
+    ],
+  },
 ];
 
 export function findApp(slug: string) {
