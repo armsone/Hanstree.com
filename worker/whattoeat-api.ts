@@ -116,10 +116,17 @@ export async function handleWhattoEatAPI(
     }
   } catch (error) {
     const name = error instanceof Error ? error.name : "";
+    const message = error instanceof Error ? error.message : "";
     if (name === "TimeoutError" || name === "AbortError") {
       return json(504, {
         error: "upstream_timeout",
         message: "카카오 API 응답이 지연되고 있습니다. 잠시 후 다시 시도해 주세요.",
+      });
+    }
+    if (message === "kakao_401" || message === "kakao_403") {
+      return json(503, {
+        error: "upstream_authentication",
+        message: "음식점 검색 서버의 Kakao REST API 키를 확인해 주세요.",
       });
     }
     return json(502, {
