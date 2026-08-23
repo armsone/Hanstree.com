@@ -17,6 +17,7 @@ const PAGE_SIZE = 15;
 const MAX_PAGES = 4;
 const MAX_UNIQUE = 13;
 const UPSTREAM_TIMEOUT_MS = 5_000;
+const PHOTO_ENRICHMENT_BUDGET_MS = 2_500;
 const DISCLAIMER =
   "카카오 로컬 API(카테고리 검색 FD6)는 메뉴, 판매 인기, 현재 영업 여부를 제공하지 않습니다. " +
   "폐업·휴업 필터링은 적용되어 있지 않으므로 실제 이용 전 지도에서 확인이 필요합니다.";
@@ -150,7 +151,13 @@ export async function handleWhattoEatAPI(
   }
   try {
     const photos = createPhotoProvider({ tourApiServiceKey: env.TOUR_API_SERVICE_KEY || "" });
-    restaurants = await photos.enrichRestaurants(restaurants);
+    const enriched = photos.enrichRestaurants(restaurants).catch(() => restaurants);
+    restaurants = await Promise.race([
+      enriched,
+      new Promise<typeof restaurants>((resolve) => {
+        setTimeout(() => resolve(restaurants), PHOTO_ENRICHMENT_BUDGET_MS);
+      }),
+    ]);
   } catch {
     // 사진 공급자가 실패해도 식당 검색 결과는 반환한다.
   }
