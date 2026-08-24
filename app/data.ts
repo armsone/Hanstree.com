@@ -752,7 +752,7 @@ export const apps: AppData[] = [
     artwork: "phones",
     platforms: [
       { name: "iPhone · iPad", status: "TestFlight", detail: "0.2.6 (202608241410) · iOS·iPadOS 17+", availabilityNote: "TestFlight 업로드 완료 · Apple 처리 중" },
-      { name: "Mac", status: "공개", detail: "0.2.5 (202608241232) · macOS 13+ · Universal", url: releaseDownloadPath("WhattoEat"), downloadLabel: "Mac용 DMG 다운로드", checksum: "63338c12ef1c87285b18f290a2a627defcfbd85a7cc4ff5644c807c99a5ff24a", availabilityNote: "DMG 공개" },
+      { name: "Mac", status: "공개", detail: "0.2.6 (202608241410) · macOS 13+ · Universal", url: releaseDownloadPath("WhattoEat"), downloadLabel: "Mac용 DMG 다운로드", checksum: "18a02ceaa918abab4785396e37af7eda2758460b8e8ace2d010d3b6a2eb85641", availabilityNote: "공증된 DMG 공개" },
       { name: "Android · Google TV", status: "개발 중", detail: "Android 8.0+ · TV 런처 진입점 리소스 검증 완료", availabilityNote: "공개 APK 전 · 리모컨 화면 검증 전" },
     ],
     features: [
@@ -776,7 +776,7 @@ export const apps: AppData[] = [
       { state: "done", title: "0.2.3 내부 테스트", body: "build 202608240838 iOS·iPadOS와 macOS를 내부 TestFlight 그룹에 배포" },
       { state: "done", title: "0.2.4 릴리스", body: "build 202608240930 iOS·iPadOS와 macOS TestFlight 처리 완료, 공증된 Mac용 DMG 공개" },
       { state: "done", title: "0.2.5 릴리스", body: "build 202608241232 iOS·iPadOS TestFlight 내부 테스트 준비 완료, Mac용 DMG 공개" },
-      { state: "done", title: "0.2.6 전화 연결 릴리스", body: "build 202608241410 iOS·iPadOS TestFlight 업로드 완료 · Apple 처리 중" },
+      { state: "done", title: "0.2.6 전화 연결 릴리스", body: "build 202608241410 iOS·iPadOS TestFlight 업로드 완료 · Apple 처리 중, 공증된 Mac용 DMG 공개" },
     ],
     screenshots: [
       { src: "/apps/whattoeat/screens/home.png", alt: "오늘 뭐 먹지 홈에서 현재 위치와 지역 선택을 고르는 화면" },
