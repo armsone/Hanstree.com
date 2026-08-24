@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { AdvantageVisual, type AdvantageVariant } from "./AdvantageVisual";
 import { findApp } from "../data";
+import { releaseDownloadPath, type DownloadKey } from "../releases";
 
 const ANDROID_APP_SLUGS: Record<string, string> = {
   "NasFinder-Android": "nasfinder",
@@ -18,13 +19,13 @@ const installStepVisuals: AdvantageVariant[] = ["check-source", "android-bot", "
 
 type Release = {
   appName: string;
-  repo: string;
+  repo: DownloadKey;
   available: boolean;
   tagName?: string;
   releaseName?: string;
   publishedAt?: string | null;
   releaseUrl?: string;
-  asset?: { name: string; size: number; contentType: string; digest: string | null; downloadCount: number; downloadUrl?: string } | null;
+  asset?: { name: string; size: number; contentType: string; digest: string | null; downloadCount: number } | null;
 };
 
 type ReleaseResponse = { checkedAt: string; releases: Release[] };
@@ -37,15 +38,6 @@ function formatDate(value?: string | null) {
 function formatBytes(bytes?: number) {
   if (!bytes) return "크기 정보 없음";
   return `${(bytes / 1024 / 1024).toFixed(1)} MB`;
-}
-
-function recordDownload(repo: string) {
-  void fetch("/api/site-stats", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ event: "download", repo }),
-    keepalive: true,
-  });
 }
 
 export function AndroidReleaseTracker() {
@@ -92,7 +84,7 @@ export function AndroidReleaseTracker() {
                 <div><dt>SHA-256</dt><dd className="digest">{release.asset?.digest?.replace(/^sha256:/, "").slice(0, 12) || "GitHub 정보 없음"}</dd></div>
               </dl>
               <div className="android-release-actions">
-                {release.asset?.downloadUrl && <a className="android-download-link" href={release.asset.downloadUrl} onClick={() => recordDownload(release.repo)} aria-label={`${release.appName} Android ${release.tagName} APK 바로 받기`}>
+                {release.asset && <a className="android-download-link" href={releaseDownloadPath(release.repo)} aria-label={`${release.appName} Android ${release.tagName} APK 바로 받기`}>
                   <span>APK 바로 받기</span><b aria-hidden="true">↓</b>
                 </a>}
                 <a className="android-release-link" href={release.releaseUrl}>릴리스 설명 보기 <span aria-hidden="true">↗</span></a>

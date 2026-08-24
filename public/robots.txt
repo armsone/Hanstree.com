@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /api/release-download
+Disallow: /api/android-releases
+Disallow: /api/site-stats

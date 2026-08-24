@@ -2,14 +2,14 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 
-async function render(pathname = "/") {
+async function render(pathname = "/", headers = {}) {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
 
   return worker.fetch(
     new Request(`http://localhost${pathname}`, {
-      headers: { accept: "text/html" },
+      headers: { accept: "text/html", ...headers },
     }),
     {
       ASSETS: {
@@ -422,10 +422,17 @@ test("routes public download buttons through the allowlisted release redirect", 
   assert.equal(unknown.status, 404);
   assert.equal(missing.status, 404);
 
+  const interactiveHeaders = {
+    referer: "http://localhost/apps/ccmb",
+    "user-agent": "Mozilla/5.0 Safari/605.1.15",
+    "sec-fetch-site": "same-origin",
+    "sec-fetch-mode": "navigate",
+    "sec-fetch-dest": "document",
+  };
   const [ccmb, trackpadGuard, standMac] = await Promise.all([
-    render("/api/release-download?app=CCMB"),
-    render("/api/release-download?app=TrackpadGuard"),
-    render("/api/release-download?app=S.tand-macOS"),
+    render("/api/release-download?app=CCMB", interactiveHeaders),
+    render("/api/release-download?app=TrackpadGuard", interactiveHeaders),
+    render("/api/release-download?app=S.tand-macOS", interactiveHeaders),
   ]);
   assert.equal(ccmb.status, 302);
   assert.match(ccmb.headers.get("location") ?? "", /^https:\/\/github\.com\/armsone\/CCMB\/releases\//);
@@ -434,6 +441,23 @@ test("routes public download buttons through the allowlisted release redirect", 
   assert.match(trackpadGuard.headers.get("location") ?? "", /^https:\/\/github\.com\/armsone\/TrackpadGuard\/releases\//);
   assert.equal(standMac.status, 302);
   assert.match(standMac.headers.get("location") ?? "", /^https:\/\/github\.com\/armsone\/S\.tand\/releases\//);
+});
+
+test("refuses bot and direct download requests before redirecting", async () => {
+  const [knownBot, directRequest] = await Promise.all([
+    render("/api/release-download?app=CCMB", {
+      referer: "http://localhost/apps/ccmb",
+      "user-agent": "Mozilla/5.0 (compatible; MJ12bot/v1.4.8; http://mj12bot.com/)",
+    }),
+    render("/api/release-download?app=CCMB", {
+      "user-agent": "Mozilla/5.0 Safari/605.1.15",
+    }),
+  ]);
+
+  assert.equal(knownBot.status, 403);
+  assert.equal(directRequest.status, 403);
+  assert.equal(knownBot.headers.get("location"), null);
+  assert.equal(directRequest.headers.get("location"), null);
 });
 
 test("keeps verified TestFlight fallback data for StarManager and Button", async () => {

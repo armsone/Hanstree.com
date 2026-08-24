@@ -69,7 +69,6 @@ async function readLatestRelease(source: (typeof RELEASE_SOURCES)[number]) {
       contentType: apk.content_type,
       digest: apk.digest || null,
       downloadCount: apk.download_count,
-      downloadUrl: apk.browser_download_url,
     },
   };
 }

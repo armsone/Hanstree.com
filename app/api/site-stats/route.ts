@@ -1,4 +1,5 @@
 import { countDownload, countVisit, DOWNLOAD_REPOS, readSiteStats, type DownloadRepo } from "../../../db/siteStats";
+import { isTrustedSameSiteEvent } from "../../requestTraffic";
 
 export const dynamic = "force-dynamic";
 
@@ -16,8 +17,7 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
-  const origin = request.headers.get("origin");
-  if (!origin || origin !== new URL(request.url).origin) {
+  if (!isTrustedSameSiteEvent(request)) {
     return Response.json({ error: "허용되지 않은 요청입니다." }, { status: 403 });
   }
 

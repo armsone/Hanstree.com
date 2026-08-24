@@ -1,4 +1,5 @@
 import { DOWNLOAD_KEYS, RELEASE_DOWNLOADS, type DownloadKey } from "../../releases";
+import { isTrustedDownloadNavigation } from "../../requestTraffic";
 
 export const dynamic = "force-dynamic";
 
@@ -64,6 +65,13 @@ export async function GET(request: Request) {
     /prefetch/i.test(request.headers.get("purpose") || request.headers.get("sec-purpose") || "");
   if (routerFetch) {
     return Response.json({ download: RELEASE_DOWNLOADS[key].fallbackUrl }, { headers: { "Cache-Control": "no-store" } });
+  }
+
+  if (!isTrustedDownloadNavigation(request)) {
+    return Response.json(
+      { error: "홈페이지의 다운로드 버튼을 직접 눌러 주세요." },
+      { status: 403, headers: { "Cache-Control": "no-store" } },
+    );
   }
 
   try {
