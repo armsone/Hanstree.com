@@ -141,6 +141,7 @@ export default function Home() {
         <div className="app-list">
           {apps.map((app, index) => (
             <article className={`app-row reveal theme-${app.theme}`} key={app.slug}>
+              <Link className="app-row-hit-area" href={`/apps/${app.slug}`} aria-label={`${app.name} 제품 자세히 보기`} />
               <div className="app-row-number">0{index + 1}</div>
               <div className="app-row-copy">
                 <div className="app-title-line">
@@ -156,9 +157,9 @@ export default function Home() {
                     <AppStatus key={platform.name} platform={platform} />
                   ))}
                 </div>
-                <Link className="text-link" href={`/apps/${app.slug}`}>
+                <span className="text-link">
                   제품 자세히 보기 <span aria-hidden="true">→</span>
-                </Link>
+                </span>
               </div>
               <AppArtwork app={app} />
             </article>

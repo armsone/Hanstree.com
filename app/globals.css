@@ -64,7 +64,10 @@ img { display: block; max-width: 100%; }
 .section-heading h2 { margin: 0; font-size: clamp(2.5rem,5vw,4.8rem); line-height: .98; letter-spacing: -.065em; }
 .section-heading > p { max-width: 460px; margin: 0 0 4px; color: var(--muted); line-height: 1.7; }
 .app-list { display: grid; gap: 24px; }
-.app-row { --card-accent: #7455ee; min-height: 520px; display: grid; grid-template-columns: 72px minmax(300px,.78fr) minmax(390px,1.22fr); align-items: stretch; overflow: hidden; border-radius: 32px; background: #fff; box-shadow: 0 1px 0 rgba(255,255,255,.8) inset, 0 28px 80px rgba(27,27,32,.07); }
+.app-row { --card-accent: #7455ee; min-height: 520px; position:relative; display: grid; grid-template-columns: 72px minmax(300px,.78fr) minmax(390px,1.22fr); align-items: stretch; overflow: hidden; border-radius: 32px; background: #fff; box-shadow: 0 1px 0 rgba(255,255,255,.8) inset, 0 28px 80px rgba(27,27,32,.07); }
+.app-row-hit-area{position:absolute;z-index:50;inset:0;border-radius:inherit;cursor:pointer}
+.app-row-hit-area:focus-visible{outline:3px solid var(--card-accent);outline-offset:-5px}
+.app-row .platform-chip[href]{position:relative;z-index:51}
 .theme-coral { --accent: #ef6657; --accent-soft: #ffe0db; --card-accent: #ef6657; }
 .theme-amber { --accent: #d88925; --accent-soft: #ffebbd; --card-accent: #d88925; }
 .theme-blue { --accent: #2a74d8; --accent-soft: #d9e9ff; --card-accent: #2a74d8; }
