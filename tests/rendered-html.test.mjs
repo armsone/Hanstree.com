@@ -207,7 +207,8 @@ test("renders the latest NasFinder and HanClip capabilities", async () => {
   assert.match(hanClip, /완성시간을 음악 길이에 맞춘/);
   assert.match(hanClip, /개봉영화 보관함/);
   assert.match(hanClip, /무음 영상도 장면 분석/);
-  assert.match(hanClip, /실제 스윙과 임팩트가 만나는 순간/);
+  assert.match(hanClip, /큰 스윙도, 조용한 퍼팅도 놓치지 않도록/);
+  assert.match(hanClip, /Apple 무음 퍼팅 안전망/);
   assert.match(hanClip, /기기 내 신체 자세 분석/);
 
   const nasFeatureGrid = nasFinder.match(/<div class="feature-grid">[\s\S]*?<\/div>\s*<\/section>/)?.[0] ?? "";

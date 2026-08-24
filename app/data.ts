@@ -177,7 +177,7 @@ export const apps: AppData[] = [
     ],
     features: [
       { title: "빠른 영화 만들기", body: "실제 장면 수와 영상 분량에 맞춰 시간을 고르게 배분하고, 엔딩을 포함한 완성시간을 음악 길이에 맞춘 뒤 결과를 다듬습니다." },
-      { title: "AiShot", body: "골프 스윙의 준비·동작·임팩트 흐름과 타격음을 함께 살펴 실제 샷 순간을 자동으로 찾아 짧은 클립으로 남깁니다." },
+      { title: "AiShot", body: "Apple판은 골프 스윙의 준비·동작·임팩트와 타격음을 함께 살핍니다. 소리가 거의 없는 퍼팅은 준비 자세부터 작은 백스윙·전진·팔로스루까지 몸동작 순서가 확실하고 화면이 안정적일 때만 보수적으로 촬영합니다." },
       { title: "무음 영상도 장면 분석", body: "타임랩스·슬로 모션처럼 오디오 트랙이 없는 영상은 화면 움직임을 분석하고, 뚜렷한 변화가 없으면 영상 중앙을 기준으로 하이라이트를 제안합니다." },
       { title: "장면을 내 방식으로", body: "순서, 길이, 화면비, 자막과 음악, 워터마크와 엔딩 카드를 조절합니다." },
       { title: "사진부터 Live Photo까지", body: "사진·영상·Live Photo와 Android Motion Photo, 파일과 공유 항목을 가져옵니다." },
@@ -200,7 +200,8 @@ export const apps: AppData[] = [
       { state: "active", title: "플랫폼 경험 정렬", body: "iOS와 Android의 기능과 화면 동등성을 계속 다듬는 중" },
       { state: "done", title: "Apple Silicon Mac 지원", body: "iPhone·iPad와 같은 빌드를 Mac의 ‘iPhone 및 iPad용 앱’으로 실행하도록 지원" },
       { state: "done", title: "AiShot 동작 인식 강화", body: "소리 단독 반응을 줄이고 화면 움직임과 기기 내 신체 자세 분석을 결합" },
-      { state: "active", title: "현장 감도 검증", body: "실제 골프 연습장 영상으로 레디 음성·인접 타석·연습 스윙과 실제 샷을 추가 검증 중" },
+      { state: "done", title: "Apple 무음 퍼팅 안전망", body: "타구음 없이도 준비 자세부터 팔로스루까지 완성된 퍼팅 동작을 보수적으로 판정" },
+      { state: "active", title: "현장 감도 검증", body: "풀스윙뿐 아니라 대표성 있는 퍼팅 영상으로 놓침과 오촬영을 추가 검증할 예정" },
     ],
     screenshots: [
       { src: "/apps/hanclip/screens/ios-home.png", alt: "한클립 iOS 홈" },
