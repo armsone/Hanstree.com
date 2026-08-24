@@ -517,6 +517,64 @@ test("tracks every public download in the site counter with download wording", a
   assert.doesNotMatch(html, /업로드 기록 대기/);
 });
 
+test("keeps visit tracking privacy-safe and single-sourced", async () => {
+  const [component, counter, route, requestTraffic] = await Promise.all([
+    readFile(new URL("../app/components/VisitTracker.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/components/SiteCounter.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/api/site-stats/route.ts", import.meta.url), "utf8"),
+    readFile(new URL("../app/requestTraffic.ts", import.meta.url), "utf8"),
+  ]);
+
+  assert.match(component, /nasfinder:last-counted-visit/);
+  assert.match(component, /new URL\(document\.referrer\)\.origin/);
+  assert.doesNotMatch(component, /referrer:\s*document\.referrer/);
+  assert.match(component, /utm_source/);
+  assert.match(component, /utm_medium/);
+  assert.doesNotMatch(component, /user-agent|navigator\.userAgent|geolocation|cookie/i);
+
+  assert.doesNotMatch(counter, /event.*visit|POST/);
+  assert.match(counter, /method: "GET"|fetch\("\/api\/site-stats", \{ cache: "no-store" \}\)/);
+
+  assert.match(route, /classifyTrafficSource\(request, body\.referrer, body\.utmSource, body\.utmMedium\)/);
+  assert.doesNotMatch(route, /body\.source|body\.key|body\.label/);
+
+  assert.match(requestTraffic, /export function classifyTrafficSource/);
+  assert.match(requestTraffic, /"direct"/);
+  assert.match(requestTraffic, /google/);
+});
+
+test("keeps traffic-source classification bounded to known, privacy-safe categories", async () => {
+  const requestTraffic = await readFile(new URL("../app/requestTraffic.ts", import.meta.url), "utf8");
+  const { classifyTrafficSource } = await import("../app/requestTraffic.ts");
+
+  // The stored counter key must always come from server-side classification,
+  // never an arbitrary hostname or client-supplied label.
+  for (const knownSource of ["google", "naver", "bing", "daum", "youtube", "github", "instagram", "facebook", "x", "linkedin", "kakao", "chatgpt", "gemini"]) {
+    assert.match(requestTraffic, new RegExp(`source:\\s*"${knownSource}"`));
+  }
+  assert.match(requestTraffic, /key: "direct", category: "direct"/);
+  assert.match(requestTraffic, /key: "other-referral", category: "referral"/);
+  assert.match(requestTraffic, /key: "campaign", category: "campaign"/);
+  assert.match(requestTraffic, /externalReferrerHost = referrerHost && referrerHost !== requestHost/);
+  assert.doesNotMatch(requestTraffic, /campaign:\$\{/);
+  assert.doesNotMatch(requestTraffic, /utm_campaign/);
+
+  const request = new Request("https://nasfinder.com/api/site-stats");
+  assert.deepEqual(classifyTrafficSource(request, "https://gemini.google.com/app", null, null), { key: "gemini", category: "ai" });
+  assert.deepEqual(classifyTrafficSource(request, "https://example.com/private/path?token=secret", null, null), { key: "other-referral", category: "referral" });
+  assert.deepEqual(classifyTrafficSource(request, "https://google.com/search", "newsletter-2026-08", "email"), { key: "campaign", category: "campaign" });
+  assert.deepEqual(classifyTrafficSource(request, "https://nasfinder.com/apps/ccmb", null, null), { key: "direct", category: "direct" });
+});
+
+test("shows a clear empty state for months without traffic-source data", async () => {
+  const response = await render("/insights");
+  assert.equal(response.status, 200);
+
+  const html = await response.text();
+  assert.match(html, /이번 달 유입 경로/);
+  assert.match(html, /개인을 식별하지 않습니다/);
+});
+
 test("shows the refreshed progress review date and TrackpadGuard DMG download", async () => {
   const [btnResponse, trackpadResponse] = await Promise.all([
     render("/apps/btn"),

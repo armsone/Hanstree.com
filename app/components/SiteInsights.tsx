@@ -10,9 +10,18 @@ type DailyStats = {
   downloads: Record<string, number>;
 };
 
+type SourceRow = {
+  source: string;
+  category: string;
+  label: string;
+  categoryLabel: string;
+  count: number;
+};
+
 type InsightStats = {
   month: string;
   daily: DailyStats[];
+  sources: SourceRow[];
 };
 
 const apps = DOWNLOAD_KEYS.map((key) => [key, RELEASE_DOWNLOADS[key].label] as const);
@@ -94,7 +103,20 @@ export function SiteInsights() {
             <tbody>{[...(stats?.daily || [])].reverse().map((day) => <tr key={day.date}><th scope="row">{day.date}</th><td>{number(day.visits)}</td><td>{number(day.downloadClicks)}</td>{apps.map(([repo]) => <td key={repo}>{number(day.downloads[repo] || 0)}</td>)}</tr>)}</tbody>
           </table>
         </div>
-        <p className="insights-footnote">방문은 같은 브라우저에서 하루 한 번만 집계합니다. 다운로드 숫자는 이 홈페이지 버튼을 누른 횟수이며 GitHub 전체 다운로드 수와는 다를 수 있습니다.</p>
+        <section className="insights-sources" aria-labelledby="insights-sources-title">
+          <h2 id="insights-sources-title">이번 달 유입 경로</h2>
+          {stats && stats.sources.length > 0 ? (
+            <div className="insights-table-wrap">
+              <table className="insights-table">
+                <thead><tr><th>유입 경로</th><th>분류</th><th>방문</th></tr></thead>
+                <tbody>{stats.sources.map((row) => <tr key={row.source}><th scope="row">{row.label}</th><td>{row.categoryLabel}</td><td>{number(row.count)}</td></tr>)}</tbody>
+              </table>
+            </div>
+          ) : (
+            <p className="insights-empty">이 기간에는 유입 경로 집계가 없습니다. 새 방문부터 모아집니다.</p>
+          )}
+        </section>
+        <p className="insights-footnote">방문은 같은 브라우저에서 하루 한 번만 집계합니다. 다운로드 숫자는 이 홈페이지 버튼을 누른 횟수이며 GitHub 전체 다운로드 수와는 다를 수 있습니다. 유입 경로는 검색·소셜 등 미리 정한 카테고리로만 모아 저장하며, 개인을 식별하지 않습니다.</p>
       </section>
     </main>
   );

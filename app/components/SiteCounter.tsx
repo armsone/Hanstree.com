@@ -12,42 +12,19 @@ type SiteStats = {
 
 const repoLabels = DOWNLOAD_KEYS.map((key) => [key, RELEASE_DOWNLOADS[key].label] as const);
 
-function todayInKorea() {
-  const parts = new Intl.DateTimeFormat("en-US", {
-    timeZone: "Asia/Seoul",
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  }).formatToParts(new Date());
-  const value = Object.fromEntries(parts.map((part) => [part.type, part.value]));
-  return `${value.year}-${value.month}-${value.day}`;
-}
-
 export function SiteCounter() {
   const [stats, setStats] = useState<SiteStats | null>(null);
 
   useEffect(() => {
-    const lastVisitKey = "nasfinder:last-counted-visit";
-    const today = todayInKorea();
-    let counted = false;
-    try {
-      counted = localStorage.getItem(lastVisitKey) === today;
-    } catch {
-      counted = false;
-    }
-
-    fetch("/api/site-stats", counted ? { cache: "no-store" } : {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ event: "visit" }),
-    }).then(async (response) => {
-      if (!response.ok) throw new Error("site stats unavailable");
-      const next = await response.json() as SiteStats;
-      if (!counted) {
-        try { localStorage.setItem(lastVisitKey, today); } catch { /* storage may be disabled */ }
-      }
-      setStats(next);
-    }).catch(() => setStats(null));
+    const load = () => {
+      fetch("/api/site-stats", { cache: "no-store" }).then(async (response) => {
+        if (!response.ok) throw new Error("site stats unavailable");
+        setStats(await response.json() as SiteStats);
+      }).catch(() => setStats(null));
+    };
+    load();
+    window.addEventListener("nasfinder:visit-counted", load);
+    return () => window.removeEventListener("nasfinder:visit-counted", load);
   }, []);
 
   const number = (value?: number) => value === undefined ? "—" : value.toLocaleString("ko-KR");

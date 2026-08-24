@@ -1,5 +1,5 @@
 import { countDownload, countVisit, DOWNLOAD_REPOS, readSiteStats, type DownloadRepo } from "../../../db/siteStats";
-import { isTrustedSameSiteEvent } from "../../requestTraffic";
+import { classifyTrafficSource, isTrustedSameSiteEvent } from "../../requestTraffic";
 
 export const dynamic = "force-dynamic";
 
@@ -21,7 +21,7 @@ export async function POST(request: Request) {
     return Response.json({ error: "허용되지 않은 요청입니다." }, { status: 403 });
   }
 
-  let body: { event?: string; repo?: string };
+  let body: { event?: string; repo?: string; referrer?: string; utmSource?: string; utmMedium?: string };
   try {
     body = await request.json();
   } catch {
@@ -30,7 +30,8 @@ export async function POST(request: Request) {
 
   try {
     if (body.event === "visit") {
-      await countVisit();
+      const { key } = classifyTrafficSource(request, body.referrer, body.utmSource, body.utmMedium);
+      await countVisit(key);
     } else if (body.event === "download" && DOWNLOAD_REPOS.includes(body.repo as DownloadRepo)) {
       await countDownload(body.repo as DownloadRepo);
     } else {
