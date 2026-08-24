@@ -197,7 +197,8 @@ test("renders the latest NasFinder and HanClip capabilities", async () => {
   assert.match(nasFinder, /움직이는 추억도/);
   assert.match(nasFinder, /live-motion-campaign\.png/);
   assert.match(nasFinder, /가족의 휴대폰이 서로 달라도/);
-  assert.match(nasFinder, /Super Thumbnail과 VLC 미리보기/);
+  assert.match(nasFinder, /Super Thumbnail과 미디어 미리보기/);
+  assert.match(nasFinder, /NAS Vault 수퍼썸네일 복원과 미디어 제스처 보완판은 실기기 검증 후 공개 예정/);
   assert.match(nasFinder, /내 휴대폰을, 진짜 휴대용 하드처럼/);
   assert.match(nasFinder, /파일 앱의 강화된 미리보기/);
   assert.match(nasFinder, /플랫폼별 설치 보기/);
@@ -210,6 +211,7 @@ test("renders the latest NasFinder and HanClip capabilities", async () => {
   assert.match(hanClip, /큰 스윙도, 조용한 퍼팅도 놓치지 않도록/);
   assert.match(hanClip, /Apple 무음 퍼팅 안전망/);
   assert.match(hanClip, /기기 내 신체 자세 분석/);
+  assert.match(hanClip, /AiShot 동일 미디어 분석의 Android 실행 동등성은 검증 중/);
 
   const nasFeatureGrid = nasFinder.match(/<div class="feature-grid">[\s\S]*?<\/div>\s*<\/section>/)?.[0] ?? "";
   assert.equal((nasFeatureGrid.match(/class="advantage-visual"/g) ?? []).length, 10);
@@ -218,7 +220,7 @@ test("renders the latest NasFinder and HanClip capabilities", async () => {
   const nasDownloadList = nasFinder.match(/<div class="download-list">[\s\S]*?<\/div>\s*<\/section>/)?.[0] ?? "";
   assert.equal((nasDownloadList.match(/class="advantage-visual"/g) ?? []).length, 3);
   const nasProgressList = nasFinder.match(/<div class="progress-list">[\s\S]*?<\/div>\s*<\/section>/)?.[0] ?? "";
-  assert.equal((nasProgressList.match(/class="advantage-visual"/g) ?? []).length, 7);
+  assert.equal((nasProgressList.match(/class="advantage-visual"/g) ?? []).length, 8);
   const nasGuideSteps = nasFinder.match(/<div class="guide-steps">[\s\S]*?<\/div>\s*<\/div>\s*<\/section>/)?.[0] ?? "";
   assert.equal((nasGuideSteps.match(/class="advantage-visual"/g) ?? []).length, 6);
 });
