@@ -1,13 +1,8 @@
-type CloudflareRequest = Request & {
-  cf?: { botManagement?: { verifiedBot?: boolean } };
-};
-
 const AUTOMATION_USER_AGENT = /(?:bot(?:[\/;\s)]|$)|\b(?:crawler|spider|slurp|headlesschrome|phantomjs|wget|curl)\b|python-requests|go-http-client|alittle client)/i;
 
 export function requestLooksAutomated(request: Request) {
   const userAgent = request.headers.get("user-agent")?.trim() || "";
-  const verifiedBot = (request as CloudflareRequest).cf?.botManagement?.verifiedBot === true;
-  return verifiedBot || !userAgent || AUTOMATION_USER_AGENT.test(userAgent);
+  return !userAgent || AUTOMATION_USER_AGENT.test(userAgent);
 }
 
 function sameOrigin(value: string | null, request: Request) {
