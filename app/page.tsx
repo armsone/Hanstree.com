@@ -55,11 +55,11 @@ export default function Home() {
           </div>
           <div className="hero-product-grid" role="list">
             {apps.map((app, index) => (
-              <article className="hero-product" key={app.slug} role="listitem">
+              <Link className="hero-product" href={`/apps/${app.slug}`} key={app.slug} role="listitem" aria-label={`${app.name} 제품 자세히 보기`}>
                 <AppIcon app={app} priority={index < 4} />
                 <strong>{app.name}</strong>
                 <small>{app.english}</small>
-              </article>
+              </Link>
             ))}
           </div>
         </section>
