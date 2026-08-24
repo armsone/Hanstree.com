@@ -751,8 +751,8 @@ export const apps: AppData[] = [
     icon: "/apps/whattoeat/icon.png",
     artwork: "phones",
     platforms: [
-      { name: "iPhone · iPad", status: "TestFlight", detail: "0.2.6 (202608241410) · iOS·iPadOS 17+", availabilityNote: "TestFlight 업로드 완료 · Apple 처리 중" },
-      { name: "Mac", status: "공개", detail: "0.2.6 (202608241410) · macOS 13+ · Universal", url: releaseDownloadPath("WhattoEat"), downloadLabel: "Mac용 DMG 다운로드", checksum: "18a02ceaa918abab4785396e37af7eda2758460b8e8ace2d010d3b6a2eb85641", availabilityNote: "공증된 DMG 공개" },
+      { name: "iPhone · iPad", status: "TestFlight", detail: "0.3.0 (202608241540) · iOS·iPadOS 17+", availabilityNote: "TestFlight 업로드 완료 · Apple 처리 중" },
+      { name: "Mac", status: "공개", detail: "0.3.0 (202608241540) · macOS 13+ · Universal", url: releaseDownloadPath("WhattoEat"), downloadLabel: "Mac용 DMG 다운로드", checksum: "172999f31b95307ba31084575ca8646c3a2a78660632d73aa64c63b0796d5ce9", availabilityNote: "공증된 DMG 공개" },
       { name: "Android · Google TV", status: "개발 중", detail: "Android 8.0+ · TV 런처 진입점 리소스 검증 완료", availabilityNote: "공개 APK 전 · 리모컨 화면 검증 전" },
     ],
     features: [
@@ -761,7 +761,7 @@ export const apps: AppData[] = [
       { title: "사진으로 먼저 맛보기", body: "식당 사진을 우선하고, 없을 때는 대표 메뉴와 이름을 함께 판단한 서로 다른 예시 사진으로 빈 화면 없이 제안합니다." },
       { title: "원하는 지도 앱으로 바로", body: "네이버 지도, Apple 지도, 카카오맵과 Google 지도 중 하나를 정해 두고 식당 위치와 길 찾기를 이어갑니다." },
       { title: "영업 중인지 바로 전화하기", body: "전화번호가 있는 추천 식당은 원형 전화 버튼으로 바로 연결하고, 오늘의 결정에서는 번호도 함께 확인합니다." },
-      { title: "가죽판에서 이어지는 선택", body: "첫 화면의 가죽 추천판을 제목 바로 아래에 두고 위치 선택 패널은 스티치 안쪽 폭에 맞췄습니다. 하단 메뉴의 스티치는 눌린 그림자와 추천 버튼 여백까지 다듬었습니다." },
+      { title: "가죽판에서 이어지는 선택", body: "첫 화면의 가죽 추천판을 제목 바로 아래에 두고 위치 선택 패널은 스티치 안쪽 폭에 맞췄습니다. 하단 메뉴는 같은 가죽 질감과 눌린 바늘 홈을 쓰고 추천 버튼 돌출부까지 스티치를 이었습니다." },
       { title: "최근과 찜을 지역별로", body: "오늘 결정한 한 끼와 다시 가고 싶은 식당을 지역별로 모아 보고, 하트나 밀기로 간단히 정리합니다." },
       { title: "점심 전에 가볍게 알림", body: "점심시간과 몇 분 전에 받을지 정하면 이 기기에서 오늘의 한 끼 알림을 받을 수 있습니다." },
     ],
@@ -778,7 +778,7 @@ export const apps: AppData[] = [
       { state: "done", title: "0.2.4 릴리스", body: "build 202608240930 iOS·iPadOS와 macOS TestFlight 처리 완료, 공증된 Mac용 DMG 공개" },
       { state: "done", title: "0.2.5 릴리스", body: "build 202608241232 iOS·iPadOS TestFlight 내부 테스트 준비 완료, Mac용 DMG 공개" },
       { state: "done", title: "0.2.6 전화 연결 릴리스", body: "build 202608241410 iOS·iPadOS TestFlight 업로드 완료 · Apple 처리 중, 공증된 Mac용 DMG 공개" },
-      { state: "doing", title: "첫 화면 가죽 레이아웃", body: "가죽 추천판·위치 선택 패널·스티치 하단 메뉴를 다음 릴리스 화면으로 다듬는 중" },
+      { state: "done", title: "0.3.0 가죽 화면 릴리스", body: "build 202608241540 iOS·iPadOS TestFlight 업로드 완료 · Apple 처리 중, 새 가죽 화면과 공증된 Mac용 DMG 공개" },
     ],
     screenshots: [
       { src: "/apps/whattoeat/screens/home.png", alt: "오늘 뭐 먹지 홈에서 현재 위치와 지역 선택을 고르는 화면" },
