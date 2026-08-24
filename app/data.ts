@@ -164,8 +164,8 @@ export const apps: AppData[] = [
     icon: "/apps/hanclip/icon.png",
     artwork: "phones",
     platforms: [
-      { name: "iOS · iPadOS", status: "TestFlight", detail: "2.1.0 (202608250313) · iOS·iPadOS 17+", availabilityNote: "TestFlight 업로드 완료 · 처리 중" },
-      { name: "Mac", status: "TestFlight", detail: "2.1.0 · Apple Silicon · iPad 앱 호환 모드", availabilityNote: "같은 TestFlight 빌드 · 처리 중" },
+      { name: "iOS · iPadOS", status: "TestFlight", detail: "2.1.0 (202608250313) · iOS·iPadOS 17+", availabilityNote: "TestFlight 처리 완료" },
+      { name: "Mac", status: "TestFlight", detail: "2.1.0 · Apple Silicon · iPad 앱 호환 모드", availabilityNote: "같은 TestFlight 빌드 · 처리 완료" },
       {
         name: "Android",
         status: "공개",
@@ -196,7 +196,7 @@ export const apps: AppData[] = [
     ],
     progress: [
       { state: "done", title: "iOS 핵심 제작 흐름", body: "선택, 편집, 렌더링, 시사회와 저장 흐름 구현" },
-      { state: "active", title: "iOS·iPadOS 2.1.0 업로드", body: "build 202608250313 TestFlight 업로드 완료 · 처리 중" },
+      { state: "done", title: "iOS·iPadOS 2.1.0 업로드", body: "build 202608250313 TestFlight 처리 완료" },
       { state: "done", title: "Android 2.1.0 공개", body: "build 202608250313, code 340033의 서명 APK를 GitHub Releases에 공개" },
       { state: "done", title: "플랫폼 기술 계약 동기화", body: "기능·알고리즘·상태·오류·취소·권한·제스처·접근성 계약을 Apple과 Android에 대조 반영" },
       { state: "active", title: "Android AiShot 현장 검증", body: "실제 퍼팅과 다양한 스윙 환경에서 놓침과 오촬영을 계속 점검 중" },
