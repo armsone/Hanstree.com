@@ -274,6 +274,7 @@ export const apps: AppData[] = [
       { state: "done", title: "보이소 무전기", body: "주변 소리 없이 버튼으로 연결된 화면을 부르는 무전기 역할과 3초 연타 방지·고시인성 알림 적용" },
       { state: "done", title: "Mac 2.0.0 공개", body: "Developer ID 서명, Apple 공증과 Gatekeeper 검증을 마친 build 202608230737 DMG와 자동 업데이트 공개" },
       { state: "done", title: "휴대전화 가로 음악 배치", body: "iPhone 대표 가로 배치를 Android에도 적용하고 음악 스트립과 오른쪽 고정 제어 패널이 겹치지 않게 정리" },
+      { state: "next", title: "라디오 찾기 즐겨찾기", body: "다음 빌드의 앱 내 브라우저에 ‘내가 사랑하는 인터넷 라디오’ 안내 페이지를 기본 즐겨찾기로 추가" },
       { state: "next", title: "장시간 실기기 검증", body: "오디오·센서 흐름과 접근성을 다양한 기기에서 추가 검증" },
     ],
     screenshots: [
