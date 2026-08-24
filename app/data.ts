@@ -753,12 +753,12 @@ export const apps: AppData[] = [
     platforms: [
       { name: "iPhone · iPad", status: "TestFlight", detail: "0.3.0 (202608241540) · iOS·iPadOS 17+", availabilityNote: "TestFlight 업로드 완료 · Apple 처리 중" },
       { name: "Mac", status: "공개", detail: "0.3.0 (202608241540) · macOS 13+ · Universal", url: releaseDownloadPath("WhattoEat"), downloadLabel: "Mac용 DMG 다운로드", checksum: "172999f31b95307ba31084575ca8646c3a2a78660632d73aa64c63b0796d5ce9", availabilityNote: "공증된 DMG 공개" },
-      { name: "Android · Google TV", status: "개발 중", detail: "Android 8.0+ · TV 런처 진입점 리소스 검증 완료", availabilityNote: "공개 APK 전 · 리모컨 화면 검증 전" },
+      { name: "Android · Google TV", status: "개발 중", detail: "Android 8.0+ · Android 16 휴대전화 실행 검증", availabilityNote: "공개 APK 전 · 태블릿·TV 리모컨 검증 전" },
     ],
     features: [
       { title: "가까운 13곳에서 한 끼 고르기", body: "현 위치 또는 직접 고른 지역에서 가까운 음식점 13곳을 추린 뒤, 오늘의 한 끼와 함께 볼 맛집을 사진이 시원하게 보이는 2열 목록으로 보여줍니다." },
       { title: "기다리는 순간도 한 끼답게", body: "추천을 고르는 동안 음식 토큰과 주사위가 움직이는 애니메이션으로 선택의 기대감을 이어갑니다." },
-      { title: "사진으로 먼저 맛보기", body: "식당 사진을 우선하고, 없을 때는 대표 메뉴와 이름을 함께 판단한 서로 다른 예시 사진으로 빈 화면 없이 제안합니다." },
+      { title: "사진으로 먼저 맛보기", body: "Kakao Local에서 가까운 식당을 찾고 TourAPI의 검증된 식당 사진을 우선합니다. 사진이 없으면 Openverse에서 대표 메뉴와 이름을 함께 판단한 예시 사진을 찾아 빈 화면 없이 제안합니다." },
       { title: "원하는 지도 앱으로 바로", body: "네이버 지도, Apple 지도, 카카오맵과 Google 지도 중 하나를 정해 두고 식당 위치와 길 찾기를 이어갑니다." },
       { title: "영업 중인지 바로 전화하기", body: "전화번호가 있는 추천 식당은 원형 전화 버튼으로 바로 연결하고, 오늘의 결정에서는 번호도 함께 확인합니다." },
       { title: "가죽판에서 이어지는 선택", body: "첫 화면의 가죽 추천판을 제목 바로 아래에 두고 위치 선택 패널은 스티치 안쪽 폭에 맞췄습니다. 하단 메뉴는 같은 가죽 질감과 눌린 바늘 홈을 쓰고 추천 버튼 돌출부까지 스티치를 이었습니다." },
@@ -779,7 +779,7 @@ export const apps: AppData[] = [
       { state: "done", title: "0.2.5 릴리스", body: "build 202608241232 iOS·iPadOS TestFlight 내부 테스트 준비 완료, Mac용 DMG 공개" },
       { state: "done", title: "0.2.6 전화 연결 릴리스", body: "build 202608241410 iOS·iPadOS TestFlight 업로드 완료 · Apple 처리 중, 공증된 Mac용 DMG 공개" },
       { state: "done", title: "0.3.0 가죽 화면 릴리스", body: "build 202608241540 iOS·iPadOS TestFlight 업로드 완료 · Apple 처리 중, 새 가죽 화면과 공증된 Mac용 DMG 공개" },
-      { state: "active", title: "Android 0.3.0 화면 매치업", body: "최신 iOS 0.3.0 소스와 새 12상태 iPhone 기준 화면을 바탕으로 홈, 가죽 하단 메뉴, 추천·결정 화면의 전화 연결, 최근·찜과 접근성 동작을 Android 소스에 반영하고 빌드·단위 테스트를 통과했습니다. Android 실행 화면 캡처와 TalkBack·밀기·저장·지도·태블릿·TV 리모컨 시각 검증은 아직 남아 있습니다." },
+      { state: "active", title: "Android 0.3.0 화면 매치업", body: "Android 16 휴대전화에서 홈·가죽 하단 메뉴·추천 애니메이션·전화 연결과 12개 고정 상태를 실행 검증했습니다. Kakao Local·TourAPI·Openverse 사진 계약을 iPhone과 맞추고 실제 원격 사진과 제공처·제작자·라이선스 정보 표시도 확인했습니다. TalkBack 실제 읽기 순서, 밀기 후 재실행 저장, 지도 오류, 태블릿·TV 리모컨 검증은 아직 남아 있습니다." },
     ],
     screenshots: [
       { src: "/apps/whattoeat/screens/home.png", alt: "오늘 뭐 먹지 홈에서 현재 위치와 지역 선택을 고르는 화면" },
@@ -787,6 +787,8 @@ export const apps: AppData[] = [
       { src: "/apps/whattoeat/screens/decision.png", alt: "선택한 음식점 사진과 지도, 오늘은 여기로 버튼이 있는 결정 화면" },
       { src: "/apps/whattoeat/screens/region.png", alt: "현 위치 주변과 자주 찾는 지역을 보여주는 지역 화면" },
       { src: "/apps/whattoeat/screens/settings.png", alt: "지도 앱과 점심 알림을 정하는 설정 화면" },
+      { src: "/apps/whattoeat/screens/android-live-remote-results.png", alt: "오늘 뭐 먹지 Android에서 실제 외부 식당 사진과 전화 버튼을 보여주는 추천 결과" },
+      { src: "/apps/whattoeat/screens/android-photo-information.png", alt: "오늘 뭐 먹지 Android 사진 정보에서 제공처와 제작자, 라이선스를 확인하는 화면" },
     ],
     github: ["https://github.com/armsone/WhattoEat"],
     privacy: [
