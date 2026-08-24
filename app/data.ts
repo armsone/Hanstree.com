@@ -766,7 +766,7 @@ export const apps: AppData[] = [
       { state: "done", title: "iPhone·iPad·Mac 앱 완성", body: "한 소스로 iPhone, iPad와 Mac Catalyst 화면·기능 구현" },
       { state: "done", title: "추천과 사진·지도 연결", body: "위치 기반 후보 선정, 메뉴 사진 대체, 외부 지도 앱 연결 구현" },
       { state: "done", title: "0.2.3 내부 테스트", body: "build 202608240838 iOS·iPadOS와 macOS를 내부 TestFlight 그룹에 배포" },
-      { state: "active", title: "0.2.4 검증 완료", body: "build 202608240930 iPhone 설치와 Mac 실행을 확인하고, 홈 동선·2열 추천 목록·고르는 중 애니메이션을 반영" },
+      { state: "active", title: "0.2.4 검증 완료", body: "build 202608240930 iPhone 설치와 Mac 실행을 확인하고, 홈 동선·2열 추천 목록·고르는 중 애니메이션·간결한 사진 정보 표시를 반영" },
     ],
     screenshots: [
       { src: "/apps/whattoeat/screens/home.png", alt: "오늘 뭐 먹지 홈에서 현재 위치와 지역 지정을 고르는 화면" },
