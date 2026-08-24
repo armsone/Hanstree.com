@@ -11,7 +11,7 @@ export type TestFlightBuild = {
 // 확인되지 않은 날짜를 추정해서 입력하지 않습니다.
 export const testFlightBuilds: TestFlightBuild[] = [
   { slug: "nasfinder", appName: "나스파인더", build: "202608230737", uploadedAt: "2026-08-23T08:16:10+09:00", inviteUrl: null },
-  { slug: "hanclip", appName: "한클립", build: "202608230737", uploadedAt: "2026-08-23T08:08:47+09:00", inviteUrl: null },
+  { slug: "hanclip", appName: "한클립", build: "202608250313", uploadedAt: "2026-08-25T03:18:10+09:00", inviteUrl: null },
   { slug: "stand", appName: "S.tand", build: "337417", uploadedAt: "2026-08-23T08:21:11+09:00", inviteUrl: null },
   { slug: "htoms-brief", appName: "HtOMS 브리프", build: "202608230737", uploadedAt: "2026-08-23T08:12:19+09:00", inviteUrl: null },
   { slug: "starmanager", appName: "스타메니저", build: "202608230737", uploadedAt: "2026-08-23T08:13:38+09:00", inviteUrl: null },

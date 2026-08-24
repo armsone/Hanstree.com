@@ -209,9 +209,9 @@ test("renders the latest NasFinder and HanClip capabilities", async () => {
   assert.match(hanClip, /개봉영화 보관함/);
   assert.match(hanClip, /무음 영상도 장면 분석/);
   assert.match(hanClip, /큰 스윙도, 조용한 퍼팅도 놓치지 않도록/);
-  assert.match(hanClip, /Apple 무음 퍼팅 안전망/);
+  assert.match(hanClip, /Apple·Android 무음 퍼팅 안전망/);
   assert.match(hanClip, /기기 내 신체 자세 분석/);
-  assert.match(hanClip, /AiShot 동일 미디어 분석의 Android 실행 동등성은 검증 중/);
+  assert.match(hanClip, /휴대전화 실기기 설치 확인/);
 
   const nasFeatureGrid = nasFinder.match(/<div class="feature-grid">[\s\S]*?<\/div>\s*<\/section>/)?.[0] ?? "";
   assert.equal((nasFeatureGrid.match(/class="advantage-visual"/g) ?? []).length, 10);
@@ -405,8 +405,8 @@ test("renders current app release and TestFlight information", async () => {
   assert.match(nasFinder, /APK code 337417/);
   assert.match(nasFinder, /b75e22a98ef00fb35c657292b95fb1516ac2f098185e4ca611fd30bad02b775d/);
   assert.match(nasFinder, /Live Photos &amp; Motion Photos/);
-  assert.match(hanClip, /APK code 337417/);
-  assert.match(hanClip, /2cbfade3507cc4dd3fb87d99d8f2c56fc6e8b57cd90a64764a7e9be146675f9f/);
+  assert.match(hanClip, /APK code 340033/);
+  assert.match(hanClip, /4ab4a27bcf2b0a7e0e435c6941d536ccbfee98405bdf29509fc2c08444a587c3/);
   assert.match(hanClip, /오디오 트랙이 없는 영상은 화면 움직임/);
   assert.match(stand, /APK code 337417/);
   assert.match(stand, /66d77953761b8e0a8e2b37ab890ce6726d6beed8e34388e936d65f4d92cde91e/);
