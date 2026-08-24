@@ -29,25 +29,13 @@ export default function Home() {
             <span>꼭 필요한 앱.</span>
           </h1>
           <p className="hero-lede">
-            NasFinder.com은 나스파인더를 시작으로, 작지만 분명한 문제를
-            해결하는 앱과 웹 서비스를 만들고 기록하는 공간입니다.
+            하나만 만들 생각이었습니다. 그런데 불편이 자꾸 보였고,
+            어느새 13개의 앱이 되었습니다. 생각이 떠오르면 직접 만들고,
+            쓸수록 좋아질 때까지 끝까지 다듬습니다.
           </p>
-          <a className="hero-feature-callout" href="#motion-bridge">
-            <span>NASFINDER 핵심 기능</span>
-            <strong>Live Photo <b aria-hidden="true">⇄</b> Motion Photo</strong>
-            <i aria-hidden="true">↓</i>
-          </a>
-          <div className="hero-actions">
-            <Link className="button button-primary" href="#apps">
-              앱 둘러보기 <span aria-hidden="true">↘</span>
-            </Link>
-            <Link className="button button-quiet" href="https://github.com/armsone">
-              GitHub <span aria-hidden="true">↗</span>
-            </Link>
-          </div>
         </div>
 
-        <section className="hero-showcase reveal" aria-label="한병기가 만드는 앱">
+        <div className="hero-showcase reveal" aria-hidden="true">
           <div className="hero-orbit-art" aria-hidden="true">
             <span className="hero-orbit-ring hero-orbit-ring-outer" />
             <span className="hero-orbit-ring hero-orbit-ring-inner" />
@@ -58,27 +46,21 @@ export default function Home() {
             </div>
             <p className="hero-orbit-count"><strong>{String(apps.length).padStart(2, "0")}</strong><span>개의 작은 해답</span></p>
           </div>
+        </div>
 
-          <div className="hero-app-shelf">
-            <div className="hero-app-shelf-heading">
-              <strong>지금 만드는 앱</strong>
-              <a href="#apps">모두 만나보기 <span aria-hidden="true">↘</span></a>
-            </div>
-            <div className="hero-app-rail" role="list" aria-label="소개 앱">
-              {apps.map((app, index) => (
-                <Link
-                  className="hero-app-tile"
-                  href={`/apps/${app.slug}`}
-                  key={app.slug}
-                  role="listitem"
-                  aria-label={`${app.name} (${app.english}) 자세히 보기`}
-                >
-                  <AppIcon app={app} priority={index < 2} />
-                  <strong>{app.name}</strong>
-                  <small>{app.english}</small>
-                </Link>
-              ))}
-            </div>
+        <section className="hero-product-wall reveal" aria-label="한병기가 만드는 앱 전체">
+          <div className="hero-product-wall-heading">
+            <p>13 APPS. STILL COUNTING.</p>
+            <h2>보이는 불편마다, 앱 하나.</h2>
+          </div>
+          <div className="hero-product-grid" role="list">
+            {apps.map((app, index) => (
+              <article className="hero-product" key={app.slug} role="listitem">
+                <AppIcon app={app} priority={index < 4} />
+                <strong>{app.name}</strong>
+                <small>{app.english}</small>
+              </article>
+            ))}
           </div>
         </section>
       </section>

@@ -55,6 +55,7 @@ export const apps: AppData[] = [
         url: releaseDownloadPath("NasFinder-Android"),
         downloadLabel: "Android APK 바로 받기",
         checksum: "b75e22a98ef00fb35c657292b95fb1516ac2f098185e4ca611fd30bad02b775d",
+        availabilityNote: "현재 공개 APK는 기존판 · Google TV 런처 반영은 다음 공개 빌드부터",
       },
     ],
     features: [
@@ -171,6 +172,7 @@ export const apps: AppData[] = [
         url: releaseDownloadPath("HanClip-Android"),
         downloadLabel: "Android APK 바로 받기",
         checksum: "2cbfade3507cc4dd3fb87d99d8f2c56fc6e8b57cd90a64764a7e9be146675f9f",
+        availabilityNote: "현재 공개 APK는 기존판 · Google TV 런처 반영은 다음 공개 빌드부터",
       },
     ],
     features: [
@@ -245,6 +247,7 @@ export const apps: AppData[] = [
         url: releaseDownloadPath("S.tand-Android"),
         downloadLabel: "Android APK 바로 받기",
         checksum: "66d77953761b8e0a8e2b37ab890ce6726d6beed8e34388e936d65f4d92cde91e",
+        availabilityNote: "현재 공개 APK는 기존판 · Google TV 런처 반영은 다음 공개 빌드부터",
       },
     ],
     features: [
@@ -610,6 +613,7 @@ export const apps: AppData[] = [
         url: releaseDownloadPath("button-Android"),
         downloadLabel: "Android APK 바로 받기",
         checksum: "9b719f737aac49c6ac28ef1d5f1dae87304cfb64bfd845da4a189be8d5434e2a",
+        availabilityNote: "현재 공개 APK는 기존판 · Google TV 런처 반영은 다음 공개 빌드부터",
       },
     ],
     features: [
@@ -677,6 +681,7 @@ export const apps: AppData[] = [
         url: releaseDownloadPath("StarManager-Android"),
         downloadLabel: "Android APK 바로 받기",
         checksum: "9a5cb0653e03cefe48d814603f38f1c18a687bcacefeeacbbf5d0c24eb9856ed",
+        availabilityNote: "현재 공개 APK는 기존판 · Google TV 런처 반영은 다음 공개 빌드부터",
       },
     ],
     features: [
@@ -748,6 +753,7 @@ export const apps: AppData[] = [
     platforms: [
       { name: "iPhone · iPad", status: "TestFlight", detail: "0.2.4 (202608240930) · iOS·iPadOS 17+", availabilityNote: "업로드 완료 · Apple 처리 중" },
       { name: "Mac", status: "공개", detail: "0.2.4 (202608240930) · macOS 13+ · Universal", url: releaseDownloadPath("WhattoEat"), downloadLabel: "Mac용 DMG 다운로드", checksum: "6774f4afa280f01b47b05f118af5d18258d9427cffc659a2dec7b1be5bb03767" },
+      { name: "Android · Google TV", status: "개발 중", detail: "Android 8.0+ · TV 런처 진입점 리소스 검증 완료", availabilityNote: "공개 APK 전 · 리모컨 화면 검증 전" },
     ],
     features: [
       { title: "가까운 13곳에서 한 끼 고르기", body: "현 위치 또는 직접 고른 지역에서 가까운 음식점 13곳을 추린 뒤, 오늘의 한 끼와 함께 볼 맛집을 사진이 시원하게 보이는 2열 목록으로 보여줍니다." },

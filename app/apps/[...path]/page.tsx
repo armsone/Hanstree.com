@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { AdvantageVisual, type AdvantageVariant } from "../../components/AdvantageVisual";
+import { AppDownloadCta } from "../../components/AppDownloadCta";
 import { AppArtwork, AppIcon, AppStatus } from "../../components/AppVisuals";
 import { ContactReveal } from "../../components/ContactReveal";
 import { findApp } from "../../data";
@@ -55,10 +57,8 @@ export default async function AppRoute({ params }: RouteProps) {
             {app.platforms.map((platform) => <AppStatus key={platform.name} platform={platform} />)}
           </div>
           <div className="hero-actions">
-            {app.slug === "nasfinder" ? (
-              <Link className="button button-primary" href="#download">플랫폼별 설치 보기 <span aria-hidden="true">↓</span></Link>
-            ) : app.platforms.find((platform) => platform.url) ? (
-              <Link className="button button-primary" href={app.platforms.find((platform) => platform.url)!.url!}>지금 다운로드 <span aria-hidden="true">↗</span></Link>
+            {app.platforms.some((platform) => platform.url) ? (
+              <AppDownloadCta className="button button-primary" platforms={app.platforms} />
             ) : <Link className="button button-primary" href="#progress">진행 상황 보기 <span aria-hidden="true">↓</span></Link>}
             <Link className="button button-quiet" href="#guide">사용법 보기</Link>
           </div>
@@ -162,6 +162,8 @@ export default async function AppRoute({ params }: RouteProps) {
   );
 }
 
+const spotlightVisuals: AdvantageVariant[] = ["spark", "layers", "compass", "bolt"];
+
 function ProductSpotlight({ app }: { app: NonNullable<ReturnType<typeof findApp>> }) {
   return (
     <section className="product-promo" id="product-campaign">
@@ -180,7 +182,7 @@ function ProductSpotlight({ app }: { app: NonNullable<ReturnType<typeof findApp>
       <div className="shell product-advantages">
         <div className="product-section-intro reveal"><p className="eyebrow">WHY IT MATTERS</p><h2>기능보다 먼저.<br /><span>달라지는 일.</span></h2><p>{app.tagline} 실제 사용에서 바로 느낄 수 있는 핵심 이점을 먼저 소개합니다.</p></div>
         <div className="product-advantage-grid">
-          {app.features.slice(0, 4).map((feature, index) => <article className="product-advantage-card reveal" key={feature.title}><div><span>{String(index + 1).padStart(2, "0")}</span><small>{app.english.toUpperCase()}</small></div><h3>{feature.title}</h3><p>{feature.body}</p><strong>아래 실제 화면과 사용법에서 이어서 확인할 수 있습니다.</strong></article>)}
+          {app.features.slice(0, 4).map((feature, index) => <article className="product-advantage-card reveal" key={feature.title}><div><span>{String(index + 1).padStart(2, "0")}</span><small>{app.english.toUpperCase()}</small></div><AdvantageVisual variant={spotlightVisuals[index % spotlightVisuals.length]} /><h3>{feature.title}</h3><p>{feature.body}</p></article>)}
         </div>
       </div>
     </section>
@@ -198,12 +200,12 @@ const productCampaigns = {
     imageLabel: "MAC FOLDER → .NASFINDER-VAULT → ALL DEVICES",
     facts: [["16,540", "검증한 미디어 파일"], ["1.57TB", "검증한 원본 폴더"], ["04", "NasFinder 지원 플랫폼"]],
     advantages: [
-      ["01", "CHOOSE IN FINDER", "지금 쓰는 NAS 폴더에서 바로 시작합니다.", "Finder에 연결한 NAS 공유나 Mac 폴더를 사용자가 직접 선택합니다.", "별도 업로드 공간을 만들지 않고 이미 정리한 보관함을 그대로 대상으로 삼습니다."],
-      ["02", "RECURSIVE SCAN", "깊숙한 하위 폴더까지 한 번에 찾습니다.", "선택한 폴더 아래의 사진과 영상을 재귀적으로 찾아 JPEG 수퍼썸네일을 만듭니다.", "폴더를 하나씩 열어 작업하지 않고 큰 미디어 트리 전체를 준비합니다."],
-      ["03", "NASFINDER READY", "한 번 준비해 여러 기기에서 봅니다.", "수퍼썸네일을 NasFinder가 읽는 이름과 .NasFinder-Vault 구조로 저장합니다.", "iPhone·iPad·Mac·Android NasFinder가 같은 준비된 미리보기를 활용합니다."],
-      ["04", "RESUME", "긴 작업은 멈췄다가 그대로 이어갑니다.", "이미 만든 썸네일은 건너뛰고 남은 미디어를 다시 검사합니다.", "처음부터 다시 만드는 대신 완료된 결과를 보존하며 대형 작업을 나눠 진행합니다."],
-      ["05", "VISIBLE PROGRESS", "얼마나 남았는지 숫자로 확인합니다.", "전체·완료 파일 수, 예상 남은 시간, 확인한 원본과 생성된 썸네일 용량을 표시합니다.", "작업 규모와 진행 상태를 보며 중단하거나 계속할 시점을 판단합니다."],
-      ["06", "ON YOUR MAC", "원본 미디어는 Mac에서 직접 처리합니다.", "사용자가 고른 Finder 폴더를 Mac에서 읽고 쓰며 파일을 개발자 서버로 보내지 않습니다.", "수퍼썸네일을 만들기 위해 대형 원본 보관함을 별도 서버에 업로드하지 않습니다."],
+      ["01", "CHOOSE IN FINDER", "지금 쓰는 NAS 폴더에서 바로 시작합니다.", "Finder에 연결한 NAS 공유나 Mac 폴더를 사용자가 직접 선택합니다.", "별도 업로드 공간을 만들지 않고 이미 정리한 보관함을 그대로 대상으로 삼습니다.", "folder-pick"],
+      ["02", "RECURSIVE SCAN", "깊숙한 하위 폴더까지 한 번에 찾습니다.", "선택한 폴더 아래의 사진과 영상을 재귀적으로 찾아 JPEG 수퍼썸네일을 만듭니다.", "폴더를 하나씩 열어 작업하지 않고 큰 미디어 트리 전체를 준비합니다.", "recursive-scan"],
+      ["03", "NASFINDER READY", "한 번 준비해 여러 기기에서 봅니다.", "수퍼썸네일을 NasFinder가 읽는 이름과 .NasFinder-Vault 구조로 저장합니다.", "iPhone·iPad·Mac·Android NasFinder가 같은 준비된 미리보기를 활용합니다.", "vault-ready"],
+      ["04", "RESUME", "긴 작업은 멈췄다가 그대로 이어갑니다.", "이미 만든 썸네일은 건너뛰고 남은 미디어를 다시 검사합니다.", "처음부터 다시 만드는 대신 완료된 결과를 보존하며 대형 작업을 나눠 진행합니다.", "resume-progress"],
+      ["05", "VISIBLE PROGRESS", "얼마나 남았는지 숫자로 확인합니다.", "전체·완료 파일 수, 예상 남은 시간, 확인한 원본과 생성된 썸네일 용량을 표시합니다.", "작업 규모와 진행 상태를 보며 중단하거나 계속할 시점을 판단합니다.", "progress-bar"],
+      ["06", "ON YOUR MAC", "원본 미디어는 Mac에서 직접 처리합니다.", "사용자가 고른 Finder 폴더를 Mac에서 읽고 쓰며 파일을 개발자 서버로 보내지 않습니다.", "수퍼썸네일을 만들기 위해 대형 원본 보관함을 별도 서버에 업로드하지 않습니다.", "mac-local"],
     ],
     stories: [
       ["01", "가족 사진 NAS를 준비할 때", "Finder에 연결한 가족 사진 폴더를 고르고 수퍼썸네일 생성을 시작합니다. 다음에는 iPhone NasFinder에서 파일명 대신 장면을 보며 원하는 사진을 찾습니다.", "NAS · 가족 사진 · 시각 탐색"],
@@ -225,12 +227,12 @@ const productCampaigns = {
     imageLabel: "PHOTO · VIDEO · LIVE · MOTION → MP4",
     facts: [["04", "iPhone · iPad · Mac · Android"], ["30", "완성 영화 보관함"], ["MP4", "공유하기 쉬운 한 편"]],
     advantages: [
-      ["01", "ONE MOVIE", "고른 순간이 곧 영화가 됩니다.", "사진·영상·Live Photo·Motion Photo를 한 흐름에 담아 MP4로 만듭니다.", "서로 다른 촬영 형식을 따로 정리하지 않고 한 편으로 묶습니다."],
-      ["02", "QUICK MOVIE", "음악이 끝나면, 영화도 정확히 끝납니다.", "빠른 영화가 장면 길이를 나누고 엔딩을 포함한 전체 시간을 선택한 음악 길이에 맞춥니다.", "컷마다 시간을 계산하는 대신 음악과 함께 끝나는 흐름을 빠르게 만듭니다."],
-      ["03", "AISHOT", "실제 스윙과 임팩트가 만나는 순간을 찾습니다.", "AiShot이 준비부터 스윙까지의 화면 움직임과 기기 내 신체 자세 분석을 타격음과 함께 확인합니다.", "레디 같은 말소리나 주변 타석 소리에 덜 반응하고 실제 샷 순간부터 확인하도록 돕습니다."],
-      ["04", "FULL CONTROL", "자동으로 시작하고, 내 취향으로 끝냅니다.", "순서·길이·화면비·자막·음악·워터마크·엔딩 카드를 직접 조정합니다.", "빠른 초안 위에 나만의 이야기와 마무리를 더합니다."],
-      ["05", "PREVIEW & EXPORT", "저장하기 전에, 완성본처럼 봅니다.", "미리보기로 결과를 확인한 뒤 사진·갤러리·파일로 저장합니다.", "내보낸 뒤 다시 만드는 일을 줄이고 원하는 곳으로 바로 보냅니다."],
-      ["06", "KEEP CREATING", "완성작도, 다음 편도 이어집니다.", "완성 영화는 앱 안에 최대 30편 보관하고 프로젝트와 컬렉션은 다시 열어 편집합니다.", "한 번 만든 소재를 버리지 않고 다른 화면비와 구성으로 다시 활용합니다."],
+      ["01", "ONE MOVIE", "고른 순간이 곧 영화가 됩니다.", "사진·영상·Live Photo·Motion Photo를 한 흐름에 담아 MP4로 만듭니다.", "서로 다른 촬영 형식을 따로 정리하지 않고 한 편으로 묶습니다.", "film-reel"],
+      ["02", "QUICK MOVIE", "음악이 끝나면, 영화도 정확히 끝납니다.", "빠른 영화가 장면 길이를 나누고 엔딩을 포함한 전체 시간을 선택한 음악 길이에 맞춥니다.", "컷마다 시간을 계산하는 대신 음악과 함께 끝나는 흐름을 빠르게 만듭니다.", "music-timeline"],
+      ["03", "AISHOT", "실제 스윙과 임팩트가 만나는 순간을 찾습니다.", "AiShot이 준비부터 스윙까지의 화면 움직임과 기기 내 신체 자세 분석을 타격음과 함께 확인합니다.", "레디 같은 말소리나 주변 타석 소리에 덜 반응하고 실제 샷 순간부터 확인하도록 돕습니다.", "target-swing"],
+      ["04", "FULL CONTROL", "자동으로 시작하고, 내 취향으로 끝냅니다.", "순서·길이·화면비·자막·음악·워터마크·엔딩 카드를 직접 조정합니다.", "빠른 초안 위에 나만의 이야기와 마무리를 더합니다.", "sliders"],
+      ["05", "PREVIEW & EXPORT", "저장하기 전에, 완성본처럼 봅니다.", "미리보기로 결과를 확인한 뒤 사진·갤러리·파일로 저장합니다.", "내보낸 뒤 다시 만드는 일을 줄이고 원하는 곳으로 바로 보냅니다.", "preview-export"],
+      ["06", "KEEP CREATING", "완성작도, 다음 편도 이어집니다.", "완성 영화는 앱 안에 최대 30편 보관하고 프로젝트와 컬렉션은 다시 열어 편집합니다.", "한 번 만든 소재를 버리지 않고 다른 화면비와 구성으로 다시 활용합니다.", "archive-stack"],
     ],
     stories: [
       ["01", "여행의 마지막 밤", "여행 사진과 짧은 영상을 고르고 음악 한 곡을 선택합니다. 빠른 영화로 길이를 맞춘 뒤 엔딩까지 미리 보고, 가족에게 보낼 MP4를 완성합니다.", "여행 · 음악 길이 · 빠른 영화"],
@@ -252,12 +254,12 @@ const productCampaigns = {
     imageLabel: "TYPE → LOCK · TOUCH → RELEASE",
     facts: [["1s", "마지막 키 입력 후 자동 해제"], ["4P", "네 점으로 그리는 해제 구역"], ["SAFE", "좌표를 못 읽으면 잠금 안 함"]],
     advantages: [
-      ["01", "LOCK WHILE TYPING", "글을 쓰는 동안, 실수 입력은 멈춥니다.", "키보드 입력 중 트랙패드의 포인터 이동·클릭·스크롤을 막습니다.", "커서가 다른 문단으로 뛰거나 원치 않는 클릭이 생기는 순간을 줄입니다."],
-      ["02", "AUTO RELEASE", "손을 멈추면 1초 뒤, 다시 움직입니다.", "마지막 키 입력 후 1초가 지나면 트랙패드 잠금을 자동으로 풉니다.", "설정을 다시 열지 않고 타이핑과 포인터 작업을 자연스럽게 오갑니다."],
-      ["03", "TOUCH TO RELEASE", "기다릴 틈이 없을 땐, 정한 곳을 터치하세요.", "네 점으로 편집한 물리적 구역을 새로 터치하면 즉시 해제됩니다.", "자주 쓰는 손동작에 맞춰 나만의 빠른 해제 지점을 만듭니다."],
-      ["04", "OTHER POINTERS", "마우스와 펜은 바로 알아봅니다.", "마우스·트랙볼·펜 태블릿의 이동·클릭·스크롤이 들어오면 잠금을 풉니다.", "트랙패드 보호 때문에 다른 입력 장치의 흐름까지 끊기지 않습니다."],
-      ["05", "FAIL SAFE", "잠글 수 없는 상태라면, 잠그지 않습니다.", "멀티터치 좌표를 읽지 못하면 잠금을 시작하지 않고 비상 단축키도 제공합니다.", "예외 상황에서도 포인터를 잃지 않도록 빠져나올 길을 남깁니다."],
-      ["06", "LOCAL BY DESIGN", "키 내용도, 터치 좌표도 쌓지 않습니다.", "키 입력 내용과 터치 좌표를 저장하거나 전송하지 않으며 서명된 업데이트를 사용합니다.", "입력 보호 기능이 내 작업 내용을 수집하는 도구가 되지 않습니다."],
+      ["01", "LOCK WHILE TYPING", "글을 쓰는 동안, 실수 입력은 멈춥니다.", "키보드 입력 중 트랙패드의 포인터 이동·클릭·스크롤을 막습니다.", "커서가 다른 문단으로 뛰거나 원치 않는 클릭이 생기는 순간을 줄입니다.", "keyboard-lock"],
+      ["02", "AUTO RELEASE", "손을 멈추면 1초 뒤, 다시 움직입니다.", "마지막 키 입력 후 1초가 지나면 트랙패드 잠금을 자동으로 풉니다.", "설정을 다시 열지 않고 타이핑과 포인터 작업을 자연스럽게 오갑니다.", "timer-release"],
+      ["03", "TOUCH TO RELEASE", "기다릴 틈이 없을 땐, 정한 곳을 터치하세요.", "네 점으로 편집한 물리적 구역을 새로 터치하면 즉시 해제됩니다.", "자주 쓰는 손동작에 맞춰 나만의 빠른 해제 지점을 만듭니다.", "touch-zone"],
+      ["04", "OTHER POINTERS", "마우스와 펜은 바로 알아봅니다.", "마우스·트랙볼·펜 태블릿의 이동·클릭·스크롤이 들어오면 잠금을 풉니다.", "트랙패드 보호 때문에 다른 입력 장치의 흐름까지 끊기지 않습니다.", "pointer-devices"],
+      ["05", "FAIL SAFE", "잠글 수 없는 상태라면, 잠그지 않습니다.", "멀티터치 좌표를 읽지 못하면 잠금을 시작하지 않고 비상 단축키도 제공합니다.", "예외 상황에서도 포인터를 잃지 않도록 빠져나올 길을 남깁니다.", "shield-safe"],
+      ["06", "LOCAL BY DESIGN", "키 내용도, 터치 좌표도 쌓지 않습니다.", "키 입력 내용과 터치 좌표를 저장하거나 전송하지 않으며 서명된 업데이트를 사용합니다.", "입력 보호 기능이 내 작업 내용을 수집하는 도구가 되지 않습니다.", "lock-local"],
     ],
     stories: [
       ["01", "긴 원고에 집중할 때", "손을 노트북에 편하게 올리고 문장을 이어갑니다. 입력 중 커서는 제자리에 있고, 잠깐 멈추면 1초 뒤 다시 포인터를 사용합니다.", "글쓰기 · 커서 보호 · 자동 해제"],
@@ -279,12 +281,12 @@ const productCampaigns = {
     imageLabel: "CODEX · CLAUDE · GEMINI",
     facts: [["03", "AI 서비스 한 패널"], ["02", "메뉴 · 항상 표시 패널"], ["LOCAL", "기존 CLI 세션 활용"]],
     advantages: [
-      ["01", "THREE RINGS", "세 서비스의 남은 여유를 한눈에.", "Codex·Claude·Gemini의 사용량과 크레딧 정보를 3열 링으로 모으고 메뉴 막대 숫자에도 각 서비스의 대표 색상을 적용합니다.", "서비스를 하나씩 열지 않고 다음 작업에 쓸 도구를 빠르게 가늠합니다."],
-      ["02", "REFRESH CLOCK", "언제 갱신되는지도 함께 봅니다.", "서비스별 새로고침 간격과 다음 갱신까지 남은 시간을 표시합니다.", "오래된 수치를 새 정보처럼 읽지 않고 확인 시점을 함께 판단합니다."],
-      ["03", "TWO VIEWS", "메뉴에서도, 항상 보이는 패널에서도.", "메뉴 패널과 항상 표시 패널이 같은 정보를 보여 주며 업데이트·버전·투명도·재시작·종료 조작을 간결하게 정돈했습니다.", "작업 방식에 맞는 위치에 두고 같은 현황을 계속 확인합니다."],
-      ["04", "FRESH LOCAL DATA", "다른 도구도 같은 상태를 읽습니다.", "계정·플랜·갱신 상태를 정렬하고 신선도 정보가 포함된 로컬 JSON을 노출합니다.", "앱과 Codex 대화가 서로 다른 오래된 수치를 보지 않도록 연결합니다."],
-      ["05", "RECOVERY", "잠자기에서 깨어나도 다시 이어집니다.", "네트워크 변화와 잠자기·깨우기 뒤 복구하며 로그인 시 실행과 서명된 업데이트를 지원합니다.", "매번 앱 상태를 되돌리는 대신 메뉴 막대의 모니터링 흐름을 유지합니다."],
-      ["06", "NO BUILT-IN KEYS", "새 API 키를 앱에 넣지 않습니다.", "이미 로그인된 로컬 CLI 세션을 활용하며 분석·원격 텔레메트리를 보내지 않습니다.", "사용량 확인을 위해 별도의 키 보관과 원격 분석을 추가하지 않습니다."],
+      ["01", "THREE RINGS", "세 서비스의 남은 여유를 한눈에.", "Codex·Claude·Gemini의 사용량과 크레딧 정보를 3열 링으로 모으고 메뉴 막대 숫자에도 각 서비스의 대표 색상을 적용합니다.", "서비스를 하나씩 열지 않고 다음 작업에 쓸 도구를 빠르게 가늠합니다.", "three-rings"],
+      ["02", "REFRESH CLOCK", "언제 갱신되는지도 함께 봅니다.", "서비스별 새로고침 간격과 다음 갱신까지 남은 시간을 표시합니다.", "오래된 수치를 새 정보처럼 읽지 않고 확인 시점을 함께 판단합니다.", "clock-refresh"],
+      ["03", "TWO VIEWS", "메뉴에서도, 항상 보이는 패널에서도.", "메뉴 패널과 항상 표시 패널이 같은 정보를 보여 주며 업데이트·버전·투명도·재시작·종료 조작을 간결하게 정돈했습니다.", "작업 방식에 맞는 위치에 두고 같은 현황을 계속 확인합니다.", "two-panels"],
+      ["04", "FRESH LOCAL DATA", "다른 도구도 같은 상태를 읽습니다.", "계정·플랜·갱신 상태를 정렬하고 신선도 정보가 포함된 로컬 JSON을 노출합니다.", "앱과 Codex 대화가 서로 다른 오래된 수치를 보지 않도록 연결합니다.", "json-local"],
+      ["05", "RECOVERY", "잠자기에서 깨어나도 다시 이어집니다.", "네트워크 변화와 잠자기·깨우기 뒤 복구하며 로그인 시 실행과 서명된 업데이트를 지원합니다.", "매번 앱 상태를 되돌리는 대신 메뉴 막대의 모니터링 흐름을 유지합니다.", "recovery-wake"],
+      ["06", "NO BUILT-IN KEYS", "새 API 키를 앱에 넣지 않습니다.", "이미 로그인된 로컬 CLI 세션을 활용하며 분석·원격 텔레메트리를 보내지 않습니다.", "사용량 확인을 위해 별도의 키 보관과 원격 분석을 추가하지 않습니다.", "no-key"],
     ],
     stories: [
       ["01", "큰 작업을 시작하기 전에", "메뉴 막대의 세 가지 색 숫자와 세 칸 링을 열어 각 서비스의 남은 사용량과 갱신 시간을 봅니다. 여유가 있는 도구를 확인하고 오늘의 작업을 배분합니다.", "세 서비스 · 잔량 · 갱신 시간"],
@@ -306,12 +308,12 @@ const productCampaigns = {
     imageLabel: "CLOCK · MATE · MUSIC · LOCAL TIMELINE",
     facts: [["2min", "메이트 모드 준비 시간"], ["06", "음악 스트립 슬롯"], ["LOCAL", "후보 소리 기기 내 타임라인"]],
     advantages: [
-      ["01", "FLIP CLOCK", "세로로도, 가로로도 자리에 맞습니다.", "플립 클록과 날씨, 배터리를 iPhone·iPad·Mac·Android에서 세로와 가로로 보여 줍니다.", "책상과 침대 옆, 충전 중인 화면을 필요한 정보가 있는 오브제로 바꿉니다."],
-      ["02", "MATE MODE", "어두운 밤에는 낮게, 필요할 때는 반응하게.", "최소 밝기를 유지하고 메이트 모드 진입 2분 뒤 움직임이나 큰 소리에 화면·조명이 반응할 수 있습니다.", "밤새 밝은 화면을 켜 두지 않으면서 필요한 순간의 시각 반응을 둡니다."],
-      ["03", "LOCAL TIMELINE", "밤의 후보 소리를 아침에 훑어봅니다.", "코골이·잠꼬대·움직임으로 보이는 후보 소리를 기기 안에서 기록해 타임라인으로 보여 줍니다.", "밤새 앱을 지켜보지 않고 기록된 시점부터 확인합니다. 의료 진단 기능은 아닙니다."],
-      ["04", "MAKE IT YOURS", "시간을 보는 화면도 내 공간답게.", "밝기·시계 글꼴·레이아웃·테마를 조정합니다.", "같은 앱을 침실에는 차분하게, 책상에는 선명하게 맞춥니다."],
-      ["05", "SIX-SLOT MUSIC", "자주 듣는 소리를 여섯 칸에 둡니다.", "Apple Music·Classical 또는 Spotify·YouTube Music과 인터넷 라디오를 플랫폼에 맞춰 음악 스트립에 배치합니다.", "시계 화면을 떠나지 않고 자주 듣는 음악과 라디오로 들어갑니다."],
-      ["06", "YOU CONTROL BACKGROUND", "감지와 재생의 범위는 내가 정합니다.", "배경 동작은 기본으로 꺼져 있고, QR로 근처 보이소를 연결하면 움직임·소리 이벤트를 공유합니다.", "앱 밖에서도 이어갈지, 가까운 기기와 연결할지를 사용자가 선택합니다."],
+      ["01", "FLIP CLOCK", "세로로도, 가로로도 자리에 맞습니다.", "플립 클록과 날씨, 배터리를 iPhone·iPad·Mac·Android에서 세로와 가로로 보여 줍니다.", "책상과 침대 옆, 충전 중인 화면을 필요한 정보가 있는 오브제로 바꿉니다.", "flip-clock"],
+      ["02", "MATE MODE", "어두운 밤에는 낮게, 필요할 때는 반응하게.", "최소 밝기를 유지하고 메이트 모드 진입 2분 뒤 움직임이나 큰 소리에 화면·조명이 반응할 수 있습니다.", "밤새 밝은 화면을 켜 두지 않으면서 필요한 순간의 시각 반응을 둡니다.", "night-glow"],
+      ["03", "LOCAL TIMELINE", "밤의 후보 소리를 아침에 훑어봅니다.", "코골이·잠꼬대·움직임으로 보이는 후보 소리를 기기 안에서 기록해 타임라인으로 보여 줍니다.", "밤새 앱을 지켜보지 않고 기록된 시점부터 확인합니다. 의료 진단 기능은 아닙니다.", "timeline-dots"],
+      ["04", "MAKE IT YOURS", "시간을 보는 화면도 내 공간답게.", "밝기·시계 글꼴·레이아웃·테마를 조정합니다.", "같은 앱을 침실에는 차분하게, 책상에는 선명하게 맞춥니다.", "palette"],
+      ["05", "SIX-SLOT MUSIC", "자주 듣는 소리를 여섯 칸에 둡니다.", "Apple Music·Classical 또는 Spotify·YouTube Music과 인터넷 라디오를 플랫폼에 맞춰 음악 스트립에 배치합니다.", "시계 화면을 떠나지 않고 자주 듣는 음악과 라디오로 들어갑니다.", "music-grid"],
+      ["06", "YOU CONTROL BACKGROUND", "감지와 재생의 범위는 내가 정합니다.", "배경 동작은 기본으로 꺼져 있고, QR로 근처 보이소를 연결하면 움직임·소리 이벤트를 공유합니다.", "앱 밖에서도 이어갈지, 가까운 기기와 연결할지를 사용자가 선택합니다.", "toggle-control"],
     ],
     stories: [
       ["01", "침대 옆 가로 시계", "태블릿을 가로로 세워 플립 클록과 날씨, 배터리를 봅니다. 방이 어두워지면 화면은 낮은 밝기를 유지하고, 메이트 모드는 2분 뒤부터 반응을 준비합니다.", "침실 · 플립 클록 · 메이트 모드"],
@@ -333,12 +335,12 @@ const productCampaigns = {
     imageLabel: "ONE LINE → SEARCH · VIDEO · MAP · SHOPPING",
     facts: [["01", "하나의 시작 화면"], ["05", "선택 가능한 검색 목적"], ["2X", "PC · 모바일 반응형"]],
     advantages: [
-      ["01", "NAME, NOT URL", "사이트 주소 대신 이름으로 엽니다.", "등록된 사이트 이름을 검색줄에 입력하면 해당 페이지로 이동합니다.", "긴 주소를 외우거나 즐겨찾기 폴더를 헤매지 않고 기억나는 이름부터 입력합니다."],
-      ["02", "ONE-LINE SEARCH", "검색도 같은 한 줄에서 시작합니다.", "네이버·Google·YouTube·지도·쇼핑을 고르고 검색어를 입력합니다.", "찾으려는 종류에 맞춰 검색 목적지만 바꾸고 입력 흐름은 그대로 유지합니다."],
-      ["03", "PURPOSE GROUPS", "자주 가는 곳을 쓰임별로 펼쳐 봅니다.", "일·이야기마당·볼거리·연장처럼 목적에 따라 나눈 이음말을 한 화면에 모읍니다.", "링크 이름을 몰라도 지금 하려는 일의 카테고리부터 찾아갑니다."],
-      ["04", "YOUR DEFAULTS", "내가 고른 검색과 화면을 기억합니다.", "선택한 검색 서비스와 밝고 어두운 테마를 같은 브라우저에 저장합니다.", "매번 같은 설정을 되풀이하지 않고 익숙한 시작 화면으로 돌아옵니다."],
-      ["05", "START PAGE", "브라우저를 여는 순간 바로 만납니다.", "인투샾을 브라우저의 시작 페이지로 등록해 사용할 수 있습니다.", "새 탭에서 무엇을 할지 다시 고르는 대신 내 인터넷 입구에서 곧바로 시작합니다."],
-      ["06", "DESKTOP & MOBILE", "PC에서도, 휴대폰 첫 화면에서도.", "PC·모바일에 반응하는 공개 웹 서비스이며 홈 화면 바로가기로도 열 수 있습니다.", "기기에 맞는 화면으로 같은 이름 기반 시작 경험을 이어갑니다."],
+      ["01", "NAME, NOT URL", "사이트 주소 대신 이름으로 엽니다.", "등록된 사이트 이름을 검색줄에 입력하면 해당 페이지로 이동합니다.", "긴 주소를 외우거나 즐겨찾기 폴더를 헤매지 않고 기억나는 이름부터 입력합니다.", "name-tag"],
+      ["02", "ONE-LINE SEARCH", "검색도 같은 한 줄에서 시작합니다.", "네이버·Google·YouTube·지도·쇼핑을 고르고 검색어를 입력합니다.", "찾으려는 종류에 맞춰 검색 목적지만 바꾸고 입력 흐름은 그대로 유지합니다.", "search-bar"],
+      ["03", "PURPOSE GROUPS", "자주 가는 곳을 쓰임별로 펼쳐 봅니다.", "일·이야기마당·볼거리·연장처럼 목적에 따라 나눈 이음말을 한 화면에 모읍니다.", "링크 이름을 몰라도 지금 하려는 일의 카테고리부터 찾아갑니다.", "groups-grid"],
+      ["04", "YOUR DEFAULTS", "내가 고른 검색과 화면을 기억합니다.", "선택한 검색 서비스와 밝고 어두운 테마를 같은 브라우저에 저장합니다.", "매번 같은 설정을 되풀이하지 않고 익숙한 시작 화면으로 돌아옵니다.", "defaults-star"],
+      ["05", "START PAGE", "브라우저를 여는 순간 바로 만납니다.", "인투샾을 브라우저의 시작 페이지로 등록해 사용할 수 있습니다.", "새 탭에서 무엇을 할지 다시 고르는 대신 내 인터넷 입구에서 곧바로 시작합니다.", "homepage-flag"],
+      ["06", "DESKTOP & MOBILE", "PC에서도, 휴대폰 첫 화면에서도.", "PC·모바일에 반응하는 공개 웹 서비스이며 홈 화면 바로가기로도 열 수 있습니다.", "기기에 맞는 화면으로 같은 이름 기반 시작 경험을 이어갑니다.", "devices-pair"],
     ],
     stories: [
       ["01", "출근해서 브라우저를 열 때", "시작 페이지로 지정한 인투샾이 먼저 열립니다. 자주 쓰는 사이트 이름을 입력해 바로 이동하고, 다음 업무도 같은 한 줄에서 검색합니다.", "시작 페이지 · 이름 이동 · 업무"],
@@ -360,12 +362,12 @@ const productCampaigns = {
     imageLabel: "SERMON · WORSHIP · COMMUNITY · GOOD SHARING",
     facts: [["NO", "목회자 순위"], ["CROSS", "여러 공식 출처 대조"], ["OPEN", "가입 없이 공개 콘텐츠 탐색"]],
     advantages: [
-      ["01", "SERMON & WORSHIP", "오늘 필요한 말씀과 찬양을 발견합니다.", "교단 소속과 공식 채널을 확인한 교회의 최신 설교와 찬양을 한곳에서 찾습니다.", "흩어진 공식 채널을 하나씩 찾기 전에 교회와 지역을 기준으로 둘러봅니다."],
-      ["02", "DISCOVERY, NOT RANKING", "경쟁보다 발견을 앞에 둡니다.", "목회자의 서열을 만들지 않고 작은 교회와 지역의 꾸준한 사역이 보이도록 구성합니다.", "규모와 인기 순위 밖에 있던 가까운 교회의 말씀도 함께 살펴봅니다."],
-      ["03", "GOOD SHARING", "가진 달란트를 필요한 곳으로 잇습니다.", "시간·경험·공간·기술·기도를 교회와 이웃의 필요에 연결하고 공개 전 내용을 검토합니다.", "돈만이 아니라 내가 이미 가진 것으로 참여할 가능성을 엽니다. 연결 성사를 보장하지는 않습니다."],
-      ["04", "SAFER COMMUNITY", "적은 개인정보로 이야기를 나눕니다.", "별칭을 사용하고 공동체 운영 원칙에 따라 첫 글을 검토합니다.", "공개 대화에 불필요한 연락처를 먼저 내놓지 않고 참여합니다."],
-      ["05", "CHECKED SOURCES", "확인하고, 틀리면 다시 살펴봅니다.", "교단·노회·공식 홈페이지·영상 채널을 교차 확인하고 신고·재검토·이의제기 절차를 둡니다.", "정보의 출처와 수정 경로를 함께 두되 검증의 완전성을 보장한다고 주장하지 않습니다."],
-      ["06", "BROWSE FIRST", "가입 전에 먼저 둘러보세요.", "공개 설교와 찬양을 보는 데 회원 가입이나 개인 연락처를 요구하지 않습니다.", "개인정보를 입력하기 전에 포털의 콘텐츠와 운영 방향부터 확인합니다."],
+      ["01", "SERMON & WORSHIP", "오늘 필요한 말씀과 찬양을 발견합니다.", "교단 소속과 공식 채널을 확인한 교회의 최신 설교와 찬양을 한곳에서 찾습니다.", "흩어진 공식 채널을 하나씩 찾기 전에 교회와 지역을 기준으로 둘러봅니다.", "sermon-mic"],
+      ["02", "DISCOVERY, NOT RANKING", "경쟁보다 발견을 앞에 둡니다.", "목회자의 서열을 만들지 않고 작은 교회와 지역의 꾸준한 사역이 보이도록 구성합니다.", "규모와 인기 순위 밖에 있던 가까운 교회의 말씀도 함께 살펴봅니다.", "discovery-map"],
+      ["03", "GOOD SHARING", "가진 달란트를 필요한 곳으로 잇습니다.", "시간·경험·공간·기술·기도를 교회와 이웃의 필요에 연결하고 공개 전 내용을 검토합니다.", "돈만이 아니라 내가 이미 가진 것으로 참여할 가능성을 엽니다. 연결 성사를 보장하지는 않습니다.", "heart-share"],
+      ["04", "SAFER COMMUNITY", "적은 개인정보로 이야기를 나눕니다.", "별칭을 사용하고 공동체 운영 원칙에 따라 첫 글을 검토합니다.", "공개 대화에 불필요한 연락처를 먼저 내놓지 않고 참여합니다.", "shield-community"],
+      ["05", "CHECKED SOURCES", "확인하고, 틀리면 다시 살펴봅니다.", "교단·노회·공식 홈페이지·영상 채널을 교차 확인하고 신고·재검토·이의제기 절차를 둡니다.", "정보의 출처와 수정 경로를 함께 두되 검증의 완전성을 보장한다고 주장하지 않습니다.", "check-source"],
+      ["06", "BROWSE FIRST", "가입 전에 먼저 둘러보세요.", "공개 설교와 찬양을 보는 데 회원 가입이나 개인 연락처를 요구하지 않습니다.", "개인정보를 입력하기 전에 포털의 콘텐츠와 운영 방향부터 확인합니다.", "eye-browse"],
     ],
     stories: [
       ["01", "새로운 동네에서 교회를 찾을 때", "지역과 교회 이름으로 말씀을 찾아 공식 채널을 확인합니다. 순위 없이 작은 교회와 지역 교회의 최신 설교와 찬양을 함께 살펴봅니다.", "지역 교회 · 말씀 · 공식 채널"],
@@ -411,9 +413,10 @@ function ProductPromotion({ app }: { app: NonNullable<ReturnType<typeof findApp>
           <p>{app.name}의 기능 하나하나가 실제 사용에서 어떤 이점으로 이어지는지 확인하세요.</p>
         </div>
         <div className="product-advantage-grid">
-          {campaign.advantages.map(([number, kicker, title, body, benefit]) => (
+          {campaign.advantages.map(([number, kicker, title, body, benefit, visual]) => (
             <article className="product-advantage-card reveal" key={number}>
               <div><span>{number}</span><small>{kicker}</small></div>
+              <AdvantageVisual variant={visual as AdvantageVariant} />
               <h3>{title}</h3><p>{body}</p><strong>{benefit}</strong>
             </article>
           ))}
@@ -452,6 +455,7 @@ function NasFinderPromotion() {
       title: "저장공간이 많을수록, 나스파인더 하나면 됩니다.",
       body: "Synology NAS부터 SFTP·SMB·WebDAV·FTP 네트워크 장비, Dropbox·OneDrive·Google Drive 클라우드까지 한곳에서 연결하고 탐색합니다.",
       benefit: "장비와 서비스마다 다른 앱을 찾아다니지 않고, 내 모든 저장공간으로 바로 들어갑니다.",
+      visual: "storage-network" as AdvantageVariant,
     },
     {
       number: "02",
@@ -459,6 +463,7 @@ function NasFinderPromotion() {
       title: "영상은 내려받기 전에 재생하세요.",
       body: "강력한 VLC 기반 재생과 원격 스트리밍으로 NAS의 영상을 먼저 확인하고, 정말 보관할 파일만 내려받습니다.",
       benefit: "용량 큰 영상을 무작정 기다리지 않고, 지금 보고 싶은 콘텐츠부터 바로 확인합니다.",
+      visual: "play-remote" as AdvantageVariant,
     },
     {
       number: "03",
@@ -466,6 +471,7 @@ function NasFinderPromotion() {
       title: "내 휴대폰을, 진짜 휴대용 하드처럼.",
       body: "같은 Wi‑Fi의 컴퓨터에서 웹 브라우저로 폰하드를 열고 iPhone·iPad 또는 Android 기기에 파일을 보냅니다.",
       benefit: "케이블과 전용 PC 프로그램을 찾지 않고, 손에 든 휴대폰에 필요한 파일을 바로 담습니다.",
+      visual: "phone-drive" as AdvantageVariant,
     },
     {
       number: "04",
@@ -473,6 +479,7 @@ function NasFinderPromotion() {
       title: "움직이는 추억을 포기하지 마세요.",
       body: "iPhone Live Photo와 Android Motion Photo를 QR로 연결해 양방향 전송하고, 받는 기기에 맞춰 원본을 보존하거나 자동 변환합니다.",
       benefit: "가족과 친구의 휴대폰이 달라도 움직이는 순간을 사진 보관함으로 이어갑니다.",
+      visual: "live-motion-swap" as AdvantageVariant,
     },
   ];
 
@@ -548,6 +555,7 @@ function NasFinderPromotion() {
           {advantages.map((advantage) => (
             <article className="nas-advantage-card reveal" key={advantage.number}>
               <div><span>{advantage.number}</span><small>{advantage.kicker}</small></div>
+              <AdvantageVisual variant={advantage.visual} />
               <h3>{advantage.title}</h3>
               <p>{advantage.body}</p>
               <strong>{advantage.benefit}</strong>

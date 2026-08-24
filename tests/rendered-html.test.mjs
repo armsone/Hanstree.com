@@ -230,9 +230,12 @@ test("renders full promotional campaigns for HanClip, TrackpadGuard, CCMB, and S
   assert.match(ccmb, /AI 사용량/);
   assert.match(ccmb, /ccmb-campaign\.png/);
   assert.match(ccmb, /세 서비스의 남은 여유를 한눈에/);
+  assert.match(ccmb, /advantage-visual/);
   assert.match(stand, /밤에는 조용한 메이트/);
   assert.match(stand, /stand-campaign\.png/);
   assert.match(stand, /의료 진단 기능은 아닙니다/);
+  assert.match(stand, /이 기기의 설치 방법 보기/);
+  assert.match(stand, /advantage-visual/);
   for (const html of [hanClip, trackpadGuard, ccmb, stand]) {
     assert.match(html, /실제 기능으로 가능한 대표 사용 장면이며, 사용자 후기를 인용한 내용은 아닙니다/);
     assert.match(html, /id="product-campaign"/);
