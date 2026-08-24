@@ -44,11 +44,12 @@ test("server-renders the NasFinder.com homepage", async () => {
   assert.match(html, /HtOMS Brief/);
   assert.match(html, /Button/);
   assert.match(html, /What to Eat/);
-  assert.equal((html.match(/class="hero-product"/g) ?? []).length, 13);
+  assert.match(html, /Minecraft Bedrock Home Server/);
+  assert.equal((html.match(/class="hero-product"/g) ?? []).length, 14);
   assert.match(html, /href="\/apps\/intosharp" class="hero-product"[^>]*aria-label="인투샾 제품 자세히 보기"/);
-  assert.equal((html.match(/class="app-row-hit-area"/g) ?? []).length, 13);
+  assert.equal((html.match(/class="app-row-hit-area"/g) ?? []).length, 14);
   assert.match(html, /href="\/apps\/intosharp" class="app-row-hit-area" aria-label="인투샾 제품 자세히 보기"/);
-  assert.match(html, />31<\/strong><span>현재 소개하는 제품/);
+  assert.match(html, />32<\/strong><span>현재 소개하는 제품/);
   assert.doesNotMatch(html, /플랫폼별 제공 버전/);
   assert.match(html, />07<\/strong><span>iPhone · iPad · macOS · Android · Google TV · Web · Windows \(커밍\)/);
   assert.match(html, />01<\/strong><span>한 사람의 꾸준한 기록/);
@@ -63,6 +64,20 @@ test("server-renders the NasFinder.com homepage", async () => {
   assert.equal((principles.match(/class="advantage-visual"/g) ?? []).length, 3);
   const installGuide = html.match(/<ol class="install-steps">[\s\S]*?<\/ol>\s*<div class="install-warning">/)?.[0] ?? "";
   assert.equal((installGuide.match(/class="advantage-visual"/g) ?? []).length, 4);
+});
+
+test("renders the privacy-safe Minecraft Bedrock home server guide", async () => {
+  const response = await render("/apps/minecraft-server");
+  assert.equal(response.status, 200);
+
+  const html = await response.text();
+  assert.match(html, /아이들은 함께 짓고, 부모는 안심합니다/);
+  assert.match(html, /Docker 명령어나 SSH를 몰라도/);
+  assert.match(html, /Container Manager/);
+  assert.match(html, /UDP 19132/);
+  assert.match(html, /실제 가족 서버 운영 중/);
+  assert.match(html, /개인정보를 제거한 공개 구성 저장소 준비 중/);
+  assert.doesNotMatch(html, /DS1821|DSM 7\.4|\/volume\d+|\b(?:\d{1,3}\.){3}\d{1,3}\b|\b\d{12,}\b/);
 });
 
 test("renders the notarized BTN cleanup release", async () => {

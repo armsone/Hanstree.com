@@ -33,7 +33,7 @@ export default function Home() {
           </h1>
           <p className="hero-lede">
             하나만 만들 생각이었습니다. 그런데 불편이 자꾸 보였고,
-            어느새 13개의 앱이 되었습니다. 생각이 떠오르면 직접 만들고,
+            어느새 14개의 제품이 되었습니다. 생각이 떠오르면 직접 만들고,
             쓸수록 좋아질 때까지 끝까지 다듬습니다.
           </p>
         </div>
@@ -53,7 +53,7 @@ export default function Home() {
 
         <section className="hero-product-wall reveal" aria-label="한병기가 만드는 앱 전체">
           <div className="hero-product-wall-heading">
-            <p>13 APPS. STILL COUNTING.</p>
+            <p>14 PRODUCTS. STILL COUNTING.</p>
             <h2>보이는 불편마다, 앱 하나.</h2>
           </div>
           <div className="hero-product-grid" role="list">

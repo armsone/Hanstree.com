@@ -139,6 +139,18 @@ export function AppArtwork({ app }: { app: AppData }) {
     );
   }
 
+  if (app.artwork === "server") {
+    return (
+      <div className="artwork artwork-server" aria-label="Synology NAS에서 안전하게 운영하는 Minecraft Bedrock 홈 서버">
+        <div className="server-art-icon">
+          <Image src="/apps/minecraft-server/icon.png" alt="" width={1254} height={1254} sizes="(max-width: 640px) 72vw, 430px" unoptimized />
+        </div>
+        <div className="server-art-proof"><span />실제 가족 서버 운영 중</div>
+        <div className="server-art-facts"><span>PRIVATE</span><span>UDP 19132</span><span>WORLD SAFE</span></div>
+      </div>
+    );
+  }
+
   return (
     <div className="artwork artwork-files" aria-label="나스파인더 파일 탐색 화면 표현">
       <div className="file-toolbar"><span>‹</span><strong>Photos</strong><span>•••</span></div>

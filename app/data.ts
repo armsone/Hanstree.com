@@ -19,7 +19,7 @@ export type AppData = {
   summary: string;
   theme: "violet" | "coral" | "amber" | "blue";
   icon?: string;
-  artwork: "files" | "phones" | "clock" | "menubar" | "cleanup" | "trackpad" | "thumbnail" | "htoms" | "search" | "church";
+  artwork: "files" | "phones" | "clock" | "menubar" | "cleanup" | "trackpad" | "thumbnail" | "htoms" | "search" | "church" | "server";
   platforms: Platform[];
   features: { title: string; body: string; icon?: string }[];
   guide: { title: string; body: string }[];
@@ -739,6 +739,54 @@ export const apps: AppData[] = [
       ],
       note: "소스와 결정적 테스트 기준 구현은 완료했습니다. 동일 조건의 최신 iOS 무손실 캡처가 없어 픽셀 단위 시각 패리티는 아직 검증하지 않았습니다.",
     },
+  },
+  {
+    slug: "minecraft-server",
+    name: "마인크래프트 홈 서버",
+    english: "Minecraft Bedrock Home Server",
+    eyebrow: "A PRIVATE WORLD FOR THE FAMILY",
+    tagline: "아이들은 함께 짓고, 부모는 안심합니다.",
+    summary: "자녀와 집에서 함께 즐길 Minecraft Bedrock 사설 서버를 Synology NAS의 Container Manager에 설치하는 Docker 구성과 부모용 안내서입니다. 실제 소규모 서버로 안정적으로 운영 중입니다.",
+    theme: "blue",
+    icon: "/apps/minecraft-server/icon.png",
+    artwork: "server",
+    platforms: [
+      {
+        name: "Synology NAS",
+        status: "완료",
+        detail: "Container Manager · Docker Compose · Bedrock Edition · 실제 운영 확인",
+        availabilityNote: "개인정보를 제거한 공개 구성 저장소 준비 중",
+      },
+    ],
+    features: [
+      { title: "명령어 없이 설치", body: "Docker 명령어나 SSH를 몰라도 DSM의 Container Manager와 File Station 화면만 따라가며 서버를 준비할 수 있습니다." },
+      { title: "월드는 NAS에 안전하게", body: "월드와 설정을 컨테이너 밖의 전용 데이터 폴더에 보관해 컨테이너를 업데이트해도 플레이 기록을 이어갑니다." },
+      { title: "집 안에서 먼저 시작", body: "처음에는 같은 Wi-Fi 안에서만 접속해 정상 동작을 확인하고, 자녀 기기에는 NAS 내부 주소와 Bedrock 포트만 등록합니다." },
+      { title: "외부 접속은 더 조심스럽게", body: "외부 접속이 필요하면 허용 목록을 먼저 켜고, 관리 포트를 여는 대신 Tailscale 같은 사설 메시 VPN을 우선합니다." },
+      { title: "작게 시작하는 안정 설정", body: "소규모 인원에 맞춘 메모리와 시야 거리, 온라인 계정 인증, 자동 재시작 설정으로 NAS의 다른 작업과 함께 운영합니다." },
+      { title: "업데이트 전에는 백업", body: "월드 데이터 폴더를 Snapshot Replication이나 Hyper Backup으로 보관한 뒤 서버 이미지를 안전하게 갱신합니다." },
+    ],
+    guide: [
+      { title: "준비물 확인", body: "Container Manager를 지원하는 Synology NAS, Minecraft Bedrock 앱과 계정, 같은 내부 네트워크를 준비합니다." },
+      { title: "데이터 폴더 만들기", body: "File Station에서 월드가 계속 보존될 전용 폴더를 만들고 실제 경로는 외부에 공개하지 않습니다." },
+      { title: "설정 파일 준비", body: ".env.example을 .env로 복사해 데이터 경로와 서버 이름을 정하고, Minecraft EULA에 동의한 경우에만 EULA 값을 활성화합니다." },
+      { title: "Container Manager에서 시작", body: "docker-compose.yml과 .env가 있는 폴더를 프로젝트로 선택해 실행하고 로그의 Server started. 메시지를 확인합니다." },
+      { title: "자녀 기기 연결", body: "같은 Wi-Fi에서 Minecraft 서버 추가를 열고 NAS 내부 주소와 UDP 19132를 입력합니다." },
+      { title: "백업과 안전 설정", body: "외부 접속 전 허용 목록을 켜고 사설 VPN을 우선하며, 업데이트 전에는 데이터 폴더를 백업합니다." },
+    ],
+    progress: [
+      { state: "done", title: "Synology NAS 설치", body: "Container Manager의 Docker 프로젝트로 Bedrock 서버 구성 완료" },
+      { state: "done", title: "가족 사용 검증", body: "소규모 사설 서버가 실제로 실행되고 Bedrock 기기에서 계속 사용 중" },
+      { state: "done", title: "개인정보 제거", body: "NAS 모델·버전, 주소, 경로, 서버 이름과 플레이어 식별정보를 공개 문서에서 제거" },
+      { state: "next", title: "공개 저장소 연결", body: "개인정보를 제거한 구성의 GitHub 공개 저장소와 홈페이지 연결 준비" },
+    ],
+    github: [],
+    privacy: [
+      "실제 서버 주소, 데이터 경로, 서버 이름, 게이머태그와 XUID는 공개 문서와 홈페이지에 싣지 않습니다.",
+      ".env와 월드·로그 파일은 Git에서 제외하며 사용자의 NAS 안에만 보관합니다.",
+      "인터넷 공개 전에는 허용 목록을 활성화하고 NAS 관리·파일 서비스 포트를 외부에 열지 않습니다.",
+      "외부 접속이 필요하면 직접 포트 개방보다 사설 메시 VPN을 우선하도록 안내합니다.",
+    ],
   },
   {
     slug: "whattoeat",
