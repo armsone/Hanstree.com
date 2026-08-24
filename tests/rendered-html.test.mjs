@@ -190,21 +190,29 @@ test("renders the latest NasFinder and HanClip capabilities", async () => {
   assert.match(nasFinder, /파일 앱에서 바로 가져오기/);
   assert.match(nasFinder, /폰하드로 모으고 관리/);
   assert.match(nasFinder, /자세히·썸네일·포스터/);
-  assert.match(nasFinder, /Cover Flow/);
+  assert.match(nasFinder, /Overflow/);
   assert.match(nasFinder, /BK Style과 앱 아이콘/);
   assert.match(nasFinder, /NOT JUST A FILE BROWSER/);
   assert.match(nasFinder, /내 파일도/);
   assert.match(nasFinder, /움직이는 추억도/);
   assert.match(nasFinder, /live-motion-campaign\.png/);
   assert.match(nasFinder, /가족의 휴대폰이 서로 달라도/);
-  assert.match(nasFinder, /Super Thumbnail과 미디어 미리보기/);
+  assert.match(nasFinder, /Super Thumbnail과 공통 미디어 보기/);
   assert.match(nasFinder, /NAS Vault 수퍼썸네일 복원과 미디어 제스처 보완판은 실기기 검증 후 공개 예정/);
   assert.match(nasFinder, /내 휴대폰을, 진짜 휴대용 하드처럼/);
-  assert.match(nasFinder, /파일 앱의 강화된 미리보기/);
+  assert.match(nasFinder, /외부 파일 앱과 자연스럽게/);
   assert.match(nasFinder, /플랫폼별 설치 보기/);
   assert.match(nasFinder, /Google Photos에서 직접 선택/);
-  assert.match(nasFinder, /폰하드로 가져오는 흐름 구현/);
-  assert.doesNotMatch(nasFinder, /Google Photos Picker[\s\S]*흐름 준비/);
+  assert.match(nasFinder, /iPhone·iPad와 Android용 Google Photos Picker/);
+  assert.match(nasFinder, /소스 구현 완료 · 실제 Google 계정 검증 대기/);
+  assert.match(nasFinder, /실제 Google 계정 검증이 끝나기 전에는 공개 완료 기능으로 표시하지 않습니다/);
+  assert.match(nasFinder, /화면에 맞춰 커지는 Overflow/);
+  assert.match(nasFinder, /휴대전화·태블릿·폴더블의 실제 안전영역/);
+  assert.match(nasFinder, /볼륨·탐색·닫기 제스처/);
+  assert.match(nasFinder, /범위 스트리밍·외부 자막/);
+  assert.match(nasFinder, /외부 파일 앱과 자연스럽게/);
+  assert.match(nasFinder, /‘다음으로 열기’/);
+  assert.match(nasFinder, /다음 공개판/);
   assert.match(hanClip, /완성시간을 음악 길이에 맞춘/);
   assert.match(hanClip, /개봉영화 보관함/);
   assert.match(hanClip, /무음 영상도 장면 분석/);
@@ -225,7 +233,7 @@ test("renders the latest NasFinder and HanClip capabilities", async () => {
   assert.equal((nasGuideSteps.match(/class="advantage-visual"/g) ?? []).length, 6);
 });
 
-test("renders the production Google Photos OAuth disclosure", async () => {
+test("renders the source-implemented Google Photos OAuth disclosure without claiming public availability", async () => {
   const [privacyResponse, oauthResponse] = await Promise.all([
     render("/apps/nasfinder/privacy"),
     render("/apps/nasfinder/google-oauth"),
@@ -237,17 +245,25 @@ test("renders the production Google Photos OAuth disclosure", async () => {
   assert.match(privacy, /photospicker\.mediaitems\.readonly/);
   assert.match(privacy, /Google Drive와 분리된 별도 OAuth 연결/);
   assert.match(privacy, /직접 선택한 사진·영상만/);
+  assert.match(privacy, /실제 Google 계정 검증이 아직 완료되지 않았으므로 현재 공개판 제공을 뜻하지 않습니다/);
+  assert.match(privacy, /iPhone·iPad와 Android에 소스 구현된 상태/);
+  assert.match(privacy, /Apple 기기의 Keychain과 Android Keystore로 보호한 앱 전용 저장공간/);
   assert.match(privacy, /Limited Use requirements/);
   assert.doesNotMatch(privacy, /도입할 예정|확정하여 표시합니다/);
   const privacyGlance = privacy.match(/<section class="privacy-at-glance"[\s\S]*?<\/section>/)?.[0] ?? "";
   assert.equal((privacyGlance.match(/class="advantage-visual"/g) ?? []).length, 4);
   assert.match(oauth, /photospicker\.mediaitems\.readonly/);
   assert.match(oauth, /Received Files/);
+  assert.match(oauth, /iPhone, iPad, and Android/);
   assert.match(oauth, /disconnect Google Photos/);
   assert.match(oauth, /separately from Google Drive/);
   assert.match(oauth, /adheres to the/);
   assert.match(oauth, /advertising, tracking, face recognition, data sales, or AI training/);
-  assert.doesNotMatch(oauth, /not yet publicly available|intended flow|Draft/i);
+  assert.match(oauth, /Live Google account verification (?:is )?pending/);
+  assert.match(oauth, /does not claim that the integration is included in the current public release/);
+  assert.match(oauth, /Apple devices use Keychain/);
+  assert.match(oauth, /protected by Android Keystore/);
+  assert.doesNotMatch(oauth, /production Google Photos integration/i);
 });
 
 test("renders full promotional campaigns for HanClip, TrackpadGuard, CCMB, and S.tand", async () => {
