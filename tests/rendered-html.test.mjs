@@ -44,7 +44,7 @@ test("server-renders the NasFinder.com homepage", async () => {
   assert.match(html, /HtOMS Brief/);
   assert.match(html, /Button/);
   assert.match(html, /What to Eat/);
-  assert.match(html, />30<\/strong><span>현재 소개하는 제품/);
+  assert.match(html, />31<\/strong><span>현재 소개하는 제품/);
   assert.doesNotMatch(html, /플랫폼별 제공 버전/);
   assert.match(html, />07<\/strong><span>iPhone · iPad · macOS · Android · Google TV · Web · Windows \(커밍\)/);
   assert.match(html, />01<\/strong><span>한 사람의 꾸준한 기록/);
