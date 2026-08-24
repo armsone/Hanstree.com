@@ -744,11 +744,12 @@ export const apps: AppData[] = [
     icon: "/apps/whattoeat/icon.png",
     artwork: "phones",
     platforms: [
-      { name: "iPhone · iPad", status: "TestFlight", detail: "0.2.3 (202608240838) · iOS·iPadOS 17+", availabilityNote: "내부 테스트 가능" },
-      { name: "Mac", status: "TestFlight", detail: "0.2.3 (202608240838) · Mac Catalyst", availabilityNote: "내부 테스트 가능" },
+      { name: "iPhone · iPad", status: "완료", detail: "0.2.4 (202608240930) · iOS·iPadOS 17+", availabilityNote: "실기기 검증 완료 · TestFlight 업로드 전" },
+      { name: "Mac", status: "완료", detail: "0.2.4 (202608240930) · Mac Catalyst", availabilityNote: "설치·실행 검증 완료 · TestFlight 업로드 전" },
     ],
     features: [
-      { title: "가까운 13곳에서 한 끼 고르기", body: "현 위치 또는 직접 고른 지역에서 가까운 음식점 13곳을 추린 뒤, 오늘의 한 끼와 함께 볼 맛집을 한 화면에 보여줍니다." },
+      { title: "가까운 13곳에서 한 끼 고르기", body: "현 위치 또는 직접 고른 지역에서 가까운 음식점 13곳을 추린 뒤, 오늘의 한 끼와 함께 볼 맛집을 사진이 시원하게 보이는 2열 목록으로 보여줍니다." },
+      { title: "기다리는 순간도 한 끼답게", body: "추천을 고르는 동안 음식 토큰과 주사위가 움직이는 애니메이션으로 선택의 기대감을 이어갑니다." },
       { title: "사진으로 먼저 맛보기", body: "식당 사진을 우선하고, 없을 때는 대표 메뉴와 이름을 함께 판단한 서로 다른 예시 사진으로 빈 화면 없이 제안합니다." },
       { title: "원하는 지도 앱으로 바로", body: "네이버 지도, Apple 지도, 카카오맵과 Google 지도 중 하나를 정해 두고 식당 위치와 길 찾기를 이어갑니다." },
       { title: "최근과 찜을 지역별로", body: "오늘 결정한 한 끼와 다시 가고 싶은 식당을 지역별로 모아 보고, 하트나 밀기로 간단히 정리합니다." },
@@ -756,14 +757,15 @@ export const apps: AppData[] = [
     ],
     guide: [
       { title: "지역 정하기", body: "현 위치를 다시 잡거나 지역 이름과 장소를 검색해 먹을 동네를 고릅니다." },
-      { title: "메뉴 추천 받기", body: "추천 탭에서 가까운 후보와 사진을 보고, 옆으로 밀어 더 많은 식당을 살펴봅니다." },
+      { title: "메뉴 추천 받기", body: "추천 탭에서 가까운 후보와 사진을 보고, 아래로 내려 더 많은 식당을 살펴봅니다." },
       { title: "오늘은 여기로", body: "마음에 든 식당을 열어 지도와 정보를 확인한 뒤 오늘의 한 끼로 남깁니다." },
       { title: "다음 선택 이어가기", body: "최근과 찜에서 지역별 식당을 다시 보고, 필요 없는 항목은 바로 지웁니다." },
     ],
     progress: [
       { state: "done", title: "iPhone·iPad·Mac 앱 완성", body: "한 소스로 iPhone, iPad와 Mac Catalyst 화면·기능 구현" },
       { state: "done", title: "추천과 사진·지도 연결", body: "위치 기반 후보 선정, 메뉴 사진 대체, 외부 지도 앱 연결 구현" },
-      { state: "active", title: "0.2.3 내부 테스트", body: "build 202608240838 iOS·iPadOS와 macOS를 내부 TestFlight 그룹에 배포" },
+      { state: "done", title: "0.2.3 내부 테스트", body: "build 202608240838 iOS·iPadOS와 macOS를 내부 TestFlight 그룹에 배포" },
+      { state: "active", title: "0.2.4 검증 완료", body: "build 202608240930 iPhone 설치와 Mac 실행을 확인하고, 홈 동선·2열 추천 목록·고르는 중 애니메이션을 반영" },
     ],
     screenshots: [
       { src: "/apps/whattoeat/screens/home.png", alt: "오늘 뭐 먹지 홈에서 현재 위치와 지역 지정을 고르는 화면" },
