@@ -751,8 +751,8 @@ export const apps: AppData[] = [
     icon: "/apps/whattoeat/icon.png",
     artwork: "phones",
     platforms: [
-      { name: "iPhone · iPad", status: "TestFlight", detail: "0.2.4 (202608240930) · iOS·iPadOS 17+", availabilityNote: "업로드 완료 · Apple 처리 중" },
-      { name: "Mac", status: "공개", detail: "0.2.4 (202608240930) · macOS 13+ · Universal", url: releaseDownloadPath("WhattoEat"), downloadLabel: "Mac용 DMG 다운로드", checksum: "6774f4afa280f01b47b05f118af5d18258d9427cffc659a2dec7b1be5bb03767" },
+      { name: "iPhone · iPad", status: "TestFlight", detail: "0.2.4 (202608240930) · iOS·iPadOS 17+", availabilityNote: "TestFlight 처리 완료 · 내부 테스트 가능" },
+      { name: "Mac", status: "공개", detail: "0.2.4 (202608240930) · macOS 13+ · Universal", url: releaseDownloadPath("WhattoEat"), downloadLabel: "Mac용 DMG 다운로드", checksum: "6774f4afa280f01b47b05f118af5d18258d9427cffc659a2dec7b1be5bb03767", availabilityNote: "DMG 공개 · TestFlight 처리 완료" },
       { name: "Android · Google TV", status: "개발 중", detail: "Android 8.0+ · TV 런처 진입점 리소스 검증 완료", availabilityNote: "공개 APK 전 · 리모컨 화면 검증 전" },
     ],
     features: [
@@ -773,7 +773,7 @@ export const apps: AppData[] = [
       { state: "done", title: "iPhone·iPad·Mac 앱 완성", body: "한 소스로 iPhone, iPad와 Mac Catalyst 화면·기능 구현" },
       { state: "done", title: "추천과 사진·지도 연결", body: "위치 기반 후보 선정, 메뉴 사진 대체, 외부 지도 앱 연결 구현" },
       { state: "done", title: "0.2.3 내부 테스트", body: "build 202608240838 iOS·iPadOS와 macOS를 내부 TestFlight 그룹에 배포" },
-      { state: "active", title: "0.2.4 릴리스", body: "build 202608240930 iOS·iPadOS와 macOS를 TestFlight에 업로드하고, 공증된 Mac용 DMG를 공개" },
+      { state: "done", title: "0.2.4 릴리스", body: "build 202608240930 iOS·iPadOS와 macOS TestFlight 처리 완료, 공증된 Mac용 DMG 공개" },
     ],
     screenshots: [
       { src: "/apps/whattoeat/screens/home.png", alt: "오늘 뭐 먹지 홈에서 현재 위치와 지역 지정을 고르는 화면" },
