@@ -78,7 +78,7 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     label: "오늘 뭐 먹지?? Mac",
     repo: "WhattoEat",
     assetPattern: /^WhattoEat-Mac-.*\.dmg$/i,
-    fallbackUrl: "https://github.com/armsone/WhattoEat/releases/download/v0.2.4/WhattoEat-Mac-0.2.4-202608240930.dmg",
+    fallbackUrl: "https://github.com/armsone/WhattoEat/releases/download/v0.2.5/WhattoEat-Mac-0.2.5-202608241232.dmg",
   },
   "button-Android": {
     label: "버튼 Android",
