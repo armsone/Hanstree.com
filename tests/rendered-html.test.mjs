@@ -59,6 +59,10 @@ test("server-renders the NasFinder.com homepage", async () => {
   assert.match(html, /QR 연결 · 사진 보관함 저장/);
   assert.match(html, /개인정보처리방침/);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|Building your site/i);
+  const principles = html.match(/<div class="principle-grid">[\s\S]*?<\/section>/)?.[0] ?? "";
+  assert.equal((principles.match(/class="advantage-visual"/g) ?? []).length, 3);
+  const installGuide = html.match(/<ol class="install-steps">[\s\S]*?<\/ol>\s*<div class="install-warning">/)?.[0] ?? "";
+  assert.equal((installGuide.match(/class="advantage-visual"/g) ?? []).length, 4);
 });
 
 test("renders the notarized BTN cleanup release", async () => {
@@ -190,6 +194,17 @@ test("renders the latest NasFinder and HanClip capabilities", async () => {
   assert.match(hanClip, /무음 영상도 장면 분석/);
   assert.match(hanClip, /실제 스윙과 임팩트가 만나는 순간/);
   assert.match(hanClip, /기기 내 신체 자세 분석/);
+
+  const nasFeatureGrid = nasFinder.match(/<div class="feature-grid">[\s\S]*?<\/div>\s*<\/section>/)?.[0] ?? "";
+  assert.equal((nasFeatureGrid.match(/class="advantage-visual"/g) ?? []).length, 10);
+  const nasSupportCards = nasFinder.match(/<section class="support-cards[\s\S]*?<\/section>/)?.[0] ?? "";
+  assert.equal((nasSupportCards.match(/class="advantage-visual"/g) ?? []).length, 3);
+  const nasDownloadList = nasFinder.match(/<div class="download-list">[\s\S]*?<\/div>\s*<\/section>/)?.[0] ?? "";
+  assert.equal((nasDownloadList.match(/class="advantage-visual"/g) ?? []).length, 3);
+  const nasProgressList = nasFinder.match(/<div class="progress-list">[\s\S]*?<\/div>\s*<\/section>/)?.[0] ?? "";
+  assert.equal((nasProgressList.match(/class="advantage-visual"/g) ?? []).length, 7);
+  const nasGuideSteps = nasFinder.match(/<div class="guide-steps">[\s\S]*?<\/div>\s*<\/div>\s*<\/section>/)?.[0] ?? "";
+  assert.equal((nasGuideSteps.match(/class="advantage-visual"/g) ?? []).length, 6);
 });
 
 test("renders the production Google Photos OAuth disclosure", async () => {
@@ -206,6 +221,8 @@ test("renders the production Google Photos OAuth disclosure", async () => {
   assert.match(privacy, /직접 선택한 사진·영상만/);
   assert.match(privacy, /Limited Use requirements/);
   assert.doesNotMatch(privacy, /도입할 예정|확정하여 표시합니다/);
+  const privacyGlance = privacy.match(/<section class="privacy-at-glance"[\s\S]*?<\/section>/)?.[0] ?? "";
+  assert.equal((privacyGlance.match(/class="advantage-visual"/g) ?? []).length, 4);
   assert.match(oauth, /photospicker\.mediaitems\.readonly/);
   assert.match(oauth, /Received Files/);
   assert.match(oauth, /disconnect Google Photos/);
@@ -244,6 +261,8 @@ test("renders full promotional campaigns for HanClip, TrackpadGuard, CCMB, and S
     assert.match(html, /실제 기능으로 가능한 대표 사용 장면이며, 사용자 후기를 인용한 내용은 아닙니다/);
     assert.match(html, /id="product-campaign"/);
     assert.match(html, /id="campaign-stories"/);
+    const storyGrid = html.match(/<div class="product-story-grid">[\s\S]*?<\/div>\s*<div class="product-promo-cta/)?.[0] ?? "";
+    assert.equal((storyGrid.match(/class="advantage-visual"/g) ?? []).length, 3);
   }
 });
 

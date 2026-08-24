@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { AdvantageVisual, type AdvantageVariant } from "./components/AdvantageVisual";
 import { AppArtwork, AppIcon, AppStatus } from "./components/AppVisuals";
 import { AndroidReleaseTracker } from "./components/AndroidReleaseTracker";
 import { ContactReveal } from "./components/ContactReveal";
@@ -6,6 +7,8 @@ import { SiteCounter } from "./components/SiteCounter";
 import { TestFlightTracker } from "./components/TestFlightTracker";
 import { apps } from "./data";
 import { testFlightBuilds } from "./testflight";
+
+const principleVisuals: AdvantageVariant[] = ["compass", "timeline-dots", "devices-pair"];
 
 export default function Home() {
   const productCount = 2 + apps.reduce(
@@ -197,18 +200,27 @@ export default function Home() {
         <div className="principle-grid">
           <article>
             <span>01</span>
-            <h3>쓰임에서 시작합니다</h3>
-            <p>기능의 수보다 사용자가 해결하려는 한 가지 일을 먼저 봅니다.</p>
+            <div>
+              <AdvantageVisual variant={principleVisuals[0]} />
+              <h3>쓰임에서 시작합니다</h3>
+              <p>기능의 수보다 사용자가 해결하려는 한 가지 일을 먼저 봅니다.</p>
+            </div>
           </article>
           <article>
             <span>02</span>
-            <h3>진행 과정을 공개합니다</h3>
-            <p>완성된 기능과 검증 중인 기능, 앞으로의 계획을 구분해 기록합니다.</p>
+            <div>
+              <AdvantageVisual variant={principleVisuals[1]} />
+              <h3>진행 과정을 공개합니다</h3>
+              <p>완성된 기능과 검증 중인 기능, 앞으로의 계획을 구분해 기록합니다.</p>
+            </div>
           </article>
           <article>
             <span>03</span>
-            <h3>플랫폼에 자연스럽게</h3>
-            <p>iOS, Android와 macOS 각각의 익숙한 방식과 접근성을 존중합니다.</p>
+            <div>
+              <AdvantageVisual variant={principleVisuals[2]} />
+              <h3>플랫폼에 자연스럽게</h3>
+              <p>iOS, Android와 macOS 각각의 익숙한 방식과 접근성을 존중합니다.</p>
+            </div>
           </article>
         </div>
       </section>

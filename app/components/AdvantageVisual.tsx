@@ -9,7 +9,8 @@ export type AdvantageVariant =
   | "flip-clock" | "night-glow" | "timeline-dots" | "palette" | "music-grid" | "toggle-control"
   | "name-tag" | "search-bar" | "groups-grid" | "defaults-star" | "homepage-flag" | "devices-pair"
   | "sermon-mic" | "discovery-map" | "heart-share" | "shield-community" | "check-source" | "eye-browse"
-  | "spark" | "layers" | "compass" | "bolt";
+  | "spark" | "layers" | "compass" | "bolt"
+  | "android-bot" | "web-globe" | "life-ring" | "doc-scroll" | "trash-clear" | "check-badge";
 
 const glow = <circle className="av-glow" cx="22" cy="22" r="19" />;
 
@@ -64,6 +65,12 @@ const glyphs: Record<AdvantageVariant, ReactNode> = {
   "layers": <><path d="M9 22l13-6 13 6-13 6z" /><path d="M9 29l13 6 13-6" strokeDasharray="2 3" /><path d="M9 16l13-6 13 6-13 6z" /></>,
   "compass": <><circle cx="22" cy="22" r="14" /><path d="M27 15l-3 9-9 3 3-9z" fill="currentColor" stroke="none" /></>,
   "bolt": <><path d="M24 6L11 24h9l-3 14 15-20h-9z" /></>,
+  "android-bot": <><path d="M13 20a9 9 0 0 1 18 0v10H13z" /><path d="M13 30v6M31 30v6M17 8l2 4M27 8l-2 4" /><circle cx="18" cy="19" r="1.6" fill="currentColor" stroke="none" /><circle cx="26" cy="19" r="1.6" fill="currentColor" stroke="none" /></>,
+  "web-globe": <><circle cx="22" cy="22" r="15" /><path d="M7 22h30M22 7c4 4 6 9.5 6 15s-2 11-6 15c-4-4-6-9.5-6-15s2-11 6-15z" /></>,
+  "life-ring": <><circle cx="22" cy="22" r="14" /><circle cx="22" cy="22" r="6" /><path d="M12 12l6 6M32 12l-6 6M12 32l6-6M32 32l-6-6" /></>,
+  "doc-scroll": <><path d="M12 6h14l8 8v24H12z" /><path d="M26 6v8h8" /><path d="M16 20h12M16 25h12M16 30h8" /></>,
+  "trash-clear": <><path d="M10 14h24M17 14v-4a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v4" /><path d="M13 14l2 22a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3l2-22" /><path d="M18 20v11M26 20v11" /></>,
+  "check-badge": <><circle cx="22" cy="22" r="15" /><path d="M15 22l5 5 9-11" /></>,
 };
 
 export function AdvantageVisual({ variant }: { variant: AdvantageVariant }) {

@@ -13,6 +13,83 @@ type RouteProps = { params: Promise<{ path: string[] }> };
 
 const campaignSlugs = new Set(["super-thumbnail", "hanclip", "stand", "ccmb", "trackpadguard", "intosharp", "airchurch"]);
 
+const contentVisualRules: [RegExp, AdvantageVariant][] = [
+  [/Live Photo|Motion Photo|움직이는 사진/, "live-motion-swap"],
+  [/저장공간|클라우드|NAS|Dropbox|OneDrive|Google Drive|Synology|SFTP|SMB|WebDAV|FTP/, "storage-network"],
+  [/VLC|스트리밍|재생 제어|영상.*재생/, "play-remote"],
+  [/폰하드/, "phone-drive"],
+  [/폴더|Finder/, "folder-pick"],
+  [/재귀|검색.*파일|스캔/, "recursive-scan"],
+  [/Vault|호환|바로 호환/, "vault-ready"],
+  [/이어서|재개|건너뛰고|중단/, "resume-progress"],
+  [/진행률|남은 시간|한눈에.*상태|용량/, "progress-bar"],
+  [/서버로 보내지 않|Mac에서 직접|로컬에서만/, "mac-local"],
+  [/영화|필름|30편/, "film-reel"],
+  [/음악 길이|엔딩.*시간|빠른 영화/, "music-timeline"],
+  [/스윙|AiShot|타격/, "target-swing"],
+  [/화면비|워터마크|조절.*자막|내 방식으로/, "sliders"],
+  [/시사회|미리보기.*저장|저장하기 전에/, "preview-export"],
+  [/보관함|프로젝트 보관/, "archive-stack"],
+  [/커서.*이동|입력.*차단|글을 쓰는 동안/, "keyboard-lock"],
+  [/1초|자동 해제|초 후/, "timer-release"],
+  [/터치.*해제|영역.*터치|톡톡/, "touch-zone"],
+  [/마우스|트랙볼|펜 태블릿/, "pointer-devices"],
+  [/실패 안전|안전 설계/, "shield-safe"],
+  [/Keychain|Keystore|비밀번호|암호화|안전한 로그인/, "lock-local"],
+  [/세 가지|3열|세 AI|Codex.*Claude.*Gemini/, "three-rings"],
+  [/새로고침|갱신/, "clock-refresh"],
+  [/두 패널|패널/, "two-panels"],
+  [/JSON|로컬 공유|ccmb-usage/, "json-local"],
+  [/복구|잠자기|깨우기|네트워크 단절/, "recovery-wake"],
+  [/API 키|키를 앱에 넣지/, "no-key"],
+  [/플립|시계/, "flip-clock"],
+  [/밤|어두운|조명|매이트/, "night-glow"],
+  [/수면 기록|타임라인|기록.*확인|20개 기록/, "timeline-dots"],
+  [/테마|글꼴|꾸미기|내 화면 만들기/, "palette"],
+  [/음악 스트립|음악 채널|라디오/, "music-grid"],
+  [/백그라운드|권한 선택|선택하는/, "toggle-control"],
+  [/이름으로|이름을 입력/, "name-tag"],
+  [/검색/, "search-bar"],
+  [/한눈에|모아|이음말|카드에서/, "groups-grid"],
+  [/기억|기본값|즐겨찾기|다시 불러오기/, "defaults-star"],
+  [/시작 화면|첫 화면|홈 화면/, "homepage-flag"],
+  [/여러 기기|기기 간|호환 모드|가족 공간/, "devices-pair"],
+  [/설교|찬양/, "sermon-mic"],
+  [/발견|지역.*교회/, "discovery-map"],
+  [/나눔|달란트|필요한 곳/, "heart-share"],
+  [/광장|커뮤니티|별칭/, "shield-community"],
+  [/검증|교차 확인|출처/, "check-source"],
+  [/둘러보기|가입 없이/, "eye-browse"],
+  [/Android/, "android-bot"],
+  [/사이렌|호출|녹음/, "sermon-mic"],
+  [/찜|지도 앱|맛보기/, "discovery-map"],
+  [/매출|추이|현황/, "progress-bar"],
+  [/AI를 먼저 선택|네 가지 말투/, "sliders"],
+];
+
+const contentVisualFallback: AdvantageVariant[] = ["spark", "layers", "compass", "bolt", "toggle-control", "three-rings"];
+
+function pickContentVisual(text: string, index: number): AdvantageVariant {
+  for (const [pattern, variant] of contentVisualRules) {
+    if (pattern.test(text)) return variant;
+  }
+  return contentVisualFallback[index % contentVisualFallback.length];
+}
+
+function platformVisual(name: string): AdvantageVariant {
+  if (/iPhone|iPad|iOS/.test(name)) return "phone-drive";
+  if (/Mac/.test(name)) return "mac-local";
+  if (/Android/.test(name)) return "android-bot";
+  if (/Web/.test(name)) return "web-globe";
+  return "devices-pair";
+}
+
+const progressStateVisual: Record<"done" | "active" | "next", AdvantageVariant> = {
+  done: "check-badge",
+  active: "spark",
+  next: "compass",
+};
+
 export async function generateMetadata({ params }: RouteProps): Promise<Metadata> {
   const { path } = await params;
   const app = findApp(path[0]);
@@ -82,7 +159,7 @@ export default async function AppRoute({ params }: RouteProps) {
       <section className="feature-section shell" id="features">
         <div className="section-heading reveal"><div><p className="eyebrow">FEATURES</p><h2>복잡함은 덜고,<br />쓰임은 선명하게.</h2></div></div>
         <div className="feature-grid">
-          {app.features.map((feature, index) => <article className={`feature-card reveal${feature.icon ? " feature-card-branded" : ""}`} key={feature.title}><span>0{index + 1}</span>{feature.icon && <Image className="feature-icon" src={feature.icon} alt="" width={72} height={72} unoptimized />}<h3>{feature.title}</h3><p>{feature.body}</p></article>)}
+          {app.features.map((feature, index) => <article className={`feature-card reveal${feature.icon ? " feature-card-branded" : ""}`} key={feature.title}><span>0{index + 1}</span>{feature.icon ? <Image className="feature-icon" src={feature.icon} alt="" width={72} height={72} unoptimized /> : <AdvantageVisual variant={pickContentVisual(`${feature.title} ${feature.body}`, index)} />}<h3>{feature.title}</h3><p>{feature.body}</p></article>)}
         </div>
       </section>
 
@@ -132,7 +209,7 @@ export default async function AppRoute({ params }: RouteProps) {
       <section className="progress-section shell" id="progress">
         <div className="section-heading reveal"><div><p className="eyebrow">BUILDING IN PUBLIC</p><h2>현재 진행 상황</h2></div><p>숫자보다 실제 상태를 보여드립니다. 마지막 내용 확인: 2026년 8월 23일.</p></div>
         <div className="progress-list">
-          {app.progress.map((item, index) => <article className="progress-item reveal" key={item.title}><div className={`progress-marker marker-${item.state}`}><span>{index + 1}</span></div><div><p>{item.state === "done" ? "구현됨" : item.state === "active" ? "검증 중" : "다음 단계"}</p><h3>{item.title}</h3><span>{item.body}</span></div></article>)}
+          {app.progress.map((item) => <article className="progress-item reveal" key={item.title}><div className={`progress-marker marker-${item.state}`}><AdvantageVisual variant={progressStateVisual[item.state]} /></div><div><p>{item.state === "done" ? "구현됨" : item.state === "active" ? "검증 중" : "다음 단계"}</p><h3>{item.title}</h3><span>{item.body}</span></div></article>)}
         </div>
       </section>
 
@@ -140,7 +217,7 @@ export default async function AppRoute({ params }: RouteProps) {
         <div className="shell guide-layout">
           <div className="guide-sticky reveal"><p className="eyebrow">QUICK GUIDE</p><h2>처음부터<br />차근차근.</h2><p>더 자세한 설명과 문제 해결 문서는 제품 개발 진행에 맞춰 계속 추가됩니다.</p></div>
           <div className="guide-steps">
-            {app.guide.map((step, index) => <article className="guide-step reveal" key={step.title}><span>{String(index + 1).padStart(2, "0")}</span><div><h3>{step.title}</h3><p>{step.body}</p></div></article>)}
+            {app.guide.map((step, index) => <article className="guide-step reveal" key={step.title}><span>{String(index + 1).padStart(2, "0")}</span><div><AdvantageVisual variant={pickContentVisual(`${step.title} ${step.body}`, index)} /><h3>{step.title}</h3><p>{step.body}</p></div></article>)}
           </div>
         </div>
       </section>
@@ -148,14 +225,14 @@ export default async function AppRoute({ params }: RouteProps) {
       <section className="download-section shell reveal" id="download">
         <div><p className="eyebrow">OPEN, DOWNLOAD & TEST</p><h2>공개된 제품과 전용 도구.</h2><p>플랫폼별 현재 상태와 공식 주소·배포 파일을 구분해 표시합니다. 별도 도구는 용도까지 확인한 뒤 내려받을 수 있습니다.</p></div>
         <div className="download-list">
-          {app.platforms.map((platform) => <article key={platform.name}><div><span className={`status-dot status-${platform.status.replace(" ", "-")}`} /><h3>{platform.name}</h3></div><p>{platform.detail} · {platform.status}</p>{platform.url ? <a href={platform.url}>{platform.downloadLabel ?? "다운로드 페이지"} <span aria-hidden="true">↗</span></a> : <span>{platform.availabilityNote ?? "공개 링크 준비 중"}</span>}{platform.checksum && <small className="download-checksum">SHA-256 {platform.checksum}</small>}</article>)}
+          {app.platforms.map((platform) => <article key={platform.name}><div><AdvantageVisual variant={platformVisual(platform.name)} /><span className={`status-dot status-${platform.status.replace(" ", "-")}`} /><h3>{platform.name}</h3></div><p>{platform.detail} · {platform.status}</p>{platform.url ? <a href={platform.url}>{platform.downloadLabel ?? "다운로드 페이지"} <span aria-hidden="true">↗</span></a> : <span>{platform.availabilityNote ?? "공개 링크 준비 중"}</span>}{platform.checksum && <small className="download-checksum">SHA-256 {platform.checksum}</small>}</article>)}
         </div>
       </section>
 
       <section className="support-cards shell reveal">
-        <Link href={`/apps/${app.slug}/privacy`}><span>PRIVACY</span><h3>개인정보처리방침</h3><p>앱이 다루는 데이터와 보관·삭제 방식을 확인합니다.</p><b>→</b></Link>
-        <Link href={`/apps/${app.slug}/support`}><span>SUPPORT</span><h3>지원과 문의</h3><p>문제 해결과 오류 제보에 필요한 내용을 안내합니다.</p><b>→</b></Link>
-        <Link href={`/apps/${app.slug}/terms`}><span>TERMS</span><h3>이용약관</h3><p>제품 이용 조건과 책임 범위를 확인합니다.</p><b>→</b></Link>
+        <Link href={`/apps/${app.slug}/privacy`}><span>PRIVACY</span><AdvantageVisual variant="shield-safe" /><h3>개인정보처리방침</h3><p>앱이 다루는 데이터와 보관·삭제 방식을 확인합니다.</p><b>→</b></Link>
+        <Link href={`/apps/${app.slug}/support`}><span>SUPPORT</span><AdvantageVisual variant="life-ring" /><h3>지원과 문의</h3><p>문제 해결과 오류 제보에 필요한 내용을 안내합니다.</p><b>→</b></Link>
+        <Link href={`/apps/${app.slug}/terms`}><span>TERMS</span><AdvantageVisual variant="doc-scroll" /><h3>이용약관</h3><p>제품 이용 조건과 책임 범위를 확인합니다.</p><b>→</b></Link>
       </section>
       <SiteFooter />
     </main>
@@ -431,9 +508,11 @@ function ProductPromotion({ app }: { app: NonNullable<ReturnType<typeof findApp>
             <p>실제 기능으로 가능한 대표 사용 장면이며, 사용자 후기를 인용한 내용은 아닙니다.</p>
           </div>
           <div className="product-story-grid">
-            {campaign.stories.map(([number, title, quote, tag]) => (
+            {campaign.stories.map(([number, title, quote, tag], index) => (
               <article className="product-story-card reveal" key={number}>
-                <div><span>{number}</span><small>{tag}</small></div><h3>{title}</h3><blockquote>“{quote}”</blockquote>
+                <div><span>{number}</span><small>{tag}</small></div>
+                <AdvantageVisual variant={pickContentVisual(`${title} ${tag}`, index)} />
+                <h3>{title}</h3><blockquote>“{quote}”</blockquote>
               </article>
             ))}
           </div>
@@ -572,9 +651,10 @@ function NasFinderPromotion() {
             <p>실제 기능으로 가능한 예시 사용 장면입니다. 사용자 후기를 인용한 내용이 아닙니다.</p>
           </div>
           <div className="nas-story-grid">
-            {stories.map((story) => (
+            {stories.map((story, index) => (
               <article className="nas-story-card reveal" key={story.number}>
                 <div><span>{story.number}</span><small>{story.tag}</small></div>
+                <AdvantageVisual variant={pickContentVisual(`${story.title} ${story.tag}`, index)} />
                 <h3>{story.title}</h3>
                 <p className="story-scenario">{story.scenario}</p>
               </article>
@@ -615,10 +695,10 @@ function InfoPage({ app, section }: { app: NonNullable<ReturnType<typeof findApp
             <p className="eyebrow">PRIVACY AT A GLANCE</p>
             <h2 id="privacy-summary-title">먼저, 핵심만 쉽게 알려드립니다.</h2>
             <div>
-              <article><span>01</span><h3>무엇을</h3><p>사용자가 기능을 위해 선택하거나 연결한 정보만 다룹니다.</p></article>
-              <article><span>02</span><h3>왜</h3><p>제품에서 사용자가 요청한 기능을 제공하는 데 사용합니다.</p></article>
-              <article><span>03</span><h3>어디에</h3><p>브라우저 또는 기기 저장공간을 우선 사용하며 외부 서비스는 필요한 기능에서 직접 연결합니다.</p></article>
-              <article><span>04</span><h3>어떻게 삭제</h3><p>제품의 관리 기능과 연결 해제, 브라우저 데이터 또는 앱 삭제로 정리할 수 있습니다.</p></article>
+              <article><span>01</span><AdvantageVisual variant="check-source" /><h3>무엇을</h3><p>사용자가 기능을 위해 선택하거나 연결한 정보만 다룹니다.</p></article>
+              <article><span>02</span><AdvantageVisual variant="compass" /><h3>왜</h3><p>제품에서 사용자가 요청한 기능을 제공하는 데 사용합니다.</p></article>
+              <article><span>03</span><AdvantageVisual variant="storage-network" /><h3>어디에</h3><p>브라우저 또는 기기 저장공간을 우선 사용하며 외부 서비스는 필요한 기능에서 직접 연결합니다.</p></article>
+              <article><span>04</span><AdvantageVisual variant="trash-clear" /><h3>어떻게 삭제</h3><p>제품의 관리 기능과 연결 해제, 브라우저 데이터 또는 앱 삭제로 정리할 수 있습니다.</p></article>
             </div>
           </section>
           <LegalSection title="핵심 원칙"><ul>{app.privacy.map((item) => <li key={item}>{item}</li>)}</ul></LegalSection>
@@ -673,7 +753,7 @@ function InfoPage({ app, section }: { app: NonNullable<ReturnType<typeof findApp
 }
 
 function LegalSection({ title, children }: { title: string; children: React.ReactNode }) {
-  return <section className="legal-section"><h2>{title}</h2><div>{children}</div></section>;
+  return <section className="legal-section"><h2><AdvantageVisual variant={pickContentVisual(title, 0)} /><span>{title}</span></h2><div>{children}</div></section>;
 }
 
 function GoogleOAuthPage() {
