@@ -779,6 +779,7 @@ export const apps: AppData[] = [
       { state: "done", title: "0.2.5 릴리스", body: "build 202608241232 iOS·iPadOS TestFlight 내부 테스트 준비 완료, Mac용 DMG 공개" },
       { state: "done", title: "0.2.6 전화 연결 릴리스", body: "build 202608241410 iOS·iPadOS TestFlight 업로드 완료 · Apple 처리 중, 공증된 Mac용 DMG 공개" },
       { state: "done", title: "0.3.0 가죽 화면 릴리스", body: "build 202608241540 iOS·iPadOS TestFlight 업로드 완료 · Apple 처리 중, 새 가죽 화면과 공증된 Mac용 DMG 공개" },
+      { state: "active", title: "Android 매치업 소스 보강", body: "현재 iOS 0.2.5의 2열 추천 목록을 기준으로 최근·찜 날짜 표기, TalkBack 삭제·찜 해제 동작, 고정된 디버그 캡처 상태와 태블릿·TV 가로 화면 허용을 소스에 반영했습니다. 실행·새 화면 캡처·TV 리모컨 탐색·시각 패리티는 아직 검증 전입니다." },
     ],
     screenshots: [
       { src: "/apps/whattoeat/screens/home.png", alt: "오늘 뭐 먹지 홈에서 현재 위치와 지역 선택을 고르는 화면" },
