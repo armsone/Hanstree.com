@@ -11,6 +11,7 @@ export const DOWNLOAD_KEYS = [
   "BTN",
   "TrackpadGuard",
   "WhattoEat",
+  "WhattoEat-Android",
   "button-Android",
   "StarManager-Android",
 ] as const;
@@ -79,6 +80,12 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     repo: "WhattoEat",
     assetPattern: /^WhattoEat-Mac-.*\.dmg$/i,
     fallbackUrl: "https://github.com/armsone/WhattoEat/releases/download/v0.3.0/WhattoEat-Mac-0.3.0-202608241540.dmg",
+  },
+  "WhattoEat-Android": {
+    label: "오늘 뭐 먹지?? Android",
+    repo: "WhattoEat-Android",
+    assetPattern: /^WhattoEat-Android-v\d+\.apk$/i,
+    fallbackUrl: "https://github.com/armsone/WhattoEat-Android/releases/download/android-v339619/WhattoEat-Android-v339619.apk",
   },
   "button-Android": {
     label: "버튼 Android",

@@ -6,6 +6,7 @@ const RELEASE_SOURCES = [
   { appName: "S.tand", repo: "S.tand-Android" },
   { appName: "버튼", repo: "button-Android" },
   { appName: "스타매니저", repo: "StarManager-Android" },
+  { appName: "오늘 뭐 먹지?", repo: "WhattoEat-Android" },
 ] as const;
 
 type GitHubAsset = {

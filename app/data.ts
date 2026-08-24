@@ -753,7 +753,7 @@ export const apps: AppData[] = [
     platforms: [
       { name: "iPhone · iPad", status: "TestFlight", detail: "0.3.0 (202608241540) · iOS·iPadOS 17+", availabilityNote: "TestFlight 업로드 완료 · Apple 처리 중" },
       { name: "Mac", status: "공개", detail: "0.3.0 (202608241540) · macOS 13+ · Universal", url: releaseDownloadPath("WhattoEat"), downloadLabel: "Mac용 DMG 다운로드", checksum: "172999f31b95307ba31084575ca8646c3a2a78660632d73aa64c63b0796d5ce9", availabilityNote: "공증된 DMG 공개" },
-      { name: "Android · Google TV", status: "개발 중", detail: "Android 8.0+ · Android 16 휴대전화 실행 검증", availabilityNote: "공개 APK 전 · 태블릿·TV 리모컨 검증 전" },
+      { name: "Android · Google TV", status: "공개", detail: "0.3.6 (202608242019) · Android 8.0+", url: releaseDownloadPath("WhattoEat-Android"), downloadLabel: "Android용 APK 다운로드", checksum: "0413bc0a3b7c71f493ad97d5cad02b73f674beb0950ef2b8a0a95de1f461d0a9", availabilityNote: "SM-F968N Android 16 교체 설치·실행 검증 · 태블릿·TV 리모컨 검증 전" },
     ],
     features: [
       { title: "가까운 13곳에서 한 끼 고르기", body: "현 위치 또는 직접 고른 지역에서 가까운 음식점 13곳을 추린 뒤, 오늘의 한 끼와 함께 볼 맛집을 사진이 시원하게 보이는 2열 목록으로 보여줍니다." },
@@ -779,7 +779,8 @@ export const apps: AppData[] = [
       { state: "done", title: "0.2.5 릴리스", body: "build 202608241232 iOS·iPadOS TestFlight 내부 테스트 준비 완료, Mac용 DMG 공개" },
       { state: "done", title: "0.2.6 전화 연결 릴리스", body: "build 202608241410 iOS·iPadOS TestFlight 업로드 완료 · Apple 처리 중, 공증된 Mac용 DMG 공개" },
       { state: "done", title: "0.3.0 가죽 화면 릴리스", body: "build 202608241540 iOS·iPadOS TestFlight 업로드 완료 · Apple 처리 중, 새 가죽 화면과 공증된 Mac용 DMG 공개" },
-      { state: "active", title: "Android 0.3.0 화면 매치업", body: "Android 16 휴대전화에서 홈·가죽 하단 메뉴·추천 애니메이션·전화 연결과 12개 고정 상태를 실행 검증했습니다. Kakao Local·TourAPI·Openverse 사진 계약을 iPhone과 맞추고 실제 원격 사진과 제공처·제작자·라이선스 정보 표시도 확인했습니다. TalkBack 실제 읽기 순서, 밀기 후 재실행 저장, 지도 오류, 태블릿·TV 리모컨 검증은 아직 남아 있습니다." },
+      { state: "done", title: "Android 0.3.6 공개", body: "build 202608242019 APK를 별도 공개 저장소에 게시하고 Android 16 휴대전화에서 데이터 유지 교체 설치·실행을 검증했습니다. Kakao Local·TourAPI·Openverse 사진 계약과 실제 원격 사진 정보 표시도 확인했습니다." },
+      { state: "active", title: "태블릿·TV·접근성 후속 검증", body: "태블릿과 Google TV 리모컨, TalkBack 실제 읽기 순서, 밀기 후 재실행 저장과 지도 오류 분기를 실제 기기에서 추가 확인할 예정입니다." },
     ],
     screenshots: [
       { src: "/apps/whattoeat/screens/home.png", alt: "오늘 뭐 먹지 홈에서 현재 위치와 지역 선택을 고르는 화면" },
@@ -790,11 +791,11 @@ export const apps: AppData[] = [
       { src: "/apps/whattoeat/screens/android-live-remote-results.png", alt: "오늘 뭐 먹지 Android에서 실제 외부 식당 사진과 전화 버튼을 보여주는 추천 결과" },
       { src: "/apps/whattoeat/screens/android-photo-information.png", alt: "오늘 뭐 먹지 Android 사진 정보에서 제공처와 제작자, 라이선스를 확인하는 화면" },
     ],
-    github: ["https://github.com/armsone/WhattoEat"],
+    github: ["https://github.com/armsone/WhattoEat", "https://github.com/armsone/WhattoEat-Android"],
     privacy: [
       "현재 위치는 주변 음식점 검색 요청에만 사용하며 앱 서버에 저장하지 않습니다.",
       "최근 한 끼, 찜, 자주 찾는 지역과 알림 설정은 사용자의 기기 안에 보관합니다.",
-      "식당 검색과 사진 표시에는 카카오 로컬, RedTable 및 사진 제공처의 공개 데이터를 사용할 수 있으며 각 제공처의 정책이 함께 적용됩니다.",
+      "식당 검색과 사진 표시에는 카카오 로컬, 한국관광공사 TourAPI와 Openverse의 공개 데이터를 사용할 수 있으며 각 제공처의 정책이 함께 적용됩니다.",
       "지도 열기를 선택하면 사용자가 정한 외부 지도 앱으로 식당 이름과 위치가 전달됩니다.",
     ],
   },
