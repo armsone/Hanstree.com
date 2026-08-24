@@ -775,6 +775,7 @@ export const apps: AppData[] = [
       { state: "done", title: "0.2.3 내부 테스트", body: "build 202608240838 iOS·iPadOS와 macOS를 내부 TestFlight 그룹에 배포" },
       { state: "done", title: "0.2.4 릴리스", body: "build 202608240930 iOS·iPadOS와 macOS TestFlight 처리 완료, 공증된 Mac용 DMG 공개" },
       { state: "done", title: "0.2.5 릴리스", body: "build 202608241232 iOS·iPadOS TestFlight 내부 테스트 준비 완료, Mac용 DMG 공개" },
+      { state: "done", title: "0.2.6 전화 연결 구현", body: "전화번호가 있는 추천 식당에서 바로 영업 여부를 물을 수 있는 전화 버튼을 구현하고 로컬 빌드 확인 · 배포 전" },
     ],
     screenshots: [
       { src: "/apps/whattoeat/screens/home.png", alt: "오늘 뭐 먹지 홈에서 현재 위치와 지역 선택을 고르는 화면" },
