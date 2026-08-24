@@ -746,8 +746,8 @@ export const apps: AppData[] = [
     icon: "/apps/whattoeat/icon.png",
     artwork: "phones",
     platforms: [
-      { name: "iPhone · iPad", status: "완료", detail: "0.2.4 (202608240930) · iOS·iPadOS 17+", availabilityNote: "실기기 검증 완료 · TestFlight 업로드 전" },
-      { name: "Mac", status: "완료", detail: "0.2.4 (202608240930) · Mac Catalyst", availabilityNote: "설치·실행 검증 완료 · TestFlight 업로드 전" },
+      { name: "iPhone · iPad", status: "TestFlight", detail: "0.2.4 (202608240930) · iOS·iPadOS 17+", availabilityNote: "업로드 완료 · Apple 처리 중" },
+      { name: "Mac", status: "공개", detail: "0.2.4 (202608240930) · macOS 13+ · Universal", url: releaseDownloadPath("WhattoEat"), downloadLabel: "Mac용 DMG 다운로드", checksum: "6774f4afa280f01b47b05f118af5d18258d9427cffc659a2dec7b1be5bb03767" },
     ],
     features: [
       { title: "가까운 13곳에서 한 끼 고르기", body: "현 위치 또는 직접 고른 지역에서 가까운 음식점 13곳을 추린 뒤, 오늘의 한 끼와 함께 볼 맛집을 사진이 시원하게 보이는 2열 목록으로 보여줍니다." },
@@ -767,7 +767,7 @@ export const apps: AppData[] = [
       { state: "done", title: "iPhone·iPad·Mac 앱 완성", body: "한 소스로 iPhone, iPad와 Mac Catalyst 화면·기능 구현" },
       { state: "done", title: "추천과 사진·지도 연결", body: "위치 기반 후보 선정, 메뉴 사진 대체, 외부 지도 앱 연결 구현" },
       { state: "done", title: "0.2.3 내부 테스트", body: "build 202608240838 iOS·iPadOS와 macOS를 내부 TestFlight 그룹에 배포" },
-      { state: "active", title: "0.2.4 검증 완료", body: "build 202608240930 iPhone 설치와 Mac 실행을 확인하고, 홈 동선·2열 추천 목록·고르는 중 애니메이션·간결한 사진 정보 표시를 반영" },
+      { state: "active", title: "0.2.4 릴리스", body: "build 202608240930 iOS·iPadOS와 macOS를 TestFlight에 업로드하고, 공증된 Mac용 DMG를 공개" },
     ],
     screenshots: [
       { src: "/apps/whattoeat/screens/home.png", alt: "오늘 뭐 먹지 홈에서 현재 위치와 지역 지정을 고르는 화면" },
@@ -776,7 +776,7 @@ export const apps: AppData[] = [
       { src: "/apps/whattoeat/screens/region.png", alt: "현 위치 주변과 자주 찾는 지역을 보여주는 지역 화면" },
       { src: "/apps/whattoeat/screens/settings.png", alt: "지도 앱과 점심 알림을 정하는 설정 화면" },
     ],
-    github: [],
+    github: ["https://github.com/armsone/WhattoEat"],
     privacy: [
       "현재 위치는 주변 음식점 검색 요청에만 사용하며 앱 서버에 저장하지 않습니다.",
       "최근 한 끼, 찜, 자주 찾는 지역과 알림 설정은 사용자의 기기 안에 보관합니다.",
