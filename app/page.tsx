@@ -7,20 +7,8 @@ import { TestFlightTracker } from "./components/TestFlightTracker";
 import { apps } from "./data";
 import { testFlightBuilds } from "./testflight";
 
-function compactPlatforms(platforms: (typeof apps)[number]["platforms"]) {
-  const names = new Set<string>();
-  for (const platform of platforms) {
-    if (/iPhone|iOS/i.test(platform.name)) names.add("iPhone");
-    if (/iPad|iPadOS/i.test(platform.name)) names.add("iPad");
-    if (/Mac|macOS/i.test(platform.name)) names.add("macOS");
-    if (/Android/i.test(platform.name)) names.add("Android");
-    if (/Web/i.test(platform.name)) names.add("Web");
-  }
-  return [...names].join(" · ");
-}
-
 export default function Home() {
-  const productCount = 1 + apps.reduce(
+  const productCount = 2 + apps.reduce(
     (total, app) => total + app.platforms.reduce((count, platform) => {
       const includesIPhone = /iPhone|iOS/i.test(platform.name);
       const includesIPad = /iPad|iPadOS/i.test(platform.name);
@@ -59,33 +47,46 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="hero-orbit" aria-label={apps.map((app) => app.english).join(", ")}>
-          <div className="orbit-glow" />
-          {apps.map((app, index) => {
-            const platforms = compactPlatforms(app.platforms);
-            return (
-            <Link
-              className={`orbit-app orbit-app-${index + 1}`}
-              href={`/apps/${app.slug}`}
-              key={app.slug}
-              aria-label={`${app.english} · ${platforms} 자세히 보기`}
-            >
-              <AppIcon app={app} priority={index < 2} />
-              <span className="orbit-copy"><strong>{app.english}</strong><small>{platforms}</small></span>
-            </Link>
-            );
-          })}
-          <div className="orbit-center">
-            <span>NasFinder</span>
-            <strong>.com</strong>
+        <section className="hero-showcase reveal" aria-label="한병기가 만드는 앱">
+          <div className="hero-orbit-art" aria-hidden="true">
+            <span className="hero-orbit-ring hero-orbit-ring-outer" />
+            <span className="hero-orbit-ring hero-orbit-ring-inner" />
+            <div className="hero-orbit-glow">
+              <span>APPS BY</span>
+              <strong>ARMSONE</strong>
+              <small>생각을, 손에 잡히게.</small>
+            </div>
+            <p className="hero-orbit-count"><strong>{String(apps.length).padStart(2, "0")}</strong><span>개의 작은 해답</span></p>
           </div>
-        </div>
+
+          <div className="hero-app-shelf">
+            <div className="hero-app-shelf-heading">
+              <strong>지금 만드는 앱</strong>
+              <a href="#apps">모두 만나보기 <span aria-hidden="true">↘</span></a>
+            </div>
+            <div className="hero-app-rail" role="list" aria-label="소개 앱">
+              {apps.map((app, index) => (
+                <Link
+                  className="hero-app-tile"
+                  href={`/apps/${app.slug}`}
+                  key={app.slug}
+                  role="listitem"
+                  aria-label={`${app.name} (${app.english}) 자세히 보기`}
+                >
+                  <AppIcon app={app} priority={index < 2} />
+                  <strong>{app.name}</strong>
+                  <small>{app.english}</small>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
       </section>
 
       <section className="signal-bar" aria-label="사이트 요약">
         <div className="shell signal-grid">
           <p><strong>{String(productCount).padStart(2, "0")}</strong><span>현재 소개하는 제품</span></p>
-          <p><strong>06</strong><span>iPhone · iPad · macOS · Android · Web · Windows (커밍)</span></p>
+          <p><strong>07</strong><span>iPhone · iPad · macOS · Android · Google TV · Web · Windows (커밍)</span></p>
           <p><strong>01</strong><span>한 사람의 꾸준한 기록</span></p>
         </div>
       </section>
