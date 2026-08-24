@@ -296,6 +296,7 @@ test("renders full promotional campaigns for HanClip, TrackpadGuard, CCMB, and S
   assert.match(stand, /Google TV 다음 공개판/);
   assert.match(stand, /google-tv-home\.png/);
   assert.match(stand, /android-tv-launcher\.png/);
+  assert.equal((stand.match(/class="screen-tv"/g) ?? []).length, 2);
   for (const html of [hanClip, trackpadGuard, ccmb, stand]) {
     assert.match(html, /실제 기능으로 가능한 대표 사용 장면이며, 사용자 후기를 인용한 내용은 아닙니다/);
     assert.match(html, /id="product-campaign"/);

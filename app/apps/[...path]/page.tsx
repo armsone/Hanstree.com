@@ -174,6 +174,8 @@ export default async function AppRoute({ params }: RouteProps) {
                   ? { width: 700, height: 968 }
                   : screen.layout === "landscape"
                     ? { width: 2622, height: 1206 }
+                    : screen.layout === "tv"
+                      ? { width: 1920, height: 1080 }
                     : screen.layout === "wide"
                       ? { width: 860, height: 60 }
                       : { width: 1206, height: 2622 };

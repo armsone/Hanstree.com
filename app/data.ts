@@ -24,7 +24,7 @@ export type AppData = {
   features: { title: string; body: string; icon?: string }[];
   guide: { title: string; body: string }[];
   progress: { state: "done" | "active" | "next"; title: string; body: string }[];
-  screenshots?: { src: string; alt: string; layout?: "phone" | "menu" | "landscape" | "wide" }[];
+  screenshots?: { src: string; alt: string; layout?: "phone" | "menu" | "landscape" | "tv" | "wide" }[];
   github: string[];
   privacy: string[];
   matchup?: {
@@ -295,8 +295,8 @@ export const apps: AppData[] = [
       { src: "/apps/stand/screens/ios-boyiso-walkie.png", alt: "볼 사람·말할 사람·무전기 역할을 고르는 S.tand iOS 보이소 연결 화면" },
       { src: "/apps/stand/screens/ios-clock-fonts.png", alt: "S.tand iOS 시계 글꼴 선택" },
       { src: "/apps/stand/screens/android-boyiso.png", alt: "S.tand Android 보이소 연결 화면" },
-      { src: "/apps/stand/screens/google-tv-home.png", alt: "리모컨 포커스가 보이는 S.tand Google TV 10-foot 홈 화면", layout: "landscape" },
-      { src: "/apps/stand/screens/android-tv-launcher.png", alt: "TV 첫 화면 즐겨찾기에 표시된 S.tand 16대9 배너", layout: "landscape" },
+      { src: "/apps/stand/screens/google-tv-home.png", alt: "리모컨 포커스가 보이는 S.tand Google TV 10-foot 홈 화면", layout: "tv" },
+      { src: "/apps/stand/screens/android-tv-launcher.png", alt: "TV 첫 화면 즐겨찾기에 표시된 S.tand 16대9 배너", layout: "tv" },
     ],
     github: ["https://github.com/armsone/S.tand", "https://github.com/armsone/S.tand-Android"],
     privacy: [

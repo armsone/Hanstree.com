@@ -240,6 +240,9 @@ img { display: block; max-width: 100%; }
   .app-nasfinder .nas-advantage-card h3,.app-nasfinder .nas-story-card h3{margin-top:30px}.app-nasfinder .feature-card-branded h3{margin-top:40px}
 }
 
+.screenshot-rail .screen-tv{height:auto;grid-column:1/-1}.screen-tv .screenshot-media{aspect-ratio:16/9}.screen-tv .screenshot-media img{width:100%;height:100%;object-fit:contain}
+@media (max-width:640px){.screenshot-rail .screen-tv{flex-basis:92%}}
+
 @media (prefers-reduced-motion: reduce) {
   html{scroll-behavior:auto}.reveal,.hero-orbit-art::before,.hero-orbit-ring{animation:none!important}.button,.hero-product,.phone-shot,.nas-advantage-card,.support-cards>a{transition:none!important}
 }
