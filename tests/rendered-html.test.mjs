@@ -288,6 +288,7 @@ test("renders the latest NasFinder and HanClip capabilities", async () => {
   assert.match(nasFinder, /다음 공개판/);
   assert.match(hanClip, /완성시간을 음악 길이에 맞춘/);
   assert.match(hanClip, /개봉영화 보관함/);
+  assert.match(hanClip, /컬렉션에도 바로 추가/);
   assert.match(hanClip, /무음 영상도 장면 분석/);
   assert.match(hanClip, /큰 스윙도, 조용한 퍼팅도 놓치지 않도록/);
   assert.match(hanClip, /Apple·Android 무음 퍼팅 안전망/);
