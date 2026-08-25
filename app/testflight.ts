@@ -12,7 +12,7 @@ export type TestFlightBuild = {
 export const testFlightBuilds: TestFlightBuild[] = [
   { slug: "nasfinder", appName: "나스파인더", build: "202608230737", uploadedAt: "2026-08-23T08:16:10+09:00", inviteUrl: null },
   { slug: "hanclip", appName: "한클립", build: "202608250313", uploadedAt: "2026-08-25T03:18:10+09:00", inviteUrl: null },
-  { slug: "stand", appName: "S.tand", build: "340467", uploadedAt: "2026-08-25T11:29:52+09:00", inviteUrl: null },
+  { slug: "stand", appName: "S.tand", build: "340467", uploadedAt: "2026-08-25T11:30:31+09:00", inviteUrl: null },
   { slug: "htoms-brief", appName: "HtOMS 브리프", build: "202608230737", uploadedAt: "2026-08-23T08:12:19+09:00", inviteUrl: null },
   { slug: "starmanager", appName: "스타메니저", build: "202608230737", uploadedAt: "2026-08-23T08:13:38+09:00", inviteUrl: null },
   { slug: "button", appName: "버튼", build: "202608230737", uploadedAt: "2026-08-23T08:14:39+09:00", inviteUrl: null },
