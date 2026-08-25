@@ -66,6 +66,29 @@ test("server-renders the NasFinder.com homepage", async () => {
   assert.equal((installGuide.match(/class="advantage-visual"/g) ?? []).length, 4);
 });
 
+test("keeps every app detail hero focused on one clear entry path and a representative product scene", async () => {
+  const slugs = [
+    "nasfinder", "super-thumbnail", "hanclip", "stand", "ccmb", "btn", "trackpadguard",
+    "htoms-brief", "intosharp", "airchurch", "button", "starmanager", "minecraft-server", "whattoeat",
+  ];
+
+  for (const slug of slugs) {
+    const response = await render(`/apps/${slug}`);
+    assert.equal(response.status, 200, slug);
+    const html = await response.text();
+    const hero = html.match(/<section class="app-hero shell">[\s\S]*?<\/section>/)?.[0] ?? "";
+    assert.match(hero, /class="hero-availability"/, slug);
+    assert.match(hero, /class="hero-platforms"/, slug);
+    assert.match(hero, /class="hero-artwork /, slug);
+    assert.doesNotMatch(hero, /testflight-apply-chip|테스터 신청하기/, slug);
+  }
+
+  const nasfinder = await (await render("/apps/nasfinder")).text();
+  assert.match(nasfinder, /nasfinder-storage-hero-v2\.png/);
+  assert.match(nasfinder, /android-home\.png/);
+  assert.match(nasfinder, /모든 저장공간을 한곳에서/);
+});
+
 test("places the admin link after GitHub in the header and keeps the maker name as plain text", async () => {
   const response = await render();
   const html = await response.text();
@@ -615,13 +638,22 @@ test("keeps traffic-source classification bounded to known, privacy-safe categor
   assert.deepEqual(classifyTrafficSource(request, "https://nasfinder.com/apps/ccmb", null, null), { key: "direct", category: "direct" });
 });
 
-test("shows a clear empty state for months without traffic-source data", async () => {
+test("keeps traffic sources on the authenticated admin records page", async () => {
   const response = await render("/insights");
   assert.equal(response.status, 200);
 
   const html = await response.text();
-  assert.match(html, /이번 달 유입 경로/);
-  assert.match(html, /개인을 식별하지 않습니다/);
+  assert.doesNotMatch(html, /이번 달 유입 경로/);
+  assert.doesNotMatch(html, /개인을 식별하지 않습니다/);
+
+  const [adminPage, statsRoute] = await Promise.all([
+    readFile(new URL("../app/admin/testflight/page.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/api/site-stats/route.ts", import.meta.url), "utf8"),
+  ]);
+  assert.match(adminPage, /<SiteInsights embedded showSources \/>/);
+  assert.match(adminPage, /관리자 화면에서는 유입 경로까지 표시합니다/);
+  assert.match(statsRoute, /includeSources/);
+  assert.match(statsRoute, /isRequestAuthenticated/);
 });
 
 test("shows the refreshed progress review date and TrackpadGuard DMG download", async () => {

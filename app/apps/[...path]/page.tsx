@@ -4,10 +4,11 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AdvantageVisual, type AdvantageVariant } from "../../components/AdvantageVisual";
 import { AppDownloadCta } from "../../components/AppDownloadCta";
-import { AppArtwork, AppIcon, AppStatus } from "../../components/AppVisuals";
+import { AppArtwork, AppHeroArtwork, AppIcon } from "../../components/AppVisuals";
 import { ContactReveal } from "../../components/ContactReveal";
 import { findApp } from "../../data";
 import { SiteFooter, SiteHeader } from "../../page";
+import { testFlightBuilds } from "../../testflight";
 
 type RouteProps = { params: Promise<{ path: string[] }> };
 
@@ -90,8 +91,46 @@ const progressStateVisual: Record<"done" | "active" | "next", AdvantageVariant> 
   next: "compass",
 };
 
-function testFlightApplicationHref(appSlug: string) {
-  return `/?testflightApp=${encodeURIComponent(appSlug)}#testflight-apply`;
+function testFlightInviteUrl(appSlug: string) {
+  return testFlightBuilds.find((build) => build.slug === appSlug)?.inviteUrl ?? null;
+}
+
+function HeroAvailability({ app }: { app: NonNullable<ReturnType<typeof findApp>> }) {
+  const inviteUrl = testFlightInviteUrl(app.slug);
+  const testFlightPlatforms = app.platforms.filter((platform) => platform.status === "TestFlight");
+  const hasDownload = app.platforms.some((platform) => platform.url);
+
+  return (
+    <div className="hero-availability">
+      {testFlightPlatforms.length > 0 && (
+        <div className={`hero-beta-card${inviteUrl ? " hero-beta-card-ready" : ""}`}>
+          <div>
+            <span>{inviteUrl ? "PUBLIC BETA" : "PUBLIC BETA · PREPARING"}</span>
+            <strong>{inviteUrl ? "신청서 없이 바로 테스트하세요." : "공개 테스트 링크를 준비하고 있습니다."}</strong>
+            <small>{testFlightPlatforms.map((platform) => platform.name).join(" · ")}</small>
+          </div>
+          {inviteUrl ? <a href={inviteUrl}>TestFlight에서 참여 <span aria-hidden="true">↗</span></a> : <span className="hero-beta-pending">준비 중</span>}
+        </div>
+      )}
+
+      <div className="hero-platforms" aria-label={`${app.name} 지원 플랫폼과 현재 제공 상태`}>
+        <div className="hero-platforms-heading"><strong>지원 기기</strong><span>현재 제공 상태</span></div>
+        {app.platforms.map((platform) => (
+          <div className="hero-platform-row" key={platform.name}>
+            <span className={`status-dot status-${platform.status.replace(" ", "-")}`} />
+            <strong>{platform.name}</strong>
+            <span>{platform.status}</span>
+            <small>{platform.detail}</small>
+          </div>
+        ))}
+      </div>
+
+      <div className="hero-actions">
+        {hasDownload ? <AppDownloadCta className="button button-primary" platforms={app.platforms} /> : !inviteUrl && <Link className="button button-primary" href="#progress">진행 상황 보기 <span aria-hidden="true">↓</span></Link>}
+        <Link className="button button-quiet" href="#guide">사용법 보기</Link>
+      </div>
+    </div>
+  );
 }
 
 export async function generateMetadata({ params }: RouteProps): Promise<Metadata> {
@@ -134,26 +173,9 @@ export default async function AppRoute({ params }: RouteProps) {
           <p className="eyebrow">{app.eyebrow}</p>
           <h1>{app.tagline}</h1>
           <p className="app-summary">{app.summary}</p>
-          <div className="chip-row">
-            {app.platforms.map((platform) => (
-              <span className="platform-action-group" key={platform.name}>
-                <AppStatus platform={platform} />
-                {platform.status === "TestFlight" && (
-                  <Link className="testflight-apply-chip" href={testFlightApplicationHref(app.slug)}>
-                    테스터 신청하기 <span aria-hidden="true">→</span>
-                  </Link>
-                )}
-              </span>
-            ))}
-          </div>
-          <div className="hero-actions">
-            {app.platforms.some((platform) => platform.url) ? (
-              <AppDownloadCta className="button button-primary" platforms={app.platforms} />
-            ) : <Link className="button button-primary" href="#progress">진행 상황 보기 <span aria-hidden="true">↓</span></Link>}
-            <Link className="button button-quiet" href="#guide">사용법 보기</Link>
-          </div>
+          <HeroAvailability app={app} />
         </div>
-        <div className="app-hero-visual reveal"><AppArtwork app={app} /></div>
+        <div className="app-hero-visual reveal"><AppHeroArtwork app={app} /></div>
       </section>
 
       <nav className="section-nav" aria-label={`${app.name} 페이지 내부 메뉴`}>
@@ -240,7 +262,10 @@ export default async function AppRoute({ params }: RouteProps) {
       <section className="download-section shell reveal" id="download">
         <div><p className="eyebrow">OPEN, DOWNLOAD & TEST</p><h2>공개된 제품과 전용 도구.</h2><p>플랫폼별 현재 상태와 공식 주소·배포 파일을 구분해 표시합니다. 별도 도구는 용도까지 확인한 뒤 내려받을 수 있습니다.</p></div>
         <div className="download-list">
-          {app.platforms.map((platform) => <article key={platform.name}><div><AdvantageVisual variant={platformVisual(platform.name)} /><span className={`status-dot status-${platform.status.replace(" ", "-")}`} /><h3>{platform.name}</h3></div><p>{platform.detail} · {platform.status}</p>{platform.url ? <a href={platform.url}>{platform.downloadLabel ?? "다운로드 페이지"} <span aria-hidden="true">↗</span></a> : platform.status === "TestFlight" ? <Link className="testflight-apply-download" href={testFlightApplicationHref(app.slug)}>TestFlight 테스터 신청하기 <span aria-hidden="true">↗</span></Link> : <span>{platform.availabilityNote ?? "공개 링크 준비 중"}</span>}{platform.checksum && <small className="download-checksum">SHA-256 {platform.checksum}</small>}</article>)}
+          {app.platforms.map((platform) => {
+            const inviteUrl = platform.status === "TestFlight" ? testFlightInviteUrl(app.slug) : null;
+            return <article key={platform.name}><div><AdvantageVisual variant={platformVisual(platform.name)} /><span className={`status-dot status-${platform.status.replace(" ", "-")}`} /><h3>{platform.name}</h3></div><p>{platform.detail} · {platform.status}</p>{platform.url ? <a href={platform.url}>{platform.downloadLabel ?? "다운로드 페이지"} <span aria-hidden="true">↗</span></a> : inviteUrl ? <a className="testflight-apply-download" href={inviteUrl}>TestFlight 바로 참여 <span aria-hidden="true">↗</span></a> : <span>{platform.status === "TestFlight" ? "공개 링크 준비 중" : platform.availabilityNote ?? "공개 링크 준비 중"}</span>}{platform.checksum && <small className="download-checksum">SHA-256 {platform.checksum}</small>}</article>;
+          })}
         </div>
       </section>
 
@@ -719,7 +744,7 @@ function InfoPage({ app, section }: { app: NonNullable<ReturnType<typeof findApp
           <LegalSection title="핵심 원칙"><ul>{app.privacy.map((item) => <li key={item}>{item}</li>)}</ul></LegalSection>
           <LegalSection title="처리 목적과 항목"><p>앱은 기능 수행에 필요한 권한, 사용자가 직접 선택한 파일과 사용자가 연결한 서비스의 인증 정보만 해당 기능을 제공하기 위해 처리합니다. 광고 목적의 개인정보 판매나 맞춤형 추적을 목적으로 처리하지 않습니다.</p></LegalSection>
           <LegalSection title="홈페이지 이용 통계"><p>NasFinder.com은 홈페이지 방문 횟수와 공식 APK 바로 받기 버튼을 누른 횟수를 숫자로만 집계합니다. 방문은 같은 브라우저에서 하루 한 번만 세기 위해 마지막 집계 날짜를 브라우저에 저장합니다. 집계 데이터베이스에는 방문자의 이름, 이메일, 계정, 쿠키 또는 IP 주소를 함께 저장하지 않으며 광고나 개인별 행동 추적에 사용하지 않습니다.</p></LegalSection>
-          <LegalSection title="TestFlight 테스터 사전 신청 정보"><p>홈페이지의 TestFlight 사전 신청 기능은 Apple TestFlight 내부 테스터 선발을 위해 신청자의 성(Last name), 이름(First name), 이메일, 희망 앱, 사용 기기 모델, 참여 동기 및 동의 시각을 수집합니다. Apple의 내부 테스트는 App Store Connect 사용자로 초대된 사람만 참여할 수 있으므로, 선정된 신청자는 성·이름·이메일로 App Store Connect 사용자 초대를 받으며 권한은 Marketing 역할과 신청한 앱 하나에 대한 접근으로 제한됩니다(보고서·인증서 등 추가 리소스 접근 없음). 내부 테스터 등록 작업을 돕기 위해 등록 대상자의 성·이름·이메일과 희망 앱만 OpenAI Codex에 전달할 수 있습니다. 기기 모델과 참여 동기는 Apple이나 Codex에 전달하지 않으며, 이름이 없는 보류 신청자의 개인정보도 Codex 요청문에 포함하지 않습니다. 남용 방지를 위해 접속 IP 주소를 해시로 바꿔 단시간 신청 횟수 제한에만 사용하며 원본 IP 주소는 저장하지 않습니다. 수집된 정보는 테스터 모집 및 테스트 진행 기간 동안 데이터베이스에 보관되며, 관리자 화면의 삭제 기능을 통해 언제든 직접 영구 파기할 수 있습니다. 테스트 인원은 소수로 제한되어 있어 신청이 선정을 보장하지 않으며, 삭제를 원하시는 경우 아래 개인정보 보호책임자에게 요청하시면 즉시 삭제 처리됩니다.</p></LegalSection>
+          <LegalSection title="TestFlight 공개 베타"><p>홈페이지는 TestFlight 공개 링크를 통해 베타 앱 참여 경로만 제공합니다. 참여 신청을 위해 이름, 이메일, 기기 모델이나 참여 동기를 수집하지 않습니다. 공개 링크 참여와 앱 설치는 Apple의 TestFlight에서 처리됩니다. 과거 내부 테스터 신청 기능으로 접수된 기록은 더 이상 새로 수집하지 않으며, 삭제를 원하는 기존 신청자는 아래 개인정보 보호책임자에게 요청할 수 있습니다.</p></LegalSection>
           <LegalSection title="보유 기간"><p>연결 정보와 인증 정보는 사용자가 연결을 해제하거나 앱을 삭제할 때까지, 앱 안의 프로젝트·받은 파일·녹음은 사용자가 삭제하거나 앱을 삭제할 때까지 기기에 보관됩니다. 다운로드와 미리보기 캐시는 앱의 정리 기능, 시스템의 저장공간 관리 또는 앱 삭제로 제거됩니다. 사진 앱·갤러리·파일 앱으로 내보낸 결과물은 해당 위치에서 별도로 삭제해야 합니다.</p></LegalSection>
           <LegalSection title="파기 방법"><p>앱에서 삭제한 로컬 데이터는 앱의 저장공간에서 제거합니다. Keychain에 보관된 인증 정보는 연결 해제 또는 앱이 제공하는 계정 삭제 절차로 삭제합니다. 외부 서비스에 남은 접근 권한은 해당 서비스의 계정 보안 페이지에서도 철회할 수 있습니다.</p></LegalSection>
           <LegalSection title="외부 서비스와 제공"><p>앱은 사용자가 선택한 기능을 수행할 때 외부 저장소, 날씨, 라디오, 웹사이트 또는 배포 서비스와 통신할 수 있습니다. 사용자가 파일 전송이나 공유를 직접 요청한 경우에만 선택한 대상에 해당 정보가 전달되며, 연결한 서비스에는 각 제공자의 개인정보처리방침과 보관 기준이 적용됩니다.</p></LegalSection>

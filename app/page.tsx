@@ -5,7 +5,6 @@ import { AndroidReleaseTracker } from "./components/AndroidReleaseTracker";
 import { ContactReveal } from "./components/ContactReveal";
 import { SiteCounter } from "./components/SiteCounter";
 import { TestFlightTracker } from "./components/TestFlightTracker";
-import { TestFlightApplyForm } from "./components/TestFlightApplyForm";
 import { apps } from "./data";
 import { testFlightBuilds } from "./testflight";
 
@@ -178,7 +177,6 @@ export default function Home() {
             <p>TestFlight에서 지금 체험할 수 있는 앱과 남은 기간을 함께 보여드립니다. 마음에 드는 앱의 다음 모습을 먼저 만나보세요.</p>
           </div>
           <TestFlightTracker builds={testFlightBuilds} />
-          <TestFlightApplyForm />
         </div>
       </section>
 

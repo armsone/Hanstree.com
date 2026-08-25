@@ -1,5 +1,6 @@
 import { countDownload, countVisit, DOWNLOAD_REPOS, readSiteStats, type DownloadRepo } from "../../../db/siteStats";
 import { classifyTrafficSource, isTrustedSameSiteEvent } from "../../requestTraffic";
+import { isRequestAuthenticated } from "../../testflight-auth";
 
 export const dynamic = "force-dynamic";
 
@@ -10,7 +11,10 @@ function requestedMonth(request: Request) {
 
 export async function GET(request: Request) {
   try {
-    return Response.json(await readSiteStats(requestedMonth(request)), { headers: { "Cache-Control": "no-store" } });
+    const stats = await readSiteStats(requestedMonth(request));
+    const includeSources = new URL(request.url).searchParams.get("includeSources") === "1"
+      && await isRequestAuthenticated(request);
+    return Response.json(includeSources ? stats : { ...stats, sources: [] }, { headers: { "Cache-Control": "no-store" } });
   } catch {
     return Response.json({ error: "통계를 불러올 수 없습니다." }, { status: 503 });
   }
@@ -37,7 +41,8 @@ export async function POST(request: Request) {
     } else {
       return Response.json({ error: "지원하지 않는 집계 항목입니다." }, { status: 400 });
     }
-    return Response.json(await readSiteStats(), { headers: { "Cache-Control": "no-store" } });
+    const stats = await readSiteStats();
+    return Response.json({ ...stats, sources: [] }, { headers: { "Cache-Control": "no-store" } });
   } catch {
     return Response.json({ error: "통계를 기록할 수 없습니다." }, { status: 503 });
   }

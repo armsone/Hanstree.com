@@ -32,14 +32,16 @@ function currentMonth() {
   return `${value.year}-${value.month}`;
 }
 
-export function SiteInsights({ embedded = false }: { embedded?: boolean }) {
+export function SiteInsights({ embedded = false, showSources = false }: { embedded?: boolean; showSources?: boolean }) {
   const [month, setMonth] = useState(currentMonth);
   const [stats, setStats] = useState<InsightStats | null>(null);
   const [failed, setFailed] = useState(false);
 
   useEffect(() => {
     const controller = new AbortController();
-    fetch(`/api/site-stats?month=${month}`, { cache: "no-store", signal: controller.signal })
+    const query = new URLSearchParams({ month });
+    if (showSources) query.set("includeSources", "1");
+    fetch(`/api/site-stats?${query.toString()}`, { cache: "no-store", signal: controller.signal })
       .then(async (response) => {
         if (!response.ok) throw new Error("stats unavailable");
         setFailed(false);
@@ -49,7 +51,7 @@ export function SiteInsights({ embedded = false }: { embedded?: boolean }) {
         if (!(error instanceof DOMException && error.name === "AbortError")) setFailed(true);
       });
     return () => controller.abort();
-  }, [month]);
+  }, [month, showSources]);
 
   const summary = useMemo(() => {
     const daily = stats?.daily || [];
@@ -105,7 +107,7 @@ export function SiteInsights({ embedded = false }: { embedded?: boolean }) {
             <tbody>{[...(stats?.daily || [])].reverse().map((day) => <tr key={day.date}><th scope="row">{day.date}</th><td>{number(day.visits)}</td><td>{number(day.downloadClicks)}</td>{apps.map(([repo]) => <td key={repo}>{number(day.downloads[repo] || 0)}</td>)}</tr>)}</tbody>
           </table>
         </div>
-        <section className="insights-sources" aria-labelledby="insights-sources-title">
+        {showSources ? <section className="insights-sources" aria-labelledby="insights-sources-title">
           <h2 id="insights-sources-title">이번 달 유입 경로</h2>
           {stats && stats.sources.length > 0 ? (
             <div className="insights-table-wrap">
@@ -117,8 +119,8 @@ export function SiteInsights({ embedded = false }: { embedded?: boolean }) {
           ) : (
             <p className="insights-empty">이 기간에는 유입 경로 집계가 없습니다. 새 방문부터 모아집니다.</p>
           )}
-        </section>
-        <p className="insights-footnote">방문은 같은 브라우저에서 하루 한 번만 집계합니다. 다운로드 숫자는 이 홈페이지 버튼을 누른 횟수이며 GitHub 전체 다운로드 수와는 다를 수 있습니다. 유입 경로는 검색·소셜 등 미리 정한 카테고리로만 모아 저장하며, 개인을 식별하지 않습니다.</p>
+        </section> : null}
+        <p className="insights-footnote">방문은 같은 브라우저에서 하루 한 번만 집계합니다. 다운로드 숫자는 이 홈페이지 버튼을 누른 횟수이며 GitHub 전체 다운로드 수와는 다를 수 있습니다.{showSources ? " 유입 경로는 검색·소셜 등 미리 정한 카테고리로만 모아 저장하며, 개인을 식별하지 않습니다." : ""}</p>
       </section>
     </Wrapper>
   );
