@@ -314,9 +314,23 @@ test("Codex internal tester request groups complete pending applicants by app an
   assert.match(text, /앱 하나만/);
   assert.match(text, /보고서\(Reports\) 접근 없음/);
   assert.match(text, /Certificates\/Identifiers\/Profiles 등 추가 리소스 접근 없음/);
-  assert.match(text, /중복으로 만들지 말고/);
   assert.match(text, /내부\(Internal\) TestFlight 그룹/);
   assert.match(text, /내부 TestFlight 그룹 포함 여부를 확인/);
+
+  // Existing invitations, users and internal-group members must be checked first and left untouched (no re-invite, no permission overwrite),
+  // and the per-person report must state prior registration state and skip reasons.
+  assert.match(text, /작업 전에 사람마다 .*등록 여부를 먼저 확인/);
+  assert.match(text, /이미 내부 테스터로 등록된 사람은 재초대·재생성·재등록하거나 권한을 바꾸지 말고/);
+  assert.match(text, /결과에 '이미 등록됨'으로 알려 주세요/);
+  assert.match(text, /수락 대기 초대가 있으면 다시 초대하지 말고 '초대 수락 대기'로 알려 주세요/);
+  assert.match(text, /기존 사용자는 재생성하지 말고 그대로 사용/);
+  assert.match(text, /기존 사용자의 권한은 이 기준에 맞춰 바꾸지 마세요/);
+  assert.match(text, /아직 없는 사람만 테스터로 추가/);
+  assert.match(text, /이미 그룹에 있으면 그대로 두고 건너뜁니다/);
+  assert.match(text, /기존 등록 상태\(사용자 초대·사용자·내부 그룹 각각 이미 있었는지\)/);
+  assert.match(text, /초대 발송 \/ 그룹 추가 \/ 건너뜀/);
+  assert.match(text, /건너뛴 경우 .*그 이유/);
+  assert.match(text, /'이미 등록됨'·'초대 수락 대기'/);
 
   // Incomplete applicants are listed separately and explicitly must not be registered yet.
   assert.match(text, /== 등록 보류 \(성 또는 이름 누락\) — 1명 ==/);

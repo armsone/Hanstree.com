@@ -66,6 +66,22 @@ test("server-renders the NasFinder.com homepage", async () => {
   assert.equal((installGuide.match(/class="advantage-visual"/g) ?? []).length, 4);
 });
 
+test("places the admin link after GitHub in the header and keeps the maker name as plain text", async () => {
+  const response = await render();
+  const html = await response.text();
+
+  const nav = html.match(/<nav aria-label="주요 메뉴">[\s\S]*?<\/nav>/)?.[0] ?? "";
+  assert.ok(nav, "missing main navigation");
+  assert.match(nav, /href="https:\/\/github\.com\/armsone"[^>]*>GitHub[\s\S]*?<\/a>\s*<a [^>]*href="\/admin\/testflight"[^>]*>관리자<\/a>/);
+  assert.match(nav, /<a [^>]*aria-label="관리자 로그인"[^>]*>관리자<\/a>/);
+  assert.equal((nav.match(/href="\/admin\/testflight"/g) ?? []).length, 1);
+
+  const footer = html.match(/<footer class="site-footer">[\s\S]*?<\/footer>/)?.[0] ?? "";
+  assert.ok(footer, "missing site footer");
+  assert.match(footer, /<p>한병기 · 바이브 코더가 만드는 앱과 웹 서비스를 소개합니다\.<\/p>/);
+  assert.doesNotMatch(footer, /href="\/admin\/testflight"/);
+});
+
 test("renders the privacy-safe Minecraft Bedrock home server guide", async () => {
   const response = await render("/apps/minecraft-server");
   assert.equal(response.status, 200);

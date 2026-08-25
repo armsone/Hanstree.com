@@ -113,10 +113,10 @@ export function buildCodexInternalTesterRequest(
   lines.push(`등록 대상: 대기 중(pending) 상태이며 성·이름·이메일이 모두 있는 신청자 ${ready.length}명 / 앱 ${orderedGroups.length}개`);
   lines.push("");
   lines.push("작업 지시:");
-  lines.push("1. 아래 각 사람이 App Store Connect 사용자로 아직 없으면 Users and Access에서 성·이름·이메일로 사용자 초대를 보내 주세요. 같은 이메일의 사용자나 아직 수락하지 않은 초대가 이미 있으면 중복으로 만들지 말고 기존 사용자·초대를 그대로 사용해 주세요.");
-  lines.push("2. 권한은 최소로 제한합니다: 역할은 Marketing, 앱 접근은 각 그룹에 적힌 앱 하나만, 보고서(Reports) 접근 없음, Certificates/Identifiers/Profiles 등 추가 리소스 접근 없음.");
-  lines.push("3. 각 사람을 해당 앱의 내부(Internal) TestFlight 그룹에 테스터로 추가해 주세요. 이미 그룹에 있으면 건너뜁니다. 외부(External) 그룹에는 추가하지 않습니다.");
-  lines.push("4. 완료 후 사람마다 초대 발송 여부, App Store Connect 사용자 존재 여부, 지정 앱 접근 권한, 내부 TestFlight 그룹 포함 여부를 확인해서 결과를 표로 보고해 주세요.");
+  lines.push("1. 작업 전에 사람마다 같은 이메일의 App Store Connect 사용자 초대(수락 대기 포함), 사용자, 해당 앱의 내부(Internal) TestFlight 그룹 등록 여부를 먼저 확인해 주세요. 이미 내부 테스터로 등록된 사람은 재초대·재생성·재등록하거나 권한을 바꾸지 말고 그대로 두고, 결과에 '이미 등록됨'으로 알려 주세요. 수락 대기 초대가 있으면 다시 초대하지 말고 '초대 수락 대기'로 알려 주세요. 기존 사용자는 재생성하지 말고 그대로 사용하며, 사용자 초대도 사용자도 없는 사람만 Users and Access에서 성·이름·이메일로 새로 초대합니다.");
+  lines.push("2. 새로 초대하는 사람의 권한은 최소로 제한합니다: 역할은 Marketing, 앱 접근은 각 그룹에 적힌 앱 하나만, 보고서(Reports) 접근 없음, Certificates/Identifiers/Profiles 등 추가 리소스 접근 없음. 기존 사용자의 권한은 이 기준에 맞춰 바꾸지 마세요.");
+  lines.push("3. 해당 앱의 내부(Internal) TestFlight 그룹에 아직 없는 사람만 테스터로 추가해 주세요. 이미 그룹에 있으면 그대로 두고 건너뜁니다. 외부(External) 그룹에는 추가하지 않습니다.");
+  lines.push("4. 완료 후 사람마다 기존 등록 상태(사용자 초대·사용자·내부 그룹 각각 이미 있었는지), 이번에 실제로 수행한 작업(초대 발송 / 그룹 추가 / 건너뜀), 건너뛴 경우 '이미 등록됨'·'초대 수락 대기' 등 그 이유, 지정 앱 접근 권한, 내부 TestFlight 그룹 포함 여부를 확인해서 결과를 표로 보고해 주세요.");
   lines.push("5. 확인되지 않았거나 실패한 사람은 완료로 표시하지 마세요. 아래 목록에 없는 사람은 등록하지 마세요.");
   lines.push("");
 

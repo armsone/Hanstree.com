@@ -270,6 +270,7 @@ export function SiteHeader() {
           {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
           <a href="/#contact">소통</a>
           <a href="https://github.com/armsone">GitHub <span aria-hidden="true">↗</span></a>
+          <Link href="/admin/testflight" aria-label="관리자 로그인">관리자</Link>
         </nav>
       </div>
     </header>
@@ -282,7 +283,7 @@ export function SiteFooter() {
       <div className="shell footer-inner">
         <div>
           <Link className="wordmark" href="/"><span>NasFinder</span>.com</Link>
-          <p><Link href="/admin/testflight">한병기</Link> · 바이브 코더가 만드는 앱과 웹 서비스를 소개합니다.</p>
+          <p>한병기 · 바이브 코더가 만드는 앱과 웹 서비스를 소개합니다.</p>
         </div>
         <div className="footer-links">
           {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
