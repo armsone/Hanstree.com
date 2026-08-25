@@ -199,6 +199,8 @@ test("renders the latest NasFinder and HanClip capabilities", async () => {
     hanClipResponse.text(),
   ]);
   assert.match(nasFinder, /파일 앱에서 바로 가져오기/);
+  assert.match(nasFinder, /2\.1\.0 \(202608251045\)/);
+  assert.match(nasFinder, /TestFlight 처리 완료/);
   assert.match(nasFinder, /폰하드로 모으고 관리/);
   assert.match(nasFinder, /자세히·썸네일·포스터/);
   assert.match(nasFinder, /Overflow/);
