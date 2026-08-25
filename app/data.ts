@@ -299,7 +299,6 @@ export const apps: AppData[] = [
       { src: "/apps/stand/screens/android-settings-overview.png", alt: "다음 Android판의 iOS 동기화 설정 화면과 상단 인터넷 라디오 바로가기", layout: "menu" },
       { src: "/apps/stand/screens/android-settings-music.png", alt: "Spotify·YouTube Music·인터넷 라디오를 한 목록에서 정렬하는 다음 Android판 음악 설정", layout: "menu" },
       { src: "/apps/stand/screens/google-tv-home.png", alt: "리모컨 포커스가 보이는 S.tand Google TV 10-foot 홈 화면", layout: "tv" },
-      { src: "/apps/stand/screens/android-tv-launcher.png", alt: "TV 첫 화면 즐겨찾기에 표시된 S.tand 16대9 배너", layout: "tv" },
     ],
     github: ["https://github.com/armsone/S.tand", "https://github.com/armsone/S.tand-Android"],
     privacy: [
