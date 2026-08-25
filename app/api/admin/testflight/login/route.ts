@@ -11,13 +11,14 @@ import {
   isTestFlightAdminConfigured,
   recordFailedLoginAttempt,
   resetFailedLoginAttempts,
+  setInitialAdminPassword,
   verifyAdminPassword,
 } from "../../../../testflight-auth";
 
 export const dynamic = "force-dynamic";
 
 export async function GET(request: Request) {
-  const configured = isTestFlightAdminConfigured();
+  const configured = await isTestFlightAdminConfigured();
   const authenticated = configured ? await isRequestAuthenticated(request) : false;
 
   return Response.json(
@@ -46,12 +47,43 @@ export async function POST(request: Request) {
     action?: string;
     userId?: unknown;
     password?: unknown;
+    setupToken?: unknown;
   };
 
   try {
     body = await request.json();
   } catch {
     return Response.json({ error: "올바른 JSON 요청이 아닙니다." }, { status: 400 });
+  }
+
+  if (body.action === "setup") {
+    if (await isTestFlightAdminConfigured()) {
+      return Response.json({ error: "관리자 비밀번호가 이미 설정되어 있습니다." }, { status: 409 });
+    }
+
+    const password = typeof body.password === "string" ? body.password : "";
+    const setupToken = typeof body.setupToken === "string" ? body.setupToken : "";
+    if (!password) {
+      return Response.json({ error: "사용할 비밀번호를 입력해 주세요." }, { status: 400 });
+    }
+
+    if (!(await setInitialAdminPassword(password, setupToken))) {
+      return Response.json({ error: "이 설정 링크는 올바르지 않거나 이미 사용되었습니다." }, { status: 403 });
+    }
+
+    const token = await createAdminSessionToken(ADMIN_USER_ID);
+    if (!token) {
+      return Response.json({ error: "비밀번호는 저장됐지만 로그인 세션을 만들지 못했습니다." }, { status: 500 });
+    }
+
+    return new Response(JSON.stringify({ ok: true, userId: ADMIN_USER_ID }), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+        "Set-Cookie": createAdminCookieHeader(token),
+        "Cache-Control": "no-store",
+      },
+    });
   }
 
   // Handle Logout
@@ -67,7 +99,7 @@ export async function POST(request: Request) {
   }
 
   // Handle Login
-  if (!isTestFlightAdminConfigured()) {
+  if (!(await isTestFlightAdminConfigured())) {
     return Response.json(
       {
         error:

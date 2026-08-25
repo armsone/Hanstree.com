@@ -16,6 +16,8 @@ export default function TestFlightAdminPage() {
   // Login Form State
   const [userId, setUserId] = useState("armsone");
   const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
+  const [setupToken, setSetupToken] = useState("");
   const [loginLoading, setLoginLoading] = useState(false);
   const [loginError, setLoginError] = useState<string | null>(null);
 
@@ -91,10 +93,49 @@ export default function TestFlightAdminPage() {
   }, [loadApplications]);
 
   useEffect(() => {
-    // Authentication is external server state and must be read after hydration.
+    // The one-time setup token exists only in the browser URL after hydration.
     // eslint-disable-next-line react-hooks/set-state-in-effect
+    setSetupToken(new URLSearchParams(window.location.search).get("setup") ?? "");
+    // Authentication is external server state and must be read after hydration.
     void fetchAuthStatus();
   }, [fetchAuthStatus]);
+
+  const handleSetup = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoginError(null);
+
+    if (password !== passwordConfirm) {
+      setLoginError("두 비밀번호가 다릅니다. 다시 입력해 주세요.");
+      return;
+    }
+
+    setLoginLoading(true);
+    try {
+      const response = await fetch("/api/admin/testflight/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "setup", password, setupToken }),
+      });
+      const data = await response.json();
+
+      if (!response.ok) {
+        setLoginError(data.error || "비밀번호를 저장하지 못했습니다.");
+        return;
+      }
+
+      window.history.replaceState(null, "", "/admin/testflight");
+      setConfigured(true);
+      setAuthenticated(true);
+      setPassword("");
+      setPasswordConfirm("");
+      setSetupToken("");
+      await loadApplications();
+    } catch {
+      setLoginError("서버와 통신할 수 없습니다. 잠시 후 다시 시도해 주세요.");
+    } finally {
+      setLoginLoading(false);
+    }
+  };
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -255,13 +296,47 @@ export default function TestFlightAdminPage() {
               </div>
 
               {!configured && (
-                <div className="admin-locked-banner" role="alert">
-                  <strong>⚠️ 관리자 로그인 잠김</strong>
-                  <p>
-                    관리자 비밀번호가 아직 설정되지 않아 로그인이 비활성화되어 있습니다.
-                    공개 신청 접수는 계속 정상 작동합니다.
-                  </p>
-                </div>
+                setupToken ? (
+                  <form className="admin-login-form" onSubmit={handleSetup}>
+                    <div className="admin-locked-banner">
+                      <strong>관리자 비밀번호 설정</strong>
+                      <p>대표님이 사용할 비밀번호를 직접 정해 주세요. 길이 제한은 없습니다.</p>
+                    </div>
+                    <div className="admin-form-group">
+                      <label htmlFor="new-admin-password">새 비밀번호</label>
+                      <input
+                        id="new-admin-password"
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        disabled={loginLoading}
+                        autoComplete="new-password"
+                        required
+                      />
+                    </div>
+                    <div className="admin-form-group">
+                      <label htmlFor="new-admin-password-confirm">비밀번호 다시 입력</label>
+                      <input
+                        id="new-admin-password-confirm"
+                        type="password"
+                        value={passwordConfirm}
+                        onChange={(e) => setPasswordConfirm(e.target.value)}
+                        disabled={loginLoading}
+                        autoComplete="new-password"
+                        required
+                      />
+                    </div>
+                    {loginError && <div className="admin-error-banner" role="alert">{loginError}</div>}
+                    <button type="submit" className="button button-primary admin-login-btn" disabled={loginLoading}>
+                      {loginLoading ? "저장 중..." : "비밀번호 저장하고 들어가기 →"}
+                    </button>
+                  </form>
+                ) : (
+                  <div className="admin-locked-banner" role="alert">
+                    <strong>관리자 비밀번호 설정이 필요합니다</strong>
+                    <p>안전한 최초 설정 링크로 이 페이지를 다시 열어 주세요.</p>
+                  </div>
+                )
               )}
 
               {configured && (

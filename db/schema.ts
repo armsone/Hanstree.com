@@ -40,3 +40,10 @@ export const testflightApplications = sqliteTable(
     index("idx_testflight_applications_status_app").on(table.status, table.appSlug),
   ],
 );
+
+export const testflightAdminSettings = sqliteTable("testflight_admin_settings", {
+  id: integer("id").primaryKey(),
+  passwordHash: text("password_hash").notNull(),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+});

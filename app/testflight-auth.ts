@@ -1,3 +1,8 @@
+import {
+  createTestFlightAdminPasswordHash,
+  getStoredTestFlightAdminPasswordHash,
+} from "../db/testflightAdmin";
+
 export const ADMIN_USER_ID = "armsone";
 export const SESSION_COOKIE_NAME = "tf_admin_session";
 export const SESSION_MAX_AGE_SECONDS = 8 * 60 * 60; // 8 hours
@@ -11,11 +16,14 @@ const SHA256_HEX_PATTERN = /^[a-f0-9]{64}$/i;
 type FailedAttemptRecord = { count: number; lastAttempt: number };
 const failedLoginAttempts = new Map<string, FailedAttemptRecord>();
 
-export function isTestFlightAdminConfigured(): boolean {
-  return Boolean(getAdminSecret());
+export async function isTestFlightAdminConfigured(): Promise<boolean> {
+  return Boolean(await getAdminSecret());
 }
 
-function getAdminSecret(): string | null {
+async function getAdminSecret(): Promise<string | null> {
+  const storedHash = await getStoredTestFlightAdminPasswordHash();
+  if (storedHash && SHA256_HEX_PATTERN.test(storedHash)) return storedHash.toLowerCase();
+
   const passwordHash = process.env.TESTFLIGHT_ADMIN_PASSWORD_SHA256?.trim();
   if (passwordHash && SHA256_HEX_PATTERN.test(passwordHash)) return passwordHash.toLowerCase();
 
@@ -114,6 +122,15 @@ export function resetFailedLoginAttempts(ipHash: string): void {
 }
 
 export async function verifyAdminPassword(passwordCandidate: string): Promise<boolean> {
+  const storedHash = await getStoredTestFlightAdminPasswordHash();
+  if (storedHash && SHA256_HEX_PATTERN.test(storedHash)) {
+    const candidateHash = await crypto.subtle.digest(
+      "SHA-256",
+      new TextEncoder().encode(passwordCandidate),
+    );
+    return constantTimeCompare(new Uint8Array(candidateHash), hexToBuffer(storedHash) ?? new Uint8Array());
+  }
+
   const configuredHash = process.env.TESTFLIGHT_ADMIN_PASSWORD_SHA256?.trim().toLowerCase();
   if (configuredHash && SHA256_HEX_PATTERN.test(configuredHash)) {
     const candidateHash = await crypto.subtle.digest(
@@ -127,6 +144,16 @@ export async function verifyAdminPassword(passwordCandidate: string): Promise<bo
   return typeof legacyPassword === "string"
     ? constantTimeStringCompare(passwordCandidate, legacyPassword)
     : false;
+}
+
+export async function setInitialAdminPassword(password: string, setupToken: string): Promise<boolean> {
+  const configuredToken = process.env.TESTFLIGHT_ADMIN_SETUP_TOKEN;
+  if (!configuredToken || !setupToken) return false;
+  if (!(await constantTimeStringCompare(setupToken, configuredToken))) return false;
+  if (await isTestFlightAdminConfigured()) return false;
+
+  const passwordHash = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(password));
+  return createTestFlightAdminPasswordHash(bufferToHex(new Uint8Array(passwordHash)));
 }
 
 async function getHmacKey(secret: string): Promise<CryptoKey> {
@@ -145,7 +172,7 @@ export async function createAdminSessionToken(
   userId = ADMIN_USER_ID,
   durationSeconds = SESSION_MAX_AGE_SECONDS
 ): Promise<string | null> {
-  const secret = getAdminSecret();
+  const secret = await getAdminSecret();
   if (!secret) return null;
 
   const now = Math.floor(Date.now() / 1000);
@@ -163,7 +190,7 @@ export async function verifyAdminSessionToken(token: string | null | undefined):
   valid: boolean;
   userId?: string;
 }> {
-  const secret = getAdminSecret();
+  const secret = await getAdminSecret();
   if (!token || !secret) return { valid: false };
 
   const parts = token.split(".");
