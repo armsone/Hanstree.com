@@ -97,13 +97,16 @@ test("keeps every app detail hero focused on one clear entry path and a represen
   assert.match(nasfinder, /여러 저장공간을 한곳에서/);
 });
 
-test("places the admin link after GitHub in the header and keeps the maker name as plain text", async () => {
+test("renders the requested home navigation and keeps the maker name as plain text", async () => {
   const response = await render();
   const html = await response.text();
 
   const nav = html.match(/<nav aria-label="주요 메뉴">[\s\S]*?<\/nav>/)?.[0] ?? "";
   assert.ok(nav, "missing main navigation");
-  assert.match(nav, /href="https:\/\/github\.com\/armsone"[^>]*>GitHub[\s\S]*?<\/a>\s*<a [^>]*href="\/admin\/testflight"[^>]*>관리자<\/a>/);
+  assert.match(nav, />홈<\/a>[\s\S]*?>앱<\/a>[\s\S]*?>다운<\/a>[\s\S]*?>기록<\/a>[\s\S]*?>깃허브[\s\S]*?<\/a>\s*<a [^>]*href="\/admin\/testflight"[^>]*>관리자<\/a>/);
+  assert.match(nav, /href="\/#downloads"[^>]*>다운<\/a>/);
+  assert.match(nav, /href="https:\/\/github\.com\/armsone"[^>]*>깃허브/);
+  assert.doesNotMatch(nav, />소통<\/a>/);
   assert.match(nav, /<a [^>]*aria-label="관리자 로그인"[^>]*>관리자<\/a>/);
   assert.equal((nav.match(/href="\/admin\/testflight"/g) ?? []).length, 1);
 
@@ -111,6 +114,22 @@ test("places the admin link after GitHub in the header and keeps the maker name 
   assert.ok(footer, "missing site footer");
   assert.match(footer, /<p>한병기 · 바이브 코더가 만드는 앱과 웹 서비스를 소개합니다\.<\/p>/);
   assert.doesNotMatch(footer, /href="\/admin\/testflight"/);
+});
+
+test("collects verified external tester links between TestFlight and Android downloads", async () => {
+  const response = await render();
+  const html = await response.text();
+  const testflightIndex = html.indexOf('id="testflight"');
+  const inviteIndex = html.indexOf('id="downloads"');
+  const androidIndex = html.indexOf('id="android-releases"');
+  assert.ok(testflightIndex >= 0 && testflightIndex < inviteIndex && inviteIndex < androidIndex);
+
+  const section = html.slice(inviteIndex, androidIndex);
+  assert.match(section, /외부 테스터 참여/);
+  assert.equal((section.match(/class="testflight-invite-card/g) ?? []).length, 7);
+  assert.equal((section.match(/class="app-icon/g) ?? []).length, 7);
+  assert.equal((section.match(/공개 링크 준비 중/g) ?? []).length, 7);
+  assert.doesNotMatch(section, /href="https:\/\/testflight\.apple\.com\/join\//);
 });
 
 test("renders the privacy-safe Minecraft Bedrock home server guide", async () => {

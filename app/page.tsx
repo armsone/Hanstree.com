@@ -6,10 +6,41 @@ import { AndroidReleaseTracker } from "./components/AndroidReleaseTracker";
 import { ContactReveal } from "./components/ContactReveal";
 import { SiteCounter } from "./components/SiteCounter";
 import { TestFlightTracker } from "./components/TestFlightTracker";
-import { apps } from "./data";
+import { apps, findApp } from "./data";
 import { testFlightBuilds } from "./testflight";
 
 const principleVisuals: AdvantageVariant[] = ["compass", "timeline-dots", "devices-pair"];
+
+function verifiedTestFlightInviteUrl(inviteUrl: string | null) {
+  return inviteUrl?.startsWith("https://testflight.apple.com/join/") ? inviteUrl : null;
+}
+
+function TestFlightInviteLinks() {
+  return (
+    <div className="testflight-invite-grid">
+      {testFlightBuilds.map((build) => {
+        const app = findApp(build.slug);
+        const inviteUrl = verifiedTestFlightInviteUrl(build.inviteUrl);
+        if (!app) return null;
+
+        return (
+          <article className={`testflight-invite-card${inviteUrl ? " testflight-invite-card-ready" : ""}`} key={build.slug}>
+            <div className="testflight-invite-head">
+              <AppIcon app={app} />
+              <div><p>PUBLIC BETA</p><h3>{build.appName}</h3></div>
+            </div>
+            <p className="testflight-invite-copy">{inviteUrl ? "신청서 없이 TestFlight에서 바로 참여할 수 있습니다." : "외부 테스트가 열리면 이 자리에서 바로 참여할 수 있습니다."}</p>
+            {inviteUrl ? (
+              <a className="testflight-invite-action" href={inviteUrl}>외부 테스터로 참여 <span aria-hidden="true">↗</span></a>
+            ) : (
+              <span className="testflight-invite-pending"><i aria-hidden="true" />공개 링크 준비 중</span>
+            )}
+          </article>
+        );
+      })}
+    </div>
+  );
+}
 
 export default function Home() {
   const productCount = 2 + apps.reduce(
@@ -184,6 +215,16 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="testflight-invite-section" id="downloads">
+        <div className="shell">
+          <div className="section-heading reveal">
+            <div><p className="eyebrow">PUBLIC BETA LINKS</p><h2 className="section-brand-title"><img src="/brands/testflight.jpg" alt="" aria-hidden="true" /><span>외부 테스터 참여</span></h2></div>
+            <p>앱별 공개 TestFlight 링크를 한곳에 모았습니다. 준비된 앱은 신청서 없이 바로 참여할 수 있습니다.</p>
+          </div>
+          <TestFlightInviteLinks />
+        </div>
+      </section>
+
       <section className="android-release-section" id="android-releases">
         <div className="shell">
           <div className="section-heading reveal">
@@ -268,10 +309,10 @@ export function SiteHeader() {
           <a href="/">홈</a>
           {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
           <a href="/#apps">앱</a>
-          <a href="/insights">기록</a>
           {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-          <a href="/#contact">소통</a>
-          <a href="https://github.com/armsone">GitHub <span aria-hidden="true">↗</span></a>
+          <a href="/#downloads">다운</a>
+          <a href="/insights">기록</a>
+          <a href="https://github.com/armsone">깃허브 <span aria-hidden="true">↗</span></a>
           <Link href="/admin/testflight" aria-label="관리자 로그인">관리자</Link>
         </nav>
       </div>
