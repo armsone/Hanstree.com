@@ -1,12 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import type { Platform } from "../data";
 
 type Target = { href: string; label: string };
 
 const SAFE_FALLBACK: Target = { href: "#download", label: "이 기기의 설치 방법 보기" };
+const subscribeToBrowser = () => () => {};
+const getBrowserSnapshot = () => true;
+const getServerSnapshot = () => false;
 
 function findByName(platforms: Platform[], test: RegExp) {
   return platforms.find((platform) => platform.url && test.test(platform.name));
@@ -38,11 +41,8 @@ function detectTarget(platforms: Platform[]): Target {
 }
 
 export function AppDownloadCta({ platforms, className }: { platforms: Platform[]; className: string }) {
-  const [target, setTarget] = useState<Target>(SAFE_FALLBACK);
-
-  useEffect(() => {
-    setTarget(detectTarget(platforms));
-  }, [platforms]);
+  const isBrowser = useSyncExternalStore(subscribeToBrowser, getBrowserSnapshot, getServerSnapshot);
+  const target = isBrowser ? detectTarget(platforms) : SAFE_FALLBACK;
 
   return (
     <Link className={className} href={target.href}>
