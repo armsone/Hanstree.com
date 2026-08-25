@@ -120,15 +120,15 @@ export const apps: AppData[] = [
       {
         name: "macOS",
         status: "공개",
-        detail: "2.0.0 (202608230737) · macOS 14+ · Apple Silicon·Intel · Apple 공증 완료",
+        detail: "2.1.0 (202608251045) · macOS 14+ · Apple Silicon·Intel · Apple 공증 완료",
         url: releaseDownloadPath("NasFinder-Super-Thumbnail"),
         downloadLabel: "Mac용 DMG 바로 받기",
-        checksum: "c8b825c09b9b7800d8733951ae8b94be0c1553daf85455a0f77a3a2f74527691",
+        checksum: "860927ada1d729dcab80a80d46ea98041767df460a649cef9d6e5f20e838c426",
       },
     ],
     features: [
       { title: "대량 미디어 재귀 검색", body: "선택한 폴더 아래의 사진과 영상을 찾아 큰 NAS 미디어 보관함도 한 번에 확인합니다." },
-      { title: "폴더도 9칸 모아보기", body: "파일과 하위 폴더를 최대 9개 골라 정사각형 모아보기로 만들고, 살색 비율이 높으면 2pt 블러를 적용합니다. 2.1.0 공개판은 Apple 공증 준비 중입니다." },
+      { title: "폴더도 9칸 모아보기", body: "파일과 하위 폴더를 최대 9개 골라 정사각형 모아보기로 만들고, 살색 비율이 높으면 2pt 블러를 적용합니다." },
       { title: "NasFinder와 바로 호환", body: "iPhone·iPad·Mac·Android NasFinder가 읽을 수 있는 JPEG 이름과 .NasFinder-Vault 저장 구조를 사용합니다." },
       { title: "중단 후 이어서", body: "이미 만든 썸네일은 건너뛰고 다시 검사하므로 긴 작업을 멈췄다가 안전하게 이어갈 수 있습니다." },
       { title: "진행 상태를 한눈에", body: "전체 파일 수, 완료 수, 예상 남은 시간, 확인한 원본 용량과 생성된 썸네일 용량을 표시합니다." },
@@ -144,8 +144,7 @@ export const apps: AppData[] = [
     progress: [
       { state: "done", title: "Mac 전용 네이티브 앱", body: "Finder 폴더 선택, 재귀 검색, 생성·일시정지·중단과 이어하기 구현" },
       { state: "done", title: "대규모 폴더 검증", body: "16,540개 미디어·1.57TB 폴더의 검색, 진행률과 용량 표시 검증" },
-      { state: "done", title: "2.0.0 공개 배포", body: "build 202608230737의 Developer ID 서명·Apple 공증 Universal DMG와 자동 업데이트 공개" },
-      { state: "active", title: "2.1.0 공증 준비", body: "build 202608251045 폴더 Super Thumbnail Universal 앱 빌드·서명·Mac 설치 완료 · 공개 DMG 공증 대기" },
+      { state: "done", title: "2.1.0 공개 배포", body: "build 202608251045의 폴더 Super Thumbnail Universal DMG를 Developer ID 서명·Apple 공증·Gatekeeper 검증 후 공개하고 자동 업데이트 반영" },
       { state: "active", title: "다양한 NAS 환경 확인", body: "Finder 연결 방식과 파일 권한에 따른 예외를 계속 점검 중" },
     ],
     github: ["https://github.com/armsone/NasFinder"],
