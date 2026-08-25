@@ -32,7 +32,7 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     label: "NasFinder Android",
     repo: "NasFinder-Android",
     assetPattern: /\.apk$/i,
-    fallbackUrl: "https://github.com/armsone/NasFinder-Android/releases/download/android-v340486/NasFinder-Android-v340486.apk",
+    fallbackUrl: "https://github.com/armsone/NasFinder-Android/releases/download/android-v2.1.0/NasFinder-Android-2.1.0.apk",
   },
   "NasFinder-Super-Thumbnail": {
     label: "Super Thumbnail",
@@ -44,7 +44,7 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     label: "HanClip Android",
     repo: "HanClip-Android",
     assetPattern: /\.apk$/i,
-    fallbackUrl: "https://github.com/armsone/HanClip-Android/releases/download/android-v340033/app-releaseQa.apk",
+    fallbackUrl: "https://github.com/armsone/HanClip-Android/releases/download/android-v2.1.0/HanClip-Android-2.1.0.apk",
   },
   "S.tand-macOS": {
     label: "S.tand Mac",
@@ -56,7 +56,7 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     label: "S.tand Android",
     repo: "S.tand-Android",
     assetPattern: /\.apk$/i,
-    fallbackUrl: "https://github.com/armsone/S.tand-Android/releases/download/android-v340467/S.tand-Android-v340467.apk",
+    fallbackUrl: "https://github.com/armsone/S.tand-Android/releases/download/android-v2.1.0/S.tand-Android-2.1.0.apk",
   },
   CCMB: {
     label: "CCMB Mac",
@@ -85,26 +85,26 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
   "WhattoEat-Android": {
     label: "오늘 뭐 먹지?? Android",
     repo: "WhattoEat-Android",
-    assetPattern: /^WhattoEat-Android-v\d+\.apk$/i,
-    fallbackUrl: "https://github.com/armsone/WhattoEat-Android/releases/download/android-v339619/WhattoEat-Android-v339619.apk",
+    assetPattern: /^WhattoEat-Android-\d+\.\d+\.\d+\.apk$/i,
+    fallbackUrl: "https://github.com/armsone/WhattoEat-Android/releases/download/android-v0.3.6/WhattoEat-Android-0.3.6.apk",
   },
   "button-Android": {
     label: "버튼 Android",
     repo: "button-Android",
     assetPattern: /\.apk$/i,
-    fallbackUrl: "https://github.com/armsone/button-Android/releases/download/v2.0.0/Button-Android-v2.0.0-build337417.apk",
+    fallbackUrl: "https://github.com/armsone/button-Android/releases/download/android-v2.0.0/Button-Android-2.0.0.apk",
   },
   "StarManager-Android": {
     label: "스타매니저 Android",
     repo: "StarManager-Android",
     assetPattern: /\.apk$/i,
-    fallbackUrl: "https://github.com/armsone/StarManager-Android/releases/download/v2.0.0/StarManager-Android-v2.0.0.apk",
+    fallbackUrl: "https://github.com/armsone/StarManager-Android/releases/download/android-v2.0.0/StarManager-Android-2.0.0.apk",
   },
   "HtOMS-BK": {
     label: "HtOMS Brief Android",
     repo: "HtOMS-BK",
     assetPattern: /^HtOMS-Brief-Android-.*\.apk$/i,
-    fallbackUrl: "https://github.com/armsone/HtOMS-BK/releases/download/android-v340515/HtOMS-Brief-Android-2.0.0-340515.apk",
+    fallbackUrl: "https://github.com/armsone/HtOMS-BK/releases/download/android-v2.0.0/HtOMS-Brief-Android-2.0.0.apk",
   },
 };
 

@@ -51,7 +51,7 @@ export const apps: AppData[] = [
       {
         name: "Android",
         status: "공개",
-        detail: "2.1.0 · build 202608251045 · APK code 340486 · Android 8.0+",
+        detail: "2.1.0 · 빌드 202608251045 · 내부 코드 340486 · Android 8.0+",
         url: releaseDownloadPath("NasFinder-Android"),
         downloadLabel: "Android APK 바로 받기",
         checksum: "e27b39a18499471c0f4b9137fa642ea4c8a847baa0600f6ff48a57ce56737feb",
@@ -86,7 +86,7 @@ export const apps: AppData[] = [
       { state: "done", title: "iPhone·iPad·Mac 지원", body: "iPhone과 iPad 앱 완성, 동일 앱의 Apple Silicon Mac 설치와 실행 검증" },
       { state: "done", title: "Live Photo·Motion Photo 전송", body: "iPhone과 Android를 QR로 연결해 사진·영상·움직이는 사진의 원본 보존과 교차 변환 구현" },
       { state: "done", title: "iPhone·iPad 2.1.0 업로드", body: "build 202608251045 TestFlight 처리 완료" },
-      { state: "done", title: "Android 2.1.0 공개", body: "build 202608251045, code 340486의 서명 APK를 GitHub Releases에 공개" },
+      { state: "done", title: "Android 2.1.0 공개", body: "제품 2.1.0 · 빌드 202608251045 · 내부 코드 340486의 서명 APK를 GitHub Releases에 공개" },
       { state: "done", title: "폴더 Super Thumbnail 동기화", body: "Apple·Android·Mac 생성기의 폴더 모아보기 이름·정렬·9칸 구성·살색 2pt 블러 계약 일치" },
     ],
     screenshots: [
@@ -170,7 +170,7 @@ export const apps: AppData[] = [
       {
         name: "Android",
         status: "공개",
-        detail: "2.1.0 · build 202608250313 · APK code 340033 · Android 8.0+",
+        detail: "2.1.0 · 빌드 202608250313 · 내부 코드 340033 · Android 8.0+",
         url: releaseDownloadPath("HanClip-Android"),
         downloadLabel: "Android APK 바로 받기",
         checksum: "4ab4a27bcf2b0a7e0e435c6941d536ccbfee98405bdf29509fc2c08444a587c3",
@@ -198,7 +198,7 @@ export const apps: AppData[] = [
     progress: [
       { state: "done", title: "iOS 핵심 제작 흐름", body: "선택, 편집, 렌더링, 시사회와 저장 흐름 구현" },
       { state: "done", title: "iOS·iPadOS 2.1.0 업로드", body: "build 202608250313 TestFlight 처리 완료" },
-      { state: "done", title: "Android 2.1.0 공개", body: "build 202608250313, code 340033의 서명 APK를 GitHub Releases에 공개" },
+      { state: "done", title: "Android 2.1.0 공개", body: "제품 2.1.0 · 빌드 202608250313 · 내부 코드 340033의 서명 APK를 GitHub Releases에 공개" },
       { state: "done", title: "플랫폼 기술 계약 동기화", body: "기능·알고리즘·상태·오류·취소·권한·제스처·접근성 계약을 Apple과 Android에 대조 반영" },
       { state: "active", title: "Android AiShot 현장 검증", body: "실제 퍼팅과 다양한 스윙 환경에서 놓침과 오촬영을 계속 점검 중" },
       { state: "done", title: "Apple Silicon Mac 지원", body: "iPhone·iPad와 같은 빌드를 Mac의 ‘iPhone 및 iPad용 앱’으로 실행하도록 지원" },
@@ -247,7 +247,7 @@ export const apps: AppData[] = [
       {
         name: "Android · Google TV",
         status: "공개",
-        detail: "2.1.0 · build 202608251027 · APK code 340467 · Android 8.0+",
+        detail: "2.1.0 · 빌드 202608251027 · 내부 코드 340467 · Android 8.0+",
         url: releaseDownloadPath("S.tand-Android"),
         downloadLabel: "Android APK 바로 받기",
         checksum: "300c992301eae2b0fb104384751a2a6f49bb58597960273af9fcb4087ffa67e4",
@@ -280,7 +280,7 @@ export const apps: AppData[] = [
     progress: [
       { state: "done", title: "시계와 수면 케어", body: "오브제 화면, 반응형 조명과 로컬 수면 기록 구현" },
       { state: "done", title: "iOS·iPadOS 2.1.0 업로드", body: "내부 build 340467, 표시 build 202608251027 TestFlight 처리 완료" },
-      { state: "done", title: "Android·Google TV 2.1.0 공개", body: "build 202608251027, code 340467의 검증 APK와 D-pad 전용 TV 화면을 GitHub Releases에 공개" },
+      { state: "done", title: "Android·Google TV 2.1.0 공개", body: "제품 2.1.0 · 빌드 202608251027 · 내부 코드 340467의 검증 APK와 D-pad 전용 TV 화면을 GitHub Releases에 공개" },
       { state: "done", title: "보이소 무전기", body: "주변 소리 없이 버튼으로 연결된 화면을 부르는 무전기 역할과 3초 연타 방지·고시인성 알림 적용" },
       { state: "done", title: "Mac 2.1.0 공개", body: "Developer ID 서명, Apple 공증과 Gatekeeper 검증을 마친 build 202608251027 DMG와 자동 업데이트 공개" },
       { state: "done", title: "휴대전화 가로 음악 배치", body: "iPhone 대표 가로 배치를 Android에도 적용하고 음악 스트립과 오른쪽 고정 제어 패널이 겹치지 않게 정리" },
@@ -500,7 +500,7 @@ export const apps: AppData[] = [
       {
         name: "Android · Google TV",
         status: "공개",
-        detail: "2.0.0 · build 202608251115 · APK code 340515 · Android 8.0+",
+        detail: "2.0.0 · 빌드 202608251115 · 내부 코드 340515 · Android 8.0+",
         url: releaseDownloadPath("HtOMS-BK"),
         downloadLabel: "Android용 APK 다운로드",
         checksum: "c9bbcf513ed4edef9b451f7d9432ad76b9574e31307341312498a2f33dddf1b1",
@@ -527,7 +527,7 @@ export const apps: AppData[] = [
       { state: "done", title: "자동·수동 갱신", body: "10분 역타이머와 터치 즉시 갱신 구현" },
       { state: "done", title: "iPhone·iPad 검증", body: "공통 빌드와 실제 iPhone 설치·실행 검증" },
       { state: "done", title: "Android 대응 앱 구현", body: "2.0.0 휴대전화·태블릿·Google TV용 Compose 앱과 Glance 위젯의 단위 테스트·공개용 QA 빌드·린트 검증" },
-      { state: "done", title: "Android 2.0.0 공개", body: "build 202608251115, code 340515의 설치·실행 검증 APK와 SHA-256 체크섬을 GitHub Releases에 공개" },
+      { state: "done", title: "Android 2.0.0 공개", body: "제품 2.0.0 · 빌드 202608251115 · 내부 코드 340515의 설치·실행 검증 APK와 SHA-256 체크섬을 GitHub Releases에 공개" },
       { state: "next", title: "Android 화면 매치업", body: "태블릿과 Google TV를 포함한 대표 기기 화면을 iPhone·iPad 기준과 비교해 세부 배치를 조정" },
     ],
     screenshots: [
@@ -633,7 +633,7 @@ export const apps: AppData[] = [
       {
         name: "Android",
         status: "공개",
-        detail: "2.0.0 · build 202608230737 · APK code 337417 · Android 8.0+",
+        detail: "2.0.0 · 빌드 202608230737 · 내부 코드 337417 · Android 8.0+",
         url: releaseDownloadPath("button-Android"),
         downloadLabel: "Android APK 바로 받기",
         checksum: "9b719f737aac49c6ac28ef1d5f1dae87304cfb64bfd845da4a189be8d5434e2a",
@@ -666,7 +666,7 @@ export const apps: AppData[] = [
       { state: "done", title: "여러 사람 선택과 화면 유지", body: "한 명 이상을 골라 보내는 대상 전송과 앱이 앞에 있는 동안 화면 꺼짐 방지 구현" },
       { state: "done", title: "밝고 직관적인 가족 화면", body: "우리 공간을 먼저 보고 민트·노랑·로즈의 큰 버튼을 누르도록 밝고 따뜻한 BK 스타일 적용" },
       { state: "done", title: "iPhone 2.0.0 업로드", body: "build 202608230737 TestFlight 처리 완료" },
-      { state: "done", title: "Android 2.0.0 공개", body: "build 202608230737, code 337417의 기존 설치 호환 서명 APK와 체크섬을 GitHub Releases에 공개" },
+      { state: "done", title: "Android 2.0.0 공개", body: "제품 2.0.0 · 빌드 202608230737 · 내부 코드 337417의 기존 설치 호환 서명 APK와 체크섬을 GitHub Releases에 공개" },
       { state: "done", title: "NAS 여러 공간 중계 반영", body: "운영 서버를 최신 여러 공간 서버로 교체하고 원거리 가족 목록 경로까지 확인" },
       { state: "done", title: "Android 원격 수신", body: "FCM 등록·백그라운드 대상 검증·원본 띵동 소리·호출 기록까지 NAS 실전 전달 확인" },
     ],
@@ -701,7 +701,7 @@ export const apps: AppData[] = [
       {
         name: "Android",
         status: "공개",
-        detail: "2.0.0 · build 202608230737 · APK code 337417 · Android 8.0+",
+        detail: "2.0.0 · 빌드 202608230737 · 내부 코드 337417 · Android 8.0+",
         url: releaseDownloadPath("StarManager-Android"),
         downloadLabel: "Android APK 바로 받기",
         checksum: "9a5cb0653e03cefe48d814603f38f1c18a687bcacefeeacbbf5d0c24eb9856ed",
@@ -729,7 +729,7 @@ export const apps: AppData[] = [
     progress: [
       { state: "done", title: "iPhone·iPad 원본 분석", body: "실제로 도달 가능한 만들기·내 설정 화면과 상태·문구·동작을 소스 기준으로 정리" },
       { state: "done", title: "Android 구현과 실기기 검증", body: "휴대전화·태블릿 반응형 화면, 생성·검증·미디어·설정 흐름 구현과 테스트 완료" },
-      { state: "done", title: "Android 2.0.0 공개", body: "build 202608230737, code 337417의 서명 APK를 GitHub Releases에 공개" },
+      { state: "done", title: "Android 2.0.0 공개", body: "제품 2.0.0 · 빌드 202608230737 · 내부 코드 337417의 서명 APK를 GitHub Releases에 공개" },
       { state: "done", title: "iPhone 실기기 설치", body: "대표 iPhone에 0.1.0 (1) 설치와 실행 확인" },
       { state: "done", title: "iOS·iPadOS 2.0.0 업로드", body: "build 202608230737 TestFlight 처리 완료" },
       { state: "next", title: "게시 흐름 다듬기", body: "실제 공유 앱별 게시 결과와 사용자 피드백을 바탕으로 다음 개선 항목을 정리" },
@@ -825,7 +825,7 @@ export const apps: AppData[] = [
     platforms: [
       { name: "iPhone · iPad", status: "TestFlight", detail: "0.3.0 (202608241540) · iOS·iPadOS 17+", availabilityNote: "TestFlight 업로드 완료 · Apple 처리 중" },
       { name: "Mac", status: "공개", detail: "0.3.0 (202608241540) · macOS 13+ · Universal", url: releaseDownloadPath("WhattoEat"), downloadLabel: "Mac용 DMG 다운로드", checksum: "172999f31b95307ba31084575ca8646c3a2a78660632d73aa64c63b0796d5ce9", availabilityNote: "공증된 DMG 공개" },
-      { name: "Android · Google TV", status: "공개", detail: "0.3.6 (202608242019) · Android 8.0+", url: releaseDownloadPath("WhattoEat-Android"), downloadLabel: "Android용 APK 다운로드", checksum: "0413bc0a3b7c71f493ad97d5cad02b73f674beb0950ef2b8a0a95de1f461d0a9", availabilityNote: "SM-F968N Android 16 교체 설치·실행 검증 · 태블릿·TV 리모컨 검증 전" },
+      { name: "Android · Google TV", status: "공개", detail: "0.3.6 · 빌드 202608242019 · 내부 코드 339619 · Android 8.0+", url: releaseDownloadPath("WhattoEat-Android"), downloadLabel: "Android용 APK 다운로드", checksum: "0413bc0a3b7c71f493ad97d5cad02b73f674beb0950ef2b8a0a95de1f461d0a9", availabilityNote: "SM-F968N Android 16 교체 설치·실행 검증 · 태블릿·TV 리모컨 검증 전" },
     ],
     features: [
       { title: "가까운 13곳에서 한 끼 고르기", body: "현 위치 또는 직접 고른 지역에서 가까운 음식점 13곳을 추린 뒤, 오늘의 한 끼와 함께 볼 맛집을 사진이 시원하게 보이는 2열 목록으로 보여줍니다." },
@@ -851,7 +851,7 @@ export const apps: AppData[] = [
       { state: "done", title: "0.2.5 릴리스", body: "build 202608241232 iOS·iPadOS TestFlight 내부 테스트 준비 완료, Mac용 DMG 공개" },
       { state: "done", title: "0.2.6 전화 연결 릴리스", body: "build 202608241410 iOS·iPadOS TestFlight 업로드 완료 · Apple 처리 중, 공증된 Mac용 DMG 공개" },
       { state: "done", title: "0.3.0 가죽 화면 릴리스", body: "build 202608241540 iOS·iPadOS TestFlight 업로드 완료 · Apple 처리 중, 새 가죽 화면과 공증된 Mac용 DMG 공개" },
-      { state: "done", title: "Android 0.3.6 공개", body: "build 202608242019 APK를 별도 공개 저장소에 게시하고 Android 16 휴대전화에서 데이터 유지 교체 설치·실행을 검증했습니다. Kakao Local·TourAPI·Openverse 사진 계약과 실제 원격 사진 정보 표시도 확인했습니다." },
+      { state: "done", title: "Android 0.3.6 공개", body: "제품 0.3.6 · 빌드 202608242019 · 내부 코드 339619 APK를 별도 공개 저장소에 게시하고 Android 16 휴대전화에서 데이터 유지 교체 설치·실행을 검증했습니다. Kakao Local·TourAPI·Openverse 사진 계약과 실제 원격 사진 정보 표시도 확인했습니다." },
       { state: "active", title: "태블릿·TV·접근성 후속 검증", body: "태블릿과 Google TV 리모컨, TalkBack 실제 읽기 순서, 밀기 후 재실행 저장과 지도 오류 분기를 실제 기기에서 추가 확인할 예정입니다." },
     ],
     screenshots: [

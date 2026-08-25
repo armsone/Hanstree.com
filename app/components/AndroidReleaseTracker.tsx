@@ -10,6 +10,7 @@ const ANDROID_APP_SLUGS: Record<string, string> = {
   "NasFinder-Android": "nasfinder",
   "HanClip-Android": "hanclip",
   "S.tand-Android": "stand",
+  "HtOMS-BK": "htoms-brief",
   "button-Android": "button",
   "StarManager-Android": "starmanager",
   "WhattoEat-Android": "whattoeat",
@@ -30,11 +31,15 @@ type Release = {
 
 type ReleaseResponse = { checkedAt: string; releases: Release[] };
 
-function productVersionFor(release: Release, app: ReturnType<typeof findApp>) {
+function releaseIdentityFor(release: Release, app: ReturnType<typeof findApp>) {
   const androidDetail = app?.platforms.find((platform) => platform.name.includes("Android"))?.detail;
-  return androidDetail?.match(/\b\d+\.\d+\.\d+\b/)?.[0]
-    || release.releaseName?.match(/\b\d+\.\d+\.\d+\b/)?.[0]
-    || "버전 확인 중";
+  return {
+    productVersion: androidDetail?.match(/\b\d+\.\d+\.\d+\b/)?.[0]
+      || release.releaseName?.match(/\b\d+\.\d+\.\d+\b/)?.[0]
+      || "버전 확인 중",
+    buildNumber: androidDetail?.match(/빌드\s+(\d{12})/)?.[1] || "확인 중",
+    internalCode: androidDetail?.match(/내부 코드\s+(\d+)/)?.[1] || "확인 중",
+  };
 }
 
 function formatDate(value?: string | null) {
@@ -69,6 +74,7 @@ export function AndroidReleaseTracker() {
     { appName: "나스파인더", repo: "NasFinder-Android", available: false },
     { appName: "한클립", repo: "HanClip-Android", available: false },
     { appName: "S.tand", repo: "S.tand-Android", available: false },
+    { appName: "HtOMS 브리프", repo: "HtOMS-BK", available: false },
     { appName: "버튼", repo: "button-Android", available: false },
     { appName: "스타매니저", repo: "StarManager-Android", available: false },
     { appName: "오늘 뭐 먹지?", repo: "WhattoEat-Android", available: false },
@@ -80,12 +86,14 @@ export function AndroidReleaseTracker() {
       <div className="android-release-grid" aria-live="polite">
         {releases.map((release) => {
           const app = findApp(ANDROID_APP_SLUGS[release.repo]);
-          const productVersion = productVersionFor(release, app);
+          const { productVersion, buildNumber, internalCode } = releaseIdentityFor(release, app);
           return <article className="android-release-card" key={release.repo}>
             <div className="android-release-head"><span className="android-app-mark">{app?.icon && <Image className="release-app-icon" src={app.icon} alt="" width={56} height={56} unoptimized />}<span className="android-platform-badge"><img src="/brands/android.svg" alt="" aria-hidden="true" /></span></span><div><p>{release.repo}</p><h3>{release.appName} Android</h3></div></div>
             {release.available ? <>
               <div className="android-version"><strong>{productVersion}</strong><span>최신 공개판</span></div>
               <dl>
+                <div><dt>빌드</dt><dd>{buildNumber}</dd></div>
+                <div><dt>내부 코드</dt><dd>{internalCode}</dd></div>
                 <div><dt>게시</dt><dd>{formatDate(release.publishedAt)}</dd></div>
                 <div><dt>APK</dt><dd>{release.asset?.name || "릴리스 페이지에서 확인"}</dd></div>
                 <div><dt>크기</dt><dd>{formatBytes(release.asset?.size)}</dd></div>

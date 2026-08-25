@@ -119,7 +119,7 @@ test("renders the Button family calling app and release", async () => {
   assert.match(html, /2\.0\.0 \(202608230737\)/);
   assert.match(html, /release-download\?app=button-Android/);
   assert.match(html, /9b719f737aac49c6ac28ef1d5f1dae87304cfb64bfd845da4a189be8d5434e2a/);
-  assert.match(html, /APK code 337417/);
+  assert.match(html, /내부 코드 337417/);
   assert.match(html, /한 명·여러 명 또는 모두에게/);
   assert.match(html, /앱을 보는 동안 화면 유지/);
   assert.match(html, /톡톡에서 사이렌까지/);
@@ -437,13 +437,13 @@ test("renders current app release and TestFlight information", async () => {
   assert.match(home, /337417/);
   assert.match(home, /스타메니저/);
   assert.match(home, /2026년 8월 23일/);
-  assert.match(nasFinder, /APK code 340486/);
+  assert.match(nasFinder, /내부 코드 340486/);
   assert.match(nasFinder, /e27b39a18499471c0f4b9137fa642ea4c8a847baa0600f6ff48a57ce56737feb/);
   assert.match(nasFinder, /Live Photos &amp; Motion Photos/);
-  assert.match(hanClip, /APK code 340033/);
+  assert.match(hanClip, /내부 코드 340033/);
   assert.match(hanClip, /4ab4a27bcf2b0a7e0e435c6941d536ccbfee98405bdf29509fc2c08444a587c3/);
   assert.match(hanClip, /오디오 트랙이 없는 영상은 화면 움직임/);
-  assert.match(stand, /APK code 340467/);
+  assert.match(stand, /내부 코드 340467/);
   assert.match(stand, /300c992301eae2b0fb104384751a2a6f49bb58597960273af9fcb4087ffa67e4/);
   assert.doesNotMatch(home + nasFinder + hanClip + stand, /첫 공개판 준비 중|APK v2\b|APK v3\b|APK v544\b|APK v548\b|APK v52\b|APK v53\b/);
   assert.doesNotMatch(hanClip, /android-editor-finish-pets\.png/);
@@ -481,7 +481,7 @@ test("routes public download buttons through the allowlisted release redirect", 
   assert.equal(standMac.status, 302);
   assert.match(standMac.headers.get("location") ?? "", /^https:\/\/github\.com\/armsone\/S\.tand\/releases\//);
   assert.equal(htoms.status, 302);
-  assert.match(htoms.headers.get("location") ?? "", /^https:\/\/github\.com\/armsone\/HtOMS-BK\/releases\/download\/android-v340515\//);
+  assert.match(htoms.headers.get("location") ?? "", /^https:\/\/github\.com\/armsone\/HtOMS-BK\/releases\/download\/android-v2\.0\.0\/HtOMS-Brief-Android-2\.0\.0\.apk$/);
 });
 
 test("refuses bot and direct download requests before redirecting", async () => {
