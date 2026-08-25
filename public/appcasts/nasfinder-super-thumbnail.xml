@@ -3,6 +3,15 @@
     <channel>
         <title>NasFinder Super Thumbnail</title>
         <item>
+            <title>2.1.2</title>
+            <pubDate>Tue, 25 Aug 2026 15:53:41 +0900</pubDate>
+            <link>https://github.com/armsone/NasFinder/releases/tag/mac-super-thumbnail-v2.1.2</link>
+            <sparkle:version>202608251551</sparkle:version>
+            <sparkle:shortVersionString>2.1.2</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/armsone/NasFinder/releases/download/mac-super-thumbnail-v2.1.2/NasFinder-Super-Thumbnail-2.1.2.dmg" length="3202734" type="application/octet-stream" sparkle:edSignature="MOBuQnMj2Z2LERs/lwlxh3xYodyyXy+4I4QFJ67LrAQdxIoxsOIrMDQBNq2xcMOUzwPl3jyTjhPLY49GpKfoAQ=="/>
+        </item>
+        <item>
             <title>2.1.1</title>
             <pubDate>Tue, 25 Aug 2026 13:06:58 +0900</pubDate>
             <link>https://github.com/armsone/NasFinder/releases/tag/mac-super-thumbnail-v2.1.1</link>

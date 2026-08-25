@@ -180,14 +180,14 @@ test("renders Super Thumbnail as an independent Mac product", async () => {
   assert.match(detail, /큰 미디어 폴더의 미리보기를/);
   assert.match(detail, /release-download\?app=NasFinder-Super-Thumbnail/);
   assert.match(detail, /16,540/);
-  assert.match(detail, /2\.1\.1 \(202608251305\)/);
+  assert.match(detail, /2\.1\.2 \(202608251551\)/);
   assert.match(detail, /폴더도 9칸 모아보기/);
-  assert.match(detail, /2001bc1f65066316a5455a0c3c48564ac401afec0a050cb2c1d9a1e94e296871/);
+  assert.match(detail, /5649c0b6e787da779799046929cabf7aa10727fbefee30fe3f70dc7b9b81b3e7/);
   assert.match(detail, /만들어진 썸네일 바로 확인/);
   assert.match(detail, /원본은 그대로, 썸네일만 새로/);
   assert.match(detail, /새로 만든 항목이 가장 왼쪽/);
   assert.match(detail, /보관본을 찾을 때부터 삭제 완료 개수/);
-  assert.match(detail, /정리 진행과 미리보기 개선/);
+  assert.match(detail, /2\.1\.2 정리 진행과 미리보기 개선/);
   assert.match(detail, /2\.1\.1 공개 배포/);
   assert.doesNotMatch(detail, /공증 준비|공증 대기/);
   assert.doesNotMatch(nasFinder, /release-download\?app=NasFinder-Super-Thumbnail/);
