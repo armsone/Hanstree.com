@@ -128,8 +128,8 @@ test("collects verified external tester links between TestFlight and Android dow
   assert.match(section, /외부 테스터 참여/);
   assert.equal((section.match(/class="testflight-invite-card/g) ?? []).length, 7);
   assert.equal((section.match(/class="app-icon/g) ?? []).length, 7);
-  assert.equal((section.match(/공개 링크 준비 중/g) ?? []).length, 7);
-  assert.doesNotMatch(section, /href="https:\/\/testflight\.apple\.com\/join\//);
+  assert.equal((section.match(/공개 링크 준비 중/g) ?? []).length, 6);
+  assert.match(section, /href="https:\/\/testflight\.apple\.com\/join\/3m3bhwJz"/);
 });
 
 test("renders the privacy-safe Minecraft Bedrock home server guide", async () => {
