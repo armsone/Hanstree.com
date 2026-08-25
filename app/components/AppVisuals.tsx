@@ -26,11 +26,13 @@ export function AppHeroArtwork({ app }: { app: AppData }) {
   );
 }
 
-export function AppArtwork({ app }: { app: AppData }) {
+export function AppArtwork({ app, mode = "spotlight" }: { app: AppData; mode?: "spotlight" | "system" }) {
   if (app.artwork === "intelligence") {
+    const isSystem = mode === "system";
+    const image = isSystem ? app.systemImage : app.spotlightImage;
     return (
-      <div className="artwork artwork-intelligence" aria-label="사용자를 중심으로 네 개의 관문과 정보의 길이 연결되는 한양의 현대적인 AI 도시">
-        <Image src={app.heroImage ?? "/apps/hanai/hanai-hero-v2.png"} alt="" width={1672} height={941} sizes="(max-width: 640px) 92vw, 720px" unoptimized />
+      <div className="artwork artwork-intelligence" aria-label={isSystem ? "인터넷과 기기, 클라우드와 사람을 잇는 네 관문과 한양의 개인정보 보호 경계" : "사진과 문서, 일정과 기억을 사용자 중심으로 정리하는 한양의 지식 아카이브"}>
+        <Image src={image ?? app.heroImage ?? "/apps/hanai/hanai-hero-v2.png"} alt="" width={1672} height={941} sizes="(max-width: 640px) 92vw, 720px" unoptimized />
         <span className="intelligence-aura" aria-hidden="true" />
       </div>
     );

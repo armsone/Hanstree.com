@@ -20,6 +20,8 @@ export type AppData = {
   theme: "violet" | "coral" | "amber" | "blue";
   icon?: string;
   heroImage?: string;
+  spotlightImage?: string;
+  systemImage?: string;
   artwork: "files" | "phones" | "clock" | "menubar" | "cleanup" | "trackpad" | "thumbnail" | "htoms" | "search" | "church" | "server" | "intelligence";
   platforms: Platform[];
   features: { title: string; body: string; icon?: string }[];
@@ -242,6 +244,8 @@ export const apps: AppData[] = [
     theme: "violet",
     icon: "/apps/hanai/icon.png",
     heroImage: "/apps/hanai/hanyang-city-hero-v3.png",
+    spotlightImage: "/apps/hanai/hanyang-memory-archive-v1.png",
+    systemImage: "/apps/hanai/hanyang-secure-gates-v1.png",
     artwork: "intelligence",
     platforms: [
       {

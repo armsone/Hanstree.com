@@ -89,6 +89,19 @@ test("presents HANYANG as a modern personal AI city without overstating future c
   assert.match(html, /다음에는 사용자가 허용한 정보의 기억과 정리/);
   assert.match(html, /현재 HanAI 식별자를 유지/);
   assert.match(html, /hanyang-city-hero-v3\.png/);
+  assert.match(html, /hanyang-memory-archive-v1\.png/);
+  assert.match(html, /hanyang-secure-gates-v1\.png/);
+  const hero = html.match(/<section class="app-hero shell">[\s\S]*?<\/section>/)?.[0] ?? "";
+  const spotlight = html.match(/<section class="product-promo"[\s\S]*?<\/section>/)?.[0] ?? "";
+  const screens = html.match(/<section class="screens-section"[\s\S]*?<\/section>/)?.[0] ?? "";
+  assert.match(hero, /hanyang-city-hero-v3\.png/);
+  assert.doesNotMatch(hero, /hanyang-memory-archive-v1|hanyang-secure-gates-v1/);
+  assert.match(spotlight, /hanyang-memory-archive-v1\.png/);
+  assert.doesNotMatch(spotlight, /hanyang-city-hero-v3|hanyang-secure-gates-v1/);
+  assert.match(screens, /hanyang-secure-gates-v1\.png/);
+  assert.doesNotMatch(screens, /hanyang-city-hero-v3|hanyang-memory-archive-v1/);
+  assert.match(html, /기억과 지식이 모이는 규장각/);
+  assert.match(html, /한양도성은 개인 데이터의 경계/);
 });
 
 test("keeps TestFlight, public beta, and Android cards on one responsive layout contract", async () => {

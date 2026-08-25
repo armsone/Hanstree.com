@@ -223,7 +223,7 @@ export default async function AppRoute({ params }: RouteProps) {
               return <figure className={`screen-${screen.layout ?? "phone"}`} key={screen.src}><div className="screenshot-media"><Image src={screen.src} alt="" width={dimensions.width} height={dimensions.height} sizes={screen.layout ? "(max-width: 640px) 92vw, 1080px" : "(max-width: 640px) 78vw, 360px"} unoptimized /></div><figcaption>{screen.alt}</figcaption></figure>;
             })}</div>
           ) : (
-            <div className="single-artwork reveal"><AppArtwork app={app} /><p>대표 화면 이미지는 현재 제품 상태에 맞춰 계속 보강합니다.</p></div>
+            <div className="single-artwork reveal"><AppArtwork app={app} mode="system" /><p>{app.slug === "hanai" ? "사대문은 외부 연결의 관문이 되고, 한양도성은 개인 데이터의 경계가 됩니다." : "대표 화면 이미지는 현재 제품 상태에 맞춰 계속 보강합니다."}</p></div>
           )}
         </div>
       </section>
@@ -299,7 +299,7 @@ function ProductSpotlight({ app }: { app: NonNullable<ReturnType<typeof findApp>
           <p>{app.summary}</p>
           <div className="product-promo-actions"><Link className="button product-promo-primary" href="#screens">실제 화면 보기 <span aria-hidden="true">↓</span></Link><Link className="button product-promo-secondary" href="#download">지금 만나는 방법 <span aria-hidden="true">→</span></Link></div>
         </div>
-        <div className="product-promo-image product-promo-artwork reveal"><AppArtwork app={app} /><div className="product-promo-image-label"><span>{app.eyebrow}</span><strong>{app.tagline}</strong></div></div>
+        <div className="product-promo-image product-promo-artwork reveal"><AppArtwork app={app} mode="spotlight" /><div className="product-promo-image-label"><span>{app.eyebrow}</span><strong>{app.slug === "hanai" ? "기억과 지식이 모이는 규장각" : app.tagline}</strong></div></div>
         <div className="product-promo-facts reveal" aria-label={`${app.name}이 주는 핵심 가치`}>
           {app.features.slice(0, 3).map((feature, index) => <p key={feature.title}><strong>{String(index + 1).padStart(2, "0")}</strong><span>{feature.title}</span></p>)}
         </div>
