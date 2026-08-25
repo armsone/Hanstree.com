@@ -60,7 +60,7 @@ export const apps: AppData[] = [
     ],
     features: [
       { title: "여러 저장공간을 한곳에서", body: "Synology, SFTP, SMB, WebDAV, FTP와 Dropbox·OneDrive·Google Drive를 한 앱에서 탐색합니다." },
-      { title: "Super Thumbnail과 공통 미디어 보기", body: "Mac용 Super Thumbnail이 준비한 수퍼썸네일로 큰 보관함을 빠르게 훑습니다. 다음 공개판 소스에는 폰하드와 원격 파일이 같은 미디어 보기로 이어지고, 영상 볼륨·탐색·닫기 제스처와 범위 스트리밍·외부 자막·호환 재생 경로가 반영되어 있으며 실기기 검증 중입니다." },
+      { title: "Super Thumbnail과 공통 미디어 보기", body: "Mac용 Super Thumbnail이 준비한 수퍼썸네일로 큰 보관함을 빠르게 훑습니다. 다음 공개판 소스에는 폰하드와 원격 파일이 같은 미디어 보기로 이어지고, 전체화면에서 기기 상태 표시를 숨긴 채 영상 볼륨·탐색·닫기 제스처와 범위 스트리밍·외부 자막·호환 재생 경로를 사용하도록 반영되어 있으며 실기기 검증 중입니다." },
       { title: "Live Photos & Motion Photos", body: "사진·영상·Live Photo·Motion Photo를 함께 고르고 QR로 연결하면 상대 기기에 맞게 원본을 보존하거나 자동 변환해 사진 보관함에 저장합니다." },
       { title: "파일 작업을 자연스럽게", body: "연결이 지원하는 범위에서 업로드, 폴더 생성, 이름 변경, 복사·이동·삭제까지 처리합니다." },
       { title: "기기 안에서 안전하게", body: "Apple 기기는 Keychain, Android는 Keystore로 비밀번호와 로그인 토큰을 보호하고 폰하드 파일과 캐시는 앱 전용 저장공간에 보관합니다." },
@@ -68,12 +68,12 @@ export const apps: AppData[] = [
       { title: "파일 앱에서 바로 가져오기", body: "iPhone·iPad의 파일 앱과 Android 시스템 파일 선택기에서 여러 파일을 골라 폰하드에 안전하게 복사합니다." },
       { title: "Google Photos에서 직접 선택", body: "iPhone·iPad와 Android용 Google Photos Picker 가져오기 소스가 구현되어 있습니다. 사용자가 직접 고른 사진·영상만 폰하드로 내려받는 흐름이며, 실제 Google 계정 검증이 끝나기 전에는 공개 완료 기능으로 표시하지 않습니다." },
       { title: "외부 파일 앱과 자연스럽게", body: "iPhone·iPad의 파일 앱과 Android 시스템 파일 탐색기에서 지원 연결을 NasFinder 위치로 열고, 다른 파일 탐색기의 ‘다음으로 열기’에서 받은 파일도 NasFinder의 공통 미디어 보기로 이어지는 소스가 반영되어 있습니다. 다음 공개판 전 기기 검증 중입니다." },
-      { title: "화면에 맞춰 커지는 Overflow", body: "자세히·썸네일·포스터 중에서 고르고, 넓은 화면에서는 Overflow로 자연스럽게 이어집니다. 다음 공개판 소스는 휴대전화·태블릿·폴더블의 실제 안전영역을 기준으로 중앙 정사각형과 앞뒤 카드를 배치하며, 현재 Matchup 검증 중입니다." },
+      { title: "화면에 맞춰 커지는 Overflow", body: "자세히·썸네일·포스터 중에서 고르고, 넓은 화면에서는 Overflow로 자연스럽게 이어집니다. 다음 공개판 소스는 휴대전화·태블릿·폴더블의 실제 안전영역을 기준으로 중앙 정사각형과 앞뒤 카드를 배치하고, 오른쪽 메뉴에서 보기와 배경을 함께 바꾸며 왼쪽 화살표를 길게 눌러 첫 화면으로 돌아가도록 반영되어 있습니다. 현재 Matchup 검증 중입니다." },
       { title: "BK Style과 앱 아이콘", body: "크롬과 에나멜 질감의 BK Style(병기 스타일)을 테마로 고르고, 테마와 어울리는 여섯 가지 앱 아이콘을 선택할 수 있습니다." },
     ],
     guide: [
       { title: "연결 추가", body: "서비스를 선택하고 서버 주소와 계정을 입력하거나 OAuth로 로그인한 뒤 연결을 확인합니다." },
-      { title: "탐색과 미리보기", body: "보기 방식, 검색과 정렬을 선택하고 사진·영상·PDF·일반 문서를 앱 안에서 확인합니다. 다음 공개판의 영상 보기에서는 볼륨·탐색·닫기 제스처와 외부 자막을 함께 사용할 수 있도록 검증 중입니다." },
+      { title: "탐색과 미리보기", body: "저장한 NAS를 누르면 루트부터 새로 시작하고, 첫 화면의 NasFinder 로고를 누를 때만 마지막 폴더를 다시 엽니다. 보기 방식, 검색과 정렬을 선택하고 사진·영상·PDF·일반 문서를 앱 안에서 확인합니다. 다음 공개판의 영상 보기에서는 볼륨·탐색·닫기 제스처와 외부 자막을 함께 사용할 수 있도록 검증 중입니다." },
       { title: "폰하드와 전송", body: "다른 앱의 공유 메뉴나 시스템 파일 선택기에서 가져온 파일을 폰하드에 보관하고, 원하는 NAS 위치로 전송합니다." },
       { title: "기기 간 미디어 전송", body: "보낼 미디어를 썸네일과 종류·영상 길이로 확인하고 필요 없는 항목을 뺀 뒤, 받을 기기의 QR을 스캔해 전송합니다. 받는 쪽은 QR만 표시하면 됩니다." },
       { title: "데이터 관리", body: "연결 삭제, 폰하드 파일 삭제와 캐시 정리를 할 수 있고, 설정에서 Google Photos를 Google Drive와 별도로 연결 해제할 수 있습니다." },
@@ -87,7 +87,7 @@ export const apps: AppData[] = [
       { state: "done", title: "Live Photo·Motion Photo 전송", body: "iPhone과 Android를 QR로 연결해 사진·영상·움직이는 사진의 원본 보존과 교차 변환 구현" },
       { state: "done", title: "iPhone·iPad 2.0.0 업로드", body: "build 202608230737 TestFlight 처리 완료" },
       { state: "done", title: "Android 2.0.0 공개", body: "build 202608230737, code 337417의 서명 APK를 GitHub Releases에 공개" },
-      { state: "active", title: "다음 공개판 통합 검증", body: "NAS Vault 복원, 공통 미디어 보기, 영상 볼륨·탐색·닫기, 범위 스트리밍·외부 자막, 외부 파일 앱 열기와 휴대전화·태블릿·폴더블 Overflow를 실제 기기에서 검증 중" },
+      { state: "active", title: "다음 공개판 통합 검증", body: "NAS 루트 재접속·로고의 마지막 폴더 재개, Overflow 보기 메뉴·첫 화면 롱터치, 전체화면 상태 표시 숨김, NAS Vault 복원, 공통 미디어 보기, 범위 스트리밍·외부 자막과 외부 파일 앱 열기를 실제 기기에서 검증 중" },
     ],
     screenshots: [
       { src: "/apps/nasfinder/screens/android-home.png", alt: "나스파인더 Android 저장공간 홈" },
