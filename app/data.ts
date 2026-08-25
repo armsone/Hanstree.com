@@ -19,6 +19,7 @@ export type AppData = {
   summary: string;
   theme: "violet" | "coral" | "amber" | "blue";
   icon?: string;
+  heroImage?: string;
   artwork: "files" | "phones" | "clock" | "menubar" | "cleanup" | "trackpad" | "thumbnail" | "htoms" | "search" | "church" | "server" | "intelligence";
   platforms: Platform[];
   features: { title: string; body: string; icon?: string }[];
@@ -234,12 +235,13 @@ export const apps: AppData[] = [
   {
     slug: "hanai",
     name: "한양",
-    english: "HanAI",
-    eyebrow: "PERSONAL INTELLIGENCE, GROWING WITH YOU",
-    tagline: "지금은 미디어를 이해하고, 앞으로는 나의 개인 인공지능으로.",
-    summary: "한양은 한병기의 개인 인공지능으로 자라나는 독립 프로젝트입니다. 지금은 사진·영상·동작·소리를 기기 안에서 이해하는 미디어 지능에 집중하고, 앞으로 기억·정리·판단 보조·일상 실행까지 차근차근 범위를 넓혀 갑니다.",
+    english: "HANYANG",
+    eyebrow: "YOUR DIGITAL CAPITAL",
+    tagline: "나의 디지털 수도.",
+    summary: "한양은 한 사람의 기억과 정보, 도구가 한곳에 모여 함께 움직이도록 설계하는 개인용 AI 프로젝트입니다. 600년 전 한 나라를 운영하기 위해 세운 계획도시에서 착안해, 지금은 미디어 지능을 기기 안에서 다듬고 앞으로 기억·정리·판단·안전한 실행을 하나의 질서로 연결합니다.",
     theme: "violet",
     icon: "/apps/hanai/icon.png",
+    heroImage: "/apps/hanai/hanyang-city-hero-v3.png",
     artwork: "intelligence",
     platforms: [
       {
@@ -247,37 +249,37 @@ export const apps: AppData[] = [
         status: "공개",
         detail: "0.1.0 · Golf 모델 0.7.0 · Foundation 기반 독립 코어",
         url: "https://github.com/armsone/HanAI/releases/tag/v0.1.0",
-        downloadLabel: "HanAI 0.1.0 소스 릴리즈 보기",
-        availabilityNote: "독립 프로젝트로 공개 · 특정 앱에 병합하지 않음",
+        downloadLabel: "HANYANG 0.1.0 소스 릴리즈 보기",
+        availabilityNote: "한양 독립 프로젝트로 공개 · 특정 앱에 병합하지 않음",
       },
       {
         name: "Kotlin/JVM",
         status: "공개",
         detail: "0.1.0 · Golf 모델 0.7.0 · Kotlin 표준 라이브러리 기반 독립 코어",
         url: "https://github.com/armsone/HanAI/releases/tag/v0.1.0",
-        downloadLabel: "HanAI 저장소에서 확인",
+        downloadLabel: "HANYANG 저장소에서 확인",
         availabilityNote: "Swift와 같은 모델·상수·fixture 계약",
       },
     ],
     features: [
-      { title: "한 사람을 위한 개인 지능", body: "범용 챗봇 하나를 더 만드는 대신, 한병기의 생활과 선택을 오래 이해하고 실제로 돕는 개인 인공지능으로 발전합니다." },
-      { title: "미디어에서 시작", body: "현재는 화면의 움직임, 자세 흐름과 소리의 특징을 함께 살펴 사진·영상 속 의미 있는 순간을 보수적으로 이해합니다." },
-      { title: "기기 안에서 먼저 처리", body: "원본 영상·사진·프레임·오디오·관절 좌표를 외부 학습 자료로 올리지 않고, 필요한 정규화 수치와 검증 fixture만 독립 코어에서 다룹니다." },
-      { title: "Swift와 Kotlin의 같은 판단", body: "Apple과 Android가 같은 타입·상수·상태·fixture를 사용해 플랫폼이 달라도 같은 입력을 같은 의미로 판단하도록 맞춥니다." },
-      { title: "기억과 정리로 확장", body: "다음 단계에서는 사용자가 허용한 범위 안에서 중요한 맥락을 기억하고, 자료와 일정을 정리하며, 선택에 필요한 정보를 먼저 준비하는 능력으로 넓혀 갑니다." },
-      { title: "판단 보조와 일상 실행", body: "충분히 검증된 뒤에는 선택지를 비교하고 다음 행동을 제안하며, 사용자가 확인한 일상 작업을 안전하게 실행하는 개인 에이전트로 발전시킵니다." },
+      { title: "나를 중심으로 세워진 AI 도시", body: "범용 챗봇 하나를 더 만드는 대신, 한 사람의 기억·정보·도구가 사용자라는 중심을 향해 질서 있게 연결되는 개인 인공지능을 만듭니다." },
+      { title: "도시처럼 연결되는 개인 AI", body: "대화와 알림이 오가는 길, 지식을 보관하는 공간, 전문 에이전트와 외부 서비스의 관문을 하나의 구조 안에서 연결하는 것이 한양의 방향입니다." },
+      { title: "한양도성처럼 분명한 경계", body: "개인 데이터와 외부 세계의 경계를 먼저 세웁니다. 원본 영상·사진·프레임·오디오·관절 좌표는 기기 또는 로컬에서만 처리합니다." },
+      { title: "전통이 아니라 도시 철학", body: "기와·붓글씨 같은 복고 장식을 앞세우지 않습니다. 화면은 현대적이고 직관적으로 유지하고, 한양의 계획도시 개념은 정보 구조와 시스템 설계에 담습니다." },
+      { title: "현재는 미디어 지능부터", body: "화면 움직임과 자세 흐름, 소리의 특징을 함께 살펴 사진·영상 속 의미 있는 순간을 보수적으로 이해하는 독립 코어를 다듬고 있습니다." },
+      { title: "기억에서 안전한 실행까지", body: "다음에는 사용자가 허용한 정보의 기억과 정리, 선택지 비교, 확인을 거친 일상 실행으로 차근차근 범위를 넓혀 갑니다." },
     ],
     guide: [
-      { title: "현재의 한양", body: "HanAI 0.1.0과 Golf 모델 0.7.0은 Swift·Kotlin 독립 코어, 정규화된 특징과 교차 플랫폼 fixture를 제공합니다." },
-      { title: "제품과 독립 유지", body: "한양은 HanClip 같은 앱에 소스가 병합된 기능이 아니라 별도 버전과 검증 이력을 가진 독립 프로젝트로 관리합니다." },
-      { title: "새 능력은 작게 검증", body: "미디어, 기억, 정리, 판단 보조, 실행의 순서로 범위를 넓히되 대표 자료와 두 플랫폼 테스트를 통과한 능력만 현재 기능으로 표시합니다." },
-      { title: "사용자가 통제", body: "기억하거나 실행하는 범위는 사용자가 정하고, 되돌리기 어렵거나 외부에 영향을 주는 행동은 확인 뒤 진행하는 원칙을 유지합니다." },
+      { title: "브랜드는 한양 HANYANG", body: "사용자가 만나는 이름은 한양과 HANYANG입니다. 공개 저장소와 기존 코드 패키지는 호환성을 위해 현재 HanAI 식별자를 유지합니다." },
+      { title: "도시 이름은 보이지 않게", body: "승정원·규장각·육조·사대문은 내부 세계관과 구조를 설명하는 언어입니다. 실제 화면에서는 기억·일정·파일·자동화처럼 바로 이해되는 이름을 사용합니다." },
+      { title: "현재의 기반", body: "0.1.0과 Golf 모델 0.7.0은 Swift·Kotlin 독립 코어, 정규화된 특징과 교차 플랫폼 fixture를 제공합니다." },
+      { title: "사용자가 경계를 결정", body: "무엇을 기억하고 어디까지 연결하며 어떤 행동을 실행할지는 사용자가 정합니다. 외부 전송과 되돌리기 어려운 행동은 분명히 구분하고 확인 뒤 진행합니다." },
     ],
     progress: [
       { state: "done", title: "독립 프로젝트 0.1.0 공개", body: "Swift·Kotlin 코어와 Golf 모델 0.7.0을 별도 GitHub Release로 공개하고 두 플랫폼 fixture 테스트를 확인" },
-      { state: "active", title: "미디어 지능", body: "사진·영상의 화면 움직임과 자세 흐름, 오디오 특징을 정규화해 의미 있는 순간을 기기 안에서 이해하는 기반을 다듬는 중" },
-      { state: "next", title: "개인 기억과 정리", body: "사용자가 고른 정보만 오래 기억하고 자료·일정·아이디어를 맥락에 맞춰 정리하는 능력으로 확장" },
-      { state: "next", title: "판단 보조와 안전한 실행", body: "선택지 비교와 다음 행동 제안부터 시작해, 사용자가 확인한 일상 작업을 안전하게 실행하는 개인 에이전트로 발전" },
+      { state: "done", title: "한양 HANYANG 브랜드 정립", body: "한 사람의 기억과 정보, 도구가 모이는 ‘나의 디지털 수도’를 제품 정체성과 설계 언어로 확정" },
+      { state: "active", title: "도시의 첫 기반, 미디어 지능", body: "사진·영상의 화면 움직임과 자세 흐름, 오디오 특징을 정규화해 의미 있는 순간을 기기 안에서 이해하는 기반을 다듬는 중" },
+      { state: "next", title: "기억·정리·연결·실행", body: "사용자가 고른 정보의 장기 기억과 정리, 외부 서비스 연결, 판단 보조와 확인을 거친 안전한 실행으로 확장" },
     ],
     github: ["https://github.com/armsone/HanAI"],
     privacy: [

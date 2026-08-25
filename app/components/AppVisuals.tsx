@@ -18,7 +18,7 @@ export function AppStatus({ platform }: { platform: Platform }) {
 export function AppHeroArtwork({ app }: { app: AppData }) {
   return (
     <div className={`hero-artwork hero-artwork-product hero-artwork-${app.slug}`} aria-label={`${app.name} 핵심 기능을 표현한 대표 이미지`}>
-      <Image className="hero-artwork-backdrop" src={`/apps/${app.slug}/${app.slug}-hero-v2.png`} alt="" width={1536} height={1024} priority sizes="(max-width: 920px) 100vw, 52vw" unoptimized />
+      <Image className="hero-artwork-backdrop" src={app.heroImage ?? `/apps/${app.slug}/${app.slug}-hero-v2.png`} alt="" width={1536} height={1024} priority sizes="(max-width: 920px) 100vw, 52vw" unoptimized />
       <div className="hero-artwork-brand"><AppIcon app={app} /><span><small>PRODUCT SCENE</small><strong>{app.english}</strong></span></div>
       <div className="hero-artwork-proof"><span />{app.slug === "nasfinder" ? "NAS · CLOUD · DEVICE" : "CORE EXPERIENCE"}</div>
       <div className="hero-artwork-caption"><strong>{app.features[0]?.title ?? app.tagline}</strong><span>{app.platforms.map((platform) => platform.name).join(" · ")}</span></div>
@@ -29,8 +29,8 @@ export function AppHeroArtwork({ app }: { app: AppData }) {
 export function AppArtwork({ app }: { app: AppData }) {
   if (app.artwork === "intelligence") {
     return (
-      <div className="artwork artwork-intelligence" aria-label="한양의 개인 지능이 미디어에서 기억과 일상 실행으로 확장되는 빛의 리본">
-        <Image src="/apps/hanai/hanai-hero-v2.png" alt="" width={1672} height={941} sizes="(max-width: 640px) 92vw, 720px" unoptimized />
+      <div className="artwork artwork-intelligence" aria-label="사용자를 중심으로 네 개의 관문과 정보의 길이 연결되는 한양의 현대적인 AI 도시">
+        <Image src={app.heroImage ?? "/apps/hanai/hanai-hero-v2.png"} alt="" width={1672} height={941} sizes="(max-width: 640px) 92vw, 720px" unoptimized />
         <span className="intelligence-aura" aria-hidden="true" />
       </div>
     );

@@ -44,7 +44,7 @@ test("server-renders the NasFinder.com homepage", async () => {
   assert.match(html, /HtOMS Brief/);
   assert.match(html, /Button/);
   for (const slug of [
-    "nasfinder", "super-thumbnail", "hanclip", "hanai", "stand", "ccmb", "btn", "trackpadguard",
+    "nasfinder", "super-thumbnail", "hanclip", "stand", "ccmb", "btn", "trackpadguard",
     "htoms-brief", "intosharp", "airchurch", "button", "starmanager", "minecraft-server", "whattoeat",
   ]) {
     assert.match(html, new RegExp(`/apps/${slug}/${slug}-hero-v2\\.png`), slug);
@@ -61,7 +61,9 @@ test("server-renders the NasFinder.com homepage", async () => {
   assert.doesNotMatch(html, /플랫폼별 제공 버전/);
   assert.match(html, />08<\/strong><span>iPhone · iPad · macOS · Android · Google TV · Web · NasOS · Windows \(커밍\)/);
   assert.match(html, /한양/);
-  assert.match(html, /개인 인공지능/);
+  assert.match(html, /HANYANG/);
+  assert.match(html, /나의 디지털 수도/);
+  assert.match(html, /hanyang-city-hero-v3\.png/);
   assert.match(html, />01<\/strong><span>한 사람의 꾸준한 기록/);
   assert.doesNotMatch(html, /id="motion-bridge"/);
   assert.doesNotMatch(html, /NASFINDER FLAGSHIP FEATURE/);
@@ -71,6 +73,22 @@ test("server-renders the NasFinder.com homepage", async () => {
   assert.equal((principles.match(/class="advantage-visual"/g) ?? []).length, 3);
   const installGuide = html.match(/<ol class="install-steps">[\s\S]*?<\/ol>\s*<div class="install-warning">/)?.[0] ?? "";
   assert.equal((installGuide.match(/class="advantage-visual"/g) ?? []).length, 4);
+});
+
+test("presents HANYANG as a modern personal AI city without overstating future capabilities", async () => {
+  const response = await render("/apps/hanai");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+
+  assert.match(html, /YOUR DIGITAL CAPITAL/);
+  assert.match(html, /나의 디지털 수도/);
+  assert.match(html, /나를 중심으로 세워진 AI 도시/);
+  assert.match(html, /도시처럼 연결되는 개인 AI/);
+  assert.match(html, /한양도성처럼 분명한 경계/);
+  assert.match(html, /브랜드는 한양 HANYANG/);
+  assert.match(html, /다음에는 사용자가 허용한 정보의 기억과 정리/);
+  assert.match(html, /현재 HanAI 식별자를 유지/);
+  assert.match(html, /hanyang-city-hero-v3\.png/);
 });
 
 test("keeps TestFlight, public beta, and Android cards on one responsive layout contract", async () => {

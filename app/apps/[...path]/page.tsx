@@ -145,7 +145,7 @@ export async function generateMetadata({ params }: RouteProps): Promise<Metadata
   const suffix = section === "privacy" ? "개인정보처리방침" : section === "terms" ? "이용약관" : section === "support" ? "지원" : section === "data-deletion" ? "데이터 삭제" : section === "google-oauth" ? "Google API Use & Data Handling" : null;
   const title = suffix ? `${app.name} ${suffix}` : `${app.name} — ${app.tagline}`;
   const socialImage = !suffix
-    ? app.slug === "hanai" ? "/apps/hanai/hanai-hero-v2.png" : app.icon ?? (app.slug === "stand" ? "/og-stand.png" : undefined)
+    ? app.heroImage ?? app.icon ?? (app.slug === "stand" ? "/og-stand.png" : undefined)
     : undefined;
   const socialImages = socialImage ? [new URL(socialImage, "https://nasfinder.com").toString()] : [];
   return {
@@ -250,7 +250,7 @@ export default async function AppRoute({ params }: RouteProps) {
       )}
 
       <section className="progress-section shell" id="progress">
-        <div className="section-heading reveal"><div><p className="eyebrow">BUILDING IN PUBLIC</p><h2>현재 진행 상황</h2></div><p>숫자보다 실제 상태를 보여드립니다. 마지막 내용 확인: 2026년 8월 25일.</p></div>
+        <div className="section-heading reveal"><div><p className="eyebrow">BUILDING IN PUBLIC</p><h2>현재 진행 상황</h2></div><p>{app.slug === "hanai" ? "숫자보다 실제 상태를 보여드립니다. 마지막 내용 확인: 2026년 8월 26일." : "숫자보다 실제 상태를 보여드립니다. 마지막 내용 확인: 2026년 8월 25일."}</p></div>
         <div className="progress-list">
           {app.progress.map((item) => <article className="progress-item reveal" key={item.title}><div className={`progress-marker marker-${item.state}`}><AdvantageVisual variant={progressStateVisual[item.state]} /></div><div><p>{item.state === "done" ? "구현됨" : item.state === "active" ? "검증 중" : "다음 단계"}</p><h3>{item.title}</h3><span>{item.body}</span></div></article>)}
         </div>
