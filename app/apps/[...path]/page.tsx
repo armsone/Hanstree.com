@@ -143,7 +143,7 @@ export async function generateMetadata({ params }: RouteProps): Promise<Metadata
   const suffix = section === "privacy" ? "개인정보처리방침" : section === "terms" ? "이용약관" : section === "support" ? "지원" : section === "data-deletion" ? "데이터 삭제" : section === "google-oauth" ? "Google API Use & Data Handling" : null;
   const title = suffix ? `${app.name} ${suffix}` : `${app.name} — ${app.tagline}`;
   const socialImage = !suffix
-    ? app.icon ?? (app.slug === "stand" ? "/og-stand.png" : undefined)
+    ? app.slug === "hanai" ? "/apps/hanai/hanai-hero-v2.png" : app.icon ?? (app.slug === "stand" ? "/og-stand.png" : undefined)
     : undefined;
   const socialImages = socialImage ? [new URL(socialImage, "https://nasfinder.com").toString()] : [];
   return {
@@ -183,14 +183,14 @@ export default async function AppRoute({ params }: RouteProps) {
       <nav className="section-nav" aria-label={`${app.name} 페이지 내부 메뉴`}>
         <div className="shell">
           {app.slug === "nasfinder" ? (
-            <><Link href="#why-nasfinder">왜 나스파인더</Link><Link href="#features">특징</Link><Link href="#screens">화면</Link><Link href="#download">설치</Link></>
+            <><Link href="#motion-bridge">움직이는 사진</Link><Link href="#why-nasfinder">왜 나스파인더</Link><Link href="#features">특징</Link><Link href="#screens">화면</Link><Link href="#download">설치</Link></>
           ) : (
             <><Link href="#product-campaign">왜 {app.name}</Link><Link href="#features">특징</Link><Link href="#screens">화면</Link>{app.matchup && <Link href="#matchup">매치업</Link>}<Link href="#progress">진행 상황</Link><Link href="#guide">설명서</Link><Link href="#download">다운로드</Link></>
           )}
         </div>
       </nav>
 
-      {app.slug === "nasfinder" && <NasFinderPromotion />}
+      {app.slug === "nasfinder" && <><NasFinderMotionBridge /><NasFinderPromotion /></>}
       {campaignSlugs.has(app.slug) ? <ProductPromotion app={app} /> : app.slug !== "nasfinder" && <ProductSpotlight app={app} />}
 
       <section className="feature-section shell" id="features">
@@ -248,7 +248,7 @@ export default async function AppRoute({ params }: RouteProps) {
       )}
 
       <section className="progress-section shell" id="progress">
-        <div className="section-heading reveal"><div><p className="eyebrow">BUILDING IN PUBLIC</p><h2>현재 진행 상황</h2></div><p>숫자보다 실제 상태를 보여드립니다. 마지막 내용 확인: 2026년 8월 23일.</p></div>
+        <div className="section-heading reveal"><div><p className="eyebrow">BUILDING IN PUBLIC</p><h2>현재 진행 상황</h2></div><p>숫자보다 실제 상태를 보여드립니다. 마지막 내용 확인: 2026년 8월 25일.</p></div>
         <div className="progress-list">
           {app.progress.map((item) => <article className="progress-item reveal" key={item.title}><div className={`progress-marker marker-${item.state}`}><AdvantageVisual variant={progressStateVisual[item.state]} /></div><div><p>{item.state === "done" ? "구현됨" : item.state === "active" ? "검증 중" : "다음 단계"}</p><h3>{item.title}</h3><span>{item.body}</span></div></article>)}
         </div>
@@ -566,6 +566,63 @@ function ProductPromotion({ app }: { app: NonNullable<ReturnType<typeof findApp>
             <p className="eyebrow">{campaign.ctaEyebrow}</p><h2>{campaign.ctaTitle}</h2><p>{campaign.ctaBody}</p>
             <div><Link className="button product-promo-primary" href="#download">{campaign.ctaLabel} <span aria-hidden="true">↓</span></Link><Link className="button product-promo-secondary" href="#guide">사용법 먼저 보기 <span aria-hidden="true">→</span></Link></div>
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function NasFinderMotionBridge() {
+  return (
+    <section className="motion-bridge-section" id="motion-bridge">
+      <div className="shell motion-bridge-shell">
+        <div className="motion-bridge-copy reveal">
+          <p className="eyebrow">NASFINDER FLAGSHIP FEATURE</p>
+          <h2>움직이는 순간을,<br /><span>기기 경계 없이.</span></h2>
+          <p className="motion-bridge-lede">
+            iPhone의 Live Photo와 Android의 Motion Photo를 양방향으로 주고받습니다.
+            QR로 두 기기를 연결하면 받는 기기에 맞춰 원본을 보존하거나 자동 변환해
+            사진 보관함에 저장합니다.
+          </p>
+          <Link className="button motion-bridge-button" href="#features">
+            나스파인더의 모든 기능 보기 <span aria-hidden="true">↓</span>
+          </Link>
+        </div>
+
+        <div className="motion-bridge-visual reveal" aria-label="Live Photo와 Motion Photo의 양방향 변환">
+          <div className="motion-device motion-device-apple">
+            <div className="motion-device-top"><span>iPhone</span><b>LIVE</b></div>
+            <div className="motion-frame">
+              <i className="motion-sun" />
+              <i className="motion-hill motion-hill-back" />
+              <i className="motion-hill motion-hill-front" />
+              <span className="motion-play" aria-hidden="true">▶</span>
+            </div>
+            <strong>Live Photo</strong>
+          </div>
+
+          <div className="motion-swap" aria-hidden="true">
+            <span>자동 변환</span>
+            <strong>⇄</strong>
+            <small>QR로 연결</small>
+          </div>
+
+          <div className="motion-device motion-device-android">
+            <div className="motion-device-top"><span>Android</span><b>MOTION</b></div>
+            <div className="motion-frame">
+              <i className="motion-sun" />
+              <i className="motion-hill motion-hill-back" />
+              <i className="motion-hill motion-hill-front" />
+              <span className="motion-play" aria-hidden="true">▶</span>
+            </div>
+            <strong>Motion Photo</strong>
+          </div>
+        </div>
+
+        <div className="motion-bridge-proof reveal" aria-label="핵심 기능 요약">
+          <p><span>01</span><strong>Live Photo → Motion Photo</strong><small>Android에 맞춰 전달</small></p>
+          <p><span>02</span><strong>Motion Photo → Live Photo</strong><small>iPhone에 맞춰 전달</small></p>
+          <p><span>03</span><strong>QR 연결 · 사진 보관함 저장</strong><small>고르고, 연결하고, 받기</small></p>
         </div>
       </div>
     </section>

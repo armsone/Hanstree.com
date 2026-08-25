@@ -3,6 +3,15 @@
     <channel>
         <title>S.tand</title>
         <item>
+            <title>2.1.1</title>
+            <pubDate>Tue, 25 Aug 2026 19:13:54 +0900</pubDate>
+            <link>https://nasfinder.com/apps/stand</link>
+            <sparkle:version>340977</sparkle:version>
+            <sparkle:shortVersionString>2.1.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/armsone/S.tand/releases/download/macos-v2.1.1/S.tand-macOS-2.1.1.dmg" length="13662921" type="application/octet-stream" sparkle:edSignature="uI8wBLbI2WPBy8J6XhJ+mZEdHmaeDbDDakPPUSBLMyDsbbCPMiSLtMIDPYOYg9cN/QOJDil9w3mxCPNviSN3BA=="/>
+        </item>
+        <item>
             <title>2.1.0</title>
             <pubDate>Tue, 25 Aug 2026 11:25:36 +0900</pubDate>
             <link>https://nasfinder.com/apps/stand</link>

@@ -65,7 +65,7 @@ export default function Home() {
           </h1>
           <p className="hero-lede">
             하나만 만들 생각이었습니다. 그런데 불편이 자꾸 보였고,
-            어느새 14개의 제품이 되었습니다. 생각이 떠오르면 직접 만들고,
+            어느새 {apps.length}개의 제품이 되었습니다. 생각이 떠오르면 직접 만들고,
             쓸수록 좋아질 때까지 끝까지 다듬습니다.
           </p>
         </div>
@@ -85,12 +85,12 @@ export default function Home() {
 
         <section className="hero-product-wall reveal" aria-label="한병기가 만드는 앱 전체">
           <div className="hero-product-wall-heading">
-            <p>14 PRODUCTS. STILL COUNTING.</p>
+            <p>{apps.length} PRODUCTS. STILL COUNTING.</p>
             <h2>보이는 불편마다, 앱 하나.</h2>
           </div>
           <div className="hero-product-grid" role="list">
             {apps.map((app, index) => (
-              <Link className="hero-product" href={`/apps/${app.slug}`} key={app.slug} role="listitem" aria-label={`${app.name} 제품 자세히 보기`}>
+              <Link className={`hero-product hero-product-${app.slug}`} href={`/apps/${app.slug}`} key={app.slug} role="listitem" aria-label={`${app.name} 제품 자세히 보기`}>
                 <Image className="hero-product-image" src={`/apps/${app.slug}/${app.slug}-hero-v2.png`} alt="" width={1536} height={1024} priority={index < 4} sizes="(max-width: 600px) 29vw, (max-width: 920px) 13vw, 150px" unoptimized />
                 <AppIcon app={app} priority={index < 4} />
                 <span className="hero-product-copy"><strong>{app.name}</strong><small>{app.english}</small></span>
@@ -103,61 +103,8 @@ export default function Home() {
       <section className="signal-bar" aria-label="사이트 요약">
         <div className="shell signal-grid">
           <p><strong>{String(productCount).padStart(2, "0")}</strong><span>현재 소개하는 제품</span></p>
-          <p><strong>07</strong><span>iPhone · iPad · macOS · Android · Google TV · Web · Windows (커밍)</span></p>
+          <p><strong>08</strong><span>iPhone · iPad · macOS · Android · Google TV · Web · NasOS · Windows (커밍)</span></p>
           <p><strong>01</strong><span>한 사람의 꾸준한 기록</span></p>
-        </div>
-      </section>
-
-      <section className="motion-bridge-section" id="motion-bridge">
-        <div className="shell motion-bridge-shell">
-          <div className="motion-bridge-copy reveal">
-            <p className="eyebrow">NASFINDER FLAGSHIP FEATURE</p>
-            <h2>움직이는 순간을,<br /><span>기기 경계 없이.</span></h2>
-            <p className="motion-bridge-lede">
-              iPhone의 Live Photo와 Android의 Motion Photo를 양방향으로
-              주고받습니다. QR로 두 기기를 연결하면 받는 기기에 맞춰
-              원본을 보존하거나 자동 변환해 사진 보관함에 저장합니다.
-            </p>
-            <Link className="button motion-bridge-button" href="/apps/nasfinder#why-nasfinder">
-              나스파인더 기능 자세히 보기 <span aria-hidden="true">→</span>
-            </Link>
-          </div>
-
-          <div className="motion-bridge-visual reveal" aria-label="Live Photo와 Motion Photo의 양방향 변환">
-            <div className="motion-device motion-device-apple">
-              <div className="motion-device-top"><span>iPhone</span><b>LIVE</b></div>
-              <div className="motion-frame">
-                <i className="motion-sun" />
-                <i className="motion-hill motion-hill-back" />
-                <i className="motion-hill motion-hill-front" />
-                <span className="motion-play" aria-hidden="true">▶</span>
-              </div>
-              <strong>Live Photo</strong>
-            </div>
-
-            <div className="motion-swap" aria-hidden="true">
-              <span>자동 변환</span>
-              <strong>⇄</strong>
-              <small>QR로 연결</small>
-            </div>
-
-            <div className="motion-device motion-device-android">
-              <div className="motion-device-top"><span>Android</span><b>MOTION</b></div>
-              <div className="motion-frame">
-                <i className="motion-sun" />
-                <i className="motion-hill motion-hill-back" />
-                <i className="motion-hill motion-hill-front" />
-                <span className="motion-play" aria-hidden="true">▶</span>
-              </div>
-              <strong>Motion Photo</strong>
-            </div>
-          </div>
-
-          <div className="motion-bridge-proof reveal" aria-label="핵심 기능 요약">
-            <p><span>01</span><strong>Live Photo → Motion Photo</strong><small>Android에 맞춰 전달</small></p>
-            <p><span>02</span><strong>Motion Photo → Live Photo</strong><small>iPhone에 맞춰 전달</small></p>
-            <p><span>03</span><strong>QR 연결 · 사진 보관함 저장</strong><small>고르고, 연결하고, 받기</small></p>
-          </div>
         </div>
       </section>
 
@@ -175,7 +122,7 @@ export default function Home() {
 
         <div className="app-list">
           {apps.map((app, index) => (
-            <article className={`app-row reveal theme-${app.theme}`} key={app.slug}>
+            <article className={`app-row app-row-${app.slug} reveal theme-${app.theme}`} key={app.slug}>
               <Link className="app-row-hit-area" href={`/apps/${app.slug}`} aria-label={`${app.name} 제품 자세히 보기`} />
               <div className="app-row-number">0{index + 1}</div>
               <div className="app-row-copy">
@@ -311,7 +258,7 @@ export function SiteHeader() {
           <a href="/#apps">앱</a>
           {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
           <a href="/#downloads">다운</a>
-          <a href="/#records">기록</a>
+          <a href="/insights">기록</a>
           <a href="https://github.com/armsone">깃허브 <span aria-hidden="true">↗</span></a>
           <Link href="/admin/testflight" aria-label="관리자 로그인">관리자</Link>
         </nav>
@@ -331,7 +278,7 @@ export function SiteFooter() {
         <div className="footer-links">
           {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
           <a href="/#apps">모든 앱</a>
-          <a href="/#records">사이트 기록</a>
+          <a href="/insights">사이트 기록</a>
           <Link href="/apps/nasfinder/privacy">개인정보처리방침</Link>
           <Link href="/apps/nasfinder/support">지원</Link>
           <Link href="https://github.com/armsone">GitHub</Link>

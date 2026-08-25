@@ -44,13 +44,13 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     label: "HanClip Android",
     repo: "HanClip-Android",
     assetPattern: /\.apk$/i,
-    fallbackUrl: "https://github.com/armsone/HanClip-Android/releases/download/android-v2.1.1/HanClip-Android-2.1.1.apk",
+    fallbackUrl: "https://github.com/armsone/HanClip-Android/releases/download/android-v2.2.1/HanClip-Android-2.2.1.apk",
   },
   "S.tand-macOS": {
     label: "S.tand Mac",
     repo: "S.tand",
     assetPattern: /^S\.tand-macOS-.*\.dmg$/i,
-    fallbackUrl: "https://github.com/armsone/S.tand/releases/download/macos-v2.1.0/S.tand-macOS-2.1.0.dmg",
+    fallbackUrl: "https://github.com/armsone/S.tand/releases/download/macos-v2.1.1/S.tand-macOS-2.1.1.dmg",
   },
   "S.tand-Android": {
     label: "S.tand Android",
@@ -74,7 +74,7 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     label: "TrackpadGuard Mac",
     repo: "TrackpadGuard",
     assetPattern: /\.dmg$/i,
-    fallbackUrl: "https://github.com/armsone/TrackpadGuard/releases/download/v2.0.0/TrackpadGuard-2.0.0.dmg",
+    fallbackUrl: "https://github.com/armsone/TrackpadGuard/releases/download/v2.0.1/TrackpadGuard-2.0.1.dmg",
   },
   WhattoEat: {
     label: "오늘 뭐 먹지?? Mac",
@@ -104,7 +104,7 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     label: "HtOMS Brief Android",
     repo: "HtOMS-BK",
     assetPattern: /^HtOMS-Brief-Android-.*\.apk$/i,
-    fallbackUrl: "https://github.com/armsone/HtOMS-BK/releases/download/android-v2.0.0/HtOMS-Brief-Android-2.0.0.apk",
+    fallbackUrl: "https://github.com/armsone/HtOMS-BK/releases/download/android-v2.1.0/HtOMS-Brief-Android-2.1.0.apk",
   },
 };
 

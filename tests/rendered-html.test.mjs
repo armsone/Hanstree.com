@@ -44,7 +44,7 @@ test("server-renders the NasFinder.com homepage", async () => {
   assert.match(html, /HtOMS Brief/);
   assert.match(html, /Button/);
   for (const slug of [
-    "nasfinder", "super-thumbnail", "hanclip", "stand", "ccmb", "btn", "trackpadguard",
+    "nasfinder", "super-thumbnail", "hanclip", "hanai", "stand", "ccmb", "btn", "trackpadguard",
     "htoms-brief", "intosharp", "airchurch", "button", "starmanager", "minecraft-server", "whattoeat",
   ]) {
     assert.match(html, new RegExp(`/apps/${slug}/${slug}-hero-v2\\.png`), slug);
@@ -52,20 +52,19 @@ test("server-renders the NasFinder.com homepage", async () => {
   assert.match(html, /class="hero-product-image"/);
   assert.match(html, /class="app-row-representative"/);
   assert.match(html, /What to Eat/);
-  assert.match(html, /Minecraft Bedrock Home Server/);
-  assert.equal((html.match(/class="hero-product"/g) ?? []).length, 14);
-  assert.match(html, /href="\/apps\/intosharp" class="hero-product"[^>]*aria-label="인투샾 제품 자세히 보기"/);
-  assert.equal((html.match(/class="app-row-hit-area"/g) ?? []).length, 14);
+  assert.match(html, /NasOS · Minecraft Server/);
+  assert.equal((html.match(/class="hero-product(?:\s|")/g) ?? []).length, 15);
+  assert.match(html, /href="\/apps\/intosharp" class="hero-product hero-product-intosharp"[^>]*aria-label="인투샾 제품 자세히 보기"/);
+  assert.equal((html.match(/class="app-row-hit-area"/g) ?? []).length, 15);
   assert.match(html, /href="\/apps\/intosharp" class="app-row-hit-area" aria-label="인투샾 제품 자세히 보기"/);
-  assert.match(html, />33<\/strong><span>현재 소개하는 제품/);
+  assert.match(html, />35<\/strong><span>현재 소개하는 제품/);
   assert.doesNotMatch(html, /플랫폼별 제공 버전/);
-  assert.match(html, />07<\/strong><span>iPhone · iPad · macOS · Android · Google TV · Web · Windows \(커밍\)/);
+  assert.match(html, />08<\/strong><span>iPhone · iPad · macOS · Android · Google TV · Web · NasOS · Windows \(커밍\)/);
+  assert.match(html, /한양/);
+  assert.match(html, /개인 인공지능/);
   assert.match(html, />01<\/strong><span>한 사람의 꾸준한 기록/);
-  assert.match(html, /id="motion-bridge"/);
-  assert.match(html, /움직이는 순간을/);
-  assert.match(html, /Live Photo → Motion Photo/);
-  assert.match(html, /Motion Photo → Live Photo/);
-  assert.match(html, /QR 연결 · 사진 보관함 저장/);
+  assert.doesNotMatch(html, /id="motion-bridge"/);
+  assert.doesNotMatch(html, /NASFINDER FLAGSHIP FEATURE/);
   assert.match(html, /개인정보처리방침/);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|Building your site/i);
   const principles = html.match(/<div class="principle-grid">[\s\S]*?<\/section>/)?.[0] ?? "";
@@ -105,7 +104,6 @@ test("renders the requested home navigation and keeps the maker name as plain te
   assert.ok(nav, "missing main navigation");
   assert.match(nav, />홈<\/a>[\s\S]*?>앱<\/a>[\s\S]*?>다운<\/a>[\s\S]*?>기록<\/a>[\s\S]*?>깃허브[\s\S]*?<\/a>\s*<a [^>]*href="\/admin\/testflight"[^>]*>관리자<\/a>/);
   assert.match(nav, /href="\/#downloads"[^>]*>다운<\/a>/);
-  assert.match(nav, /href="\/#records"[^>]*>기록<\/a>/);
   assert.match(nav, /href="https:\/\/github\.com\/armsone"[^>]*>깃허브/);
   assert.doesNotMatch(nav, />소통<\/a>/);
   assert.match(nav, /<a [^>]*aria-label="관리자 로그인"[^>]*>관리자<\/a>/);
@@ -144,7 +142,8 @@ test("renders the privacy-safe Minecraft Bedrock home server guide", async () =>
   assert.match(html, /Container Manager/);
   assert.match(html, /UDP 19132/);
   assert.match(html, /실제 가족 서버 운영 중/);
-  assert.match(html, /개인정보를 제거한 공개 구성 저장소 준비 중/);
+  assert.match(html, /개인정보를 제거한 서버 설정과 운영 안내서 공개 완료/);
+  assert.match(html, /github\.com\/armsone\/NasOS\/releases\/tag\/v0\.1\.0/);
   assert.doesNotMatch(html, /DS1821|DSM 7\.4|\/volume\d+|\b(?:\d{1,3}\.){3}\d{1,3}\b|\b\d{12,}\b/);
 });
 
@@ -230,8 +229,8 @@ test("renders HtOMS with its own sales dashboard artwork", async () => {
   assert.match(html, /Android · Google TV/);
   assert.match(html, /Android용 APK 다운로드/);
   assert.match(html, /release-download\?app=HtOMS-BK/);
-  assert.match(html, /340515/);
-  assert.match(html, /c9bbcf513ed4edef9b451f7d9432ad76b9574e31307341312498a2f33dddf1b1/);
+  assert.match(html, /340964/);
+  assert.match(html, /5e1d5176f617dcae13d4d8c4e018af6d2416508e59a177d183bf5b51d780555d/);
   assert.match(html, /Android 대응 앱 구현/);
   assert.doesNotMatch(html, />Photos</);
   assert.doesNotMatch(html, /IMG_2048\.HEIC/);
@@ -285,6 +284,12 @@ test("renders the latest NasFinder and HanClip capabilities", async () => {
   assert.match(nasFinder, /Overflow/);
   assert.match(nasFinder, /BK Style과 기기별 아이콘/);
   assert.match(nasFinder, /NOT JUST A FILE BROWSER/);
+  assert.match(nasFinder, /id="motion-bridge"/);
+  assert.match(nasFinder, /NASFINDER FLAGSHIP FEATURE/);
+  assert.match(nasFinder, /움직이는 순간을/);
+  assert.match(nasFinder, /Live Photo → Motion Photo/);
+  assert.match(nasFinder, /Motion Photo → Live Photo/);
+  assert.match(nasFinder, /QR 연결 · 사진 보관함 저장/);
   assert.match(nasFinder, /내 파일도/);
   assert.match(nasFinder, /움직이는 추억도/);
   assert.match(nasFinder, /live-motion-campaign\.png/);
@@ -314,7 +319,7 @@ test("renders the latest NasFinder and HanClip capabilities", async () => {
   assert.match(hanClip, /큰 스윙도, 조용한 퍼팅도 놓치지 않도록/);
   assert.match(hanClip, /Apple·Android 무음 퍼팅 안전망/);
   assert.match(hanClip, /기기 내 신체 자세 분석/);
-  assert.match(hanClip, /휴대전화 실기기 설치 확인/);
+  assert.match(hanClip, /서명 APK 재다운로드·무결성 검증 완료/);
 
   const nasFeatureGrid = nasFinder.match(/<div class="feature-grid">[\s\S]*?<\/div>\s*<\/section>/)?.[0] ?? "";
   assert.equal((nasFeatureGrid.match(/class="advantage-visual"/g) ?? []).length, 10);
@@ -522,15 +527,15 @@ test("renders current app release and TestFlight information", async () => {
   assert.match(home, /202608252025/);
   assert.match(home, /341065/);
   assert.match(home, /스타메니저/);
-  assert.match(home, /2026년 8월 23일/);
+  assert.match(home, /2026년 8월 25일/);
   assert.match(nasFinder, /내부 코드 341065/);
   assert.match(nasFinder, /1f865fb335695d6d906cc14b5919e80bb2d7e24bf99b11dbe0a629a85b7391af/);
   assert.match(nasFinder, /Live Photos &amp; Motion Photos/);
-  assert.match(hanClip, /내부 코드 340680/);
-  assert.match(hanClip, /5a92c8849d25836e5ae4fb5cac80c2d9bf4ae183c27ed89b975705a90867e7da/);
+  assert.match(hanClip, /내부 코드 340980/);
+  assert.match(hanClip, /f4b607c0d5b860c4dd1c42a24f653b0bacf5f17d9b10684307af33eec102201b/);
   assert.match(hanClip, /오디오 트랙이 없는 영상은 화면 움직임/);
   assert.match(stand, /내부 코드 340680/);
-  assert.match(stand, /c2669f71358f64366655d9a3749039d689ad998e084bf13cc3ee2f02f37bd719/);
+  assert.match(stand, /21e823f2ab3cb95e6a6fe4978a37cca19d222ef1a01fbf05f181e782221157c8/);
   assert.doesNotMatch(home + nasFinder + hanClip + stand, /첫 공개판 준비 중|APK v2\b|APK v3\b|APK v544\b|APK v548\b|APK v52\b|APK v53\b/);
   assert.doesNotMatch(hanClip, /android-editor-finish-pets\.png/);
 });
@@ -694,19 +699,18 @@ test("keeps traffic-source classification bounded to known, privacy-safe categor
   assert.deepEqual(classifyTrafficSource(request, "https://nasfinder.com/apps/ccmb", null, null), { key: "direct", category: "direct" });
 });
 
-test("keeps detailed records on the authenticated admin page and redirects the old public route", async () => {
+test("keeps traffic sources on the authenticated admin records page", async () => {
   const response = await render("/insights");
-  assert.ok([307, 308].includes(response.status));
-  assert.match(response.headers.get("location") ?? "", /\/#records$/);
+  assert.equal(response.status, 200);
 
-  const [homeCounter, adminPage, statsRoute] = await Promise.all([
-    readFile(new URL("../app/components/SiteCounter.tsx", import.meta.url), "utf8"),
+  const html = await response.text();
+  assert.doesNotMatch(html, /이번 달 유입 경로/);
+  assert.doesNotMatch(html, /개인을 식별하지 않습니다/);
+
+  const [adminPage, statsRoute] = await Promise.all([
     readFile(new URL("../app/admin/testflight/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/api/site-stats/route.ts", import.meta.url), "utf8"),
   ]);
-  assert.match(homeCounter, /<section id="records"/);
-  assert.match(homeCounter, /href="\/admin\/testflight">관리자에서 자세히 보기/);
-  assert.doesNotMatch(homeCounter, /href="\/insights"/);
   assert.match(adminPage, /<SiteInsights embedded showSources \/>/);
   assert.match(adminPage, /관리자 화면에서는 유입 경로까지 표시합니다/);
   assert.match(statsRoute, /includeSources/);
@@ -720,8 +724,8 @@ test("shows the refreshed progress review date and TrackpadGuard DMG download", 
   ]);
   const [btn, trackpadGuard] = await Promise.all([btnResponse.text(), trackpadResponse.text()]);
 
-  assert.match(btn, /마지막 내용 확인: 2026년 8월 23일/);
-  assert.match(trackpadGuard, /마지막 내용 확인: 2026년 8월 23일/);
+  assert.match(btn, /마지막 내용 확인: 2026년 8월 25일/);
+  assert.match(trackpadGuard, /마지막 내용 확인: 2026년 8월 25일/);
   assert.match(trackpadGuard, /release-download\?app=TrackpadGuard/);
   assert.doesNotMatch(trackpadGuard, /releases\/tag\/v0\.1\.3/);
 });

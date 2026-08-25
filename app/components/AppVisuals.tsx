@@ -27,6 +27,15 @@ export function AppHeroArtwork({ app }: { app: AppData }) {
 }
 
 export function AppArtwork({ app }: { app: AppData }) {
+  if (app.artwork === "intelligence") {
+    return (
+      <div className="artwork artwork-intelligence" aria-label="한양의 개인 지능이 미디어에서 기억과 일상 실행으로 확장되는 빛의 리본">
+        <Image src="/apps/hanai/hanai-hero-v2.png" alt="" width={1672} height={941} sizes="(max-width: 640px) 92vw, 720px" unoptimized />
+        <span className="intelligence-aura" aria-hidden="true" />
+      </div>
+    );
+  }
+
   if (app.artwork === "phones") {
     return (
       <div className="artwork artwork-phones" aria-label={`${app.name} 앱 화면`}>
