@@ -32,7 +32,7 @@ function currentMonth() {
   return `${value.year}-${value.month}`;
 }
 
-export function SiteInsights() {
+export function SiteInsights({ embedded = false }: { embedded?: boolean }) {
   const [month, setMonth] = useState(currentMonth);
   const [stats, setStats] = useState<InsightStats | null>(null);
   const [failed, setFailed] = useState(false);
@@ -66,11 +66,13 @@ export function SiteInsights() {
   const years = Array.from({ length: 6 }, (_, index) => String(thisYear - index));
   const months = Array.from({ length: 12 }, (_, index) => String(index + 1).padStart(2, "0"));
 
+  const Wrapper = embedded ? "section" : "main";
+
   return (
-    <main>
+    <Wrapper className={embedded ? "admin-insights" : undefined} aria-label={embedded ? "사이트 기록" : undefined}>
       <section className="insights-hero shell">
         <p className="eyebrow">SITE RECORDS</p>
-        <h1>사이트 기록</h1>
+        {embedded ? <h2>사이트 기록</h2> : <h1>사이트 기록</h1>}
         <p>사람을 따라가지 않고, 홈페이지가 얼마나 쓰였는지만 날짜별 숫자로 봅니다.</p>
       </section>
       <section className="insights-shell shell">
@@ -118,6 +120,6 @@ export function SiteInsights() {
         </section>
         <p className="insights-footnote">방문은 같은 브라우저에서 하루 한 번만 집계합니다. 다운로드 숫자는 이 홈페이지 버튼을 누른 횟수이며 GitHub 전체 다운로드 수와는 다를 수 있습니다. 유입 경로는 검색·소셜 등 미리 정한 카테고리로만 모아 저장하며, 개인을 식별하지 않습니다.</p>
       </section>
-    </main>
+    </Wrapper>
   );
 }

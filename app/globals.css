@@ -869,6 +869,23 @@ img { display: block; max-width: 100%; }
   color: var(--ink);
 }
 
+.admin-insights {
+  margin-top: 90px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+.admin-insights .insights-hero {
+  padding-block: 62px 48px;
+}
+
+.admin-insights .insights-hero h2 {
+  margin: 10px 0 20px;
+  font-size: clamp(3.4rem, 8vw, 7rem);
+  line-height: .86;
+  letter-spacing: -.08em;
+}
+
 @media (max-width: 900px) {
   .admin-metrics-grid {
     grid-template-columns: repeat(2, 1fr);

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useCallback, useEffect, useState, useTransition } from "react";
 import { SiteFooter, SiteHeader } from "../../page";
+import { SiteInsights } from "../../components/SiteInsights";
 import { testFlightBuilds } from "../../testflight";
 import type { TestFlightApplicationRow, TestFlightStatus, TestFlightSummaryStats } from "../../../db/testflight";
 
@@ -393,6 +394,7 @@ export default function TestFlightAdminPage() {
 
         {/* Authenticated Dashboard */}
         {authenticated === true && (
+          <>
           <div className="admin-dashboard">
             <header className="admin-dash-header">
               <div>
@@ -605,6 +607,8 @@ export default function TestFlightAdminPage() {
               </ul>
             </section>
           </div>
+          <SiteInsights embedded />
+          </>
         )}
       </div>
 
