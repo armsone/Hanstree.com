@@ -44,7 +44,7 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     label: "HanClip Android",
     repo: "HanClip-Android",
     assetPattern: /\.apk$/i,
-    fallbackUrl: "https://github.com/armsone/HanClip-Android/releases/download/android-v2.1.0/HanClip-Android-2.1.0.apk",
+    fallbackUrl: "https://github.com/armsone/HanClip-Android/releases/download/android-v2.1.1/HanClip-Android-2.1.1.apk",
   },
   "S.tand-macOS": {
     label: "S.tand Mac",
@@ -56,7 +56,7 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     label: "S.tand Android",
     repo: "S.tand-Android",
     assetPattern: /\.apk$/i,
-    fallbackUrl: "https://github.com/armsone/S.tand-Android/releases/download/android-v2.1.0/S.tand-Android-2.1.0.apk",
+    fallbackUrl: "https://github.com/armsone/S.tand-Android/releases/download/android-v2.1.1/S.tand-Android-2.1.1.apk",
   },
   CCMB: {
     label: "CCMB Mac",
@@ -86,19 +86,19 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     label: "오늘 뭐 먹지?? Android",
     repo: "WhattoEat-Android",
     assetPattern: /^WhattoEat-Android-\d+\.\d+\.\d+\.apk$/i,
-    fallbackUrl: "https://github.com/armsone/WhattoEat-Android/releases/download/android-v0.3.6/WhattoEat-Android-0.3.6.apk",
+    fallbackUrl: "https://github.com/armsone/WhattoEat-Android/releases/download/android-v0.4.0/WhatToEat-Android-0.4.0.apk",
   },
   "button-Android": {
     label: "버튼 Android",
     repo: "button-Android",
     assetPattern: /\.apk$/i,
-    fallbackUrl: "https://github.com/armsone/button-Android/releases/download/android-v2.0.0/Button-Android-2.0.0.apk",
+    fallbackUrl: "https://github.com/armsone/button-Android/releases/download/android-v2.0.1/Button-Android-2.0.1.apk",
   },
   "StarManager-Android": {
     label: "스타매니저 Android",
     repo: "StarManager-Android",
     assetPattern: /\.apk$/i,
-    fallbackUrl: "https://github.com/armsone/StarManager-Android/releases/download/android-v2.0.0/StarManager-Android-2.0.0.apk",
+    fallbackUrl: "https://github.com/armsone/StarManager-Android/releases/download/android-v2.0.1/StarManager-Android-2.0.1.apk",
   },
   "HtOMS-BK": {
     label: "HtOMS Brief Android",

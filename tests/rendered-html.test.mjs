@@ -120,8 +120,8 @@ test("renders the Button family calling app and release", async () => {
   assert.match(html, /Synology NAS/);
   assert.match(html, /2\.0\.0 \(202608230737\)/);
   assert.match(html, /release-download\?app=button-Android/);
-  assert.match(html, /9b719f737aac49c6ac28ef1d5f1dae87304cfb64bfd845da4a189be8d5434e2a/);
-  assert.match(html, /내부 코드 337417/);
+  assert.match(html, /c2fb4f9cb9840761824d7079a3c8710c30fd3d9ff3114838dad5638c2661962f/);
+  assert.match(html, /내부 코드 340680/);
   assert.match(html, /한 명·여러 명 또는 모두에게/);
   assert.match(html, /앱을 보는 동안 화면 유지/);
   assert.match(html, /톡톡에서 사이렌까지/);
@@ -143,9 +143,9 @@ test("renders the StarManager product and matchup disclosure", async () => {
   assert.match(html, /스타매니저 Android 만들기 화면/);
   assert.match(html, /도달 가능한 탭/);
   assert.match(html, /픽셀 단위 시각 패리티는 아직 검증하지 않았습니다/);
-  assert.match(html, /Android 2\.0\.0 공개/);
+  assert.match(html, /Android 2\.0\.1 공개/);
   assert.match(html, /release-download\?app=StarManager-Android/);
-  assert.match(html, /9a5cb0653e03cefe48d814603f38f1c18a687bcacefeeacbbf5d0c24eb9856ed/);
+  assert.match(html, /6c943ab1861f9dca91d383b7adcae6e45f6df3c0727263ce2ae21abb156b1362/);
   assert.match(html, /다른 앱에서 붙여넣기/);
   assert.match(html, /사진 앱·갤러리/);
 });
@@ -442,17 +442,17 @@ test("renders current app release and TestFlight information", async () => {
   ]);
 
   assert.match(home, /202608230737/);
-  assert.match(home, /337417/);
+  assert.match(home, /340680/);
   assert.match(home, /스타메니저/);
   assert.match(home, /2026년 8월 23일/);
-  assert.match(nasFinder, /내부 코드 340625/);
-  assert.match(nasFinder, /4b1e5e3869083c0b3a6797a74bab21ba76c434271acfed1463c57dc031ef69f7/);
+  assert.match(nasFinder, /내부 코드 340680/);
+  assert.match(nasFinder, /0f2b70f5f78f320a49b954d7de4fee25f9ab2184f233a992972e32d7951c712e/);
   assert.match(nasFinder, /Live Photos &amp; Motion Photos/);
-  assert.match(hanClip, /내부 코드 340033/);
-  assert.match(hanClip, /4ab4a27bcf2b0a7e0e435c6941d536ccbfee98405bdf29509fc2c08444a587c3/);
+  assert.match(hanClip, /내부 코드 340680/);
+  assert.match(hanClip, /5a92c8849d25836e5ae4fb5cac80c2d9bf4ae183c27ed89b975705a90867e7da/);
   assert.match(hanClip, /오디오 트랙이 없는 영상은 화면 움직임/);
-  assert.match(stand, /내부 코드 340467/);
-  assert.match(stand, /300c992301eae2b0fb104384751a2a6f49bb58597960273af9fcb4087ffa67e4/);
+  assert.match(stand, /내부 코드 340680/);
+  assert.match(stand, /c2669f71358f64366655d9a3749039d689ad998e084bf13cc3ee2f02f37bd719/);
   assert.doesNotMatch(home + nasFinder + hanClip + stand, /첫 공개판 준비 중|APK v2\b|APK v3\b|APK v544\b|APK v548\b|APK v52\b|APK v53\b/);
   assert.doesNotMatch(hanClip, /android-editor-finish-pets\.png/);
 });
