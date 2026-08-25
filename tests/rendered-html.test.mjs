@@ -78,17 +78,28 @@ test("keeps TestFlight, public beta, and Android cards on one responsive layout 
   const sharedGrids = String.raw`\.testflight-grid,\.testflight-invite-grid,\.android-release-grid`;
 
   assert.match(css, new RegExp(String.raw`@media \(min-width: 601px\)\s*\{\s*${sharedGrids}\{grid-template-columns:repeat\(2,minmax\(0,1fr\)\)\}`));
-  assert.match(css, new RegExp(String.raw`@media \(min-width: 1000px\) and \(orientation: landscape\)\s*\{\s*${sharedGrids}\{grid-template-columns:repeat\(4,minmax\(0,1fr\)\)\}`));
+  assert.match(css, new RegExp(String.raw`@media \(min-width: 1000px\)\s*\{\s*${sharedGrids}\{grid-template-columns:repeat\(4,minmax\(0,1fr\)\)\}`));
+  assert.doesNotMatch(css, /@media \(min-width: 1000px\) and \(orientation: landscape\)/);
   assert.doesNotMatch(css, /\.testflight-grid\{grid-template-columns:repeat\(auto-fit/);
 });
 
-test("keeps every home product card title readable without ellipsis", async () => {
+test("keeps every user-facing title and caption readable without ellipsis or clipping", async () => {
   const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
   const productCopyRule = css.match(/\.hero-product-copy strong,\.hero-product-copy small\{([^}]*)\}/)?.[1] ?? "";
+  const headingRule = css.match(/h1,h2,h3,h4,h5,h6\{([^}]*)\}/)?.[1] ?? "";
+  const releaseTitleRule = css.match(/\.app-title-line p,\.app-title-line h3,[^{]+\{([^}]*)\}/)?.[1] ?? "";
 
   assert.match(productCopyRule, /white-space:normal/);
   assert.match(productCopyRule, /word-break:keep-all/);
   assert.doesNotMatch(productCopyRule, /text-overflow:ellipsis|overflow:hidden|white-space:nowrap/);
+  for (const rule of [headingRule, releaseTitleRule]) {
+    assert.match(rule, /overflow:visible/);
+    assert.match(rule, /text-overflow:clip/);
+    assert.match(rule, /white-space:normal/);
+    assert.match(rule, /word-break:keep-all/);
+  }
+  assert.match(css, /\.screenshot-rail figcaption\{height:auto;min-height:58px;overflow:visible\}/);
+  assert.doesNotMatch(css, /\.hero-product small\{[^}]*text-overflow:ellipsis/);
 });
 
 test("keeps every app detail hero focused on one clear entry path and a representative product scene", async () => {
