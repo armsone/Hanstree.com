@@ -49,7 +49,7 @@ test("server-renders the NasFinder.com homepage", async () => {
   assert.match(html, /href="\/apps\/intosharp" class="hero-product"[^>]*aria-label="인투샾 제품 자세히 보기"/);
   assert.equal((html.match(/class="app-row-hit-area"/g) ?? []).length, 14);
   assert.match(html, /href="\/apps\/intosharp" class="app-row-hit-area" aria-label="인투샾 제품 자세히 보기"/);
-  assert.match(html, />32<\/strong><span>현재 소개하는 제품/);
+  assert.match(html, />33<\/strong><span>현재 소개하는 제품/);
   assert.doesNotMatch(html, /플랫폼별 제공 버전/);
   assert.match(html, />07<\/strong><span>iPhone · iPad · macOS · Android · Google TV · Web · Windows \(커밍\)/);
   assert.match(html, />01<\/strong><span>한 사람의 꾸준한 기록/);
@@ -200,8 +200,9 @@ test("renders the latest NasFinder and HanClip capabilities", async () => {
   assert.match(nasFinder, /움직이는 추억도/);
   assert.match(nasFinder, /live-motion-campaign\.png/);
   assert.match(nasFinder, /가족의 휴대폰이 서로 달라도/);
-  assert.match(nasFinder, /Super Thumbnail과 공통 미디어 보기/);
-  assert.match(nasFinder, /NAS Vault 수퍼썸네일 복원과 미디어 제스처 보완판은 실기기 검증 후 공개 예정/);
+  assert.match(nasFinder, /파일과 폴더를 함께 보는 Super Thumbnail/);
+  assert.match(nasFinder, /SM-F968N 교체 설치·실행 확인/);
+  assert.match(nasFinder, /폴더 안의 파일·하위 폴더를 최대 9칸/);
   assert.match(nasFinder, /내 휴대폰을, 진짜 휴대용 하드처럼/);
   assert.match(nasFinder, /외부 파일 앱과 자연스럽게/);
   assert.match(nasFinder, /플랫폼별 설치 보기/);
@@ -212,7 +213,7 @@ test("renders the latest NasFinder and HanClip capabilities", async () => {
   assert.match(nasFinder, /화면에 맞춰 커지는 Overflow/);
   assert.match(nasFinder, /휴대전화·태블릿·폴더블의 실제 안전영역/);
   assert.match(nasFinder, /볼륨·탐색·닫기 제스처/);
-  assert.match(nasFinder, /범위 스트리밍·외부 자막/);
+  assert.match(nasFinder, /외부 자막/);
   assert.match(nasFinder, /외부 파일 앱과 자연스럽게/);
   assert.match(nasFinder, /‘다음으로 열기’/);
   assert.match(nasFinder, /다음 공개판/);
@@ -298,8 +299,7 @@ test("renders full promotional campaigns for HanClip, TrackpadGuard, CCMB, and S
   assert.match(stand, /Google TV와 Android TV API 36 가상 기기 검증/);
   assert.match(stand, /Google TV 다음 공개판/);
   assert.match(stand, /google-tv-home\.png/);
-  assert.match(stand, /android-tv-launcher\.png/);
-  assert.equal((stand.match(/class="screen-tv"/g) ?? []).length, 2);
+  assert.equal((stand.match(/class="screen-tv"/g) ?? []).length, 1);
   for (const html of [hanClip, trackpadGuard, ccmb, stand]) {
     assert.match(html, /실제 기능으로 가능한 대표 사용 장면이며, 사용자 후기를 인용한 내용은 아닙니다/);
     assert.match(html, /id="product-campaign"/);
@@ -427,8 +427,8 @@ test("renders current app release and TestFlight information", async () => {
   assert.match(home, /337417/);
   assert.match(home, /스타메니저/);
   assert.match(home, /2026년 8월 23일/);
-  assert.match(nasFinder, /APK code 337417/);
-  assert.match(nasFinder, /b75e22a98ef00fb35c657292b95fb1516ac2f098185e4ca611fd30bad02b775d/);
+  assert.match(nasFinder, /APK code 340486/);
+  assert.match(nasFinder, /e27b39a18499471c0f4b9137fa642ea4c8a847baa0600f6ff48a57ce56737feb/);
   assert.match(nasFinder, /Live Photos &amp; Motion Photos/);
   assert.match(hanClip, /APK code 340033/);
   assert.match(hanClip, /4ab4a27bcf2b0a7e0e435c6941d536ccbfee98405bdf29509fc2c08444a587c3/);
