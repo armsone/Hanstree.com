@@ -1,5 +1,5 @@
 import { sql } from "drizzle-orm";
-import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
+import { index, integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
 
 export const siteCounters = sqliteTable("site_counters", {
   key: text("key").primaryKey(),
@@ -18,3 +18,25 @@ export const whattoeatRedTablePhotoShardsNext = sqliteTable("whattoeat_redtable_
   entriesJSON: text("entries_json").notNull(),
   updatedAt: text("updated_at").notNull(),
 });
+
+export const testflightApplications = sqliteTable(
+  "testflight_applications",
+  {
+    id: integer("id").primaryKey({ autoIncrement: true }),
+    email: text("email").notNull(),
+    appSlug: text("app_slug").notNull(),
+    appName: text("app_name").notNull(),
+    device: text("device").notNull(),
+    reason: text("reason").notNull(),
+    status: text("status").notNull().default("pending"),
+    ipHash: text("ip_hash").notNull(),
+    consentedAt: text("consented_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+    createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+    updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  },
+  (table) => [
+    index("idx_testflight_applications_ip_created").on(table.ipHash, table.createdAt),
+    index("idx_testflight_applications_email_app_status").on(table.email, table.appSlug, table.status),
+    index("idx_testflight_applications_status_app").on(table.status, table.appSlug),
+  ],
+);
