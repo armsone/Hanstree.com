@@ -46,7 +46,7 @@ export const apps: AppData[] = [
     icon: "/apps/nasfinder/icon.png",
     artwork: "files",
     platforms: [
-      { name: "iPhone · iPad", status: "TestFlight", detail: "2.2.0 (202608252025) · iOS·iPadOS 17+", availabilityNote: "Public Beta 심사 제출 · Apple 심사 대기 중" },
+      { name: "iPhone · iPad", status: "TestFlight", detail: "2.2.0 (202608252025) · iOS·iPadOS 17+", availabilityNote: "Public Beta 승인 · 공개 테스트 참여 가능" },
       { name: "Mac용 NasFinder", status: "TestFlight", detail: "2.2.0 · Apple Silicon · iPhone·iPad 호환 앱", availabilityNote: "같은 TestFlight 빌드 · 2배 Mac 보기 · 공개 테스트 심사 중" },
       {
         name: "Android",
@@ -172,7 +172,7 @@ export const apps: AppData[] = [
     icon: "/apps/hanclip/icon.png",
     artwork: "phones",
     platforms: [
-      { name: "iOS · iPadOS", status: "TestFlight", detail: "2.2.1 (202608251900) · iOS·iPadOS 17+", availabilityNote: "Public Beta 심사 제출 · Apple 심사 대기 중" },
+      { name: "iOS · iPadOS", status: "TestFlight", detail: "2.2.1 (202608251900) · iOS·iPadOS 17+", availabilityNote: "Public Beta 승인 · 공개 테스트 참여 가능" },
       { name: "Mac", status: "TestFlight", detail: "2.2.1 · Apple Silicon · iPad 앱 호환 모드", availabilityNote: "같은 TestFlight 빌드 · 공개 테스트 심사 중" },
       {
         name: "Android",
@@ -889,7 +889,7 @@ export const apps: AppData[] = [
     icon: "/apps/whattoeat/icon.png",
     artwork: "phones",
     platforms: [
-      { name: "iPhone · iPad", status: "TestFlight", detail: "0.4.1 (202608252106) · iOS·iPadOS 17+", availabilityNote: "Public Beta 심사 제출 · Apple 심사 대기 중" },
+      { name: "iPhone · iPad", status: "TestFlight", detail: "0.4.1 (202608252106) · iOS·iPadOS 17+", availabilityNote: "Public Beta 승인 · 공개 테스트 참여 가능" },
       { name: "Mac", status: "공개", detail: "0.4.1 (202608252106) · macOS 13+ · Universal · Apple 공증 완료", url: releaseDownloadPath("WhattoEat"), downloadLabel: "Mac용 DMG 다운로드", checksum: "b2387eab4b08056f06539c5dd4fdad59e223f48c4693d1e89c29bfa10c37f847", availabilityNote: "공증된 DMG 설치·실행 검증 완료" },
       { name: "Android · Google TV", status: "공개", detail: "0.4.1 · 빌드 202608252106 · 내부 코드 341106 · Android 8.0+", url: releaseDownloadPath("WhattoEat-Android"), downloadLabel: "Android용 APK 다운로드", checksum: "3e9d66d8a3ad4ce97d5a56550e706b721eb46cf276dbddd1a0e2cbba9133cf59", availabilityNote: "SM-F968N Android 16 교체 설치·실행과 12개 화면 검증 · 태블릿·TV 리모컨 검증 전" },
     ],

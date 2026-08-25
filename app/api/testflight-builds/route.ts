@@ -65,6 +65,7 @@ async function appStoreRequest<T>(path: string, token: string) {
 }
 
 async function readLatestBuild(source: (typeof APP_SOURCES)[number], token: string): Promise<TestFlightBuild> {
+  const fallback = testFlightBuilds.find((item) => item.slug === source.slug);
   const apps = await appStoreRequest<{ bundleId: string }>(
     `/apps?filter[bundleId]=${encodeURIComponent(source.bundleId)}&fields[apps]=bundleId&limit=1`,
     token,
@@ -90,8 +91,8 @@ async function readLatestBuild(source: (typeof APP_SOURCES)[number], token: stri
     build: build.attributes.version,
     uploadedAt: build.attributes.uploadedDate,
     expiresAt: build.attributes.expirationDate ?? null,
-    inviteUrl: null,
-    publicBetaState: testFlightBuilds.find((fallback) => fallback.slug === source.slug)?.publicBetaState ?? "needsExternalBuild",
+    inviteUrl: fallback?.inviteUrl ?? null,
+    publicBetaState: fallback?.publicBetaState ?? "needsExternalBuild",
   };
 }
 

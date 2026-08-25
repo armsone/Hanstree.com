@@ -129,10 +129,13 @@ test("collects verified external tester links between TestFlight and Android dow
   assert.match(section, /외부 테스터 참여/);
   assert.equal((section.match(/class="testflight-invite-card/g) ?? []).length, 6);
   assert.equal((section.match(/class="app-icon/g) ?? []).length, 6);
-  assert.equal((section.match(/Apple 심사 중/g) ?? []).length, 6);
+  assert.equal((section.match(/Apple 심사 중/g) ?? []).length, 3);
   assert.equal((section.match(/심사 계정 준비/g) ?? []).length, 0);
   assert.equal((section.match(/외부용 빌드 준비/g) ?? []).length, 0);
-  assert.doesNotMatch(section, /href="https:\/\/testflight\.apple\.com\/join\//);
+  assert.equal((section.match(/href="https:\/\/testflight\.apple\.com\/join\//g) ?? []).length, 3);
+  assert.match(section, /href="https:\/\/testflight\.apple\.com\/join\/3m3bhwJz"/);
+  assert.match(section, /href="https:\/\/testflight\.apple\.com\/join\/m2YsgUJW"/);
+  assert.match(section, /href="https:\/\/testflight\.apple\.com\/join\/A444RsAc"/);
 });
 
 test("renders the privacy-safe Minecraft Bedrock home server guide", async () => {
@@ -281,7 +284,8 @@ test("renders the latest NasFinder and HanClip capabilities", async () => {
   ]);
   assert.match(nasFinder, /파일 앱에서 바로 가져오기/);
   assert.match(nasFinder, /2\.2\.0 \(202608252025\)/);
-  assert.match(nasFinder, /Public Beta 심사 제출 · Apple 심사 대기 중/);
+  assert.match(nasFinder, /href="https:\/\/testflight\.apple\.com\/join\/3m3bhwJz"/);
+  assert.match(hanClip, /href="https:\/\/testflight\.apple\.com\/join\/m2YsgUJW"/);
   assert.match(nasFinder, /폰하드로 모으고 관리/);
   assert.match(nasFinder, /자세히·썸네일·포스터/);
   assert.match(nasFinder, /Overflow/);
@@ -558,12 +562,13 @@ test("publishes the WhattoEat 0.4.1 lunch bag navigation release", async () => {
   assert.match(page, /0\.4\.1/);
   assert.match(page, /202608252106/);
   assert.match(page, /점심 가방으로 바로 추천/);
-  assert.match(page, /Public Beta 심사 제출 · Apple 심사 대기 중/);
+  assert.match(page, /TestFlight에서 참여/);
   assert.match(page, /android-bag-navigation\.png/);
   assert.match(page, /b2387eab4b08056f06539c5dd4fdad59e223f48c4693d1e89c29bfa10c37f847/);
   assert.match(page, /3e9d66d8a3ad4ce97d5a56550e706b721eb46cf276dbddd1a0e2cbba9133cf59/);
   assert.equal(whattoeat?.build, "202608252106");
-  assert.equal(whattoeat?.inviteUrl, null);
+  assert.equal(whattoeat?.inviteUrl, "https://testflight.apple.com/join/A444RsAc");
+  assert.equal(whattoeat?.publicBetaState, "approved");
 });
 
 test("routes public download buttons through the allowlisted release redirect", async () => {
@@ -624,6 +629,8 @@ test("keeps verified TestFlight fallback data for StarManager, Button, and HtOMS
 
   const payload = await response.json();
   const bySlug = new Map(payload.builds.map((build) => [build.slug, build]));
+  assert.equal(bySlug.get("nasfinder")?.inviteUrl, "https://testflight.apple.com/join/3m3bhwJz");
+  assert.equal(bySlug.get("hanclip")?.inviteUrl, "https://testflight.apple.com/join/m2YsgUJW");
   assert.equal(bySlug.get("starmanager")?.build, "202608251915");
   assert.equal(bySlug.get("starmanager")?.uploadedAt, "2026-08-25T19:18:33+09:00");
   assert.equal(bySlug.get("button")?.build, "202608252204");
