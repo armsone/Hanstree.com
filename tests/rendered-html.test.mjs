@@ -183,7 +183,9 @@ test("renders Super Thumbnail as an independent Mac product", async () => {
   assert.match(detail, /2\.1\.3 \(202608251602\)/);
   assert.match(detail, /폴더도 9칸 모아보기/);
   assert.match(detail, /c14daa621a8210a3a3785a9d59f1d3439dada929ae7792caa670fabe3c38c507/);
-  assert.match(detail, /만들어진 썸네일 바로 확인/);
+  assert.match(detail, /미리보는 재미까지 크게/);
+  assert.match(detail, /가로 손잡이를 아래로 끌수록 미리보기와 이미지가 함께 커지고/);
+  assert.match(detail, /크기 조절 미리보기 준비/);
   assert.match(detail, /원본은 그대로, 썸네일만 새로/);
   assert.match(detail, /새로 만든 항목이 가장 왼쪽/);
   assert.match(detail, /보관본을 찾을 때부터 삭제 완료 개수/);
