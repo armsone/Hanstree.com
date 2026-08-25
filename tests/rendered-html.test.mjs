@@ -303,9 +303,9 @@ test("renders full promotional campaigns for HanClip, TrackpadGuard, CCMB, and S
   assert.match(stand, /의료 진단 기능은 아닙니다/);
   assert.match(stand, /이 기기의 설치 방법 보기/);
   assert.match(stand, /advantage-visual/);
-  assert.match(stand, /Google TV 리모컨 지원 준비/);
-  assert.match(stand, /Google TV와 Android TV API 36 가상 기기 검증/);
-  assert.match(stand, /Google TV 다음 공개판/);
+  assert.match(stand, /Google TV 리모컨 지원/);
+  assert.match(stand, /Google TV API 36에서 검증/);
+  assert.match(stand, /Google TV 공개/);
   assert.match(stand, /google-tv-home\.png/);
   assert.equal((stand.match(/class="screen-tv"/g) ?? []).length, 1);
   for (const html of [hanClip, trackpadGuard, ccmb, stand]) {
@@ -441,8 +441,8 @@ test("renders current app release and TestFlight information", async () => {
   assert.match(hanClip, /APK code 340033/);
   assert.match(hanClip, /4ab4a27bcf2b0a7e0e435c6941d536ccbfee98405bdf29509fc2c08444a587c3/);
   assert.match(hanClip, /오디오 트랙이 없는 영상은 화면 움직임/);
-  assert.match(stand, /APK code 337417/);
-  assert.match(stand, /66d77953761b8e0a8e2b37ab890ce6726d6beed8e34388e936d65f4d92cde91e/);
+  assert.match(stand, /APK code 340467/);
+  assert.match(stand, /300c992301eae2b0fb104384751a2a6f49bb58597960273af9fcb4087ffa67e4/);
   assert.doesNotMatch(home + nasFinder + hanClip + stand, /첫 공개판 준비 중|APK v2\b|APK v3\b|APK v544\b|APK v548\b|APK v52\b|APK v53\b/);
   assert.doesNotMatch(hanClip, /android-editor-finish-pets\.png/);
 });
