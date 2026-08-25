@@ -69,7 +69,7 @@ export function SiteInsights({ embedded = false, showSources = false }: { embedd
     }, {});
 
     return sortDownloadKeysByCount(DOWNLOAD_KEYS, downloads)
-      .map((key) => [key, RELEASE_DOWNLOADS[key].label] as const);
+      .map((key) => [key, RELEASE_DOWNLOADS[key].label, downloads[key] || 0] as const);
   }, [stats]);
 
   const number = (value: number) => value.toLocaleString("ko-KR");
@@ -111,10 +111,16 @@ export function SiteInsights({ embedded = false, showSources = false }: { embedd
           </div>
         </div>
         {failed ? <p className="insights-error">집계 정보를 잠시 불러오지 못했습니다. 조금 뒤 다시 확인해 주세요.</p> : null}
+        <section className="insights-apps" aria-labelledby="insights-apps-title">
+          <div className="insights-section-heading"><h2 id="insights-apps-title">이번 달 앱별 다운로드</h2><span>다운로드 많은 순</span></div>
+          <ol className="insights-app-ranking">
+            {apps.map(([repo, label, count], index) => <li key={repo}><span>{String(index + 1).padStart(2, "0")}</span><strong>{label}</strong><b>{number(count)}회</b></li>)}
+          </ol>
+        </section>
         <div className="insights-table-wrap">
           <table className="insights-table">
-            <thead><tr><th>날짜</th><th>방문</th><th>다운로드 전체</th>{apps.map(([, label]) => <th key={label}>{label}</th>)}</tr></thead>
-            <tbody>{[...(stats?.daily || [])].reverse().map((day) => <tr key={day.date}><th scope="row">{day.date}</th><td>{number(day.visits)}</td><td>{number(day.downloadClicks)}</td>{apps.map(([repo]) => <td key={repo}>{number(day.downloads[repo] || 0)}</td>)}</tr>)}</tbody>
+            <thead><tr><th>날짜</th><th>방문</th><th>다운로드 전체</th></tr></thead>
+            <tbody>{[...(stats?.daily || [])].reverse().map((day) => <tr key={day.date}><th scope="row">{day.date}</th><td>{number(day.visits)}</td><td>{number(day.downloadClicks)}</td></tr>)}</tbody>
           </table>
         </div>
         {showSources ? <section className="insights-sources" aria-labelledby="insights-sources-title">

@@ -730,13 +730,21 @@ test("orders download counters by count while preserving the original order for 
   assert.deepEqual(sortDownloadKeysByCount(keys), keys);
 });
 
-test("orders administrator download columns by the selected month's totals", async () => {
-  const insights = await readFile(new URL("../app/components/SiteInsights.tsx", import.meta.url), "utf8");
+test("shows administrator downloads as a responsive ranking without a wide table", async () => {
+  const [insights, css] = await Promise.all([
+    readFile(new URL("../app/components/SiteInsights.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
+  ]);
 
   assert.match(insights, /sortDownloadKeysByCount\(DOWNLOAD_KEYS, downloads\)/);
   assert.match(insights, /totals\[key\].*day\.downloads\[key\]/);
-  assert.match(insights, /apps\.map\(\(\[, label\]\).*<th/);
-  assert.match(insights, /apps\.map\(\(\[repo\]\).*day\.downloads\[repo\]/);
+  assert.match(insights, /className="insights-app-ranking"/);
+  assert.match(insights, /다운로드 많은 순/);
+  assert.doesNotMatch(insights, /apps\.map\(\(\[, label[^\n]*<th/);
+  assert.doesNotMatch(insights, /apps\.map\(\(\[repo[^\n]*day\.downloads\[repo\]/);
+  assert.match(css, /\.insights-app-ranking\{[^}]*grid-template-columns:repeat\(3,minmax\(0,1fr\)\)/);
+  assert.match(css, /\.admin-insights \.insights-table\s*\{\s*table-layout: fixed;/);
+  assert.match(css, /\.admin-insights \.chart-bars,\s*\.admin-insights \.insights-table\s*\{\s*min-width: 0;/);
 });
 
 test("keeps visit tracking privacy-safe and single-sourced", async () => {
