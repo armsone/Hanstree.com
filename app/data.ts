@@ -761,7 +761,7 @@ export const apps: AppData[] = [
     icon: "/apps/starmanager/icon.png",
     artwork: "phones",
     platforms: [
-      { name: "iPhone · iPad", status: "TestFlight", detail: "2.0.0 (202608251915) · iOS·iPadOS 18+", availabilityNote: "Public Beta 심사 제출 · Apple 심사 대기 중" },
+      { name: "iPhone · iPad", status: "TestFlight", detail: "2.0.0 (202608251915) · iOS·iPadOS 18+", availabilityNote: "Public Beta 승인 · 공개 테스트 참여 가능" },
       {
         name: "Android",
         status: "공개",

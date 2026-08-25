@@ -129,13 +129,14 @@ test("collects verified external tester links between TestFlight and Android dow
   assert.match(section, /외부 테스터 참여/);
   assert.equal((section.match(/class="testflight-invite-card/g) ?? []).length, 6);
   assert.equal((section.match(/class="app-icon/g) ?? []).length, 6);
-  assert.equal((section.match(/Apple 심사 중/g) ?? []).length, 3);
+  assert.equal((section.match(/Apple 심사 중/g) ?? []).length, 2);
   assert.equal((section.match(/심사 계정 준비/g) ?? []).length, 0);
   assert.equal((section.match(/외부용 빌드 준비/g) ?? []).length, 0);
-  assert.equal((section.match(/href="https:\/\/testflight\.apple\.com\/join\//g) ?? []).length, 3);
+  assert.equal((section.match(/href="https:\/\/testflight\.apple\.com\/join\//g) ?? []).length, 4);
   assert.match(section, /href="https:\/\/testflight\.apple\.com\/join\/3m3bhwJz"/);
   assert.match(section, /href="https:\/\/testflight\.apple\.com\/join\/m2YsgUJW"/);
   assert.match(section, /href="https:\/\/testflight\.apple\.com\/join\/A444RsAc"/);
+  assert.match(section, /href="https:\/\/testflight\.apple\.com\/join\/nzmW4WxW"/);
 });
 
 test("renders the privacy-safe Minecraft Bedrock home server guide", async () => {
@@ -211,7 +212,7 @@ test("renders the StarManager product and matchup disclosure", async () => {
   const html = await response.text();
   assert.match(html, /오늘의 이야기를, 내 목소리로 완성합니다/);
   assert.match(html, /스타메니저 iPhone 스튜디오의 AI 선택과 새 캔버스 화면/);
-  assert.match(html, /Public Beta 심사 제출 · Apple 심사 대기 중/);
+  assert.match(html, /href="https:\/\/testflight\.apple\.com\/join\/nzmW4WxW"/);
   assert.match(html, /기기 AI/);
   assert.match(html, /스타매니저 Android 만들기 화면/);
   assert.match(html, /도달 가능한 탭/);
@@ -633,6 +634,7 @@ test("keeps verified TestFlight fallback data for StarManager, Button, and HtOMS
   assert.equal(bySlug.get("hanclip")?.inviteUrl, "https://testflight.apple.com/join/m2YsgUJW");
   assert.equal(bySlug.get("starmanager")?.build, "202608251915");
   assert.equal(bySlug.get("starmanager")?.uploadedAt, "2026-08-25T19:18:33+09:00");
+  assert.equal(bySlug.get("starmanager")?.inviteUrl, "https://testflight.apple.com/join/nzmW4WxW");
   assert.equal(bySlug.get("button")?.build, "202608252204");
   assert.equal(bySlug.get("button")?.uploadedAt, "2026-08-25T22:08:30+09:00");
   assert.equal(bySlug.get("htoms-brief")?.build, "202608252204");
