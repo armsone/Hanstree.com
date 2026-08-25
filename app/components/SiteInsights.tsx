@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { DOWNLOAD_KEYS, RELEASE_DOWNLOADS } from "../releases";
+import { DOWNLOAD_KEYS, RELEASE_DOWNLOADS, sortDownloadKeysByCount } from "../releases";
 
 type DailyStats = {
   date: string;
@@ -23,8 +23,6 @@ type InsightStats = {
   daily: DailyStats[];
   sources: SourceRow[];
 };
-
-const apps = DOWNLOAD_KEYS.map((key) => [key, RELEASE_DOWNLOADS[key].label] as const);
 
 function currentMonth() {
   const parts = new Intl.DateTimeFormat("en-US", { timeZone: "Asia/Seoul", year: "numeric", month: "2-digit" }).formatToParts(new Date());
@@ -60,6 +58,18 @@ export function SiteInsights({ embedded = false, showSources = false }: { embedd
       downloads: daily.reduce((sum, day) => sum + day.downloadClicks, 0),
       max: Math.max(1, ...daily.flatMap((day) => [day.visits, day.downloadClicks])),
     };
+  }, [stats]);
+
+  const apps = useMemo(() => {
+    const downloads = (stats?.daily || []).reduce<Record<string, number>>((totals, day) => {
+      DOWNLOAD_KEYS.forEach((key) => {
+        totals[key] = (totals[key] || 0) + (day.downloads[key] || 0);
+      });
+      return totals;
+    }, {});
+
+    return sortDownloadKeysByCount(DOWNLOAD_KEYS, downloads)
+      .map((key) => [key, RELEASE_DOWNLOADS[key].label] as const);
   }, [stats]);
 
   const number = (value: number) => value.toLocaleString("ko-KR");

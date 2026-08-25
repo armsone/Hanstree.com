@@ -699,6 +699,15 @@ test("orders download counters by count while preserving the original order for 
   assert.deepEqual(sortDownloadKeysByCount(keys), keys);
 });
 
+test("orders administrator download columns by the selected month's totals", async () => {
+  const insights = await readFile(new URL("../app/components/SiteInsights.tsx", import.meta.url), "utf8");
+
+  assert.match(insights, /sortDownloadKeysByCount\(DOWNLOAD_KEYS, downloads\)/);
+  assert.match(insights, /totals\[key\].*day\.downloads\[key\]/);
+  assert.match(insights, /apps\.map\(\(\[, label\]\).*<th/);
+  assert.match(insights, /apps\.map\(\(\[repo\]\).*day\.downloads\[repo\]/);
+});
+
 test("keeps visit tracking privacy-safe and single-sourced", async () => {
   const [component, counter, route, requestTraffic] = await Promise.all([
     readFile(new URL("../app/components/VisitTracker.tsx", import.meta.url), "utf8"),
