@@ -82,6 +82,15 @@ test("keeps TestFlight, public beta, and Android cards on one responsive layout 
   assert.doesNotMatch(css, /\.testflight-grid\{grid-template-columns:repeat\(auto-fit/);
 });
 
+test("keeps every home product card title readable without ellipsis", async () => {
+  const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
+  const productCopyRule = css.match(/\.hero-product-copy strong,\.hero-product-copy small\{([^}]*)\}/)?.[1] ?? "";
+
+  assert.match(productCopyRule, /white-space:normal/);
+  assert.match(productCopyRule, /word-break:keep-all/);
+  assert.doesNotMatch(productCopyRule, /text-overflow:ellipsis|overflow:hidden|white-space:nowrap/);
+});
+
 test("keeps every app detail hero focused on one clear entry path and a representative product scene", async () => {
   const slugs = [
     "nasfinder", "super-thumbnail", "hanclip", "stand", "ccmb", "btn", "trackpadguard",
