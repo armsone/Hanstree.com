@@ -410,10 +410,12 @@ test("shows the current CCMB three-service release", async () => {
   assert.doesNotMatch(html, /WEEKLY REMAINING/);
   assert.doesNotMatch(html, /81% · ₩12\.4/);
   assert.doesNotMatch(html, /v0\.4\.3/);
-  assert.match(html, /2\.0\.1/);
+  assert.match(html, /2\.0\.3/);
   assert.match(html, /Codex·Claude·Gemini/);
   assert.match(html, /release-download\?app=CCMB/);
-  assert.match(html, /690f7884fd43c2a5995fac0353d4066c3a9513485a60616b905920c798baa2df/);
+  assert.match(html, /1a3eeb5b7b32f226bda86ae6dce9fe8aff695b141a04f37880997a7fb7b59d62/);
+  assert.match(html, /데이터 연결만 안전하게 다시 시작/);
+  assert.match(html, /업데이트 자동 다운로드 선택/);
 });
 
 test("publishes browser and home-screen app icons", async () => {

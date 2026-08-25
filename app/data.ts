@@ -341,7 +341,7 @@ export const apps: AppData[] = [
     icon: "/apps/ccmb/icon.png",
     artwork: "menubar",
     platforms: [
-      { name: "macOS", status: "공개", detail: "2.0.1 (202608241036) · macOS 10.15+ · Universal", url: releaseDownloadPath("CCMB"), downloadLabel: "DMG 다운로드", checksum: "690f7884fd43c2a5995fac0353d4066c3a9513485a60616b905920c798baa2df" },
+      { name: "macOS", status: "공개", detail: "2.0.3 (202608251623) · macOS 10.15+ · Universal · Apple 공증 완료", url: releaseDownloadPath("CCMB"), downloadLabel: "DMG 다운로드", checksum: "1a3eeb5b7b32f226bda86ae6dce9fe8aff695b141a04f37880997a7fb7b59d62" },
     ],
     features: [
       { title: "세 AI를 한눈에", body: "Codex·Claude·Gemini 사용량을 정밀 눈금·은은한 발광·끝점 표시가 있는 3열 링으로 나란히 확인합니다." },
@@ -352,8 +352,8 @@ export const apps: AppData[] = [
       { title: "정렬된 계정·갱신 정보", body: "세 서비스의 요금제·계정 정보·상대 갱신 시각을 같은 기준선에서 비교합니다." },
       { title: "간결해진 하단 조작", body: "업데이트 확인과 현재 버전을 합치고 투명도, 재시작과 종료 조작을 같은 3열 그리드 안에 정돈했습니다." },
       { title: "로컬 공유", body: "최신성 근거가 포함된 로컬 JSON을 다른 앱과 Codex 대화에서 안전하게 읽습니다." },
-      { title: "오프라인 복구", body: "네트워크 단절과 Mac의 잠자기·깨우기 이후에도 상태를 회복합니다." },
-      { title: "서명된 자동 업데이트", body: "Sparkle과 GitHub Releases를 통해 서명된 새 버전을 확인하고 설치합니다." },
+      { title: "사라지지 않는 연결 복구", body: "응답 지연과 Mac의 잠자기·깨우기 뒤에도 앱을 종료하지 않고 데이터 연결만 안전하게 다시 시작합니다." },
+      { title: "서명된 자동 업데이트", body: "Sparkle과 GitHub Releases를 통해 서명된 새 버전을 확인하고, 자동 다운로드 여부를 메뉴와 고정 패널에서 선택합니다." },
       { title: "로그인 시 시작", body: "선택하면 Mac 로그인과 함께 조용히 실행됩니다." },
     ],
     guide: [
@@ -369,6 +369,7 @@ export const apps: AppData[] = [
       { state: "done", title: "통합 사용량 패널", body: "메뉴 패널과 항상 보기의 레이아웃·설정 통합 및 배경 불투명도 조절" },
       { state: "done", title: "집중된 3열 패널", body: "Codex·Claude·Gemini만 노출하고 퍼센트 굵기를 통일한 정밀 원형 링과 하단 조작을 3열에 맞게 재구성" },
       { state: "done", title: "Claude 인증 창 반복 방지", body: "요청 제한 뒤에도 인증 정보를 안전하게 재사용해 macOS 키체인 권한 창이 반복해서 나타나지 않도록 개선" },
+      { state: "done", title: "CCMB 2.0.3 공개", body: "응답 지연·잠자기 복구 때 앱은 유지하고 데이터 연결만 다시 시작하며, 안전한 수동 재시작과 업데이트 자동 다운로드 선택을 Apple 공증 Universal DMG로 공개" },
       { state: "active", title: "안정성 개선", body: "Codex·Claude·Gemini 변화와 인증·요청 제한·네트워크·절전 예외에 맞춰 지속 개선" },
     ],
     screenshots: [
