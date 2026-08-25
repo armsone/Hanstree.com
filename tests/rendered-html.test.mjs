@@ -43,6 +43,14 @@ test("server-renders the NasFinder.com homepage", async () => {
   assert.match(html, /StarManager/);
   assert.match(html, /HtOMS Brief/);
   assert.match(html, /Button/);
+  for (const slug of [
+    "nasfinder", "super-thumbnail", "hanclip", "stand", "ccmb", "btn", "trackpadguard",
+    "htoms-brief", "intosharp", "airchurch", "button", "starmanager", "minecraft-server", "whattoeat",
+  ]) {
+    assert.match(html, new RegExp(`/apps/${slug}/${slug}-hero-v2\\.png`), slug);
+  }
+  assert.match(html, /class="hero-product-image"/);
+  assert.match(html, /class="app-row-representative"/);
   assert.match(html, /What to Eat/);
   assert.match(html, /Minecraft Bedrock Home Server/);
   assert.equal((html.match(/class="hero-product"/g) ?? []).length, 14);

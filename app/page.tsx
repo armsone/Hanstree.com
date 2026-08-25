@@ -1,6 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import { AdvantageVisual, type AdvantageVariant } from "./components/AdvantageVisual";
-import { AppArtwork, AppIcon, AppStatus } from "./components/AppVisuals";
+import { AppIcon, AppStatus } from "./components/AppVisuals";
 import { AndroidReleaseTracker } from "./components/AndroidReleaseTracker";
 import { ContactReveal } from "./components/ContactReveal";
 import { SiteCounter } from "./components/SiteCounter";
@@ -59,9 +60,9 @@ export default function Home() {
           <div className="hero-product-grid" role="list">
             {apps.map((app, index) => (
               <Link className="hero-product" href={`/apps/${app.slug}`} key={app.slug} role="listitem" aria-label={`${app.name} 제품 자세히 보기`}>
+                <Image className="hero-product-image" src={`/apps/${app.slug}/${app.slug}-hero-v2.png`} alt="" width={1536} height={1024} priority={index < 4} sizes="(max-width: 600px) 29vw, (max-width: 920px) 13vw, 150px" unoptimized />
                 <AppIcon app={app} priority={index < 4} />
-                <strong>{app.name}</strong>
-                <small>{app.english}</small>
+                <span className="hero-product-copy"><strong>{app.name}</strong><small>{app.english}</small></span>
               </Link>
             ))}
           </div>
@@ -164,7 +165,10 @@ export default function Home() {
                   제품 자세히 보기 <span aria-hidden="true">→</span>
                 </span>
               </div>
-              <AppArtwork app={app} />
+              <div className="app-row-representative" aria-hidden="true">
+                <Image src={`/apps/${app.slug}/${app.slug}-hero-v2.png`} alt="" width={1536} height={1024} sizes="(max-width: 920px) 100vw, 52vw" unoptimized />
+                <span><small>REPRESENTATIVE SCENE</small><strong>{app.features[0]?.title ?? app.tagline}</strong></span>
+              </div>
             </article>
           ))}
         </div>
