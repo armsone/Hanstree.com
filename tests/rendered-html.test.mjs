@@ -158,7 +158,9 @@ test("renders HtOMS with its own sales dashboard artwork", async () => {
   assert.match(html, /서버 상태 · SERVER/);
   assert.match(html, /TestFlight 처리 완료/);
   assert.match(html, /Android · Google TV/);
-  assert.match(html, /공개 APK 준비 전/);
+  assert.match(html, /Android용 APK 다운로드/);
+  assert.match(html, /340515/);
+  assert.match(html, /c9bbcf513ed4edef9b451f7d9432ad76b9574e31307341312498a2f33dddf1b1/);
   assert.match(html, /Android 대응 앱 구현/);
   assert.doesNotMatch(html, />Photos</);
   assert.doesNotMatch(html, /IMG_2048\.HEIC/);

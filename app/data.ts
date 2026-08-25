@@ -497,7 +497,15 @@ export const apps: AppData[] = [
     artwork: "htoms",
     platforms: [
       { name: "iOS · iPadOS", status: "TestFlight", detail: "2.0.0 (202608230737) · iOS·iPadOS 17+", availabilityNote: "TestFlight 처리 완료" },
-      { name: "Android · Google TV", status: "개발 중", detail: "2.0.0 (202608230737) · 휴대전화·태블릿·Google TV 빌드 검증", availabilityNote: "공개 APK 준비 전" },
+      {
+        name: "Android · Google TV",
+        status: "공개",
+        detail: "2.0.0 · build 202608251115 · APK code 340515 · Android 8.0+",
+        url: releaseDownloadPath("HtOMS-BK"),
+        downloadLabel: "Android용 APK 다운로드",
+        checksum: "c9bbcf513ed4edef9b451f7d9432ad76b9574e31307341312498a2f33dddf1b1",
+        availabilityNote: "SM-F968N 교체 설치·실행 확인 · 태블릿과 Google TV 실기기 검증 전",
+      },
     ],
     features: [
       { title: "실제 OMS 매출 데이터", body: "로그인한 계정으로 오늘·이번 달 매출과 시간대·월간 추이를 실제 API에서 읽어 표시합니다." },
@@ -518,8 +526,9 @@ export const apps: AppData[] = [
       { state: "done", title: "한 페이지 대시보드", body: "분리됐던 정보를 한 화면의 읽기 흐름으로 통합" },
       { state: "done", title: "자동·수동 갱신", body: "10분 역타이머와 터치 즉시 갱신 구현" },
       { state: "done", title: "iPhone·iPad 검증", body: "공통 빌드와 실제 iPhone 설치·실행 검증" },
-      { state: "done", title: "Android 대응 앱 구현", body: "2.0.0 휴대전화·태블릿·Google TV용 Compose 앱과 Glance 위젯의 단위 테스트·디버그 빌드·린트 검증" },
-      { state: "next", title: "Android 화면 매치업과 공개", body: "대표 기기 화면을 iPhone·iPad 기준과 비교한 뒤 서명 APK 공개 준비" },
+      { state: "done", title: "Android 대응 앱 구현", body: "2.0.0 휴대전화·태블릿·Google TV용 Compose 앱과 Glance 위젯의 단위 테스트·공개용 QA 빌드·린트 검증" },
+      { state: "done", title: "Android 2.0.0 공개", body: "build 202608251115, code 340515의 설치·실행 검증 APK와 SHA-256 체크섬을 GitHub Releases에 공개" },
+      { state: "next", title: "Android 화면 매치업", body: "태블릿과 Google TV를 포함한 대표 기기 화면을 iPhone·iPad 기준과 비교해 세부 배치를 조정" },
     ],
     screenshots: [
       { src: "/apps/htoms-brief/screens/login.png", alt: "HtOMS 브리프의 사내 계정 로그인과 Keychain 안내 화면" },
