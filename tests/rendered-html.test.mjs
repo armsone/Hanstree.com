@@ -178,10 +178,12 @@ test("renders Super Thumbnail as an independent Mac product", async () => {
   assert.match(detail, /큰 미디어 폴더의 미리보기를/);
   assert.match(detail, /release-download\?app=NasFinder-Super-Thumbnail/);
   assert.match(detail, /16,540/);
-  assert.match(detail, /2\.1\.0 \(202608251045\)/);
+  assert.match(detail, /2\.1\.1 \(202608251305\)/);
   assert.match(detail, /폴더도 9칸 모아보기/);
-  assert.match(detail, /860927ada1d729dcab80a80d46ea98041767df460a649cef9d6e5f20e838c426/);
-  assert.match(detail, /2\.1\.0 공개 배포/);
+  assert.match(detail, /2001bc1f65066316a5455a0c3c48564ac401afec0a050cb2c1d9a1e94e296871/);
+  assert.match(detail, /만들어진 썸네일 바로 확인/);
+  assert.match(detail, /원본은 그대로, 썸네일만 새로/);
+  assert.match(detail, /2\.1\.1 공개 배포/);
   assert.doesNotMatch(detail, /공증 준비|공증 대기/);
   assert.doesNotMatch(nasFinder, /release-download\?app=NasFinder-Super-Thumbnail/);
 });
@@ -199,8 +201,8 @@ test("renders the latest NasFinder and HanClip capabilities", async () => {
     hanClipResponse.text(),
   ]);
   assert.match(nasFinder, /파일 앱에서 바로 가져오기/);
-  assert.match(nasFinder, /2\.1\.0 \(202608251045\)/);
-  assert.match(nasFinder, /TestFlight 처리 완료/);
+  assert.match(nasFinder, /2\.1\.1 \(202608251305\)/);
+  assert.match(nasFinder, /TestFlight 업로드 완료/);
   assert.match(nasFinder, /폰하드로 모으고 관리/);
   assert.match(nasFinder, /자세히·썸네일·포스터/);
   assert.match(nasFinder, /Overflow/);
@@ -211,6 +213,7 @@ test("renders the latest NasFinder and HanClip capabilities", async () => {
   assert.match(nasFinder, /live-motion-campaign\.png/);
   assert.match(nasFinder, /가족의 휴대폰이 서로 달라도/);
   assert.match(nasFinder, /파일과 폴더를 함께 보는 Super Thumbnail/);
+  assert.match(nasFinder, /휴대폰에서 만든 일반 썸네일보다 먼저/);
   assert.match(nasFinder, /SM-F968N 교체 설치·실행 확인/);
   assert.match(nasFinder, /폴더 안의 파일·하위 폴더를 최대 9칸/);
   assert.match(nasFinder, /내 휴대폰을, 진짜 휴대용 하드처럼/);
@@ -437,8 +440,8 @@ test("renders current app release and TestFlight information", async () => {
   assert.match(home, /337417/);
   assert.match(home, /스타메니저/);
   assert.match(home, /2026년 8월 23일/);
-  assert.match(nasFinder, /내부 코드 340486/);
-  assert.match(nasFinder, /e27b39a18499471c0f4b9137fa642ea4c8a847baa0600f6ff48a57ce56737feb/);
+  assert.match(nasFinder, /내부 코드 340625/);
+  assert.match(nasFinder, /4b1e5e3869083c0b3a6797a74bab21ba76c434271acfed1463c57dc031ef69f7/);
   assert.match(nasFinder, /Live Photos &amp; Motion Photos/);
   assert.match(hanClip, /내부 코드 340033/);
   assert.match(hanClip, /4ab4a27bcf2b0a7e0e435c6941d536ccbfee98405bdf29509fc2c08444a587c3/);
