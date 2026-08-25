@@ -227,9 +227,9 @@ test("renders Super Thumbnail as an independent Mac product", async () => {
   assert.match(detail, /큰 미디어 폴더의 미리보기를/);
   assert.match(detail, /release-download\?app=NasFinder-Super-Thumbnail/);
   assert.match(detail, /16,540/);
-  assert.match(detail, /2\.1\.4 \(202608251621\)/);
-  assert.match(detail, /폴더도 9칸 모아보기/);
-  assert.match(detail, /9d39d67a1beb21aed9d528cb9853804cecb78d44986830ff41fe77aa70cc56db/);
+  assert.match(detail, /2\.2\.0 \(202608252025\)/);
+  assert.match(detail, /폴더도 9칸, 블러는 한 번만/);
+  assert.match(detail, /b5d77e800bc37cf2081a3ef9d5bf1aad2812b8cdb2377e09a0653ec4daaa1ad6/);
   assert.match(detail, /미리보는 재미까지 크게/);
   assert.match(detail, /가로 손잡이를 아래로 끌수록 미리보기와 이미지가 함께 커지고/);
   assert.match(detail, /2\.1\.4 크기 조절 미리보기/);
@@ -257,21 +257,21 @@ test("renders the latest NasFinder and HanClip capabilities", async () => {
     hanClipResponse.text(),
   ]);
   assert.match(nasFinder, /파일 앱에서 바로 가져오기/);
-  assert.match(nasFinder, /2\.1\.1 \(202608251305\)/);
+  assert.match(nasFinder, /2\.2\.0 \(202608252025\)/);
   assert.match(nasFinder, /TestFlight 업로드 완료/);
   assert.match(nasFinder, /폰하드로 모으고 관리/);
   assert.match(nasFinder, /자세히·썸네일·포스터/);
   assert.match(nasFinder, /Overflow/);
-  assert.match(nasFinder, /BK Style과 앱 아이콘/);
+  assert.match(nasFinder, /BK Style과 기기별 아이콘/);
   assert.match(nasFinder, /NOT JUST A FILE BROWSER/);
   assert.match(nasFinder, /내 파일도/);
   assert.match(nasFinder, /움직이는 추억도/);
   assert.match(nasFinder, /live-motion-campaign\.png/);
   assert.match(nasFinder, /가족의 휴대폰이 서로 달라도/);
-  assert.match(nasFinder, /파일과 폴더를 함께 보는 Super Thumbnail/);
-  assert.match(nasFinder, /휴대폰에서 만든 일반 썸네일보다 먼저/);
-  assert.match(nasFinder, /SM-F968N 교체 설치·실행 확인/);
-  assert.match(nasFinder, /폴더 안의 파일·하위 폴더를 최대 9칸/);
+  assert.match(nasFinder, /로고 대신 내용이 보이는 Super Thumbnail/);
+  assert.match(nasFinder, /일반 썸네일보다 먼저/);
+  assert.match(nasFinder, /SM-F968N 데이터 유지 교체 설치/);
+  assert.match(nasFinder, /영상 전체 길이의 3\/13/);
   assert.match(nasFinder, /내 휴대폰을, 진짜 휴대용 하드처럼/);
   assert.match(nasFinder, /외부 파일 앱과 자연스럽게/);
   assert.match(nasFinder, /플랫폼별 설치 보기/);
@@ -498,12 +498,12 @@ test("renders current app release and TestFlight information", async () => {
     standResponse.text(),
   ]);
 
-  assert.match(home, /202608230737/);
-  assert.match(home, /340680/);
+  assert.match(home, /202608252025/);
+  assert.match(home, /341065/);
   assert.match(home, /스타메니저/);
   assert.match(home, /2026년 8월 23일/);
-  assert.match(nasFinder, /내부 코드 340680/);
-  assert.match(nasFinder, /0f2b70f5f78f320a49b954d7de4fee25f9ab2184f233a992972e32d7951c712e/);
+  assert.match(nasFinder, /내부 코드 341065/);
+  assert.match(nasFinder, /1f865fb335695d6d906cc14b5919e80bb2d7e24bf99b11dbe0a629a85b7391af/);
   assert.match(nasFinder, /Live Photos &amp; Motion Photos/);
   assert.match(hanClip, /내부 코드 340680/);
   assert.match(hanClip, /5a92c8849d25836e5ae4fb5cac80c2d9bf4ae183c27ed89b975705a90867e7da/);
