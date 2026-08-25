@@ -29,11 +29,11 @@ function TestFlightInviteLinks() {
               <AppIcon app={app} />
               <div><p>PUBLIC BETA</p><h3>{build.appName}</h3></div>
             </div>
-            <p className="testflight-invite-copy">{inviteUrl ? "신청서 없이 TestFlight에서 바로 참여할 수 있습니다." : "외부 테스트가 열리면 이 자리에서 바로 참여할 수 있습니다."}</p>
+            <p className="testflight-invite-copy">{inviteUrl ? "신청서 없이 TestFlight에서 바로 참여할 수 있습니다." : build.publicBetaState === "waitingForReview" ? "Apple 공개 테스트 심사에 제출되어 승인을 기다리고 있습니다." : "외부 테스트용 새 빌드를 준비하고 있습니다."}</p>
             {inviteUrl ? (
               <a className="testflight-invite-action" href={inviteUrl}>외부 테스터로 참여 <span aria-hidden="true">↗</span></a>
             ) : (
-              <span className="testflight-invite-pending"><i aria-hidden="true" />공개 링크 준비 중</span>
+              <span className="testflight-invite-pending"><i aria-hidden="true" />{build.publicBetaState === "waitingForReview" ? "Apple 심사 중" : "외부용 빌드 준비"}</span>
             )}
           </article>
         );

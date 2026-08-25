@@ -129,8 +129,9 @@ test("collects verified external tester links between TestFlight and Android dow
   assert.match(section, /외부 테스터 참여/);
   assert.equal((section.match(/class="testflight-invite-card/g) ?? []).length, 7);
   assert.equal((section.match(/class="app-icon/g) ?? []).length, 7);
-  assert.equal((section.match(/공개 링크 준비 중/g) ?? []).length, 6);
-  assert.match(section, /href="https:\/\/testflight\.apple\.com\/join\/3m3bhwJz"/);
+  assert.equal((section.match(/Apple 심사 중/g) ?? []).length, 5);
+  assert.equal((section.match(/외부용 빌드 준비/g) ?? []).length, 2);
+  assert.doesNotMatch(section, /href="https:\/\/testflight\.apple\.com\/join\//);
 });
 
 test("renders the privacy-safe Minecraft Bedrock home server guide", async () => {
@@ -205,7 +206,7 @@ test("renders the StarManager product and matchup disclosure", async () => {
   const html = await response.text();
   assert.match(html, /오늘의 이야기를, 내 목소리로 완성합니다/);
   assert.match(html, /스타메니저 iPhone 스튜디오의 AI 선택과 새 캔버스 화면/);
-  assert.match(html, /TestFlight 처리 완료/);
+  assert.match(html, /Public Beta 심사 제출 · Apple 심사 대기 중/);
   assert.match(html, /기기 AI/);
   assert.match(html, /스타매니저 Android 만들기 화면/);
   assert.match(html, /도달 가능한 탭/);
@@ -225,7 +226,7 @@ test("renders HtOMS with its own sales dashboard artwork", async () => {
   assert.match(html, /오늘의 매출과 서버 상태를/);
   assert.match(html, /매출 요약/);
   assert.match(html, /서버 상태 · SERVER/);
-  assert.match(html, /TestFlight 처리 완료/);
+  assert.match(html, /내부 테스트 전용 빌드 · 외부용 새 빌드 필요/);
   assert.match(html, /Android · Google TV/);
   assert.match(html, /Android용 APK 다운로드/);
   assert.match(html, /release-download\?app=HtOMS-BK/);
@@ -615,8 +616,8 @@ test("keeps verified TestFlight fallback data for StarManager and Button", async
 
   const payload = await response.json();
   const bySlug = new Map(payload.builds.map((build) => [build.slug, build]));
-  assert.equal(bySlug.get("starmanager")?.build, "202608230737");
-  assert.equal(bySlug.get("starmanager")?.uploadedAt, "2026-08-23T08:13:38+09:00");
+  assert.equal(bySlug.get("starmanager")?.build, "202608251915");
+  assert.equal(bySlug.get("starmanager")?.uploadedAt, "2026-08-25T19:18:33+09:00");
   assert.equal(bySlug.get("button")?.build, "202608230737");
   assert.equal(bySlug.get("button")?.uploadedAt, "2026-08-23T08:14:39+09:00");
 });

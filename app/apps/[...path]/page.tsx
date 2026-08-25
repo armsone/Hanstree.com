@@ -91,12 +91,14 @@ const progressStateVisual: Record<"done" | "active" | "next", AdvantageVariant> 
   next: "compass",
 };
 
-function testFlightInviteUrl(appSlug: string) {
-  return testFlightBuilds.find((build) => build.slug === appSlug)?.inviteUrl ?? null;
+function testFlightStatus(appSlug: string) {
+  return testFlightBuilds.find((build) => build.slug === appSlug) ?? null;
 }
 
 function HeroAvailability({ app }: { app: NonNullable<ReturnType<typeof findApp>> }) {
-  const inviteUrl = testFlightInviteUrl(app.slug);
+  const testFlight = testFlightStatus(app.slug);
+  const inviteUrl = testFlight?.inviteUrl ?? null;
+  const waitingForReview = testFlight?.publicBetaState === "waitingForReview";
   const testFlightPlatforms = app.platforms.filter((platform) => platform.status === "TestFlight");
   const hasDownload = app.platforms.some((platform) => platform.url);
 
@@ -105,11 +107,11 @@ function HeroAvailability({ app }: { app: NonNullable<ReturnType<typeof findApp>
       {testFlightPlatforms.length > 0 && (
         <div className={`hero-beta-card${inviteUrl ? " hero-beta-card-ready" : ""}`}>
           <div>
-            <span>{inviteUrl ? "PUBLIC BETA" : "PUBLIC BETA · PREPARING"}</span>
-            <strong>{inviteUrl ? "신청서 없이 바로 테스트하세요." : "공개 테스트 링크를 준비하고 있습니다."}</strong>
+            <span>{inviteUrl ? "PUBLIC BETA" : waitingForReview ? "PUBLIC BETA · IN REVIEW" : "PUBLIC BETA · BUILD PREPARING"}</span>
+            <strong>{inviteUrl ? "신청서 없이 바로 테스트하세요." : waitingForReview ? "Apple 공개 테스트 심사 중입니다." : "외부 테스트용 새 빌드를 준비하고 있습니다."}</strong>
             <small>{testFlightPlatforms.map((platform) => platform.name).join(" · ")}</small>
           </div>
-          {inviteUrl ? <a href={inviteUrl}>TestFlight에서 참여 <span aria-hidden="true">↗</span></a> : <span className="hero-beta-pending">준비 중</span>}
+          {inviteUrl ? <a href={inviteUrl}>TestFlight에서 참여 <span aria-hidden="true">↗</span></a> : <span className="hero-beta-pending">{waitingForReview ? "심사 중" : "빌드 준비"}</span>}
         </div>
       )}
 
@@ -265,8 +267,10 @@ export default async function AppRoute({ params }: RouteProps) {
         <div><p className="eyebrow">OPEN, DOWNLOAD & TEST</p><h2>공개된 제품과 전용 도구.</h2><p>플랫폼별 현재 상태와 공식 주소·배포 파일을 구분해 표시합니다. 별도 도구는 용도까지 확인한 뒤 내려받을 수 있습니다.</p></div>
         <div className="download-list">
           {app.platforms.map((platform) => {
-            const inviteUrl = platform.status === "TestFlight" ? testFlightInviteUrl(app.slug) : null;
-            return <article key={platform.name}><div><AdvantageVisual variant={platformVisual(platform.name)} /><span className={`status-dot status-${platform.status.replace(" ", "-")}`} /><h3>{platform.name}</h3></div><p>{platform.detail} · {platform.status}</p>{platform.url ? <a href={platform.url}>{platform.downloadLabel ?? "다운로드 페이지"} <span aria-hidden="true">↗</span></a> : inviteUrl ? <a className="testflight-apply-download" href={inviteUrl}>TestFlight 바로 참여 <span aria-hidden="true">↗</span></a> : <span>{platform.status === "TestFlight" ? "공개 링크 준비 중" : platform.availabilityNote ?? "공개 링크 준비 중"}</span>}{platform.checksum && <small className="download-checksum">SHA-256 {platform.checksum}</small>}</article>;
+            const testFlight = platform.status === "TestFlight" ? testFlightStatus(app.slug) : null;
+            const inviteUrl = testFlight?.inviteUrl ?? null;
+            const pendingCopy = testFlight?.publicBetaState === "waitingForReview" ? "Apple 공개 테스트 심사 중" : "외부 테스트용 빌드 준비 중";
+            return <article key={platform.name}><div><AdvantageVisual variant={platformVisual(platform.name)} /><span className={`status-dot status-${platform.status.replace(" ", "-")}`} /><h3>{platform.name}</h3></div><p>{platform.detail} · {platform.status}</p>{platform.url ? <a href={platform.url}>{platform.downloadLabel ?? "다운로드 페이지"} <span aria-hidden="true">↗</span></a> : inviteUrl ? <a className="testflight-apply-download" href={inviteUrl}>TestFlight 바로 참여 <span aria-hidden="true">↗</span></a> : <span>{platform.status === "TestFlight" ? pendingCopy : platform.availabilityNote ?? "공개 링크 준비 중"}</span>}{platform.checksum && <small className="download-checksum">SHA-256 {platform.checksum}</small>}</article>;
           })}
         </div>
       </section>

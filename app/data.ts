@@ -46,8 +46,8 @@ export const apps: AppData[] = [
     icon: "/apps/nasfinder/icon.png",
     artwork: "files",
     platforms: [
-      { name: "iPhone · iPad", status: "TestFlight", detail: "2.2.0 (202608252025) · iOS·iPadOS 17+", availabilityNote: "내부 테스트 가능 · Public Beta 심사 대기 중" },
-      { name: "Mac용 NasFinder", status: "TestFlight", detail: "2.2.0 · Apple Silicon · iPhone·iPad 호환 앱", availabilityNote: "같은 TestFlight 빌드 · 2배 Mac 보기 · Public Beta 심사 대기 중" },
+      { name: "iPhone · iPad", status: "TestFlight", detail: "2.2.0 (202608252025) · iOS·iPadOS 17+", availabilityNote: "Public Beta 심사 제출 · Apple 심사 대기 중" },
+      { name: "Mac용 NasFinder", status: "TestFlight", detail: "2.2.0 · Apple Silicon · iPhone·iPad 호환 앱", availabilityNote: "같은 TestFlight 빌드 · 2배 Mac 보기 · 공개 테스트 심사 중" },
       {
         name: "Android",
         status: "공개",
@@ -172,8 +172,8 @@ export const apps: AppData[] = [
     icon: "/apps/hanclip/icon.png",
     artwork: "phones",
     platforms: [
-      { name: "iOS · iPadOS", status: "TestFlight", detail: "2.1.0 (202608250313) · iOS·iPadOS 17+", availabilityNote: "TestFlight 처리 완료" },
-      { name: "Mac", status: "TestFlight", detail: "2.1.0 · Apple Silicon · iPad 앱 호환 모드", availabilityNote: "같은 TestFlight 빌드 · 처리 완료" },
+      { name: "iOS · iPadOS", status: "TestFlight", detail: "2.2.1 (202608251900) · iOS·iPadOS 17+", availabilityNote: "Public Beta 심사 제출 · Apple 심사 대기 중" },
+      { name: "Mac", status: "TestFlight", detail: "2.2.1 · Apple Silicon · iPad 앱 호환 모드", availabilityNote: "같은 TestFlight 빌드 · 공개 테스트 심사 중" },
       {
         name: "Android",
         status: "공개",
@@ -242,7 +242,7 @@ export const apps: AppData[] = [
     icon: "/apps/stand/icon.png",
     artwork: "clock",
     platforms: [
-      { name: "iOS · iPadOS", status: "TestFlight", detail: "2.1.0 (202608251027) · 내부 build 340467 · iOS·iPadOS 17+", availabilityNote: "TestFlight 처리 완료" },
+      { name: "iOS · iPadOS", status: "TestFlight", detail: "2.1.1 (202608251857) · 내부 build 340977 · iOS·iPadOS 17+", availabilityNote: "Public Beta 심사 제출 · Apple 심사 대기 중" },
       {
         name: "macOS",
         status: "공개",
@@ -505,7 +505,7 @@ export const apps: AppData[] = [
     icon: "/apps/htoms-brief/icon.png",
     artwork: "htoms",
     platforms: [
-      { name: "iOS · iPadOS", status: "TestFlight", detail: "2.0.0 (202608230737) · iOS·iPadOS 17+", availabilityNote: "TestFlight 처리 완료" },
+      { name: "iOS · iPadOS", status: "TestFlight", detail: "2.0.0 (202608230737) · iOS·iPadOS 17+", availabilityNote: "내부 테스트 전용 빌드 · 외부용 새 빌드 필요" },
       {
         name: "Android · Google TV",
         status: "공개",
@@ -638,7 +638,7 @@ export const apps: AppData[] = [
     icon: "/apps/button/icon.png",
     artwork: "phones",
     platforms: [
-      { name: "iPhone", status: "TestFlight", detail: "2.0.0 (202608230737) · iOS 17+", availabilityNote: "TestFlight 처리 완료" },
+      { name: "iPhone", status: "TestFlight", detail: "2.0.0 (202608230737) · iOS 17+", availabilityNote: "내부 테스트 전용 빌드 · 외부용 새 빌드 필요" },
       {
         name: "Android",
         status: "공개",
@@ -706,7 +706,7 @@ export const apps: AppData[] = [
     icon: "/apps/starmanager/icon.png",
     artwork: "phones",
     platforms: [
-      { name: "iPhone · iPad", status: "TestFlight", detail: "2.0.0 (202608230737) · iOS·iPadOS 18+", availabilityNote: "TestFlight 처리 완료" },
+      { name: "iPhone · iPad", status: "TestFlight", detail: "2.0.0 (202608251915) · iOS·iPadOS 18+", availabilityNote: "Public Beta 심사 제출 · Apple 심사 대기 중" },
       {
         name: "Android",
         status: "공개",

@@ -91,6 +91,7 @@ async function readLatestBuild(source: (typeof APP_SOURCES)[number], token: stri
     uploadedAt: build.attributes.uploadedDate,
     expiresAt: build.attributes.expirationDate ?? null,
     inviteUrl: null,
+    publicBetaState: testFlightBuilds.find((fallback) => fallback.slug === source.slug)?.publicBetaState ?? "needsExternalBuild",
   };
 }
 
