@@ -159,6 +159,7 @@ test("renders HtOMS with its own sales dashboard artwork", async () => {
   assert.match(html, /TestFlight 처리 완료/);
   assert.match(html, /Android · Google TV/);
   assert.match(html, /Android용 APK 다운로드/);
+  assert.match(html, /release-download\?app=HtOMS-BK/);
   assert.match(html, /340515/);
   assert.match(html, /c9bbcf513ed4edef9b451f7d9432ad76b9574e31307341312498a2f33dddf1b1/);
   assert.match(html, /Android 대응 앱 구현/);
@@ -456,10 +457,14 @@ test("routes public download buttons through the allowlisted release redirect", 
     "sec-fetch-mode": "navigate",
     "sec-fetch-dest": "document",
   };
-  const [ccmb, trackpadGuard, standMac] = await Promise.all([
+  const [ccmb, trackpadGuard, standMac, htoms] = await Promise.all([
     render("/api/release-download?app=CCMB", interactiveHeaders),
     render("/api/release-download?app=TrackpadGuard", interactiveHeaders),
     render("/api/release-download?app=S.tand-macOS", interactiveHeaders),
+    render("/api/release-download?app=HtOMS-BK", {
+      ...interactiveHeaders,
+      referer: "http://localhost/apps/htoms-brief",
+    }),
   ]);
   assert.equal(ccmb.status, 302);
   assert.match(ccmb.headers.get("location") ?? "", /^https:\/\/github\.com\/armsone\/CCMB\/releases\//);
@@ -468,6 +473,8 @@ test("routes public download buttons through the allowlisted release redirect", 
   assert.match(trackpadGuard.headers.get("location") ?? "", /^https:\/\/github\.com\/armsone\/TrackpadGuard\/releases\//);
   assert.equal(standMac.status, 302);
   assert.match(standMac.headers.get("location") ?? "", /^https:\/\/github\.com\/armsone\/S\.tand\/releases\//);
+  assert.equal(htoms.status, 302);
+  assert.match(htoms.headers.get("location") ?? "", /^https:\/\/github\.com\/armsone\/HtOMS-BK\/releases\/download\/android-v340515\//);
 });
 
 test("refuses bot and direct download requests before redirecting", async () => {

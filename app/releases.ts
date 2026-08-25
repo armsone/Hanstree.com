@@ -14,6 +14,7 @@ export const DOWNLOAD_KEYS = [
   "WhattoEat-Android",
   "button-Android",
   "StarManager-Android",
+  "HtOMS-BK",
 ] as const;
 
 export type DownloadKey = (typeof DOWNLOAD_KEYS)[number];
@@ -98,6 +99,12 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     repo: "StarManager-Android",
     assetPattern: /\.apk$/i,
     fallbackUrl: "https://github.com/armsone/StarManager-Android/releases/download/v2.0.0/StarManager-Android-v2.0.0.apk",
+  },
+  "HtOMS-BK": {
+    label: "HtOMS Brief Android",
+    repo: "HtOMS-BK",
+    assetPattern: /^HtOMS-Brief-Android-.*\.apk$/i,
+    fallbackUrl: "https://github.com/armsone/HtOMS-BK/releases/download/android-v340515/HtOMS-Brief-Android-2.0.0-340515.apk",
   },
 };
 
