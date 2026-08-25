@@ -97,6 +97,8 @@ test("renders the notarized BTN cleanup release", async () => {
   assert.match(html, /로컬 개발 서버는 관찰만/);
   assert.match(html, /정상 종료\(SIGTERM\)/);
   assert.match(html, /기본은 선택 안 함/);
+  assert.match(html, /다시 열기 안정화/);
+  assert.match(html, /2\.0\.1 후보/);
   assert.match(html, /overview\.png/);
 });
 
@@ -183,6 +185,9 @@ test("renders Super Thumbnail as an independent Mac product", async () => {
   assert.match(detail, /2001bc1f65066316a5455a0c3c48564ac401afec0a050cb2c1d9a1e94e296871/);
   assert.match(detail, /만들어진 썸네일 바로 확인/);
   assert.match(detail, /원본은 그대로, 썸네일만 새로/);
+  assert.match(detail, /새로 만든 항목이 가장 왼쪽/);
+  assert.match(detail, /보관본을 찾을 때부터 삭제 완료 개수/);
+  assert.match(detail, /정리 진행과 미리보기 개선/);
   assert.match(detail, /2\.1\.1 공개 배포/);
   assert.doesNotMatch(detail, /공증 준비|공증 대기/);
   assert.doesNotMatch(nasFinder, /release-download\?app=NasFinder-Super-Thumbnail/);
