@@ -186,6 +186,7 @@ img { display: block; max-width: 100%; }
 
 .product-story-card blockquote{margin:auto 0 0;color:#ececf1;font-size:.92rem;line-height:1.85}
 .hero-artwork-product::before{content:"";position:absolute;z-index:1;inset:0;background:linear-gradient(180deg,#12101708 38%,#12101764 100%);pointer-events:none}
+.screenshot-rail .screen-square{width:min(100%,860px);height:auto;grid-column:1/-1;justify-self:center}.screen-square .screenshot-media{aspect-ratio:1}.screen-square .screenshot-media img{width:100%;height:100%;object-fit:contain}
 
 @media (max-width: 1100px) {
   .hero{min-height:auto;grid-template-columns:1fr;padding-block:80px 50px}.hero-copy{text-align:center}.hero-lede{margin-inline:auto}.hero-actions{justify-content:center}.hero-showcase{max-width:620px;margin:20px auto 0}.hero-product-wall{grid-column:auto}

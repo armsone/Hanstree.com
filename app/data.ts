@@ -24,7 +24,7 @@ export type AppData = {
   features: { title: string; body: string; icon?: string }[];
   guide: { title: string; body: string }[];
   progress: { state: "done" | "active" | "next"; title: string; body: string }[];
-  screenshots?: { src: string; alt: string; layout?: "phone" | "menu" | "landscape" | "tv" | "wide" }[];
+  screenshots?: { src: string; alt: string; layout?: "phone" | "menu" | "landscape" | "tv" | "wide" | "square" }[];
   github: string[];
   privacy: string[];
   matchup?: {
@@ -483,7 +483,7 @@ export const apps: AppData[] = [
       { state: "next", title: "macOS 호환성 관리", body: "macOS 업데이트마다 비공개 멀티터치 프레임워크 호환성을 확인" },
     ],
     screenshots: [
-      { src: "/apps/trackpadguard/screens/usage-square.png", alt: "TrackpadGuard가 키보드 입력 중 트랙패드를 잠그고 초록 영역 터치로 해제되는 과정을 설명하는 그림", layout: "wide" },
+      { src: "/apps/trackpadguard/screens/usage-square.png", alt: "TrackpadGuard가 키보드 입력 중 트랙패드를 잠그고 초록 영역 터치로 해제되는 과정을 설명하는 그림", layout: "square" },
     ],
     github: ["https://github.com/armsone/TrackpadGuard"],
     privacy: [

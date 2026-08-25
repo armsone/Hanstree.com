@@ -213,6 +213,8 @@ export default async function AppRoute({ params }: RouteProps) {
                       ? { width: 1920, height: 1080 }
                     : screen.layout === "wide"
                       ? { width: 860, height: 60 }
+                      : screen.layout === "square"
+                        ? { width: 1254, height: 1254 }
                       : { width: 1206, height: 2622 };
               return <figure className={`screen-${screen.layout ?? "phone"}`} key={screen.src}><div className="screenshot-media"><Image src={screen.src} alt="" width={dimensions.width} height={dimensions.height} sizes={screen.layout ? "(max-width: 640px) 92vw, 1080px" : "(max-width: 640px) 78vw, 360px"} unoptimized /></div><figcaption>{screen.alt}</figcaption></figure>;
             })}</div>

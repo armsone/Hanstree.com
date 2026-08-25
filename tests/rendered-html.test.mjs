@@ -418,6 +418,9 @@ test("renders the TrackpadGuard product, support link, and requested default reg
   assert.match(html, /타이핑할 때는 잠그고/);
   assert.match(html, /상단 1\/3을 제거한 사다리꼴/);
   assert.match(html, /Control-Option-Command-Escape/);
+  assert.match(html, /class="screen-square"/);
+  assert.match(html, /usage-square\.png[^>]*width="1254" height="1254"/);
+  assert.doesNotMatch(html, /class="screen-wide"[^>]*>[\s\S]*?usage-square\.png/);
   assert.match(supportHTML, /https:\/\/github\.com\/armsone\/TrackpadGuard/);
 });
 
