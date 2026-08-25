@@ -90,6 +90,10 @@ const progressStateVisual: Record<"done" | "active" | "next", AdvantageVariant> 
   next: "compass",
 };
 
+function testFlightApplicationHref(appSlug: string) {
+  return `/?testflightApp=${encodeURIComponent(appSlug)}#testflight-apply`;
+}
+
 export async function generateMetadata({ params }: RouteProps): Promise<Metadata> {
   const { path } = await params;
   const app = findApp(path[0]);
@@ -131,7 +135,16 @@ export default async function AppRoute({ params }: RouteProps) {
           <h1>{app.tagline}</h1>
           <p className="app-summary">{app.summary}</p>
           <div className="chip-row">
-            {app.platforms.map((platform) => <AppStatus key={platform.name} platform={platform} />)}
+            {app.platforms.map((platform) => (
+              <span className="platform-action-group" key={platform.name}>
+                <AppStatus platform={platform} />
+                {platform.status === "TestFlight" && (
+                  <Link className="testflight-apply-chip" href={testFlightApplicationHref(app.slug)}>
+                    테스터 신청하기 <span aria-hidden="true">→</span>
+                  </Link>
+                )}
+              </span>
+            ))}
           </div>
           <div className="hero-actions">
             {app.platforms.some((platform) => platform.url) ? (
@@ -227,7 +240,7 @@ export default async function AppRoute({ params }: RouteProps) {
       <section className="download-section shell reveal" id="download">
         <div><p className="eyebrow">OPEN, DOWNLOAD & TEST</p><h2>공개된 제품과 전용 도구.</h2><p>플랫폼별 현재 상태와 공식 주소·배포 파일을 구분해 표시합니다. 별도 도구는 용도까지 확인한 뒤 내려받을 수 있습니다.</p></div>
         <div className="download-list">
-          {app.platforms.map((platform) => <article key={platform.name}><div><AdvantageVisual variant={platformVisual(platform.name)} /><span className={`status-dot status-${platform.status.replace(" ", "-")}`} /><h3>{platform.name}</h3></div><p>{platform.detail} · {platform.status}</p>{platform.url ? <a href={platform.url}>{platform.downloadLabel ?? "다운로드 페이지"} <span aria-hidden="true">↗</span></a> : <span>{platform.availabilityNote ?? "공개 링크 준비 중"}</span>}{platform.checksum && <small className="download-checksum">SHA-256 {platform.checksum}</small>}</article>)}
+          {app.platforms.map((platform) => <article key={platform.name}><div><AdvantageVisual variant={platformVisual(platform.name)} /><span className={`status-dot status-${platform.status.replace(" ", "-")}`} /><h3>{platform.name}</h3></div><p>{platform.detail} · {platform.status}</p>{platform.url ? <a href={platform.url}>{platform.downloadLabel ?? "다운로드 페이지"} <span aria-hidden="true">↗</span></a> : platform.status === "TestFlight" ? <Link className="testflight-apply-download" href={testFlightApplicationHref(app.slug)}>TestFlight 테스터 신청하기 <span aria-hidden="true">↗</span></Link> : <span>{platform.availabilityNote ?? "공개 링크 준비 중"}</span>}{platform.checksum && <small className="download-checksum">SHA-256 {platform.checksum}</small>}</article>)}
         </div>
       </section>
 

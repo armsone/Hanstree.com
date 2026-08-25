@@ -5,14 +5,22 @@ export const SESSION_MAX_AGE_SECONDS = 8 * 60 * 60; // 8 hours
 const IP_HASH_SALT = "nasfinder-testflight-salt-2026";
 const MAX_LOGIN_ATTEMPTS = 5;
 const LOGIN_LOCKOUT_MS = 10 * 60 * 1000; // 10 minutes
+const SHA256_HEX_PATTERN = /^[a-f0-9]{64}$/i;
 
 // In-memory record of failed login attempts for brute-force throttling
 type FailedAttemptRecord = { count: number; lastAttempt: number };
 const failedLoginAttempts = new Map<string, FailedAttemptRecord>();
 
 export function isTestFlightAdminConfigured(): boolean {
-  const secret = process.env.TESTFLIGHT_ADMIN_PASSWORD;
-  return typeof secret === "string" && secret.trim().length > 0;
+  return Boolean(getAdminSecret());
+}
+
+function getAdminSecret(): string | null {
+  const passwordHash = process.env.TESTFLIGHT_ADMIN_PASSWORD_SHA256?.trim();
+  if (passwordHash && SHA256_HEX_PATTERN.test(passwordHash)) return passwordHash.toLowerCase();
+
+  const legacyPassword = process.env.TESTFLIGHT_ADMIN_PASSWORD;
+  return typeof legacyPassword === "string" && legacyPassword.length > 0 ? legacyPassword : null;
 }
 
 export function getClientIp(request: Request): string {
@@ -106,9 +114,19 @@ export function resetFailedLoginAttempts(ipHash: string): void {
 }
 
 export async function verifyAdminPassword(passwordCandidate: string): Promise<boolean> {
-  if (!isTestFlightAdminConfigured()) return false;
-  const configuredPassword = process.env.TESTFLIGHT_ADMIN_PASSWORD!;
-  return constantTimeStringCompare(passwordCandidate, configuredPassword);
+  const configuredHash = process.env.TESTFLIGHT_ADMIN_PASSWORD_SHA256?.trim().toLowerCase();
+  if (configuredHash && SHA256_HEX_PATTERN.test(configuredHash)) {
+    const candidateHash = await crypto.subtle.digest(
+      "SHA-256",
+      new TextEncoder().encode(passwordCandidate),
+    );
+    return constantTimeCompare(new Uint8Array(candidateHash), hexToBuffer(configuredHash) ?? new Uint8Array());
+  }
+
+  const legacyPassword = process.env.TESTFLIGHT_ADMIN_PASSWORD;
+  return typeof legacyPassword === "string"
+    ? constantTimeStringCompare(passwordCandidate, legacyPassword)
+    : false;
 }
 
 async function getHmacKey(secret: string): Promise<CryptoKey> {
@@ -127,8 +145,8 @@ export async function createAdminSessionToken(
   userId = ADMIN_USER_ID,
   durationSeconds = SESSION_MAX_AGE_SECONDS
 ): Promise<string | null> {
-  if (!isTestFlightAdminConfigured()) return null;
-  const secret = process.env.TESTFLIGHT_ADMIN_PASSWORD!;
+  const secret = getAdminSecret();
+  if (!secret) return null;
 
   const now = Math.floor(Date.now() / 1000);
   const expiresAt = now + durationSeconds;
@@ -145,8 +163,8 @@ export async function verifyAdminSessionToken(token: string | null | undefined):
   valid: boolean;
   userId?: string;
 }> {
-  if (!token || !isTestFlightAdminConfigured()) return { valid: false };
-  const secret = process.env.TESTFLIGHT_ADMIN_PASSWORD!;
+  const secret = getAdminSecret();
+  if (!token || !secret) return { valid: false };
 
   const parts = token.split(".");
   if (parts.length !== 4) return { valid: false };

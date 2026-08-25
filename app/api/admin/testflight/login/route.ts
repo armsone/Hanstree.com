@@ -71,7 +71,7 @@ export async function POST(request: Request) {
     return Response.json(
       {
         error:
-          "서버에 TESTFLIGHT_ADMIN_PASSWORD 환경변수가 설정되지 않아 관리자 로그인이 비활성화되어 있습니다.",
+          "관리자 비밀번호가 아직 설정되지 않아 로그인이 비활성화되어 있습니다.",
       },
       { status: 503 }
     );

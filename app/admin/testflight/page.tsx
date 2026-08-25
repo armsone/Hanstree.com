@@ -258,8 +258,8 @@ export default function TestFlightAdminPage() {
                 <div className="admin-locked-banner" role="alert">
                   <strong>⚠️ 관리자 로그인 잠김</strong>
                   <p>
-                    서버에 <code>TESTFLIGHT_ADMIN_PASSWORD</code> 환경변수가 설정되지 않아
-                    로그인이 비활성화되어 있습니다. 공개 신청 접수는 계속 정상 작동합니다.
+                    관리자 비밀번호가 아직 설정되지 않아 로그인이 비활성화되어 있습니다.
+                    공개 신청 접수는 계속 정상 작동합니다.
                   </p>
                 </div>
               )}
@@ -284,7 +284,7 @@ export default function TestFlightAdminPage() {
                     <input
                       id="admin-password"
                       type="password"
-                      placeholder="TESTFLIGHT_ADMIN_PASSWORD"
+                      placeholder="관리자 비밀번호"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       disabled={loginLoading}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { testFlightBuilds } from "../testflight";
 
 export function TestFlightApplyForm() {
@@ -17,6 +17,15 @@ export function TestFlightApplyForm() {
     type: "success" | "error";
     text: string;
   } | null>(null);
+
+  useEffect(() => {
+    const requestedApp = new URLSearchParams(window.location.search).get("testflightApp");
+    if (requestedApp && testFlightBuilds.some((build) => build.slug === requestedApp)) {
+      // The selected app comes from the site's fixed TestFlight inventory.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setAppSlug(requestedApp);
+    }
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -100,7 +109,7 @@ export function TestFlightApplyForm() {
   };
 
   return (
-    <section className="testflight-apply-box" aria-labelledby="tf-apply-title">
+    <section className="testflight-apply-box" id="testflight-apply" aria-labelledby="tf-apply-title">
       <div className="tf-apply-header">
         <div>
           <p className="eyebrow">TESTFLIGHT APPLICATION</p>
