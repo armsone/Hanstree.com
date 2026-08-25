@@ -549,6 +549,7 @@ test("publishes the WhattoEat 0.4.1 lunch bag navigation release", async () => {
   assert.match(page, /0\.4\.1/);
   assert.match(page, /202608252106/);
   assert.match(page, /점심 가방으로 바로 추천/);
+  assert.match(page, /Public Beta 심사 제출 · Apple 심사 대기 중/);
   assert.match(page, /android-bag-navigation\.png/);
   assert.match(page, /b2387eab4b08056f06539c5dd4fdad59e223f48c4693d1e89c29bfa10c37f847/);
   assert.match(page, /3e9d66d8a3ad4ce97d5a56550e706b721eb46cf276dbddd1a0e2cbba9133cf59/);
