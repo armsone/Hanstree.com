@@ -15,48 +15,12 @@ export function AppStatus({ platform }: { platform: Platform }) {
   return platform.url ? <a className="platform-chip" href={platform.url}>{content}<span aria-hidden="true">↗</span></a> : <span className="platform-chip">{content}</span>;
 }
 
-function heroScreenDimensions(layout: NonNullable<AppData["screenshots"]>[number]["layout"]) {
-  if (layout === "menu") return { width: 700, height: 968 };
-  if (layout === "landscape") return { width: 2622, height: 1206 };
-  if (layout === "tv") return { width: 1920, height: 1080 };
-  if (layout === "wide") return { width: 860, height: 60 };
-  return { width: 1206, height: 2622 };
-}
-
 export function AppHeroArtwork({ app }: { app: AppData }) {
-  const screen = app.screenshots?.[0];
-
-  if (app.slug === "nasfinder" && screen) {
-    return (
-      <div className="hero-artwork hero-artwork-nasfinder" aria-label="NAS와 클라우드, 기기의 파일을 한곳에서 탐색하는 나스파인더">
-        <Image className="hero-artwork-backdrop" src="/apps/nasfinder/nasfinder-storage-hero-v2.png" alt="" width={1536} height={1024} priority sizes="(max-width: 920px) 100vw, 52vw" unoptimized />
-        <div className="hero-device hero-device-phone">
-          <Image src={screen.src} alt={screen.alt} width={1206} height={2622} priority sizes="(max-width: 640px) 42vw, 230px" unoptimized />
-        </div>
-        <div className="hero-artwork-proof"><span />NAS · CLOUD · PHONE</div>
-        <div className="hero-artwork-caption"><strong>모든 저장공간을 한곳에서</strong><span>탐색 · 미리보기 · 전송</span></div>
-      </div>
-    );
-  }
-
-  if (screen) {
-    const layout = screen.layout ?? "phone";
-    const dimensions = heroScreenDimensions(layout);
-    return (
-      <div className={`hero-artwork hero-artwork-screen hero-artwork-${layout}`} aria-label={`${app.name} 실제 앱 화면`}>
-        <div className="hero-artwork-brand"><AppIcon app={app} /><span><small>실제 제품 화면</small><strong>{app.english}</strong></span></div>
-        <div className={`hero-device hero-device-${layout}`}>
-          <Image src={screen.src} alt={screen.alt} width={dimensions.width} height={dimensions.height} priority sizes="(max-width: 920px) 76vw, 430px" unoptimized />
-        </div>
-        <div className="hero-artwork-caption"><strong>{app.features[0]?.title ?? app.tagline}</strong><span>{app.platforms.map((platform) => platform.name).join(" · ")}</span></div>
-      </div>
-    );
-  }
-
   return (
-    <div className="hero-artwork hero-artwork-concept" aria-label={`${app.name} 핵심 기능 장면`}>
-      <div className="hero-artwork-brand"><AppIcon app={app} /><span><small>핵심 기능</small><strong>{app.english}</strong></span></div>
-      <AppArtwork app={app} />
+    <div className={`hero-artwork hero-artwork-product hero-artwork-${app.slug}`} aria-label={`${app.name} 핵심 기능을 표현한 대표 이미지`}>
+      <Image className="hero-artwork-backdrop" src={`/apps/${app.slug}/${app.slug}-hero-v2.png`} alt="" width={1536} height={1024} priority sizes="(max-width: 920px) 100vw, 52vw" unoptimized />
+      <div className="hero-artwork-brand"><AppIcon app={app} /><span><small>PRODUCT SCENE</small><strong>{app.english}</strong></span></div>
+      <div className="hero-artwork-proof"><span />{app.slug === "nasfinder" ? "NAS · CLOUD · DEVICE" : "CORE EXPERIENCE"}</div>
       <div className="hero-artwork-caption"><strong>{app.features[0]?.title ?? app.tagline}</strong><span>{app.platforms.map((platform) => platform.name).join(" · ")}</span></div>
     </div>
   );

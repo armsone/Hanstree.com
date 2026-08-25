@@ -79,14 +79,14 @@ test("keeps every app detail hero focused on one clear entry path and a represen
     const hero = html.match(/<section class="app-hero shell">[\s\S]*?<\/section>/)?.[0] ?? "";
     assert.match(hero, /class="hero-availability"/, slug);
     assert.match(hero, /class="hero-platforms"/, slug);
-    assert.match(hero, /class="hero-artwork /, slug);
+    assert.match(hero, new RegExp(`hero-artwork-product hero-artwork-${slug}`), slug);
+    assert.match(hero, new RegExp(`/apps/${slug}/${slug}-hero-v2\\.png`), slug);
     assert.doesNotMatch(hero, /testflight-apply-chip|테스터 신청하기/, slug);
   }
 
   const nasfinder = await (await render("/apps/nasfinder")).text();
-  assert.match(nasfinder, /nasfinder-storage-hero-v2\.png/);
-  assert.match(nasfinder, /android-home\.png/);
-  assert.match(nasfinder, /모든 저장공간을 한곳에서/);
+  assert.match(nasfinder, /nasfinder-hero-v2\.png/);
+  assert.match(nasfinder, /여러 저장공간을 한곳에서/);
 });
 
 test("places the admin link after GitHub in the header and keeps the maker name as plain text", async () => {
