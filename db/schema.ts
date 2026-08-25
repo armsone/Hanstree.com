@@ -24,6 +24,9 @@ export const testflightApplications = sqliteTable(
   {
     id: integer("id").primaryKey({ autoIncrement: true }),
     email: text("email").notNull(),
+    // App Store Connect 사용자 초대에 필요한 성·이름. 기존 신청 행 보존을 위해 nullable로 추가했습니다.
+    lastName: text("last_name"),
+    firstName: text("first_name"),
     appSlug: text("app_slug").notNull(),
     appName: text("app_name").notNull(),
     device: text("device").notNull(),

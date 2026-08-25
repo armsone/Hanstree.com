@@ -5,6 +5,9 @@ export type TestFlightStatus = "pending" | "selected" | "rejected" | "invited";
 export type TestFlightApplicationRow = {
   id: number;
   email: string;
+  // 이름 칸이 없던 시기의 기존 행은 null입니다. 두 값이 모두 있어야 App Store Connect 사용자 초대가 가능합니다.
+  lastName: string | null;
+  firstName: string | null;
   appSlug: string;
   appName: string;
   device: string;
@@ -25,6 +28,8 @@ export type TestFlightSummaryStats = {
 
 export async function createTestFlightApplication(data: {
   email: string;
+  lastName: string;
+  firstName: string;
   appSlug: string;
   appName: string;
   device: string;
@@ -32,13 +37,17 @@ export async function createTestFlightApplication(data: {
   ipHash: string;
 }): Promise<number> {
   const db = getD1();
+  // 시각은 SQLite CURRENT_TIMESTAMP(UTC, 'YYYY-MM-DD HH:MM:SS')로 저장합니다.
+  // 화면에서는 app/testflight-shared.ts의 parseStoredTimestamp로 UTC임을 명시해 파싱합니다.
   const result = await db
     .prepare(
-      `INSERT INTO testflight_applications (email, app_slug, app_name, device, reason, status, ip_hash, consented_at, created_at, updated_at)
-       VALUES (?, ?, ?, ?, ?, 'pending', ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)`
+      `INSERT INTO testflight_applications (email, last_name, first_name, app_slug, app_name, device, reason, status, ip_hash, consented_at, created_at, updated_at)
+       VALUES (?, ?, ?, ?, ?, ?, ?, 'pending', ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)`
     )
     .bind(
       data.email.trim().toLowerCase(),
+      data.lastName.trim(),
+      data.firstName.trim(),
       data.appSlug.trim(),
       data.appName.trim(),
       data.device.trim(),
@@ -73,6 +82,8 @@ export async function listTestFlightApplications(filter?: {
     SELECT
       id,
       email,
+      last_name AS lastName,
+      first_name AS firstName,
       app_slug AS appSlug,
       app_name AS appName,
       device,
@@ -103,6 +114,26 @@ export async function updateTestFlightStatus(
        WHERE id = ?`
     )
     .bind(status, id)
+    .run();
+
+  return (result.meta?.changes ?? 0) > 0;
+}
+
+// 이름 칸이 생기기 전에 접수된 기존 행의 성·이름을 관리자가 직접 채울 때 사용합니다.
+// 이메일에서 이름을 추측해 넣지 않고, 호출 측에서 검증된 값만 전달합니다.
+export async function updateTestFlightApplicantName(
+  id: number,
+  lastName: string,
+  firstName: string
+): Promise<boolean> {
+  const db = getD1();
+  const result = await db
+    .prepare(
+      `UPDATE testflight_applications
+       SET last_name = ?, first_name = ?, updated_at = CURRENT_TIMESTAMP
+       WHERE id = ?`
+    )
+    .bind(lastName.trim(), firstName.trim(), id)
     .run();
 
   return (result.meta?.changes ?? 0) > 0;

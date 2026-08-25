@@ -753,6 +753,81 @@ img { display: block; max-width: 100%; }
   font-size: 0.76rem;
   color: #92929e;
 }
+.admin-incomplete-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #991b1b;
+  background: #fee2e2;
+  border: 1px solid #fca5a5;
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+.admin-applicant-name {
+  font-weight: 700;
+}
+.admin-name-edit {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.admin-name-edit input {
+  width: 140px;
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  font-size: 0.84rem;
+  font-family: inherit;
+}
+.admin-name-edit button {
+  min-height: 32px;
+  padding-inline: 12px;
+  font-size: 0.78rem;
+}
+.admin-name-hint {
+  font-size: 0.74rem;
+  color: var(--muted);
+}
+.admin-codex-panel {
+  display: grid;
+  gap: 12px;
+  padding: 18px 20px;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid var(--line);
+  margin-bottom: 24px;
+}
+.admin-codex-panel p {
+  margin: 0;
+  font-size: 0.84rem;
+  color: #555560;
+  line-height: 1.6;
+}
+.admin-codex-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+.admin-codex-count {
+  font-size: 0.8rem;
+  font-weight: 650;
+  color: var(--muted);
+  font-family: var(--font-geist-mono), monospace;
+}
+.admin-codex-preview {
+  width: 100%;
+  min-height: 220px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #f9f9fc;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  resize: vertical;
+}
 .status-pill {
   display: inline-flex;
   align-items: center;

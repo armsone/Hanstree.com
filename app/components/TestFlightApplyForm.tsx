@@ -5,6 +5,8 @@ import { testFlightBuilds } from "../testflight";
 
 export function TestFlightApplyForm() {
   const [email, setEmail] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [firstName, setFirstName] = useState("");
   const [appSlug, setAppSlug] = useState(testFlightBuilds[0]?.slug || "nasfinder");
   const [device, setDevice] = useState("");
   const [reason, setReason] = useState("");
@@ -30,6 +32,16 @@ export function TestFlightApplyForm() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatusMessage(null);
+
+    if (!lastName.trim()) {
+      setStatusMessage({ type: "error", text: "성(Last name)을 입력해 주세요." });
+      return;
+    }
+
+    if (!firstName.trim()) {
+      setStatusMessage({ type: "error", text: "이름(First name)을 입력해 주세요." });
+      return;
+    }
 
     if (!email.trim()) {
       setStatusMessage({ type: "error", text: "이메일 주소를 입력해 주세요." });
@@ -70,6 +82,8 @@ export function TestFlightApplyForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email: email.trim(),
+          lastName: lastName.trim(),
+          firstName: firstName.trim(),
           appSlug,
           device: device.trim(),
           reason: reason.trim(),
@@ -95,6 +109,8 @@ export function TestFlightApplyForm() {
 
       // Clear form on success
       setEmail("");
+      setLastName("");
+      setFirstName("");
       setDevice("");
       setReason("");
       setPrivacyConsent(false);
@@ -113,10 +129,11 @@ export function TestFlightApplyForm() {
       <div className="tf-apply-header">
         <div>
           <p className="eyebrow">TESTFLIGHT APPLICATION</p>
-          <h3 id="tf-apply-title">테스터 사전 신청</h3>
+          <h3 id="tf-apply-title">내부 테스터 사전 신청</h3>
         </div>
         <p className="tf-apply-desc">
-          출시 전 새로운 버전을 가장 먼저 써보고 소중한 의견을 나눠주실 분을 모십니다.
+          출시 전 새로운 버전을 가장 먼저 써보고 소중한 의견을 나눠주실 분을 모십니다. 내부 테스트는 선택한 앱에만 접근하는
+          App Store Connect 사용자로 초대된 분만 참여할 수 있어 성·이름·이메일이 필요합니다.
         </p>
       </div>
 
@@ -170,7 +187,43 @@ export function TestFlightApplyForm() {
               autoComplete="email"
               required
             />
-            <span className="tf-field-hint">Apple TestFlight 초대장을 수신할 이메일을 적어주세요.</span>
+            <span className="tf-field-hint">App Store Connect 사용자 초대를 받을 이메일을 적어주세요.</span>
+          </div>
+
+          <div className="tf-form-group">
+            <label htmlFor="tf-last-name">
+              성 (Last name) <span className="tf-req" aria-hidden="true">*</span>
+            </label>
+            <input
+              id="tf-last-name"
+              type="text"
+              placeholder="예: 홍"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              disabled={loading}
+              autoComplete="family-name"
+              maxLength={50}
+              required
+            />
+            <span className="tf-field-hint">App Store Connect 사용자 등록에 필요한 성입니다.</span>
+          </div>
+
+          <div className="tf-form-group">
+            <label htmlFor="tf-first-name">
+              이름 (First name) <span className="tf-req" aria-hidden="true">*</span>
+            </label>
+            <input
+              id="tf-first-name"
+              type="text"
+              placeholder="예: 길동"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              disabled={loading}
+              autoComplete="given-name"
+              maxLength={50}
+              required
+            />
+            <span className="tf-field-hint">App Store Connect 사용자 초대에 사용할 이름입니다.</span>
           </div>
 
           <div className="tf-form-group tf-form-full">
@@ -212,8 +265,10 @@ export function TestFlightApplyForm() {
         <div className="tf-notice-box" role="note">
           <strong>안내사항</strong>
           <p>
-            테스트 인원은 소수로 한정되어 있어 <strong>신청이 참여를 보장하지 않으며</strong>,
-            선정된 분에게만 입력하신 이메일로 Apple TestFlight 공식 초대장이 발송됩니다.
+            테스트 인원은 소수로 한정되어 있어 <strong>신청이 선정이나 참여를 보장하지 않습니다.</strong>{" "}
+            Apple의 내부 테스트는 App Store Connect 사용자만 참여할 수 있으므로, 선정된 분은 입력하신 성·이름·이메일로{" "}
+            <strong>선택한 앱 하나에만 접근하는 제한된 App Store Connect 사용자</strong>(Marketing 역할, 보고서·인증서 등 추가 접근 없음)로
+            초대된 뒤 해당 앱의 내부 TestFlight 그룹에 추가됩니다.
           </p>
         </div>
 
@@ -246,11 +301,19 @@ export function TestFlightApplyForm() {
             <dl>
               <div>
                 <dt>수집 목적</dt>
-                <dd>Apple TestFlight 외부 테스터 선발 및 초대장 발송</dd>
+                <dd>Apple TestFlight 내부 테스터 선발, 선정 시 App Store Connect 사용자 초대(선택한 앱만 접근) 및 내부 TestFlight 그룹 등록</dd>
               </div>
               <div>
                 <dt>수집 항목</dt>
-                <dd>이메일, 희망 앱, 사용 기기 모델, 참여 동기</dd>
+                <dd>성(Last name), 이름(First name), 이메일, 희망 앱, 사용 기기 모델, 참여 동기</dd>
+              </div>
+              <div>
+                <dt>Apple 전달 범위</dt>
+                <dd>선정된 분의 성·이름·이메일만 App Store Connect 사용자 초대에 사용하며, 기기 모델과 참여 동기는 Apple에 전달하지 않습니다.</dd>
+              </div>
+              <div>
+                <dt>등록 작업 지원</dt>
+                <dd>내부 테스터 등록 작업을 돕기 위해 등록 대상자의 성·이름·이메일과 희망 앱만 OpenAI Codex에 전달할 수 있습니다. 기기 모델과 참여 동기는 전달하지 않습니다.</dd>
               </div>
               <div>
                 <dt>보유 및 파기</dt>
@@ -282,7 +345,7 @@ export function TestFlightApplyForm() {
             className="button button-light tf-submit-button"
             disabled={loading}
           >
-            {loading ? "신청 접수 중..." : "TestFlight 테스터 신청하기 →"}
+            {loading ? "신청 접수 중..." : "내부 테스터 신청하기 →"}
           </button>
         </div>
       </form>

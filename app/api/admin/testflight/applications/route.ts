@@ -2,11 +2,13 @@ import {
   deleteTestFlightApplication,
   getTestFlightSummaryStats,
   listTestFlightApplications,
+  updateTestFlightApplicantName,
   updateTestFlightStatus,
   type TestFlightStatus,
 } from "../../../../../db/testflight";
 import { isTrustedSameSiteEvent } from "../../../../requestTraffic";
 import { isRequestAuthenticated } from "../../../../testflight-auth";
+import { isValidTesterName, normalizeTesterName, TESTER_NAME_MAX_LENGTH } from "../../../../testflight-shared";
 
 export const dynamic = "force-dynamic";
 
@@ -57,7 +59,7 @@ export async function PATCH(request: Request) {
     return Response.json({ error: "관리자 인증이 필요합니다." }, { status: 401 });
   }
 
-  let body: { id?: unknown; status?: unknown };
+  let body: { id?: unknown; status?: unknown; lastName?: unknown; firstName?: unknown };
   try {
     body = await request.json();
   } catch {
@@ -69,6 +71,33 @@ export async function PATCH(request: Request) {
 
   if (!id || Number.isNaN(id) || id <= 0) {
     return Response.json({ error: "올바른 신청 ID가 아닙니다." }, { status: 400 });
+  }
+
+  // 이름 보완: 이름 칸이 없던 시기의 기존 신청 행에 관리자가 성·이름을 직접 채웁니다.
+  if (body.lastName !== undefined || body.firstName !== undefined) {
+    const lastName = normalizeTesterName(body.lastName);
+    const firstName = normalizeTesterName(body.firstName);
+    if (!isValidTesterName(lastName) || !isValidTesterName(firstName)) {
+      return Response.json(
+        { error: `성과 이름을 각각 ${TESTER_NAME_MAX_LENGTH}자 이내로 모두 입력해 주세요.` },
+        { status: 400 }
+      );
+    }
+
+    try {
+      const success = await updateTestFlightApplicantName(id, lastName, firstName);
+      if (!success) {
+        return Response.json({ error: "해당 신청 기록을 찾을 수 없습니다." }, { status: 404 });
+      }
+
+      return Response.json({ ok: true, message: "성·이름이 저장되었습니다.", lastName, firstName });
+    } catch (error) {
+      console.error("Failed to update applicant name:", error);
+      return Response.json(
+        { error: "이름 저장 중 데이터베이스 오류가 발생했습니다." },
+        { status: 503 }
+      );
+    }
   }
 
   if (!status || !VALID_STATUSES.includes(status)) {

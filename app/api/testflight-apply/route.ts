@@ -6,6 +6,7 @@ import {
 import { isTrustedSameSiteEvent } from "../../requestTraffic";
 import { testFlightBuilds } from "../../testflight";
 import { getClientIp, hashClientIp } from "../../testflight-auth";
+import { isValidTesterName, normalizeTesterName, TESTER_NAME_MAX_LENGTH } from "../../testflight-shared";
 
 export const dynamic = "force-dynamic";
 
@@ -22,6 +23,8 @@ export async function POST(request: Request) {
 
   let body: {
     email?: unknown;
+    lastName?: unknown;
+    firstName?: unknown;
     appSlug?: unknown;
     device?: unknown;
     reason?: unknown;
@@ -56,7 +59,24 @@ export async function POST(request: Request) {
   const email = typeof body.email === "string" ? body.email.trim().toLowerCase() : "";
   if (!email || email.length > 254 || !EMAIL_REGEX.test(email)) {
     return Response.json(
-      { error: "유효한 이메일 주소를 입력해 주세요. (Apple 계정 권장)" },
+      { error: "App Store Connect 사용자 초대를 받을 유효한 이메일 주소를 입력해 주세요." },
+      { status: 400 }
+    );
+  }
+
+  // Validate Last / First name (App Store Connect 사용자 초대에 필수)
+  const lastName = normalizeTesterName(body.lastName);
+  if (!isValidTesterName(lastName)) {
+    return Response.json(
+      { error: `App Store Connect 사용자 초대에 사용할 성(Last name)을 ${TESTER_NAME_MAX_LENGTH}자 이내로 입력해 주세요.` },
+      { status: 400 }
+    );
+  }
+
+  const firstName = normalizeTesterName(body.firstName);
+  if (!isValidTesterName(firstName)) {
+    return Response.json(
+      { error: `App Store Connect 사용자 초대에 사용할 이름(First name)을 ${TESTER_NAME_MAX_LENGTH}자 이내로 입력해 주세요.` },
       { status: 400 }
     );
   }
@@ -113,6 +133,8 @@ export async function POST(request: Request) {
 
     await createTestFlightApplication({
       email,
+      lastName,
+      firstName,
       appSlug,
       appName: matchedBuild.appName,
       device,
@@ -122,7 +144,7 @@ export async function POST(request: Request) {
 
     return Response.json({
       ok: true,
-      message: `${matchedBuild.appName} TestFlight 사전 신청이 완료되었습니다. 선정 시 입력하신 이메일로 초대장이 전달됩니다.`,
+      message: `${matchedBuild.appName} 내부 테스터 사전 신청이 접수되었습니다. 신청이 선정을 보장하지는 않으며, 선정되면 입력하신 이메일로 App Store Connect 사용자 초대(해당 앱만 접근)와 TestFlight 안내가 전달됩니다.`,
     });
   } catch (error) {
     console.error("TestFlight application failed:", error);

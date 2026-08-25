@@ -5,7 +5,25 @@ import { useCallback, useEffect, useState, useTransition } from "react";
 import { SiteFooter, SiteHeader } from "../../page";
 import { SiteInsights } from "../../components/SiteInsights";
 import { testFlightBuilds } from "../../testflight";
+import {
+  buildCodexInternalTesterRequest,
+  formatSeoulDateTime,
+  hasCompleteTesterName,
+  missingTesterNameParts,
+} from "../../testflight-shared";
 import type { TestFlightApplicationRow, TestFlightStatus, TestFlightSummaryStats } from "../../../db/testflight";
+
+type NameDraft = { lastName: string; firstName: string };
+
+async function fetchApplicationList(status: string, appSlug: string): Promise<Response> {
+  const queryParams = new URLSearchParams();
+  if (status !== "all") queryParams.set("status", status);
+  if (appSlug !== "all") queryParams.set("appSlug", appSlug);
+
+  return fetch(`/api/admin/testflight/applications?${queryParams.toString()}`, {
+    cache: "no-store",
+  });
+}
 
 export default function TestFlightAdminPage() {
   const [isPending, startTransition] = useTransition();
@@ -24,6 +42,10 @@ export default function TestFlightAdminPage() {
 
   // Data State
   const [applications, setApplications] = useState<TestFlightApplicationRow[]>([]);
+  // 화면 필터와 무관하게 '현재 대기 중' 전체 목록을 따로 보관해 Codex 요청문을 즉시(클릭 제스처 안에서) 만듭니다.
+  const [pendingApplications, setPendingApplications] = useState<TestFlightApplicationRow[]>([]);
+  const [nameDrafts, setNameDrafts] = useState<Record<number, NameDraft>>({});
+  const [codexPreview, setCodexPreview] = useState<string | null>(null);
   const [stats, setStats] = useState<TestFlightSummaryStats>({
     total: 0,
     pending: 0,
@@ -44,23 +66,22 @@ export default function TestFlightAdminPage() {
     setActionFeedback(null);
 
     try {
-      const queryParams = new URLSearchParams();
-      if (status !== "all") queryParams.set("status", status);
-      if (appSlug !== "all") queryParams.set("appSlug", appSlug);
+      const [response, pendingResponse] = await Promise.all([
+        fetchApplicationList(status, appSlug),
+        fetchApplicationList("pending", "all"),
+      ]);
 
-      const response = await fetch(`/api/admin/testflight/applications?${queryParams.toString()}`, {
-        cache: "no-store",
-      });
-
-      if (response.status === 401) {
+      if (response.status === 401 || pendingResponse.status === 401) {
         setAuthenticated(false);
         return;
       }
 
       const data = await response.json();
+      const pendingData = await pendingResponse.json();
       if (response.ok) {
         setApplications(data.applications || []);
         if (data.stats) setStats(data.stats);
+        if (pendingResponse.ok) setPendingApplications(pendingData.applications || []);
       } else {
         setActionFeedback({
           type: "error",
@@ -177,9 +198,109 @@ export default function TestFlightAdminPage() {
     } finally {
       setAuthenticated(false);
       setApplications([]);
+      setPendingApplications([]);
+      setCodexPreview(null);
       setPassword("");
     }
   };
+
+  const handleNameDraftChange = (id: number, field: keyof NameDraft, value: string) => {
+    setNameDrafts((prev) => ({
+      ...prev,
+      [id]: { lastName: "", firstName: "", ...prev[id], [field]: value },
+    }));
+  };
+
+  // 이름 칸이 없던 시기의 기존 신청 행에 성·이름을 채웁니다. 이메일로 이름을 추측하지 않고 관리자가 확인한 값만 저장합니다.
+  const handleNameSave = async (id: number) => {
+    const draft = nameDrafts[id];
+    const lastName = draft?.lastName.trim() ?? "";
+    const firstName = draft?.firstName.trim() ?? "";
+    if (!lastName || !firstName) {
+      setActionFeedback({ type: "error", text: "성과 이름을 모두 입력한 뒤 저장해 주세요." });
+      return;
+    }
+
+    setActionFeedback(null);
+
+    startTransition(async () => {
+      try {
+        const response = await fetch("/api/admin/testflight/applications", {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id, lastName, firstName }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          const applyName = (list: TestFlightApplicationRow[]) =>
+            list.map((app) => (app.id === id ? { ...app, lastName, firstName } : app));
+          setApplications(applyName);
+          setPendingApplications(applyName);
+          setNameDrafts((prev) => {
+            const next = { ...prev };
+            delete next[id];
+            return next;
+          });
+          setActionFeedback({ type: "success", text: "성·이름이 저장되어 등록 요청에 포함할 수 있습니다." });
+          loadApplications(statusFilter, appFilter);
+        } else {
+          setActionFeedback({ type: "error", text: data.error || "이름 저장에 실패했습니다." });
+        }
+      } catch {
+        setActionFeedback({ type: "error", text: "이름 저장 중 통신 오류가 발생했습니다." });
+      }
+    });
+  };
+
+  // 대기 중이며 성·이름이 모두 있는 신청자를 앱별로 묶어 Codex 등록 요청문 한 개로 복사합니다.
+  const handleCopyCodexRequest = () => {
+    setActionFeedback(null);
+    setCodexPreview(null);
+
+    const summary = buildCodexInternalTesterRequest(pendingApplications);
+
+    if (summary.readyCount === 0) {
+      setActionFeedback({
+        type: "error",
+        text:
+          summary.blockedCount === 0
+            ? "복사할 대기 중(pending) 신청자가 없습니다."
+            : `등록 가능한 대기 중 신청자가 없습니다. 이름 미입력 ${summary.blockedCount}명은 성·이름을 먼저 채워 주세요.`,
+      });
+      return;
+    }
+
+    const successText = `Codex 등록 요청을 복사했습니다. 등록 대상 ${summary.readyCount}명 (앱 ${summary.appCount}개)${
+      summary.blockedCount > 0 ? ` · 이름 미입력으로 보류 ${summary.blockedCount}명` : ""
+    }`;
+
+    if (typeof navigator === "undefined" || !navigator.clipboard?.writeText) {
+      setCodexPreview(summary.text);
+      setActionFeedback({
+        type: "error",
+        text: "이 브라우저에서는 자동 복사를 사용할 수 없습니다. 아래 요청문을 직접 선택해 복사해 주세요.",
+      });
+      return;
+    }
+
+    navigator.clipboard
+      .writeText(summary.text)
+      .then(() => {
+        setActionFeedback({ type: "success", text: successText });
+      })
+      .catch(() => {
+        setCodexPreview(summary.text);
+        setActionFeedback({
+          type: "error",
+          text: "클립보드 복사에 실패했습니다. 아래 요청문을 직접 선택해 복사해 주세요.",
+        });
+      });
+  };
+
+  const pendingReadyCount = pendingApplications.filter((app) => hasCompleteTesterName(app)).length;
+  const pendingBlockedCount = pendingApplications.length - pendingReadyCount;
 
   const handleStatusChange = async (id: number, newStatus: TestFlightStatus) => {
     setActionFeedback(null);
@@ -255,20 +376,12 @@ export default function TestFlightAdminPage() {
     }
   };
 
-  const formatDate = (isoString: string) => {
+  // D1의 created_at은 시간대 표기 없는 UTC 문자열이므로 공용 파서로 UTC를 명시해 KST로 표시합니다.
+  const formatDate = (storedValue: string) => {
     try {
-      const d = new Date(isoString);
-      if (Number.isNaN(d.getTime())) return isoString;
-      return new Intl.DateTimeFormat("ko-KR", {
-        year: "numeric",
-        month: "2-digit",
-        day: "2-digit",
-        hour: "2-digit",
-        minute: "2-digit",
-        timeZone: "Asia/Seoul",
-      }).format(d);
+      return formatSeoulDateTime(storedValue);
     } catch {
-      return isoString;
+      return storedValue;
     }
   };
 
@@ -498,6 +611,41 @@ export default function TestFlightAdminPage() {
               </div>
             </section>
 
+            {/* Codex 내부 테스터 등록 요청 복사 */}
+            <section className="admin-codex-panel" aria-label="Codex 내부 테스터 등록 요청">
+              <div className="admin-codex-actions">
+                <button
+                  type="button"
+                  className="button button-primary"
+                  onClick={handleCopyCodexRequest}
+                  disabled={loadingData || isPending}
+                  title="대기 중이며 성·이름이 있는 신청자 전체를 앱별로 묶어 Codex 등록 요청문으로 복사"
+                >
+                  대기 중 신청자 Codex 등록 요청 복사 📋
+                </button>
+                <span className="admin-codex-count">
+                  {loadingData
+                    ? "대기 목록 확인 중..."
+                    : `등록 가능 ${pendingReadyCount}명 · 이름 미입력 보류 ${pendingBlockedCount}명`}
+                </span>
+              </div>
+              <p>
+                복사되는 요청문은 현재 <strong>대기 중(pending)</strong> 상태이며 성·이름·이메일이 모두 있는 신청자만 앱별로 묶어
+                포함합니다. 기기 모델과 참여 동기는 넣지 않습니다. Codex에는 각 사람을 Marketing 역할·해당 앱만 접근·보고서와 추가
+                리소스 접근 없음 조건의 App Store Connect 사용자로 초대(중복 방지)하고 내부 TestFlight 그룹에 추가한 뒤 확인하도록
+                지시합니다. 성 또는 이름이 없는 신청자는 인원수만 표시하며 개인정보는 복사하지 않습니다.
+              </p>
+              {codexPreview && (
+                <textarea
+                  className="admin-codex-preview"
+                  readOnly
+                  value={codexPreview}
+                  aria-label="Codex 등록 요청문 (직접 복사)"
+                  onFocus={(e) => e.currentTarget.select()}
+                />
+              )}
+            </section>
+
             {actionFeedback && (
               <div
                 className={`admin-feedback-banner ${actionFeedback.type === "success" ? "feedback-success" : "feedback-error"}`}
@@ -516,7 +664,11 @@ export default function TestFlightAdminPage() {
                 </div>
               ) : (
                 <div className="admin-cards-list">
-                  {applications.map((app) => (
+                  {applications.map((app) => {
+                    const nameComplete = hasCompleteTesterName(app);
+                    const missingParts = missingTesterNameParts(app);
+                    const draft = nameDrafts[app.id] ?? { lastName: app.lastName ?? "", firstName: app.firstName ?? "" };
+                    return (
                     <article className={`admin-app-card status-border-${app.status}`} key={app.id}>
                       <div className="admin-card-top">
                         <div className="admin-card-meta">
@@ -524,6 +676,11 @@ export default function TestFlightAdminPage() {
                           <strong className="admin-app-name">{app.appName}</strong>
                           <span className="admin-slug-badge">{app.appSlug}</span>
                           <time className="admin-time">{formatDate(app.createdAt)}</time>
+                          {!nameComplete && (
+                            <span className="admin-incomplete-badge" title="성·이름이 없어 App Store Connect 사용자 초대와 등록 요청에 포함되지 않습니다">
+                              이름 미입력 · 등록 불가 ({missingParts.join(", ")} 누락)
+                            </span>
+                          )}
                         </div>
                         <div className="admin-status-badge-wrap">
                           <span className={`status-pill status-${app.status}`}>
@@ -533,6 +690,47 @@ export default function TestFlightAdminPage() {
                       </div>
 
                       <div className="admin-card-body">
+                        <div className="admin-info-row">
+                          <span className="admin-label">성 / 이름</span>
+                          {nameComplete ? (
+                            <span className="admin-applicant-name">
+                              {app.lastName} / {app.firstName}
+                            </span>
+                          ) : (
+                            <div className="admin-name-edit">
+                              <input
+                                type="text"
+                                placeholder="성 (Last name)"
+                                aria-label={`#${app.id} 성`}
+                                value={draft.lastName}
+                                maxLength={50}
+                                disabled={isPending}
+                                onChange={(e) => handleNameDraftChange(app.id, "lastName", e.target.value)}
+                              />
+                              <input
+                                type="text"
+                                placeholder="이름 (First name)"
+                                aria-label={`#${app.id} 이름`}
+                                value={draft.firstName}
+                                maxLength={50}
+                                disabled={isPending}
+                                onChange={(e) => handleNameDraftChange(app.id, "firstName", e.target.value)}
+                              />
+                              <button
+                                type="button"
+                                className="button button-quiet"
+                                disabled={isPending}
+                                onClick={() => handleNameSave(app.id)}
+                              >
+                                이름 저장
+                              </button>
+                              <span className="admin-name-hint">
+                                이름 칸이 없던 시기의 신청입니다. 신청자에게 직접 확인한 성·이름만 입력하세요. 이메일로 추측하지 않습니다.
+                              </span>
+                            </div>
+                          )}
+                        </div>
+
                         <div className="admin-info-row">
                           <span className="admin-label">이메일</span>
                           <strong className="admin-email">
@@ -582,7 +780,8 @@ export default function TestFlightAdminPage() {
                         </button>
                       </div>
                     </article>
-                  ))}
+                    );
+                  })}
                 </div>
               )}
             </section>
@@ -592,7 +791,18 @@ export default function TestFlightAdminPage() {
               <h3>개인정보 처리 및 보관·삭제 지침</h3>
               <ul>
                 <li>
-                  <strong>수집 목적:</strong> Apple TestFlight 외부 테스터 선발 및 공식 초대 발송에만 사용합니다.
+                  <strong>수집 목적:</strong> Apple TestFlight 내부 테스터 선발에만 사용합니다. 내부 테스터는 App Store Connect
+                  사용자여야 하므로 선정자는 성·이름·이메일로 사용자 초대(Marketing 역할, 신청한 앱 하나만 접근, 보고서·인증서 등
+                  추가 리소스 접근 없음)를 받은 뒤 해당 앱의 내부 TestFlight 그룹에 추가됩니다. 신청이 선정을 보장하지 않습니다.
+                </li>
+                <li>
+                  <strong>Apple 전달 범위:</strong> 성·이름·이메일만 App Store Connect 사용자 초대에 사용하며 기기 모델과 참여 동기는
+                  전달하지 않습니다. 성 또는 이름이 없는 기존 신청은 &lsquo;이름 미입력 · 등록 불가&rsquo;로 표시되고 등록 요청에서
+                  제외되며, 신청자에게 확인한 이름을 관리자가 직접 채운 뒤에만 포함됩니다.
+                </li>
+                <li>
+                  <strong>Codex 전달 범위:</strong> 내부 테스터 등록 작업 지원을 위해 등록 대상자의 성·이름·이메일과 희망 앱만 OpenAI
+                  Codex 요청문에 포함합니다. 기기 모델과 참여 동기는 포함하지 않으며 이름이 없는 보류 신청자의 개인정보도 복사하지 않습니다.
                 </li>
                 <li>
                   <strong>보관 및 파기:</strong> 신청자 기록은 테스터 모집 및 테스트 기간 동안 D1 데이터베이스에 보관되며,
@@ -602,7 +812,8 @@ export default function TestFlightAdminPage() {
                   <strong>안전 조치:</strong> 신청자의 IP 주소는 직접 저장하지 않고 SHA-256 해시로 변환하여 남용 방지(시간당 5회 제한)에만 활용합니다.
                 </li>
                 <li>
-                  <strong>외부 발송:</strong> 본 시스템은 외부 이메일 자동 발송을 수행하지 않으며, 선정된 테스터에게 Apple App Store Connect 콘솔에서 직접 TestFlight 초대장을 발송합니다.
+                  <strong>외부 발송:</strong> 본 시스템은 외부 이메일 자동 발송이나 Apple API 호출을 수행하지 않습니다. 선정된 테스터의
+                  App Store Connect 사용자 초대와 내부 TestFlight 그룹 추가는 복사한 요청문을 바탕으로 별도로 진행합니다.
                 </li>
               </ul>
             </section>
