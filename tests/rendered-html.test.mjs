@@ -88,7 +88,7 @@ test("renders the notarized BTN cleanup release", async () => {
   assert.match(html, /개발 도구가 빌려 쓴 공간과 메모리를/);
   assert.match(html, /release-download\?app=BTN/);
   assert.match(html, /Apple 공증 완료/);
-  assert.match(html, /e4447bdd93262c95046f6156e84f3dd2912f3fc192dc1059fc5ee1c3337b1b97/);
+  assert.match(html, /c1e7e92598bb50152c081588d0dd2bd6207d4f9b093d70eb80484eef3ee3b236/);
   assert.match(html, /메모리 압박 해결 동선/);
   assert.match(html, /기기 데이터를 유지한 채 종료/);
   assert.match(html, /안전한 파일 자동 정리/);
@@ -97,8 +97,8 @@ test("renders the notarized BTN cleanup release", async () => {
   assert.match(html, /로컬 개발 서버는 관찰만/);
   assert.match(html, /정상 종료\(SIGTERM\)/);
   assert.match(html, /기본은 선택 안 함/);
-  assert.match(html, /다시 열기 안정화/);
-  assert.match(html, /2\.0\.1 후보/);
+  assert.match(html, /BTN 2\.0\.1 공개/);
+  assert.match(html, /build 202608251555/);
   assert.match(html, /overview\.png/);
 });
 

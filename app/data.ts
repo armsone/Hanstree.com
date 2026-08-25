@@ -395,10 +395,10 @@ export const apps: AppData[] = [
       {
         name: "macOS",
         status: "공개",
-        detail: "2.0.0 (202608230737) · macOS 13+ · Universal · Apple 공증 완료",
+        detail: "2.0.1 (202608251555) · macOS 13+ · Universal · Apple 공증 완료",
         url: releaseDownloadPath("BTN"),
         downloadLabel: "Mac용 DMG 바로 받기",
-        checksum: "e4447bdd93262c95046f6156e84f3dd2912f3fc192dc1059fc5ee1c3337b1b97",
+        checksum: "c1e7e92598bb50152c081588d0dd2bd6207d4f9b093d70eb80484eef3ee3b236",
       },
     ],
     features: [
@@ -427,7 +427,7 @@ export const apps: AppData[] = [
       { state: "done", title: "메모리 원상복구", body: "유휴 개발 프로세스의 실행 직전 재검증과 정확한 PID별 정상 종료(SIGTERM) 구현" },
       { state: "done", title: "메모리 압박 해결", body: "데이터를 유지하는 실행 중 시뮬레이터 종료와 활동 모니터 연결 구현" },
       { state: "done", title: "BTN 2.0.0 공개", body: "build 202608230737의 Apple 공증 Universal DMG와 자동 업데이트를 공개" },
-      { state: "active", title: "다시 열기 안정화", body: "2.0.1 후보에서 창을 닫은 뒤 BTN을 다시 실행하면 BTN 상세 창을 즉시 복구하도록 개선" },
+      { state: "done", title: "BTN 2.0.1 공개", body: "build 202608251555에서 닫힌 상세 창을 다시 실행할 때 즉시 복구하고 업데이트 자동 다운로드 설정을 추가" },
       { state: "next", title: "작업 세션 연동", body: "Codex·Claude·Gemini 작업별로 생성된 자원을 더 정밀하게 구분하는 추적 기능 준비" },
     ],
     screenshots: [
