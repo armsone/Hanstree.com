@@ -103,7 +103,9 @@ test("renders the requested home navigation and keeps the maker name as plain te
   const nav = html.match(/<nav aria-label="주요 메뉴">[\s\S]*?<\/nav>/)?.[0] ?? "";
   assert.ok(nav, "missing main navigation");
   assert.match(nav, />홈<\/a>[\s\S]*?>앱<\/a>[\s\S]*?>다운<\/a>[\s\S]*?>기록<\/a>[\s\S]*?>깃허브[\s\S]*?<\/a>\s*<a [^>]*href="\/admin\/testflight"[^>]*>관리자<\/a>/);
-  assert.match(nav, /href="\/#downloads"[^>]*>다운<\/a>/);
+  assert.match(nav, /href="\/#testflight"[^>]*>다운<\/a>/);
+  assert.match(nav, /href="\/#records"[^>]*>기록<\/a>/);
+  assert.doesNotMatch(nav, /href="\/#downloads"[^>]*>다운<\/a>|href="\/insights"[^>]*>기록<\/a>/);
   assert.match(nav, /href="https:\/\/github\.com\/armsone"[^>]*>깃허브/);
   assert.doesNotMatch(nav, />소통<\/a>/);
   assert.match(nav, /<a [^>]*aria-label="관리자 로그인"[^>]*>관리자<\/a>/);
@@ -699,18 +701,19 @@ test("keeps traffic-source classification bounded to known, privacy-safe categor
   assert.deepEqual(classifyTrafficSource(request, "https://nasfinder.com/apps/ccmb", null, null), { key: "direct", category: "direct" });
 });
 
-test("keeps traffic sources on the authenticated admin records page", async () => {
+test("keeps detailed records on the authenticated admin page and redirects the old public route", async () => {
   const response = await render("/insights");
-  assert.equal(response.status, 200);
+  assert.ok([307, 308].includes(response.status));
+  assert.match(response.headers.get("location") ?? "", /\/#records$/);
 
-  const html = await response.text();
-  assert.doesNotMatch(html, /이번 달 유입 경로/);
-  assert.doesNotMatch(html, /개인을 식별하지 않습니다/);
-
-  const [adminPage, statsRoute] = await Promise.all([
+  const [homeCounter, adminPage, statsRoute] = await Promise.all([
+    readFile(new URL("../app/components/SiteCounter.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/admin/testflight/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/api/site-stats/route.ts", import.meta.url), "utf8"),
   ]);
+  assert.match(homeCounter, /<section id="records"/);
+  assert.match(homeCounter, /href="\/admin\/testflight">관리자에서 자세히 보기/);
+  assert.doesNotMatch(homeCounter, /href="\/insights"/);
   assert.match(adminPage, /<SiteInsights embedded showSources \/>/);
   assert.match(adminPage, /관리자 화면에서는 유입 경로까지 표시합니다/);
   assert.match(statsRoute, /includeSources/);

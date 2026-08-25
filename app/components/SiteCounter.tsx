@@ -30,7 +30,7 @@ export function SiteCounter() {
   const number = (value?: number) => value === undefined ? "—" : value.toLocaleString("ko-KR");
 
   return (
-    <section className="site-counter-section shell" aria-labelledby="site-counter-title">
+    <section id="records" className="site-counter-section shell" aria-labelledby="site-counter-title">
       <div className="counter-heading">
         <div><p className="eyebrow">A SMALL, HONEST COUNTER</p><h2 id="site-counter-title">얼마나 만나고,<br />얼마나 받아 갔는지.</h2></div>
         <p>개인을 식별하지 않고 숫자만 남깁니다. 방문은 같은 브라우저에서 하루 한 번, 다운로드는 이 홈페이지의 받기 버튼을 누른 횟수입니다.</p>
@@ -44,7 +44,7 @@ export function SiteCounter() {
         {repoLabels.map(([repo, label]) => <div key={repo}><dt>{label}</dt><dd>{number(stats?.downloads[repo])}회</dd></div>)}
       </dl>
       {/* Native navigation avoids the current vinext client-router issue. */}
-      <a className="counter-detail-link" href="/insights">날짜별 그래프와 표 보기 <span aria-hidden="true">→</span></a>
+      <a className="counter-detail-link" href="/admin/testflight">관리자에서 자세히 보기 <span aria-hidden="true">→</span></a>
       <p className="counter-note">이 숫자는 방문자 수를 정확히 식별하는 분석 도구가 아닌 간단한 참고용 집계입니다. GitHub에서 직접 받은 횟수와는 다를 수 있습니다.</p>
     </section>
   );
