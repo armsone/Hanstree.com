@@ -18,7 +18,7 @@ function verifiedTestFlightInviteUrl(inviteUrl: string | null) {
 function TestFlightInviteLinks() {
   return (
     <div className="testflight-invite-grid">
-      {testFlightBuilds.map((build) => {
+        {testFlightBuilds.filter((build) => build.publicBetaState !== "internalOnly").map((build) => {
         const app = findApp(build.slug);
         const inviteUrl = verifiedTestFlightInviteUrl(build.inviteUrl);
         if (!app) return null;

@@ -127,10 +127,10 @@ test("collects verified external tester links between TestFlight and Android dow
 
   const section = html.slice(inviteIndex, androidIndex);
   assert.match(section, /외부 테스터 참여/);
-  assert.equal((section.match(/class="testflight-invite-card/g) ?? []).length, 7);
-  assert.equal((section.match(/class="app-icon/g) ?? []).length, 7);
+  assert.equal((section.match(/class="testflight-invite-card/g) ?? []).length, 6);
+  assert.equal((section.match(/class="app-icon/g) ?? []).length, 6);
   assert.equal((section.match(/Apple 심사 중/g) ?? []).length, 6);
-  assert.equal((section.match(/심사 계정 준비/g) ?? []).length, 1);
+  assert.equal((section.match(/심사 계정 준비/g) ?? []).length, 0);
   assert.equal((section.match(/외부용 빌드 준비/g) ?? []).length, 0);
   assert.doesNotMatch(section, /href="https:\/\/testflight\.apple\.com\/join\//);
 });
@@ -630,7 +630,7 @@ test("keeps verified TestFlight fallback data for StarManager, Button, and HtOMS
   assert.equal(bySlug.get("button")?.uploadedAt, "2026-08-25T22:08:30+09:00");
   assert.equal(bySlug.get("htoms-brief")?.build, "202608252204");
   assert.equal(bySlug.get("htoms-brief")?.uploadedAt, "2026-08-25T22:07:03+09:00");
-  assert.equal(bySlug.get("htoms-brief")?.publicBetaState, "needsReviewAccount");
+  assert.equal(bySlug.get("htoms-brief")?.publicBetaState, "internalOnly");
 });
 
 test("tracks every public download in the site counter with download wording", async () => {
