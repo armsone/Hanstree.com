@@ -683,6 +683,22 @@ test("tracks every public download in the site counter with download wording", a
   assert.doesNotMatch(html, /업로드 기록 대기/);
 });
 
+test("orders download counters by count while preserving the original order for ties", async () => {
+  const { sortDownloadKeysByCount } = await import("../app/releases.ts");
+  const keys = ["NasFinder-Android", "NasFinder-Super-Thumbnail", "HanClip-Android", "S.tand-macOS"];
+
+  assert.deepEqual(
+    sortDownloadKeysByCount(keys, {
+      "NasFinder-Android": 13,
+      "NasFinder-Super-Thumbnail": 14,
+      "HanClip-Android": 12,
+      "S.tand-macOS": 14,
+    }),
+    ["NasFinder-Super-Thumbnail", "S.tand-macOS", "NasFinder-Android", "HanClip-Android"],
+  );
+  assert.deepEqual(sortDownloadKeysByCount(keys), keys);
+});
+
 test("keeps visit tracking privacy-safe and single-sourced", async () => {
   const [component, counter, route, requestTraffic] = await Promise.all([
     readFile(new URL("../app/components/VisitTracker.tsx", import.meta.url), "utf8"),

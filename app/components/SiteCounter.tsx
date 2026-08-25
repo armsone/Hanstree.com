@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { DOWNLOAD_KEYS, RELEASE_DOWNLOADS } from "../releases";
+import { DOWNLOAD_KEYS, RELEASE_DOWNLOADS, sortDownloadKeysByCount } from "../releases";
 
 type SiteStats = {
   todayVisits: number;
@@ -9,8 +9,6 @@ type SiteStats = {
   totalDownloadClicks: number;
   downloads: Record<string, number>;
 };
-
-const repoLabels = DOWNLOAD_KEYS.map((key) => [key, RELEASE_DOWNLOADS[key].label] as const);
 
 export function SiteCounter() {
   const [stats, setStats] = useState<SiteStats | null>(null);
@@ -28,6 +26,8 @@ export function SiteCounter() {
   }, []);
 
   const number = (value?: number) => value === undefined ? "—" : value.toLocaleString("ko-KR");
+  const orderedRepoLabels = sortDownloadKeysByCount(DOWNLOAD_KEYS, stats?.downloads)
+    .map((key) => [key, RELEASE_DOWNLOADS[key].label] as const);
 
   return (
     <section id="records" className="site-counter-section shell" aria-labelledby="site-counter-title">
@@ -41,7 +41,7 @@ export function SiteCounter() {
         <article><span>다운로드 버튼</span><strong>{number(stats?.totalDownloadClicks)}</strong><small>홈페이지에서 누른 횟수</small></article>
       </div>
       <dl className="counter-downloads">
-        {repoLabels.map(([repo, label]) => <div key={repo}><dt>{label}</dt><dd>{number(stats?.downloads[repo])}회</dd></div>)}
+        {orderedRepoLabels.map(([repo, label]) => <div key={repo}><dt>{label}</dt><dd>{number(stats?.downloads[repo])}회</dd></div>)}
       </dl>
       {/* Native navigation avoids the current vinext client-router issue. */}
       <a className="counter-detail-link" href="/admin/testflight">관리자에서 자세히 보기 <span aria-hidden="true">→</span></a>

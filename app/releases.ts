@@ -19,6 +19,16 @@ export const DOWNLOAD_KEYS = [
 
 export type DownloadKey = (typeof DOWNLOAD_KEYS)[number];
 
+export function sortDownloadKeysByCount(
+  keys: readonly DownloadKey[],
+  downloads?: Readonly<Record<string, number>>,
+) {
+  return keys
+    .map((key, index) => ({ key, index, count: downloads?.[key] ?? 0 }))
+    .sort((left, right) => right.count - left.count || left.index - right.index)
+    .map(({ key }) => key);
+}
+
 export type ReleaseDownload = {
   label: string;
   repo: string;
