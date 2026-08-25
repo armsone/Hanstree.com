@@ -46,8 +46,8 @@ export const apps: AppData[] = [
     icon: "/apps/nasfinder/icon.png",
     artwork: "files",
     platforms: [
-      { name: "iPhone · iPad", status: "TestFlight", detail: "2.2.0 (202608252025) · iOS·iPadOS 17+", availabilityNote: "TestFlight 업로드 완료 · Apple 처리 중" },
-      { name: "Mac용 NasFinder", status: "TestFlight", detail: "2.2.0 · Apple Silicon · iPhone·iPad 호환 앱", availabilityNote: "같은 TestFlight 빌드 · 2배 Mac 보기 · Apple 처리 중" },
+      { name: "iPhone · iPad", status: "TestFlight", detail: "2.2.0 (202608252025) · iOS·iPadOS 17+", availabilityNote: "내부 테스트 가능 · Public Beta 심사 대기 중" },
+      { name: "Mac용 NasFinder", status: "TestFlight", detail: "2.2.0 · Apple Silicon · iPhone·iPad 호환 앱", availabilityNote: "같은 TestFlight 빌드 · 2배 Mac 보기 · Public Beta 심사 대기 중" },
       {
         name: "Android",
         status: "공개",
@@ -85,7 +85,7 @@ export const apps: AppData[] = [
       { state: "active", title: "Google Photos Picker", body: "iPhone·iPad와 Android에서 사용자가 Picker로 직접 선택한 사진·영상만 폰하드로 가져오는 소스 구현 완료 · 실제 Google 계정 검증 대기" },
       { state: "done", title: "iPhone·iPad·Mac 지원", body: "iPhone과 iPad 앱 완성, 동일 앱의 Apple Silicon Mac 설치와 실행 검증" },
       { state: "done", title: "Live Photo·Motion Photo 전송", body: "iPhone과 Android를 QR로 연결해 사진·영상·움직이는 사진의 원본 보존과 교차 변환 구현" },
-      { state: "active", title: "iPhone·iPad·Mac 2.2.0 업로드", body: "build 202608252025 TestFlight 업로드 완료 · Apple 처리 중" },
+      { state: "active", title: "iPhone·iPad·Mac 2.2.0 Public Beta", body: "build 202608252025 처리 완료 · 기존 내부 그룹 배포 · 10,000명 공개 링크 생성 · 외부 베타 심사 대기 중" },
       { state: "done", title: "Android 2.2.0 공개", body: "제품 2.2.0 · 빌드 202608252025 · 내부 코드 341065의 서명 APK를 GitHub Releases에 공개하고 실기기 반응 확인" },
       { state: "done", title: "Super Thumbnail 2.2.0 동기화", body: "3/13 대표 장면, 50% 검은 화면의 6/13 재시도, 최종 1.5pt 단일 블러와 우선 표시를 Apple·Android·Mac에 반영" },
     ],
