@@ -73,6 +73,15 @@ test("server-renders the NasFinder.com homepage", async () => {
   assert.equal((installGuide.match(/class="advantage-visual"/g) ?? []).length, 4);
 });
 
+test("keeps TestFlight, public beta, and Android cards on one responsive layout contract", async () => {
+  const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
+  const sharedGrids = String.raw`\.testflight-grid,\.testflight-invite-grid,\.android-release-grid`;
+
+  assert.match(css, new RegExp(String.raw`@media \(min-width: 601px\)\s*\{\s*${sharedGrids}\{grid-template-columns:repeat\(2,minmax\(0,1fr\)\)\}`));
+  assert.match(css, new RegExp(String.raw`@media \(min-width: 1000px\) and \(orientation: landscape\)\s*\{\s*${sharedGrids}\{grid-template-columns:repeat\(4,minmax\(0,1fr\)\)\}`));
+  assert.doesNotMatch(css, /\.testflight-grid\{grid-template-columns:repeat\(auto-fit/);
+});
+
 test("keeps every app detail hero focused on one clear entry path and a representative product scene", async () => {
   const slugs = [
     "nasfinder", "super-thumbnail", "hanclip", "stand", "ccmb", "btn", "trackpadguard",
