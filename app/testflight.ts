@@ -16,5 +16,5 @@ export const testFlightBuilds: TestFlightBuild[] = [
   { slug: "htoms-brief", appName: "HtOMS 브리프", build: "202608230737", uploadedAt: "2026-08-23T08:12:19+09:00", inviteUrl: null },
   { slug: "starmanager", appName: "스타메니저", build: "202608230737", uploadedAt: "2026-08-23T08:13:38+09:00", inviteUrl: null },
   { slug: "button", appName: "버튼", build: "202608230737", uploadedAt: "2026-08-23T08:14:39+09:00", inviteUrl: null },
-  { slug: "whattoeat", appName: "오늘 뭐 먹지??", build: "202608241410", uploadedAt: "2026-08-24T14:14:17+09:00", inviteUrl: null },
+  { slug: "whattoeat", appName: "오늘 뭐 먹지??", build: "202608252106", uploadedAt: "2026-08-25T21:28:05+09:00", inviteUrl: null },
 ];

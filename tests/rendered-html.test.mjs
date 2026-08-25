@@ -533,6 +533,28 @@ test("renders current app release and TestFlight information", async () => {
   assert.doesNotMatch(hanClip, /android-editor-finish-pets\.png/);
 });
 
+test("publishes the WhattoEat 0.4.1 lunch bag navigation release", async () => {
+  const [pageResponse, buildsResponse] = await Promise.all([
+    render("/apps/whattoeat"),
+    render("/api/testflight-builds"),
+  ]);
+  assert.equal(pageResponse.status, 200);
+  assert.equal(buildsResponse.status, 200);
+
+  const page = await pageResponse.text();
+  const builds = await buildsResponse.json();
+  const whattoeat = builds.builds.find((build) => build.slug === "whattoeat");
+
+  assert.match(page, /0\.4\.1/);
+  assert.match(page, /202608252106/);
+  assert.match(page, /점심 가방으로 바로 추천/);
+  assert.match(page, /android-bag-navigation\.png/);
+  assert.match(page, /b2387eab4b08056f06539c5dd4fdad59e223f48c4693d1e89c29bfa10c37f847/);
+  assert.match(page, /3e9d66d8a3ad4ce97d5a56550e706b721eb46cf276dbddd1a0e2cbba9133cf59/);
+  assert.equal(whattoeat?.build, "202608252106");
+  assert.equal(whattoeat?.inviteUrl, null);
+});
+
 test("routes public download buttons through the allowlisted release redirect", async () => {
   const [unknown, missing] = await Promise.all([
     render("/api/release-download?app=Unknown-Repo"),
