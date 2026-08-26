@@ -520,7 +520,7 @@ export const apps: AppData[] = [
     icon: "/apps/trackpadguard/icon.png",
     artwork: "trackpad",
     platforms: [
-      { name: "macOS", status: "공개", detail: "2.0.1 (202608251919) · 내부 build 340999 · macOS 13+ · Universal · Apple 공증 완료", url: releaseDownloadPath("TrackpadGuard"), downloadLabel: "Mac용 DMG 바로 받기", checksum: "07effdc925569b70a7b6fa17299ae3a2df4d7f6fba4f508536a32799c5ab8d8b" },
+      { name: "macOS", status: "공개", detail: "2.0.2 (202608261902) · 내부 build 341000 · macOS 13+ · Universal · Apple 공증 완료", url: releaseDownloadPath("TrackpadGuard"), downloadLabel: "Mac용 DMG 바로 받기", checksum: "dc4c31111ded38ae453e0f3b39a96ea68675a9e94f8b5b291aac370357b984b5" },
     ],
     features: [
       { title: "키 입력과 동시에 잠금", body: "문자를 입력하기 시작하면 트랙패드의 커서 이동, 클릭과 스크롤을 바로 차단합니다." },
@@ -545,7 +545,7 @@ export const apps: AppData[] = [
       { state: "done", title: "자동 해제와 상태 표시", body: "마지막 키 입력 1초 후 자동 해제와 잠금 중 빨간 메뉴 막대 아이콘 구현" },
       { state: "done", title: "사다리꼴 기본 영역과 편집", body: "상단 1/3을 제거한 기본값, 네 꼭짓점 드래그와 설정 저장 구현" },
       { state: "done", title: "Universal 배포 기반", body: "Apple Silicon·Intel 앱 번들, DMG, Sparkle와 GitHub Release 관리 흐름 구성" },
-      { state: "done", title: "2.0.1 서명·공증 배포", body: "build 202608251919의 Developer ID 서명·Apple 공증 DMG와 자동 업데이트를 공개하고 설치·실행 확인" },
+      { state: "done", title: "2.0.2 서명·공증 배포", body: "build 202608261902의 Developer ID 서명·Apple 공증 DMG와 자동 업데이트를 공개하고 장시간 실행 뒤 Mac의 시스템 키보드 입력이 느려지는 현상을 막았습니다." },
       { state: "next", title: "macOS 호환성 관리", body: "macOS 업데이트마다 비공개 멀티터치 프레임워크 호환성을 확인" },
     ],
     screenshots: [
