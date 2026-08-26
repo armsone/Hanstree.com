@@ -591,8 +591,8 @@ test("renders current app release and TestFlight information", async () => {
   assert.match(hanClip, /내부 코드 340980/);
   assert.match(hanClip, /f4b607c0d5b860c4dd1c42a24f653b0bacf5f17d9b10684307af33eec102201b/);
   assert.match(hanClip, /오디오 트랙이 없는 영상은 화면 움직임/);
-  assert.match(stand, /내부 코드 341822/);
-  assert.match(stand, /0442b7a3172e291b2277d979ff2042cf47532a25f00886733183bcbf9d99c8ee/);
+  assert.match(stand, /내부 코드 341835/);
+  assert.match(stand, /dadeadc17cab044bda61011ceeb114164f18414c2f85cf9dcc34ea02b9079bea/);
   assert.match(stand, /android-home-two-line-cards\.png/);
   assert.doesNotMatch(home + nasFinder + hanClip + stand, /첫 공개판 준비 중|APK v2\b|APK v3\b|APK v544\b|APK v548\b|APK v52\b|APK v53\b/);
   assert.doesNotMatch(hanClip, /android-editor-finish-pets\.png/);

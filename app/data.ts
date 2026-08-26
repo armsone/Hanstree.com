@@ -315,10 +315,10 @@ export const apps: AppData[] = [
       {
         name: "Android · Google TV",
         status: "공개",
-        detail: "2.1.3 · 빌드 202608260902 · 내부 코드 341822 · Android 8.0+",
+        detail: "2.1.4 · 빌드 202608260915 · 내부 코드 341835 · Android 8.0+",
         url: releaseDownloadPath("S.tand-Android"),
         downloadLabel: "Android APK 바로 받기",
-        checksum: "0442b7a3172e291b2277d979ff2042cf47532a25f00886733183bcbf9d99c8ee",
+        checksum: "dadeadc17cab044bda61011ceeb114164f18414c2f85cf9dcc34ea02b9079bea",
         availabilityNote: "Android API 37 에뮬레이터 설치·좌우 분할 동작 확인 · Google TV 지원",
       },
     ],
@@ -348,7 +348,7 @@ export const apps: AppData[] = [
     progress: [
       { state: "done", title: "시계와 수면 케어", body: "오브제 화면, 반응형 조명과 로컬 수면 기록 구현" },
       { state: "active", title: "iOS·iPadOS 2.1.1 업로드", body: "내부 build 340977, 표시 build 202608251857을 TestFlight에 업로드하고 Apple 처리를 기다리는 중" },
-      { state: "done", title: "Android·Google TV 2.1.3 공개", body: "제품 2.1.3 · 빌드 202608260902 · 내부 코드 341822의 APK를 공개하고 두 줄 카드 정렬, 가로 제어 폭, 인터넷 라디오 50:50 터치와 음악 스트립·볼륨 제스처 분리를 반영" },
+      { state: "done", title: "Android·Google TV 2.1.4 공개", body: "제품 2.1.4 · 빌드 202608260915 · 내부 코드 341835의 APK를 공개하고 홈 하단의 내부 빌드 시각을 사용자용 앱 버전 표시로 교체" },
       { state: "done", title: "보이소 무전기", body: "주변 소리 없이 버튼으로 연결된 화면을 부르는 무전기 역할과 3초 연타 방지·고시인성 알림 적용" },
       { state: "done", title: "Mac 2.1.1 공개", body: "Developer ID 서명, Apple 공증과 실행 검증을 마친 build 202608251857 DMG와 자동 업데이트 공개" },
       { state: "done", title: "휴대전화 가로 음악 배치", body: "iPhone 대표 가로 배치를 Android에도 적용하고 음악 스트립과 오른쪽 고정 제어 패널이 겹치지 않게 정리" },
