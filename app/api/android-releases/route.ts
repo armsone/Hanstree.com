@@ -1,14 +1,10 @@
 import { NextResponse } from "next/server";
-
-const RELEASE_SOURCES = [
-  { appName: "나스파인더", repo: "NasFinder-Android" },
-  { appName: "한클립", repo: "HanClip-Android" },
-  { appName: "S.tand", repo: "S.tand-Android" },
-  { appName: "HtOMS 브리프", repo: "HtOMS-BK" },
-  { appName: "버튼", repo: "button-Android" },
-  { appName: "스타매니저", repo: "StarManager-Android" },
-  { appName: "오늘 뭐 먹지?", repo: "WhattoEat-Android" },
-] as const;
+import {
+  ANDROID_RELEASE_SOURCES,
+  mergeVerifiedAndroidReleases,
+  type AndroidReleaseInfo,
+  type AndroidReleaseSource,
+} from "../../androidReleases";
 
 type GitHubAsset = {
   name: string;
@@ -30,7 +26,7 @@ type GitHubRelease = {
   assets: GitHubAsset[];
 };
 
-async function readLatestRelease(source: (typeof RELEASE_SOURCES)[number]) {
+async function readLatestRelease(source: AndroidReleaseSource): Promise<AndroidReleaseInfo> {
   const apiUrl = `https://api.github.com/repos/armsone/${encodeURIComponent(source.repo)}/releases/latest`;
   const response = await fetch(apiUrl, {
     headers: {
@@ -60,6 +56,8 @@ async function readLatestRelease(source: (typeof RELEASE_SOURCES)[number]) {
   return {
     appName: source.appName,
     repo: source.repo,
+    available: true,
+    verificationSource: "github-live",
     tagName: release.tag_name,
     releaseName: release.name || release.tag_name,
     publishedAt: release.published_at,
@@ -76,18 +74,23 @@ async function readLatestRelease(source: (typeof RELEASE_SOURCES)[number]) {
 
 export async function GET() {
   const checkedAt = new Date().toISOString();
-  const settled = await Promise.allSettled(RELEASE_SOURCES.map(readLatestRelease));
-  const releases = settled.map((result, index) => result.status === "fulfilled"
-    ? { ...result.value, available: true as const }
-    : {
-        appName: RELEASE_SOURCES[index].appName,
-        repo: RELEASE_SOURCES[index].repo,
-        available: false as const,
-      }
-  );
+  // GitHub의 익명 API가 병렬 요청을 간헐적으로 제한할 수 있어 순서대로 확인합니다.
+  // 개별 조회가 실패해도 "APK 없음"으로 바꾸지 않고 마지막으로 검증된 공식 자산을 유지합니다.
+  const settled: PromiseSettledResult<AndroidReleaseInfo>[] = [];
+  for (const source of ANDROID_RELEASE_SOURCES) {
+    try {
+      settled.push({ status: "fulfilled", value: await readLatestRelease(source) });
+    } catch (reason) {
+      settled.push({ status: "rejected", reason });
+    }
+  }
+  const releases = mergeVerifiedAndroidReleases(settled);
+  const usedFallback = releases.some((release) => release.verificationSource === "verified-fallback");
 
   return NextResponse.json(
-    { checkedAt, releases },
-    { headers: { "Cache-Control": "public, max-age=300, s-maxage=1800, stale-while-revalidate=86400" } },
+    { checkedAt, releases, source: usedFallback ? "verified-fallback" : "github-live" },
+    { headers: { "Cache-Control": usedFallback
+      ? "no-store"
+      : "public, max-age=300, s-maxage=1800, stale-while-revalidate=3600" } },
   );
 }

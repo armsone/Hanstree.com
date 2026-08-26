@@ -29,7 +29,11 @@ type Release = {
   asset?: { name: string; size: number; contentType: string; digest: string | null; downloadCount: number } | null;
 };
 
-type ReleaseResponse = { checkedAt: string; releases: Release[] };
+type ReleaseResponse = {
+  checkedAt: string;
+  releases: Release[];
+  source?: "github-live" | "verified-fallback";
+};
 
 function releaseIdentityFor(release: Release, app: ReturnType<typeof findApp>) {
   const androidDetail = app?.platforms.find((platform) => platform.name.includes("Android"))?.detail;
@@ -110,7 +114,11 @@ export function AndroidReleaseTracker() {
           </article>;
         })}
       </div>
-      <p className="release-check-note">{data ? `GitHub 확인: ${formatDate(data.checkedAt)} · 30분 동안 캐시` : "공개 저장소만 조회하며 GitHub 비밀키는 사용하지 않습니다."}</p>
+      <p className="release-check-note">{data
+        ? data.source === "verified-fallback"
+          ? `GitHub 일시 지연 · 마지막 검증 정보 유지 · ${formatDate(data.checkedAt)}`
+          : `GitHub 확인: ${formatDate(data.checkedAt)} · 30분 동안 캐시`
+        : "공개 저장소만 조회하며 GitHub 비밀키는 사용하지 않습니다."}</p>
       <section className="android-install-guide" aria-labelledby="android-install-title">
         <div className="install-guide-lead">
           <p className="eyebrow">SAFE APK INSTALL</p>
