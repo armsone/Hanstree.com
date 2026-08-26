@@ -126,13 +126,15 @@ export const apps: AppData[] = [
       {
         name: "macOS",
         status: "공개",
-        detail: "2.2.0 (202608252025) · macOS 14+ · Apple Silicon·Intel · Apple 공증 완료",
+        detail: "공개 2.2.0 (202608252025) · macOS 14+ · Apple Silicon·Intel · 2.3.0 병렬 처리 내부 검증 완료",
         url: releaseDownloadPath("NasFinder-Super-Thumbnail"),
         downloadLabel: "Mac용 DMG 바로 받기",
         checksum: "b5d77e800bc37cf2081a3ef9d5bf1aad2812b8cdb2377e09a0653ec4daaa1ad6",
       },
     ],
     features: [
+      { title: "폴더는 차례대로, 파일은 동시에", body: "여러 폴더를 한 번에 작업 대기열에 등록합니다. 폴더 작업은 충돌 없이 차례대로 진행하고, 각 폴더 안의 사진과 영상은 여러 작업자가 동시에 수퍼썸네일로 만듭니다." },
+      { title: "Mac 상태에 맞추는 자동 속도", body: "동시 처리 수를 자동·1·2·4·8개 중에서 고를 수 있습니다. 자동은 로컬 저장소 4개, NAS·외장 저장소 2개로 시작하고 Mac의 발열이 높아지면 1개로 줄입니다." },
       { title: "찾는 중에도 분명하게", body: "사진·영상 파일과 하위 폴더를 찾는 동안 큰 검색 애니메이션과 진행 막대가 계속 움직여 앱이 일하고 있음을 바로 알 수 있습니다." },
       { title: "내용을 고르는 대표 장면", body: "영상 전체 길이의 3/13 지점을 사용하고 화면 절반 이상이 검을 때만 6/13을 한 번 더 확인해 시작 로고만 반복되는 결과를 줄입니다." },
       { title: "폴더도 9칸, 블러는 한 번만", body: "파일과 하위 폴더를 최대 9개 골라 정사각형 모아보기로 만들고, 살색 비율이 높으면 최종 1.5pt 블러를 딱 한 번 적용해 상위 폴더가 계속 흐려지지 않게 합니다." },
@@ -146,8 +148,8 @@ export const apps: AppData[] = [
     guide: [
       { title: "앱 설치", body: "공식 DMG를 열고 NasFinder Super Thumbnail을 응용 프로그램 폴더로 옮깁니다." },
       { title: "NAS 연결", body: "Finder에서 사용할 NAS 공유 폴더를 먼저 연결합니다. Mac 내부 미디어 폴더도 선택할 수 있습니다." },
-      { title: "작업 폴더 선택", body: "앱에서 폴더 선택을 누르고 사진과 영상이 들어 있는 최상위 폴더를 고릅니다." },
-      { title: "생성과 확인", body: "이어하기로 남은 작업을 계속하거나 새로하기로 Vault 썸네일만 다시 만듭니다. 미리보기의 가로 손잡이를 위아래로 끌어 이미지 크기를 조절할 수 있습니다." },
+      { title: "작업 폴더 등록", body: "앱에서 폴더 선택을 누르고 사진과 영상이 들어 있는 폴더를 하나 또는 여러 개 고릅니다. 여러 폴더는 작업 대기열에서 순서대로 처리됩니다." },
+      { title: "속도와 생성 방식 선택", body: "동시 작업자 수는 자동·1·2·4·8개 중에서 고릅니다. 이어하기로 남은 작업을 계속하거나 새로하기로 선택한 폴더의 Vault 썸네일만 다시 만듭니다." },
       { title: "NasFinder에서 보기", body: "작업을 마친 뒤 NasFinder에서 같은 NAS 폴더를 열면 준비된 수퍼썸네일을 사용합니다." },
     ],
     progress: [
@@ -158,9 +160,10 @@ export const apps: AppData[] = [
       { state: "done", title: "2.1.3 사진·영상 찾기 진행 표시", body: "큰 검색 애니메이션과 진행 막대, 파일·하위 폴더별 안내를 추가한 Universal DMG를 서명·공증해 공개" },
       { state: "done", title: "2.1.4 크기 조절 미리보기", body: "아래로 끌면 이미지가 함께 커지는 가로 미리보기와 선택 크기 기억 기능을 서명·공증한 Universal DMG로 공개" },
       { state: "done", title: "2.2.0 대표 장면과 단일 블러", body: "3/13 대표 장면과 조건부 6/13 재시도, 최종 1.5pt 단일 블러를 Developer ID 서명·Apple 공증한 Universal DMG로 공개" },
+      { state: "done", title: "2.3.0 작업 대기열과 병렬 처리 내부 검증", body: "여러 폴더 대기열, 자동·1·2·4·8개 파일 병렬 처리, 발열 제한과 깊이별 폴더 생성을 Universal 앱으로 빌드·설치·실행 확인하고 독립 GitHub 저장소로 이관" },
       { state: "active", title: "다양한 NAS 환경 확인", body: "Finder 연결 방식과 파일 권한에 따른 예외를 계속 점검 중" },
     ],
-    github: ["https://github.com/armsone/NasFinder"],
+    github: ["https://github.com/armsone/SuperThumbnail-MacOS"],
     privacy: [
       "사용자가 직접 선택한 Finder의 NAS 또는 Mac 폴더만 읽고 썸네일을 생성합니다.",
       "생성한 JPEG는 원본 폴더 안의 .NasFinder-Vault에 저장되며 개발자 서버로 전송하지 않습니다.",

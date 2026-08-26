@@ -295,17 +295,27 @@ test("renders HtOMS with its own sales dashboard artwork", async () => {
 });
 
 test("renders Super Thumbnail as an independent Mac product", async () => {
-  const [detailResponse, nasFinderResponse] = await Promise.all([
+  const [detailResponse, nasFinderResponse, supportResponse] = await Promise.all([
     render("/apps/super-thumbnail"),
     render("/apps/nasfinder"),
+    render("/apps/super-thumbnail/support"),
   ]);
   assert.equal(detailResponse.status, 200);
+  assert.equal(supportResponse.status, 200);
 
-  const [detail, nasFinder] = await Promise.all([detailResponse.text(), nasFinderResponse.text()]);
+  const [detail, nasFinder, support] = await Promise.all([
+    detailResponse.text(),
+    nasFinderResponse.text(),
+    supportResponse.text(),
+  ]);
   assert.match(detail, /큰 미디어 폴더의 미리보기를/);
   assert.match(detail, /release-download\?app=NasFinder-Super-Thumbnail/);
   assert.match(detail, /16,540/);
-  assert.match(detail, /2\.2\.0 \(202608252025\)/);
+  assert.match(detail, /공개 2\.2\.0 \(202608252025\)/);
+  assert.match(detail, /2\.3\.0 병렬 처리 내부 검증 완료/);
+  assert.match(detail, /폴더는 차례대로, 파일은 동시에/);
+  assert.match(detail, /자동·1·2·4·8개/);
+  assert.match(support, /github\.com\/armsone\/SuperThumbnail-MacOS\/issues/);
   assert.match(detail, /폴더도 9칸, 블러는 한 번만/);
   assert.match(detail, /b5d77e800bc37cf2081a3ef9d5bf1aad2812b8cdb2377e09a0653ec4daaa1ad6/);
   assert.match(detail, /미리보는 재미까지 크게/);
@@ -481,7 +491,7 @@ test("renders full promotional campaigns for every remaining product", async () 
   assert.match(superThumbnail, /수만 개의 파일을/);
   assert.match(superThumbnail, /super-thumbnail-campaign\.png/);
   assert.match(superThumbnail, /16,540/);
-  assert.match(superThumbnail, /하룻밤에 끝나지 않는 보관함/);
+  assert.match(superThumbnail, /여러 보관함을 한 번에 준비할 때/);
   assert.match(intoSharp, /주소는 잊고/);
   assert.match(intoSharp, /intosharp-campaign\.png/);
   assert.match(intoSharp, /인터넷의 첫 화면을/);
