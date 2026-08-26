@@ -702,7 +702,7 @@ export const apps: AppData[] = [
     icon: "/apps/button/icon.png",
     artwork: "phones",
     platforms: [
-      { name: "iPhone", status: "TestFlight", detail: "2.0.0 (202608230737) · iOS 17+", availabilityNote: "내부 테스트 전용 빌드 · 외부용 새 빌드 필요" },
+      { name: "iPhone", status: "TestFlight", detail: "2.0.0 (202608252204) · iOS 17+", availabilityNote: "Public Beta 승인 · 공개 테스트 참여 가능" },
       {
         name: "Android",
         status: "공개",

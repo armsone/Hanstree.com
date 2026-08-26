@@ -178,14 +178,15 @@ test("collects verified external tester links between TestFlight and Android dow
   assert.match(section, /외부 테스터 참여/);
   assert.equal((section.match(/class="testflight-invite-card/g) ?? []).length, 6);
   assert.equal((section.match(/class="app-icon/g) ?? []).length, 6);
-  assert.equal((section.match(/Apple 심사 중/g) ?? []).length, 2);
+  assert.equal((section.match(/Apple 심사 중/g) ?? []).length, 1);
   assert.equal((section.match(/심사 계정 준비/g) ?? []).length, 0);
   assert.equal((section.match(/외부용 빌드 준비/g) ?? []).length, 0);
-  assert.equal((section.match(/href="https:\/\/testflight\.apple\.com\/join\//g) ?? []).length, 4);
+  assert.equal((section.match(/href="https:\/\/testflight\.apple\.com\/join\//g) ?? []).length, 5);
   assert.match(section, /href="https:\/\/testflight\.apple\.com\/join\/3m3bhwJz"/);
   assert.match(section, /href="https:\/\/testflight\.apple\.com\/join\/m2YsgUJW"/);
   assert.match(section, /href="https:\/\/testflight\.apple\.com\/join\/A444RsAc"/);
   assert.match(section, /href="https:\/\/testflight\.apple\.com\/join\/nzmW4WxW"/);
+  assert.match(section, /href="https:\/\/testflight\.apple\.com\/join\/RKcxgTkc"/);
 });
 
 test("renders the privacy-safe Minecraft Bedrock home server guide", async () => {
@@ -241,7 +242,8 @@ test("renders the Button family calling app and release", async () => {
   assert.match(html, /가족을 부르는 가장 간단한 버튼/);
   assert.match(html, /톡톡에서 사이렌까지/);
   assert.match(html, /Synology NAS/);
-  assert.match(html, /2\.0\.0 \(202608230737\)/);
+  assert.match(html, /2\.0\.0 \(202608252204\)/);
+  assert.match(html, /href="https:\/\/testflight\.apple\.com\/join\/RKcxgTkc"/);
   assert.match(html, /release-download\?app=button-Android/);
   assert.match(html, /c2fb4f9cb9840761824d7079a3c8710c30fd3d9ff3114838dad5638c2661962f/);
   assert.match(html, /내부 코드 340680/);
@@ -690,6 +692,7 @@ test("keeps verified TestFlight fallback data for StarManager, Button, and HtOMS
   assert.equal(bySlug.get("starmanager")?.uploadedAt, "2026-08-25T19:18:33+09:00");
   assert.equal(bySlug.get("starmanager")?.inviteUrl, "https://testflight.apple.com/join/nzmW4WxW");
   assert.equal(bySlug.get("button")?.build, "202608252204");
+  assert.equal(bySlug.get("button")?.inviteUrl, "https://testflight.apple.com/join/RKcxgTkc");
   assert.equal(bySlug.get("button")?.uploadedAt, "2026-08-25T22:08:30+09:00");
   assert.equal(bySlug.get("htoms-brief")?.build, "202608252204");
   assert.equal(bySlug.get("htoms-brief")?.uploadedAt, "2026-08-25T22:07:03+09:00");

@@ -16,6 +16,6 @@ export const testFlightBuilds: TestFlightBuild[] = [
   { slug: "stand", appName: "S.tand", build: "342257", uploadedAt: "2026-08-26T16:31:06+09:00", inviteUrl: null, publicBetaState: "waitingForReview" },
   { slug: "htoms-brief", appName: "HtOMS 브리프", build: "202608252204", uploadedAt: "2026-08-25T22:07:03+09:00", inviteUrl: null, publicBetaState: "internalOnly" },
   { slug: "starmanager", appName: "스타메니저", build: "202608251915", uploadedAt: "2026-08-25T19:18:33+09:00", inviteUrl: "https://testflight.apple.com/join/nzmW4WxW", publicBetaState: "approved" },
-  { slug: "button", appName: "버튼", build: "202608252204", uploadedAt: "2026-08-25T22:08:30+09:00", inviteUrl: null, publicBetaState: "waitingForReview" },
+  { slug: "button", appName: "버튼", build: "202608252204", uploadedAt: "2026-08-25T22:08:30+09:00", inviteUrl: "https://testflight.apple.com/join/RKcxgTkc", publicBetaState: "approved" },
   { slug: "whattoeat", appName: "오늘 뭐 먹지??", build: "202608252106", uploadedAt: "2026-08-25T21:28:05+09:00", inviteUrl: "https://testflight.apple.com/join/A444RsAc", publicBetaState: "approved" },
 ];
