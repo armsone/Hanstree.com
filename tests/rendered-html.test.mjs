@@ -544,12 +544,13 @@ test("shows the current CCMB three-service release", async () => {
   assert.doesNotMatch(html, /WEEKLY REMAINING/);
   assert.doesNotMatch(html, /81% · ₩12\.4/);
   assert.doesNotMatch(html, /v0\.4\.3/);
-  assert.match(html, /2\.0\.3/);
+  assert.match(html, /2\.0\.4/);
   assert.match(html, /Codex·Claude·Gemini/);
   assert.match(html, /release-download\?app=CCMB/);
-  assert.match(html, /1a3eeb5b7b32f226bda86ae6dce9fe8aff695b141a04f37880997a7fb7b59d62/);
+  assert.match(html, /a6776b45c348cc870f621f8ff5f252741c70bda3058a49e03bafcb3b93a7397c/);
+  assert.match(html, /Claude 인증 자동 복구/);
   assert.match(html, /데이터 연결만 안전하게 다시 시작/);
-  assert.match(html, /업데이트 자동 다운로드 선택/);
+  assert.match(html, /자동 다운로드 여부/);
 });
 
 test("publishes browser and home-screen app icons", async () => {
@@ -593,6 +594,9 @@ test("renders current app release and TestFlight information", async () => {
   assert.match(hanClip, /오디오 트랙이 없는 영상은 화면 움직임/);
   assert.match(stand, /내부 코드 341835/);
   assert.match(stand, /dadeadc17cab044bda61011ceeb114164f18414c2f85cf9dcc34ea02b9079bea/);
+  assert.match(stand, /내부 build 341836/);
+  assert.match(stand, /d716deaa0a97300d40272e98a2813587276867c798a1957d5763275b453284f0/);
+  assert.match(stand, /다음 라디오나 다음 곡/);
   assert.match(stand, /android-home-two-line-cards\.png/);
   assert.doesNotMatch(home + nasFinder + hanClip + stand, /첫 공개판 준비 중|APK v2\b|APK v3\b|APK v544\b|APK v548\b|APK v52\b|APK v53\b/);
   assert.doesNotMatch(hanClip, /android-editor-finish-pets\.png/);

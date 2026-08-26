@@ -3,6 +3,15 @@
     <channel>
         <title>S.tand</title>
         <item>
+            <title>2.2.0</title>
+            <pubDate>Wed, 26 Aug 2026 09:38:26 +0900</pubDate>
+            <link>https://nasfinder.com/apps/stand</link>
+            <sparkle:version>341836</sparkle:version>
+            <sparkle:shortVersionString>2.2.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/armsone/S.tand/releases/download/macos-v2.2.0/S.tand-macOS-2.2.0.dmg" length="13654032" type="application/octet-stream" sparkle:edSignature="CbCKyx/7zjrlGIp0JDvPD3nZBpo7NVcoRBzcC+MWk0sCZyg0RGs0GH7Q3YXZNG4GV2IqLinbwPNwFRPmM2j4Bg=="/>
+        </item>
+        <item>
             <title>2.1.1</title>
             <pubDate>Tue, 25 Aug 2026 19:13:54 +0900</pubDate>
             <link>https://nasfinder.com/apps/stand</link>
@@ -18,25 +27,7 @@
             <sparkle:version>340467</sparkle:version>
             <sparkle:shortVersionString>2.1.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/armsone/S.tand/releases/download/S.tand-macOS-2.1.0.dmg" length="13653235" type="application/octet-stream" sparkle:edSignature="phUli92zYyTM1o47iSoKWkBlJrBK4s5L+AVQq2973taCOY+ivBiV65sKxnXljkBGfqccC7QtFueCTes6kfjgAg=="/>
-        </item>
-        <item>
-            <title>2.0.0</title>
-            <pubDate>Sun, 23 Aug 2026 07:53:51 +0900</pubDate>
-            <link>https://nasfinder.com/apps/stand</link>
-            <sparkle:version>337417</sparkle:version>
-            <sparkle:shortVersionString>2.0.0</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/armsone/S.tand/releases/download/S.tand-macOS-2.0.0.dmg" length="13629803" type="application/octet-stream" sparkle:edSignature="Mv2OAOylbKSy45VEdgC1bawSuEPaHQuPAxPSBvJfG9o8/ZcZ2aFKvkcsyYCv0nrFIbnUjzfC9Tjo7LkY+iWnCw=="/>
-        </item>
-        <item>
-            <title>1.0.0</title>
-            <pubDate>Sun, 23 Aug 2026 07:02:22 +0900</pubDate>
-            <link>https://github.com/armsone/S.tand/releases/tag/macos-v0.33.0</link>
-            <sparkle:version>0.33.0</sparkle:version>
-            <sparkle:shortVersionString>1.0.0</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/armsone/S.tand/releases/download/S.tand-macOS-0.33.0.dmg" length="13629732" type="application/octet-stream" sparkle:edSignature="Hjgo/d9QhucUFizosYh510/jo+RFfIs2g+jwr9iD15qATztx+T/IiUy/LCWpwNRmFvP+1p37oU1qwWPsrTr+CA=="/>
+            <enclosure url="https://github.com/armsone/S.tand/releases/download/macos-v2.1.0/S.tand-macOS-2.1.0.dmg" length="13653235" type="application/octet-stream" sparkle:edSignature="phUli92zYyTM1o47iSoKWkBlJrBK4s5L+AVQq2973taCOY+ivBiV65sKxnXljkBGfqccC7QtFueCTes6kfjgAg=="/>
         </item>
     </channel>
 </rss>
