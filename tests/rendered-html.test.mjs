@@ -551,10 +551,10 @@ test("shows the current CCMB three-service release", async () => {
   assert.doesNotMatch(html, /WEEKLY REMAINING/);
   assert.doesNotMatch(html, /81% · ₩12\.4/);
   assert.doesNotMatch(html, /v0\.4\.3/);
-  assert.match(html, /2\.0\.4/);
+  assert.match(html, /2\.0\.5/);
   assert.match(html, /Codex·Claude·Gemini/);
   assert.match(html, /release-download\?app=CCMB/);
-  assert.match(html, /a6776b45c348cc870f621f8ff5f252741c70bda3058a49e03bafcb3b93a7397c/);
+  assert.match(html, /3be2d03d84c0a3f8a683721ddf407bff193e234b9864952e56e22c3614333651/);
   assert.match(html, /Claude 인증 자동 복구/);
   assert.match(html, /데이터 연결만 안전하게 다시 시작/);
   assert.match(html, /자동 다운로드 여부/);

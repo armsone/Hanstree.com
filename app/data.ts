@@ -409,7 +409,7 @@ export const apps: AppData[] = [
     icon: "/apps/ccmb/icon.png",
     artwork: "menubar",
     platforms: [
-      { name: "macOS", status: "공개", detail: "2.0.4 (202608260940) · macOS 10.15+ · Universal · Apple 공증 완료", url: releaseDownloadPath("CCMB"), downloadLabel: "DMG 다운로드", checksum: "a6776b45c348cc870f621f8ff5f252741c70bda3058a49e03bafcb3b93a7397c" },
+      { name: "macOS", status: "공개", detail: "2.0.5 (202608270608) · macOS 10.15+ · Universal · Apple 공증 완료", url: releaseDownloadPath("CCMB"), downloadLabel: "DMG 다운로드", checksum: "3be2d03d84c0a3f8a683721ddf407bff193e234b9864952e56e22c3614333651" },
     ],
     features: [
       { title: "세 AI를 한눈에", body: "Codex·Claude·Gemini 사용량을 정밀 눈금·은은한 발광·끝점 표시가 있는 3열 링으로 나란히 확인합니다." },
@@ -438,7 +438,7 @@ export const apps: AppData[] = [
       { state: "done", title: "통합 사용량 패널", body: "메뉴 패널과 항상 보기의 레이아웃·설정 통합 및 배경 불투명도 조절" },
       { state: "done", title: "집중된 3열 패널", body: "Codex·Claude·Gemini만 노출하고 퍼센트 굵기를 통일한 정밀 원형 링과 하단 조작을 3열에 맞게 재구성" },
       { state: "done", title: "Claude 인증 창 반복 방지", body: "요청 제한 뒤에도 인증 정보를 안전하게 재사용해 macOS 키체인 권한 창이 반복해서 나타나지 않도록 개선" },
-      { state: "done", title: "CCMB 2.0.4 공개", body: "Claude 인증 만료 시 기존 Claude Code 로그인으로 자동 복구하고, 동시 갱신과 반복 복구 요청을 안전하게 제어하는 Apple 공증 Universal DMG 공개" },
+      { state: "done", title: "CCMB 2.0.5 공개", body: "백그라운드 Claude 사용량 갱신이 macOS 키체인 인증창을 띄우지 않도록 보강한 Apple 공증 Universal DMG 공개" },
       { state: "active", title: "안정성 개선", body: "Codex·Claude·Gemini 변화와 인증·요청 제한·네트워크·절전 예외에 맞춰 지속 개선" },
     ],
     screenshots: [
