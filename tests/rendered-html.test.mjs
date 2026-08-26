@@ -335,7 +335,7 @@ test("renders the latest NasFinder and HanClip capabilities", async () => {
     hanClipResponse.text(),
   ]);
   assert.match(nasFinder, /파일 앱에서 바로 가져오기/);
-  assert.match(nasFinder, /2\.2\.0 \(202608252025\)/);
+  assert.match(nasFinder, /2\.2\.1 · 빌드 202608262056 · 내부 코드 342536/);
   assert.match(nasFinder, /href="https:\/\/testflight\.apple\.com\/join\/3m3bhwJz"/);
   assert.match(hanClip, /href="https:\/\/testflight\.apple\.com\/join\/m2YsgUJW"/);
   assert.match(nasFinder, /폰하드로 모으고 관리/);
@@ -355,7 +355,15 @@ test("renders the latest NasFinder and HanClip capabilities", async () => {
   assert.match(nasFinder, /가족의 휴대폰이 서로 달라도/);
   assert.match(nasFinder, /로고 대신 내용이 보이는 Super Thumbnail/);
   assert.match(nasFinder, /일반 썸네일보다 먼저/);
-  assert.match(nasFinder, /SM-F968N 데이터 유지 교체 설치/);
+  assert.match(nasFinder, /즐겨찾기도 한눈에, 원하는 순서대로/);
+  assert.match(nasFinder, /OneDrive·Google Drive의 이전 항목까지 썸네일/);
+  assert.match(nasFinder, /길게 눌러 제거하고 드래그/);
+  assert.match(nasFinder, /움직이는 GIF를 미디어 보기에서 그대로 재생/);
+  assert.match(nasFinder, /1% 단위 볼륨/);
+  assert.match(nasFinder, /35% 투명도의 1dp 흑백 하단 선/);
+  assert.match(nasFinder, /살색 영역이 절반 이상이면 2dp 블러/);
+  assert.match(nasFinder, /다른 앱을 사용한 뒤 돌아오면 첫 화면/);
+  assert.match(nasFinder, /SM-F968N 데이터 유지 교체 설치·실행 확인/);
   assert.match(nasFinder, /영상 전체 길이의 3\/13/);
   assert.match(nasFinder, /내 휴대폰을, 진짜 휴대용 하드처럼/);
   assert.match(nasFinder, /외부 파일 앱과 자연스럽게/);
@@ -366,11 +374,8 @@ test("renders the latest NasFinder and HanClip capabilities", async () => {
   assert.match(nasFinder, /실제 Google 계정 검증이 끝나기 전에는 공개 완료 기능으로 표시하지 않습니다/);
   assert.match(nasFinder, /화면에 맞춰 커지는 Overflow/);
   assert.match(nasFinder, /휴대전화·태블릿·폴더블의 실제 안전영역/);
-  assert.match(nasFinder, /볼륨·탐색·닫기 제스처/);
-  assert.match(nasFinder, /외부 자막/);
   assert.match(nasFinder, /외부 파일 앱과 자연스럽게/);
   assert.match(nasFinder, /‘다음으로 열기’/);
-  assert.match(nasFinder, /다음 공개판/);
   assert.match(hanClip, /완성시간을 음악 길이에 맞춘/);
   assert.match(hanClip, /개봉영화 보관함/);
   assert.match(hanClip, /컬렉션에도 바로 추가/);
@@ -381,7 +386,7 @@ test("renders the latest NasFinder and HanClip capabilities", async () => {
   assert.match(hanClip, /서명 APK 재다운로드·무결성 검증 완료/);
 
   const nasFeatureGrid = nasFinder.match(/<div class="feature-grid">[\s\S]*?<\/div>\s*<\/section>/)?.[0] ?? "";
-  assert.equal((nasFeatureGrid.match(/class="advantage-visual"/g) ?? []).length, 10);
+  assert.equal((nasFeatureGrid.match(/class="advantage-visual"/g) ?? []).length, 13);
   const nasSupportCards = nasFinder.match(/<section class="support-cards[\s\S]*?<\/section>/)?.[0] ?? "";
   assert.equal((nasSupportCards.match(/class="advantage-visual"/g) ?? []).length, 3);
   const nasDownloadList = nasFinder.match(/<div class="download-list">[\s\S]*?<\/div>\s*<\/section>/)?.[0] ?? "";
@@ -584,12 +589,12 @@ test("renders current app release and TestFlight information", async () => {
     standResponse.text(),
   ]);
 
-  assert.match(home, /202608252025/);
-  assert.match(home, /341065/);
+  assert.match(home, /202608262056/);
+  assert.match(home, /342536/);
   assert.match(home, /스타메니저/);
   assert.match(home, /2026년 8월 25일/);
-  assert.match(nasFinder, /내부 코드 341065/);
-  assert.match(nasFinder, /1f865fb335695d6d906cc14b5919e80bb2d7e24bf99b11dbe0a629a85b7391af/);
+  assert.match(nasFinder, /내부 코드 342536/);
+  assert.match(nasFinder, /d404e0f9275a2c604e4ecc99f9aaf65bcda448060a42b36e6444096fb3ce5aa6/);
   assert.match(nasFinder, /Live Photos &amp; Motion Photos/);
   assert.match(hanClip, /내부 코드 340980/);
   assert.match(hanClip, /f4b607c0d5b860c4dd1c42a24f653b0bacf5f17d9b10684307af33eec102201b/);
