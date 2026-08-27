@@ -331,11 +331,11 @@ export const apps: AppData[] = [
       {
         name: "Android · Google TV",
         status: "공개",
-        detail: "2.2.1 · 빌드 202608261617 · 내부 코드 342257 · Android 8.0+",
+        detail: "2.2.2 · 빌드 202608271633 · 내부 코드 343713 · Android 8.0+",
         url: releaseDownloadPath("S.tand-Android"),
         downloadLabel: "Android APK 바로 받기",
-        checksum: "34a8d0c5620350883a46c2bfef86705efafa2e62fa10ef952cd51ea404a7f879",
-        availabilityNote: "SM-T500 데이터 유지 설치·버전 확인 · Google TV 지원",
+        checksum: "70e1f9752066a0f667e53ca15e35070294ca516476359c88892ae695606a1208",
+        availabilityNote: "Google TV 하단 컴팩트 카드 폭을 넓혀 테마 전환·앱 밝기·시계 크기 글자를 모두 표시 · Google TV 실기기 설치는 미실행",
       },
     ],
     features: [
@@ -365,7 +365,7 @@ export const apps: AppData[] = [
     progress: [
       { state: "done", title: "시계와 수면 케어", body: "오브제 화면, 반응형 조명과 로컬 수면 기록 구현" },
       { state: "active", title: "iOS·iPadOS 2.2.1 Public Beta", body: "내부 build 342257, 표시 build 202608261617을 내부 테스트와 Public Beta 그룹에 추가하고 Apple 외부 베타 심사 대기 중" },
-      { state: "done", title: "Android·Google TV 2.2.1 공개", body: "2초 정지 터치 편집 진입과 스크롤 중 편집 방지를 적용한 빌드 202608261617 · 내부 코드 342257 APK를 공개하고 SM-T500에 데이터 유지 설치" },
+      { state: "done", title: "Android·Google TV 2.2.2 공개", body: "Google TV 하단 컴팩트 카드 폭을 넓혀 테마 전환·앱 밝기·시계 크기 글자를 모두 표시한 빌드 202608271633 · 내부 코드 343713 APK를 공개 · Google TV 실기기 설치는 미실행" },
       { state: "done", title: "보이소 무전기", body: "주변 소리 없이 버튼으로 연결된 화면을 부르는 무전기 역할과 3초 연타 방지·고시인성 알림 적용" },
       { state: "done", title: "Mac 2.2.1 공개", body: "2초 정지 터치 편집 진입과 스크롤 중 편집 방지를 적용하고 Developer ID 서명·Apple 공증·실행 검증을 마친 build 202608261617 DMG와 자동 업데이트 공개" },
       { state: "done", title: "휴대전화 가로 음악 배치", body: "iPhone 대표 가로 배치를 Android에도 적용하고 음악 스트립과 오른쪽 고정 제어 패널이 겹치지 않게 정리" },
