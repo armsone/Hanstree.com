@@ -269,9 +269,9 @@ test("renders the StarManager product and matchup disclosure", async () => {
   assert.match(html, /스타매니저 Android 만들기 화면/);
   assert.match(html, /도달 가능한 탭/);
   assert.match(html, /픽셀 단위 시각 패리티는 아직 검증하지 않았습니다/);
-  assert.match(html, /Android 2\.1\.0 공개/);
+  assert.match(html, /Android 2\.2\.0 공개/);
   assert.match(html, /release-download\?app=StarManager-Android/);
-  assert.match(html, /c7489c0fe0e36f4dd6411577d6090986054ba4aa729943021ad26d38ea264b78/);
+  assert.match(html, /33cbe25ecb6921d23c8d8ddb5583a4e157014d6d9df0a7131d692a55a246f338/);
   assert.match(html, /ChatGPT·Gemini·Claude/);
   assert.match(html, /Instagram 새 게시물/);
   assert.match(html, /다른 앱에서 붙여넣기/);
@@ -722,8 +722,8 @@ test("keeps verified TestFlight fallback data for StarManager, Button, and HtOMS
   const bySlug = new Map(payload.builds.map((build) => [build.slug, build]));
   assert.equal(bySlug.get("nasfinder")?.inviteUrl, "https://testflight.apple.com/join/3m3bhwJz");
   assert.equal(bySlug.get("hanclip")?.inviteUrl, "https://testflight.apple.com/join/m2YsgUJW");
-  assert.equal(bySlug.get("starmanager")?.build, "202608271625");
-  assert.equal(bySlug.get("starmanager")?.uploadedAt, "2026-08-27T16:34:13+09:00");
+  assert.equal(bySlug.get("starmanager")?.build, "202608280732");
+  assert.equal(bySlug.get("starmanager")?.uploadedAt, "2026-08-28T07:39+09:00");
   assert.equal(bySlug.get("starmanager")?.inviteUrl, "https://testflight.apple.com/join/nzmW4WxW");
   assert.equal(bySlug.get("starmanager")?.publicBetaState, "waitingForReview");
   assert.equal(bySlug.get("button")?.build, "202608252204");
