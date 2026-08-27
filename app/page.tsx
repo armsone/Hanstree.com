@@ -258,6 +258,7 @@ export function SiteHeader() {
           <a href="/#apps">앱</a>
           {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
           <a href="/#testflight">다운</a>
+          {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
           <a href="/#records">기록</a>
           <a href="https://github.com/armsone">깃허브 <span aria-hidden="true">↗</span></a>
           <Link href="/admin/testflight" aria-label="관리자 로그인">관리자</Link>
@@ -278,6 +279,7 @@ export function SiteFooter() {
         <div className="footer-links">
           {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
           <a href="/#apps">모든 앱</a>
+          {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
           <a href="/#records">사이트 기록</a>
           <Link href="/apps/nasfinder/privacy">개인정보처리방침</Link>
           <Link href="/apps/nasfinder/support">지원</Link>

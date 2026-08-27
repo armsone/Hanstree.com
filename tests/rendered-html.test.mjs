@@ -619,8 +619,8 @@ test("renders current app release and TestFlight information", async () => {
   assert.match(hanClip, /내부 코드 340980/);
   assert.match(hanClip, /f4b607c0d5b860c4dd1c42a24f653b0bacf5f17d9b10684307af33eec102201b/);
   assert.match(hanClip, /오디오 트랙이 없는 영상은 화면 움직임/);
-  assert.match(stand, /내부 코드 343760/);
-  assert.match(stand, /76723c8048f167c99010bea7fd3b3637a004fa1feeb94ffe73870dfbe0d75686/);
+  assert.match(stand, /내부 코드 343788/);
+  assert.match(stand, /28b5dc4c1d98e1d67972a3ed3086da8f9eacea70877c47726e780f52997280ad/);
   assert.match(stand, /내부 build 342257/);
   assert.match(stand, /fa898788601219fb5072e8cfa25a0df71de684a02774fd7a31d77a31c7017ee4/);
   assert.match(stand, /다음 라디오나 다음 곡/);
@@ -629,7 +629,7 @@ test("renders current app release and TestFlight information", async () => {
   assert.doesNotMatch(hanClip, /android-editor-finish-pets\.png/);
 });
 
-test("publishes the WhattoEat 0.4.1 lunch bag navigation release", async () => {
+test("publishes the WhattoEat 0.4.2 indoor location recovery release", async () => {
   const [pageResponse, buildsResponse] = await Promise.all([
     render("/apps/whattoeat"),
     render("/api/testflight-builds"),
@@ -641,16 +641,19 @@ test("publishes the WhattoEat 0.4.1 lunch bag navigation release", async () => {
   const builds = await buildsResponse.json();
   const whattoeat = builds.builds.find((build) => build.slug === "whattoeat");
 
-  assert.match(page, /0\.4\.1/);
-  assert.match(page, /202608252106/);
+  assert.match(page, /0\.4\.2/);
+  assert.match(page, /202608271840/);
+  assert.match(page, /내부 코드 343840/);
   assert.match(page, /점심 가방으로 바로 추천/);
+  assert.match(page, /실내에서도 멈추지 않는 위치 찾기/);
+  assert.match(page, /상황에 맞는 메뉴와 지도 검색/);
   assert.match(page, /TestFlight에서 참여/);
   assert.match(page, /android-bag-navigation\.png/);
   assert.match(page, /b2387eab4b08056f06539c5dd4fdad59e223f48c4693d1e89c29bfa10c37f847/);
-  assert.match(page, /3e9d66d8a3ad4ce97d5a56550e706b721eb46cf276dbddd1a0e2cbba9133cf59/);
-  assert.equal(whattoeat?.build, "202608252106");
+  assert.match(page, /aa06ea291ff606cb470457727bd583239fbb368f211a8af0dd3de6f1b232a1c4/);
+  assert.equal(whattoeat?.build, "202608271840");
   assert.equal(whattoeat?.inviteUrl, "https://testflight.apple.com/join/A444RsAc");
-  assert.equal(whattoeat?.publicBetaState, "approved");
+  assert.equal(whattoeat?.publicBetaState, "waitingForReview");
 });
 
 test("routes public download buttons through the allowlisted release redirect", async () => {

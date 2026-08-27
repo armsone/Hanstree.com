@@ -916,9 +916,9 @@ export const apps: AppData[] = [
     icon: "/apps/whattoeat/icon.png",
     artwork: "phones",
     platforms: [
-      { name: "iPhone · iPad", status: "TestFlight", detail: "0.4.1 (202608252106) · iOS·iPadOS 17+", availabilityNote: "Public Beta 승인 · 공개 테스트 참여 가능" },
+      { name: "iPhone · iPad", status: "TestFlight", detail: "0.4.2 (202608271840) · iOS·iPadOS 17+", availabilityNote: "Public Beta 외부 심사 제출 · 승인 전까지 공개 링크에서는 0.4.1 제공" },
       { name: "Mac", status: "공개", detail: "0.4.1 (202608252106) · macOS 13+ · Universal · Apple 공증 완료", url: releaseDownloadPath("WhattoEat"), downloadLabel: "Mac용 DMG 다운로드", checksum: "b2387eab4b08056f06539c5dd4fdad59e223f48c4693d1e89c29bfa10c37f847", availabilityNote: "공증된 DMG 설치·실행 검증 완료" },
-      { name: "Android · Google TV", status: "공개", detail: "0.4.1 · 빌드 202608252106 · 내부 코드 341106 · Android 8.0+", url: releaseDownloadPath("WhattoEat-Android"), downloadLabel: "Android용 APK 다운로드", checksum: "3e9d66d8a3ad4ce97d5a56550e706b721eb46cf276dbddd1a0e2cbba9133cf59", availabilityNote: "SM-F968N Android 16 교체 설치·실행과 12개 화면 검증 · 태블릿·TV 리모컨 검증 전" },
+      { name: "Android · Google TV", status: "공개", detail: "0.4.2 · 빌드 202608271840 · 내부 코드 343840 · Android 8.0+", url: releaseDownloadPath("WhattoEat-Android"), downloadLabel: "Android용 APK 다운로드", checksum: "aa06ea291ff606cb470457727bd583239fbb368f211a8af0dd3de6f1b232a1c4", availabilityNote: "SM-F968N Android 16 교체 설치·실행, 53개 단위 테스트와 릴리스 서명 검증 완료 · 태블릿·TV 리모컨 검증 전" },
     ],
     features: [
       { title: "가까운 13곳에서 한 끼 고르기", body: "현 위치 또는 직접 고른 지역에서 가까운 음식점 13곳을 추린 뒤, 오늘의 한 끼와 함께 볼 맛집을 사진이 시원하게 보이는 2열 목록으로 보여줍니다." },
@@ -928,6 +928,8 @@ export const apps: AppData[] = [
       { title: "영업 중인지 바로 전화하기", body: "전화번호가 있는 추천 식당은 원형 전화 버튼으로 바로 연결하고, 오늘의 결정에서는 번호도 함께 확인합니다." },
       { title: "가죽판에서 이어지는 선택", body: "첫 화면의 가죽 추천판을 제목 바로 아래에 두고 위치 선택 패널은 스티치 안쪽 폭에 맞췄습니다. 하단 메뉴는 같은 가죽 질감과 눌린 바늘 홈을 쓰고 추천 버튼 돌출부까지 스티치를 이었습니다." },
       { title: "점심 가방으로 바로 추천", body: "하단 중앙의 점심 가방을 누르면 새 추천을 시작합니다. 선택 중에도 원과 글자는 차분한 흰색을 유지하고 아래 빨간 막대만 보여 줍니다." },
+      { title: "실내에서도 멈추지 않는 위치 찾기", body: "GPS가 느린 실내에서는 운영체제가 Wi-Fi와 셀룰러를 함께 활용해 위치를 찾습니다. 12초 안에 새 위치가 없으면 5분 이내의 최근 위치를 사용하고, 그것도 없으면 지역 직접 선택과 다시 시도로 바로 이어갑니다." },
+      { title: "상황에 맞는 메뉴와 지도 검색", body: "든든한 식사, 간단한 한 끼, 패스트푸드, 디저트·카페, 회식·모임, 야식 중 원하는 상황을 고르고 추천 메뉴를 선택한 지도 앱에서 바로 검색할 수 있습니다." },
       { title: "최근과 찜을 지역별로", body: "오늘 결정한 한 끼와 다시 가고 싶은 식당을 지역별로 모아 보고, 하트나 밀기로 간단히 정리합니다." },
       { title: "점심 전에 가볍게 알림", body: "점심시간과 몇 분 전에 받을지 정하면 이 기기에서 오늘의 한 끼 알림을 받을 수 있습니다." },
     ],
@@ -948,6 +950,8 @@ export const apps: AppData[] = [
       { state: "done", title: "0.4.0 릴리스", body: "build 202608251921 iOS·iPadOS TestFlight 업로드, Apple 공증 Mac용 DMG 공개와 설치·실행 검증 완료" },
       { state: "done", title: "Android 0.4.0 공개", body: "제품 0.4.0 · 빌드 202608251400 · 내부 코드 340680 APK를 별도 공개 저장소에 게시하고 Android 16 휴대전화에서 데이터 유지 교체 설치·실행을 검증했습니다. 제품 버전 기준 자동 업데이트와 Android 8 화면 호환성도 함께 보완했습니다." },
       { state: "done", title: "0.4.1 점심 가방 내비게이션 릴리스", body: "build 202608252106 iPhone·iPad TestFlight 내부 테스트 준비, 공증된 Mac용 DMG와 Android 0.4.1 APK 공개를 완료했습니다. 선택 상태는 아래 빨간 막대만 표시하도록 모든 플랫폼을 맞췄습니다." },
+      { state: "done", title: "Android 0.4.2 실내 위치 복구 공개", body: "build 202608271840 · 내부 코드 343840 APK를 공개했습니다. Wi-Fi·셀룰러를 포함한 기본 위치 공급자와 5분 이내 최근 위치를 활용하고, 실패해도 지역 직접 선택으로 이어집니다." },
+      { state: "active", title: "iPhone·iPad 0.4.2 Public Beta 심사", body: "build 202608271840을 내부 테스트와 Public Beta 그룹에 연결하고 Apple 외부 베타 심사에 제출했습니다." },
       { state: "active", title: "태블릿·TV·접근성 후속 검증", body: "태블릿과 Google TV 리모컨, TalkBack 실제 읽기 순서, 밀기 후 재실행 저장과 지도 오류 분기를 실제 기기에서 추가 확인할 예정입니다." },
     ],
     screenshots: [
