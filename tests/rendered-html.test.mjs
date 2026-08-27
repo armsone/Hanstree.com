@@ -178,15 +178,16 @@ test("collects verified external tester links between TestFlight and Android dow
   assert.match(section, /외부 테스터 참여/);
   assert.equal((section.match(/class="testflight-invite-card/g) ?? []).length, 6);
   assert.equal((section.match(/class="app-icon/g) ?? []).length, 6);
-  assert.equal((section.match(/Apple 심사 중/g) ?? []).length, 1);
+  assert.equal((section.match(/Apple 심사 중/g) ?? []).length, 0);
   assert.equal((section.match(/심사 계정 준비/g) ?? []).length, 0);
   assert.equal((section.match(/외부용 빌드 준비/g) ?? []).length, 0);
-  assert.equal((section.match(/href="https:\/\/testflight\.apple\.com\/join\//g) ?? []).length, 5);
+  assert.equal((section.match(/href="https:\/\/testflight\.apple\.com\/join\//g) ?? []).length, 6);
   assert.match(section, /href="https:\/\/testflight\.apple\.com\/join\/3m3bhwJz"/);
   assert.match(section, /href="https:\/\/testflight\.apple\.com\/join\/m2YsgUJW"/);
   assert.match(section, /href="https:\/\/testflight\.apple\.com\/join\/A444RsAc"/);
   assert.match(section, /href="https:\/\/testflight\.apple\.com\/join\/nzmW4WxW"/);
   assert.match(section, /href="https:\/\/testflight\.apple\.com\/join\/RKcxgTkc"/);
+  assert.match(section, /href="https:\/\/testflight\.apple\.com\/join\/mGUYTjdp"/);
 });
 
 test("renders the privacy-safe Minecraft Bedrock home server guide", async () => {
