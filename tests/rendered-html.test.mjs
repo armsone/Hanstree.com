@@ -368,7 +368,7 @@ test("renders the latest NasFinder and HanClip capabilities", async () => {
   assert.match(nasFinder, /가족의 휴대폰이 서로 달라도/);
   assert.match(nasFinder, /로고 대신 내용이 보이는 Super Thumbnail/);
   assert.match(nasFinder, /일반 썸네일보다 먼저/);
-  assert.match(nasFinder, /즐겨찾기도 한눈에, 원하는 순서대로/);
+  assert.match(nasFinder, /즐겨찾기도 폴더 표지로 한눈에/);
   assert.match(nasFinder, /OneDrive·Google Drive의 이전 항목까지 썸네일/);
   assert.match(nasFinder, /길게 눌러 제거하고 드래그/);
   assert.match(nasFinder, /움직이는 GIF를 미디어 보기에서 그대로 재생/);
@@ -405,7 +405,7 @@ test("renders the latest NasFinder and HanClip capabilities", async () => {
   const nasDownloadList = nasFinder.match(/<div class="download-list">[\s\S]*?<\/div>\s*<\/section>/)?.[0] ?? "";
   assert.equal((nasDownloadList.match(/class="advantage-visual"/g) ?? []).length, 3);
   const nasProgressList = nasFinder.match(/<div class="progress-list">[\s\S]*?<\/div>\s*<\/section>/)?.[0] ?? "";
-  assert.equal((nasProgressList.match(/class="advantage-visual"/g) ?? []).length, 8);
+  assert.equal((nasProgressList.match(/class="advantage-visual"/g) ?? []).length, 9);
   const nasGuideSteps = nasFinder.match(/<div class="guide-steps">[\s\S]*?<\/div>\s*<\/div>\s*<\/section>/)?.[0] ?? "";
   assert.equal((nasGuideSteps.match(/class="advantage-visual"/g) ?? []).length, 6);
 });
@@ -603,10 +603,14 @@ test("renders current app release and TestFlight information", async () => {
   ]);
 
   assert.match(home, /202608262056/);
+  assert.match(home, /202608271227/);
   assert.match(home, /342536/);
   assert.match(home, /스타메니저/);
   assert.match(home, /2026년 8월 25일/);
   assert.match(nasFinder, /내부 코드 342536/);
+  assert.match(nasFinder, /Mac용 NasFinder 2\.2\.2 공개/);
+  assert.match(nasFinder, /d8c4efb8a75a390f07a68c568abff3d4801b0a0d80bd538b9aad4bf442ff4554/);
+  assert.match(nasFinder, /iphone-favorites-folder-thumbnails\.png/);
   assert.match(nasFinder, /d404e0f9275a2c604e4ecc99f9aaf65bcda448060a42b36e6444096fb3ce5aa6/);
   assert.match(nasFinder, /Live Photos &amp; Motion Photos/);
   assert.match(hanClip, /내부 코드 340980/);
@@ -661,10 +665,14 @@ test("routes public download buttons through the allowlisted release redirect", 
     "sec-fetch-mode": "navigate",
     "sec-fetch-dest": "document",
   };
-  const [ccmb, trackpadGuard, standMac, htoms] = await Promise.all([
+  const [ccmb, trackpadGuard, standMac, nasFinderMac, htoms] = await Promise.all([
     render("/api/release-download?app=CCMB", interactiveHeaders),
     render("/api/release-download?app=TrackpadGuard", interactiveHeaders),
     render("/api/release-download?app=S.tand-macOS", interactiveHeaders),
+    render("/api/release-download?app=NasFinder-Mac", {
+      ...interactiveHeaders,
+      referer: "http://localhost/apps/nasfinder",
+    }),
     render("/api/release-download?app=HtOMS-BK", {
       ...interactiveHeaders,
       referer: "http://localhost/apps/htoms-brief",
@@ -677,6 +685,8 @@ test("routes public download buttons through the allowlisted release redirect", 
   assert.match(trackpadGuard.headers.get("location") ?? "", /^https:\/\/github\.com\/armsone\/TrackpadGuard\/releases\//);
   assert.equal(standMac.status, 302);
   assert.match(standMac.headers.get("location") ?? "", /^https:\/\/github\.com\/armsone\/S\.tand\/releases\//);
+  assert.equal(nasFinderMac.status, 302);
+  assert.match(nasFinderMac.headers.get("location") ?? "", /^https:\/\/github\.com\/armsone\/NasFinder\/releases\//);
   assert.equal(htoms.status, 302);
   assert.match(htoms.headers.get("location") ?? "", /^https:\/\/github\.com\/armsone\/HtOMS-BK\/releases\/download\/android-v2\.1\.0\/HtOMS-Brief-Android-2\.1\.0\.apk$/);
 });
@@ -723,6 +733,7 @@ test("tracks every public download in the site counter with download wording", a
 
   for (const label of [
     "NasFinder Android",
+    "NasFinder Mac",
     "Super Thumbnail",
     "HanClip Android",
     "S.tand Mac",

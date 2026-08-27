@@ -3,6 +3,7 @@
 // key는 사이트 집계(site_counters)의 다운로드 키와 동일하게 사용합니다.
 export const DOWNLOAD_KEYS = [
   "NasFinder-Android",
+  "NasFinder-Mac",
   "NasFinder-Super-Thumbnail",
   "HanClip-Android",
   "S.tand-macOS",
@@ -43,6 +44,12 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     repo: "NasFinder-Android",
     assetPattern: /\.apk$/i,
     fallbackUrl: "https://github.com/armsone/NasFinder-Android/releases/download/android-v2.2.1/NasFinder-Android-2.2.1.apk",
+  },
+  "NasFinder-Mac": {
+    label: "NasFinder Mac",
+    repo: "NasFinder",
+    assetPattern: /^NasFinder-Mac-\d+\.\d+\.\d+-\d{12}\.dmg$/i,
+    fallbackUrl: "https://github.com/armsone/NasFinder/releases/download/mac-v2.2.2/NasFinder-Mac-2.2.2-202608271227.dmg",
   },
   "NasFinder-Super-Thumbnail": {
     label: "Super Thumbnail",
