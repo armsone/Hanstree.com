@@ -269,10 +269,10 @@ test("renders the StarManager product and matchup disclosure", async () => {
   assert.match(html, /기기 AI/);
   assert.match(html, /스타매니저 Android 만들기 화면/);
   assert.match(html, /도달 가능한 탭/);
-  assert.match(html, /픽셀 단위 시각 패리티는 아직 검증하지 않았습니다/);
-  assert.match(html, /Android 2\.2\.0 공개/);
+  assert.match(html, /화면·상태·상호작용 증거 6개가 모두 검증을 통과했습니다/);
+  assert.match(html, /Android 2\.3\.0 공개/);
   assert.match(html, /release-download\?app=StarManager-Android/);
-  assert.match(html, /33cbe25ecb6921d23c8d8ddb5583a4e157014d6d9df0a7131d692a55a246f338/);
+  assert.match(html, /cb3b490e7bcc06e77bb085936c77b873976cc2efba178a54b85989faeb7078d3/);
   assert.match(html, /ChatGPT·Gemini·Claude/);
   assert.match(html, /Instagram 새 게시물/);
   assert.match(html, /다른 앱에서 붙여넣기/);
@@ -290,7 +290,7 @@ test("renders AIBI as a host-integrated engine release", async () => {
   const html = await response.text();
   const privacyHtml = await privacyResponse.text();
   assert.match(html, /앱과 공식 AI 사이를, 안전하게/);
-  assert.match(html, /AIBI 0\.1\.1/);
+  assert.match(html, /AIBI 0\.2\.1/);
   assert.match(html, /StarManager · iOS · Android/);
   assert.match(html, /독립 다운로드가 아니라 StarManager 안에 포함되는 공개 공통 엔진/);
   assert.match(html, /1분 59초/);
@@ -744,8 +744,8 @@ test("keeps verified TestFlight fallback data for StarManager, Button, and HtOMS
   const bySlug = new Map(payload.builds.map((build) => [build.slug, build]));
   assert.equal(bySlug.get("nasfinder")?.inviteUrl, "https://testflight.apple.com/join/3m3bhwJz");
   assert.equal(bySlug.get("hanclip")?.inviteUrl, "https://testflight.apple.com/join/m2YsgUJW");
-  assert.equal(bySlug.get("starmanager")?.build, "202608280732");
-  assert.equal(bySlug.get("starmanager")?.uploadedAt, "2026-08-28T07:39+09:00");
+  assert.equal(bySlug.get("starmanager")?.build, "202608282124");
+  assert.equal(bySlug.get("starmanager")?.uploadedAt, "2026-08-28T21:31+09:00");
   assert.equal(bySlug.get("starmanager")?.inviteUrl, "https://testflight.apple.com/join/nzmW4WxW");
   assert.equal(bySlug.get("starmanager")?.publicBetaState, "waitingForReview");
   assert.equal(bySlug.get("button")?.build, "202608252204");
