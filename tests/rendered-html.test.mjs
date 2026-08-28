@@ -46,7 +46,7 @@ test("server-renders the NasFinder.com homepage", async () => {
   assert.match(html, /AIBI/);
   for (const slug of [
     "nasfinder", "super-thumbnail", "hanclip", "stand", "ccmb", "btn", "trackpadguard",
-    "htoms-brief", "intosharp", "airchurch", "button", "starmanager", "minecraft-server", "whattoeat", "aibi",
+    "htoms-brief", "intosharp", "airchurch", "button", "starmanager", "minecraft-server", "whattoeat", "denimdex", "aibi",
   ]) {
     assert.match(html, new RegExp(`/apps/${slug}/${slug}-hero-v2\\.png`), slug);
   }
@@ -54,11 +54,11 @@ test("server-renders the NasFinder.com homepage", async () => {
   assert.match(html, /class="app-row-representative"/);
   assert.match(html, /What to Eat/);
   assert.match(html, /NasOS · Minecraft Server/);
-  assert.equal((html.match(/class="hero-product(?:\s|")/g) ?? []).length, 16);
+  assert.equal((html.match(/class="hero-product(?:\s|")/g) ?? []).length, 17);
   assert.match(html, /href="\/apps\/intosharp" class="hero-product hero-product-intosharp"[^>]*aria-label="인투샾 제품 자세히 보기"/);
-  assert.equal((html.match(/class="app-row-hit-area"/g) ?? []).length, 16);
+  assert.equal((html.match(/class="app-row-hit-area"/g) ?? []).length, 17);
   assert.match(html, /href="\/apps\/intosharp" class="app-row-hit-area" aria-label="인투샾 제품 자세히 보기"/);
-  assert.match(html, />36<\/strong><span>현재 소개하는 제품/);
+  assert.match(html, />38<\/strong><span>현재 소개하는 제품/);
   assert.doesNotMatch(html, /플랫폼별 제공 버전/);
   assert.match(html, />08<\/strong><span>iPhone · iPad · macOS · Android · Google TV · Web · NasOS · Windows \(커밍\)/);
   assert.match(html, /한양/);
@@ -126,7 +126,7 @@ test("keeps every home product card title readable without ellipsis", async () =
 test("keeps every app detail hero focused on one clear entry path and a representative product scene", async () => {
   const slugs = [
     "nasfinder", "super-thumbnail", "hanclip", "stand", "ccmb", "btn", "trackpadguard",
-    "htoms-brief", "intosharp", "airchurch", "button", "starmanager", "minecraft-server", "whattoeat", "aibi",
+    "htoms-brief", "intosharp", "airchurch", "button", "starmanager", "minecraft-server", "whattoeat", "denimdex", "aibi",
   ];
 
   for (const slug of slugs) {

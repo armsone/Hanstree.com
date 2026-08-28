@@ -12,7 +12,7 @@ import { testFlightBuilds } from "../../testflight";
 
 type RouteProps = { params: Promise<{ path: string[] }> };
 
-const campaignSlugs = new Set(["super-thumbnail", "hanclip", "stand", "ccmb", "trackpadguard", "intosharp", "airchurch"]);
+const campaignSlugs = new Set(["super-thumbnail", "hanclip", "stand", "ccmb", "trackpadguard", "intosharp", "airchurch", "denimdex"]);
 
 const contentVisualRules: [RegExp, AdvantageVariant][] = [
   [/Live Photo|Motion Photo|움직이는 사진/, "live-motion-swap"],

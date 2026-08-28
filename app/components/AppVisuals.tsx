@@ -27,6 +27,14 @@ export function AppHeroArtwork({ app }: { app: AppData }) {
 }
 
 export function AppArtwork({ app, mode = "spotlight" }: { app: AppData; mode?: "spotlight" | "system" }) {
+  if (app.slug === "denimdex") {
+    return (
+      <div className="artwork artwork-denimdex" aria-label="빈티지 데님의 원단과 셀비지, 버튼과 리벳을 살피는 DenimDex 감정 장면">
+        <Image src={app.heroImage ?? "/apps/denimdex/denimdex-hero-v2.png"} alt="" width={1536} height={1024} sizes="(max-width: 640px) 92vw, 720px" unoptimized />
+      </div>
+    );
+  }
+
   if (app.artwork === "bridge") {
     return (
       <div className="artwork artwork-bridge" aria-label="앱과 공식 AI 웹사이트 사이를 안전하게 잇는 아이비 연결 엔진">
