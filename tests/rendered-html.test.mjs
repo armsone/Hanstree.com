@@ -641,10 +641,10 @@ test("renders current app release and TestFlight information", async () => {
   assert.match(hanClip, /내부 코드 340980/);
   assert.match(hanClip, /f4b607c0d5b860c4dd1c42a24f653b0bacf5f17d9b10684307af33eec102201b/);
   assert.match(hanClip, /오디오 트랙이 없는 영상은 화면 움직임/);
-  assert.match(stand, /내부 코드 343788/);
-  assert.match(stand, /28b5dc4c1d98e1d67972a3ed3086da8f9eacea70877c47726e780f52997280ad/);
-  assert.match(stand, /내부 build 342257/);
-  assert.match(stand, /fa898788601219fb5072e8cfa25a0df71de684a02774fd7a31d77a31c7017ee4/);
+  assert.match(stand, /내부 코드 345485/);
+  assert.match(stand, /72d73a995a5229aace05abb8647b34bd3517232ba6aed2243a13cf2869e83545/);
+  assert.match(stand, /202608282116/);
+  assert.match(stand, /a3baaafab73c6f0f111e11e6bafe278164d52deaf9cd559a94dd22169b7b6480/);
   assert.match(stand, /다음 라디오나 다음 곡/);
   assert.match(stand, /android-home-two-line-cards\.png/);
   assert.doesNotMatch(home + nasFinder + hanClip + stand, /첫 공개판 준비 중|APK v2\b|APK v3\b|APK v544\b|APK v548\b|APK v52\b|APK v53\b/);

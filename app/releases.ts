@@ -67,13 +67,13 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     label: "S.tand Mac",
     repo: "S.tand",
     assetPattern: /^S\.tand-macOS-.*\.dmg$/i,
-    fallbackUrl: "https://github.com/armsone/S.tand/releases/download/macos-v2.2.1/S.tand-macOS-2.2.1.dmg",
+    fallbackUrl: "https://github.com/armsone/S.tand/releases/download/macos-v2.3.0/S.tand-macOS-2.3.0.dmg",
   },
   "S.tand-Android": {
     label: "S.tand Android",
     repo: "S.tand-Android",
     assetPattern: /\.apk$/i,
-    fallbackUrl: "https://github.com/armsone/S.tand-Android/releases/download/android-v2.2.4/S.tand-Android-2.2.4.apk",
+    fallbackUrl: "https://github.com/armsone/S.tand-Android/releases/download/android-v2.3.2/S.tand-Android-2.3.2.apk",
   },
   CCMB: {
     label: "CCMB Mac",
