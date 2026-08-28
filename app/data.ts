@@ -22,7 +22,7 @@ export type AppData = {
   heroImage?: string;
   spotlightImage?: string;
   systemImage?: string;
-  artwork: "files" | "phones" | "clock" | "menubar" | "cleanup" | "trackpad" | "thumbnail" | "htoms" | "search" | "church" | "server" | "intelligence";
+  artwork: "files" | "phones" | "clock" | "menubar" | "cleanup" | "trackpad" | "thumbnail" | "htoms" | "search" | "church" | "server" | "intelligence" | "bridge";
   platforms: Platform[];
   features: { title: string; body: string; icon?: string }[];
   guide: { title: string; body: string }[];
@@ -972,6 +972,57 @@ export const apps: AppData[] = [
       "최근 한 끼, 찜, 자주 찾는 지역과 알림 설정은 사용자의 기기 안에 보관합니다.",
       "식당 검색과 사진 표시에는 카카오 로컬, 한국관광공사 TourAPI와 Openverse의 공개 데이터를 사용할 수 있으며 각 제공처의 정책이 함께 적용됩니다.",
       "지도 열기를 선택하면 사용자가 정한 외부 지도 앱으로 식당 이름과 위치가 전달됩니다.",
+    ],
+  },
+  {
+    slug: "aibi",
+    name: "아이비",
+    english: "AIBI",
+    eyebrow: "SAFE AI, INSIDE YOUR APP",
+    tagline: "앱과 공식 AI 사이를, 안전하게.",
+    summary: "아이비는 사용자가 직접 로그인한 Gemini·ChatGPT·Claude 공식 웹 세션을 앱 안에서 안전하게 이어 쓰는 공통 엔진입니다. 제공자 화면이 바뀌어도 앱 고유 화면과 결과 흐름은 지키며 업데이트합니다.",
+    theme: "blue",
+    icon: "/apps/aibi/icon.png",
+    heroImage: "/apps/aibi/aibi-hero-v2.png",
+    spotlightImage: "/apps/aibi/aibi-hero-v2.png",
+    artwork: "bridge",
+    platforms: [
+      {
+        name: "StarManager · iOS · Android",
+        status: "완료",
+        detail: "AIBI 0.1.1 · 양 플랫폼 이식·빌드·동기화 검증 완료",
+        url: "https://github.com/armsone/AIBI",
+        downloadLabel: "AIBI 소스 보기",
+        availabilityNote: "독립 다운로드가 아니라 StarManager 안에 포함되는 공개 공통 엔진",
+      },
+    ],
+    features: [
+      { title: "내 계정은 공식 페이지에 그대로", body: "비밀번호·쿠키·토큰을 복사하거나 저장하지 않고 사용자가 각 AI 공식 웹사이트에서 직접 만든 로그인 세션만 브라우저 표준 저장소로 재사용합니다." },
+      { title: "필요할 때만 나타나는 AI 브라우저", body: "평소에는 작성 화면을 유지하며 진행 상태를 보여주고, 로그인·보안 확인처럼 사용자가 직접 해야 하는 순간에만 같은 작업을 보이는 브라우저로 안전하게 넘깁니다." },
+      { title: "완성된 답만 정확히 한 번", body: "입력과 실제 전송을 확인하고 스트리밍 결과가 안정될 때까지 관찰한 뒤, 호스트 앱의 검증을 통과한 최종 결과만 한 번 반영합니다." },
+      { title: "기다림과 취소가 분명하게", body: "생성 뒤 1분 59초의 남은 시간과 감소하는 진행 막대를 보여주며, 숨김·보이기 화면 어디서든 취소하면 작업과 브라우저를 즉시 정리합니다." },
+      { title: "제공자 변화는 어댑터에서만", body: "Gemini·ChatGPT·Claude의 화면 구조 변화는 제공자별 선택자와 회귀 자료에 격리해 공통 상태 기계와 앱 결과 흐름을 흔들지 않습니다." },
+      { title: "앱별 수정은 덮어쓰지 않는 업데이트", body: "버전과 SHA-256 잠금으로 이식 파일을 관리합니다. 앱에서 따로 수정한 파일이 발견되면 자동 업데이트를 멈추고 충돌을 먼저 조정합니다." },
+    ],
+    guide: [
+      { title: "앱에서 AI 선택", body: "StarManager에서 Gemini·ChatGPT·Claude 중 하나를 누르면 별도 확인 단계 없이 아이비 작업이 시작됩니다." },
+      { title: "공식 페이지에서 직접 로그인", body: "로그인이 필요하면 앱 안에 열린 제공자 공식 페이지에서 사용자가 직접 로그인합니다. 성공이 확인되면 화면은 자동으로 닫힙니다." },
+      { title: "진행 또는 브라우저 보기", body: "기본 모드에서는 앱 화면의 단계·남은 시간·취소를 확인합니다. 브라우저 보기를 켜면 입력부터 결과 생성까지 공식 화면을 처음부터 볼 수 있습니다." },
+      { title: "검증된 결과 받기", body: "생성이 끝나고 결과가 안정되면 StarManager의 문체와 길이 규칙을 확인해 본문에 반영하고 브라우저를 정리합니다." },
+    ],
+    progress: [
+      { state: "done", title: "독립 기준 프로젝트 0.1.1", body: "공통 계약, 제공자 변화 대응 절차, Apple·Android 참조 엔진과 StarManager 배포 스냅샷을 독립 기준 원본으로 구성" },
+      { state: "done", title: "StarManager iOS 이식", body: "공유 WKWebView 세션, 숨김·보이기 실행, 로그인 판정, 결과 안정화, 1:59 제한과 취소 흐름을 빌드 검증" },
+      { state: "done", title: "StarManager Android 이식", body: "공유 WebView 세션과 8개 관리 파일을 연결하고 단위 테스트·디버그 빌드 및 배포 체크섬 동기화 검증" },
+      { state: "done", title: "충돌 방지 업데이트", body: "등록 앱 전체 사전 점검, SHA-256 잠금, 원자적 복사와 앱 로컬 수정 보호를 자동화" },
+      { state: "active", title: "제공자 변화 회귀 자료 확대", body: "개인정보를 제거한 로그인·생성 중·완료·오류 fixture와 실기기 추적을 제공자별로 축적" },
+    ],
+    github: ["https://github.com/armsone/AIBI"],
+    privacy: [
+      "비밀번호, 쿠키 값, 세션 토큰, 원문 프롬프트와 전체 생성 답변을 수집·저장·로그로 남기지 않습니다.",
+      "로그인과 실행 브라우저는 운영체제의 표준 영구 웹 저장소를 공유하며 로그인은 각 제공자 공식 페이지에서 사용자가 직접 수행합니다.",
+      "자동화 스크립트는 허용된 공식 실행 origin에만 주입하고 OAuth·결제·제3자 페이지에는 주입하지 않습니다.",
+      "기록 가능한 진단은 제공자, 단계, 소요 시간, 익명 실패 코드와 결과 길이처럼 원문을 포함하지 않는 값으로 제한합니다.",
     ],
   },
 ];

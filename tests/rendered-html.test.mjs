@@ -43,9 +43,10 @@ test("server-renders the NasFinder.com homepage", async () => {
   assert.match(html, /StarManager/);
   assert.match(html, /HtOMS Brief/);
   assert.match(html, /Button/);
+  assert.match(html, /AIBI/);
   for (const slug of [
     "nasfinder", "super-thumbnail", "hanclip", "stand", "ccmb", "btn", "trackpadguard",
-    "htoms-brief", "intosharp", "airchurch", "button", "starmanager", "minecraft-server", "whattoeat",
+    "htoms-brief", "intosharp", "airchurch", "button", "starmanager", "minecraft-server", "whattoeat", "aibi",
   ]) {
     assert.match(html, new RegExp(`/apps/${slug}/${slug}-hero-v2\\.png`), slug);
   }
@@ -53,11 +54,11 @@ test("server-renders the NasFinder.com homepage", async () => {
   assert.match(html, /class="app-row-representative"/);
   assert.match(html, /What to Eat/);
   assert.match(html, /NasOS · Minecraft Server/);
-  assert.equal((html.match(/class="hero-product(?:\s|")/g) ?? []).length, 15);
+  assert.equal((html.match(/class="hero-product(?:\s|")/g) ?? []).length, 16);
   assert.match(html, /href="\/apps\/intosharp" class="hero-product hero-product-intosharp"[^>]*aria-label="인투샾 제품 자세히 보기"/);
-  assert.equal((html.match(/class="app-row-hit-area"/g) ?? []).length, 15);
+  assert.equal((html.match(/class="app-row-hit-area"/g) ?? []).length, 16);
   assert.match(html, /href="\/apps\/intosharp" class="app-row-hit-area" aria-label="인투샾 제품 자세히 보기"/);
-  assert.match(html, />35<\/strong><span>현재 소개하는 제품/);
+  assert.match(html, />36<\/strong><span>현재 소개하는 제품/);
   assert.doesNotMatch(html, /플랫폼별 제공 버전/);
   assert.match(html, />08<\/strong><span>iPhone · iPad · macOS · Android · Google TV · Web · NasOS · Windows \(커밍\)/);
   assert.match(html, /한양/);
@@ -125,7 +126,7 @@ test("keeps every home product card title readable without ellipsis", async () =
 test("keeps every app detail hero focused on one clear entry path and a representative product scene", async () => {
   const slugs = [
     "nasfinder", "super-thumbnail", "hanclip", "stand", "ccmb", "btn", "trackpadguard",
-    "htoms-brief", "intosharp", "airchurch", "button", "starmanager", "minecraft-server", "whattoeat",
+    "htoms-brief", "intosharp", "airchurch", "button", "starmanager", "minecraft-server", "whattoeat", "aibi",
   ];
 
   for (const slug of slugs) {
@@ -276,6 +277,27 @@ test("renders the StarManager product and matchup disclosure", async () => {
   assert.match(html, /Instagram 새 게시물/);
   assert.match(html, /다른 앱에서 붙여넣기/);
   assert.match(html, /사진 앱·갤러리/);
+});
+
+test("renders AIBI as a host-integrated engine release", async () => {
+  const [response, privacyResponse] = await Promise.all([
+    render("/apps/aibi"),
+    render("/apps/aibi/privacy"),
+  ]);
+  assert.equal(response.status, 200);
+  assert.equal(privacyResponse.status, 200);
+
+  const html = await response.text();
+  const privacyHtml = await privacyResponse.text();
+  assert.match(html, /앱과 공식 AI 사이를, 안전하게/);
+  assert.match(html, /AIBI 0\.1\.1/);
+  assert.match(html, /StarManager · iOS · Android/);
+  assert.match(html, /독립 다운로드가 아니라 StarManager 안에 포함되는 공개 공통 엔진/);
+  assert.match(html, /1분 59초/);
+  assert.match(html, /SHA-256 잠금/);
+  assert.match(privacyHtml, /비밀번호, 쿠키 값, 세션 토큰/);
+  assert.match(html, /artwork-bridge/);
+  assert.match(html, /github\.com\/armsone\/AIBI/);
 });
 
 test("renders HtOMS with its own sales dashboard artwork", async () => {
