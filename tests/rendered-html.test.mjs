@@ -653,7 +653,7 @@ test("publishes the WhattoEat 0.4.2 indoor location recovery release", async () 
   assert.match(page, /aa06ea291ff606cb470457727bd583239fbb368f211a8af0dd3de6f1b232a1c4/);
   assert.equal(whattoeat?.build, "202608271840");
   assert.equal(whattoeat?.inviteUrl, "https://testflight.apple.com/join/A444RsAc");
-  assert.equal(whattoeat?.publicBetaState, "waitingForReview");
+  assert.equal(whattoeat?.publicBetaState, "approved");
 });
 
 test("routes public download buttons through the allowlisted release redirect", async () => {
