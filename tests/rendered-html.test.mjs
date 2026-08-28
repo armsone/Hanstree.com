@@ -146,6 +146,18 @@ test("keeps every app detail hero focused on one clear entry path and a represen
   assert.match(nasfinder, /여러 저장공간을 한곳에서/);
 });
 
+test("shows DenimDex brand engines with their real icons and truthful beta state", async () => {
+  const response = await render("/apps/denimdex");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+
+  assert.match(html, /\/apps\/hanai\/icon\.png/);
+  assert.match(html, /\/apps\/aibi\/icon\.png/);
+  assert.match(html, /Apple 공개 테스트 심사 중/);
+  assert.match(html, /내부 테스터는 현재 0명/);
+  assert.doesNotMatch(html, /TestFlight 바로 참여/);
+});
+
 test("renders the requested home navigation and keeps the maker name as plain text", async () => {
   const response = await render();
   const html = await response.text();
@@ -177,9 +189,9 @@ test("collects verified external tester links between TestFlight and Android dow
 
   const section = html.slice(inviteIndex, androidIndex);
   assert.match(section, /외부 테스터 참여/);
-  assert.equal((section.match(/class="testflight-invite-card/g) ?? []).length, 6);
-  assert.equal((section.match(/class="app-icon/g) ?? []).length, 6);
-  assert.equal((section.match(/Apple 심사 중/g) ?? []).length, 0);
+  assert.equal((section.match(/class="testflight-invite-card/g) ?? []).length, 7);
+  assert.equal((section.match(/class="app-icon/g) ?? []).length, 7);
+  assert.equal((section.match(/Apple 심사 중/g) ?? []).length, 1);
   assert.equal((section.match(/심사 계정 준비/g) ?? []).length, 0);
   assert.equal((section.match(/외부용 빌드 준비/g) ?? []).length, 0);
   assert.equal((section.match(/href="https:\/\/testflight\.apple\.com\/join\//g) ?? []).length, 6);
@@ -756,6 +768,11 @@ test("keeps verified TestFlight fallback data for StarManager, Button, and HtOMS
   assert.equal(bySlug.get("htoms-brief")?.build, "202608252204");
   assert.equal(bySlug.get("htoms-brief")?.uploadedAt, "2026-08-25T22:07:03+09:00");
   assert.equal(bySlug.get("htoms-brief")?.publicBetaState, "internalOnly");
+  assert.equal(bySlug.get("denimdex")?.build, "202608290159");
+  assert.equal(bySlug.get("denimdex")?.uploadedAt, "2026-08-29T02:06:00+09:00");
+  assert.equal(bySlug.get("denimdex")?.expiresAt, "2026-11-27T02:06:00+09:00");
+  assert.equal(bySlug.get("denimdex")?.inviteUrl, "https://testflight.apple.com/join/5pBrz6ME");
+  assert.equal(bySlug.get("denimdex")?.publicBetaState, "waitingForReview");
 });
 
 test("tracks every public download in the site counter with download wording", async () => {

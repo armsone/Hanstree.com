@@ -97,7 +97,7 @@ function testFlightStatus(appSlug: string) {
 
 function HeroAvailability({ app }: { app: NonNullable<ReturnType<typeof findApp>> }) {
   const testFlight = testFlightStatus(app.slug);
-  const inviteUrl = testFlight?.inviteUrl ?? null;
+  const inviteUrl = testFlight?.inviteAvailable !== false ? testFlight?.inviteUrl ?? null : null;
   const waitingForReview = testFlight?.publicBetaState === "waitingForReview";
   const needsReviewAccount = testFlight?.publicBetaState === "needsReviewAccount";
   const internalOnly = testFlight?.publicBetaState === "internalOnly";
@@ -270,7 +270,7 @@ export default async function AppRoute({ params }: RouteProps) {
         <div className="download-list">
           {app.platforms.map((platform) => {
             const testFlight = platform.status === "TestFlight" ? testFlightStatus(app.slug) : null;
-            const inviteUrl = testFlight?.inviteUrl ?? null;
+            const inviteUrl = testFlight?.inviteAvailable !== false ? testFlight?.inviteUrl ?? null : null;
             const pendingCopy = testFlight?.publicBetaState === "internalOnly" ? "회사 내부 전용" : testFlight?.publicBetaState === "waitingForReview" ? "Apple 공개 테스트 심사 중" : testFlight?.publicBetaState === "needsReviewAccount" ? "Apple 심사용 계정 준비 중" : "외부 테스트용 빌드 준비 중";
             return <article key={platform.name}><div><AdvantageVisual variant={platformVisual(platform.name)} /><span className={`status-dot status-${platform.status.replace(" ", "-")}`} /><h3>{platform.name}</h3></div><p>{platform.detail} · {platform.status}</p>{platform.url ? <a href={platform.url}>{platform.downloadLabel ?? "다운로드 페이지"} <span aria-hidden="true">↗</span></a> : inviteUrl ? <a className="testflight-apply-download" href={inviteUrl}>TestFlight 바로 참여 <span aria-hidden="true">↗</span></a> : <span>{platform.status === "TestFlight" ? pendingCopy : platform.availabilityNote ?? "공개 링크 준비 중"}</span>}{platform.checksum && <small className="download-checksum">SHA-256 {platform.checksum}</small>}</article>;
           })}
