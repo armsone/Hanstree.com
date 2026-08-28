@@ -423,7 +423,7 @@ export const apps: AppData[] = [
     icon: "/apps/ccmb/icon.png",
     artwork: "menubar",
     platforms: [
-      { name: "macOS", status: "공개", detail: "2.0.5 (202608270608) · macOS 10.15+ · Universal · Apple 공증 완료", url: releaseDownloadPath("CCMB"), downloadLabel: "DMG 다운로드", checksum: "3be2d03d84c0a3f8a683721ddf407bff193e234b9864952e56e22c3614333651" },
+      { name: "macOS", status: "공개", detail: "2.0.9 (202608290720) · 내부 build 346040 · macOS 10.15+ · Universal · Apple 공증 완료", url: releaseDownloadPath("CCMB"), downloadLabel: "DMG 다운로드", checksum: "99ffde5ab9b3a276b307ad78c370f32465010a5ae8f09968ba15429563648c3c" },
     ],
     features: [
       { title: "세 AI를 한눈에", body: "Codex·Claude·Gemini 사용량을 정밀 눈금·은은한 발광·끝점 표시가 있는 3열 링으로 나란히 확인합니다." },
@@ -435,7 +435,7 @@ export const apps: AppData[] = [
       { title: "간결해진 하단 조작", body: "업데이트 확인과 현재 버전을 합치고 투명도, 재시작과 종료 조작을 같은 3열 그리드 안에 정돈했습니다." },
       { title: "로컬 공유", body: "최신성 근거가 포함된 로컬 JSON을 다른 앱과 Codex 대화에서 안전하게 읽습니다." },
       { title: "사라지지 않는 연결 복구", body: "응답 지연과 Mac의 잠자기·깨우기 뒤에도 앱을 종료하지 않고 데이터 연결만 안전하게 다시 시작합니다." },
-      { title: "Claude 인증 자동 복구", body: "Claude 인증이 만료되면 기존 Claude Code 로그인 정보로 안전하게 갱신하고 사용량을 다시 불러옵니다. 자동 복구가 어려울 때만 다시 로그인할 방법을 안내합니다." },
+      { title: "로그인 창 없는 Claude 자동 복구", body: "Claude 사용량 인증이 만료되면 공식 Claude CLI가 자기 세션을 비대화형으로 한 번 갱신합니다. CCMB는 refresh token을 읽거나 수정하지 않고, 실패해도 마지막 사용량을 유지합니다." },
       { title: "서명된 자동 업데이트", body: "Sparkle과 GitHub Releases를 통해 서명된 새 버전을 확인하고, 자동 다운로드 여부를 메뉴와 고정 패널에서 선택합니다." },
       { title: "로그인 시 시작", body: "선택하면 Mac 로그인과 함께 조용히 실행됩니다." },
     ],
@@ -452,7 +452,7 @@ export const apps: AppData[] = [
       { state: "done", title: "통합 사용량 패널", body: "메뉴 패널과 항상 보기의 레이아웃·설정 통합 및 배경 불투명도 조절" },
       { state: "done", title: "집중된 3열 패널", body: "Codex·Claude·Gemini만 노출하고 퍼센트 굵기를 통일한 정밀 원형 링과 하단 조작을 3열에 맞게 재구성" },
       { state: "done", title: "Claude 인증 창 반복 방지", body: "요청 제한 뒤에도 인증 정보를 안전하게 재사용해 macOS 키체인 권한 창이 반복해서 나타나지 않도록 개선" },
-      { state: "done", title: "CCMB 2.0.5 공개", body: "백그라운드 Claude 사용량 갱신이 macOS 키체인 인증창을 띄우지 않도록 보강한 Apple 공증 Universal DMG 공개" },
+      { state: "done", title: "CCMB 2.0.9 공개", body: "브라우저 로그인이나 키체인 암호창 없이 공식 Claude CLI에 인증 갱신을 맡기는 Apple 공증 Universal DMG 공개" },
       { state: "active", title: "안정성 개선", body: "Codex·Claude·Gemini 변화와 인증·요청 제한·네트워크·절전 예외에 맞춰 지속 개선" },
     ],
     screenshots: [
@@ -462,6 +462,7 @@ export const apps: AppData[] = [
     github: ["https://github.com/armsone/CCMB"],
     privacy: [
       "현재 Mac 사용자의 Codex CLI·Claude Code·Antigravity CLI 로그인 세션을 이용하며 API 키나 로그인 자격증명을 앱에 포함하지 않습니다.",
+      "Claude의 refresh token은 읽거나 복사하거나 갱신하지 않으며, 백그라운드 사용량 확인이 로그인 명령을 자동 실행하지 않습니다.",
       "Grok 사용량 수집 기반과 로컬 공유 JSON 필드는 유지하지만 현재 화면과 공유 메뉴의 기본 요청문에서는 노출하지 않습니다. Grok CLI 기록을 읽을 때도 질문이나 응답 내용은 보관하거나 공개하지 않습니다.",
       "사용량 정보는 사용자의 Mac에서 표시되고, 앱 자체 분석이나 원격 측정 기능을 추가하지 않습니다.",
       "진단 로그의 문자열은 비공개로 처리하며 원시 요청과 응답 본문을 기록하지 않습니다.",
