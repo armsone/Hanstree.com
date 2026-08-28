@@ -643,6 +643,7 @@ test("renders current app release and TestFlight information", async () => {
   assert.match(hanClip, /오디오 트랙이 없는 영상은 화면 움직임/);
   assert.match(stand, /내부 코드 345498/);
   assert.match(stand, /2739af37b1040b98646edf99db66f734c8d525dc79e5659ff813326a1c79bf91/);
+  assert.match(stand, /테두리와 검은 선택 효과/);
   assert.match(stand, /202608282116/);
   assert.match(stand, /a3baaafab73c6f0f111e11e6bafe278164d52deaf9cd559a94dd22169b7b6480/);
   assert.match(stand, /다음 라디오나 다음 곡/);
