@@ -269,10 +269,10 @@ test("renders the StarManager product and matchup disclosure", async () => {
   assert.match(html, /기기 AI/);
   assert.match(html, /스타매니저 Android 만들기 화면/);
   assert.match(html, /도달 가능한 탭/);
-  assert.match(html, /화면·상태·상호작용 증거 6개가 모두 검증을 통과했습니다/);
-  assert.match(html, /Android 2\.3\.0 공개/);
+  assert.match(html, /혼합 미디어·오류 복구·메모리 수명주기의 추가 회귀 검증/);
+  assert.match(html, /Android 2\.4\.0 공개/);
   assert.match(html, /release-download\?app=StarManager-Android/);
-  assert.match(html, /cb3b490e7bcc06e77bb085936c77b873976cc2efba178a54b85989faeb7078d3/);
+  assert.match(html, /6db661ea5b0a78aa469406817fbfa6262205b5ea7b610e97e6ffcf0f06d99366/);
   assert.match(html, /ChatGPT·Gemini·Claude/);
   assert.match(html, /Instagram 새 게시물/);
   assert.match(html, /다른 앱에서 붙여넣기/);
@@ -290,7 +290,7 @@ test("renders AIBI as a host-integrated engine release", async () => {
   const html = await response.text();
   const privacyHtml = await privacyResponse.text();
   assert.match(html, /앱과 공식 AI 사이를, 안전하게/);
-  assert.match(html, /AIBI 0\.2\.1/);
+  assert.match(html, /AIBI 0\.4\.3/);
   assert.match(html, /StarManager · iOS · Android/);
   assert.match(html, /독립 다운로드가 아니라 StarManager 안에 포함되는 공개 공통 엔진/);
   assert.match(html, /1분 59초/);
@@ -745,8 +745,9 @@ test("keeps verified TestFlight fallback data for StarManager, Button, and HtOMS
   const bySlug = new Map(payload.builds.map((build) => [build.slug, build]));
   assert.equal(bySlug.get("nasfinder")?.inviteUrl, "https://testflight.apple.com/join/3m3bhwJz");
   assert.equal(bySlug.get("hanclip")?.inviteUrl, "https://testflight.apple.com/join/m2YsgUJW");
-  assert.equal(bySlug.get("starmanager")?.build, "202608282124");
-  assert.equal(bySlug.get("starmanager")?.uploadedAt, "2026-08-28T21:31+09:00");
+  assert.equal(bySlug.get("starmanager")?.build, "202608290628");
+  assert.equal(bySlug.get("starmanager")?.uploadedAt, "2026-08-29T06:41:56+09:00");
+  assert.equal(bySlug.get("starmanager")?.expiresAt, "2026-11-27T06:41:56+09:00");
   assert.equal(bySlug.get("starmanager")?.inviteUrl, "https://testflight.apple.com/join/nzmW4WxW");
   assert.equal(bySlug.get("starmanager")?.publicBetaState, "waitingForReview");
   assert.equal(bySlug.get("button")?.build, "202608252204");
