@@ -995,8 +995,8 @@ export const apps: AppData[] = [
       {
         name: "iPhone · iPad",
         status: "TestFlight",
-        detail: "0.1.0 (202608290159) · iOS·iPadOS 17+ · 외부 베타 심사 대기 중",
-        availabilityNote: "내부 그룹에 빌드 연결 완료 · 내부 테스터 0명 · Public Beta는 Apple 승인 뒤 참여 가능",
+        detail: "0.1.0 (202608290731) · iOS·iPadOS 17+ · 외부 베타 심사 대기 중",
+        availabilityNote: "새 데님 아이콘 빌드를 내부·외부 그룹에 연결 완료 · 내부 테스터 1명 · Public Beta는 Apple 승인 뒤 참여 가능",
       },
     ],
     features: [
@@ -1020,7 +1020,7 @@ export const apps: AppData[] = [
       { state: "done", title: "다중 사진 감정 흐름", body: "최대 30장 추가·재정렬·전체 비우기와 한양 기반 유사 사진 정리, 최대 20장 AIBI 분석 구현" },
       { state: "done", title: "한·일 가치와 차익 계산", body: "한국·일본 예상 판매가, 수수료·배송비를 반영한 순수익과 양방향 시장 차익 표시 구현" },
       { state: "done", title: "개인 아카이브", body: "감정 결과와 사진을 기기 안에 저장하고 다시 보거나 삭제하는 흐름 구현" },
-      { state: "active", title: "iPhone·iPad Public Beta 심사", body: "0.1.0 build 202608290159를 Internal과 Public Beta 그룹에 연결했습니다. 내부 테스터는 현재 0명이며 외부 공개 링크는 Apple의 첫 베타 심사 승인 뒤 참여할 수 있습니다." },
+      { state: "active", title: "iPhone·iPad Public Beta 심사", body: "새 데님 아이콘이 포함된 0.1.0 build 202608290731을 Internal과 Public Beta 그룹에 연결했습니다. 내부 테스터는 현재 1명이며 외부 공개 링크는 Apple의 첫 베타 심사 승인 뒤 참여할 수 있습니다." },
       { state: "next", title: "아카이브 동기화", body: "개인 NAS 연결과 익명 기록 공유는 준비 중이며 현재 공개 기능에 포함하지 않음" },
     ],
     screenshots: [
