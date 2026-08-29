@@ -798,7 +798,7 @@ export const apps: AppData[] = [
     icon: "/apps/starmanager/icon.png",
     artwork: "phones",
     platforms: [
-      { name: "iPhone · iPad", status: "TestFlight", detail: "2.4.0 · 빌드 202608290628 · iOS·iPadOS 18+", availabilityNote: "2.4.0 Public Beta 심사 대기 · 공개 링크에서는 승인된 이전 빌드 테스트 가능" },
+      { name: "iPhone · iPad", status: "TestFlight", detail: "2.5.0 · 빌드 202608291632 · iOS·iPadOS 18+", availabilityNote: "2.5.0 Public Beta 심사 대기 · 공개 링크 활성 · 승인된 이전 빌드 테스트 가능" },
       {
         name: "Android",
         status: "공개",
@@ -819,10 +819,14 @@ export const apps: AppData[] = [
       { title: "접어 두는 글 스타일", body: "글자 수·이모지·분위기·스타일·말투·나잇대·줄넘김·내 글 반영은 필요할 때만 펼칩니다. 추가 요청은 같은 패널에서 직접 적습니다." },
       { title: "새 캔버스로 다시 시작", body: "하단의 새 캔버스로 현재 이야기와 결과, 미디어만 비우고 나의 취향과 프로필은 그대로 유지합니다." },
       { title: "미디어와 Instagram 공유", body: "사진·영상을 최대 8개까지 담고 순서를 정한 뒤, 문구 자동 복사와 공유 화면으로 Instagram 새 게시물 등 원하는 앱에 연결합니다. 카메라 사진은 사진 앱·갤러리에도 보관합니다." },
+      { title: "사진 앱에서 바로 시작", body: "사진 앱의 공유 메뉴에서 사진을 최대 8장까지 StarManager로 보내면 공동 보관함을 거쳐 새 자동화 캔버스에 바로 채웁니다." },
+      { title: "카메라 퀵 액션", body: "홈 화면의 StarManager 아이콘을 길게 눌러 카메라를 바로 열고, 15초 이상 쉬었다 돌아오면 새 자동화 세션으로 시작합니다." },
+      { title: "인터스텔라 테마", body: "BK·클래식과 함께 은빛과 금빛이 도는 어두운 인터스텔라 화면과 전용 앱 아이콘을 선택할 수 있습니다." },
       { title: "취소와 붙여넣기 안내", body: "게시물 만들기에서 취소를 누르면 작성 중인 내용을 버릴지 확인할 수 있습니다. iPhone·iPad에서 붙여넣기가 막히면 설정 → 앱 → 스타메니저 → 다른 앱에서 붙여넣기를 허용으로 바꾸고, Android는 앱별 붙여넣기 권한을 따로 설정하지 않습니다." },
     ],
     guide: [
       { title: "미디어와 이야기 입력", body: "사진·영상 또는 카메라로 미디어를 먼저 고르고 이야기를 적습니다. 사진만, 사진과 글, 글만 모두 가능합니다." },
+      { title: "사진 앱에서 보내기", body: "사진 앱에서 사진을 고르고 공유 → StarManager를 누르면 사진이 자동화 캔버스에 바로 들어옵니다." },
       { title: "AI로 초안 만들기", body: "Gemini·ChatGPT·Claude·기기 AI 중 하나를 고른 뒤 해당 만들기 버튼을 누릅니다. 선택한 사진은 순서대로 가볍게 정리해 전송하며 진행 상태는 스튜디오에서 확인합니다." },
       { title: "결과 가져오기", body: "외부 AI의 답변이 완성되면 스타메니저가 결과를 가져와 미리보기에 표시합니다. 로그인하지 않았다면 나의 취향 아래쪽 외부 AI 로그인 관리에서 먼저 로그인합니다." },
       { title: "키보드 숨기기", body: "입력 뒤 화면을 위아래로 스크롤하면 키보드가 바로 숨겨집니다. 다시 입력하려면 입력창을 누릅니다." },
@@ -835,7 +839,7 @@ export const apps: AppData[] = [
       { state: "done", title: "Android 구현과 실기기 검증", body: "휴대전화·태블릿 반응형 화면, 생성·검증·미디어·설정 흐름 구현과 테스트 완료" },
       { state: "done", title: "Android 2.4.0 공개", body: "제품 2.4.0 · 빌드 202608290628 · 내부 코드 345988의 휴대전화·태블릿·Google TV 지원 APK를 GitHub Releases에 공개하고 Android 실기기 3대에서 교체 설치·실행 검증" },
       { state: "done", title: "iPhone·iPad 2.4.0 설치", body: "연결된 iPhone 3대에 2.4.0 (202608290628)을 데이터 유지 교체 설치하고 배포 아카이브를 검증" },
-      { state: "active", title: "iOS·iPadOS 2.4.0 Public Beta 심사", body: "build 202608290628을 Public Beta 그룹에 추가하고 테스터 자동 알림과 Beta App Review를 제출했으며 기존 공개 테스트 링크는 유지" },
+      { state: "active", title: "iOS·iPadOS 2.5.0 Public Beta 심사", body: "공유 확장·카메라 퀵 액션·인터스텔라 테마를 담은 build 202608291632을 Public Beta 그룹에 연결하고 Beta App Review 대기 중이며 기존 공개 테스트 링크는 유지" },
       { state: "next", title: "게시 흐름 다듬기", body: "실제 공유 앱별 게시 결과와 사용자 피드백을 바탕으로 다음 개선 항목을 정리" },
     ],
     screenshots: [
