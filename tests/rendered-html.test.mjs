@@ -606,17 +606,19 @@ test("shows the current CCMB three-service release", async () => {
   assert.doesNotMatch(html, /WEEKLY REMAINING/);
   assert.doesNotMatch(html, /81% · ₩12\.4/);
   assert.doesNotMatch(html, /v0\.4\.3/);
-  assert.match(html, /2\.0\.9/);
+  assert.match(html, /2\.0\.12/);
   assert.match(html, /Codex·Claude·Gemini/);
   assert.match(html, /release-download\?app=CCMB/);
-  assert.match(html, /99ffde5ab9b3a276b307ad78c370f32465010a5ae8f09968ba15429563648c3c/);
-  assert.match(html, /로그인 창 없는 Claude 자동 복구/);
-  assert.match(html, /CCMB 전용 Claude 브라우저 연결/);
-  assert.match(html, /독립 스마트 주기/);
-  assert.match(html, /하단 조작부 정렬/);
-  assert.match(html, /refresh token을 읽거나 수정하지 않고/);
+  assert.match(html, /166e2a20998ba230100950cd242ab96fa5dbf3023fc3df3779c5324d55c4a90b/);
+  assert.match(html, /CCMB 전용 Claude 연결/);
+  assert.match(html, /CCMB 안의 브라우저에서 Claude 계정을 한 번 연결합니다/);
+  assert.match(html, /독립 스마트 갱신/);
+  assert.match(html, /정렬된 하단 조작부/);
+  assert.match(html, /Claude Code의 키체인 인증 정보를 읽지 않아/);
   assert.match(html, /데이터 연결만 안전하게 다시 시작/);
-  assert.match(html, /자동 다운로드 여부/);
+  assert.match(html, /한 줄로 온전히 보이는 갱신 기록/);
+  assert.match(html, /초 없는 24시간제/);
+  assert.match(html, /별도의 자동 다운로드 선택은 필요 없습니다/);
 });
 
 test("publishes browser and home-screen app icons", async () => {
