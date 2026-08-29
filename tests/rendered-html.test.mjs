@@ -89,6 +89,10 @@ test("presents HANYANG as a modern personal AI city without overstating future c
   assert.match(html, /브랜드는 한양 HANYANG/);
   assert.match(html, /다음에는 사용자가 허용한 정보의 기억과 정리/);
   assert.match(html, /현재 HanAI 식별자를 유지/);
+  assert.match(html, /0\.2\.0/);
+  assert.match(html, /비슷한 사진은 줄이고 좋은 장면은 남기기/);
+  assert.match(html, /hanai-core-0\.2\.0\.jar/);
+  assert.match(html, /688a9f385bb4706ddfee4f79e4fe188da155bc7d76967191e76ab2debd992ad9/);
   assert.match(html, /hanyang-city-hero-v3\.png/);
   assert.match(html, /hanyang-memory-archive-v1\.png/);
   assert.match(html, /hanyang-secure-gates-v1\.png/);
