@@ -13,6 +13,7 @@ export const DOWNLOAD_KEYS = [
   "TrackpadGuard",
   "WhattoEat",
   "WhattoEat-Android",
+  "DenimDex-Android",
   "button-Android",
   "StarManager-Android",
   "HtOMS-BK",
@@ -104,6 +105,12 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     repo: "WhattoEat-Android",
     assetPattern: /^WhattoEat-(?:Android-)?\d+\.\d+\.\d+\.apk$/i,
     fallbackUrl: "https://github.com/armsone/WhattoEat-Android/releases/download/android-v0.4.3/WhattoEat-Android-0.4.3.apk",
+  },
+  "DenimDex-Android": {
+    label: "DenimDex Android",
+    repo: "DenimDex-Android",
+    assetPattern: /^DenimDex-Android-\d+\.\d+\.\d+\.apk$/i,
+    fallbackUrl: "https://github.com/armsone/DenimDex-Android/releases/download/android-v0.2.1/DenimDex-Android-0.2.1.apk",
   },
   "button-Android": {
     label: "버튼 Android",

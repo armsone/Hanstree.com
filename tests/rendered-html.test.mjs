@@ -58,7 +58,7 @@ test("server-renders the NasFinder.com homepage", async () => {
   assert.match(html, /href="\/apps\/intosharp" class="hero-product hero-product-intosharp"[^>]*aria-label="인투샾 제품 자세히 보기"/);
   assert.equal((html.match(/class="app-row-hit-area"/g) ?? []).length, 17);
   assert.match(html, /href="\/apps\/intosharp" class="app-row-hit-area" aria-label="인투샾 제품 자세히 보기"/);
-  assert.match(html, />38<\/strong><span>현재 소개하는 제품/);
+  assert.match(html, />39<\/strong><span>현재 소개하는 제품/);
   assert.doesNotMatch(html, /플랫폼별 제공 버전/);
   assert.match(html, />08<\/strong><span>iPhone · iPad · macOS · Android · Google TV · Web · NasOS · Windows \(커밍\)/);
   assert.match(html, /한양/);
@@ -160,6 +160,11 @@ test("shows DenimDex brand engines with their real icons and truthful beta state
   assert.match(html, /Apple 공개 테스트 심사 중/);
   assert.match(html, /기존 Internal과 Public Beta 그룹/);
   assert.match(html, /0\.2\.1/);
+  assert.match(html, /202608291602/);
+  assert.match(html, /내부 코드 346562/);
+  assert.match(html, /release-download\?app=DenimDex-Android/);
+  assert.match(html, /작성 중인 글은 그대로 보호/);
+  assert.match(html, /38c7585761ffe2431a2285a94bdac1c56557aceb39ee34fd8c64c37ffb728d11/);
   assert.match(html, /추정 생산연도/);
   assert.match(html, /추정 제조공장/);
   assert.match(html, /보수적 희귀도/);

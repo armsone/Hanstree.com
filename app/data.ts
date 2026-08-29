@@ -1008,6 +1008,15 @@ export const apps: AppData[] = [
         detail: "0.2.1 (202608291110) · iOS·iPadOS 17+ · 외부 베타 심사 대기 중",
         availabilityNote: "감정 자동 스크롤·정사각형 사진·현재 버전 표시·ChatGPT 입력 안정화 빌드를 Internal과 Public Beta에 연결 완료 · Public Beta는 Apple 승인 뒤 참여 가능",
       },
+      {
+        name: "Android",
+        status: "공개",
+        detail: "0.2.1 · 빌드 202608291602 · 내부 코드 346562 · Android 8.0+",
+        url: releaseDownloadPath("DenimDex-Android"),
+        downloadLabel: "Android용 APK 다운로드",
+        checksum: "38c7585761ffe2431a2285a94bdac1c56557aceb39ee34fd8c64c37ffb728d11",
+        availabilityNote: "SM-F968N Android 16에서 동일 코드 개발 빌드 데이터 보존 설치·실행, 72개 단위 테스트와 공개 APK 전용 서명·해시 검증 완료 · 태블릿·TV 검증 전",
+      },
     ],
     features: [
       { title: "한 벌을 최대 30장의 디테일로", body: "전체 실루엣부터 패치, 레드탭, 버튼, 봉제와 케어라벨까지 자유롭게 촬영하거나 보관함에서 고릅니다. 길게 눌러 중요한 순서로 바꾸고 한 번에 모두 비울 수 있습니다." },
@@ -1020,6 +1029,7 @@ export const apps: AppData[] = [
       { title: "판단 근거와 확실성을 함께", body: "제품명만 단정하지 않고 사진에서 직접 확인한 특징, 추정한 내용과 신뢰 수준을 구분해 보여줍니다. 실시간 거래 시세가 아닌 AI 기반 참고 범위라는 한계도 함께 안내합니다." },
       { title: "나만의 데님 아카이브", body: "감정 결과와 고른 사진을 기기 안 개인 아카이브에 저장해 다시 확인하고, 필요 없는 기록은 직접 삭제할 수 있습니다." },
       { title: "사진은 가볍게, 단서는 선명하게", body: "선택 장수가 많아질수록 전송용 사본의 크기와 품질을 단계적으로 조절해 전체 용량을 약 16MB 안으로 맞춥니다. 원본 사진은 변경하지 않습니다." },
+      { title: "작성 중인 글은 그대로 보호", body: "ChatGPT 입력창에 다른 글이 있으면 덮어쓰지 않고 멈춥니다. 빈 입력창에서도 실제로 요청이 들어갔는지 확인한 뒤 다음 단계로 넘어가며, 사진을 읽지 못해도 앱을 닫지 않고 다시 고를 수 있습니다." },
     ],
     guide: [
       { title: "사진 담기", body: "데님의 전체 앞·뒤 모습과 패치, 탭, 버튼, 리벳, 봉제, 케어라벨처럼 서로 다른 단서를 촬영하거나 사진 보관함에서 선택합니다." },
@@ -1033,12 +1043,13 @@ export const apps: AppData[] = [
       { state: "done", title: "한·일 가치와 차익 계산", body: "한국·일본 예상 판매가, 수수료·배송비를 반영한 순수익과 양방향 시장 차익 표시 구현" },
       { state: "done", title: "개인 아카이브", body: "감정 결과와 사진을 기기 안에 저장하고 다시 보거나 삭제하는 흐름 구현" },
       { state: "active", title: "iPhone·iPad 0.2.1 Public Beta 심사", body: "사진 등록 후 가치 확인 버튼과 분석 진행 화면 자동 스크롤, 정사각형 사진, 현재 버전 표시와 ChatGPT 입력 재시도를 담은 build 202608291110을 기존 Internal과 Public Beta 그룹에 연결하고 외부 베타 심사에 제출했습니다. 공개 링크는 Apple 승인 뒤 신규 참여가 가능합니다." },
+      { state: "done", title: "Android 0.2.1 첫 공개", body: "build 202608291602 · 내부 코드 346562 APK를 공개했습니다. 인증된 ChatGPT 세션 판정, 기존 입력 보호, 네 번의 입력 확인, 사진 준비 실패 복구와 자동 스크롤을 포함합니다." },
       { state: "next", title: "아카이브 동기화", body: "개인 NAS 연결과 익명 기록 공유는 준비 중이며 현재 공개 기능에 포함하지 않음" },
     ],
     screenshots: [
       { src: "/apps/denimdex/screens/home.png", alt: "데님덱스에서 빈티지 데님의 한국과 일본 시장 가치를 소개하는 감정 홈 화면" },
     ],
-    github: ["https://github.com/armsone/DenimDex-iOS"],
+    github: ["https://github.com/armsone/DenimDex-iOS", "https://github.com/armsone/DenimDex-Android"],
     privacy: [
       "원본 사진과 저장한 감정 기록은 기본적으로 사용자의 기기 안에 보관됩니다.",
       "가치 확인을 시작하면 한양이 고른 사진의 전송용 사본과 분석 요청이 사용자가 로그인한 ChatGPT 공식 웹사이트로 전달됩니다. 전송용 사본은 작업이 끝나면 앱에서 폐기됩니다.",

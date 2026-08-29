@@ -16,6 +16,7 @@ const ANDROID_APP_SLUGS: Record<string, string> = {
   "button-Android": "button",
   "StarManager-Android": "starmanager",
   "WhattoEat-Android": "whattoeat",
+  "DenimDex-Android": "denimdex",
 };
 
 const installStepVisuals: AdvantageVariant[] = ["check-source", "android-bot", "touch-zone", "shield-safe"];
@@ -86,6 +87,7 @@ export function AndroidReleaseTracker() {
     { appName: "버튼", repo: "button-Android", available: false },
     { appName: "스타매니저", repo: "StarManager-Android", available: false },
     { appName: "오늘 뭐 먹지?", repo: "WhattoEat-Android", available: false },
+    { appName: "데님덱스", repo: "DenimDex-Android", available: false },
   ];
   const releases = data?.releases || placeholders;
 
