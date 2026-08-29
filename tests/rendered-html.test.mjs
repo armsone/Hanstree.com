@@ -353,7 +353,7 @@ test("renders Super Thumbnail as an independent Mac product", async () => {
   assert.match(detail, /큰 미디어 폴더의 미리보기를/);
   assert.match(detail, /release-download\?app=NasFinder-Super-Thumbnail/);
   assert.match(detail, /16,540/);
-  assert.match(detail, /2\.3\.1 \(202608270910\)/);
+  assert.match(detail, /2\.3\.2 \(202608291428\)/);
   assert.match(detail, /Developer ID 서명·Apple 공증 완료/);
   assert.match(detail, /폴더는 차례대로, 파일은 동시에/);
   assert.match(detail, /자동 체크박스/);
@@ -362,8 +362,9 @@ test("renders Super Thumbnail as an independent Mac product", async () => {
   assert.match(detail, /폴더 작업은 적용 수의 절반\(최소 1개\)/);
   assert.match(detail, /발견한 폴더 수와 파일 수를 실시간/);
   assert.match(support, /github\.com\/armsone\/SuperThumbnail-MacOS\/issues/);
-  assert.match(detail, /폴더도 9칸, 블러는 한 번만/);
-  assert.match(detail, /03ef06e868ad3308ce5389be27ff46ee097443bb9be793f2daf0212ea1c26962/);
+  assert.match(detail, /폴더도 9칸, 흐림은 꼭 필요한 만큼만/);
+  assert.match(detail, /살색 비율 20%까지는 선명하게 유지/);
+  assert.match(detail, /7c0c02bb250a3720e0957ed5361ec811ccfbdbd0dc4398cff0287208f5ec7eb2/);
   assert.match(detail, /미리보는 재미까지 크게/);
   assert.match(detail, /가로 손잡이를 아래로 끌수록 미리보기와 이미지가 함께 커지고/);
   assert.match(detail, /2\.1\.4 크기 조절 미리보기/);

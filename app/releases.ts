@@ -55,7 +55,7 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     label: "Super Thumbnail",
     repo: "SuperThumbnail-MacOS",
     assetPattern: /^NasFinder-Super-Thumbnail-.*\.dmg$/i,
-    fallbackUrl: "https://github.com/armsone/SuperThumbnail-MacOS/releases/download/v2.3.1/NasFinder-Super-Thumbnail-2.3.1.dmg",
+    fallbackUrl: "https://github.com/armsone/SuperThumbnail-MacOS/releases/download/v2.3.2/NasFinder-Super-Thumbnail-2.3.2.dmg",
   },
   "HanClip-Android": {
     label: "HanClip Android",
