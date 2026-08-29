@@ -685,7 +685,7 @@ test("renders current app release and TestFlight information", async () => {
   assert.doesNotMatch(hanClip, /android-editor-finish-pets\.png/);
 });
 
-test("publishes the WhattoEat 0.4.2 indoor location recovery release", async () => {
+test("publishes the WhattoEat 0.4.3 location permission recovery release", async () => {
   const [pageResponse, buildsResponse] = await Promise.all([
     render("/apps/whattoeat"),
     render("/api/testflight-builds"),
@@ -697,16 +697,17 @@ test("publishes the WhattoEat 0.4.2 indoor location recovery release", async () 
   const builds = await buildsResponse.json();
   const whattoeat = builds.builds.find((build) => build.slug === "whattoeat");
 
-  assert.match(page, /0\.4\.2/);
-  assert.match(page, /202608271840/);
-  assert.match(page, /내부 코드 343840/);
+  assert.match(page, /0\.4\.3/);
+  assert.match(page, /202608291549/);
+  assert.match(page, /내부 코드 346549/);
   assert.match(page, /점심 가방으로 바로 추천/);
   assert.match(page, /실내에서도 멈추지 않는 위치 찾기/);
+  assert.match(page, /위치 권한을 놓쳐도 바로 복구/);
   assert.match(page, /상황에 맞는 메뉴와 지도 검색/);
   assert.match(page, /TestFlight에서 참여/);
   assert.match(page, /android-bag-navigation\.png/);
   assert.match(page, /b2387eab4b08056f06539c5dd4fdad59e223f48c4693d1e89c29bfa10c37f847/);
-  assert.match(page, /aa06ea291ff606cb470457727bd583239fbb368f211a8af0dd3de6f1b232a1c4/);
+  assert.match(page, /f94c4cfd5cc71645f94a5ba79053743d3d442b4fe83332f5f14579b5536c75a9/);
   assert.equal(whattoeat?.build, "202608271840");
   assert.equal(whattoeat?.inviteUrl, "https://testflight.apple.com/join/A444RsAc");
   assert.equal(whattoeat?.publicBetaState, "approved");

@@ -103,7 +103,7 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     label: "오늘 뭐 먹지?? Android",
     repo: "WhattoEat-Android",
     assetPattern: /^WhattoEat-(?:Android-)?\d+\.\d+\.\d+\.apk$/i,
-    fallbackUrl: "https://github.com/armsone/WhattoEat-Android/releases/download/v0.4.2/WhattoEat-0.4.2.apk",
+    fallbackUrl: "https://github.com/armsone/WhattoEat-Android/releases/download/android-v0.4.3/WhattoEat-Android-0.4.3.apk",
   },
   "button-Android": {
     label: "버튼 Android",
