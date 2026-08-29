@@ -240,7 +240,7 @@ test("renders the notarized BTN cleanup release", async () => {
   assert.match(html, /개발 도구가 빌려 쓴 공간과 메모리를/);
   assert.match(html, /release-download\?app=BTN/);
   assert.match(html, /Apple 공증 완료/);
-  assert.match(html, /c1e7e92598bb50152c081588d0dd2bd6207d4f9b093d70eb80484eef3ee3b236/);
+  assert.match(html, /7150296496f7a573f9ac0b1bceed82388b8f680e05fe46ad4fa7ef1d5bcaf99e/);
   assert.match(html, /메모리 압박 해결 동선/);
   assert.match(html, /기기 데이터를 유지한 채 종료/);
   assert.match(html, /안전한 파일 자동 정리/);

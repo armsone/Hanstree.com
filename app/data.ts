@@ -486,10 +486,10 @@ export const apps: AppData[] = [
       {
         name: "macOS",
         status: "공개",
-        detail: "2.0.1 (202608251555) · macOS 13+ · Universal · Apple 공증 완료",
+        detail: "2.0.2 (202608291620) · 내부 build 346580 · macOS 13+ · Universal · Apple 공증 완료",
         url: releaseDownloadPath("BTN"),
         downloadLabel: "Mac용 DMG 바로 받기",
-        checksum: "c1e7e92598bb50152c081588d0dd2bd6207d4f9b093d70eb80484eef3ee3b236",
+        checksum: "7150296496f7a573f9ac0b1bceed82388b8f680e05fe46ad4fa7ef1d5bcaf99e",
       },
     ],
     features: [
@@ -506,7 +506,7 @@ export const apps: AppData[] = [
     ],
     guide: [
       { title: "DMG로 설치", body: "공식 DMG를 열고 BTN을 응용 프로그램 폴더로 옮긴 뒤 실행합니다." },
-      { title: "메모리 압박 낮추기", body: "경고가 보이면 해결할 항목 찾기로 실행 중인 시뮬레이터와 유휴 개발 프로세스를 확인하거나 활동 모니터를 엽니다." },
+      { title: "메모리 압박 낮추기", body: "경고가 보이면 해결할 항목 찾기로 실행 중인 시뮬레이터를 기기 데이터를 유지한 채 종료하거나 활동 모니터를 엽니다." },
       { title: "남은 자원 찾기", body: "메뉴 막대에서 자세히 보기를 열고 정리 후보 찾기를 눌러 파일·시뮬레이터와 유휴 개발 프로세스를 확인합니다." },
       { title: "이유와 위험도 확인", body: "디스크 예상 확보량과 메모리 예상 회수량, 감지 이유와 위험도를 구분해 확인합니다." },
       { title: "정리할 항목 선택", body: "정리할 항목만 직접 체크하고 안전하게 해결을 누릅니다. 기본 상태에서는 아무 항목도 선택되지 않습니다." },
@@ -519,6 +519,7 @@ export const apps: AppData[] = [
       { state: "done", title: "메모리 압박 해결", body: "데이터를 유지하는 실행 중 시뮬레이터 종료와 활동 모니터 연결 구현" },
       { state: "done", title: "BTN 2.0.0 공개", body: "build 202608230737의 Apple 공증 Universal DMG와 자동 업데이트를 공개" },
       { state: "done", title: "BTN 2.0.1 공개", body: "build 202608251555에서 닫힌 상세 창을 다시 실행할 때 즉시 복구하고 업데이트 자동 다운로드 설정을 추가" },
+      { state: "done", title: "BTN 2.0.2 공개", body: "build 202608291620에서 메뉴의 중복된 자동 다운로드 스위치와 상태 문구를 덜어내고, 서명된 자동 업데이트는 그대로 유지한 Apple 공증 Universal DMG 공개" },
       { state: "next", title: "작업 세션 연동", body: "Codex·Claude·Gemini 작업별로 생성된 자원을 더 정밀하게 구분하는 추적 기능 준비" },
     ],
     screenshots: [
