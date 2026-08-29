@@ -154,8 +154,8 @@ test("shows DenimDex brand engines with their real icons and truthful beta state
   assert.match(html, /\/apps\/hanai\/icon\.png/);
   assert.match(html, /\/apps\/aibi\/icon\.png/);
   assert.match(html, /Apple 공개 테스트 심사 중/);
-  assert.match(html, /내부 테스터는 현재 1명/);
-  assert.match(html, /0\.2\.0/);
+  assert.match(html, /기존 Internal과 Public Beta 그룹/);
+  assert.match(html, /0\.2\.1/);
   assert.match(html, /추정 생산연도/);
   assert.match(html, /추정 제조공장/);
   assert.match(html, /보수적 희귀도/);
@@ -780,9 +780,9 @@ test("keeps verified TestFlight fallback data for StarManager, Button, and HtOMS
   assert.equal(bySlug.get("htoms-brief")?.build, "202608252204");
   assert.equal(bySlug.get("htoms-brief")?.uploadedAt, "2026-08-25T22:07:03+09:00");
   assert.equal(bySlug.get("htoms-brief")?.publicBetaState, "internalOnly");
-  assert.equal(bySlug.get("denimdex")?.build, "202608291019");
-  assert.equal(bySlug.get("denimdex")?.uploadedAt, "2026-08-29T10:27:00+09:00");
-  assert.equal(bySlug.get("denimdex")?.expiresAt, "2026-11-27T10:27:00+09:00");
+  assert.equal(bySlug.get("denimdex")?.build, "202608291110");
+  assert.equal(bySlug.get("denimdex")?.uploadedAt, "2026-08-29T11:20:21+09:00");
+  assert.equal(bySlug.get("denimdex")?.expiresAt, "2026-11-27T11:20:21+09:00");
   assert.equal(bySlug.get("denimdex")?.inviteUrl, "https://testflight.apple.com/join/5pBrz6ME");
   assert.equal(bySlug.get("denimdex")?.publicBetaState, "waitingForReview");
 });
