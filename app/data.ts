@@ -594,7 +594,7 @@ export const apps: AppData[] = [
     icon: "/apps/htoms-brief/icon.png",
     artwork: "htoms",
     platforms: [
-      { name: "iOS · iPadOS", status: "TestFlight", detail: "2.0.0 (202608230737) · iOS·iPadOS 17+", availabilityNote: "내부 테스트 전용 빌드 · 외부용 새 빌드 필요" },
+      { name: "iOS · iPadOS", status: "TestFlight", detail: "2.0.0 (202608291628) · iOS·iPadOS 17+", availabilityNote: "회사 내부 테스트 전용 · 내부 테스터 9명 유지 · 공개 링크 없음" },
       {
         name: "Android · Google TV",
         status: "공개",
@@ -625,6 +625,7 @@ export const apps: AppData[] = [
       { state: "done", title: "한 페이지 대시보드", body: "분리됐던 정보를 한 화면의 읽기 흐름으로 통합" },
       { state: "done", title: "자동·수동 갱신", body: "10분 역타이머와 터치 즉시 갱신 구현" },
       { state: "done", title: "iPhone·iPad 검증", body: "공통 빌드와 실제 iPhone 설치·실행 검증" },
+      { state: "done", title: "iOS 내부 빌드 갱신", body: "build 202608291628을 회사 내부 TestFlight 그룹에 제공하고 외부 공개 링크는 비활성으로 유지" },
       { state: "done", title: "Android 대응 앱 구현", body: "2.0.0 휴대전화·태블릿·Google TV용 Compose 앱과 Glance 위젯의 단위 테스트·공개용 QA 빌드·린트 검증" },
       { state: "done", title: "Android 2.1.1 공개", body: "edge-to-edge 안전 영역을 보강한 제품 2.1.1 · 빌드 202608291542 · 내부 코드 346542의 서명 APK와 SHA-256 체크섬을 GitHub Releases에 공개" },
       { state: "next", title: "Android 화면 매치업", body: "태블릿과 Google TV를 포함한 대표 기기 화면을 iPhone·iPad 기준과 비교해 세부 배치를 조정" },

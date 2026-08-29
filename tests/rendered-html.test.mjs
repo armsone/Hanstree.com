@@ -338,7 +338,7 @@ test("renders HtOMS with its own sales dashboard artwork", async () => {
   assert.match(html, /오늘의 매출과 서버 상태를/);
   assert.match(html, /매출 요약/);
   assert.match(html, /서버 상태 · SERVER/);
-  assert.match(html, /내부 테스트 전용 빌드 · 외부용 새 빌드 필요/);
+  assert.match(html, /회사 내부 테스트 전용 · 내부 테스터 9명 유지 · 공개 링크 없음/);
   assert.match(html, /Android · Google TV/);
   assert.match(html, /Android용 APK 다운로드/);
   assert.match(html, /release-download\?app=HtOMS-BK/);
@@ -796,8 +796,8 @@ test("keeps verified TestFlight fallback data for StarManager, Button, and HtOMS
   assert.equal(bySlug.get("button")?.build, "202608291609");
   assert.equal(bySlug.get("button")?.inviteUrl, "https://testflight.apple.com/join/RKcxgTkc");
   assert.equal(bySlug.get("button")?.uploadedAt, "2026-08-29T16:15:10+09:00");
-  assert.equal(bySlug.get("htoms-brief")?.build, "202608252204");
-  assert.equal(bySlug.get("htoms-brief")?.uploadedAt, "2026-08-25T22:07:03+09:00");
+  assert.equal(bySlug.get("htoms-brief")?.build, "202608291628");
+  assert.equal(bySlug.get("htoms-brief")?.uploadedAt, "2026-08-29T16:37:14+09:00");
   assert.equal(bySlug.get("htoms-brief")?.publicBetaState, "internalOnly");
   assert.equal(bySlug.get("denimdex")?.build, "202608291110");
   assert.equal(bySlug.get("denimdex")?.uploadedAt, "2026-08-29T11:20:21+09:00");
