@@ -97,8 +97,9 @@ export function AndroidReleaseTracker() {
         {releases.map((release) => {
           const app = findApp(ANDROID_APP_SLUGS[release.repo]);
           const { productVersion, buildNumber, internalCode } = releaseIdentityFor(release, app);
+          const displayName = release.repo === "HanClip-Android" ? release.appName : `${release.appName} Android`;
           return <article className="android-release-card" key={release.repo}>
-            <div className="android-release-head"><span className="android-app-mark">{app?.icon && <Image className="release-app-icon" src={appCardIcon(app)} alt="" width={256} height={256} sizes="56px" unoptimized />}<span className="android-platform-badge"><img src="/brands/android.svg" alt="" aria-hidden="true" /></span></span><div><p>{release.repo}</p><h3>{release.appName} Android</h3></div></div>
+            <div className="android-release-head"><span className="android-app-mark">{app?.icon && <Image className="release-app-icon" src={appCardIcon(app)} alt="" width={256} height={256} sizes="56px" unoptimized />}<span className="android-platform-badge"><img src="/brands/android.svg" alt="" aria-hidden="true" /></span></span><div><p>{release.repo}</p><h3>{displayName}</h3></div></div>
             {release.available ? <>
               <div className="android-version"><strong>{productVersion}</strong><span>최신 공개판</span></div>
               <dl>
@@ -110,7 +111,7 @@ export function AndroidReleaseTracker() {
                 <div><dt>SHA-256</dt><dd className="digest">{release.asset?.digest?.replace(/^sha256:/, "").slice(0, 12) || "GitHub 정보 없음"}</dd></div>
               </dl>
               <div className="android-release-actions">
-                {release.asset && <a className="android-download-link" href={releaseDownloadPath(release.repo)} aria-label={`${release.appName} Android ${productVersion} APK 바로 받기`}>
+                {release.asset && <a className="android-download-link" href={releaseDownloadPath(release.repo)} aria-label={`${displayName} ${productVersion} APK 바로 받기`}>
                   <span>APK 바로 받기</span><b aria-hidden="true">↓</b>
                 </a>}
                 <a className="android-release-link" href={release.releaseUrl}>릴리스 설명 보기 <span aria-hidden="true">↗</span></a>

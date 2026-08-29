@@ -40,6 +40,13 @@ function formatDate(date: Date) {
 export function TestFlightTracker({ builds }: { builds: TestFlightBuild[] }) {
   const [currentBuilds, setCurrentBuilds] = useState(builds);
   const [containerRef, isNearViewport] = useNearViewport<HTMLDivElement>();
+  const orderedBuilds = [...currentBuilds].sort((left, right) => {
+    const leftState = getBuildState(left);
+    const rightState = getBuildState(right);
+    if (!leftState) return rightState ? 1 : 0;
+    if (!rightState) return -1;
+    return leftState.expires.getTime() - rightState.expires.getTime();
+  });
 
   useEffect(() => {
     if (!isNearViewport) return;
@@ -61,7 +68,7 @@ export function TestFlightTracker({ builds }: { builds: TestFlightBuild[] }) {
 
   return (
     <div className="testflight-grid" ref={containerRef}>
-      {currentBuilds.map((build) => {
+      {orderedBuilds.map((build) => {
         const state = getBuildState(build);
         const app = findApp(build.slug);
         return (
