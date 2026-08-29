@@ -15,6 +15,14 @@ type RouteProps = { params: Promise<{ path: string[] }> };
 const campaignSlugs = new Set(["super-thumbnail", "hanclip", "stand", "ccmb", "trackpadguard", "intosharp", "airchurch", "denimdex"]);
 
 const contentVisualRules: [RegExp, AdvantageVariant][] = [
+  [/최대 30장|사진 1~8장|고른 사진을 모두|여러 각도.*촬영/, "photo-stack"],
+  [/생산 단서|라벨.*버튼.*리벳|제품 정보.*제조공장/, "denim-clues"],
+  [/희귀도/, "rarity-gem"],
+  [/한국.*일본.*매입가|원화.*엔화/, "market-balance"],
+  [/순수익|판매가.*수수료|예상 차익/, "profit-calculator"],
+  [/판단 근거|확실성|신뢰 수준/, "check-source"],
+  [/데님 아카이브|개인 아카이브/, "archive-stack"],
+  [/전송용 사본|16MB|크기와 품질.*조절/, "image-compress"],
   [/Live Photo|Motion Photo|움직이는 사진/, "live-motion-swap"],
   [/저장공간|클라우드|NAS|Dropbox|OneDrive|Google Drive|Synology|SFTP|SMB|WebDAV|FTP/, "storage-network"],
   [/VLC|스트리밍|재생 제어|영상.*재생/, "play-remote"],
@@ -198,7 +206,7 @@ export default async function AppRoute({ params }: RouteProps) {
       <section className="feature-section shell" id="features">
         <div className="section-heading reveal"><div><p className="eyebrow">FEATURES</p><h2>복잡함은 덜고,<br />쓰임은 선명하게.</h2></div></div>
         <div className="feature-grid">
-          {app.features.map((feature, index) => <article className={`feature-card reveal${feature.icon ? " feature-card-branded" : ""}`} key={feature.title}><span>0{index + 1}</span>{feature.icon ? <Image className="feature-icon" src={feature.icon} alt="" width={72} height={72} unoptimized /> : <AdvantageVisual variant={pickContentVisual(`${feature.title} ${feature.body}`, index)} />}<h3>{feature.title}</h3><p>{feature.body}</p></article>)}
+          {app.features.map((feature, index) => <article className="feature-card feature-card-iconized reveal" key={feature.title}><span>0{index + 1}</span>{feature.icon ? <Image className="feature-icon" src={feature.icon} alt="" width={72} height={72} unoptimized /> : <AdvantageVisual variant={pickContentVisual(`${feature.title} ${feature.body}`, index)} />}<h3>{feature.title}</h3><p>{feature.body}</p></article>)}
         </div>
       </section>
 

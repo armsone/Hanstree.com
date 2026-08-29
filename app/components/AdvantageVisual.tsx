@@ -10,6 +10,7 @@ export type AdvantageVariant =
   | "name-tag" | "search-bar" | "groups-grid" | "defaults-star" | "homepage-flag" | "devices-pair"
   | "sermon-mic" | "discovery-map" | "heart-share" | "shield-community" | "check-source" | "eye-browse"
   | "spark" | "layers" | "compass" | "bolt"
+  | "photo-stack" | "denim-clues" | "rarity-gem" | "market-balance" | "profit-calculator" | "image-compress"
   | "android-bot" | "web-globe" | "life-ring" | "doc-scroll" | "trash-clear" | "check-badge";
 
 const glow = <circle className="av-glow" cx="22" cy="22" r="19" />;
@@ -65,6 +66,12 @@ const glyphs: Record<AdvantageVariant, ReactNode> = {
   "layers": <><path d="M9 22l13-6 13 6-13 6z" /><path d="M9 29l13 6 13-6" strokeDasharray="2 3" /><path d="M9 16l13-6 13 6-13 6z" /></>,
   "compass": <><circle cx="22" cy="22" r="14" /><path d="M27 15l-3 9-9 3 3-9z" fill="currentColor" stroke="none" /></>,
   "bolt": <><path d="M24 6L11 24h9l-3 14 15-20h-9z" /></>,
+  "photo-stack": <><rect x="8" y="15" width="24" height="19" rx="4" /><rect x="12" y="10" width="24" height="19" rx="4" /><path d="M17 23l5-5 8 7" /><circle cx="29" cy="16" r="2" fill="currentColor" stroke="none" /></>,
+  "denim-clues": <><path d="M8 11h21l7 7-17 17L8 24z" /><circle cx="15" cy="18" r="2" /><circle cx="31" cy="31" r="5" /><path d="M35 35l4 4M18 25h8" /></>,
+  "rarity-gem": <><path d="M11 16l6-7h10l6 7-11 19z" /><path d="M11 16h22M17 9l5 7 5-7M22 16v19" /><path d="M35 8v6M32 11h6" /></>,
+  "market-balance": <><path d="M22 9v27M11 13h22M16 13l-6 12h12zM28 13l-6 12h12zM15 36h14" /></>,
+  "profit-calculator": <><rect x="8" y="8" width="22" height="28" rx="4" /><path d="M13 14h12M13 21h3M21 21h4M13 27h3M21 27h4" /><path d="M31 30l4 4 5-9" /></>,
+  "image-compress": <><rect x="10" y="10" width="24" height="24" rx="4" /><path d="M16 10v6h-6M28 10v6h6M16 34v-6h-6M28 34v-6h6" /><path d="M17 26l5-6 5 6" /></>,
   "android-bot": <><path d="M13 20a9 9 0 0 1 18 0v10H13z" /><path d="M13 30v6M31 30v6M17 8l2 4M27 8l-2 4" /><circle cx="18" cy="19" r="1.6" fill="currentColor" stroke="none" /><circle cx="26" cy="19" r="1.6" fill="currentColor" stroke="none" /></>,
   "web-globe": <><circle cx="22" cy="22" r="15" /><path d="M7 22h30M22 7c4 4 6 9.5 6 15s-2 11-6 15c-4-4-6-9.5-6-15s2-11 6-15z" /></>,
   "life-ring": <><circle cx="22" cy="22" r="14" /><circle cx="22" cy="22" r="6" /><path d="M12 12l6 6M32 12l-6 6M12 32l6-6M32 32l-6-6" /></>,
