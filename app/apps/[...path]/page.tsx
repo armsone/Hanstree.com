@@ -14,6 +14,11 @@ type RouteProps = { params: Promise<{ path: string[] }> };
 
 const campaignSlugs = new Set(["super-thumbnail", "hanclip", "stand", "ccmb", "trackpadguard", "intosharp", "airchurch", "denimdex"]);
 
+const customFeatureIconSlugs = new Set([
+  "nasfinder", "super-thumbnail", "hanclip", "hanai", "stand", "ccmb", "btn", "trackpadguard",
+  "htoms-brief", "intosharp", "airchurch", "button", "starmanager", "minecraft-server", "whattoeat", "aibi",
+]);
+
 const denimDexFeatureIcons: Record<string, string> = {
   "한 벌을 최대 30장의 디테일로": "/apps/denimdex/features/photo-details.webp",
   "제품 정보와 생산 단서를 먼저": "/apps/denimdex/features/manufacturing-clues.webp",
@@ -24,6 +29,12 @@ const denimDexFeatureIcons: Record<string, string> = {
   "나만의 데님 아카이브": "/apps/denimdex/features/denim-archive.webp",
   "사진은 가볍게, 단서는 선명하게": "/apps/denimdex/features/photo-compression.webp",
 };
+
+function featureIconSource(app: NonNullable<ReturnType<typeof findApp>>, feature: (typeof app.features)[number], index: number) {
+  const denimDexIcon = app.slug === "denimdex" ? denimDexFeatureIcons[feature.title] : undefined;
+  const customFeatureIcon = customFeatureIconSlugs.has(app.slug) ? `/apps/${app.slug}/features/feature-${String(index + 1).padStart(2, "0")}.webp` : undefined;
+  return feature.icon ?? denimDexIcon ?? customFeatureIcon;
+}
 
 const contentVisualRules: [RegExp, AdvantageVariant][] = [
   [/최대 30장|사진 1~8장|고른 사진을 모두|여러 각도.*촬영/, "photo-stack"],
@@ -218,8 +229,7 @@ export default async function AppRoute({ params }: RouteProps) {
         <div className="section-heading reveal"><div><p className="eyebrow">FEATURES</p><h2>복잡함은 덜고,<br />쓰임은 선명하게.</h2></div></div>
         <div className="feature-grid">
           {app.features.map((feature, index) => {
-            const denimDexIcon = app.slug === "denimdex" ? denimDexFeatureIcons[feature.title] : undefined;
-            const icon = feature.icon ?? denimDexIcon;
+            const icon = featureIconSource(app, feature, index);
             const cardClassName = `feature-card feature-card-iconized reveal${icon ? " feature-card-inline-icon" : ""}`;
             return <article className={cardClassName} key={feature.title}><span>0{index + 1}</span>{icon ? <Image className="feature-icon" src={icon} alt="" width={72} height={72} unoptimized /> : <AdvantageVisual variant={pickContentVisual(`${feature.title} ${feature.body}`, index)} />}<h3>{feature.title}</h3><p>{feature.body}</p></article>;
           })}
@@ -331,7 +341,7 @@ function ProductSpotlight({ app }: { app: NonNullable<ReturnType<typeof findApp>
       <div className="shell product-advantages">
         <div className="product-section-intro reveal"><p className="eyebrow">WHY IT MATTERS</p><h2>기능보다 먼저.<br /><span>달라지는 일.</span></h2><p>{app.tagline} 실제 사용에서 바로 느낄 수 있는 핵심 이점을 먼저 소개합니다.</p></div>
         <div className="product-advantage-grid">
-          {app.features.slice(0, 4).map((feature, index) => <article className="product-advantage-card reveal" key={feature.title}><div><span>{String(index + 1).padStart(2, "0")}</span><small>{app.english.toUpperCase()}</small></div><AdvantageVisual variant={spotlightVisuals[index % spotlightVisuals.length]} /><h3>{feature.title}</h3><p>{feature.body}</p></article>)}
+          {app.features.slice(0, 4).map((feature, index) => <article className="product-advantage-card reveal" key={feature.title}><div><span>{String(index + 1).padStart(2, "0")}</span><small>{app.english.toUpperCase()}</small></div><Image className="campaign-feature-icon" src={featureIconSource(app, feature, index) ?? app.icon ?? "/icon.png"} alt="" width={72} height={72} unoptimized /><h3>{feature.title}</h3><p>{feature.body}</p></article>)}
         </div>
       </div>
     </section>
@@ -562,10 +572,10 @@ function ProductPromotion({ app }: { app: NonNullable<ReturnType<typeof findApp>
           <p>{app.name}의 기능 하나하나가 실제 사용에서 어떤 이점으로 이어지는지 확인하세요.</p>
         </div>
         <div className="product-advantage-grid">
-          {campaign.advantages.map(([number, kicker, title, body, benefit, visual]) => (
+          {campaign.advantages.map(([number, kicker, title, body, benefit], index) => (
             <article className="product-advantage-card reveal" key={number}>
               <div><span>{number}</span><small>{kicker}</small></div>
-              <AdvantageVisual variant={visual as AdvantageVariant} />
+              <Image className="campaign-feature-icon" src={featureIconSource(app, app.features[index] ?? app.features[0], index) ?? app.icon ?? "/icon.png"} alt="" width={72} height={72} unoptimized />
               <h3>{title}</h3><p>{body}</p><strong>{benefit}</strong>
             </article>
           ))}
@@ -760,10 +770,10 @@ function NasFinderPromotion() {
           <p>연결, 재생, 폰하드와 움직이는 사진. 가장 중요한 네 가지 이점을 먼저 보여드리고, 전체 기능은 아래 특징에서 이어서 소개합니다.</p>
         </div>
         <div className="nas-advantage-grid">
-          {advantages.map((advantage) => (
+          {advantages.map((advantage, index) => (
             <article className="nas-advantage-card reveal" key={advantage.number}>
               <div><span>{advantage.number}</span><small>{advantage.kicker}</small></div>
-              <AdvantageVisual variant={advantage.visual} />
+              <Image className="campaign-feature-icon" src={`/apps/nasfinder/features/feature-${String(index + 1).padStart(2, "0")}.webp`} alt="" width={72} height={72} unoptimized />
               <h3>{advantage.title}</h3>
               <p>{advantage.body}</p>
               <strong>{advantage.benefit}</strong>

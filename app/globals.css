@@ -182,6 +182,7 @@ img { display: block; max-width: 100%; }
 .advantage-visual{width:56px;height:56px;margin-top:22px;display:grid;place-items:center;border-radius:16px;background:color-mix(in srgb,var(--campaign,#a993ff) 16%,transparent);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--campaign,#a993ff) 32%,transparent);color:var(--campaign,#a993ff)}
 .advantage-visual svg{width:30px;height:30px}
 .av-glow{fill:currentColor;opacity:.16}
+.campaign-feature-icon{width:72px;height:72px;margin-top:24px;border-radius:17px;object-fit:cover;box-shadow:0 10px 24px #0003}
 .product-promo-artwork>.artwork{min-height:540px;border-radius:0}.product-promo-artwork .product-promo-image-label{z-index:2}
 
 .campaign-vault{--campaign:#9a82ff;--campaign-soft:#d2c7ff;--campaign-deep:#35216f}.campaign-web{--campaign:#58c8ff;--campaign-soft:#b3e8ff;--campaign-deep:#15427b}.campaign-faith{--campaign:#ff9b6b;--campaign-soft:#ffd0b8;--campaign-deep:#752f29}

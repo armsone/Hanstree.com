@@ -441,7 +441,7 @@ test("renders the latest NasFinder and HanClip capabilities", async () => {
   assert.match(hanClip, /서명 APK 재다운로드·무결성 검증 완료/);
 
   const nasFeatureGrid = nasFinder.match(/<div class="feature-grid">[\s\S]*?<\/div>\s*<\/section>/)?.[0] ?? "";
-  assert.equal((nasFeatureGrid.match(/class="advantage-visual"/g) ?? []).length, 13);
+  assert.equal((nasFeatureGrid.match(/class="feature-icon"/g) ?? []).length, 14);
   const nasSupportCards = nasFinder.match(/<section class="support-cards[\s\S]*?<\/section>/)?.[0] ?? "";
   assert.equal((nasSupportCards.match(/class="advantage-visual"/g) ?? []).length, 3);
   const nasDownloadList = nasFinder.match(/<div class="download-list">[\s\S]*?<\/div>\s*<\/section>/)?.[0] ?? "";
