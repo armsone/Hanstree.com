@@ -453,7 +453,7 @@ export const apps: AppData[] = [
       { state: "done", title: "집중된 3열 패널", body: "Codex·Claude·Gemini만 노출하고 퍼센트 굵기를 통일한 정밀 원형 링과 하단 조작을 3열에 맞게 재구성" },
       { state: "done", title: "Claude 인증 창 반복 방지", body: "요청 제한 뒤에도 인증 정보를 안전하게 재사용해 macOS 키체인 권한 창이 반복해서 나타나지 않도록 개선" },
       { state: "done", title: "CCMB 2.0.9 공개", body: "브라우저 로그인이나 키체인 암호창 없이 공식 Claude CLI에 인증 갱신을 맡기는 Apple 공증 Universal DMG 공개" },
-      { state: "active", title: "안정성 개선", body: "Codex·Claude·Gemini 변화와 인증·요청 제한·네트워크·절전 예외에 맞춰 지속 개선" },
+      { state: "active", title: "다음 업데이트 준비", body: "CCMB 전용 Claude 브라우저 연결과 자동 토큰 갱신, Codex·Claude·Gemini의 독립 스마트 주기(1→3→5→10분), 초기화 후 1·10·30초 재확인을 검증 중" },
     ],
     screenshots: [
       { src: "/apps/ccmb/screens/ccmb-usage-menu.png", alt: "CCMB의 Codex·Claude·Gemini 사용량 메뉴", layout: "menu" },
