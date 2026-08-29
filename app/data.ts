@@ -323,7 +323,7 @@ export const apps: AppData[] = [
     icon: "/apps/stand/icon.png",
     artwork: "clock",
     platforms: [
-      { name: "iOS · iPadOS", status: "TestFlight", detail: "2.3.0 (202608282116) · iOS·iPadOS 17+", availabilityNote: "Public Beta 승인 · 공개 테스트 참여 가능" },
+      { name: "iOS · iPadOS", status: "TestFlight", detail: "2.3.1 (202608291936) · iOS·iPadOS 17+", availabilityNote: "2.3.1 Public Beta 심사 대기 · 공개 링크 활성 · 승인된 이전 빌드 테스트 가능" },
       {
         name: "macOS",
         status: "공개",
@@ -369,7 +369,7 @@ export const apps: AppData[] = [
     ],
     progress: [
       { state: "done", title: "시계와 수면 케어", body: "오브제 화면, 반응형 조명과 로컬 수면 기록 구현" },
-      { state: "done", title: "iOS·iPadOS 2.3.0 Public Beta 승인", body: "build 202608282116 Apple 외부 베타 심사 승인 · 기존 Public Beta 링크와 10,000명 한도 유지 · 공개 테스트 참여 가능" },
+      { state: "active", title: "iOS·iPadOS 2.3.1 Public Beta 심사", body: "build 202608291936을 기존 Public Beta 그룹에 연결하고 Beta App Review 대기 중이며 기존 공개 테스트 링크는 유지" },
       { state: "done", title: "Android·Google TV 2.3.6 공개", body: "TV 배터리·매이트 모드를 정리하고 검은 눌림 배경을 제거했으며, 날씨 패널을 1.5배 확대하고 시계를 함께 내린 빌드 202608291816 · 내부 코드 346696 APK 공개" },
       { state: "done", title: "Android·Google TV 2.3.5 공개", body: "보이소의 세 역할, 사람별 다중 연결 경로, 3초 연속 호출 방지와 선택적 종단간 암호화 인터넷 중계를 보강한 빌드 202608291507 · 내부 코드 346507 APK 공개" },
       { state: "done", title: "보이소 무전기", body: "주변 소리 없이 버튼으로 연결된 화면을 부르는 무전기 역할과 3초 연타 방지·고시인성 알림 적용" },

@@ -691,7 +691,7 @@ test("renders current app release and TestFlight information", async () => {
   assert.match(stand, /236cf24361d565ca9649b2e6c9e5df6710e0f7116efa318f88c94830cef56f35/);
   assert.match(stand, /사람별 다중 연결 경로/);
   assert.match(stand, /검은 배경이 생기지 않고 포커스 테두리/);
-  assert.match(stand, /202608282116/);
+  assert.match(stand, /202608291936/);
   assert.match(stand, /a3baaafab73c6f0f111e11e6bafe278164d52deaf9cd559a94dd22169b7b6480/);
   assert.match(stand, /다음 라디오나 다음 곡/);
   assert.match(stand, /android-home-two-line-cards\.png/);
@@ -805,10 +805,11 @@ test("keeps verified TestFlight fallback data for iManager, Button, and HtOMS", 
   const bySlug = new Map(payload.builds.map((build) => [build.slug, build]));
   assert.equal(bySlug.get("nasfinder")?.inviteUrl, "https://testflight.apple.com/join/3m3bhwJz");
   assert.equal(bySlug.get("hanclip")?.inviteUrl, "https://testflight.apple.com/join/m2YsgUJW");
-  assert.equal(bySlug.get("stand")?.build, "202608282116");
-  assert.equal(bySlug.get("stand")?.uploadedAt, "2026-08-28T21:39:26+09:00");
+  assert.equal(bySlug.get("stand")?.build, "202608291936");
+  assert.equal(bySlug.get("stand")?.uploadedAt, "2026-08-29T19:46:11+09:00");
+  assert.equal(bySlug.get("stand")?.expiresAt, "2026-11-27T19:46:11+09:00");
   assert.equal(bySlug.get("stand")?.inviteUrl, "https://testflight.apple.com/join/mGUYTjdp");
-  assert.equal(bySlug.get("stand")?.publicBetaState, "approved");
+  assert.equal(bySlug.get("stand")?.publicBetaState, "waitingForReview");
   assert.equal(bySlug.get("starmanager")?.build, "202608291746");
   assert.equal(bySlug.get("starmanager")?.uploadedAt, "2026-08-29T17:56:17+09:00");
   assert.equal(bySlug.get("starmanager")?.expiresAt, "2026-11-27T17:56:17+09:00");
