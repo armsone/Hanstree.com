@@ -335,11 +335,11 @@ export const apps: AppData[] = [
       {
         name: "Android · Google TV",
         status: "공개",
-        detail: "2.3.4 · 빌드 202608290922 · 내부 코드 346162 · Android 8.0+",
+        detail: "2.3.5 · 빌드 202608291507 · 내부 코드 346507 · Android 8.0+",
         url: releaseDownloadPath("S.tand-Android"),
         downloadLabel: "Android APK 바로 받기",
-        checksum: "df79b26e658ba91358ba6b53655dd7fd41eb878fdd624088494beb2cd8e48cc8",
-        availabilityNote: "Google TV용 2.3.4 APK 공개 · HLS와 Icecast·Shoutcast 인터넷 라디오 호환성 보강 · TV 실기기 재확인 대기",
+        checksum: "c50869ab58f0dcec046da6f99dc21f91e808153784c6d6d60479d69c7acb6757",
+        availabilityNote: "Android·Google TV용 2.3.5 APK 공개 · 보이소 역할·참여자 경로·선택적 암호화 인터넷 중계 보강 · TV 실기기 재확인 대기",
       },
     ],
     features: [
@@ -347,7 +347,7 @@ export const apps: AppData[] = [
       { title: "매이트와 화들짝", body: "어두운 환경에서 최소 밝기를 유지하고, 매이트 모드 진입 2분 뒤부터 움직임이나 큰소리에 화면과 조명이 반응합니다." },
       { title: "로컬 수면 기록", body: "코골이·잠꼬대·뒤척임 후보를 기기 안에 기록하고 타임라인으로 확인합니다." },
       { title: "내 화면 만들기", body: "화면을 움직이지 않고 2초 동안 눌렀을 때만 편집을 엽니다. 가로 음량 조절이나 세로 밝기 조절 중에는 편집 모드로 바뀌지 않으며, 밝기·시계 글꼴·배치·테마를 화면 방향에 맞게 꾸밀 수 있습니다." },
-      { title: "보이소", body: "QR로 가까운 기기를 연결해 움직임·소리 이벤트를 나누거나, 무전기 역할에서 버튼을 눌러 연결된 화면을 직접 부릅니다." },
+      { title: "보이소", body: "QR로 볼 사람·말할 사람·무전기를 연결하고 Wi‑Fi·Bluetooth·인터넷 경로를 사람별로 한눈에 봅니다. 원음과 녹음은 보내지 않으며, 무전기는 버튼을 눌렀을 때만 연결된 화면을 부릅니다." },
       { title: "두 줄 음악·제어 카드", body: "음악과 잠소리·보이소·설정을 아이콘과 제목, 상태의 두 줄로 또렷하게 보여 줍니다. iPhone·iPad의 음악 카드는 왼쪽 절반으로 재생·일시정지하고 오른쪽 절반으로 다음 라디오나 다음 곡을 고르며, 음악 스트립을 밀면 채널 카드가 움직입니다." },
       { title: "라디오 프리셋 이동", body: "직접 등록한 HTTP·HTTPS 라디오 채널을 S.tand 파일로 내보내 다른 Apple·Android 기기에서 가져옵니다. Google TV에는 같은 Wi-Fi의 휴대전화로 QR 전송하며 외부 서버를 거치지 않습니다." },
       { title: "Google TV 리모컨 지원", body: "10-foot 가로 화면에서 D-pad로 음악·설정·테마·밝기·시계 크기를 조작합니다. 테두리와 검은 선택 효과는 마지막 조작 5초 뒤 함께 사라지고, 홈에서 뒤로가기를 누르면 앱이 정상 종료됩니다." },
@@ -370,7 +370,7 @@ export const apps: AppData[] = [
     progress: [
       { state: "done", title: "시계와 수면 케어", body: "오브제 화면, 반응형 조명과 로컬 수면 기록 구현" },
       { state: "active", title: "iOS·iPadOS 2.3.0 TestFlight", body: "build 202608282116 업로드와 Apple 처리를 완료하고 내부 테스트에 연결 · 기존 Public Beta 링크 유지 · 새 빌드 외부 그룹 연결 확인 대기" },
-      { state: "done", title: "Android·Google TV 2.3.4 공개", body: "HLS 리디렉션 방송과 Icecast·Shoutcast MP3 스트림 판별, 잘못 붙은 URL 쿼리 역슬래시 복구와 채널 전환 안전성을 보강한 빌드 202608290922 · 내부 코드 346162 APK 공개" },
+      { state: "done", title: "Android·Google TV 2.3.5 공개", body: "보이소의 세 역할, 사람별 다중 연결 경로, 3초 연속 호출 방지와 선택적 종단간 암호화 인터넷 중계를 보강한 빌드 202608291507 · 내부 코드 346507 APK 공개" },
       { state: "done", title: "보이소 무전기", body: "주변 소리 없이 버튼으로 연결된 화면을 부르는 무전기 역할과 3초 연타 방지·고시인성 알림 적용" },
       { state: "done", title: "Mac 2.3.0 공개", body: "라디오 프리셋 가져오기·내보내기와 HTTP 주소 지원을 적용하고 Developer ID 서명·Apple 공증·실행 검증을 마친 build 202608282116 DMG 공개" },
       { state: "done", title: "휴대전화 가로 음악 배치", body: "iPhone 대표 가로 배치를 Android에도 적용하고 음악 스트립과 오른쪽 고정 제어 패널이 겹치지 않게 정리" },
