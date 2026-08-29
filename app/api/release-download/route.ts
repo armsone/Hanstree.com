@@ -56,7 +56,11 @@ async function resolveLatestAssetUrl(key: DownloadKey) {
 
 export async function GET(request: Request) {
   const requested = new URL(request.url).searchParams.get("app");
-  const normalizedRequest = requested === "StarManager-Android" ? "iManager-Android" : requested;
+  const normalizedRequest = requested === "StarManager-Android" || requested === "iManager-Android"
+    ? "iManagerAI-Android"
+    : requested === "button-Android" || requested === "Button-Android"
+      ? "OurButton-Android"
+      : requested;
   const key = DOWNLOAD_KEYS.find((candidate) => candidate === normalizedRequest);
   if (!key) return Response.json({ error: "지원하지 않는 다운로드 항목입니다." }, { status: 404 });
 

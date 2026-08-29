@@ -14,8 +14,8 @@ export const DOWNLOAD_KEYS = [
   "WhattoEat",
   "WhattoEat-Android",
   "DenimDex-Android",
-  "button-Android",
-  "iManager-Android",
+  "OurButton-Android",
+  "iManagerAI-Android",
   "HtOMS-BK",
 ] as const;
 
@@ -112,17 +112,17 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     assetPattern: /^DenimDex-Android-\d+\.\d+\.\d+\.apk$/i,
     fallbackUrl: "https://github.com/armsone/DenimDex-Android/releases/download/android-v0.2.1/DenimDex-Android-0.2.1.apk",
   },
-  "button-Android": {
-    label: "버튼 Android",
-    repo: "button-Android",
+  "OurButton-Android": {
+    label: "OurButton Android",
+    repo: "OurButton-Android",
     assetPattern: /\.apk$/i,
-    fallbackUrl: "https://github.com/armsone/button-Android/releases/download/android-v2.0.2/Button-Android-2.0.2.apk",
+    fallbackUrl: "https://github.com/armsone/OurButton-Android/releases/download/android-v2.0.2/Button-Android-2.0.2.apk",
   },
-  "iManager-Android": {
-    label: "아이매니저 Android",
-    repo: "iManager-Android",
-    assetPattern: /^(?:iManager|StarManager)-Android-2\.5\.1\.apk$/i,
-    fallbackUrl: "https://github.com/armsone/iManager-Android/releases/download/android-v2.5.1/StarManager-Android-2.5.1.apk",
+  "iManagerAI-Android": {
+    label: "iManagerAI Android",
+    repo: "iManagerAI-Android",
+    assetPattern: /^(?:iManagerAI|iManager|StarManager)-Android-2\.5\.1\.apk$/i,
+    fallbackUrl: "https://github.com/armsone/iManagerAI-Android/releases/download/android-v2.5.1/StarManager-Android-2.5.1.apk",
   },
   "HtOMS-BK": {
     label: "HtOMS Brief Android",
