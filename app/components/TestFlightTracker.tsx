@@ -4,7 +4,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { findApp } from "../data";
+import { appCardIcon } from "../media";
 import type { TestFlightBuild } from "../testflight";
+import { useNearViewport } from "./useNearViewport";
 
 const LIFE_MS = 90 * 24 * 60 * 60 * 1000;
 
@@ -37,8 +39,10 @@ function formatDate(date: Date) {
 
 export function TestFlightTracker({ builds }: { builds: TestFlightBuild[] }) {
   const [currentBuilds, setCurrentBuilds] = useState(builds);
+  const [containerRef, isNearViewport] = useNearViewport<HTMLDivElement>();
 
   useEffect(() => {
+    if (!isNearViewport) return;
     const controller = new AbortController();
     fetch("/api/testflight-builds", { signal: controller.signal })
       .then((response) => response.ok ? response.json() : Promise.reject(new Error("TestFlight lookup failed")))
@@ -53,17 +57,17 @@ export function TestFlightTracker({ builds }: { builds: TestFlightBuild[] }) {
       })
       .catch(() => undefined);
     return () => controller.abort();
-  }, [builds]);
+  }, [builds, isNearViewport]);
 
   return (
-    <div className="testflight-grid">
+    <div className="testflight-grid" ref={containerRef}>
       {currentBuilds.map((build) => {
         const state = getBuildState(build);
         const app = findApp(build.slug);
         return (
           <article className="testflight-card" key={build.slug}>
             <div className="testflight-card-head">
-              <div>{app?.icon && <Image className="release-app-icon" src={app.icon} alt="" width={52} height={52} unoptimized />}<div><span className="flight-dot" /><h3>{build.appName}</h3></div></div>
+              <div>{app?.icon && <Image className="release-app-icon" src={appCardIcon(app)} alt="" width={256} height={256} sizes="52px" unoptimized />}<div><span className="flight-dot" /><h3>{build.appName}</h3></div></div>
               <Link href={`/apps/${build.slug}`}>앱 보기</Link>
             </div>
             {state ? <>

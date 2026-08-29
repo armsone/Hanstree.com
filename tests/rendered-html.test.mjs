@@ -48,7 +48,7 @@ test("server-renders the NasFinder.com homepage", async () => {
     "nasfinder", "super-thumbnail", "hanclip", "stand", "ccmb", "btn", "trackpadguard",
     "htoms-brief", "intosharp", "airchurch", "button", "starmanager", "minecraft-server", "whattoeat", "denimdex", "aibi",
   ]) {
-    assert.match(html, new RegExp(`/apps/${slug}/${slug}-hero-v2\\.png`), slug);
+    assert.match(html, new RegExp(`/apps/${slug}/home-card\\.webp`), slug);
   }
   assert.match(html, /class="hero-product-image"/);
   assert.match(html, /class="app-row-representative"/);
@@ -64,7 +64,7 @@ test("server-renders the NasFinder.com homepage", async () => {
   assert.match(html, /한양/);
   assert.match(html, /HANYANG/);
   assert.match(html, /나의 디지털 수도/);
-  assert.match(html, /hanyang-city-hero-v3\.png/);
+  assert.match(html, /\/apps\/hanai\/home-card\.webp/);
   assert.match(html, />01<\/strong><span>한 사람의 꾸준한 기록/);
   assert.doesNotMatch(html, /id="motion-bridge"/);
   assert.doesNotMatch(html, /NASFINDER FLAGSHIP FEATURE/);

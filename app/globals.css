@@ -266,6 +266,9 @@ img { display: block; max-width: 100%; }
   html{scroll-behavior:auto}.reveal,.hero-orbit-art::before,.hero-orbit-ring,.hero-artwork-hanai::before,.hero-artwork-hanai::after,.hero-artwork-hanai .hero-artwork-backdrop,.artwork-intelligence>img,.artwork-intelligence::after,.intelligence-aura,.hero-product-hanai .hero-product-image,.app-row-hanai .app-row-representative img{animation:none!important}.button,.hero-product,.phone-shot,.nas-advantage-card,.support-cards>a{transition:none!important}
 }
 
+/* Keep below-the-fold product and release sections out of the initial render cost. */
+.apps-section,.testflight-section,.testflight-invite-section,.android-release-section,.site-counter-section,.principles,.contact-band{content-visibility:auto;contain-intrinsic-size:auto 900px}
+
 /* Keep every release collection on the same phone / tablet / desktop rhythm. */
 @media (min-width: 601px) {
   .testflight-grid,.testflight-invite-grid,.android-release-grid{grid-template-columns:repeat(2,minmax(0,1fr))}

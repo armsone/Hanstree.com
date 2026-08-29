@@ -4,7 +4,9 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { AdvantageVisual, type AdvantageVariant } from "./AdvantageVisual";
 import { findApp } from "../data";
+import { appCardIcon } from "../media";
 import { releaseDownloadPath, type DownloadKey } from "../releases";
+import { useNearViewport } from "./useNearViewport";
 
 const ANDROID_APP_SLUGS: Record<string, string> = {
   "NasFinder-Android": "nasfinder",
@@ -59,8 +61,10 @@ function formatBytes(bytes?: number) {
 export function AndroidReleaseTracker() {
   const [data, setData] = useState<ReleaseResponse | null>(null);
   const [failed, setFailed] = useState(false);
+  const [containerRef, isNearViewport] = useNearViewport<HTMLDivElement>();
 
   useEffect(() => {
+    if (!isNearViewport) return;
     const controller = new AbortController();
     fetch("/api/android-releases", { signal: controller.signal })
       .then((response) => {
@@ -72,7 +76,7 @@ export function AndroidReleaseTracker() {
         if (!(error instanceof DOMException && error.name === "AbortError")) setFailed(true);
       });
     return () => controller.abort();
-  }, []);
+  }, [isNearViewport]);
 
   const placeholders: Release[] = [
     { appName: "나스파인더", repo: "NasFinder-Android", available: false },
@@ -86,13 +90,13 @@ export function AndroidReleaseTracker() {
   const releases = data?.releases || placeholders;
 
   return (
-    <div>
+    <div ref={containerRef}>
       <div className="android-release-grid" aria-live="polite">
         {releases.map((release) => {
           const app = findApp(ANDROID_APP_SLUGS[release.repo]);
           const { productVersion, buildNumber, internalCode } = releaseIdentityFor(release, app);
           return <article className="android-release-card" key={release.repo}>
-            <div className="android-release-head"><span className="android-app-mark">{app?.icon && <Image className="release-app-icon" src={app.icon} alt="" width={56} height={56} unoptimized />}<span className="android-platform-badge"><img src="/brands/android.svg" alt="" aria-hidden="true" /></span></span><div><p>{release.repo}</p><h3>{release.appName} Android</h3></div></div>
+            <div className="android-release-head"><span className="android-app-mark">{app?.icon && <Image className="release-app-icon" src={appCardIcon(app)} alt="" width={256} height={256} sizes="56px" unoptimized />}<span className="android-platform-badge"><img src="/brands/android.svg" alt="" aria-hidden="true" /></span></span><div><p>{release.repo}</p><h3>{release.appName} Android</h3></div></div>
             {release.available ? <>
               <div className="android-version"><strong>{productVersion}</strong><span>최신 공개판</span></div>
               <dl>

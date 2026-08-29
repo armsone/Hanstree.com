@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { DOWNLOAD_KEYS, RELEASE_DOWNLOADS, sortDownloadKeysByCount } from "../releases";
+import { useNearViewport } from "./useNearViewport";
 
 type SiteStats = {
   todayVisits: number;
@@ -12,8 +13,10 @@ type SiteStats = {
 
 export function SiteCounter() {
   const [stats, setStats] = useState<SiteStats | null>(null);
+  const [sectionRef, isNearViewport] = useNearViewport<HTMLElement>();
 
   useEffect(() => {
+    if (!isNearViewport) return;
     const load = () => {
       fetch("/api/site-stats", { cache: "no-store" }).then(async (response) => {
         if (!response.ok) throw new Error("site stats unavailable");
@@ -23,14 +26,14 @@ export function SiteCounter() {
     load();
     window.addEventListener("nasfinder:visit-counted", load);
     return () => window.removeEventListener("nasfinder:visit-counted", load);
-  }, []);
+  }, [isNearViewport]);
 
   const number = (value?: number) => value === undefined ? "—" : value.toLocaleString("ko-KR");
   const orderedRepoLabels = sortDownloadKeysByCount(DOWNLOAD_KEYS, stats?.downloads)
     .map((key) => [key, RELEASE_DOWNLOADS[key].label] as const);
 
   return (
-    <section id="records" className="site-counter-section shell" aria-labelledby="site-counter-title">
+    <section id="records" className="site-counter-section shell" aria-labelledby="site-counter-title" ref={sectionRef}>
       <div className="counter-heading">
         <div><p className="eyebrow">A SMALL, HONEST COUNTER</p><h2 id="site-counter-title">얼마나 만나고,<br />얼마나 받아 갔는지.</h2></div>
         <p>개인을 식별하지 않고 숫자만 남깁니다. 방문은 같은 브라우저에서 하루 한 번, 다운로드는 이 홈페이지의 받기 버튼을 누른 횟수입니다.</p>

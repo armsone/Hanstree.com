@@ -1,10 +1,11 @@
 import Image from "next/image";
 import type { AppData, Platform } from "../data";
+import { appCardIcon } from "../media";
 import { LiveFlipClock, LiveSeoulWeather } from "./LiveFlipClock";
 
 export function AppIcon({ app, priority = false }: { app: AppData; priority?: boolean }) {
   if (app.icon) {
-    return <Image className="app-icon" src={app.icon} alt="" width={128} height={128} priority={priority} sizes="(max-width: 640px) 58px, 72px" unoptimized />;
+    return <Image className="app-icon" src={appCardIcon(app)} alt="" width={256} height={256} priority={priority} sizes="(max-width: 640px) 58px, 72px" unoptimized />;
   }
 
   return <span className={`app-icon app-icon-letter theme-${app.theme}`} aria-hidden="true">C</span>;
