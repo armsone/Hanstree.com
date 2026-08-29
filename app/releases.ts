@@ -121,7 +121,7 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     label: "HtOMS Brief Android",
     repo: "HtOMS-BK",
     assetPattern: /^HtOMS-Brief-Android-.*\.apk$/i,
-    fallbackUrl: "https://github.com/armsone/HtOMS-BK/releases/download/android-v2.1.0/HtOMS-Brief-Android-2.1.0.apk",
+    fallbackUrl: "https://github.com/armsone/HtOMS-BK/releases/download/android-v2.1.1/HtOMS-Brief-Android-2.1.1.apk",
   },
 };
 

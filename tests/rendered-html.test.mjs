@@ -337,8 +337,8 @@ test("renders HtOMS with its own sales dashboard artwork", async () => {
   assert.match(html, /Android · Google TV/);
   assert.match(html, /Android용 APK 다운로드/);
   assert.match(html, /release-download\?app=HtOMS-BK/);
-  assert.match(html, /340964/);
-  assert.match(html, /5e1d5176f617dcae13d4d8c4e018af6d2416508e59a177d183bf5b51d780555d/);
+  assert.match(html, /346542/);
+  assert.match(html, /66ebee56a5724be93798dd7de7dbd6a80e2139d4cf4bfcc19ae6bbf45806c54d/);
   assert.match(html, /Android 대응 앱 구현/);
   assert.doesNotMatch(html, />Photos</);
   assert.doesNotMatch(html, /IMG_2048\.HEIC/);
@@ -750,7 +750,7 @@ test("routes public download buttons through the allowlisted release redirect", 
   assert.equal(nasFinderMac.status, 302);
   assert.match(nasFinderMac.headers.get("location") ?? "", /^https:\/\/github\.com\/armsone\/NasFinder\/releases\//);
   assert.equal(htoms.status, 302);
-  assert.match(htoms.headers.get("location") ?? "", /^https:\/\/github\.com\/armsone\/HtOMS-BK\/releases\/download\/android-v2\.1\.0\/HtOMS-Brief-Android-2\.1\.0\.apk$/);
+  assert.match(htoms.headers.get("location") ?? "", /^https:\/\/github\.com\/armsone\/HtOMS-BK\/releases\/download\/android-v2\.1\.1\/HtOMS-Brief-Android-2\.1\.1\.apk$/);
 });
 
 test("refuses bot and direct download requests before redirecting", async () => {
