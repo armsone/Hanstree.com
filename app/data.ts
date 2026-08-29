@@ -323,7 +323,7 @@ export const apps: AppData[] = [
     icon: "/apps/stand/icon.png",
     artwork: "clock",
     platforms: [
-      { name: "iOS · iPadOS", status: "TestFlight", detail: "2.3.0 (202608282116) · iOS·iPadOS 17+", availabilityNote: "App Store Connect 처리 완료 · 내부 테스트 연결 · Public Beta 연결 확인 대기" },
+      { name: "iOS · iPadOS", status: "TestFlight", detail: "2.3.0 (202608282116) · iOS·iPadOS 17+", availabilityNote: "Public Beta 승인 · 공개 테스트 참여 가능" },
       {
         name: "macOS",
         status: "공개",
@@ -369,7 +369,7 @@ export const apps: AppData[] = [
     ],
     progress: [
       { state: "done", title: "시계와 수면 케어", body: "오브제 화면, 반응형 조명과 로컬 수면 기록 구현" },
-      { state: "active", title: "iOS·iPadOS 2.3.0 TestFlight", body: "build 202608282116 업로드와 Apple 처리를 완료하고 내부 테스트에 연결 · 기존 Public Beta 링크 유지 · 새 빌드 외부 그룹 연결 확인 대기" },
+      { state: "done", title: "iOS·iPadOS 2.3.0 Public Beta 승인", body: "build 202608282116 Apple 외부 베타 심사 승인 · 기존 Public Beta 링크와 10,000명 한도 유지 · 공개 테스트 참여 가능" },
       { state: "done", title: "Android·Google TV 2.3.5 공개", body: "보이소의 세 역할, 사람별 다중 연결 경로, 3초 연속 호출 방지와 선택적 종단간 암호화 인터넷 중계를 보강한 빌드 202608291507 · 내부 코드 346507 APK 공개" },
       { state: "done", title: "보이소 무전기", body: "주변 소리 없이 버튼으로 연결된 화면을 부르는 무전기 역할과 3초 연타 방지·고시인성 알림 적용" },
       { state: "done", title: "Mac 2.3.0 공개", body: "라디오 프리셋 가져오기·내보내기와 HTTP 주소 지원을 적용하고 Developer ID 서명·Apple 공증·실행 검증을 마친 build 202608282116 DMG 공개" },

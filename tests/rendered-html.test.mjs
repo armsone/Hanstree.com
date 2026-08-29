@@ -792,6 +792,10 @@ test("keeps verified TestFlight fallback data for StarManager, Button, and HtOMS
   const bySlug = new Map(payload.builds.map((build) => [build.slug, build]));
   assert.equal(bySlug.get("nasfinder")?.inviteUrl, "https://testflight.apple.com/join/3m3bhwJz");
   assert.equal(bySlug.get("hanclip")?.inviteUrl, "https://testflight.apple.com/join/m2YsgUJW");
+  assert.equal(bySlug.get("stand")?.build, "202608282116");
+  assert.equal(bySlug.get("stand")?.uploadedAt, "2026-08-28T21:39:26+09:00");
+  assert.equal(bySlug.get("stand")?.inviteUrl, "https://testflight.apple.com/join/mGUYTjdp");
+  assert.equal(bySlug.get("stand")?.publicBetaState, "approved");
   assert.equal(bySlug.get("starmanager")?.build, "202608291632");
   assert.equal(bySlug.get("starmanager")?.uploadedAt, "2026-08-29T16:37:14+09:00");
   assert.equal(bySlug.get("starmanager")?.expiresAt, "2026-11-27T16:37:14+09:00");
