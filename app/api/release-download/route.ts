@@ -56,7 +56,8 @@ async function resolveLatestAssetUrl(key: DownloadKey) {
 
 export async function GET(request: Request) {
   const requested = new URL(request.url).searchParams.get("app");
-  const key = DOWNLOAD_KEYS.find((candidate) => candidate === requested);
+  const normalizedRequest = requested === "StarManager-Android" ? "iManager-Android" : requested;
+  const key = DOWNLOAD_KEYS.find((candidate) => candidate === normalizedRequest);
   if (!key) return Response.json({ error: "지원하지 않는 다운로드 항목입니다." }, { status: 404 });
 
   // 라우터 prefetch·RSC 조회는 실제 다운로드가 아니므로 집계와 GitHub 조회 없이 응답합니다.

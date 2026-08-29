@@ -15,7 +15,7 @@ export const DOWNLOAD_KEYS = [
   "WhattoEat-Android",
   "DenimDex-Android",
   "button-Android",
-  "StarManager-Android",
+  "iManager-Android",
   "HtOMS-BK",
 ] as const;
 
@@ -118,11 +118,11 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     assetPattern: /\.apk$/i,
     fallbackUrl: "https://github.com/armsone/button-Android/releases/download/android-v2.0.2/Button-Android-2.0.2.apk",
   },
-  "StarManager-Android": {
-    label: "스타매니저 Android",
-    repo: "StarManager-Android",
-    assetPattern: /^StarManager-Android-2\.5\.1\.apk$/i,
-    fallbackUrl: "https://github.com/armsone/StarManager-Android/releases/download/android-v2.5.1/StarManager-Android-2.5.1.apk",
+  "iManager-Android": {
+    label: "아이매니저 Android",
+    repo: "iManager-Android",
+    assetPattern: /^(?:iManager|StarManager)-Android-2\.5\.1\.apk$/i,
+    fallbackUrl: "https://github.com/armsone/iManager-Android/releases/download/android-v2.5.1/StarManager-Android-2.5.1.apk",
   },
   "HtOMS-BK": {
     label: "HtOMS Brief Android",

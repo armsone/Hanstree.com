@@ -14,7 +14,7 @@ const ANDROID_APP_SLUGS: Record<string, string> = {
   "S.tand-Android": "stand",
   "HtOMS-BK": "htoms-brief",
   "button-Android": "button",
-  "StarManager-Android": "starmanager",
+  "iManager-Android": "starmanager",
   "WhattoEat-Android": "whattoeat",
   "DenimDex-Android": "denimdex",
 };
@@ -85,7 +85,7 @@ export function AndroidReleaseTracker() {
     { appName: "S.tand", repo: "S.tand-Android", available: false },
     { appName: "HtOMS 브리프", repo: "HtOMS-BK", available: false },
     { appName: "버튼", repo: "button-Android", available: false },
-    { appName: "스타매니저", repo: "StarManager-Android", available: false },
+    { appName: "아이매니저", repo: "iManager-Android", available: false },
     { appName: "오늘 뭐 먹지?", repo: "WhattoEat-Android", available: false },
     { appName: "데님덱스", repo: "DenimDex-Android", available: false },
   ];
