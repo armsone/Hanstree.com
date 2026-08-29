@@ -14,6 +14,17 @@ type RouteProps = { params: Promise<{ path: string[] }> };
 
 const campaignSlugs = new Set(["super-thumbnail", "hanclip", "stand", "ccmb", "trackpadguard", "intosharp", "airchurch", "denimdex"]);
 
+const denimDexFeatureIcons: Record<string, string> = {
+  "한 벌을 최대 30장의 디테일로": "/apps/denimdex/features/photo-details.webp",
+  "제품 정보와 생산 단서를 먼저": "/apps/denimdex/features/manufacturing-clues.webp",
+  "근거에 맞춘 보수적 희귀도": "/apps/denimdex/features/rarity-evidence.webp",
+  "한국과 일본의 적정 매입가를 나란히": "/apps/denimdex/features/market-prices.webp",
+  "팔았을 때 남는 금액까지": "/apps/denimdex/features/net-profit.webp",
+  "판단 근거와 확실성을 함께": "/apps/denimdex/features/evidence-confidence.webp",
+  "나만의 데님 아카이브": "/apps/denimdex/features/denim-archive.webp",
+  "사진은 가볍게, 단서는 선명하게": "/apps/denimdex/features/photo-compression.webp",
+};
+
 const contentVisualRules: [RegExp, AdvantageVariant][] = [
   [/최대 30장|사진 1~8장|고른 사진을 모두|여러 각도.*촬영/, "photo-stack"],
   [/생산 단서|라벨.*버튼.*리벳|제품 정보.*제조공장/, "denim-clues"],
@@ -206,7 +217,12 @@ export default async function AppRoute({ params }: RouteProps) {
       <section className="feature-section shell" id="features">
         <div className="section-heading reveal"><div><p className="eyebrow">FEATURES</p><h2>복잡함은 덜고,<br />쓰임은 선명하게.</h2></div></div>
         <div className="feature-grid">
-          {app.features.map((feature, index) => <article className="feature-card feature-card-iconized reveal" key={feature.title}><span>0{index + 1}</span>{feature.icon ? <Image className="feature-icon" src={feature.icon} alt="" width={72} height={72} unoptimized /> : <AdvantageVisual variant={pickContentVisual(`${feature.title} ${feature.body}`, index)} />}<h3>{feature.title}</h3><p>{feature.body}</p></article>)}
+          {app.features.map((feature, index) => {
+            const denimDexIcon = app.slug === "denimdex" ? denimDexFeatureIcons[feature.title] : undefined;
+            const icon = feature.icon ?? denimDexIcon;
+            const cardClassName = `feature-card feature-card-iconized reveal${icon ? " feature-card-inline-icon" : ""}`;
+            return <article className={cardClassName} key={feature.title}><span>0{index + 1}</span>{icon ? <Image className="feature-icon" src={icon} alt="" width={72} height={72} unoptimized /> : <AdvantageVisual variant={pickContentVisual(`${feature.title} ${feature.body}`, index)} />}<h3>{feature.title}</h3><p>{feature.body}</p></article>;
+          })}
         </div>
       </section>
 
