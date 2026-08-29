@@ -323,7 +323,7 @@ export const apps: AppData[] = [
     icon: "/apps/stand/icon.png",
     artwork: "clock",
     platforms: [
-      { name: "iOS · iPadOS", status: "TestFlight", detail: "2.3.1 (202608291936) · iOS·iPadOS 17+", availabilityNote: "2.3.1 Public Beta 심사 대기 · 공개 링크 활성 · 승인된 이전 빌드 테스트 가능" },
+      { name: "iOS · iPadOS", status: "TestFlight", detail: "2.3.1 (202608291936) · iOS·iPadOS 17+", availabilityNote: "2.3.1 Public Beta 승인 · 공개 테스트 참여 가능" },
       {
         name: "macOS",
         status: "공개",
@@ -369,7 +369,7 @@ export const apps: AppData[] = [
     ],
     progress: [
       { state: "done", title: "시계와 수면 케어", body: "오브제 화면, 반응형 조명과 로컬 수면 기록 구현" },
-      { state: "active", title: "iOS·iPadOS 2.3.1 Public Beta 심사", body: "build 202608291936을 기존 Public Beta 그룹에 연결하고 Beta App Review 대기 중이며 기존 공개 테스트 링크는 유지" },
+      { state: "done", title: "iOS·iPadOS 2.3.1 Public Beta 승인", body: "build 202608291936 Apple 외부 베타 심사 승인 · 기존 Public Beta 링크와 10,000명 한도 유지 · 공개 테스트 참여 가능" },
       { state: "done", title: "Android·Google TV 2.3.6 공개", body: "TV 배터리·매이트 모드를 정리하고 검은 눌림 배경을 제거했으며, 날씨 패널을 1.5배 확대하고 시계를 함께 내린 빌드 202608291816 · 내부 코드 346696 APK 공개" },
       { state: "done", title: "Android·Google TV 2.3.5 공개", body: "보이소의 세 역할, 사람별 다중 연결 경로, 3초 연속 호출 방지와 선택적 종단간 암호화 인터넷 중계를 보강한 빌드 202608291507 · 내부 코드 346507 APK 공개" },
       { state: "done", title: "보이소 무전기", body: "주변 소리 없이 버튼으로 연결된 화면을 부르는 무전기 역할과 3초 연타 방지·고시인성 알림 적용" },
@@ -730,7 +730,7 @@ export const apps: AppData[] = [
     icon: "/apps/button/icon.png",
     artwork: "phones",
     platforms: [
-      { name: "iPhone", status: "TestFlight", detail: "2.1.0 · 빌드 202608292118 · iOS 17+", availabilityNote: "2.1.0 Public Beta 심사 대기 · 공개 링크 활성 · 승인된 이전 빌드 테스트 가능" },
+      { name: "iPhone", status: "TestFlight", detail: "2.1.0 · 빌드 202608292118 · iOS 17+", availabilityNote: "2.1.0 Public Beta 승인 · 공개 테스트 참여 가능" },
       {
         name: "Android",
         status: "공개",
@@ -769,7 +769,7 @@ export const apps: AppData[] = [
       { state: "done", title: "iPhone 2.0.0 업로드", body: "build 202608230737 TestFlight 처리 완료" },
       { state: "done", title: "Android 2.0.1 공개", body: "제품 2.0.1 · 빌드 202608251400 · 내부 코드 340680의 기존 설치 호환 전용 서명 APK와 제품 버전 기준 자동 업데이트를 GitHub Releases에 공개" },
       { state: "done", title: "Android 2.0.2 여러 공간 안정화 공개", body: "공간을 바꿔도 진행 중인 전송 대상이 섞이지 않고 구성원·알림 상태를 정확히 새로고침하는 패치를 전용 서명 APK로 공개" },
-      { state: "active", title: "iPhone 2.1.0 Public Beta 심사", body: "build 202608292118을 내부 테스트와 기존 Public Beta 그룹에 연결하고 Beta App Review 대기 중이며 기존 공개 테스트 링크는 유지" },
+      { state: "done", title: "iPhone 2.1.0 Public Beta 승인", body: "build 202608292118 Apple 외부 베타 심사 승인 · 기존 Public Beta 링크와 10,000명 한도 유지 · 공개 테스트 참여 가능" },
       { state: "done", title: "Android 2.1.0 공개", body: "제품 2.1.0 · 빌드 202608292118 · 내부 코드 346907의 APK와 SHA-256 체크섬을 GitHub Releases에 공개하고 호환 서명의 실기기 2대에서 데이터 유지 교체 설치·실행 확인" },
       { state: "done", title: "NAS 여러 공간 중계 반영", body: "운영 서버를 최신 여러 공간 서버로 교체하고 원거리 가족 목록 경로까지 확인" },
       { state: "done", title: "Android 원격 수신", body: "FCM 등록·백그라운드 대상 검증·원본 띵동 소리·호출 기록까지 NAS 실전 전달 확인" },
@@ -801,7 +801,7 @@ export const apps: AppData[] = [
     icon: "/apps/starmanager/icon.png",
     artwork: "phones",
     platforms: [
-      { name: "iPhone · iPad", status: "TestFlight", detail: "2.6.0 · 빌드 202608292118 · iOS·iPadOS 18+", availabilityNote: "2.6.0 Public Beta 심사 대기 · 공개 링크 활성 · 승인된 이전 빌드 테스트 가능" },
+      { name: "iPhone · iPad", status: "TestFlight", detail: "2.6.0 · 빌드 202608292118 · iOS·iPadOS 18+", availabilityNote: "2.6.0 Public Beta 승인 · 공개 테스트 참여 가능" },
       {
         name: "Android",
         status: "공개",
@@ -844,7 +844,7 @@ export const apps: AppData[] = [
       { state: "done", title: "Android 2.5.1 공개", body: "제품 2.5.1 · 빌드 202608291746 · 내부 코드 346666의 자동화·공유·카메라 흐름을 담은 APK를 GitHub Releases에 공개하고 Android 실기기 3대에서 데이터 유지 교체 설치·실행 검증" },
       { state: "done", title: "Android 2.6.0 공개", body: "제품 2.6.0 · 빌드 202608292118 · 내부 코드 346907의 APK와 SHA-256 체크섬을 GitHub Releases에 공개하고 Android 실기기 3대에서 데이터 유지 교체 설치·실행 검증" },
       { state: "done", title: "iPhone·iPad 2.5.1 설치·업로드", body: "2.5.1 (202608291746)을 사용 가능한 iPhone 2대에 데이터 유지 교체 설치하고 App Store Connect 업로드와 기존 내부 테스트 9명 연결을 확인" },
-      { state: "active", title: "iOS·iPadOS 2.6.0 Public Beta 심사", body: "build 202608292118을 기존 Public Beta 그룹에 연결하고 Beta App Review 대기 중이며 기존 공개 테스트 링크는 유지" },
+      { state: "done", title: "iOS·iPadOS 2.6.0 Public Beta 승인", body: "build 202608292118 Apple 외부 베타 심사 승인 · 기존 Public Beta 링크와 10,000명 한도 유지 · 공개 테스트 참여 가능" },
       { state: "next", title: "게시 흐름 다듬기", body: "실제 공유 앱별 게시 결과와 사용자 피드백을 바탕으로 다음 개선 항목을 정리" },
     ],
     screenshots: [
