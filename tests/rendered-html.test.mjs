@@ -608,6 +608,7 @@ test("shows the current CCMB three-service release", async () => {
   assert.match(html, /로그인 창 없는 Claude 자동 복구/);
   assert.match(html, /CCMB 전용 Claude 브라우저 연결/);
   assert.match(html, /독립 스마트 주기/);
+  assert.match(html, /하단 조작부 정렬/);
   assert.match(html, /refresh token을 읽거나 수정하지 않고/);
   assert.match(html, /데이터 연결만 안전하게 다시 시작/);
   assert.match(html, /자동 다운로드 여부/);
