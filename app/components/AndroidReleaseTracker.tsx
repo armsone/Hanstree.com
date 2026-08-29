@@ -97,7 +97,7 @@ export function AndroidReleaseTracker() {
         {releases.map((release) => {
           const app = findApp(ANDROID_APP_SLUGS[release.repo]);
           const { productVersion, buildNumber, internalCode } = releaseIdentityFor(release, app);
-          const displayName = release.repo === "HanClip-Android" ? release.appName : `${release.appName} Android`;
+          const displayName = release.appName;
           return <article className="android-release-card" key={release.repo}>
             <div className="android-release-head"><span className="android-app-mark">{app?.icon && <Image className="release-app-icon" src={appCardIcon(app)} alt="" width={256} height={256} sizes="56px" unoptimized />}<span className="android-platform-badge"><img src="/brands/android.svg" alt="" aria-hidden="true" /></span></span><div><p>{release.repo}</p><h3>{displayName}</h3></div></div>
             {release.available ? <>
