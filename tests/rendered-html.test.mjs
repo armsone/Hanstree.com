@@ -294,7 +294,7 @@ test("renders the iManagerAI product and matchup disclosure", async () => {
   assert.match(html, /오늘의 이야기를, 내 목소리로 완성합니다/);
   assert.match(html, /iManagerAI iPhone 스튜디오의 AI 선택과 새 캔버스 화면/);
   assert.match(html, /href="https:\/\/testflight\.apple\.com\/join\/nzmW4WxW"/);
-  assert.match(html, /2\.5\.1 · 빌드 202608291746/);
+  assert.match(html, /2\.6\.0 · 빌드 202608292118/);
   assert.match(html, /사진 앱에서 바로 시작/);
   assert.match(html, /내가 켤 때만 자동화/);
   assert.match(html, /공유와 카메라는 언제나/);
@@ -810,9 +810,9 @@ test("keeps verified TestFlight fallback data for iManagerAI, OurButton, and HtO
   assert.equal(bySlug.get("stand")?.expiresAt, "2026-11-27T19:46:11+09:00");
   assert.equal(bySlug.get("stand")?.inviteUrl, "https://testflight.apple.com/join/mGUYTjdp");
   assert.equal(bySlug.get("stand")?.publicBetaState, "waitingForReview");
-  assert.equal(bySlug.get("starmanager")?.build, "202608291746");
-  assert.equal(bySlug.get("starmanager")?.uploadedAt, "2026-08-29T17:56:17+09:00");
-  assert.equal(bySlug.get("starmanager")?.expiresAt, "2026-11-27T17:56:17+09:00");
+  assert.equal(bySlug.get("starmanager")?.build, "202608292118");
+  assert.equal(bySlug.get("starmanager")?.uploadedAt, "2026-08-29T21:37:47+09:00");
+  assert.equal(bySlug.get("starmanager")?.expiresAt, "2026-11-27T21:37:47+09:00");
   assert.equal(bySlug.get("starmanager")?.inviteUrl, "https://testflight.apple.com/join/nzmW4WxW");
   assert.equal(bySlug.get("starmanager")?.publicBetaState, "waitingForReview");
   assert.equal(bySlug.get("button")?.build, "202608291609");

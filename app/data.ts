@@ -799,7 +799,7 @@ export const apps: AppData[] = [
     icon: "/apps/starmanager/icon.png",
     artwork: "phones",
     platforms: [
-      { name: "iPhone · iPad", status: "TestFlight", detail: "2.5.1 · 빌드 202608291746 · iOS·iPadOS 18+", availabilityNote: "2.5.1 Public Beta 심사 대기 · 공개 링크 활성 · 승인된 이전 빌드 테스트 가능" },
+      { name: "iPhone · iPad", status: "TestFlight", detail: "2.6.0 · 빌드 202608292118 · iOS·iPadOS 18+", availabilityNote: "2.6.0 Public Beta 심사 대기 · 공개 링크 활성 · 승인된 이전 빌드 테스트 가능" },
       {
         name: "Android",
         status: "공개",
@@ -841,7 +841,7 @@ export const apps: AppData[] = [
       { state: "done", title: "Android 구현과 실기기 검증", body: "휴대전화·태블릿 반응형 화면, 생성·검증·미디어·설정 흐름 구현과 테스트 완료" },
       { state: "done", title: "Android 2.5.1 공개", body: "제품 2.5.1 · 빌드 202608291746 · 내부 코드 346666의 자동화·공유·카메라 흐름을 담은 APK를 GitHub Releases에 공개하고 Android 실기기 3대에서 데이터 유지 교체 설치·실행 검증" },
       { state: "done", title: "iPhone·iPad 2.5.1 설치·업로드", body: "2.5.1 (202608291746)을 사용 가능한 iPhone 2대에 데이터 유지 교체 설치하고 App Store Connect 업로드와 기존 내부 테스트 9명 연결을 확인" },
-      { state: "active", title: "iOS·iPadOS 2.5.1 Public Beta 심사", body: "기본 꺼짐 자동화·공유 확장·카메라 퀵 액션·인터스텔라 테마를 담은 build 202608291746을 Public Beta 그룹에 연결하고 Beta App Review 대기 중이며 기존 공개 테스트 링크는 유지" },
+      { state: "active", title: "iOS·iPadOS 2.6.0 Public Beta 심사", body: "build 202608292118을 기존 Public Beta 그룹에 연결하고 Beta App Review 대기 중이며 기존 공개 테스트 링크는 유지" },
       { state: "next", title: "게시 흐름 다듬기", body: "실제 공유 앱별 게시 결과와 사용자 피드백을 바탕으로 다음 개선 항목을 정리" },
     ],
     screenshots: [
