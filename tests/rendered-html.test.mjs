@@ -654,8 +654,9 @@ test("renders current app release and TestFlight information", async () => {
   assert.match(hanClip, /내부 코드 340980/);
   assert.match(hanClip, /f4b607c0d5b860c4dd1c42a24f653b0bacf5f17d9b10684307af33eec102201b/);
   assert.match(hanClip, /오디오 트랙이 없는 영상은 화면 움직임/);
-  assert.match(stand, /내부 코드 345498/);
-  assert.match(stand, /2739af37b1040b98646edf99db66f734c8d525dc79e5659ff813326a1c79bf91/);
+  assert.match(stand, /내부 코드 346162/);
+  assert.match(stand, /df79b26e658ba91358ba6b53655dd7fd41eb878fdd624088494beb2cd8e48cc8/);
+  assert.match(stand, /HLS 리디렉션 방송과 Icecast·Shoutcast MP3 스트림 판별/);
   assert.match(stand, /테두리와 검은 선택 효과/);
   assert.match(stand, /202608282116/);
   assert.match(stand, /a3baaafab73c6f0f111e11e6bafe278164d52deaf9cd559a94dd22169b7b6480/);

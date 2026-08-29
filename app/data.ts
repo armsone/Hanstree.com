@@ -331,11 +331,11 @@ export const apps: AppData[] = [
       {
         name: "Android · Google TV",
         status: "공개",
-        detail: "2.3.3 · 빌드 202608282218 · 내부 코드 345498 · Android 8.0+",
+        detail: "2.3.4 · 빌드 202608290922 · 내부 코드 346162 · Android 8.0+",
         url: releaseDownloadPath("S.tand-Android"),
         downloadLabel: "Android APK 바로 받기",
-        checksum: "2739af37b1040b98646edf99db66f734c8d525dc79e5659ff813326a1c79bf91",
-        availabilityNote: "Google TV QR 프리셋 전송 확인 · 테두리와 검은 선택 효과 5초 자동 숨김 · 홈 뒤로가기 종료 수정 · 2.3.3 TV 실기기 재확인 대기",
+        checksum: "df79b26e658ba91358ba6b53655dd7fd41eb878fdd624088494beb2cd8e48cc8",
+        availabilityNote: "Google TV용 2.3.4 APK 공개 · HLS와 Icecast·Shoutcast 인터넷 라디오 호환성 보강 · TV 실기기 재확인 대기",
       },
     ],
     features: [
@@ -358,7 +358,7 @@ export const apps: AppData[] = [
       { title: "화면 편집", body: "빈 화면을 움직이지 않고 2초 동안 누르면 편집 모드가 열립니다. 가로로 밀면 음량, 세로로 밀면 밝기가 조절되며 이때 편집 모드는 열리지 않습니다." },
       { title: "수면 기록", body: "날짜별 타임라인에서 후보 녹음을 듣고 병합·공유하거나 삭제합니다." },
       { title: "음악 채널", body: "Apple 기기에서는 Apple Music·Apple Music Classical과 인터넷 라디오 네 칸을, Android에서는 Spotify·YouTube Music과 인터넷 라디오 네 칸을 한 줄에서 좌우로 넘깁니다. iPhone·iPad 음악 카드는 왼쪽 절반이 재생·일시정지, 오른쪽 절반이 다음 라디오나 다음 곡이며 빈 라디오 카드는 전체를 눌러 등록합니다." },
-      { title: "Google TV에서", body: "설정의 음악 항목에서 라디오 가져오기·내보내기 → 휴대전화에서 받기를 열고, 같은 Wi-Fi의 휴대전화로 QR을 스캔해 S.tand 라디오 파일을 보냅니다. 방향키 조작을 멈추면 테두리와 검은 선택 효과는 5초 뒤 자연스럽게 사라집니다." },
+      { title: "Google TV에서", body: "설정의 음악 항목에서 라디오 가져오기·내보내기 → 휴대전화에서 받기를 열고, 같은 Wi-Fi의 휴대전화로 QR을 스캔해 S.tand 라디오 파일을 보냅니다. 2.3.4부터 HLS로 이동하는 방송과 Icecast·Shoutcast MP3 라디오를 더 안정적으로 판별합니다. 방향키 조작을 멈추면 테두리와 검은 선택 효과는 5초 뒤 자연스럽게 사라집니다." },
       { title: "백그라운드 모드", body: "권한 설정의 세그먼트에서 켜짐 또는 꺼짐을 선택합니다. 기본 꺼짐은 앱을 벗어날 때 감지·재생을 중지하고, 필요할 때만 직접 켭니다." },
       { title: "보이소 연결", body: "공간을 만들고 QR로 참여해 볼 사람·말할 사람·무전기 역할을 선택합니다. 무전기는 주변 소리를 보내지 않고 호출 버튼을 눌렀을 때만 연결된 화면을 부릅니다." },
       { title: "Mac에서 시작", body: "공증된 DMG를 열고 S.tand를 응용 프로그램 폴더로 옮긴 뒤 실행합니다. 이후에는 앱이 업데이트를 확인하고 종료·교체 설치·재실행까지 이어서 처리합니다." },
@@ -366,7 +366,7 @@ export const apps: AppData[] = [
     progress: [
       { state: "done", title: "시계와 수면 케어", body: "오브제 화면, 반응형 조명과 로컬 수면 기록 구현" },
       { state: "active", title: "iOS·iPadOS 2.3.0 TestFlight", body: "build 202608282116 업로드와 Apple 처리를 완료하고 내부 테스트에 연결 · 기존 Public Beta 링크 유지 · 새 빌드 외부 그룹 연결 확인 대기" },
-      { state: "done", title: "Android·Google TV 2.3.3 공개", body: "QR 라디오 프리셋 전송, HTTP·HTTPS 주소, 5초 뒤 테두리·검은 선택 효과 숨김과 홈 뒤로가기 종료를 담은 빌드 202608282218 · 내부 코드 345498 APK 공개" },
+      { state: "done", title: "Android·Google TV 2.3.4 공개", body: "HLS 리디렉션 방송과 Icecast·Shoutcast MP3 스트림 판별, 잘못 붙은 URL 쿼리 역슬래시 복구와 채널 전환 안전성을 보강한 빌드 202608290922 · 내부 코드 346162 APK 공개" },
       { state: "done", title: "보이소 무전기", body: "주변 소리 없이 버튼으로 연결된 화면을 부르는 무전기 역할과 3초 연타 방지·고시인성 알림 적용" },
       { state: "done", title: "Mac 2.3.0 공개", body: "라디오 프리셋 가져오기·내보내기와 HTTP 주소 지원을 적용하고 Developer ID 서명·Apple 공증·실행 검증을 마친 build 202608282116 DMG 공개" },
       { state: "done", title: "휴대전화 가로 음악 배치", body: "iPhone 대표 가로 배치를 Android에도 적용하고 음악 스트립과 오른쪽 고정 제어 패널이 겹치지 않게 정리" },
