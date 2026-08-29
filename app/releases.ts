@@ -116,13 +116,13 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     label: "OurButton Android",
     repo: "OurButton-Android",
     assetPattern: /\.apk$/i,
-    fallbackUrl: "https://github.com/armsone/OurButton-Android/releases/download/android-v2.0.2/Button-Android-2.0.2.apk",
+    fallbackUrl: "https://github.com/armsone/OurButton-Android/releases/download/android-v2.1.0/app-release.apk",
   },
   "iManagerAI-Android": {
     label: "iManagerAI Android",
     repo: "iManagerAI-Android",
-    assetPattern: /^(?:iManagerAI|iManager|StarManager)-Android-2\.5\.1\.apk$/i,
-    fallbackUrl: "https://github.com/armsone/iManagerAI-Android/releases/download/android-v2.5.1/StarManager-Android-2.5.1.apk",
+    assetPattern: /\.apk$/i,
+    fallbackUrl: "https://github.com/armsone/iManagerAI-Android/releases/download/android-v2.6.0/app-release.apk",
   },
   "HtOMS-BK": {
     label: "HtOMS Brief Android",

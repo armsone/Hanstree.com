@@ -270,11 +270,11 @@ test("renders the OurButton family calling app and release", async () => {
   assert.match(html, /가족을 부르는 가장 간단한 버튼/);
   assert.match(html, /톡톡에서 사이렌까지/);
   assert.match(html, /Synology NAS/);
-  assert.match(html, /2\.0\.0 \(202608252204\)/);
+  assert.match(html, /2\.1\.0 · 빌드 202608292118/);
   assert.match(html, /href="https:\/\/testflight\.apple\.com\/join\/RKcxgTkc"/);
   assert.match(html, /release-download\?app=OurButton-Android/);
-  assert.match(html, /4b9cc233fc527370d103d67c2c81e6c752222b97aa1d678e8cfe2bcd0b847239/);
-  assert.match(html, /내부 코드 346493/);
+  assert.match(html, /52b080541701047c43cac5706b21da18ee54a4ad523f0b0f16508fcd948cd563/);
+  assert.match(html, /내부 코드 346907/);
   assert.match(html, /한 명·여러 명 또는 모두에게/);
   assert.match(html, /앱을 보는 동안 화면 유지/);
   assert.match(html, /톡톡에서 사이렌까지/);
@@ -282,8 +282,8 @@ test("renders the OurButton family calling app and release", async () => {
   assert.match(html, /밝고 직관적인 가족 화면/);
   assert.match(html, /APNs와 FCM/);
   assert.match(html, /OurButton Android에서 한 가족 구성원을 선택한 부모 홈/);
-  assert.match(html, /2\.0\.2/);
-  assert.match(html, /202608291453/);
+  assert.match(html, /2\.1\.0 · 빌드 202608292118/);
+  assert.match(html, /52b080541701047c43cac5706b21da18ee54a4ad523f0b0f16508fcd948cd563/);
 });
 
 test("renders the iManagerAI product and matchup disclosure", async () => {
@@ -303,9 +303,9 @@ test("renders the iManagerAI product and matchup disclosure", async () => {
   assert.match(html, /iManagerAI Android 만들기 화면/);
   assert.match(html, /도달 가능한 탭/);
   assert.match(html, /혼합 미디어·오류 복구·메모리 수명주기의 추가 회귀 검증/);
-  assert.match(html, /Android 2\.5\.1 공개/);
+  assert.match(html, /Android 2\.6\.0 공개/);
   assert.match(html, /release-download\?app=iManagerAI-Android/);
-  assert.match(html, /c5231e91bb4ca8b3e1d230137a7f70649965fcb7f2b2e45cefbec29024212f91/);
+  assert.match(html, /5ead9c19d9654abf8c3d076e0fc426263843cf64c59871f73b29f85867791f1e/);
   assert.match(html, /ChatGPT·Gemini·Claude/);
   assert.match(html, /Instagram 새 게시물/);
   assert.match(html, /다른 앱에서 붙여넣기/);
@@ -775,7 +775,7 @@ test("routes public download buttons through the allowlisted release redirect", 
   assert.equal(htoms.status, 302);
   assert.match(htoms.headers.get("location") ?? "", /^https:\/\/github\.com\/armsone\/HtOMS-BK\/releases\/download\/android-v2\.1\.1\/HtOMS-Brief-Android-2\.1\.1\.apk$/);
   assert.equal(iManager.status, 302);
-  assert.match(iManager.headers.get("location") ?? "", /^https:\/\/github\.com\/armsone\/iManagerAI-Android\/releases\/download\/android-v2\.5\.1\/StarManager-Android-2\.5\.1\.apk$/);
+  assert.match(iManager.headers.get("location") ?? "", /^https:\/\/github\.com\/armsone\/iManagerAI-Android\/releases\/download\/android-v2\.6\.0\/app-release\.apk$/);
   assert.equal(legacyIManager.status, 302);
   assert.equal(legacyIManager.headers.get("location"), iManager.headers.get("location"));
 });
@@ -815,9 +815,11 @@ test("keeps verified TestFlight fallback data for iManagerAI, OurButton, and HtO
   assert.equal(bySlug.get("starmanager")?.expiresAt, "2026-11-27T21:37:47+09:00");
   assert.equal(bySlug.get("starmanager")?.inviteUrl, "https://testflight.apple.com/join/nzmW4WxW");
   assert.equal(bySlug.get("starmanager")?.publicBetaState, "waitingForReview");
-  assert.equal(bySlug.get("button")?.build, "202608291609");
+  assert.equal(bySlug.get("button")?.build, "202608292118");
   assert.equal(bySlug.get("button")?.inviteUrl, "https://testflight.apple.com/join/RKcxgTkc");
-  assert.equal(bySlug.get("button")?.uploadedAt, "2026-08-29T16:15:10+09:00");
+  assert.equal(bySlug.get("button")?.uploadedAt, "2026-08-29T21:41:23+09:00");
+  assert.equal(bySlug.get("button")?.expiresAt, "2026-11-27T21:41:23+09:00");
+  assert.equal(bySlug.get("button")?.publicBetaState, "waitingForReview");
   assert.equal(bySlug.get("htoms-brief")?.build, "202608291628");
   assert.equal(bySlug.get("htoms-brief")?.uploadedAt, "2026-08-29T16:37:14+09:00");
   assert.equal(bySlug.get("htoms-brief")?.publicBetaState, "internalOnly");
