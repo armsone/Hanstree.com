@@ -1,5 +1,0 @@
-/apps/:slug/home-card.webp
-  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
-
-/apps/:slug/icon-card.webp
-  Cache-Control: public, max-age=86400, stale-while-revalidate=604800

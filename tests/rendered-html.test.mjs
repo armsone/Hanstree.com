@@ -123,13 +123,6 @@ test("keeps every home product card title readable without ellipsis", async () =
   assert.doesNotMatch(productCopyRule, /text-overflow:ellipsis|overflow:hidden|white-space:nowrap/);
 });
 
-test("gives lightweight home media a bounded browser cache policy", async () => {
-  const headers = await readFile(new URL("../public/_headers", import.meta.url), "utf8");
-  assert.match(headers, /\/apps\/:slug\/home-card\.webp[\s\S]*max-age=86400/);
-  assert.match(headers, /\/apps\/:slug\/icon-card\.webp[\s\S]*max-age=86400/);
-  assert.doesNotMatch(headers, /immutable/);
-});
-
 test("keeps every app detail hero focused on one clear entry path and a representative product scene", async () => {
   const slugs = [
     "nasfinder", "super-thumbnail", "hanclip", "stand", "ccmb", "btn", "trackpadguard",
