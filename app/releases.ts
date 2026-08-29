@@ -121,8 +121,8 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
   "StarManager-Android": {
     label: "스타매니저 Android",
     repo: "StarManager-Android",
-    assetPattern: /^StarManager-Android-2\.4\.0\.apk$/i,
-    fallbackUrl: "https://github.com/armsone/StarManager-Android/releases/download/android-v2.4.0/StarManager-Android-2.4.0.apk",
+    assetPattern: /^StarManager-Android-2\.5\.1\.apk$/i,
+    fallbackUrl: "https://github.com/armsone/StarManager-Android/releases/download/android-v2.5.1/StarManager-Android-2.5.1.apk",
   },
   "HtOMS-BK": {
     label: "HtOMS Brief Android",
