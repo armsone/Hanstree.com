@@ -793,9 +793,9 @@ test("keeps verified TestFlight fallback data for StarManager, Button, and HtOMS
   assert.equal(bySlug.get("starmanager")?.expiresAt, "2026-11-27T06:41:56+09:00");
   assert.equal(bySlug.get("starmanager")?.inviteUrl, "https://testflight.apple.com/join/nzmW4WxW");
   assert.equal(bySlug.get("starmanager")?.publicBetaState, "waitingForReview");
-  assert.equal(bySlug.get("button")?.build, "202608252204");
+  assert.equal(bySlug.get("button")?.build, "202608291609");
   assert.equal(bySlug.get("button")?.inviteUrl, "https://testflight.apple.com/join/RKcxgTkc");
-  assert.equal(bySlug.get("button")?.uploadedAt, "2026-08-25T22:08:30+09:00");
+  assert.equal(bySlug.get("button")?.uploadedAt, "2026-08-29T16:15:10+09:00");
   assert.equal(bySlug.get("htoms-brief")?.build, "202608252204");
   assert.equal(bySlug.get("htoms-brief")?.uploadedAt, "2026-08-25T22:07:03+09:00");
   assert.equal(bySlug.get("htoms-brief")?.publicBetaState, "internalOnly");
