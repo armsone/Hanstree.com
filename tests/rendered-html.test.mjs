@@ -268,8 +268,8 @@ test("renders the Button family calling app and release", async () => {
   assert.match(html, /2\.0\.0 \(202608252204\)/);
   assert.match(html, /href="https:\/\/testflight\.apple\.com\/join\/RKcxgTkc"/);
   assert.match(html, /release-download\?app=button-Android/);
-  assert.match(html, /c2fb4f9cb9840761824d7079a3c8710c30fd3d9ff3114838dad5638c2661962f/);
-  assert.match(html, /내부 코드 340680/);
+  assert.match(html, /4b9cc233fc527370d103d67c2c81e6c752222b97aa1d678e8cfe2bcd0b847239/);
+  assert.match(html, /내부 코드 346493/);
   assert.match(html, /한 명·여러 명 또는 모두에게/);
   assert.match(html, /앱을 보는 동안 화면 유지/);
   assert.match(html, /톡톡에서 사이렌까지/);
@@ -277,6 +277,8 @@ test("renders the Button family calling app and release", async () => {
   assert.match(html, /밝고 직관적인 가족 화면/);
   assert.match(html, /APNs와 FCM/);
   assert.match(html, /버튼 Android에서 한 가족 구성원을 선택한 부모 홈/);
+  assert.match(html, /2\.0\.2/);
+  assert.match(html, /202608291453/);
 });
 
 test("renders the StarManager product and matchup disclosure", async () => {

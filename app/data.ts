@@ -728,11 +728,11 @@ export const apps: AppData[] = [
       {
         name: "Android",
         status: "공개",
-        detail: "2.0.1 · 빌드 202608251400 · 내부 코드 340680 · Android 8.0+",
+        detail: "2.0.2 · 빌드 202608291453 · 내부 코드 346493 · Android 8.0+",
         url: releaseDownloadPath("button-Android"),
         downloadLabel: "Android APK 바로 받기",
-        checksum: "c2fb4f9cb9840761824d7079a3c8710c30fd3d9ff3114838dad5638c2661962f",
-        availabilityNote: "기존 공개판과 같은 전용 서명 · 휴대전화 검증 완료 · 태블릿·Google TV 실기기 검증 전",
+        checksum: "4b9cc233fc527370d103d67c2c81e6c752222b97aa1d678e8cfe2bcd0b847239",
+        availabilityNote: "기존 공개판과 같은 전용 서명 · SM-T500 데이터 유지 교체 설치·실행 확인",
       },
     ],
     features: [
@@ -762,6 +762,7 @@ export const apps: AppData[] = [
       { state: "done", title: "밝고 직관적인 가족 화면", body: "우리 공간을 먼저 보고 민트·노랑·로즈의 큰 버튼을 누르도록 밝고 따뜻한 BK 스타일 적용" },
       { state: "done", title: "iPhone 2.0.0 업로드", body: "build 202608230737 TestFlight 처리 완료" },
       { state: "done", title: "Android 2.0.1 공개", body: "제품 2.0.1 · 빌드 202608251400 · 내부 코드 340680의 기존 설치 호환 전용 서명 APK와 제품 버전 기준 자동 업데이트를 GitHub Releases에 공개" },
+      { state: "done", title: "Android 2.0.2 여러 공간 안정화 공개", body: "공간을 바꿔도 진행 중인 전송 대상이 섞이지 않고 구성원·알림 상태를 정확히 새로고침하는 패치를 전용 서명 APK로 공개" },
       { state: "done", title: "NAS 여러 공간 중계 반영", body: "운영 서버를 최신 여러 공간 서버로 교체하고 원거리 가족 목록 경로까지 확인" },
       { state: "done", title: "Android 원격 수신", body: "FCM 등록·백그라운드 대상 검증·원본 띵동 소리·호출 기록까지 NAS 실전 전달 확인" },
     ],
