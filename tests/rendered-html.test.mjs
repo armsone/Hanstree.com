@@ -311,9 +311,11 @@ test("renders AIBI as a host-integrated engine release", async () => {
   const html = await response.text();
   const privacyHtml = await privacyResponse.text();
   assert.match(html, /앱과 공식 AI 사이를, 안전하게/);
-  assert.match(html, /AIBI 0\.4\.3/);
+  assert.match(html, /AIBI 0\.4\.4/);
   assert.match(html, /StarManager · iOS · Android/);
-  assert.match(html, /독립 다운로드가 아니라 StarManager 안에 포함되는 공개 공통 엔진/);
+  assert.match(html, /독립 소스 공개 · StarManager에는 검증된 같은 엔진 포함/);
+  assert.match(html, /AIBI-0\.4\.4\.zip/);
+  assert.match(html, /0f67bbceb91c1d069d9224267a7b43b1ecb8aafe5e6973af79732c28371f7621/);
   assert.match(html, /1분 59초/);
   assert.match(html, /SHA-256 잠금/);
   assert.match(privacyHtml, /비밀번호, 쿠키 값, 세션 토큰/);
