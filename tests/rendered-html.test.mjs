@@ -573,6 +573,10 @@ test("renders the TrackpadGuard product, support link, and requested default reg
   assert.match(html, /타이핑할 때는 잠그고/);
   assert.match(html, /상단 1\/3을 제거한 사다리꼴/);
   assert.match(html, /Control-Option-Command-Escape/);
+  assert.match(html, /2\.0\.3/);
+  assert.match(html, /202608291556/);
+  assert.match(html, /높은 부하도 스스로 복구/);
+  assert.match(html, /818ef1564f02ab9a898c0fdc25e11bb910e3ffda34457f57b99ba7c25dea0f86/);
   assert.match(html, /class="screen-square"/);
   assert.match(html, /usage-square\.png[^>]*width="1254" height="1254"/);
   assert.doesNotMatch(html, /class="screen-wide"[^>]*>[\s\S]*?usage-square\.png/);

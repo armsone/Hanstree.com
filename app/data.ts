@@ -542,7 +542,7 @@ export const apps: AppData[] = [
     icon: "/apps/trackpadguard/icon.png",
     artwork: "trackpad",
     platforms: [
-      { name: "macOS", status: "공개", detail: "2.0.2 (202608261902) · 내부 build 341000 · macOS 13+ · Universal · Apple 공증 완료", url: releaseDownloadPath("TrackpadGuard"), downloadLabel: "Mac용 DMG 바로 받기", checksum: "dc4c31111ded38ae453e0f3b39a96ea68675a9e94f8b5b291aac370357b984b5" },
+      { name: "macOS", status: "공개", detail: "2.0.3 (202608291556) · 내부 build 346556 · macOS 13+ · Universal · Apple 공증 완료", url: releaseDownloadPath("TrackpadGuard"), downloadLabel: "Mac용 DMG 바로 받기", checksum: "818ef1564f02ab9a898c0fdc25e11bb910e3ffda34457f57b99ba7c25dea0f86" },
     ],
     features: [
       { title: "키 입력과 동시에 잠금", body: "문자를 입력하기 시작하면 트랙패드의 커서 이동, 클릭과 스크롤을 바로 차단합니다." },
@@ -552,6 +552,7 @@ export const apps: AppData[] = [
       { title: "실패 안전 설계", body: "멀티터치 좌표를 읽지 못하면 잠금을 시작하지 않으며, 긴급 단축키로 언제든 즉시 해제할 수 있습니다." },
       { title: "서명된 자동 업데이트", body: "Sparkle과 GitHub Releases를 통해 서명된 새 버전을 확인하고 설치합니다." },
       { title: "눈에 보이는 잠금 상태", body: "가드가 적용되면 메뉴 막대 아이콘이 빨간색으로 바뀌고 해제되면 원래 색으로 돌아옵니다." },
+      { title: "높은 부하도 스스로 복구", body: "CPU·메모리 사용량이나 앱 응답 지연이 계속되면 보호 기능을 먼저 다시 시작하고, 같은 문제가 반복될 때만 앱을 안전하게 재시작합니다. 설정에서 자동 복구를 끌 수도 있습니다." },
     ],
     guide: [
       { title: "앱 설치", body: "공식 GitHub Release의 DMG를 열고 TrackpadGuard를 Applications 폴더로 옮깁니다." },
@@ -568,6 +569,7 @@ export const apps: AppData[] = [
       { state: "done", title: "사다리꼴 기본 영역과 편집", body: "상단 1/3을 제거한 기본값, 네 꼭짓점 드래그와 설정 저장 구현" },
       { state: "done", title: "Universal 배포 기반", body: "Apple Silicon·Intel 앱 번들, DMG, Sparkle와 GitHub Release 관리 흐름 구성" },
       { state: "done", title: "2.0.2 서명·공증 배포", body: "build 202608261902의 Developer ID 서명·Apple 공증 DMG와 자동 업데이트를 공개하고 장시간 실행 뒤 Mac의 시스템 키보드 입력이 느려지는 현상을 막았습니다." },
+      { state: "done", title: "2.0.3 높은 부하 자동 복구 공개", body: "build 202608291556의 Developer ID 서명·Apple 공증 DMG를 공개했습니다. 지속되는 CPU·메모리 부하와 응답 지연을 단계적으로 감지하고 보호 기능을 자동 복구합니다." },
       { state: "next", title: "macOS 호환성 관리", body: "macOS 업데이트마다 비공개 멀티터치 프레임워크 호환성을 확인" },
     ],
     screenshots: [
