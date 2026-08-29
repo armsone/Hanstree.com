@@ -687,10 +687,10 @@ test("renders current app release and TestFlight information", async () => {
   assert.match(hanClip, /내부 코드 340980/);
   assert.match(hanClip, /f4b607c0d5b860c4dd1c42a24f653b0bacf5f17d9b10684307af33eec102201b/);
   assert.match(hanClip, /오디오 트랙이 없는 영상은 화면 움직임/);
-  assert.match(stand, /내부 코드 346507/);
-  assert.match(stand, /c50869ab58f0dcec046da6f99dc21f91e808153784c6d6d60479d69c7acb6757/);
+  assert.match(stand, /내부 코드 346696/);
+  assert.match(stand, /236cf24361d565ca9649b2e6c9e5df6710e0f7116efa318f88c94830cef56f35/);
   assert.match(stand, /사람별 다중 연결 경로/);
-  assert.match(stand, /테두리와 검은 선택 효과/);
+  assert.match(stand, /검은 배경이 생기지 않고 포커스 테두리/);
   assert.match(stand, /202608282116/);
   assert.match(stand, /a3baaafab73c6f0f111e11e6bafe278164d52deaf9cd559a94dd22169b7b6480/);
   assert.match(stand, /다음 라디오나 다음 곡/);
