@@ -321,8 +321,6 @@ export default async function AppRoute({ params }: RouteProps) {
   );
 }
 
-const spotlightVisuals: AdvantageVariant[] = ["spark", "layers", "compass", "bolt"];
-
 function ProductSpotlight({ app }: { app: NonNullable<ReturnType<typeof findApp>> }) {
   return (
     <section className="product-promo" id="product-campaign">
