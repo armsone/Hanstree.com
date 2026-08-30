@@ -463,7 +463,7 @@ export const apps: AppData[] = [
       { state: "done", title: "CCMB 2.0.12 공개", body: "CCMB 전용 Claude 연결, 세 서비스의 독립 스마트 갱신, 정렬된 하단 조작부와 이름·말줄임표 없이 한 줄로 보이는 갱신 기록을 담은 Apple 공증 Universal DMG 공개" },
     ],
     screenshots: [
-      { src: "/apps/ccmb/screens/ccmb-usage-menu.png", alt: "CCMB의 Codex·Claude·Gemini 사용량 메뉴", layout: "menu" },
+      { src: "/apps/ccmb/ccmb-dashboard-private.png", alt: "개인정보를 제거한 CCMB의 Codex·Claude·Gemini 사용량 패널", layout: "menu" },
       { src: "/apps/ccmb/screens/macos-menubar.png", alt: "macOS 메뉴 막대에 표시된 CCMB 사용량", layout: "wide" },
     ],
     github: ["https://github.com/armsone/CCMB"],
