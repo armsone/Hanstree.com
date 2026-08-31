@@ -20,7 +20,7 @@ const customFeatureIconSlugs = new Set([
 ]);
 
 const denimDexFeatureIcons: Record<string, string> = {
-  "한 벌을 최대 30장의 디테일로": "/apps/denimdex/features/photo-details.webp",
+  "팬츠와 재킷, 아홉 장이면 순서대로": "/apps/denimdex/features/photo-details.webp",
   "제품 정보와 생산 단서를 먼저": "/apps/denimdex/features/manufacturing-clues.webp",
   "근거에 맞춘 보수적 희귀도": "/apps/denimdex/features/rarity-evidence.webp",
   "한국과 일본의 적정 매입가를 나란히": "/apps/denimdex/features/market-prices.webp",
