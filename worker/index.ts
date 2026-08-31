@@ -33,8 +33,7 @@ const worker = {
     if (request.method === "GET"
       && url.pathname === "/"
       && !request.headers.has("RSC")
-      && !request.headers.has("X-NasFinder-Dynamic-Document")
-      && (request.headers.get("accept") ?? "text/html").includes("text/html")) {
+      && !request.headers.has("X-NasFinder-Dynamic-Document")) {
       const snapshotUrl = new URL("/seo-home", request.url);
       return env.ASSETS.fetch(new Request(snapshotUrl, request));
     }
