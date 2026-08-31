@@ -99,7 +99,7 @@ export function AndroidReleaseTracker() {
           const { productVersion, buildNumber, internalCode } = releaseIdentityFor(release, app);
           const displayName = release.appName;
           return <article className="android-release-card" key={release.repo}>
-            <div className="android-release-head"><span className="android-app-mark">{app?.icon && <Image className="release-app-icon" src={appCardIcon(app)} alt="" width={256} height={256} sizes="56px" unoptimized />}<span className="android-platform-badge"><img src="/brands/android.svg" alt="" aria-hidden="true" /></span></span><div><p>{release.repo}</p><h3>{displayName}</h3></div></div>
+            <div className="android-release-head"><span className="android-app-mark">{app?.icon && <Image className="release-app-icon" src={appCardIcon(app)} alt={`${displayName} 앱 아이콘`} width={256} height={256} sizes="56px" unoptimized />}<span className="android-platform-badge"><img src="/brands/android.svg" alt="Android" /></span></span><div><p>{release.repo}</p><h3>{displayName}</h3></div></div>
             {release.available ? <>
               <div className="android-version"><strong>{productVersion}</strong><span>최신 공개판</span></div>
               <dl>

@@ -5,7 +5,7 @@ import { LiveFlipClock, LiveSeoulWeather } from "./LiveFlipClock";
 
 export function AppIcon({ app, priority = false }: { app: AppData; priority?: boolean }) {
   if (app.icon) {
-    return <Image className="app-icon" src={appCardIcon(app)} alt="" width={256} height={256} priority={priority} sizes="(max-width: 640px) 58px, 72px" unoptimized />;
+    return <Image className="app-icon" src={appCardIcon(app)} alt={`${app.name} 앱 아이콘`} width={256} height={256} priority={priority} sizes="(max-width: 640px) 58px, 72px" unoptimized />;
   }
 
   return <span className={`app-icon app-icon-letter theme-${app.theme}`} aria-hidden="true">C</span>;
@@ -19,7 +19,7 @@ export function AppStatus({ platform }: { platform: Platform }) {
 export function AppHeroArtwork({ app }: { app: AppData }) {
   return (
     <div className={`hero-artwork hero-artwork-product hero-artwork-${app.slug}`} aria-label={`${app.name} 핵심 기능을 표현한 대표 이미지`}>
-      <Image className="hero-artwork-backdrop" src={app.heroImage ?? `/apps/${app.slug}/${app.slug}-hero-v2.png`} alt="" width={1536} height={1024} priority sizes="(max-width: 920px) 100vw, 52vw" unoptimized />
+      <Image className="hero-artwork-backdrop" src={app.heroImage ?? `/apps/${app.slug}/${app.slug}-hero-v2.png`} alt={`${app.name} 대표 제품 화면`} width={1536} height={1024} priority sizes="(max-width: 920px) 100vw, 52vw" unoptimized />
       <div className="hero-artwork-brand"><AppIcon app={app} /><span><small>PRODUCT SCENE</small><strong>{app.english}</strong></span></div>
       <div className="hero-artwork-proof"><span />{app.slug === "nasfinder" ? "NAS · CLOUD · DEVICE" : "CORE EXPERIENCE"}</div>
       <div className="hero-artwork-caption"><strong>{app.features[0]?.title ?? app.tagline}</strong><span>{app.platforms.map((platform) => platform.name).join(" · ")}</span></div>
@@ -37,10 +37,10 @@ export function AppArtwork({ app, mode = "spotlight" }: { app: AppData; mode?: "
     return (
       <div className="artwork artwork-ai-search" aria-label="지·클·제 키워드와 ChatGPT, Claude, Gemini를 연결하는 Alfred AI Search 실제 화면">
         <div className="ai-search-provider-row">
-          {providers.map(([keyword, name, icon]) => <span key={name}><Image src={icon} alt="" width={54} height={54} unoptimized /><b>{keyword}</b><small>{name}</small></span>)}
+          {providers.map(([keyword, name, icon]) => <span key={name}><Image src={icon} alt={`${name} 서비스 아이콘`} width={54} height={54} unoptimized /><b>{keyword}</b><small>{name}</small></span>)}
         </div>
         <div className="ai-search-screen">
-          <Image src="/apps/alfred-ai-search/screens/alfred-answer-view.png" alt="" width={1238} height={1764} sizes="(max-width: 640px) 72vw, 420px" unoptimized />
+          <Image src="/apps/alfred-ai-search/screens/alfred-answer-view.png" alt="Alfred AI Search 답변 화면" width={1238} height={1764} sizes="(max-width: 640px) 72vw, 420px" unoptimized />
         </div>
         <p>Alfred 안에서 가볍게. 필요할 때 앱으로 깊게.</p>
       </div>
@@ -50,7 +50,7 @@ export function AppArtwork({ app, mode = "spotlight" }: { app: AppData; mode?: "
   if (app.artwork === "autoshorts") {
     return (
       <div className="artwork artwork-bridge" aria-label="쇼츠 한 편이 끝나면 다음 영상으로 자동 이동하는 자동쇼츠">
-        <Image src={app.heroImage ?? "/apps/autoshorts/autoshorts-hero.png"} alt="" width={1536} height={1024} sizes="(max-width: 640px) 92vw, 720px" unoptimized />
+        <Image src={app.heroImage ?? "/apps/autoshorts/autoshorts-hero.png"} alt="자동쇼츠 자동 재생 대표 화면" width={1536} height={1024} sizes="(max-width: 640px) 92vw, 720px" unoptimized />
       </div>
     );
   }
@@ -58,7 +58,7 @@ export function AppArtwork({ app, mode = "spotlight" }: { app: AppData; mode?: "
   if (app.slug === "denimdex") {
     return (
       <div className="artwork artwork-denimdex" aria-label="빈티지 데님의 원단과 셀비지, 버튼과 리벳을 살피는 DenimDex 감정 장면">
-        <Image src={app.heroImage ?? "/apps/denimdex/denimdex-hero-v2.png"} alt="" width={1536} height={1024} sizes="(max-width: 640px) 92vw, 720px" unoptimized />
+        <Image src={app.heroImage ?? "/apps/denimdex/denimdex-hero-v2.png"} alt="DenimDex 빈티지 데님 감정 화면" width={1536} height={1024} sizes="(max-width: 640px) 92vw, 720px" unoptimized />
       </div>
     );
   }
@@ -66,7 +66,7 @@ export function AppArtwork({ app, mode = "spotlight" }: { app: AppData; mode?: "
   if (app.artwork === "bridge") {
     return (
       <div className="artwork artwork-bridge" aria-label="앱과 공식 AI 웹사이트 사이를 안전하게 잇는 아이비 연결 엔진">
-        <Image src={app.heroImage ?? "/apps/aibi/aibi-hero-v2.png"} alt="" width={1536} height={1024} sizes="(max-width: 640px) 92vw, 720px" unoptimized />
+        <Image src={app.heroImage ?? "/apps/aibi/aibi-hero-v2.png"} alt="아이비 AI 웹사이트 연결 화면" width={1536} height={1024} sizes="(max-width: 640px) 92vw, 720px" unoptimized />
       </div>
     );
   }
@@ -76,7 +76,7 @@ export function AppArtwork({ app, mode = "spotlight" }: { app: AppData; mode?: "
     const image = isSystem ? app.systemImage : app.spotlightImage;
     return (
       <div className="artwork artwork-intelligence" aria-label={isSystem ? "인터넷과 기기, 클라우드와 사람을 잇는 네 관문과 한양의 개인정보 보호 경계" : "사진과 문서, 일정과 기억을 사용자 중심으로 정리하는 한양의 지식 아카이브"}>
-        <Image src={image ?? app.heroImage ?? "/apps/hanai/hanai-hero-v2.png"} alt="" width={1672} height={941} sizes="(max-width: 640px) 92vw, 720px" unoptimized />
+        <Image src={image ?? app.heroImage ?? "/apps/hanai/hanai-hero-v2.png"} alt={isSystem ? "한양의 외부 연결과 개인정보 보호 구조" : "한양 지식 아카이브 대표 화면"} width={1672} height={941} sizes="(max-width: 640px) 92vw, 720px" unoptimized />
         <span className="intelligence-aura" aria-hidden="true" />
       </div>
     );
@@ -129,7 +129,7 @@ export function AppArtwork({ app, mode = "spotlight" }: { app: AppData; mode?: "
       <div className="artwork artwork-cleanup" aria-label="BTN 메모리 압박 진단 화면">
         <div className="cleanup-glow" />
         <div className="cleanup-window">
-          <Image src="/apps/btn/screens/overview.png" alt="" width={1520} height={1000} sizes="(max-width: 640px) 84vw, 520px" unoptimized />
+          <Image src="/apps/btn/screens/overview.png" alt="BTN 메모리 압박 진단 화면" width={1520} height={1000} sizes="(max-width: 640px) 84vw, 520px" unoptimized />
         </div>
         <div className="cleanup-proof"><span />선택 전에는 아무것도 지우지 않음</div>
       </div>
@@ -209,7 +209,7 @@ export function AppArtwork({ app, mode = "spotlight" }: { app: AppData; mode?: "
     return (
       <div className="artwork artwork-server" aria-label="Synology NAS에서 안전하게 운영하는 Minecraft Bedrock 홈 서버">
         <div className="server-art-icon">
-          <Image src="/apps/minecraft-server/icon.png" alt="" width={1254} height={1254} sizes="(max-width: 640px) 72vw, 430px" unoptimized />
+          <Image src="/apps/minecraft-server/icon.png" alt="Minecraft Bedrock 홈 서버 아이콘" width={1254} height={1254} sizes="(max-width: 640px) 72vw, 430px" unoptimized />
         </div>
         <div className="server-art-proof"><span />실제 가족 서버 운영 중</div>
         <div className="server-art-facts"><span>PRIVATE</span><span>UDP 19132</span><span>WORLD SAFE</span></div>

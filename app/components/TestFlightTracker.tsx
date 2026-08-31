@@ -74,7 +74,7 @@ export function TestFlightTracker({ builds }: { builds: TestFlightBuild[] }) {
         return (
           <article className="testflight-card" key={build.slug}>
             <div className="testflight-card-head">
-              <div>{app?.icon && <Image className="release-app-icon" src={appCardIcon(app)} alt="" width={256} height={256} sizes="52px" unoptimized />}<div><span className="flight-dot" /><h3>{build.appName}</h3></div></div>
+              <div>{app?.icon && <Image className="release-app-icon" src={appCardIcon(app)} alt={`${build.appName} 앱 아이콘`} width={256} height={256} sizes="52px" unoptimized />}<div><span className="flight-dot" /><h3>{build.appName}</h3></div></div>
               <Link href={`/apps/${build.slug}`}>앱 보기</Link>
             </div>
             {state ? <>

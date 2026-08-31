@@ -233,7 +233,7 @@ export default async function AppRoute({ params }: RouteProps) {
           {app.features.map((feature, index) => {
             const icon = featureIconSource(app, feature, index);
             const cardClassName = `feature-card feature-card-iconized reveal${icon ? " feature-card-inline-icon" : ""}`;
-            return <article className={cardClassName} key={feature.title}><span>0{index + 1}</span>{icon ? <Image className="feature-icon" src={icon} alt="" width={72} height={72} unoptimized /> : <AdvantageVisual variant={pickContentVisual(`${feature.title} ${feature.body}`, index)} />}<h3>{feature.title}</h3><p>{feature.body}</p></article>;
+            return <article className={cardClassName} key={feature.title}><span>0{index + 1}</span>{icon ? <Image className="feature-icon" src={icon} alt={`${feature.title} 기능 아이콘`} width={72} height={72} unoptimized /> : <AdvantageVisual variant={pickContentVisual(`${feature.title} ${feature.body}`, index)} />}<h3>{feature.title}</h3><p>{feature.body}</p></article>;
           })}
         </div>
       </section>
@@ -256,7 +256,7 @@ export default async function AppRoute({ params }: RouteProps) {
                       : screen.layout === "square"
                         ? { width: 1254, height: 1254 }
                       : { width: 1206, height: 2622 };
-              return <figure className={`screen-${screen.layout ?? "phone"}`} key={screen.src}><div className="screenshot-media"><Image src={screen.src} alt="" width={dimensions.width} height={dimensions.height} sizes={screen.layout ? "(max-width: 640px) 92vw, 1080px" : "(max-width: 640px) 78vw, 360px"} unoptimized /></div><figcaption>{screen.alt}</figcaption></figure>;
+              return <figure className={`screen-${screen.layout ?? "phone"}`} key={screen.src}><div className="screenshot-media"><Image src={screen.src} alt={screen.alt} width={dimensions.width} height={dimensions.height} sizes={screen.layout ? "(max-width: 640px) 92vw, 1080px" : "(max-width: 640px) 78vw, 360px"} unoptimized /></div><figcaption>{screen.alt}</figcaption></figure>;
             })}</div>
           ) : (
             <div className="single-artwork reveal"><AppArtwork app={app} mode="system" /><p>{app.slug === "hanai" ? "사대문은 외부 연결의 관문이 되고, 한양도성은 개인 데이터의 경계가 됩니다." : "대표 화면 이미지는 현재 제품 상태에 맞춰 계속 보강합니다."}</p></div>
@@ -341,7 +341,7 @@ function ProductSpotlight({ app }: { app: NonNullable<ReturnType<typeof findApp>
       <div className="shell product-advantages">
         <div className="product-section-intro reveal"><p className="eyebrow">WHY IT MATTERS</p><h2>기능보다 먼저.<br /><span>달라지는 일.</span></h2><p>{app.tagline} 실제 사용에서 바로 느낄 수 있는 핵심 이점을 먼저 소개합니다.</p></div>
         <div className="product-advantage-grid">
-          {app.features.slice(0, 4).map((feature, index) => <article className="product-advantage-card reveal" key={feature.title}><div><span>{String(index + 1).padStart(2, "0")}</span><small>{app.english.toUpperCase()}</small></div><Image className="campaign-feature-icon" src={featureIconSource(app, feature, index) ?? app.icon ?? "/icon.png"} alt="" width={72} height={72} unoptimized /><h3>{feature.title}</h3><p>{feature.body}</p></article>)}
+          {app.features.slice(0, 4).map((feature, index) => <article className="product-advantage-card reveal" key={feature.title}><div><span>{String(index + 1).padStart(2, "0")}</span><small>{app.english.toUpperCase()}</small></div><Image className="campaign-feature-icon" src={featureIconSource(app, feature, index) ?? app.icon ?? "/icon.png"} alt={`${feature.title} 기능 아이콘`} width={72} height={72} unoptimized /><h3>{feature.title}</h3><p>{feature.body}</p></article>)}
         </div>
       </div>
     </section>
@@ -575,7 +575,7 @@ function ProductPromotion({ app }: { app: NonNullable<ReturnType<typeof findApp>
           {campaign.advantages.map(([number, kicker, title, body, benefit], index) => (
             <article className="product-advantage-card reveal" key={number}>
               <div><span>{number}</span><small>{kicker}</small></div>
-              <Image className="campaign-feature-icon" src={featureIconSource(app, app.features[index] ?? app.features[0], index) ?? app.icon ?? "/icon.png"} alt="" width={72} height={72} unoptimized />
+              <Image className="campaign-feature-icon" src={featureIconSource(app, app.features[index] ?? app.features[0], index) ?? app.icon ?? "/icon.png"} alt={`${title} 기능 아이콘`} width={72} height={72} unoptimized />
               <h3>{title}</h3><p>{body}</p><strong>{benefit}</strong>
             </article>
           ))}
@@ -773,7 +773,7 @@ function NasFinderPromotion() {
           {advantages.map((advantage, index) => (
             <article className="nas-advantage-card reveal" key={advantage.number}>
               <div><span>{advantage.number}</span><small>{advantage.kicker}</small></div>
-              <Image className="campaign-feature-icon" src={`/apps/nasfinder/features/feature-${String(index + 1).padStart(2, "0")}.webp`} alt="" width={72} height={72} unoptimized />
+              <Image className="campaign-feature-icon" src={`/apps/nasfinder/features/feature-${String(index + 1).padStart(2, "0")}.webp`} alt={`${advantage.title} 기능 아이콘`} width={72} height={72} unoptimized />
               <h3>{advantage.title}</h3>
               <p>{advantage.body}</p>
               <strong>{advantage.benefit}</strong>

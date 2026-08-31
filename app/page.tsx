@@ -110,7 +110,7 @@ export default function Home() {
                 <Image
                   className="hero-product-image"
                   src={app.slug === "ccmb" ? "/apps/ccmb/ccmb-dashboard-private.png" : appCardImage(app)}
-                  alt=""
+                  alt={`${app.name} 대표 제품 화면`}
                   width={1280}
                   height={853}
                   priority={index < 4}
@@ -168,10 +168,10 @@ export default function Home() {
                   제품 자세히 보기 <span aria-hidden="true">→</span>
                 </span>
               </div>
-              <div className="app-row-representative" aria-hidden="true">
+              <div className="app-row-representative">
                 <Image
                   src={app.slug === "ccmb" ? "/apps/ccmb/ccmb-dashboard-private.png" : appCardImage(app)}
-                  alt=""
+                  alt={`${app.name} 대표 화면`}
                   width={1280}
                   height={853}
                   sizes="(max-width: 920px) 100vw, 52vw"
@@ -187,7 +187,7 @@ export default function Home() {
       <section className="testflight-section" id="testflight">
         <div className="shell">
           <div className="section-heading reveal">
-            <div><p className="eyebrow">EARLY ACCESS</p><h2 className="section-brand-title"><img src="/brands/testflight.jpg" alt="" aria-hidden="true" /><span>새로운 앱을 가장 먼저</span></h2></div>
+            <div><p className="eyebrow">EARLY ACCESS</p><h2 className="section-brand-title"><img src="/brands/testflight.jpg" alt="TestFlight" /><span>새로운 앱을 가장 먼저</span></h2></div>
             <p>TestFlight에서 지금 체험할 수 있는 앱과 남은 기간을 함께 보여드립니다. 마음에 드는 앱의 다음 모습을 먼저 만나보세요.</p>
           </div>
           <TestFlightTracker builds={testFlightBuilds} />
@@ -197,7 +197,7 @@ export default function Home() {
       <section className="testflight-invite-section" id="downloads">
         <div className="shell">
           <div className="section-heading reveal">
-            <div><p className="eyebrow">PUBLIC BETA LINKS</p><h2 className="section-brand-title"><img src="/brands/testflight.jpg" alt="" aria-hidden="true" /><span>외부 테스터 참여</span></h2></div>
+            <div><p className="eyebrow">PUBLIC BETA LINKS</p><h2 className="section-brand-title"><img src="/brands/testflight.jpg" alt="TestFlight" /><span>외부 테스터 참여</span></h2></div>
             <p>앱별 공개 TestFlight 링크를 한곳에 모았습니다. 준비된 앱은 신청서 없이 바로 참여할 수 있습니다.</p>
           </div>
           <TestFlightInviteLinks />
@@ -207,7 +207,7 @@ export default function Home() {
       <section className="android-release-section" id="android-releases">
         <div className="shell">
           <div className="section-heading reveal">
-            <div><p className="eyebrow">READY FOR ANDROID</p><h2 className="section-brand-title"><span className="android-title-icon"><img src="/brands/android.svg" alt="" aria-hidden="true" /></span><span>Android에서 바로 시작</span></h2></div>
+            <div><p className="eyebrow">READY FOR ANDROID</p><h2 className="section-brand-title"><span className="android-title-icon"><img src="/brands/android.svg" alt="Android" /></span><span>Android에서 바로 시작</span></h2></div>
             <p>앱 아이콘으로 원하는 제품을 고르고 공식 최신판을 바로 받으세요. 출처와 APK 정보는 홈페이지가 확인한 경우에만 표시합니다.</p>
           </div>
           <div className="install-update-note reveal" style={{ marginBottom: 36 }}>
