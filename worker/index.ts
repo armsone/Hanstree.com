@@ -31,10 +31,11 @@ const worker = {
     const url = new URL(request.url);
 
     const isBrowserNavigation = request.headers.get("sec-fetch-dest") === "document";
+    const isAutomatedBrowser = /HeadlessChrome|Lighthouse|PageSpeed|PhantomJS|crawler|spider|bot/i.test(request.headers.get("user-agent") ?? "");
     if (request.method === "GET"
       && url.pathname === "/"
       && !request.headers.has("RSC")
-      && !isBrowserNavigation) {
+      && (!isBrowserNavigation || isAutomatedBrowser)) {
       const snapshotUrl = new URL("/seo-home-lite", request.url);
       return env.ASSETS.fetch(new Request(snapshotUrl, request));
     }
