@@ -1089,10 +1089,10 @@ export const apps: AppData[] = [
       {
         name: "macOS · Alfred 5 Powerpack",
         status: "공개",
-        detail: "0.6.1 · ChatGPT·Claude·Gemini 로그인 CLI 사용",
-        url: "https://github.com/armsone/Alfred-AI-Search/releases/download/v0.6.1/Alfred-AI-Search-0.6.1.alfredworkflow",
+        detail: "0.6.2 · 모드별 실제 입력 예시 안내 · ChatGPT·Claude·Gemini 로그인 CLI 사용",
+        url: "https://github.com/armsone/Alfred-AI-Search/releases/download/v0.6.2/Alfred-AI-Search-0.6.2.alfredworkflow",
         downloadLabel: "Alfred 워크플로우 받기",
-        checksum: "9a0840417596a77bff3c53e825cd581c367088e7f26dee741c31eabe744d3bb3",
+        checksum: "96b4102aa7ebb944b1544dbcad471a918addc5ad181dd188cd6502349526a5c3",
         availabilityNote: "GitHub Release 공개 파일 다운로드와 SHA-256 무결성 확인 완료",
       },
     ],
@@ -1112,7 +1112,7 @@ export const apps: AppData[] = [
       { title: "앱에서 깊게 이어가기", body: "더 긴 대화가 필요할 때 제공되는 앱 열기 동작을 사용합니다. 질문은 클립보드에 준비되며 전송은 사용자가 직접 결정합니다." },
     ],
     progress: [
-      { state: "done", title: "0.6.1 공개", body: "지·클·제 통합 워크플로우를 GitHub Release에 공개하고 배포 파일의 버전과 SHA-256을 확인했습니다." },
+      { state: "done", title: "0.6.2 공개", body: "지·클·제 모드를 기능 이름만 나열하지 않고 실제 입력 예시로 안내하는 워크플로우를 공개하고 배포 파일의 버전과 SHA-256을 확인했습니다." },
       { state: "done", title: "세 제공자 아이콘과 기록", body: "ChatGPT·Claude·Gemini 아이콘, 제공자별 질문·답변 기록과 마지막 결과 다시 보기를 적용했습니다." },
       { state: "done", title: "실수로 사라지지 않는 결과 창", body: "다른 곳을 눌러도 결과를 유지하고 Esc로 명확하게 닫는 흐름과 크기를 조절할 수 있는 터미널 창을 반영했습니다." },
       { state: "done", title: "사용자 독립 CLI 탐색", body: "특정 사용자의 홈 폴더를 하드코딩하지 않고 설치된 실행 파일을 자동으로 찾도록 정리했습니다." },
