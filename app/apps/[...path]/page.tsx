@@ -16,7 +16,7 @@ const campaignSlugs = new Set(["super-thumbnail", "hanclip", "stand", "ccmb", "t
 
 const customFeatureIconSlugs = new Set([
   "nasfinder", "super-thumbnail", "hanclip", "hanai", "stand", "ccmb", "btn", "trackpadguard",
-  "htoms-brief", "intosharp", "airchurch", "button", "starmanager", "minecraft-server", "whattoeat", "aibi",
+  "htoms-brief", "intosharp", "airchurch", "button", "starmanager", "minecraft-server", "whattoeat", "aibi", "autoshorts",
 ]);
 
 const denimDexFeatureIcons: Record<string, string> = {

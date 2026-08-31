@@ -16,4 +16,9 @@ test("publishes AutoShorts with verified release and privacy facts", () => {
   for (const asset of ["icon.png", "icon-card.webp", "home-card.webp", "autoshorts-hero.png"]) {
     assert.equal(fs.existsSync(new URL(`../public/apps/autoshorts/${asset}`, import.meta.url)), true, asset);
   }
+
+  for (const index of [1, 2, 3, 4]) {
+    const asset = `features/feature-${String(index).padStart(2, "0")}.webp`;
+    assert.equal(fs.existsSync(new URL(`../public/apps/autoshorts/${asset}`, import.meta.url)), true, asset);
+  }
 });

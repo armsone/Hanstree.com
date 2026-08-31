@@ -84,6 +84,7 @@ img { display: block; max-width: 100%; }
 .app-button { --feature-accent: #df5e57; }
 .app-minecraft-server { --feature-accent: #4d9a58; }
 .app-whattoeat { --feature-accent: #e2763f; }
+.app-autoshorts { --feature-accent: #ed6c57; }
 .app-row-number { padding: 36px 0 0 34px; color: #aaaab3; font: 600 .72rem/1 var(--font-geist-mono),monospace; }
 .app-row-copy { align-self: center; padding: 64px 34px 64px 10px; }
 .app-title-line { display: flex; align-items: center; gap: 18px; }
