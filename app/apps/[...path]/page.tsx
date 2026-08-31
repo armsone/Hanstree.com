@@ -178,10 +178,12 @@ export async function generateMetadata({ params }: RouteProps): Promise<Metadata
     ? app.heroImage ?? app.icon ?? (app.slug === "stand" ? "/og-stand.png" : undefined)
     : undefined;
   const socialImages = socialImage ? [new URL(socialImage, "https://nasfinder.com").toString()] : [];
+  const canonical = new URL(`/apps/${path.join("/")}`, "https://nasfinder.com").toString();
   return {
     title,
     description: app.summary,
-    openGraph: { title, description: app.summary, images: socialImages },
+    alternates: { canonical },
+    openGraph: { title, description: app.summary, url: canonical, images: socialImages },
     twitter: { card: "summary_large_image", title, description: app.summary, images: socialImages },
   };
 }

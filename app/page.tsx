@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { AdvantageVisual, type AdvantageVariant } from "./components/AdvantageVisual";
@@ -11,6 +12,20 @@ import { appCardImage } from "./media";
 import { testFlightBuilds } from "./testflight";
 
 const principleVisuals: AdvantageVariant[] = ["compass", "timeline-dots", "devices-pair"];
+
+export const metadata: Metadata = {
+  description: "나스파인더로 iPhone Live Photo와 Android Motion Photo를 양방향 변환·전송하고, 직접 만드는 앱의 기능과 개발 과정을 소개합니다.",
+  alternates: { canonical: "https://nasfinder.com" },
+  openGraph: {
+    type: "website",
+    locale: "ko_KR",
+    siteName: "NasFinder.com",
+    title: "NasFinder.com — 일상 가까이, 꼭 필요한 앱",
+    description: "iPhone Live Photo와 Android Motion Photo를 양방향 변환·전송하는 나스파인더와 직접 만드는 앱을 소개합니다.",
+    url: "https://nasfinder.com",
+    images: [{ url: "/og.png", width: 1024, height: 1024, alt: "Wi-Fi 신호와 NAS를 표현한 NasFinder.com 대표 이미지" }],
+  },
+};
 
 function verifiedTestFlightInviteUrl(inviteUrl: string | null) {
   return inviteUrl?.startsWith("https://testflight.apple.com/join/") ? inviteUrl : null;
