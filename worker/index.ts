@@ -30,11 +30,11 @@ const worker = {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
 
-    const acceptsHtml = (request.headers.get("accept") ?? "").includes("text/html");
+    const isBrowserNavigation = request.headers.get("sec-fetch-dest") === "document";
     if (request.method === "GET"
       && url.pathname === "/"
       && !request.headers.has("RSC")
-      && !acceptsHtml) {
+      && !isBrowserNavigation) {
       const snapshotUrl = new URL("/seo-home-lite", request.url);
       return env.ASSETS.fetch(new Request(snapshotUrl, request));
     }
