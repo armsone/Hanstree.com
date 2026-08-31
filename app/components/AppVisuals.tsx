@@ -28,6 +28,14 @@ export function AppHeroArtwork({ app }: { app: AppData }) {
 }
 
 export function AppArtwork({ app, mode = "spotlight" }: { app: AppData; mode?: "spotlight" | "system" }) {
+  if (app.artwork === "autoshorts") {
+    return (
+      <div className="artwork artwork-bridge" aria-label="쇼츠 한 편이 끝나면 다음 영상으로 자동 이동하는 자동쇼츠">
+        <Image src={app.heroImage ?? "/apps/autoshorts/autoshorts-hero.png"} alt="" width={1536} height={1024} sizes="(max-width: 640px) 92vw, 720px" unoptimized />
+      </div>
+    );
+  }
+
   if (app.slug === "denimdex") {
     return (
       <div className="artwork artwork-denimdex" aria-label="빈티지 데님의 원단과 셀비지, 버튼과 리벳을 살피는 DenimDex 감정 장면">

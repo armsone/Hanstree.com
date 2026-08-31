@@ -22,7 +22,7 @@ export type AppData = {
   heroImage?: string;
   spotlightImage?: string;
   systemImage?: string;
-  artwork: "files" | "phones" | "clock" | "menubar" | "cleanup" | "trackpad" | "thumbnail" | "htoms" | "search" | "church" | "server" | "intelligence" | "bridge";
+  artwork: "files" | "phones" | "clock" | "menubar" | "cleanup" | "trackpad" | "thumbnail" | "htoms" | "search" | "church" | "server" | "intelligence" | "bridge" | "autoshorts";
   platforms: Platform[];
   features: { title: string; body: string; icon?: string }[];
   guide: { title: string; body: string }[];
@@ -1125,6 +1125,53 @@ export const apps: AppData[] = [
       "로그인과 실행 브라우저는 운영체제의 표준 영구 웹 저장소를 공유하며 로그인은 각 제공자 공식 페이지에서 사용자가 직접 수행합니다.",
       "자동화 스크립트는 허용된 공식 실행 origin에만 주입하고 OAuth·결제·제3자 페이지에는 주입하지 않습니다.",
       "기록 가능한 진단은 제공자, 단계, 소요 시간, 익명 실패 코드와 결과 길이처럼 원문을 포함하지 않는 값으로 제한합니다.",
+    ],
+  },
+  {
+    slug: "autoshorts",
+    name: "자동쇼츠",
+    english: "AutoShorts",
+    eyebrow: "WATCH ONCE, KEEP MOVING",
+    tagline: "쇼츠는 끝까지, 다음 영상은 자동으로.",
+    summary: "YouTube Shorts가 끝나면 다음 영상으로 자동 이동하는 Chrome·네이버 웨일 확장입니다. 반복 재생을 알아채고, 확장 버튼 하나로 언제든 켜고 끌 수 있습니다.",
+    theme: "coral",
+    icon: "/apps/autoshorts/icon.png",
+    heroImage: "/apps/autoshorts/autoshorts-hero.png",
+    spotlightImage: "/apps/autoshorts/autoshorts-hero.png",
+    artwork: "autoshorts",
+    platforms: [
+      {
+        name: "Chrome · 네이버 웨일",
+        status: "공개",
+        detail: "0.1.1 · Manifest V3 · 압축해제 확장 설치",
+        url: releaseDownloadPath("AutoShorts"),
+        downloadLabel: "자동쇼츠 ZIP 다운로드",
+        checksum: "a0b1a9b2a9e6bea6eecfae755ff137367059a35a86b864bf3c7d38abfdd1bcdc",
+        availabilityNote: "네이버 웨일에서 자동 넘김 동작 확인",
+      },
+    ],
+    features: [
+      { title: "끝까지 보면 다음 쇼츠로", body: "현재 Shorts의 재생이 끝나는 순간 다음 동영상 버튼을 사용해 자연스럽게 아래 영상으로 이동합니다." },
+      { title: "반복 재생도 놓치지 않게", body: "YouTube가 같은 영상을 자동 반복하도록 설정해도 종료 직전과 반복 시작점을 함께 감지합니다." },
+      { title: "YouTube 안에서 이동해도 계속", body: "홈이나 일반 영상에서 Shorts로 들어가는 화면 전환을 감지해 페이지를 새로 열지 않아도 준비합니다." },
+      { title: "원할 때 한 번에 멈춤", body: "도구 모음의 자동쇼츠 아이콘을 눌러 자동 넘김을 바로 켜거나 끌 수 있고 선택은 브라우저 안에 기억됩니다." },
+    ],
+    guide: [
+      { title: "ZIP 내려받기", body: "공식 GitHub Release에서 AutoShorts-0.1.1.zip을 내려받아 원하는 폴더에 압축을 풉니다." },
+      { title: "확장 관리 열기", body: "Chrome은 chrome://extensions, 네이버 웨일은 whale://extensions를 주소창에 입력하고 개발자 모드를 켭니다." },
+      { title: "폴더 불러오기", body: "압축해제된 확장 프로그램 불러오기를 누르고 압축을 푼 AutoShorts 폴더를 선택합니다." },
+      { title: "Shorts 보기", body: "YouTube Shorts를 열면 자동 넘김이 켜진 상태로 시작합니다. 잠시 멈추려면 도구 모음의 자동쇼츠 아이콘을 누릅니다." },
+    ],
+    progress: [
+      { state: "done", title: "0.1.1 공개", body: "Chrome·네이버 웨일용 Manifest V3 확장에 밝고 친근한 새 로고를 적용하고 설치 ZIP의 다운로드 무결성을 확인했습니다." },
+      { state: "done", title: "반복·연속 이동 검증", body: "반복 영상 종료, 같은 video 요소 재사용, YouTube 내부 Shorts 진입, 중복 이동 방지와 설정 저장 자동 테스트를 통과했습니다." },
+      { state: "done", title: "네이버 웨일 동작 확인", body: "실제 네이버 웨일에 압축해제 확장으로 설치해 자동 넘김이 작동하는 것을 확인했습니다." },
+    ],
+    github: ["https://github.com/armsone/AutoShorts"],
+    privacy: [
+      "자동 넘김 켜기·끄기 설정만 현재 브라우저의 로컬 저장소에 보관합니다.",
+      "방문 기록, YouTube 시청 기록, 계정 정보와 영상 정보를 수집하거나 개발자 서버로 전송하지 않습니다.",
+      "YouTube Shorts 페이지 안에서 재생 상태와 다음 동영상 버튼만 확인하며 일반 YouTube 영상에서는 자동 이동하지 않습니다.",
     ],
   },
 ];

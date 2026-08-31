@@ -44,21 +44,23 @@ test("server-renders the NasFinder.com homepage", async () => {
   assert.match(html, /HtOMS Brief/);
   assert.match(html, /Button/);
   assert.match(html, /AIBI/);
+  assert.match(html, /AutoShorts/);
   for (const slug of [
-    "nasfinder", "super-thumbnail", "hanclip", "stand", "ccmb", "btn", "trackpadguard",
-    "htoms-brief", "intosharp", "airchurch", "button", "starmanager", "minecraft-server", "whattoeat", "denimdex", "aibi",
+    "nasfinder", "super-thumbnail", "hanclip", "stand", "btn", "trackpadguard",
+    "htoms-brief", "intosharp", "airchurch", "button", "starmanager", "minecraft-server", "whattoeat", "denimdex", "aibi", "autoshorts",
   ]) {
     assert.match(html, new RegExp(`/apps/${slug}/home-card\\.webp`), slug);
   }
+  assert.match(html, /\/apps\/ccmb\/ccmb-dashboard-private\.png/);
   assert.match(html, /class="hero-product-image"/);
   assert.match(html, /class="app-row-representative"/);
   assert.match(html, /What to Eat/);
   assert.match(html, /NasOS · Minecraft Server/);
-  assert.equal((html.match(/class="hero-product(?:\s|")/g) ?? []).length, 17);
+  assert.equal((html.match(/class="hero-product(?:\s|")/g) ?? []).length, 18);
   assert.match(html, /href="\/apps\/intosharp" class="hero-product hero-product-intosharp"[^>]*aria-label="인투샾 제품 자세히 보기"/);
-  assert.equal((html.match(/class="app-row-hit-area"/g) ?? []).length, 17);
+  assert.equal((html.match(/class="app-row-hit-area"/g) ?? []).length, 18);
   assert.match(html, /href="\/apps\/intosharp" class="app-row-hit-area" aria-label="인투샾 제품 자세히 보기"/);
-  assert.match(html, />39<\/strong><span>현재 소개하는 제품/);
+  assert.match(html, />40<\/strong><span>현재 소개하는 제품/);
   assert.doesNotMatch(html, /플랫폼별 제공 버전/);
   assert.match(html, />08<\/strong><span>iPhone · iPad · macOS · Android · Google TV · Web · NasOS · Windows \(커밍\)/);
   assert.match(html, /한양/);
@@ -521,7 +523,7 @@ test("renders full promotional campaigns for HanClip, TrackpadGuard, CCMB, and S
   assert.match(trackpadGuard, /trackpadguard-campaign\.png/);
   assert.match(trackpadGuard, /키 내용도, 터치 좌표도 쌓지 않습니다/);
   assert.match(ccmb, /AI 사용량/);
-  assert.match(ccmb, /ccmb-campaign\.png/);
+  assert.match(ccmb, /ccmb-dashboard-private\.png/);
   assert.match(ccmb, /세 서비스의 남은 여유를 한눈에/);
   assert.match(ccmb, /advantage-visual/);
   assert.match(stand, /밤에는 조용한 메이트/);

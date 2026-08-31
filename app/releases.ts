@@ -17,6 +17,7 @@ export const DOWNLOAD_KEYS = [
   "OurButton-Android",
   "iManagerAI-Android",
   "HtOMS-BK",
+  "AutoShorts",
 ] as const;
 
 export type DownloadKey = (typeof DOWNLOAD_KEYS)[number];
@@ -129,6 +130,12 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     repo: "HtOMS-BK",
     assetPattern: /^HtOMS-Brief-Android-.*\.apk$/i,
     fallbackUrl: "https://github.com/armsone/HtOMS-BK/releases/download/android-v2.1.1/HtOMS-Brief-Android-2.1.1.apk",
+  },
+  AutoShorts: {
+    label: "AutoShorts",
+    repo: "AutoShorts",
+    assetPattern: /^AutoShorts-\d+\.\d+\.\d+\.zip$/i,
+    fallbackUrl: "https://github.com/armsone/AutoShorts/releases/download/v0.1.1/AutoShorts-0.1.1.zip",
   },
 };
 
