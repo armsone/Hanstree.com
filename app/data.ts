@@ -22,7 +22,7 @@ export type AppData = {
   heroImage?: string;
   spotlightImage?: string;
   systemImage?: string;
-  artwork: "files" | "phones" | "clock" | "menubar" | "cleanup" | "trackpad" | "thumbnail" | "htoms" | "search" | "church" | "server" | "intelligence" | "bridge" | "autoshorts";
+  artwork: "files" | "phones" | "clock" | "menubar" | "cleanup" | "trackpad" | "thumbnail" | "htoms" | "search" | "church" | "server" | "intelligence" | "bridge" | "autoshorts" | "ai-search";
   platforms: Platform[];
   features: { title: string; body: string; icon?: string }[];
   guide: { title: string; body: string }[];
@@ -1071,6 +1071,62 @@ export const apps: AppData[] = [
       "DenimDex는 ChatGPT 비밀번호와 로그인 쿠키를 읽거나 별도 서버에 저장하지 않습니다. 로그인은 ChatGPT 공식 화면에서 사용자가 직접 진행합니다.",
       "한국·일본 가격과 차익은 사진 및 일반 시장 지식에 기반한 참고 추정치이며 실시간 거래 데이터나 실제 판매 수익을 보장하지 않습니다.",
       "개인 NAS 기반 아카이브 동기화는 준비 중이며 현재 버전에서는 사용하지 않습니다.",
+    ],
+  },
+  {
+    slug: "alfred-ai-search",
+    name: "알프레드 AI 검색",
+    english: "Alfred AI Search",
+    eyebrow: "THREE AIS, THREE KOREAN KEYS",
+    tagline: "지·클·제 세 글자로, 필요한 답을 바로.",
+    summary: "Alfred에서 지는 ChatGPT, 클은 Claude, 제는 Gemini에게 묻는 macOS 워크플로우입니다. 가벼운 질문은 Alfred 안에서 확인하고, 깊은 대화는 각 AI 앱으로 이어갑니다. 별도 API 키 대신 사용자가 로그인한 공식 CLI를 사용합니다.",
+    theme: "blue",
+    icon: "/apps/alfred-ai-search/icon.png",
+    heroImage: "/apps/alfred-ai-search/screens/alfred-answer-view.png",
+    spotlightImage: "/apps/alfred-ai-search/screens/alfred-answer-view.png",
+    artwork: "ai-search",
+    platforms: [
+      {
+        name: "macOS · Alfred 5 Powerpack",
+        status: "공개",
+        detail: "0.6.1 · ChatGPT·Claude·Gemini 로그인 CLI 사용",
+        url: "https://github.com/armsone/Alfred-AI-Search/releases/download/v0.6.1/Alfred-AI-Search-0.6.1.alfredworkflow",
+        downloadLabel: "Alfred 워크플로우 받기",
+        checksum: "9a0840417596a77bff3c53e825cd581c367088e7f26dee741c31eabe744d3bb3",
+        availabilityNote: "GitHub Release 공개 파일 다운로드와 SHA-256 무결성 확인 완료",
+      },
+    ],
+    features: [
+      { title: "지·클·제 세 글자로 바로 질문", body: "Alfred를 열고 지는 ChatGPT, 클은 Claude, 제는 Gemini를 뜻하는 한 글자 키워드 뒤에 질문을 입력합니다.", icon: "/apps/alfred-ai-search/providers/chatgpt.png" },
+      { title: "가볍게는 Alfred 안에서", body: "답변을 기다리는 동안 진행 상태를 보여주고, 생성이 끝나면 Alfred의 텍스트 화면에서 질문과 답을 바로 확인합니다.", icon: "/apps/alfred-ai-search/providers/claude.png" },
+      { title: "깊게는 AI 앱으로 이어서", body: "짧은 확인은 Alfred에서 끝내고, 더 깊게 이어갈 때는 현재 질문을 복사해 선택한 AI 앱을 엽니다. 앱에 자동 전송하지 않아 작성 중인 내용을 덮어쓰지 않습니다.", icon: "/apps/alfred-ai-search/providers/gemini.png" },
+      { title: "대화 기록은 AI별로 분리", body: "ChatGPT·Claude·Gemini의 질문과 답을 각각 보관하고, 링크를 열었다 돌아와도 마지막 결과와 이전 기록을 다시 볼 수 있습니다.", icon: "/apps/alfred-ai-search/icon.png" },
+      { title: "API 키를 따로 보관하지 않음", body: "워크플로우에 API 키를 입력하거나 저장하지 않습니다. 각 제공자의 공식 CLI에 사용자가 직접 로그인한 계정 세션으로 답을 생성합니다.", icon: "/apps/alfred-ai-search/icon.png" },
+      { title: "다른 Mac에서도 CLI 자동 탐색", body: "사용자 이름이 들어간 고정 경로 대신 PATH와 일반적인 설치 위치를 확인해 Codex·Claude·Gemini 실행 파일을 찾습니다.", icon: "/apps/alfred-ai-search/icon.png" },
+    ],
+    guide: [
+      { title: "워크플로우 설치", body: "공개 .alfredworkflow 파일을 내려받아 열고 Alfred 5에 가져옵니다. 실행에는 Powerpack이 필요합니다." },
+      { title: "사용할 CLI 로그인", body: "ChatGPT는 Codex CLI, Claude는 Claude Code CLI, Gemini는 Gemini CLI를 설치한 뒤 각 공식 로그인 절차를 한 번 완료합니다." },
+      { title: "지·클·제로 질문", body: "Alfred 검색창에서 ‘지 오늘 서울 날씨’, ‘클 이 글 요약’, ‘제 아이디어 세 개’처럼 한 글자 뒤에 질문을 씁니다." },
+      { title: "답과 기록 다시 보기", body: "결과 화면을 닫았거나 링크를 확인하고 돌아왔다면 같은 AI의 키워드를 다시 열어 마지막 답과 이전 대화를 확인합니다." },
+      { title: "앱에서 깊게 이어가기", body: "더 긴 대화가 필요할 때 제공되는 앱 열기 동작을 사용합니다. 질문은 클립보드에 준비되며 전송은 사용자가 직접 결정합니다." },
+    ],
+    progress: [
+      { state: "done", title: "0.6.1 공개", body: "지·클·제 통합 워크플로우를 GitHub Release에 공개하고 배포 파일의 버전과 SHA-256을 확인했습니다." },
+      { state: "done", title: "세 제공자 아이콘과 기록", body: "ChatGPT·Claude·Gemini 아이콘, 제공자별 질문·답변 기록과 마지막 결과 다시 보기를 적용했습니다." },
+      { state: "done", title: "실수로 사라지지 않는 결과 창", body: "다른 곳을 눌러도 결과를 유지하고 Esc로 명확하게 닫는 흐름과 크기를 조절할 수 있는 터미널 창을 반영했습니다." },
+      { state: "done", title: "사용자 독립 CLI 탐색", body: "특정 사용자의 홈 폴더를 하드코딩하지 않고 설치된 실행 파일을 자동으로 찾도록 정리했습니다." },
+    ],
+    screenshots: [
+      { src: "/apps/alfred-ai-search/screens/alfred-answer-view.png", alt: "Alfred AI Search가 Codex CLI 답변과 이전 질문 기록을 밝은 텍스트 화면에 보여주는 실제 화면" },
+    ],
+    github: ["https://github.com/armsone/Alfred-AI-Search"],
+    privacy: [
+      "질문과 답변 기록은 Alfred 워크플로우의 로컬 데이터 폴더에 제공자별 파일로 보관됩니다. 사용자가 Alfred에서 워크플로우 데이터를 삭제하면 함께 제거됩니다.",
+      "새 질문에 이전 대화를 이어 붙이는 경우 선택한 제공자의 CLI로 해당 대화 문맥이 함께 전달됩니다. 각 AI 제공자의 계정·개인정보 정책과 이용 조건이 적용됩니다.",
+      "워크플로우는 API 키, 로그인 비밀번호와 세션 토큰을 직접 수집하거나 저장하지 않습니다. 인증은 사용자가 설치하고 로그인한 공식 CLI가 담당합니다.",
+      "깊은 대화 모드에서는 사용자가 입력한 질문을 클립보드에 복사하고 선택한 AI 앱을 엽니다. 질문을 자동으로 붙여 넣거나 전송하지 않습니다.",
+      "별도 개발자 서버, 분석 도구와 광고 추적기를 사용하지 않습니다.",
     ],
   },
   {

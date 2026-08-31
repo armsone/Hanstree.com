@@ -28,6 +28,25 @@ export function AppHeroArtwork({ app }: { app: AppData }) {
 }
 
 export function AppArtwork({ app, mode = "spotlight" }: { app: AppData; mode?: "spotlight" | "system" }) {
+  if (app.artwork === "ai-search") {
+    const providers = [
+      ["지", "ChatGPT", "/apps/alfred-ai-search/providers/chatgpt.png"],
+      ["클", "Claude", "/apps/alfred-ai-search/providers/claude.png"],
+      ["제", "Gemini", "/apps/alfred-ai-search/providers/gemini.png"],
+    ];
+    return (
+      <div className="artwork artwork-ai-search" aria-label="지·클·제 키워드와 ChatGPT, Claude, Gemini를 연결하는 Alfred AI Search 실제 화면">
+        <div className="ai-search-provider-row">
+          {providers.map(([keyword, name, icon]) => <span key={name}><Image src={icon} alt="" width={54} height={54} unoptimized /><b>{keyword}</b><small>{name}</small></span>)}
+        </div>
+        <div className="ai-search-screen">
+          <Image src="/apps/alfred-ai-search/screens/alfred-answer-view.png" alt="" width={1238} height={1764} sizes="(max-width: 640px) 72vw, 420px" unoptimized />
+        </div>
+        <p>Alfred 안에서 가볍게. 필요할 때 앱으로 깊게.</p>
+      </div>
+    );
+  }
+
   if (app.artwork === "autoshorts") {
     return (
       <div className="artwork artwork-bridge" aria-label="쇼츠 한 편이 끝나면 다음 영상으로 자동 이동하는 자동쇼츠">
