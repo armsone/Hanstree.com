@@ -35,7 +35,7 @@ const worker = {
       && !request.headers.has("RSC")
       && !request.headers.has("X-NasFinder-Dynamic-Document")
       && (request.headers.get("accept") ?? "text/html").includes("text/html")) {
-      const snapshotUrl = new URL("/seo-home.html", request.url);
+      const snapshotUrl = new URL("/seo-home", request.url);
       return env.ASSETS.fetch(new Request(snapshotUrl, request));
     }
 
