@@ -1089,10 +1089,10 @@ export const apps: AppData[] = [
       {
         name: "macOS · Alfred 5 Powerpack",
         status: "공개",
-        detail: "0.7.1 · ⌘Return 앱 실행 후 입력창 준비 시 자동 붙여넣기",
-        url: "https://github.com/armsone/Alfred-AI-Search/releases/download/v0.7.1/Alfred-AI-Search-0.7.1.alfredworkflow",
+        detail: "0.7.2 · AI 앱 전면 활성화 후 입력창 준비 시 자동 붙여넣기",
+        url: "https://github.com/armsone/Alfred-AI-Search/releases/download/v0.7.2/Alfred-AI-Search-0.7.2.alfredworkflow",
         downloadLabel: "Alfred 워크플로우 받기",
-        checksum: "52d226be67d4d74cdf6827166bc411d82ef9edc701f896f9cedd7665ea0d39a4",
+        checksum: "1955ebbe7a8d2e37fa36ae0d6b07f973b4500b6f6d0c1bfde7234981ba3e7db5",
         availabilityNote: "GitHub Release 공개 파일 다운로드와 SHA-256 무결성 확인 완료",
       },
     ],
@@ -1112,7 +1112,7 @@ export const apps: AppData[] = [
       { title: "⌘Return으로 깊게 이어가기", body: "더 긴 대화가 필요하면 질문을 입력한 상태에서 ⌘Return을 누릅니다. 앱의 입력창이 준비되면 자동으로 붙여 넣고, 전송은 사용자가 직접 결정합니다. 감지에 실패해도 질문은 클립보드에 남습니다." },
     ],
     progress: [
-      { state: "done", title: "0.7.1 공개", body: "⌘Return으로 AI 앱을 연 뒤 활성 입력창을 최대 20초 동안 확인해 준비된 순간 질문을 붙여 넣고, 실패 시 클립보드를 유지하도록 구현했습니다." },
+      { state: "done", title: "0.7.2 공개", body: "앱이 열린 직후 전면 상태를 잃어 붙여넣기가 누락되던 문제를 고치고, Claude 실제 입력창에서 테스트 문구가 0자에서 13자로 입력되는 것을 확인했습니다." },
       { state: "done", title: "세 제공자 아이콘과 기록", body: "ChatGPT·Claude·Gemini 아이콘, 제공자별 질문·답변 기록과 마지막 결과 다시 보기를 적용했습니다." },
       { state: "done", title: "실수로 사라지지 않는 결과 창", body: "다른 곳을 눌러도 결과를 유지하고 Esc로 명확하게 닫는 흐름과 크기를 조절할 수 있는 터미널 창을 반영했습니다." },
       { state: "done", title: "사용자 독립 CLI 탐색", body: "특정 사용자의 홈 폴더를 하드코딩하지 않고 설치된 실행 파일을 자동으로 찾도록 정리했습니다." },
