@@ -135,7 +135,7 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     label: "AutoShorts",
     repo: "AutoShorts",
     assetPattern: /^AutoShorts-\d+\.\d+\.\d+\.zip$/i,
-    fallbackUrl: "https://github.com/armsone/AutoShorts/releases/download/v0.1.1/AutoShorts-0.1.1.zip",
+    fallbackUrl: "https://github.com/armsone/AutoShorts/releases/download/v0.1.2/AutoShorts-0.1.2.zip",
   },
 };
 

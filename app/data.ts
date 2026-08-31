@@ -1143,10 +1143,10 @@ export const apps: AppData[] = [
       {
         name: "Chrome · 네이버 웨일",
         status: "공개",
-        detail: "0.1.1 · Manifest V3 · 압축해제 확장 설치",
+        detail: "0.1.2 · Manifest V3 · 압축해제 확장 설치",
         url: releaseDownloadPath("AutoShorts"),
         downloadLabel: "자동쇼츠 ZIP 다운로드",
-        checksum: "a0b1a9b2a9e6bea6eecfae755ff137367059a35a86b864bf3c7d38abfdd1bcdc",
+        checksum: "8a656529bd360a8c9ac022d8b12b8a3ab473f1d75c7c77b51209036c112b9cfd",
         availabilityNote: "네이버 웨일에서 자동 넘김 동작 확인",
       },
     ],
@@ -1157,13 +1157,13 @@ export const apps: AppData[] = [
       { title: "원할 때 한 번에 멈춤", body: "도구 모음의 자동쇼츠 아이콘을 눌러 자동 넘김을 바로 켜거나 끌 수 있고 선택은 브라우저 안에 기억됩니다." },
     ],
     guide: [
-      { title: "ZIP 내려받기", body: "공식 GitHub Release에서 AutoShorts-0.1.1.zip을 내려받아 원하는 폴더에 압축을 풉니다." },
+      { title: "ZIP 내려받기", body: "공식 GitHub Release에서 AutoShorts-0.1.2.zip을 내려받아 원하는 폴더에 압축을 풉니다." },
       { title: "확장 관리 열기", body: "Chrome은 chrome://extensions, 네이버 웨일은 whale://extensions를 주소창에 입력하고 개발자 모드를 켭니다." },
       { title: "폴더 불러오기", body: "압축해제된 확장 프로그램 불러오기를 누르고 압축을 푼 AutoShorts 폴더를 선택합니다." },
       { title: "Shorts 보기", body: "YouTube Shorts를 열면 자동 넘김이 켜진 상태로 시작합니다. 잠시 멈추려면 도구 모음의 자동쇼츠 아이콘을 누릅니다." },
     ],
     progress: [
-      { state: "done", title: "0.1.1 공개", body: "Chrome·네이버 웨일용 Manifest V3 확장에 밝고 친근한 새 로고를 적용하고 설치 ZIP의 다운로드 무결성을 확인했습니다." },
+      { state: "done", title: "0.1.2 공개", body: "아이보리·샴페인 톤의 새 앱 아이콘과 자동으로 이어지는 쇼츠를 표현한 제품 이미지를 적용하고 설치 ZIP의 다운로드 무결성을 확인했습니다." },
       { state: "done", title: "반복·연속 이동 검증", body: "반복 영상 종료, 같은 video 요소 재사용, YouTube 내부 Shorts 진입, 중복 이동 방지와 설정 저장 자동 테스트를 통과했습니다." },
       { state: "done", title: "네이버 웨일 동작 확인", body: "실제 네이버 웨일에 압축해제 확장으로 설치해 자동 넘김이 작동하는 것을 확인했습니다." },
     ],
