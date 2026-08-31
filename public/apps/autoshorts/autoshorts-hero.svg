@@ -20,11 +20,12 @@
     <rect x="1048" y="252" width="340" height="600" rx="62" />
   </g>
   <g transform="translate(512 256)" filter="url(#shadow)">
-    <rect width="512" height="512" rx="118" fill="#f8f8fa" stroke="#ffffff" stroke-width="8" />
-    <circle cx="256" cy="207" r="118" fill="url(#button)" stroke="#d4d5da" stroke-width="8" />
-    <path d="M226 149c0-11 12-18 22-12l93 58c10 6 10 20 0 26l-93 58c-10 6-22-1-22-12z" fill="#e41e25" />
-    <path d="M184 322l72 69 72-69" fill="none" stroke="#575a63" stroke-width="30" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M214 382l42 39 42-39" fill="none" stroke="#a5a7ae" stroke-width="17" stroke-linecap="round" stroke-linejoin="round" />
+    <rect width="512" height="512" rx="118" fill="#fdf9f0" stroke="#ffffff" stroke-width="8" />
+    <path d="M389 389A188 188 0 1 1 389 123" fill="none" stroke="#e41e25" stroke-width="44" stroke-linecap="round" />
+    <path d="M366 98l70 38-52 58z" fill="#e41e25" />
+    <circle cx="256" cy="256" r="118" fill="url(#button)" stroke="#ffffff" stroke-width="10" />
+    <path d="M226 198c0-11 12-18 22-12l93 58c10 6 10 20 0 26l-93 58c-10 6-22-1-22-12z" fill="#e41e25" />
+    <path d="M142 271a154 154 0 0 1 75-128" fill="none" stroke="#ffffff" stroke-width="16" stroke-linecap="round" opacity="0.5" />
   </g>
   <g fill="none" stroke="#9b9da5" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" opacity="0.5">
     <path d="M288 410l42 40 42-40" />
