@@ -44,7 +44,27 @@ const worker = {
       }, allowedWidths);
     }
 
-    return handler.fetch(request, env, ctx);
+    const response = await handler.fetch(request, env, ctx);
+    const contentType = response.headers.get("content-type") ?? "";
+    const isDocumentRequest = request.method === "GET"
+      && !request.headers.has("RSC")
+      && contentType.includes("text/html")
+      && response.body;
+
+    if (!isDocumentRequest) return response;
+
+    // Some SEO crawlers only inspect the first chunk of a streamed document.
+    // Buffer normal HTML navigation responses so every crawler receives the
+    // complete head and body without changing RSC or API streaming behavior.
+    const body = await response.arrayBuffer();
+    const headers = new Headers(response.headers);
+    headers.set("content-length", String(body.byteLength));
+
+    return new Response(body, {
+      status: response.status,
+      statusText: response.statusText,
+      headers,
+    });
   },
 };
 
