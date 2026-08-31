@@ -30,6 +30,15 @@ const worker = {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
 
+    if (request.method === "GET"
+      && url.pathname === "/"
+      && !request.headers.has("RSC")
+      && !request.headers.has("X-NasFinder-Dynamic-Document")
+      && (request.headers.get("accept") ?? "text/html").includes("text/html")) {
+      const snapshotUrl = new URL("/seo-home.html", request.url);
+      return env.ASSETS.fetch(new Request(snapshotUrl, request));
+    }
+
     const whattoeatResponse = await handleWhattoEatAPI(request, env);
     if (whattoeatResponse) return whattoeatResponse;
 
