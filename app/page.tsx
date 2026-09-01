@@ -100,7 +100,8 @@ export default function Home() {
           </div>
           <div className="hero-product-grid" role="list">
             <Link className="hero-product hero-product-space" href="/space/hanstree" role="listitem" aria-label="한스트리 스튜디오 자세히 보기">
-              <Image className="hero-product-image" src="/hanstree/studio-symbol-dark.jpeg" alt="" width={886} height={886} priority sizes="(max-width: 600px) 29vw, (max-width: 920px) 22vw, 150px" />
+              <Image className="hero-product-image" src="/hanstree/screen-art.jpg" alt="" width={1448} height={1086} priority sizes="(max-width: 600px) 29vw, (max-width: 920px) 22vw, 150px" />
+              <Image className="app-icon hanstree-product-icon" src="/hanstree/studio-symbol-dark.jpeg" alt="" width={886} height={886} priority sizes="48px" />
               <span className="hero-product-copy"><strong>한스트리 스튜디오</strong><small>Hanstree Studio</small></span>
             </Link>
             {apps.map((app, index) => (
@@ -281,7 +282,8 @@ export function SiteHeader() {
     <header className="site-header">
       <div className="shell header-inner">
         {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-        <a className="wordmark" href="/" aria-label="Hanstree 홈">
+        <a className="wordmark header-wordmark" href="/" aria-label="Hanstree 홈">
+          <Image className="header-brand-icon" src="/hanstree/studio-symbol-dark.jpeg" alt="" width={886} height={886} priority sizes="32px" />
           <span>HANSTREE</span>
         </a>
         <nav aria-label="주요 메뉴">
