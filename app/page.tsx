@@ -14,14 +14,14 @@ import { testFlightBuilds } from "./testflight";
 const principleVisuals: AdvantageVariant[] = ["compass", "timeline-dots", "devices-pair"];
 
 export const metadata: Metadata = {
-  description: "한스트리의 창작 공간 Han’s Tree와 나스파인더를 비롯해 직접 만든 디지털 제품을 소개합니다.",
+  description: "한스트리가 직접 만든 앱, 디지털 제품과 창작 공간을 한눈에 살펴보는 결과물 인덱스입니다.",
   alternates: { canonical: "https://hanstree.com" },
   openGraph: {
     type: "website",
     locale: "ko_KR",
     siteName: "Hanstree",
-    title: "Hanstree — 공간에서 시작해 제품으로 이어지는 생각",
-    description: "골프를 중심으로 창의성과 체력을 채우는 공간 Han’s Tree와 그곳에서 탄생한 디지털 제품을 소개합니다.",
+    title: "Hanstree — 직접 만든 결과물의 인덱스",
+    description: "나스파인더를 비롯한 디지털 제품과 Han’s Tree Studio 등 한스트리가 직접 만든 결과물을 소개합니다.",
     url: "https://hanstree.com",
     images: [{ url: "/og.png", width: 1731, height: 909, alt: "공간과 디지털 제품을 함께 만드는 Hanstree" }],
   },
@@ -59,70 +59,29 @@ function TestFlightInviteLinks() {
 }
 
 export default function Home() {
-  const productCount = 2 + apps.reduce(
-    (total, app) => total + app.platforms.reduce((count, platform) => {
-      const includesIPhone = /iPhone|iOS/i.test(platform.name);
-      const includesIPad = /iPad|iPadOS/i.test(platform.name);
-      return count + (includesIPhone && includesIPad ? 2 : 1);
-    }, 0),
-    0,
-  );
+  const workCount = apps.length + 1;
 
   return (
     <main className="home-hanstree">
       <SiteHeader />
 
-      <section className="hanstree-hero shell" id="top">
-        <div className="hanstree-hero-copy reveal">
-          <p className="eyebrow">HANSTREE · CREATIVE BASE</p>
-          <h1>
-            골프를 치고,<br />노래하고,<br />영화를 보고,
-            <span>다시 새로운 것을 만드는 곳.</span>
-          </h1>
-          <p className="hanstree-hero-lede">
-            Han’s Tree는 220인치 스크린 골프를 중심으로 일과 놀이, 운동과 회복이 이어지는 개인 창작 공간입니다.
-            이곳에서 아이디어를 구상하고 나스파인더를 비롯한 디지털 제품으로 완성합니다.
-          </p>
-          <div className="hero-actions">
-            <Link className="button button-primary" href="/space/hanstree">공간 이야기 보기 <span aria-hidden="true">→</span></Link>
-            <Link className="button button-quiet" href="#works">만든 것들 둘러보기</Link>
-          </div>
+      <section className="works-index-hero shell reveal" id="works">
+        <div className="works-index-intro">
+          <p className="eyebrow">HANSTREE · WORK INDEX</p>
+          <h1>생각을,<br /><span>결과물로.</span></h1>
+          <p>앱과 디지털 제품, 공간까지. 형태를 정해두기보다 직접 필요하고 좋아하는 것을 만들고, 오래 다듬어 온 기록입니다.</p>
         </div>
-
-        <div className="hanstree-hero-visual reveal">
-          <Image className="hanstree-hero-photo" src="/hanstree/screen.jpg" alt="220인치 대형 스크린이 설치된 Han’s Tree의 스크린 골프 공간" width={1024} height={768} priority sizes="(max-width: 920px) 100vw, 56vw" />
-          <div className="hanstree-photo-note">
-            <span>THE CENTER OF HAN’S TREE</span>
-            <strong>골프존 비전플러스 · 220인치 스크린</strong>
-          </div>
-          <Image className="hanstree-hero-inset" src="/hanstree/sign.jpg" alt="한스트리의 나무 모양 표식" width={1024} height={768} priority sizes="180px" />
-        </div>
-      </section>
-
-      <section className="works-preview shell reveal" id="works">
-        <div className="works-preview-heading">
-          <p className="eyebrow">THE WORKS</p>
-          <h2>생각을, 손에 잡히는 결과로.</h2>
-          <p>한스트리는 공간과 디지털 제품을 같은 마음으로 만듭니다. 직접 쓰고 즐기며, 오래 곁에 둘 수 있을 때까지 다듬습니다.</p>
-        </div>
-        <div className="works-preview-grid">
-          <Link className="work-feature work-feature-space" href="/space/hanstree">
-            <Image src="/hanstree/lounge.jpg" alt="Han’s Tree의 라운지와 스크린 공간" width={901} height={676} sizes="(max-width: 920px) 100vw, 50vw" />
-            <span className="work-feature-label">SPACE PROJECT</span>
-            <span className="work-feature-copy"><strong>Han’s Tree</strong><small>창의성과 체력을 함께 채우는 개인 창작 공간</small></span>
-          </Link>
-          <Link className="work-feature work-feature-digital" href="/apps/nasfinder">
-            <Image src={appCardImage(findApp("nasfinder")!)} alt="나스파인더 제품 화면" width={1280} height={853} sizes="(max-width: 920px) 100vw, 50vw" unoptimized />
-            <span className="work-feature-label">DIGITAL PRODUCT</span>
-            <span className="work-feature-copy"><strong>NasFinder</strong><small>내 저장공간을 모든 기기에서 이어주는 파일 앱</small></span>
-          </Link>
-        </div>
-        <div className="hero-product-wall" aria-label="한스트리가 만든 디지털 제품 전체">
+        <div className="hero-product-wall works-index-wall" aria-label="한스트리가 직접 만든 결과물 전체">
           <div className="hero-product-wall-heading">
-            <p>{apps.length} DIGITAL PRODUCTS. STILL COUNTING.</p>
-            <h2>공간에서 시작해, 제품으로 이어지는 생각.</h2>
+            <p>{String(workCount).padStart(2, "0")} WORKS. STILL COUNTING.</p>
+            <h2>직접 만든 결과물의 인덱스</h2>
           </div>
           <div className="hero-product-grid" role="list">
+            <Link className="hero-product hero-product-space" href="/space/hanstree" role="listitem" aria-label="Han’s Tree Studio 자세히 보기">
+              <Image className="hero-product-image" src="/hanstree/lounge-art.jpg" alt="" width={1448} height={1086} priority sizes="(max-width: 600px) 29vw, (max-width: 920px) 22vw, 150px" />
+              <span className="hero-product-space-mark" aria-hidden="true">H</span>
+              <span className="hero-product-copy"><strong>Han’s Tree</strong><small>Studio · Space</small></span>
+            </Link>
             {apps.map((app, index) => (
               <Link className={`hero-product hero-product-${app.slug}`} href={`/apps/${app.slug}`} key={app.slug} role="listitem" aria-label={`${app.name} 제품 자세히 보기`}>
                 <Image
@@ -145,7 +104,7 @@ export default function Home() {
 
       <section className="signal-bar" aria-label="사이트 요약">
         <div className="shell signal-grid">
-          <p><strong>{String(productCount).padStart(2, "0")}</strong><span>현재 소개하는 제품</span></p>
+          <p><strong>{String(workCount).padStart(2, "0")}</strong><span>현재 소개하는 결과물</span></p>
           <p><strong>08</strong><span>iPhone · iPad · macOS · Android · Google TV · Web · NasOS · Windows (커밍)</span></p>
           <p><strong>01</strong><span>한 사람의 꾸준한 기록</span></p>
         </div>
@@ -305,7 +264,7 @@ export function SiteHeader() {
           {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
           <a href="/#works">만든 것들</a>
           {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-          <a href="/space/hanstree">공간</a>
+          <a href="/space/hanstree">스튜디오</a>
           {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
           <a href="/#apps">제품</a>
           {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
@@ -323,7 +282,7 @@ export function SiteFooter() {
       <div className="shell footer-inner">
         <div>
           <Link className="wordmark" href="/"><span>HANSTREE</span></Link>
-          <p>공간에서 시작해 제품으로 이어지는 생각을 소개합니다.</p>
+          <p>직접 만들고 오래 다듬어 온 결과물을 소개합니다.</p>
         </div>
         <div className="footer-links">
           {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
