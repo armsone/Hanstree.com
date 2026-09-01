@@ -69,7 +69,7 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     label: "S.tand Mac",
     repo: "S.tand",
     assetPattern: /^S\.tand-macOS-.*\.dmg$/i,
-    fallbackUrl: "https://github.com/armsone/S.tand/releases/download/macos-v2.4.6/S.tand-macOS-2.4.6.dmg",
+    fallbackUrl: "https://github.com/armsone/S.tand/releases/download/macos-v2.4.7/S.tand-macOS-2.4.7.dmg",
   },
   "S.tand-Android": {
     label: "S.tand Android",

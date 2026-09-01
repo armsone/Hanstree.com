@@ -323,14 +323,14 @@ export const apps: AppData[] = [
     icon: "/apps/stand/icon.png",
     artwork: "clock",
     platforms: [
-      { name: "iOS · iPadOS", status: "TestFlight", detail: "2.4.6 (202608310934) · iOS·iPadOS 17+", availabilityNote: "2.4.6 Public Beta 심사 대기 · 기존 공개 링크로 참여 가능" },
+      { name: "iOS · iPadOS", status: "TestFlight", detail: "2.4.7 (202609020556) 업로드 처리 중 · iOS·iPadOS 17+", availabilityNote: "2.4.7은 Apple 처리 중 · 기존 Public Beta 링크로 참여 가능" },
       {
         name: "macOS",
         status: "공개",
-        detail: "2.4.6 (202608310934) · macOS 14+ · Apple 공증 완료",
+        detail: "2.4.7 (202609020556) · macOS 14+ · Apple 공증 완료",
         url: releaseDownloadPath("S.tand-macOS"),
         downloadLabel: "Mac용 DMG 바로 받기",
-        checksum: "baf553c90977dca68dcac0e28a328082d95b5498ecae19e86ab3204d5a075445",
+        checksum: "ac5c4f476b4166e53313da2fce6e5f7f124706c5fec61c19a392256587ceb263",
       },
       {
         name: "Android · Google TV",
@@ -345,6 +345,7 @@ export const apps: AppData[] = [
     features: [
       { title: "오브제 모드", body: "플립시계, 날씨와 배터리를 가로·세로 화면에 차분하게 표시합니다." },
       { title: "매이트와 화들짝", body: "어두운 환경에서 최소 밝기를 유지하고, 매이트 모드 진입 2분 뒤부터 움직임이나 큰소리에 화면과 조명이 반응합니다." },
+      { title: "아이폰 자동 밝기 존중", body: "iPhone·iPad의 시스템 자동 밝기는 그대로 두고 S.tand의 세로 밝기 제스처는 앱 화면의 조명만 조절합니다. 고정 매이트·오브제에서는 선택한 앱 밝기를 유지하고, 자동 모드에서는 실제 시스템 밝기가 바뀔 때 자연스럽게 따라갑니다." },
       { title: "밤새 이어지는 로컬 수면 기록", body: "화면을 잠그거나 다른 앱으로 나가면 자동으로 매이트 모드가 이어집니다. 코골이·잠꼬대·뒤척임 후보는 기기 안에 기록하며, 아무 소리도 없었던 밤과 감지 실패를 구분해 알려줍니다." },
       { title: "잠자리별 잠소리 정리", body: "잠자리 패널을 길게 눌러 여러 밤을 고르고 전체 선택·해제할 수 있습니다. 선택한 기록은 한 번에 합치거나 지우며, 패널 안에서는 잠소리 목록을 듣고 필요한 것만 남길 수 있습니다." },
       { title: "내 화면 만들기", body: "화면을 움직이지 않고 2초 동안 눌렀을 때만 편집을 엽니다. 가로 음량 조절이나 세로 밝기 조절 중에는 편집 모드로 바뀌지 않으며, 밝기·시계 글꼴·배치·테마를 화면 방향에 맞게 꾸밀 수 있습니다." },
@@ -369,6 +370,7 @@ export const apps: AppData[] = [
       { title: "Mac에서 시작", body: "공증된 DMG를 열고 S.tand를 응용 프로그램 폴더로 옮긴 뒤 실행합니다. 이후에는 앱이 업데이트를 확인하고 종료·교체 설치·재실행까지 이어서 처리합니다." },
     ],
     progress: [
+      { state: "done", title: "Mac 2.4.7 밝기 안전장치 공개", body: "앱 밝기와 iPhone 시스템 밝기를 분리하고 자동 밝기 변화를 다시 따라가도록 보강했습니다. 고정 모드의 밝기 잠금도 안정화했으며, Mac build 202609020556은 Apple 공증과 설치 검증을 마쳐 공개했습니다. 같은 iPhone·iPad 빌드는 TestFlight 업로드 처리 중입니다." },
       { state: "done", title: "2.4.6 잠소리 관리 공개", body: "잠자리 단위 패널과 길게 눌러 선택하는 전체 선택·해제, 합치기·지우기를 Apple·Android에 맞췄습니다. Mac DMG와 Android APK는 공개했고 iPhone·iPad build 202608310934는 Public Beta 심사 대기 중입니다." },
       { state: "done", title: "2.4.0 밤샘 매이트 모드 공개", body: "화면 잠금·백그라운드 진입 전에 매이트 감지를 시작하고 실제 모니터링 상태를 기록하도록 보강했습니다. Android 폴드·트라이폴드 잠금 상태와 Apple 자동 전환 회귀 테스트를 확인한 build 202608301000입니다." },
       { state: "done", title: "Mac·Android 2.4.0 공개", body: "Apple 공증 Mac DMG와 Android·Google TV APK를 공개하고, iPhone·iPad 새 빌드는 내부 테스트 배포와 Public Beta 심사 제출을 완료했습니다." },
