@@ -9,7 +9,7 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"]
 export const metadata: Metadata = {
   metadataBase: new URL("https://hanstree.com"),
   title: { default: "Hanstree — 직접 만든 결과물의 인덱스", template: "%s · Hanstree" },
-  description: "나스파인더를 비롯한 디지털 제품과 창작 공간 Han’s Tree까지, 직접 필요하고 좋아해서 만들고 오래 다듬은 결과물을 소개합니다.",
+  description: "나스파인더를 비롯한 디지털 제품과 창작 공간 Hanstree Studio까지, 직접 필요하고 좋아해서 만들고 오래 다듬은 결과물을 소개합니다.",
   manifest: "/site.webmanifest",
   icons: {
     icon: [{ url: "/favicon.ico", sizes: "any" }],

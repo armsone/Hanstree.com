@@ -13,6 +13,28 @@ import { testFlightBuilds } from "./testflight";
 
 const principleVisuals: AdvantageVariant[] = ["compass", "timeline-dots", "devices-pair"];
 
+const homeKoreanNames: Record<string, string> = {
+  nasfinder: "나스파인더",
+  "super-thumbnail": "수퍼썸네일",
+  hanclip: "한클립",
+  hanai: "한양",
+  stand: "스탠드",
+  ccmb: "씨씨엠비",
+  btn: "비티엔",
+  trackpadguard: "트랙패드가드",
+  "htoms-brief": "에이치티오엠에스 브리프",
+  intosharp: "인투샾",
+  airchurch: "에어처치",
+  button: "아워버튼",
+  starmanager: "아이매니저 AI",
+  "minecraft-server": "나스오에스",
+  whattoeat: "오늘 뭐 먹지??",
+  denimdex: "데님덱스",
+  "alfred-ai-search": "알프레드 AI 검색",
+  aibi: "아이비",
+  autoshorts: "자동쇼츠",
+};
+
 export const metadata: Metadata = {
   description: "한스트리가 직접 만든 앱, 디지털 제품과 창작 공간을 한눈에 살펴보는 결과물 인덱스입니다.",
   alternates: { canonical: "https://hanstree.com" },
@@ -21,7 +43,7 @@ export const metadata: Metadata = {
     locale: "ko_KR",
     siteName: "Hanstree",
     title: "Hanstree — 직접 만든 결과물의 인덱스",
-    description: "나스파인더를 비롯한 디지털 제품과 Han’s Tree Studio 등 한스트리가 직접 만든 결과물을 소개합니다.",
+    description: "나스파인더를 비롯한 디지털 제품과 Hanstree Studio 등 한스트리가 직접 만든 결과물을 소개합니다.",
     url: "https://hanstree.com",
     images: [{ url: "/og.png", width: 1731, height: 909, alt: "공간과 디지털 제품을 함께 만드는 Hanstree" }],
   },
@@ -59,7 +81,7 @@ function TestFlightInviteLinks() {
 }
 
 export default function Home() {
-  const workCount = apps.length + 1;
+  const workCount = apps.length + 2;
 
   return (
     <main className="home-hanstree">
@@ -77,10 +99,9 @@ export default function Home() {
             <h2>직접 만든 결과물의 인덱스</h2>
           </div>
           <div className="hero-product-grid" role="list">
-            <Link className="hero-product hero-product-space" href="/space/hanstree" role="listitem" aria-label="Han’s Tree Studio 자세히 보기">
-              <Image className="hero-product-image" src="/hanstree/lounge-art.jpg" alt="" width={1448} height={1086} priority sizes="(max-width: 600px) 29vw, (max-width: 920px) 22vw, 150px" />
-              <span className="hero-product-space-mark" aria-hidden="true">H</span>
-              <span className="hero-product-copy"><strong>Han’s Tree</strong><small>Studio · Space</small></span>
+            <Link className="hero-product hero-product-space" href="/space/hanstree" role="listitem" aria-label="한스트리 스튜디오 자세히 보기">
+              <Image className="hero-product-image" src="/hanstree/studio-symbol-dark.jpeg" alt="" width={886} height={886} priority sizes="(max-width: 600px) 29vw, (max-width: 920px) 22vw, 150px" />
+              <span className="hero-product-copy"><strong>한스트리 스튜디오</strong><small>Hanstree Studio</small></span>
             </Link>
             {apps.map((app, index) => (
               <Link className={`hero-product hero-product-${app.slug}`} href={`/apps/${app.slug}`} key={app.slug} role="listitem" aria-label={`${app.name} 제품 자세히 보기`}>
@@ -95,9 +116,13 @@ export default function Home() {
                   unoptimized
                 />
                 <AppIcon app={app} priority={index < 4} />
-                <span className="hero-product-copy"><strong>{app.name}</strong><small>{app.english}</small></span>
+                <span className="hero-product-copy"><strong>{homeKoreanNames[app.slug] ?? app.name}</strong><small>{app.english}</small></span>
               </Link>
             ))}
+            <Link className="hero-product hero-product-instagram" href="/space/hanstree/instagram" role="listitem" aria-label="먹탐자 Instagram 자세히 보기">
+              <Image className="hero-product-image" src="/instagram/meoktamja-hero.jpeg" alt="" width={960} height={638} sizes="(max-width: 600px) 29vw, (max-width: 920px) 22vw, 150px" />
+              <span className="hero-product-copy"><strong>먹탐자</strong><small>Instagram · @armsone</small></span>
+            </Link>
           </div>
         </div>
       </section>
@@ -132,7 +157,7 @@ export default function Home() {
                   <AppIcon app={app} />
                   <div>
                     <p>{app.english}</p>
-                    <h3>{app.name}</h3>
+                    <h3>{homeKoreanNames[app.slug] ?? app.name}</h3>
                   </div>
                 </div>
                 <p className="app-tagline">{app.tagline}</p>
@@ -287,7 +312,7 @@ export function SiteFooter() {
         <div className="footer-links">
           {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
           <a href="/#works">만든 것들</a>
-          <Link href="/space/hanstree">Han’s Tree 공간</Link>
+          <Link href="/space/hanstree">한스트리 스튜디오</Link>
           {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
           <a href="/#records">사이트 기록</a>
           <Link href="/apps/nasfinder/privacy">개인정보처리방침</Link>
