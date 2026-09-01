@@ -4,4 +4,4 @@ Disallow: /api/release-download
 Disallow: /api/android-releases
 Disallow: /api/site-stats
 
-Sitemap: https://nasfinder.com/sitemap.xml
+Sitemap: https://hanstree.com/sitemap.xml

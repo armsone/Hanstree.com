@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { apps } from "./data";
 
-const origin = "https://nasfinder.com";
+const origin = "https://hanstree.com";
 const publicSections = ["privacy", "support", "terms"] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     { url: origin, changeFrequency: "weekly", priority: 1 },
+    { url: `${origin}/space/hanstree`, changeFrequency: "monthly", priority: 0.9 },
     ...productPages,
     { url: `${origin}/apps/nasfinder/data-deletion`, changeFrequency: "monthly", priority: 0.4 },
     { url: `${origin}/apps/nasfinder/google-oauth`, changeFrequency: "monthly", priority: 0.4 },

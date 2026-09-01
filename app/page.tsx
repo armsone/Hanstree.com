@@ -14,16 +14,16 @@ import { testFlightBuilds } from "./testflight";
 const principleVisuals: AdvantageVariant[] = ["compass", "timeline-dots", "devices-pair"];
 
 export const metadata: Metadata = {
-  description: "나스파인더로 iPhone Live Photo와 Android Motion Photo를 양방향 변환·전송하고, 직접 만드는 앱의 기능과 개발 과정을 소개합니다.",
-  alternates: { canonical: "https://nasfinder.com" },
+  description: "한스트리의 창작 공간 Han’s Tree와 나스파인더를 비롯해 직접 만든 디지털 제품을 소개합니다.",
+  alternates: { canonical: "https://hanstree.com" },
   openGraph: {
     type: "website",
     locale: "ko_KR",
-    siteName: "NasFinder.com",
-    title: "NasFinder.com — 일상 가까이, 꼭 필요한 앱",
-    description: "iPhone Live Photo와 Android Motion Photo를 양방향 변환·전송하는 나스파인더와 직접 만드는 앱을 소개합니다.",
-    url: "https://nasfinder.com",
-    images: [{ url: "/og.png", width: 1024, height: 1024, alt: "Wi-Fi 신호와 NAS를 표현한 NasFinder.com 대표 이미지" }],
+    siteName: "Hanstree",
+    title: "Hanstree — 공간에서 시작해 제품으로 이어지는 생각",
+    description: "골프를 중심으로 창의성과 체력을 채우는 공간 Han’s Tree와 그곳에서 탄생한 디지털 제품을 소개합니다.",
+    url: "https://hanstree.com",
+    images: [{ url: "/og.png", width: 1731, height: 909, alt: "공간과 디지털 제품을 함께 만드는 Hanstree" }],
   },
 };
 
@@ -69,40 +69,58 @@ export default function Home() {
   );
 
   return (
-    <main>
+    <main className="home-hanstree">
       <SiteHeader />
 
-      <section className="hero shell" id="top">
-        <div className="hero-copy reveal">
-          <p className="eyebrow">APPS BY ARMSONE</p>
+      <section className="hanstree-hero shell" id="top">
+        <div className="hanstree-hero-copy reveal">
+          <p className="eyebrow">HANSTREE · CREATIVE BASE</p>
           <h1>
-            일상 가까이,
-            <span>꼭 필요한 앱.</span>
+            골프를 치고,<br />노래하고,<br />영화를 보고,
+            <span>다시 새로운 것을 만드는 곳.</span>
           </h1>
-          <p className="hero-lede">
-            하나만 만들 생각이었습니다. 그런데 불편이 자꾸 보였고,
-            어느새 {apps.length}개의 제품이 되었습니다. 생각이 떠오르면 직접 만들고,
-            쓸수록 좋아질 때까지 끝까지 다듬습니다.
+          <p className="hanstree-hero-lede">
+            Han’s Tree는 220인치 스크린 골프를 중심으로 일과 놀이, 운동과 회복이 이어지는 개인 창작 공간입니다.
+            이곳에서 아이디어를 구상하고 나스파인더를 비롯한 디지털 제품으로 완성합니다.
           </p>
-        </div>
-
-        <div className="hero-showcase reveal" aria-hidden="true">
-          <div className="hero-orbit-art" aria-hidden="true">
-            <span className="hero-orbit-ring hero-orbit-ring-outer" />
-            <span className="hero-orbit-ring hero-orbit-ring-inner" />
-            <div className="hero-orbit-glow">
-              <span>APPS BY</span>
-              <strong>ARMSONE</strong>
-              <small>생각을, 손에 잡히게.</small>
-            </div>
-            <p className="hero-orbit-count"><strong>{String(apps.length).padStart(2, "0")}</strong><span>개의 작은 해답</span></p>
+          <div className="hero-actions">
+            <Link className="button button-primary" href="/space/hanstree">공간 이야기 보기 <span aria-hidden="true">→</span></Link>
+            <Link className="button button-quiet" href="#works">만든 것들 둘러보기</Link>
           </div>
         </div>
 
-        <section className="hero-product-wall reveal" aria-label="한병기가 만드는 앱 전체">
+        <div className="hanstree-hero-visual reveal">
+          <Image className="hanstree-hero-photo" src="/hanstree/screen.jpg" alt="220인치 대형 스크린이 설치된 Han’s Tree의 스크린 골프 공간" width={1024} height={768} priority sizes="(max-width: 920px) 100vw, 56vw" />
+          <div className="hanstree-photo-note">
+            <span>THE CENTER OF HAN’S TREE</span>
+            <strong>골프존 비전플러스 · 220인치 스크린</strong>
+          </div>
+          <Image className="hanstree-hero-inset" src="/hanstree/sign.jpg" alt="한스트리의 나무 모양 표식" width={1024} height={768} priority sizes="180px" />
+        </div>
+      </section>
+
+      <section className="works-preview shell reveal" id="works">
+        <div className="works-preview-heading">
+          <p className="eyebrow">THE WORKS</p>
+          <h2>생각을, 손에 잡히는 결과로.</h2>
+          <p>한스트리는 공간과 디지털 제품을 같은 마음으로 만듭니다. 직접 쓰고 즐기며, 오래 곁에 둘 수 있을 때까지 다듬습니다.</p>
+        </div>
+        <div className="works-preview-grid">
+          <Link className="work-feature work-feature-space" href="/space/hanstree">
+            <Image src="/hanstree/lounge.jpg" alt="Han’s Tree의 라운지와 스크린 공간" width={901} height={676} sizes="(max-width: 920px) 100vw, 50vw" />
+            <span className="work-feature-label">SPACE PROJECT</span>
+            <span className="work-feature-copy"><strong>Han’s Tree</strong><small>창의성과 체력을 함께 채우는 개인 창작 공간</small></span>
+          </Link>
+          <Link className="work-feature work-feature-digital" href="/apps/nasfinder">
+            <Image src={appCardImage(findApp("nasfinder")!)} alt="나스파인더 제품 화면" width={1280} height={853} sizes="(max-width: 920px) 100vw, 50vw" unoptimized />
+            <span className="work-feature-label">DIGITAL PRODUCT</span>
+            <span className="work-feature-copy"><strong>NasFinder</strong><small>내 저장공간을 모든 기기에서 이어주는 파일 앱</small></span>
+          </Link>
+        </div>
+        <div className="hero-product-wall" aria-label="한스트리가 만든 디지털 제품 전체">
           <div className="hero-product-wall-heading">
-            <p>{apps.length} PRODUCTS. STILL COUNTING.</p>
-            <h2>보이는 불편마다, 앱 하나.</h2>
+            <p>{apps.length} DIGITAL PRODUCTS. STILL COUNTING.</p>
+            <h2>공간에서 시작해, 제품으로 이어지는 생각.</h2>
           </div>
           <div className="hero-product-grid" role="list">
             {apps.map((app, index) => (
@@ -122,7 +140,7 @@ export default function Home() {
               </Link>
             ))}
           </div>
-        </section>
+        </div>
       </section>
 
       <section className="signal-bar" aria-label="사이트 요약">
@@ -279,21 +297,20 @@ export function SiteHeader() {
     <header className="site-header">
       <div className="shell header-inner">
         {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-        <a className="wordmark" href="/" aria-label="NasFinder.com 홈">
-          <span>NasFinder</span>.com
+        <a className="wordmark" href="/" aria-label="Hanstree 홈">
+          <span>HANSTREE</span>
         </a>
         <nav aria-label="주요 메뉴">
           {/* Native anchors preserve same-page hash scrolling in the deployed vinext runtime. */}
           {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-          <a href="/">홈</a>
+          <a href="/#works">만든 것들</a>
           {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-          <a href="/#apps">앱</a>
+          <a href="/space/hanstree">공간</a>
           {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-          <a href="/#testflight">다운</a>
+          <a href="/#apps">제품</a>
           {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-          <a href="/#records">기록</a>
-          <a href="https://github.com/armsone">깃허브 <span aria-hidden="true">↗</span></a>
-          <Link href="/admin/testflight" aria-label="관리자 로그인">관리자</Link>
+          <a href="/#contact">이야기</a>
+          <Link href="/apps/nasfinder/support">지원</Link>
         </nav>
       </div>
     </header>
@@ -305,19 +322,21 @@ export function SiteFooter() {
     <footer className="site-footer">
       <div className="shell footer-inner">
         <div>
-          <Link className="wordmark" href="/"><span>NasFinder</span>.com</Link>
-          <p>한병기 · 바이브 코더가 만드는 앱과 웹 서비스를 소개합니다.</p>
+          <Link className="wordmark" href="/"><span>HANSTREE</span></Link>
+          <p>공간에서 시작해 제품으로 이어지는 생각을 소개합니다.</p>
         </div>
         <div className="footer-links">
           {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-          <a href="/#apps">모든 앱</a>
+          <a href="/#works">만든 것들</a>
+          <Link href="/space/hanstree">Han’s Tree 공간</Link>
           {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
           <a href="/#records">사이트 기록</a>
           <Link href="/apps/nasfinder/privacy">개인정보처리방침</Link>
           <Link href="/apps/nasfinder/support">지원</Link>
           <Link href="https://github.com/armsone">GitHub</Link>
+          <Link href="/admin/testflight" aria-label="관리자 로그인">관리자</Link>
         </div>
-        <p className="copyright">© {new Date().getFullYear()} armsone</p>
+        <p className="copyright">© {new Date().getFullYear()} Hanstree · armsone</p>
       </div>
     </footer>
   );

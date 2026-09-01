@@ -1,7 +1,7 @@
 {
-  "name": "NasFinder.com",
-  "short_name": "NasFinder",
-  "description": "일상 가까이, 꼭 필요한 앱을 소개합니다.",
+  "name": "Hanstree",
+  "short_name": "Hanstree",
+  "description": "공간에서 시작해 제품으로 이어지는 생각을 소개합니다.",
   "id": "/",
   "start_url": "/",
   "scope": "/",

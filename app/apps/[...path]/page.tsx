@@ -177,8 +177,8 @@ export async function generateMetadata({ params }: RouteProps): Promise<Metadata
   const socialImage = !suffix
     ? app.heroImage ?? app.icon ?? (app.slug === "stand" ? "/og-stand.png" : undefined)
     : undefined;
-  const socialImages = socialImage ? [new URL(socialImage, "https://nasfinder.com").toString()] : [];
-  const canonical = new URL(`/apps/${path.join("/")}`, "https://nasfinder.com").toString();
+  const socialImages = socialImage ? [new URL(socialImage, "https://hanstree.com").toString()] : [];
+  const canonical = new URL(`/apps/${path.join("/")}`, "https://hanstree.com").toString();
   return {
     title,
     description: app.summary,
@@ -842,7 +842,7 @@ function InfoPage({ app, section }: { app: NonNullable<ReturnType<typeof findApp
           </section>
           <LegalSection title="핵심 원칙"><ul>{app.privacy.map((item) => <li key={item}>{item}</li>)}</ul></LegalSection>
           <LegalSection title="처리 목적과 항목"><p>앱은 기능 수행에 필요한 권한, 사용자가 직접 선택한 파일과 사용자가 연결한 서비스의 인증 정보만 해당 기능을 제공하기 위해 처리합니다. 광고 목적의 개인정보 판매나 맞춤형 추적을 목적으로 처리하지 않습니다.</p></LegalSection>
-          <LegalSection title="홈페이지 이용 통계"><p>NasFinder.com은 홈페이지 방문 횟수와 공식 APK 바로 받기 버튼을 누른 횟수를 숫자로만 집계합니다. 방문은 같은 브라우저에서 하루 한 번만 세기 위해 마지막 집계 날짜를 브라우저에 저장합니다. 집계 데이터베이스에는 방문자의 이름, 이메일, 계정, 쿠키 또는 IP 주소를 함께 저장하지 않으며 광고나 개인별 행동 추적에 사용하지 않습니다.</p></LegalSection>
+          <LegalSection title="홈페이지 이용 통계"><p>Hanstree.com은 홈페이지 방문 횟수와 공식 APK 바로 받기 버튼을 누른 횟수를 숫자로만 집계합니다. 방문은 같은 브라우저에서 하루 한 번만 세기 위해 마지막 집계 날짜를 브라우저에 저장합니다. 집계 데이터베이스에는 방문자의 이름, 이메일, 계정, 쿠키 또는 IP 주소를 함께 저장하지 않으며 광고나 개인별 행동 추적에 사용하지 않습니다.</p></LegalSection>
           <LegalSection title="TestFlight 공개 베타"><p>홈페이지는 TestFlight 공개 링크를 통해 베타 앱 참여 경로만 제공합니다. 참여 신청을 위해 이름, 이메일, 기기 모델이나 참여 동기를 수집하지 않습니다. 공개 링크 참여와 앱 설치는 Apple의 TestFlight에서 처리됩니다. 과거 내부 테스터 신청 기능으로 접수된 기록은 더 이상 새로 수집하지 않으며, 삭제를 원하는 기존 신청자는 아래 개인정보 보호책임자에게 요청할 수 있습니다.</p></LegalSection>
           <LegalSection title="보유 기간"><p>연결 정보와 인증 정보는 사용자가 연결을 해제하거나 앱을 삭제할 때까지, 앱 안의 프로젝트·받은 파일·녹음은 사용자가 삭제하거나 앱을 삭제할 때까지 기기에 보관됩니다. 다운로드와 미리보기 캐시는 앱의 정리 기능, 시스템의 저장공간 관리 또는 앱 삭제로 제거됩니다. 사진 앱·갤러리·파일 앱으로 내보낸 결과물은 해당 위치에서 별도로 삭제해야 합니다.</p></LegalSection>
           <LegalSection title="파기 방법"><p>앱에서 삭제한 로컬 데이터는 앱의 저장공간에서 제거합니다. Keychain에 보관된 인증 정보는 연결 해제 또는 앱이 제공하는 계정 삭제 절차로 삭제합니다. 외부 서비스에 남은 접근 권한은 해당 서비스의 계정 보안 페이지에서도 철회할 수 있습니다.</p></LegalSection>
@@ -860,7 +860,7 @@ function InfoPage({ app, section }: { app: NonNullable<ReturnType<typeof findApp
               <Link href="/apps/nasfinder/google-oauth">Read the concise English disclosure <span aria-hidden="true">→</span></Link>
             </section>
           </>}
-          <LegalSection title="개인정보 보호책임자"><p><strong>한병기</strong><br />NasFinder.com 및 앱 운영자</p><p>개인정보 관련 문의와 권리 행사는 아래 직접 문의 경로로 접수할 수 있습니다. 개인 이메일 주소는 자동 수집을 줄이기 위해 사용자가 요청할 때만 화면에 표시합니다.</p><div className="privacy-contact"><ContactReveal /></div></LegalSection>
+          <LegalSection title="개인정보 보호책임자"><p><strong>한병기</strong><br />Hanstree.com 및 앱 운영자</p><p>개인정보 관련 문의와 권리 행사는 아래 직접 문의 경로로 접수할 수 있습니다. 개인 이메일 주소는 자동 수집을 줄이기 위해 사용자가 요청할 때만 화면에 표시합니다.</p><div className="privacy-contact"><ContactReveal /></div></LegalSection>
           <LegalSection title="권익침해 구제"><p>개인정보 침해에 관한 별도 상담이 필요하면 개인정보침해신고센터(국번 없이 118), 개인정보분쟁조정위원회(1833-6972) 등 관계 기관에 문의할 수 있습니다.</p></LegalSection>
           <LegalSection title="방침의 변경"><p>처리 항목이나 외부 서비스가 달라지면 시행 전에 변경 내용을 이 페이지에 알리고, 시행일과 마지막 변경일을 함께 표시합니다. 앱마다 처리하는 정보가 다르므로 각 앱의 개별 방침을 적용합니다.</p></LegalSection>
         </>}
@@ -904,7 +904,7 @@ function GoogleOAuthPage() {
         <Link className="breadcrumb" href="/apps/nasfinder">← Back to NasFinder</Link>
         <p className="eyebrow">GOOGLE API DISCLOSURE</p>
         <h1>Google API Use &amp; Data Handling</h1>
-        <p className="legal-intro">This concise English page supports Google OAuth review. NasFinder.com remains a Korean-first website; the full privacy notice is available in Korean.</p>
+        <p className="legal-intro">This concise English page supports Google OAuth review. Hanstree.com is the Korean-first home of NasFinder; the full privacy notice is available in Korean.</p>
 
         <LegalSection title="Product purpose"><p>NasFinder is a native file browser for iPhone and iPad. It helps users browse their own storage services, preview media, and move or share files they choose.</p></LegalSection>
         <LegalSection title="Google Drive"><p>NasFinder includes a Google Drive connection for user-requested file browsing and file operations. Google Drive uses its own OAuth connection and credentials, separate from Google Photos.</p></LegalSection>
