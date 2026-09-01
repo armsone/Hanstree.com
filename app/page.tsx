@@ -108,8 +108,8 @@ export default function Home() {
               <Link className={`hero-product hero-product-${app.slug}`} href={`/apps/${app.slug}`} key={app.slug} role="listitem" aria-label={`${app.name} 제품 자세히 보기`}>
                 <Image
                   className="hero-product-image"
-                  src={appCardImage(app)}
-                  alt={`${app.name} 대표 제품 화면`}
+                  src={app.slug === "ccmb" ? "/apps/ccmb/ccmb-campaign-v044.png" : appCardImage(app)}
+                  alt={`${app.name} 대표 이미지`}
                   width={1280}
                   height={853}
                   priority={index < 4}
