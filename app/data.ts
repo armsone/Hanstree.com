@@ -834,7 +834,7 @@ export const apps: AppData[] = [
       {
         name: "Android",
         status: "공개",
-        detail: "2.6.0 · 빌드 202608292118 · 내부 코드 346907 · Android 8.0+",
+        detail: "2.6.1 · 빌드 202609021723 · 내부 코드 352403 · Android 8.0+",
         url: releaseDownloadPath("Stargram-Android"),
         downloadLabel: "Android APK 바로 받기",
         checksum: "5ead9c19d9654abf8c3d076e0fc426263843cf64c59871f73b29f85867791f1e",
@@ -871,7 +871,7 @@ export const apps: AppData[] = [
       { state: "done", title: "iPhone·iPad 원본 분석", body: "실제로 도달 가능한 만들기·내 설정 화면과 상태·문구·동작을 소스 기준으로 정리" },
       { state: "done", title: "Android 구현과 실기기 검증", body: "휴대전화·태블릿 반응형 화면, 생성·검증·미디어·설정 흐름 구현과 테스트 완료" },
       { state: "done", title: "Android 2.5.1 공개", body: "제품 2.5.1 · 빌드 202608291746 · 내부 코드 346666의 자동화·공유·카메라 흐름을 담은 APK를 GitHub Releases에 공개하고 Android 실기기 3대에서 데이터 유지 교체 설치·실행 검증" },
-      { state: "done", title: "Android 2.6.0 공개", body: "제품 2.6.0 · 빌드 202608292118 · 내부 코드 346907의 APK와 SHA-256 체크섬을 GitHub Releases에 공개하고 Android 실기기 3대에서 데이터 유지 교체 설치·실행 검증" },
+      { state: "done", title: "Android 2.6.1 공개", body: "Stargram 이름을 반영한 제품 2.6.1 · 빌드 202609021723 · 내부 코드 352403의 APK와 SHA-256 체크섬을 GitHub Releases에 공개" },
       { state: "done", title: "iPhone·iPad 2.5.1 설치·업로드", body: "2.5.1 (202608291746)을 사용 가능한 iPhone 2대에 데이터 유지 교체 설치하고 App Store Connect 업로드와 기존 내부 테스트 9명 연결을 확인" },
       { state: "done", title: "iOS·iPadOS 2.6.0 Public Beta 승인", body: "build 202608292118 Apple 외부 베타 심사 승인 · 기존 Public Beta 링크와 10,000명 한도 유지 · 공개 테스트 참여 가능" },
       { state: "next", title: "게시 흐름 다듬기", body: "실제 공유 앱별 게시 결과와 사용자 피드백을 바탕으로 다음 개선 항목을 정리" },

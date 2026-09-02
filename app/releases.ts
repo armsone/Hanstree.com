@@ -123,7 +123,7 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     label: "Stargram Android",
     repo: "Stargram-Android",
     assetPattern: /\.apk$/i,
-    fallbackUrl: "https://github.com/armsone/Stargram-Android/releases/download/android-v2.6.0/app-release.apk",
+    fallbackUrl: "https://github.com/armsone/Stargram-Android/releases/download/android-v2.6.1/Stargram-Android-2.6.1.apk",
   },
   "HtOMS-BK": {
     label: "HtOMS Brief Android",
