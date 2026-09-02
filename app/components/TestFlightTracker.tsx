@@ -3,8 +3,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { findApp } from "../data";
-import { appCardIcon } from "../media";
 import type { TestFlightBuild } from "../testflight";
 import { useNearViewport } from "./useNearViewport";
 
@@ -70,11 +68,10 @@ export function TestFlightTracker({ builds }: { builds: TestFlightBuild[] }) {
     <div className="testflight-grid" ref={containerRef}>
       {orderedBuilds.map((build) => {
         const state = getBuildState(build);
-        const app = findApp(build.slug);
         return (
           <article className="testflight-card" key={build.slug}>
             <div className="testflight-card-head">
-              <div>{app?.icon && <Image className="release-app-icon" src={appCardIcon(app)} alt={`${build.appName} 앱 아이콘`} width={256} height={256} sizes="52px" unoptimized />}<div><span className="flight-dot" /><h3>{build.appName}</h3></div></div>
+              <div><Image className="release-app-icon" src={`/apps/${build.slug}/icon-card.webp`} alt={`${build.appName} 앱 아이콘`} width={256} height={256} sizes="52px" unoptimized /><div><span className="flight-dot" /><h3>{build.appName}</h3></div></div>
               <Link href={`/apps/${build.slug}`}>앱 보기</Link>
             </div>
             {state ? <>

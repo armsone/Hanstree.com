@@ -3,8 +3,6 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { AdvantageVisual, type AdvantageVariant } from "./AdvantageVisual";
-import { findApp } from "../data";
-import { appCardIcon } from "../media";
 import { releaseDownloadPath, type DownloadKey } from "../releases";
 import { useNearViewport } from "./useNearViewport";
 
@@ -38,8 +36,7 @@ type ReleaseResponse = {
   source?: "github-live" | "verified-fallback";
 };
 
-function releaseIdentityFor(release: Release, app: ReturnType<typeof findApp>) {
-  const androidDetail = app?.platforms.find((platform) => platform.name.includes("Android"))?.detail;
+function releaseIdentityFor(release: Release, androidDetail?: string) {
   return {
     productVersion: androidDetail?.match(/\b\d+\.\d+\.\d+\b/)?.[0]
       || release.releaseName?.match(/\b\d+\.\d+\.\d+\b/)?.[0]
@@ -59,7 +56,7 @@ function formatBytes(bytes?: number) {
   return `${(bytes / 1024 / 1024).toFixed(1)} MB`;
 }
 
-export function AndroidReleaseTracker() {
+export function AndroidReleaseTracker({ androidPlatformDetails }: { androidPlatformDetails: Record<string, string> }) {
   const [data, setData] = useState<ReleaseResponse | null>(null);
   const [failed, setFailed] = useState(false);
   const [containerRef, isNearViewport] = useNearViewport<HTMLDivElement>();
@@ -95,11 +92,11 @@ export function AndroidReleaseTracker() {
     <div ref={containerRef}>
       <div className="android-release-grid" aria-live="polite">
         {releases.map((release) => {
-          const app = findApp(ANDROID_APP_SLUGS[release.repo]);
-          const { productVersion, buildNumber, internalCode } = releaseIdentityFor(release, app);
+          const appSlug = ANDROID_APP_SLUGS[release.repo];
+          const { productVersion, buildNumber, internalCode } = releaseIdentityFor(release, androidPlatformDetails[appSlug]);
           const displayName = release.appName;
           return <article className="android-release-card" key={release.repo}>
-            <div className="android-release-head"><span className="android-app-mark">{app?.icon && <Image className="release-app-icon" src={appCardIcon(app)} alt={`${displayName} 앱 아이콘`} width={256} height={256} sizes="56px" unoptimized />}<span className="android-platform-badge"><img src="/brands/android.svg" alt="Android" /></span></span><div><p>{release.repo}</p><h3>{displayName}</h3></div></div>
+            <div className="android-release-head"><span className="android-app-mark"><Image className="release-app-icon" src={`/apps/${appSlug}/icon-card.webp`} alt={`${displayName} 앱 아이콘`} width={256} height={256} sizes="56px" unoptimized /><span className="android-platform-badge"><img src="/brands/android.svg" alt="Android" /></span></span><div><p>{release.repo}</p><h3>{displayName}</h3></div></div>
             {release.available ? <>
               <div className="android-version"><strong>{productVersion}</strong><span>최신 공개판</span></div>
               <dl>

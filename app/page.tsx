@@ -82,6 +82,12 @@ function TestFlightInviteLinks() {
 
 export default function Home() {
   const workCount = apps.length + 2;
+  const androidPlatformDetails = Object.fromEntries(
+    apps.flatMap((app) => {
+      const detail = app.platforms.find((platform) => platform.name.includes("Android"))?.detail;
+      return detail ? [[app.slug, detail]] : [];
+    }),
+  );
 
   return (
     <main className="home-hanstree">
@@ -101,7 +107,7 @@ export default function Home() {
           <div className="hero-product-grid" role="list">
             <Link className="hero-product hero-product-space" href="/space/hanstree" role="listitem" aria-label="한스트리 스튜디오 자세히 보기">
               <Image className="hero-product-image" src="/hanstree/screen-art.jpg" alt="" width={1448} height={1086} priority sizes="(max-width: 600px) 29vw, (max-width: 920px) 22vw, 150px" />
-              <Image className="app-icon hanstree-product-icon" src="/hanstree/studio-symbol-dark.jpeg" alt="" width={886} height={886} priority sizes="48px" />
+              <Image className="app-icon hanstree-product-icon" src="/hanstree/studio-symbol-dark.jpeg" alt="" width={886} height={886} sizes="48px" />
               <span className="hero-product-copy"><strong>한스트리 스튜디오</strong><small>Hanstree Studio</small></span>
             </Link>
             {apps.map((app, index) => (
@@ -112,11 +118,11 @@ export default function Home() {
                   alt={`${app.name} 대표 이미지`}
                   width={1280}
                   height={853}
-                  priority={index < 4}
+                  priority={index === 0}
                   sizes="(max-width: 600px) 29vw, (max-width: 920px) 13vw, 150px"
                   unoptimized
                 />
-                <AppIcon app={app} priority={index < 4} />
+                <AppIcon app={app} />
                 <span className="hero-product-copy"><strong>{homeKoreanNames[app.slug] ?? app.name}</strong><small>{app.english}</small></span>
               </Link>
             ))}
@@ -217,7 +223,7 @@ export default function Home() {
             <strong>앱 안 업데이트를 준비하고 있습니다</strong>
             <p>직접 배포하는 Mac·Android 앱은 다음 공개판부터 시작할 때 새 버전을 확인하고, 자동 다운로드를 켜거나 끌 수 있으며, 필요할 때 직접 확인하고 받을 수도 있습니다. iPhone·iPad TestFlight 앱은 TestFlight가 업데이트를 관리합니다.</p>
           </div>
-          <AndroidReleaseTracker />
+          <AndroidReleaseTracker androidPlatformDetails={androidPlatformDetails} />
         </div>
       </section>
 
@@ -283,7 +289,7 @@ export function SiteHeader() {
       <div className="shell header-inner">
         {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
         <a className="wordmark header-wordmark" href="/" aria-label="Hanstree 홈">
-          <Image className="header-brand-icon" src="/hanstree/studio-symbol-dark.jpeg" alt="" width={886} height={886} priority sizes="32px" />
+          <Image className="header-brand-icon" src="/hanstree/studio-symbol-dark.jpeg" alt="" width={886} height={886} sizes="32px" />
           <span>HANSTREE</span>
         </a>
         <nav aria-label="주요 메뉴">
