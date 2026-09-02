@@ -437,7 +437,7 @@ export const apps: AppData[] = [
       {
         name: "iPhone · iPad",
         status: "TestFlight",
-        detail: "0.1.1 (202609021127) · iOS·iPadOS 17+",
+        detail: "0.1.1 (202609021149) · iOS·iPadOS 17+",
         url: "https://testflight.apple.com/join/q9jesHZa",
         downloadLabel: "Public Beta 참여",
         availabilityNote: "공개 링크 10,000명 활성 · 최신 빌드 연결 완료 · 이전 빌드 외부 심사 완료 뒤 최신 빌드 제출 예정",
@@ -446,7 +446,7 @@ export const apps: AppData[] = [
     ],
     features: [
       { title: "멀리서도 남은 한도를 한눈에", body: "Mac CCMB가 같은 Apple ID의 CloudKit 개인 데이터베이스에 올린 최신 스냅샷을 iPhone·iPad가 읽기 전용으로 불러옵니다." },
-      { title: "원형 그래프에서 시작한 네 가지 테마", body: "민트·오렌지·블루 원형 그래프 테마를 대표로, 밝은 낮빛·선명한 비비드·어두운 야간 테마를 고르면 화면 색감과 홈 화면 아이콘이 함께 바뀝니다." },
+      { title: "자동 전환과 세 가지 전용 테마", body: "자동은 iPhone의 주간·야간 상태만 읽어 CCMB 자체 주간·야간 디자인을 전환합니다. 주간·야간·굵은 선의 캐주얼을 직접 고르면 화면과 전용 홈 화면 아이콘이 함께 바뀝니다." },
       { title: "iCloud가 아니어도 이어지는 보조 경로", body: "Dropbox·Google Drive·iCloud Drive의 CCMB-usage-v1.json을 Files에서 한 번 선택하면 보안 북마크로 다시 읽습니다." },
       { title: "소진 임박과 최근 소비를 함께", body: "현재 쓸 수 있는 한도 중 가장 먼저 소진될 항목을 자동으로 고르고, 최근 40회 갱신 소비를 서비스별 세로 막대로 비교합니다." },
       { title: "세 AI를 한눈에", body: "Codex·Claude·Gemini를 3열로 정렬하고 Gemini는 CLI와 온라인의 세션·주간 잔량을 네 개의 원으로 함께 보여 줍니다." },
@@ -471,7 +471,7 @@ export const apps: AppData[] = [
       { title: "다른 대화와 공유", body: "로컬 ccmb-usage 명령으로 최신성 여부가 포함된 사용량 정보를 확인합니다." },
     ],
     progress: [
-      { state: "active", title: "iPhone·iPad 0.1.1 Public Beta", body: "원형 그래프·낮빛·야간에 선명한 비비드 아이콘과 대응 화면 테마를 더한 build 202609021127을 Internal과 Public Beta 그룹에 연결했습니다. Apple 정책상 같은 버전의 이전 build 202609020939 외부 심사가 끝난 뒤 최신 빌드를 이어 제출합니다." },
+      { state: "active", title: "iPhone·iPad 0.1.1 Public Beta", body: "자동·주간·야간·캐주얼 선택과 세 가지 전용 아이콘을 담은 build 202609021149를 업로드했습니다. Apple 정책상 같은 버전의 이전 build 202609020939 외부 심사가 끝난 뒤 최신 빌드를 이어 제출합니다." },
       { state: "done", title: "공개 배포", body: "Universal DMG와 GitHub Releases 배포 흐름 제공" },
       { state: "done", title: "서명된 자동 업데이트", body: "Sparkle 기반 업데이트와 무결성 확인" },
       { state: "done", title: "로컬 사용량 공유", body: "다른 앱과 대화를 위한 최신성 포함 JSON 및 명령 제공" },
