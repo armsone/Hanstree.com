@@ -714,7 +714,7 @@ export const apps: AppData[] = [
     english: "airChurch",
     eyebrow: "FAITH MEETS GOOD WILL",
     tagline: "좋은 말씀과 선한 마음이 만나는 곳.",
-    summary: "검증한 교회의 설교와 찬양을 발견하고, 우리 교회를 응원하며, 가진 달란트로 이웃의 필요를 잇는 크리스천 웹 포털입니다.",
+    summary: "큰 바로가기와 읽기 쉬운 화면으로 검증한 교회의 설교와 찬양을 발견하고, 우리 교회를 응원하며, 가진 달란트로 이웃의 필요를 잇는 크리스천 웹 포털입니다.",
     theme: "coral",
     icon: "/apps/airchurch/icon.png",
     artwork: "church",
@@ -722,6 +722,7 @@ export const apps: AppData[] = [
       { name: "Web", status: "공개", detail: "PC · 모바일 반응형", url: "https://airchurch.net/", downloadLabel: "에어처치 열기" },
     ],
     features: [
+      { title: "누구나 편한 첫 화면", body: "말씀 보기·찬양 듣기·교회 찾기를 큰 바로가기와 넓은 버튼으로 쉽게 시작합니다." },
       { title: "오늘의 말씀과 찬양", body: "교단 소속과 공식 채널을 확인한 교회의 최신 설교와 찬양을 한곳에서 발견합니다." },
       { title: "경쟁보다 발견", body: "목회자의 서열을 만들기보다 작은 교회와 지역의 꾸준한 사역이 발견되도록 보여줍니다." },
       { title: "착한나눔", body: "시간, 경험, 공간, 기술과 기도를 필요한 교회와 이웃에게 연결합니다." },
