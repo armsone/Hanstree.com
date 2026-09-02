@@ -837,7 +837,7 @@ export const apps: AppData[] = [
         detail: "2.6.1 · 빌드 202609021723 · 내부 코드 352403 · Android 8.0+",
         url: releaseDownloadPath("Stargram-Android"),
         downloadLabel: "Android APK 바로 받기",
-        checksum: "5ead9c19d9654abf8c3d076e0fc426263843cf64c59871f73b29f85867791f1e",
+        checksum: "193ed6f3ee88951229edb8b9868bced7125859869122c2850ce9c4728f8a46f9",
         availabilityNote: "휴대전화·태블릿·Google TV 지원 · Android 실기기 3대에서 데이터 유지 교체 설치·실행 확인",
       },
     ],
