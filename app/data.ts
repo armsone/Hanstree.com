@@ -442,7 +442,7 @@ export const apps: AppData[] = [
         downloadLabel: "Public Beta 참여",
         availabilityNote: "공개 링크 10,000명 활성 · 최신 빌드 연결 완료 · 이전 빌드 외부 심사 완료 뒤 최신 빌드 제출 예정",
       },
-      { name: "macOS", status: "공개", detail: "2.0.13 (202609010015) · 내부 build 202609010015 · macOS 10.15+ · Universal · Apple 공증 완료", url: releaseDownloadPath("CCMB"), downloadLabel: "DMG 다운로드", checksum: "a13ebbe8fdb6ad735ad871a977e67c39dff19ffb1833fb88c2907f2f1e802d9f" },
+      { name: "macOS", status: "공개", detail: "2.0.14 (202609020909) · 내부 build 202609020909 · macOS 10.15+ · Universal · Apple 공증 완료", url: releaseDownloadPath("CCMB"), downloadLabel: "DMG 다운로드", checksum: "b87e5fe2c2b7de528a7b1957d09e5f6c2acf5a4224201e0ebc6b2d5771731c1f" },
     ],
     features: [
       { title: "멀리서도 남은 한도를 한눈에", body: "Mac CCMB가 같은 Apple ID의 CloudKit 개인 데이터베이스에 올린 최신 스냅샷을 iPhone·iPad가 읽기 전용으로 불러옵니다." },
@@ -452,7 +452,7 @@ export const apps: AppData[] = [
       { title: "세 AI를 한눈에", body: "Codex·Claude·Gemini를 3열로 정렬하고 Gemini는 CLI와 온라인의 세션·주간 잔량을 네 개의 원으로 함께 보여 줍니다." },
       { title: "지금 쓸 Gemini를 메뉴 막대에", body: "온라인 주간 잔량이 50%를 넘으면 온라인 세션을, 이후에는 CLI 세션을 세 번째 숫자로 표시해 현재 사용할 경로를 바로 알 수 있습니다." },
       { title: "낭비를 줄이는 스마트 갱신", body: "사용량 변화에 맞춰 갱신 간격을 조절하고, Claude 세션이나 주간 잔량이 소진되면 초기화 시각까지 의미 없는 요청을 멈춥니다." },
-      { title: "Gemini 온라인 사용량", body: "CCMB 안에서 Gemini 사용량 페이지를 한 번 연결하면 온라인 세션·주간 잔량과 초기화 시각을 안전하게 다시 읽습니다." },
+      { title: "Gemini 온라인 사용량", body: "CCMB 안에서 Gemini 사용량 페이지를 한 번 연결하면 온라인 세션·주간 잔량과 초기화 시각을 안전하게 다시 읽습니다. CLI 세션을 아직 쓰지 않았다면 초기화 시각 대신 사용 시작 후 5시간이라고 안내합니다." },
       { title: "같은 모양의 두 패널", body: "메뉴 막대에서 여는 패널과 항상 보기 패널에 같은 정보·간격·하단 설정을 제공합니다." },
       { title: "배경 불투명도", body: "두 패널의 전체 배경 불투명도를 95%~100% 범위에서 수치를 보며 조절합니다." },
       { title: "정렬된 계정·갱신 정보", body: "세 서비스의 요금제·계정 정보·상대 갱신 시각을 같은 기준선에서 비교합니다." },
@@ -478,7 +478,7 @@ export const apps: AppData[] = [
       { state: "done", title: "통합 사용량 패널", body: "메뉴 패널과 항상 보기의 레이아웃·설정 통합 및 배경 불투명도 조절" },
       { state: "done", title: "집중된 3열 패널", body: "Codex·Claude·Gemini만 노출하고 퍼센트 굵기를 통일한 정밀 원형 링과 하단 조작을 3열에 맞게 재구성" },
       { state: "done", title: "Claude 인증 창 반복 방지", body: "요청 제한 뒤에도 인증 정보를 안전하게 재사용해 macOS 키체인 권한 창이 반복해서 나타나지 않도록 개선" },
-      { state: "done", title: "CCMB 2.0.13 공개", body: "Gemini CLI·온라인의 네 가지 잔량, 현재 사용할 Gemini의 메뉴 막대 표시, 소진 시 불필요한 갱신 중지와 BK Style 패널을 담은 Apple 공증 Universal DMG 공개" },
+      { state: "done", title: "CCMB 2.0.14 공개", body: "아직 시작되지 않은 Gemini CLI 세션의 초기화 안내를 명확히 한 Apple 공증 Universal DMG 공개" },
     ],
     screenshots: [
       { src: "/apps/ccmb/screens/ios-dashboard.jpg", alt: "iPhone에서 Codex·Claude·Gemini의 원형 사용량 그래프와 자동 갱신을 보여주는 CCMB 대시보드", layout: "phone" },
