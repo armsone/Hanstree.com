@@ -62,11 +62,11 @@ export const apps: AppData[] = [
       {
         name: "Android",
         status: "공개",
-        detail: "2.2.1 · 빌드 202608262056 · 내부 코드 342536 · Android 8.0+",
+        detail: "2.2.2 · 빌드 202608271106 · 내부 코드 343386 · Android 8.0+",
         url: releaseDownloadPath("NasFinder-Android"),
         downloadLabel: "Android APK 바로 받기",
-        checksum: "d404e0f9275a2c604e4ecc99f9aaf65bcda448060a42b36e6444096fb3ce5aa6",
-        availabilityNote: "27,948,170바이트 · SM-F968N 데이터 유지 교체 설치·실행 확인",
+        checksum: "46b1b97479c856c8183fc598f348f8053a5dd53315b4d730f4f660066eeacc86",
+        availabilityNote: "27,948,170바이트 · 기존 직접 설치 업데이트 계보 서명 확인",
       },
     ],
     features: [
@@ -101,7 +101,7 @@ export const apps: AppData[] = [
       { state: "done", title: "Live Photo·Motion Photo 전송", body: "iPhone과 Android를 QR로 연결해 사진·영상·움직이는 사진의 원본 보존과 교차 변환 구현" },
       { state: "active", title: "iPhone·iPad 2.2.2 Public Beta", body: "build 202608271227 처리 완료 · 기존 내부 그룹 9명 보존 · 10,000명 공개 링크 유지 · 새 빌드 Apple 외부 베타 심사 대기 중" },
       { state: "done", title: "Mac용 NasFinder 2.2.2 공개", body: "즐겨찾기 폴더 표지와 살색 비율별 최대 2.5pt 처리를 반영한 Universal DMG를 Developer ID로 서명하고 Apple 공증·Gatekeeper 확인 후 공개" },
-      { state: "done", title: "Android 2.2.1 공개", body: "즐겨찾기 썸네일·정렬, 움직이는 GIF, 세밀한 영상 제어와 준비 진행 표시, 민감 썸네일 완화, 앱 복귀 흐름을 반영한 빌드 202608262056 · 내부 코드 342536의 서명 APK를 공개하고 SM-F968N에 설치·실행 확인" },
+      { state: "done", title: "Android 2.2.2 공개", body: "폴더 수퍼썸네일의 흐림 처리와 넘침 표시를 다듬은 빌드 202608271106 · 내부 코드 343386의 서명 APK와 SHA-256 체크섬을 GitHub Releases에 공개" },
       { state: "done", title: "Super Thumbnail 2.2.0 동기화", body: "3/13 대표 장면, 50% 검은 화면의 6/13 재시도, 최종 1.5pt 단일 블러와 우선 표시를 Apple·Android·Mac에 반영" },
     ],
     screenshots: [

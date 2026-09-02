@@ -45,7 +45,7 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     label: "NasFinder Android",
     repo: "NasFinder-Android",
     assetPattern: /\.apk$/i,
-    fallbackUrl: "https://github.com/armsone/NasFinder-Android/releases/download/android-v2.2.1/NasFinder-Android-2.2.1.apk",
+    fallbackUrl: "https://github.com/armsone/NasFinder-Android/releases/download/android-v2.2.2/NasFinder-Android-2.2.2.apk",
   },
   "NasFinder-Mac": {
     label: "NasFinder Mac",
