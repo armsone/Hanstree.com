@@ -437,18 +437,19 @@ export const apps: AppData[] = [
       {
         name: "iPhone · iPad",
         status: "TestFlight",
-        detail: "0.1.1 (202609021449) · iOS·iPadOS 17+",
+        detail: "0.1.1 (202609021456) · iOS·iPadOS 17+",
         url: "https://testflight.apple.com/join/q9jesHZa",
         downloadLabel: "Public Beta 참여",
         availabilityNote: "공개 링크 10,000명 활성 · 최신 빌드 내부·Public Beta 그룹 연결 완료 · 외부 제공은 Apple 심사 상태를 따름",
       },
-      { name: "macOS", status: "공개", detail: "2.0.15 (202609021215) · macOS 10.15+ · Universal · Apple 공증 완료 · CloudKit Production 서명", url: releaseDownloadPath("CCMB"), downloadLabel: "DMG 다운로드", checksum: "e3fb797c9b02ec0551b11f46f7b3f73b3ff379838158a38041d200e320877b0d" },
+      { name: "macOS", status: "공개", detail: "2.0.16 (202609021502) · macOS 10.15+ · Universal · Apple 공증 완료 · CloudKit Production 서명", url: releaseDownloadPath("CCMB"), downloadLabel: "DMG 다운로드", checksum: "8b7ff1d9db54928d472bbc0c42ada5ba7c0ad4cc5f97fb6d7f9f36f8cb3e6bb9" },
     ],
     features: [
       { title: "멀리서도 남은 한도를 한눈에", body: "Mac CCMB가 같은 Apple ID의 CloudKit 개인 데이터베이스에 올린 최신 스냅샷을 iPhone·iPad가 읽기 전용으로 불러옵니다." },
       { title: "자동 전환과 세 가지 전용 테마", body: "자동은 iPhone의 주간·야간 상태만 읽어 CCMB 자체 주간·야간 디자인을 전환합니다. 주간·야간·굵은 선의 캐주얼을 직접 고르면 화면과 전용 홈 화면 아이콘이 함께 바뀝니다." },
       { title: "누르는 순간 다시 시작하는 갱신", body: "자동갱신 줄 전체를 누르면 iCloud의 최신 값을 즉시 확인하고, 선택한 자동갱신 주기도 그 순간부터 다시 시작합니다. 겹친 요청은 버리지 않고 직전 조회가 끝난 뒤 한 번 더 확인합니다." },
       { title: "서비스 색으로 움직이는 원형 그래프", body: "앱을 열거나 갱신하면 원형 그래프가 100%에서 0%로 줄어든 뒤 실제 잔량까지 다시 차오릅니다. Codex와 Claude는 고유색을, Gemini 네 한도는 파랑·빨강·노랑·초록을 사용합니다." },
+      { title: "요일까지 맞춘 24시간 표기", body: "Mac과 iPhone 모두 초기화 날짜를 9/7(월) 19:00처럼 표시합니다. Gemini가 한국어·영어 문장으로 주는 시각도 같은 요일·24시간 형식으로 정리합니다." },
       { title: "iCloud가 아니어도 이어지는 보조 경로", body: "Dropbox·Google Drive·iCloud Drive의 CCMB-usage-v1.json을 Files에서 한 번 선택하면 보안 북마크로 다시 읽습니다." },
       { title: "소진 임박과 최근 소비를 함께", body: "현재 쓸 수 있는 한도 중 가장 먼저 소진될 항목을 자동으로 고르고, 최근 40회 갱신 소비를 서비스별 세로 막대로 비교합니다." },
       { title: "세 AI를 한눈에", body: "Codex·Claude·Gemini를 3열로 정렬하고 Gemini는 CLI와 온라인의 세션·주간 잔량을 네 개의 원으로 함께 보여 줍니다." },
@@ -473,7 +474,7 @@ export const apps: AppData[] = [
       { title: "다른 대화와 공유", body: "로컬 ccmb-usage 명령으로 최신성 여부가 포함된 사용량 정보를 확인합니다." },
     ],
     progress: [
-      { state: "active", title: "iPhone·iPad 0.1.1 Public Beta", body: "즉시 갱신과 주기 재시작, 서비스별 색상, Gemini 4색 링, 100→0→현재 값 애니메이션을 담은 build 202609021449의 Apple 처리가 완료됐고 기존 Internal·Public Beta 그룹에 연결했습니다." },
+      { state: "active", title: "iPhone·iPad 0.1.1 Public Beta", body: "요일 포함 날짜와 24시간 표기를 담은 build 202609021456의 Apple 처리가 완료됐고 기존 Internal·Public Beta 그룹에 연결했습니다." },
       { state: "done", title: "공개 배포", body: "Universal DMG와 GitHub Releases 배포 흐름 제공" },
       { state: "done", title: "서명된 자동 업데이트", body: "Sparkle 기반 업데이트와 무결성 확인" },
       { state: "done", title: "로컬 사용량 공유", body: "다른 앱과 대화를 위한 최신성 포함 JSON 및 명령 제공" },
@@ -481,6 +482,7 @@ export const apps: AppData[] = [
       { state: "done", title: "집중된 3열 패널", body: "Codex·Claude·Gemini만 노출하고 퍼센트 굵기를 통일한 정밀 원형 링과 하단 조작을 3열에 맞게 재구성" },
       { state: "done", title: "Claude 인증 창 반복 방지", body: "요청 제한 뒤에도 인증 정보를 안전하게 재사용해 macOS 키체인 권한 창이 반복해서 나타나지 않도록 개선" },
       { state: "done", title: "CCMB 2.0.15 공개", body: "Gemini CLI 초기화 안내, iPhone 원격 동기화 업로더, CloudKit Production 권한·프로파일, File Provider 보조 공유와 최근 사용량 기록을 포함한 Apple 공증 Universal DMG 공개" },
+      { state: "done", title: "CCMB 2.0.16 공개", body: "요일 포함 날짜와 24시간 표기를 Mac·iPhone 공통 규칙으로 맞춘 Apple 공증 Universal DMG 공개" },
     ],
     screenshots: [
       { src: "/apps/ccmb/screens/ios-dashboard.jpg", alt: "iPhone에서 Codex·Claude·Gemini의 원형 사용량 그래프와 자동 갱신을 보여주는 CCMB 대시보드", layout: "phone" },
