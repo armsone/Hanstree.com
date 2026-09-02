@@ -15,7 +15,7 @@ export const DOWNLOAD_KEYS = [
   "WhattoEat-Android",
   "DenimDex-Android",
   "OurButton-Android",
-  "iManagerAI-Android",
+  "Stargram-Android",
   "HtOMS-BK",
   "AutoShorts",
 ] as const;
@@ -119,11 +119,11 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     assetPattern: /\.apk$/i,
     fallbackUrl: "https://github.com/armsone/OurButton-Android/releases/download/android-v2.1.0/app-release.apk",
   },
-  "iManagerAI-Android": {
-    label: "iManagerAI Android",
-    repo: "iManagerAI-Android",
+  "Stargram-Android": {
+    label: "Stargram Android",
+    repo: "Stargram-Android",
     assetPattern: /\.apk$/i,
-    fallbackUrl: "https://github.com/armsone/iManagerAI-Android/releases/download/android-v2.6.0/app-release.apk",
+    fallbackUrl: "https://github.com/armsone/Stargram-Android/releases/download/android-v2.6.0/app-release.apk",
   },
   "HtOMS-BK": {
     label: "HtOMS Brief Android",

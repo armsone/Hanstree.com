@@ -6,7 +6,7 @@ export const ANDROID_RELEASE_SOURCES = [
   { appName: "S.tand", repo: "S.tand-Android" },
   { appName: "HtOMS 브리프", repo: "HtOMS-BK" },
   { appName: "OurButton", repo: "OurButton-Android" },
-  { appName: "iManagerAI", repo: "iManagerAI-Android" },
+  { appName: "Stargram", repo: "Stargram-Android" },
   { appName: "오늘 뭐 먹지?", repo: "WhattoEat-Android" },
   { appName: "데님덱스", repo: "DenimDex-Android" },
 ] as const satisfies readonly { appName: string; repo: DownloadKey }[];

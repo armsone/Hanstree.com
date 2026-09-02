@@ -56,8 +56,8 @@ async function resolveLatestAssetUrl(key: DownloadKey) {
 
 export async function GET(request: Request) {
   const requested = new URL(request.url).searchParams.get("app");
-  const normalizedRequest = requested === "StarManager-Android" || requested === "iManager-Android"
-    ? "iManagerAI-Android"
+  const normalizedRequest = requested === "StarManager-Android" || requested === "iManager-Android" || requested === "iManagerAI-Android"
+    ? "Stargram-Android"
     : requested === "button-Android" || requested === "Button-Android"
       ? "OurButton-Android"
       : requested;

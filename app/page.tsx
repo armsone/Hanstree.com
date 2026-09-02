@@ -26,7 +26,7 @@ const homeKoreanNames: Record<string, string> = {
   intosharp: "인투샾",
   airchurch: "에어처치",
   button: "아워버튼",
-  starmanager: "아이매니저 AI",
+  starmanager: "스타그램",
   "minecraft-server": "나스오에스",
   whattoeat: "오늘 뭐 먹지??",
   denimdex: "데님덱스",

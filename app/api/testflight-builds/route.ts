@@ -7,7 +7,7 @@ const APP_SOURCES = [
   { slug: "hanclip", appName: "한클립", bundleId: "com.intosharp.hanclip" },
   { slug: "stand", appName: "S.tand", bundleId: "com.armsone.stand" },
   { slug: "htoms-brief", appName: "HtOMS 브리프", bundleId: "com.htoms.brief" },
-  { slug: "starmanager", appName: "iManagerAI", bundleId: "com.armsone.StarManager" },
+  { slug: "starmanager", appName: "Stargram", bundleId: "com.armsone.StarManager" },
   { slug: "denimdex", appName: "데님덱스", bundleId: "com.armsone.DenimDex" },
 ] as const;
 
