@@ -49,6 +49,22 @@ export const metadata: Metadata = {
   },
 };
 
+const platformTargetAliases = [
+  ["iPhone", "iPad", "iOS", "iPadOS"], // Apple 모바일 제품군은 레코드당 1회
+  ["Mac", "macOS"],
+  ["Android"],
+  ["Google TV"],
+  ["Chrome"],
+  ["네이버 웨일"],
+  ["NasOS"],
+  ["Synology NAS"],
+];
+
+function countPlatformTargets(platformName: string) {
+  const matched = platformTargetAliases.filter((aliases) => aliases.some((alias) => platformName.includes(alias))).length;
+  return Math.max(matched, 1); // Web · Swift Package · Kotlin/JVM 등 단일 레코드는 기본 1
+}
+
 function verifiedTestFlightInviteUrl(inviteUrl: string | null) {
   return inviteUrl?.startsWith("https://testflight.apple.com/join/") ? inviteUrl : null;
 }
@@ -81,7 +97,10 @@ function TestFlightInviteLinks() {
 }
 
 export default function Home() {
-  const workCount = apps.length + 2;
+  const workCount = apps.reduce(
+    (total, app) => total + app.platforms.reduce((sum, platform) => sum + countPlatformTargets(platform.name), 0),
+    2, // Hanstree Studio · 먹탐자 Instagram
+  );
   const androidPlatformDetails = Object.fromEntries(
     apps.flatMap((app) => {
       const detail = app.platforms.find((platform) => platform.name.includes("Android"))?.detail;
@@ -296,8 +315,15 @@ export function SiteHeader() {
           {/* Native anchors preserve same-page hash scrolling in the deployed vinext runtime. */}
           {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
           <a href="/#works">만든 것들</a>
-          {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-          <a href="/space/hanstree">스튜디오</a>
+          <details className="nav-space-menu">
+            <summary>스페이스</summary>
+            <div className="nav-space-panel">
+              {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+              <a href="/space/hanstree">한스트리 스튜디오</a>
+              {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+              <a href="/space/hanstree/instagram">먹탐자 Instagram</a>
+            </div>
+          </details>
           {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
           <a href="/#apps">제품</a>
           {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
