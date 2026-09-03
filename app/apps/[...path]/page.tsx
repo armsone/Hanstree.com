@@ -286,7 +286,7 @@ export default async function AppRoute({ params }: RouteProps) {
       )}
 
       <section className="progress-section shell" id="progress">
-        <div className="section-heading reveal"><div><p className="eyebrow">BUILDING IN PUBLIC</p><h2>현재 진행 상황</h2></div><p>{app.slug === "alfred-ai-search" ? "숫자보다 실제 상태를 보여드립니다. 마지막 내용 확인: 2026년 8월 31일." : app.slug === "hanai" ? "숫자보다 실제 상태를 보여드립니다. 마지막 내용 확인: 2026년 8월 29일." : "숫자보다 실제 상태를 보여드립니다. 마지막 내용 확인: 2026년 8월 25일."}</p></div>
+        <div className="section-heading reveal"><div><p className="eyebrow">BUILDING IN PUBLIC</p><h2>현재 진행 상황</h2></div><p>{app.slug === "trackpadguard" ? "숫자보다 실제 상태를 보여드립니다. 마지막 내용 확인: 2026년 9월 3일." : app.slug === "alfred-ai-search" ? "숫자보다 실제 상태를 보여드립니다. 마지막 내용 확인: 2026년 8월 31일." : app.slug === "hanai" ? "숫자보다 실제 상태를 보여드립니다. 마지막 내용 확인: 2026년 8월 29일." : "숫자보다 실제 상태를 보여드립니다. 마지막 내용 확인: 2026년 8월 25일."}</p></div>
         <div className="progress-list">
           {app.progress.map((item) => <article className="progress-item reveal" key={item.title}><div className={`progress-marker marker-${item.state}`}><AdvantageVisual variant={progressStateVisual[item.state]} /></div><div><p>{item.state === "done" ? "구현됨" : item.state === "active" ? "검증 중" : "다음 단계"}</p><h3>{item.title}</h3><span>{item.body}</span></div></article>)}
         </div>

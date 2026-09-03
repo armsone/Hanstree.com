@@ -965,7 +965,7 @@ test("shows the refreshed progress review date and TrackpadGuard DMG download", 
   const [btn, trackpadGuard] = await Promise.all([btnResponse.text(), trackpadResponse.text()]);
 
   assert.match(btn, /마지막 내용 확인: 2026년 8월 25일/);
-  assert.match(trackpadGuard, /마지막 내용 확인: 2026년 8월 25일/);
+  assert.match(trackpadGuard, /마지막 내용 확인: 2026년 9월 3일/);
   assert.match(trackpadGuard, /release-download\?app=TrackpadGuard/);
   assert.doesNotMatch(trackpadGuard, /releases\/tag\/v0\.1\.3/);
 });

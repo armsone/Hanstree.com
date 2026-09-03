@@ -93,7 +93,7 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     label: "TrackpadGuard Mac",
     repo: "TrackpadGuard",
     assetPattern: /\.dmg$/i,
-    fallbackUrl: "https://github.com/armsone/TrackpadGuard/releases/download/v2.0.3/TrackpadGuard-2.0.3.dmg",
+    fallbackUrl: "https://github.com/armsone/TrackpadGuard/releases/download/v2.0.4/TrackpadGuard-2.0.4.dmg",
   },
   WhattoEat: {
     label: "오늘 뭐 먹지?? Mac",
