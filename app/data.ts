@@ -1279,7 +1279,7 @@ export const apps: AppData[] = [
       {
         name: "Web · Google TV",
         status: "공개",
-        detail: "공식 웹 · Sites v24 · Google TV 포함",
+        detail: "공식 웹 · Sites v25 · Google TV 포함",
         url: "https://ppabang.net/",
         downloadLabel: "빠방넷 열기",
         availabilityNote: "Google TV에서 QR·기기 코드 연결과 리모컨 카테고리 선택 지원",
@@ -1299,9 +1299,10 @@ export const apps: AppData[] = [
       { title: "그대로 이어 보기", body: "재생이 끝나면 다음 쇼츠로 이동합니다. 목록을 한 번 다 보면 저장된 Google 연결로 새 목록을 준비해 이어 봅니다." },
     ],
     progress: [
-      { state: "done", title: "빠방넷 웹 공개", body: "ppabang.net Sites v24를 Google TV를 포함한 웹 서비스로 공개했습니다." },
+      { state: "done", title: "빠방넷 웹 공개", body: "ppabang.net Sites v25를 Google TV를 포함한 웹 서비스로 공개했습니다." },
       { state: "done", title: "Google TV 연결과 리모컨 탐색", body: "QR·기기 코드 연결, 저장 연결 재사용과 방향키 카테고리 선택을 반영했습니다." },
       { state: "done", title: "새 목록과 한국 여자 골프 우선 구성", body: "목록 1회 종료 뒤 새 목록 전환과 한국 여자 골프 채널별 한 편 우선 구성을 반영했습니다." },
+      { state: "done", title: "Google TV 저장 연결 자동 갱신 복구", body: "Google TV 저장 연결의 자동 갱신이 실패하면 만료된 토큰을 다시 사용하지 않고 5분 간격으로 최대 3회 재시도한 뒤 정상 주기로 돌아가도록 복구했습니다." },
     ],
     screenshots: [
       { src: "/apps/ppabang/ppabang-hero.png", alt: "빠방넷의 붉은 운전대 심볼과 내 취향으로 이어 보는 쇼츠를 소개하는 공식 대표 이미지", layout: "landscape" },
