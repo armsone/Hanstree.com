@@ -573,7 +573,7 @@ export const apps: AppData[] = [
     icon: "/apps/trackpadguard/icon.png",
     artwork: "trackpad",
     platforms: [
-      { name: "macOS", status: "공개", detail: "2.0.4 (202609031331) · 내부 build 353611 · macOS 13+ · Universal · Apple 공증 완료", url: releaseDownloadPath("TrackpadGuard"), downloadLabel: "Mac용 DMG 바로 받기", checksum: "97133ead738be3dde480048febed6193915a08171187d9cb8d25d905f4e441ef" },
+      { name: "macOS", status: "공개", detail: "2.0.5 (202609032341) · 내부 build 202609032341 · macOS 13+ · Universal · Apple 공증 완료", url: releaseDownloadPath("TrackpadGuard"), downloadLabel: "Mac용 DMG 바로 받기", checksum: "d3cf1ca78c437a923c51e793a7875cd3da48ef171362ebfbe4c93a6636acdf3c" },
     ],
     features: [
       { title: "키 입력과 동시에 잠금", body: "문자를 입력하기 시작하면 트랙패드의 커서 이동, 클릭과 스크롤을 바로 차단합니다." },
@@ -583,11 +583,11 @@ export const apps: AppData[] = [
       { title: "실패 안전 설계", body: "멀티터치 좌표를 읽지 못하면 잠금을 시작하지 않으며, 긴급 단축키로 언제든 즉시 해제할 수 있습니다." },
       { title: "서명된 자동 업데이트", body: "Sparkle과 GitHub Releases를 통해 서명된 새 버전을 확인하고 설치합니다." },
       { title: "눈에 보이는 잠금 상태", body: "가드가 적용되면 메뉴 막대 아이콘이 빨간색으로 바뀌고 해제되면 원래 색으로 돌아옵니다." },
-      { title: "영타로 친 한글 자동 변환", body: "영문 자판 상태에서 한글을 잘못 입력했을 때 기기 안에서 조심스럽게 판별해 한글로 바꾸고 한글 입력기로 전환합니다. 두 단어 이상 입력 후 공백·문장부호·엔터를 칠 때 동작하며, 비밀번호 창에서는 차단됩니다. 설정에서 켜고 끌 수 있습니다." },
+      { title: "영타로 친 한글 자동·강제 변환", body: "두 단어 이상의 영문 자판 한글 오타는 공백·문장부호·엔터에서 자동으로 바꿉니다. 한 단어나 자동 판별에서 제외된 글은 끝에 ''를 입력하면 즉시 한글로 바꾸고 입력기도 전환합니다. 비밀번호 창에서는 차단되며 설정에서 켜고 끌 수 있습니다." },
       { title: "높은 부하 자동 복구와 안정성", body: "CPU·메모리 부하 시 보호 기능을 먼저 다시 시작하고, 장시간 사용 중 드문 키 입력 유실을 줄이기 위해 30분 주기 재시작 설계를 적용했습니다. 설정에서 자동 복구를 끌 수도 있습니다." },
     ],
     guide: [
-      { title: "앱 설치", body: "공식 GitHub Release의 DMG를 열고 TrackpadGuard를 Applications 폴더로 옮깁니다." },
+      { title: "앱 설치와 업그레이드", body: "공식 GitHub Release의 DMG를 열고 TrackpadGuard를 Applications 폴더로 옮깁니다. 기존 설치본은 같은 Developer ID 서명을 유지한 채 교체되어 설정과 손쉬운 사용 권한 신원을 이어갑니다." },
       { title: "손쉬운 사용 권한", body: "시스템 설정의 개인정보 보호 및 보안에서 TrackpadGuard의 손쉬운 사용 권한을 허용합니다." },
       { title: "작동 영역 조절", body: "설정의 작동 영역 탭에서 초록색 꼭짓점을 드래그합니다. 기본값은 상단 1/3을 제거한 사다리꼴입니다." },
       { title: "타이핑과 자동 해제", body: "키를 누르면 아이콘이 빨간색으로 바뀌며 트랙패드가 잠깁니다. 마지막 입력 1초 후에는 자동으로 다시 작동합니다." },
@@ -603,6 +603,7 @@ export const apps: AppData[] = [
       { state: "done", title: "2.0.2 서명·공증 배포", body: "build 202608261902의 Developer ID 서명·Apple 공증 DMG와 자동 업데이트를 공개하고 장시간 실행 뒤 Mac의 시스템 키보드 입력이 느려지는 현상을 막았습니다." },
       { state: "done", title: "2.0.3 높은 부하 자동 복구 공개", body: "build 202608291556의 Developer ID 서명·Apple 공증 DMG를 공개했습니다. 지속되는 CPU·메모리 부하와 응답 지연을 단계적으로 감지하고 보호 기능을 자동 복구합니다." },
       { state: "done", title: "2.0.4 영타 변환·안정성 보강 공개", body: "build 202609031331의 Developer ID 서명·Apple 공증 DMG를 공개했습니다. 영문 자판으로 잘못 입력한 한글 구문을 기기 안에서 판별해 한글로 바꾸고 입력기를 전환하는 선택 기능과, 장시간 실행 시 드문 키 입력 유실을 줄이기 위한 30분 주기 재시작 설계를 적용했습니다." },
+      { state: "done", title: "2.0.5 한글 강제 변환 공개", body: "build 202609032341의 Developer ID 서명·Apple 공증 DMG를 공개했습니다. 한 단어나 자동 판별에서 제외된 영문 자판 오타도 끝에 ''를 입력하면 한글로 바꾸며, Shift로 입력하는 된소리와 ㅒ·ㅖ 조합도 지원합니다." },
       { state: "next", title: "macOS 호환성 관리", body: "macOS 업데이트마다 비공개 멀티터치 프레임워크 호환성을 확인" },
     ],
     screenshots: [
