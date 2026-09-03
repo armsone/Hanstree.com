@@ -55,6 +55,14 @@ export function AppArtwork({ app, mode = "spotlight" }: { app: AppData; mode?: "
     );
   }
 
+  if (app.artwork === "shorts") {
+    return (
+      <div className="artwork artwork-bridge" aria-label={`${app.name} 쇼츠 연속 재생 대표 이미지`}>
+        <Image src={app.heroImage ?? `/apps/${app.slug}/home-card.webp`} alt={`${app.name} 쇼츠 연속 재생 대표 이미지`} width={1280} height={853} sizes="(max-width: 640px) 92vw, 720px" unoptimized />
+      </div>
+    );
+  }
+
   if (app.slug === "denimdex") {
     return (
       <div className="artwork artwork-denimdex" aria-label="빈티지 데님의 원단과 셀비지, 버튼과 리벳을 살피는 DenimDex 감정 장면">

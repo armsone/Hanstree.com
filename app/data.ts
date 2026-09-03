@@ -22,7 +22,7 @@ export type AppData = {
   heroImage?: string;
   spotlightImage?: string;
   systemImage?: string;
-  artwork: "files" | "phones" | "clock" | "menubar" | "cleanup" | "trackpad" | "thumbnail" | "htoms" | "search" | "church" | "server" | "intelligence" | "bridge" | "autoshorts" | "ai-search";
+  artwork: "files" | "phones" | "clock" | "menubar" | "cleanup" | "trackpad" | "thumbnail" | "htoms" | "search" | "church" | "server" | "intelligence" | "bridge" | "autoshorts" | "shorts" | "ai-search";
   platforms: Platform[];
   features: { title: string; body: string; icon?: string }[];
   guide: { title: string; body: string }[];
@@ -1261,6 +1261,59 @@ export const apps: AppData[] = [
       "자동 넘김 켜기·끄기 설정만 현재 브라우저의 로컬 저장소에 보관합니다.",
       "방문 기록, YouTube 시청 기록, 계정 정보와 영상 정보를 수집하거나 개발자 서버로 전송하지 않습니다.",
       "YouTube Shorts 페이지 안에서 재생 상태와 다음 동영상 버튼만 확인하며 일반 YouTube 영상에서는 자동 이동하지 않습니다.",
+    ],
+  },
+  {
+    slug: "ppabang",
+    name: "빠방넷",
+    english: "ppabang.net",
+    eyebrow: "YOUR SHORTS, KEEP MOVING",
+    tagline: "내 취향 쇼츠를, 끊김 없이.",
+    summary: "좋아요와 구독 채널을 바탕으로 내 취향의 짧은 영상을 이어 보고, 새 영상과 여러 주제도 리모컨으로 골라 보는 웹 쇼츠 플레이어입니다. 한 목록을 다 보면 다음 목록으로 자연스럽게 이어집니다.",
+    theme: "coral",
+    icon: "/apps/ppabang/icon.png",
+    heroImage: "/apps/ppabang/home-card.webp",
+    spotlightImage: "/apps/ppabang/home-card.webp",
+    artwork: "shorts",
+    platforms: [
+      {
+        name: "Web · Google TV",
+        status: "공개",
+        detail: "공식 웹 · Sites v24 · Google TV 포함",
+        url: "https://ppabang.net/",
+        downloadLabel: "빠방넷 열기",
+        availabilityNote: "Google TV에서 QR·기기 코드 연결과 리모컨 카테고리 선택 지원",
+      },
+    ],
+    features: [
+      { title: "내 취향으로 이어지는 쇼츠", body: "Google의 YouTube 읽기 전용 권한으로 좋아요와 구독 채널을 확인해 개인 맞춤 재생목록을 구성합니다." },
+      { title: "한 목록이 끝나면 새 목록으로", body: "같은 영상을 계속 돌려보는 대신 현재 목록을 한 번 다 보면 새 재생목록을 불러와 이어서 재생합니다." },
+      { title: "TV에서는 휴대전화로 간단히 연결", body: "Google TV 화면의 QR 코드나 기기 코드를 휴대전화에서 승인하고, 다음 새 영상 갱신부터는 현재 기기에 저장된 연결을 다시 사용합니다." },
+      { title: "리모컨으로 주제까지 선택", body: "Google TV 방향키로 새 영상, 골프, 음악, 요리, 여행을 비롯한 카테고리를 이동하고 선택할 수 있습니다." },
+      { title: "한국 여자 골프를 먼저", body: "골프 목록은 한국 여자 골프 채널을 우선하며, 가능한 범위에서 아마추어 최대 30개와 프로 최대 20개 채널의 영상부터 채널별 한 편씩 구성합니다." },
+    ],
+    guide: [
+      { title: "빠방넷 열기", body: "PC·모바일 또는 Google TV 브라우저에서 ppabang.net을 엽니다." },
+      { title: "Google 연결하기", body: "웹에서는 Google 동의 화면을 이용하고, Google TV에서는 화면의 QR 코드나 기기 코드를 휴대전화에서 승인합니다." },
+      { title: "보고 싶은 목록 고르기", body: "화면의 카테고리를 누르거나 Google TV 리모컨 방향키로 이동해 내 취향, 새 영상, 골프와 다른 주제를 선택합니다." },
+      { title: "그대로 이어 보기", body: "재생이 끝나면 다음 쇼츠로 이동합니다. 목록을 한 번 다 보면 저장된 Google 연결로 새 목록을 준비해 이어 봅니다." },
+    ],
+    progress: [
+      { state: "done", title: "빠방넷 웹 공개", body: "ppabang.net Sites v24를 Google TV를 포함한 웹 서비스로 공개했습니다." },
+      { state: "done", title: "Google TV 연결과 리모컨 탐색", body: "QR·기기 코드 연결, 저장 연결 재사용과 방향키 카테고리 선택을 반영했습니다." },
+      { state: "done", title: "새 목록과 한국 여자 골프 우선 구성", body: "목록 1회 종료 뒤 새 목록 전환과 한국 여자 골프 채널별 한 편 우선 구성을 반영했습니다." },
+    ],
+    screenshots: [
+      { src: "/apps/ppabang/ppabang-hero.png", alt: "빠방넷의 붉은 운전대 심볼과 내 취향으로 이어 보는 쇼츠를 소개하는 공식 대표 이미지", layout: "landscape" },
+    ],
+    github: [],
+    privacy: [
+      "Google 계정의 아이디·비밀번호·브라우저 쿠키를 요구하거나 저장하지 않습니다.",
+      "사용자가 동의한 경우에만 YouTube 읽기 전용 권한으로 좋아요 영상과 구독 채널의 공개 영상 정보를 개인 맞춤 피드 구성에 사용합니다.",
+      "완료 시청·빠른 넘김 기록과 최근 영상의 제목·채널명·영상 식별자는 현재 기기의 브라우저 저장공간에 보관합니다.",
+      "Google 액세스 토큰은 서버에 저장하지 않고 현재 브라우저 실행 중에만 사용합니다. Google TV의 자동 갱신용 권한은 화면 코드에서 읽을 수 없는 보안 쿠키로 현재 기기에 보관합니다.",
+      "개인화 정보를 판매하지 않으며, YouTube 영상 재생과 정보 조회에는 Google 및 YouTube의 서비스와 정책이 적용됩니다.",
+      "브라우저의 ppabang.net 사이트 데이터를 삭제하면 기기에 저장된 빠방넷 정보가 제거되며, Google 계정 보안 설정에서 연결 권한을 철회할 수 있습니다.",
     ],
   },
 ];

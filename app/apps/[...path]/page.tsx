@@ -841,6 +841,13 @@ function InfoPage({ app, section }: { app: NonNullable<ReturnType<typeof findApp
             </div>
           </section>
           <LegalSection title="핵심 원칙"><ul>{app.privacy.map((item) => <li key={item}>{item}</li>)}</ul></LegalSection>
+          {app.slug === "ppabang" && <>
+            <LegalSection title="Google 연결"><p>Google 연결은 사용자가 직접 동의한 경우에만 YouTube 읽기 전용 권한을 사용합니다. 좋아요 영상과 구독 채널의 공개 영상 정보는 개인 맞춤 피드 구성에만 사용하며 영상 업로드·수정·삭제 권한은 요청하지 않습니다.</p></LegalSection>
+            <LegalSection title="기기에 저장되는 정보"><p>완료 시청·빠른 넘김 기록과 최근 영상의 제목·채널명·영상 식별자는 현재 브라우저 저장공간에 보관됩니다. Google 액세스 토큰은 현재 브라우저 실행 중에만 사용하며 서버에 저장하지 않습니다. Google TV의 자동 갱신 권한은 화면 코드에서 읽을 수 없는 보안 쿠키로 현재 기기에 보관됩니다.</p></LegalSection>
+            <LegalSection title="삭제와 연결 해제"><p>브라우저의 사이트 데이터에서 ppabang.net 데이터를 삭제하면 기기에 보관된 빠방넷 정보도 함께 제거됩니다. Google 계정의 보안 설정에서는 빠방넷에 허용한 연결 권한을 언제든 철회할 수 있습니다.</p></LegalSection>
+            <LegalSection title="외부 서비스"><p>YouTube 영상 재생과 영상 정보 조회에는 Google 및 YouTube의 서비스와 정책이 적용됩니다. 빠방넷은 개인화 정보를 판매하지 않습니다.</p></LegalSection>
+          </>}
+          {app.slug !== "ppabang" && <>
           <LegalSection title="처리 목적과 항목"><p>앱은 기능 수행에 필요한 권한, 사용자가 직접 선택한 파일과 사용자가 연결한 서비스의 인증 정보만 해당 기능을 제공하기 위해 처리합니다. 광고 목적의 개인정보 판매나 맞춤형 추적을 목적으로 처리하지 않습니다.</p></LegalSection>
           <LegalSection title="홈페이지 이용 통계"><p>Hanstree.com은 홈페이지 방문 횟수와 공식 APK 바로 받기 버튼을 누른 횟수를 숫자로만 집계합니다. 방문은 같은 브라우저에서 하루 한 번만 세기 위해 마지막 집계 날짜를 브라우저에 저장합니다. 집계 데이터베이스에는 방문자의 이름, 이메일, 계정, 쿠키 또는 IP 주소를 함께 저장하지 않으며 광고나 개인별 행동 추적에 사용하지 않습니다.</p></LegalSection>
           <LegalSection title="TestFlight 공개 베타"><p>홈페이지는 TestFlight 공개 링크를 통해 베타 앱 참여 경로만 제공합니다. 참여 신청을 위해 이름, 이메일, 기기 모델이나 참여 동기를 수집하지 않습니다. 공개 링크 참여와 앱 설치는 Apple의 TestFlight에서 처리됩니다. 과거 내부 테스터 신청 기능으로 접수된 기록은 더 이상 새로 수집하지 않으며, 삭제를 원하는 기존 신청자는 아래 개인정보 보호책임자에게 요청할 수 있습니다.</p></LegalSection>
@@ -848,6 +855,7 @@ function InfoPage({ app, section }: { app: NonNullable<ReturnType<typeof findApp
           <LegalSection title="파기 방법"><p>앱에서 삭제한 로컬 데이터는 앱의 저장공간에서 제거합니다. Keychain에 보관된 인증 정보는 연결 해제 또는 앱이 제공하는 계정 삭제 절차로 삭제합니다. 외부 서비스에 남은 접근 권한은 해당 서비스의 계정 보안 페이지에서도 철회할 수 있습니다.</p></LegalSection>
           <LegalSection title="외부 서비스와 제공"><p>앱은 사용자가 선택한 기능을 수행할 때 외부 저장소, 날씨, 라디오, 웹사이트 또는 배포 서비스와 통신할 수 있습니다. 사용자가 파일 전송이나 공유를 직접 요청한 경우에만 선택한 대상에 해당 정보가 전달되며, 연결한 서비스에는 각 제공자의 개인정보처리방침과 보관 기준이 적용됩니다.</p></LegalSection>
           <LegalSection title="사용자의 권리"><p>사용자는 운영체제 설정에서 앱 권한을 철회하고, 앱에서 연결·프로젝트·파일·캐시를 삭제하거나 외부 계정을 연결 해제할 수 있습니다. 개인정보 열람·정정·삭제·처리정지에 관한 문의는 아래 개인정보 보호책임자에게 요청할 수 있습니다.</p></LegalSection>
+          </>}
           {app.slug === "nasfinder" && <>
             <LegalSection title="Google 서비스"><p>Google 계정 연결 기능은 사용자가 요청한 파일 작업에 필요한 정보만 처리합니다. Google Photos 가져오기는 iPhone·iPad와 Android에 소스 구현된 상태이며 실제 Google 계정 검증이 아직 완료되지 않았으므로 현재 공개판 제공을 뜻하지 않습니다. 구현된 흐름은 Google Drive와 분리된 별도 OAuth 연결을 사용하며, 민감 범위인 https://www.googleapis.com/auth/photospicker.mediaitems.readonly 하나만 요청합니다. 전체 보관함을 탐색하거나 복제하지 않고, Google Photos Picker에서 사용자가 직접 선택한 사진·영상만 해당 기기의 폰하드로 내려받습니다. 내려받은 항목은 미리보기·공유·삭제할 수 있으며, 사용자가 NAS 또는 연결된 저장소를 직접 선택했을 때만 그 대상으로 전송합니다. Google Photos 데이터는 광고, 추적, 얼굴 인식, 데이터 판매 또는 AI 학습에 사용하지 않습니다. Google Photos OAuth 토큰은 Google Drive와 분리해 Apple 기기의 Keychain과 Android Keystore로 보호한 앱 전용 저장공간에 각각 보관하도록 구현했으며, 설정에서 Google Photos 연결을 해제할 수 있습니다. 기기 안의 받은 파일과 캐시는 앱에서 삭제할 수 있고, 외부로 내보낸 파일은 해당 대상에서 별도로 삭제해야 합니다.</p></LegalSection>
             <LegalSection title="Google 사진 데이터의 공유와 제공 (Data sharing and disclosure)"><p>Google Photos에서 받은 사용자 데이터가 전달되는 대상은 다음 두 경우뿐입니다. 첫째, 사용자가 요청한 기능을 수행하기 위해 앱이 Google API와 통신할 때 Google에 전달됩니다. 둘째, 사용자가 공유 동작을 시작하거나 NAS 또는 연결된 저장소를 전송 대상으로 직접 선택했을 때 그 선택한 대상에만 전달됩니다. Google Photos 데이터는 판매하지 않으며, 위와 무관한 제3자에게 제공·이전·공개하지 않습니다. 선택한 사진·영상은 Google에서 사용자의 기기로 직접 내려받으며, 운영자는 이를 운영자가 관리하는 서버로 수신하거나 보관하지 않습니다.</p></LegalSection>
@@ -878,14 +886,19 @@ function InfoPage({ app, section }: { app: NonNullable<ReturnType<typeof findApp
         </>}
 
         {!isPrivacy && !isTerms && !isDeletion && <>
-          <LegalSection title="먼저 확인할 내용"><ul><li>앱과 운영체제를 최신 버전으로 업데이트합니다.</li><li>필요한 권한과 네트워크 연결 상태를 확인합니다.</li><li>앱을 완전히 종료한 뒤 다시 실행합니다.</li><li>같은 문제가 반복되면 재현 단계를 기록합니다.</li></ul></LegalSection>
-          <LegalSection title="오류를 알려주실 때"><p>앱 버전, 기기와 운영체제, 사용한 기능, 재현 단계와 예상한 결과를 적어 주세요. 화면이나 로그에 계정·서버·파일 등 개인 정보가 있다면 반드시 가려 주세요.</p></LegalSection>
+          {app.slug === "ppabang" ? <>
+            <LegalSection title="먼저 확인할 내용"><ul><li>공식 주소 https://ppabang.net에서 빠방넷을 엽니다.</li><li>YouTube 영상과 Google 연결을 사용할 수 있도록 네트워크 연결을 확인합니다.</li><li>Google TV에서는 화면의 QR 코드 또는 일회용 기기 코드를 휴대전화에서 승인합니다.</li><li>Google 연결은 YouTube 읽기 전용 권한만 요청합니다. 연결 권한은 Google 계정 보안 설정에서 철회할 수 있습니다.</li></ul></LegalSection>
+            <LegalSection title="저장 정보 정리"><p>빠방넷에 저장된 재생 기록과 최근 영상 정보는 브라우저의 ppabang.net 사이트 데이터를 삭제하면 함께 제거됩니다.</p></LegalSection>
+          </> : <>
+            <LegalSection title="먼저 확인할 내용"><ul><li>앱과 운영체제를 최신 버전으로 업데이트합니다.</li><li>필요한 권한과 네트워크 연결 상태를 확인합니다.</li><li>앱을 완전히 종료한 뒤 다시 실행합니다.</li><li>같은 문제가 반복되면 재현 단계를 기록합니다.</li></ul></LegalSection>
+            <LegalSection title="오류를 알려주실 때"><p>앱 버전, 기기와 운영체제, 사용한 기능, 재현 단계와 예상한 결과를 적어 주세요. 화면이나 로그에 계정·서버·파일 등 개인 정보가 있다면 반드시 가려 주세요.</p></LegalSection>
+          </>}
           <div className="support-options">
             {app.github.map((url) => <Link className="button button-primary" href={`${url}/issues`} key={url}>GitHub에 제보하기 <span aria-hidden="true">↗</span></Link>)}
             <ContactReveal />
           </div>
         </>}
-        <p className="policy-note">시행일: 2026년 8월 14일 · 마지막 변경일: {app.slug === "nasfinder" ? "2026년 8월 22일" : "2026년 8월 15일"}</p>
+        <p className="policy-note">시행일: 2026년 8월 14일 · 마지막 변경일: {app.slug === "ppabang" ? "2026년 9월 4일" : app.slug === "nasfinder" ? "2026년 8월 22일" : "2026년 8월 15일"}</p>
       </article>
       <SiteFooter />
     </main>
