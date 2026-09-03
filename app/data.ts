@@ -573,7 +573,7 @@ export const apps: AppData[] = [
     icon: "/apps/trackpadguard/icon.png",
     artwork: "trackpad",
     platforms: [
-      { name: "macOS", status: "공개", detail: "2.0.5 (202609032341) · 내부 build 202609032341 · macOS 13+ · Universal · Apple 공증 완료", url: releaseDownloadPath("TrackpadGuard"), downloadLabel: "Mac용 DMG 바로 받기", checksum: "d3cf1ca78c437a923c51e793a7875cd3da48ef171362ebfbe4c93a6636acdf3c" },
+      { name: "macOS", status: "공개", detail: "2.0.6 (202609032354) · 내부 build 202609032354 · macOS 13+ · Universal · Apple 공증 완료", url: releaseDownloadPath("TrackpadGuard"), downloadLabel: "Mac용 DMG 바로 받기", checksum: "8f5d5f3bfb6438a63d73905a82bcbe66bc0e4e7924cec924ecc0f3eb3003871f" },
     ],
     features: [
       { title: "키 입력과 동시에 잠금", body: "문자를 입력하기 시작하면 트랙패드의 커서 이동, 클릭과 스크롤을 바로 차단합니다." },
@@ -583,7 +583,7 @@ export const apps: AppData[] = [
       { title: "실패 안전 설계", body: "멀티터치 좌표를 읽지 못하면 잠금을 시작하지 않으며, 긴급 단축키로 언제든 즉시 해제할 수 있습니다." },
       { title: "서명된 자동 업데이트", body: "Sparkle과 GitHub Releases를 통해 서명된 새 버전을 확인하고 설치합니다." },
       { title: "눈에 보이는 잠금 상태", body: "가드가 적용되면 메뉴 막대 아이콘이 빨간색으로 바뀌고 해제되면 원래 색으로 돌아옵니다." },
-      { title: "영타로 친 한글 자동·강제 변환", body: "두 단어 이상의 영문 자판 한글 오타는 공백·문장부호·엔터에서 자동으로 바꿉니다. 한 단어나 자동 판별에서 제외된 글은 끝에 ''를 입력하면 즉시 한글로 바꾸고 입력기도 전환합니다. 비밀번호 창에서는 차단되며 설정에서 켜고 끌 수 있습니다." },
+      { title: "영타로 친 한글 자동·강제 변환", body: "두 단어 이상의 영문 자판 한글 오타는 공백·문장부호·엔터에서 자동으로 바꿉니다. 영어를 거의 쓰지 않는 사용자는 한글 우선 변환을 켜 조합 가능한 문장을 더 적극적으로 바꿀 수 있습니다. 한 단어는 끝에 ''를 입력해 강제로 변환하며, 비밀번호 창에서는 작동하지 않습니다." },
       { title: "높은 부하 자동 복구와 안정성", body: "CPU·메모리 부하 시 보호 기능을 먼저 다시 시작하고, 장시간 사용 중 드문 키 입력 유실을 줄이기 위해 30분 주기 재시작 설계를 적용했습니다. 설정에서 자동 복구를 끌 수도 있습니다." },
     ],
     guide: [
@@ -604,6 +604,7 @@ export const apps: AppData[] = [
       { state: "done", title: "2.0.3 높은 부하 자동 복구 공개", body: "build 202608291556의 Developer ID 서명·Apple 공증 DMG를 공개했습니다. 지속되는 CPU·메모리 부하와 응답 지연을 단계적으로 감지하고 보호 기능을 자동 복구합니다." },
       { state: "done", title: "2.0.4 영타 변환·안정성 보강 공개", body: "build 202609031331의 Developer ID 서명·Apple 공증 DMG를 공개했습니다. 영문 자판으로 잘못 입력한 한글 구문을 기기 안에서 판별해 한글로 바꾸고 입력기를 전환하는 선택 기능과, 장시간 실행 시 드문 키 입력 유실을 줄이기 위한 30분 주기 재시작 설계를 적용했습니다." },
       { state: "done", title: "2.0.5 한글 강제 변환 공개", body: "build 202609032341의 Developer ID 서명·Apple 공증 DMG를 공개했습니다. 한 단어나 자동 판별에서 제외된 영문 자판 오타도 끝에 ''를 입력하면 한글로 바꾸며, Shift로 입력하는 된소리와 ㅒ·ㅖ 조합도 지원합니다." },
+      { state: "done", title: "2.0.6 한글 우선 변환 공개", body: "build 202609032354의 Developer ID 서명·Apple 공증 DMG를 공개했습니다. 문장 전체를 기준으로 한글 오타 신호를 판단하도록 고치고, 영어를 거의 쓰지 않는 사용자를 위한 한글 우선 변환 옵션을 추가했습니다." },
       { state: "next", title: "macOS 호환성 관리", body: "macOS 업데이트마다 비공개 멀티터치 프레임워크 호환성을 확인" },
     ],
     screenshots: [
