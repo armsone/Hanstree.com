@@ -20,5 +20,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="ko"><head><link rel="preconnect" href="https://hanstree.com" /></head><body className={`${geistSans.variable} ${geistMono.variable}`}><VisitTracker />{children}</body></html>;
+  return <html lang="ko"><head><link rel="preconnect" href="https://hanstree.com" /><link rel="icon" href="/favicon.ico?v=20260904" sizes="any" /><link rel="apple-touch-icon" href="/apple-touch-icon-hanstree.png?v=20260904" sizes="180x180" type="image/png" /></head><body className={`${geistSans.variable} ${geistMono.variable}`}><VisitTracker />{children}</body></html>;
 }
