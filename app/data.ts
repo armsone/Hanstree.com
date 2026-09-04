@@ -197,10 +197,10 @@ export const apps: AppData[] = [
       {
         name: "Android",
         status: "공개",
-        detail: "2.2.1 · 빌드 202608251900 · 내부 코드 340980 · Android 8.0+",
+        detail: "2.2.2 · 빌드 202609050842 · 내부 코드 356202 · Android 8.0+",
         url: releaseDownloadPath("HanClip-Android"),
         downloadLabel: "Android APK 바로 받기",
-        checksum: "f4b607c0d5b860c4dd1c42a24f653b0bacf5f17d9b10684307af33eec102201b",
+        checksum: "5be09fda9ef2d13e7da2d77cf843a671bc13d27f90844c7961fffbe8c5a86c5f",
         availabilityNote: "서명 APK 재다운로드·무결성 검증 완료 · 휴대전화·태블릿·Google TV 지원",
       },
     ],
@@ -225,7 +225,7 @@ export const apps: AppData[] = [
     progress: [
       { state: "done", title: "iOS 핵심 제작 흐름", body: "선택, 편집, 렌더링, 시사회와 저장 흐름 구현" },
       { state: "active", title: "iOS·iPadOS 2.2.1 업로드", body: "build 202608251900을 TestFlight에 업로드하고 Apple 처리를 기다리는 중" },
-      { state: "done", title: "Android 2.2.1 공개", body: "제품 2.2.1 · 빌드 202608251900 · 내부 코드 340980의 서명 APK를 GitHub Releases에 공개" },
+      { state: "done", title: "Android 2.2.2 공개", body: "오늘 선택을 유지하며 전날 사진을 추가하고, 하단 선택 버튼이 시스템 내비게이션 영역과 겹치지 않도록 개선한 서명 APK를 공개" },
       { state: "done", title: "플랫폼 기술 계약 동기화", body: "기능·알고리즘·상태·오류·취소·권한·제스처·접근성 계약을 Apple과 Android에 대조 반영" },
       { state: "active", title: "Android AiShot 현장 검증", body: "실제 퍼팅과 다양한 스윙 환경에서 놓침과 오촬영을 계속 점검 중" },
       { state: "done", title: "Apple Silicon Mac 지원", body: "iPhone·iPad와 같은 빌드를 Mac의 ‘iPhone 및 iPad용 앱’으로 실행하도록 지원" },
