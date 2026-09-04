@@ -516,14 +516,15 @@ export const apps: AppData[] = [
       {
         name: "macOS",
         status: "공개",
-        detail: "2.0.2 (202608291620) · 내부 build 346580 · macOS 13+ · Universal · Apple 공증 완료",
+        detail: "2.0.3 (202609041647) · 내부 build 355247 · macOS 13+ · Universal · Apple 공증 완료",
         url: releaseDownloadPath("BTN"),
         downloadLabel: "Mac용 DMG 바로 받기",
-        checksum: "7150296496f7a573f9ac0b1bceed82388b8f680e05fe46ad4fa7ef1d5bcaf99e",
+        checksum: "c9ccfe0c67501ad56a75a4b72aa42e69d7a79e1c8a38841c601b31a049169aab",
       },
     ],
     features: [
       { title: "메모리 압박 해결 동선", body: "메모리 압박 경고에서 실행 중인 시뮬레이터를 기기 데이터를 유지한 채 종료하거나 활동 모니터로 일반 앱을 바로 확인합니다." },
+      { title: "DerivedData 한 번에 비우기", body: "필요할 때 버튼 한 번으로 Xcode DerivedData 안의 빌드 산출물을 모두 휴지통으로 옮기고, 다음 빌드에서 깨끗하게 다시 생성합니다." },
       { title: "안전한 파일 자동 정리", body: "저위험이며 휴지통에서 복원 가능한 오래된 DerivedData와 XCTest 데이터만 자동으로 정리합니다." },
       { title: "시뮬레이터 잔여물 진단", body: "사용할 수 없어진 시뮬레이터와 명시적으로 확인된 XCTest 복제 기기를 찾아 디스크 사용량과 함께 보여줍니다." },
       { title: "시뮬레이터 데이터 초기화", body: "종료된 정상 시뮬레이터 데이터가 512 MiB 이상이면 기기는 남기고 앱·콘텐츠 데이터만 초기화할 수 있습니다." },
@@ -538,6 +539,7 @@ export const apps: AppData[] = [
       { title: "DMG로 설치", body: "공식 DMG를 열고 BTN을 응용 프로그램 폴더로 옮긴 뒤 실행합니다." },
       { title: "메모리 압박 낮추기", body: "경고가 보이면 해결할 항목 찾기로 실행 중인 시뮬레이터를 기기 데이터를 유지한 채 종료하거나 활동 모니터를 엽니다." },
       { title: "남은 자원 찾기", body: "메뉴 막대에서 자세히 보기를 열고 정리 후보 찾기를 눌러 파일·시뮬레이터와 유휴 개발 프로세스를 확인합니다." },
+      { title: "DerivedData 바로 비우기", body: "Xcode Derived Data 지우기의 클리어 버튼을 누르면 폴더 자체는 남기고 안의 빌드 산출물만 휴지통으로 이동합니다." },
       { title: "이유와 위험도 확인", body: "디스크 예상 확보량과 메모리 예상 회수량, 감지 이유와 위험도를 구분해 확인합니다." },
       { title: "정리할 항목 선택", body: "정리할 항목만 직접 체크하고 안전하게 해결을 누릅니다. 기본 상태에서는 아무 항목도 선택되지 않습니다." },
       { title: "최종 확인 후 실행", body: "확인 화면에서 되돌릴 수 없는 조치를 다시 확인한 뒤 실행하거나 취소합니다." },
@@ -550,10 +552,12 @@ export const apps: AppData[] = [
       { state: "done", title: "BTN 2.0.0 공개", body: "build 202608230737의 Apple 공증 Universal DMG와 자동 업데이트를 공개" },
       { state: "done", title: "BTN 2.0.1 공개", body: "build 202608251555에서 닫힌 상세 창을 다시 실행할 때 즉시 복구하고 업데이트 자동 다운로드 설정을 추가" },
       { state: "done", title: "BTN 2.0.2 공개", body: "build 202608291620에서 메뉴의 중복된 자동 다운로드 스위치와 상태 문구를 덜어내고, 서명된 자동 업데이트는 그대로 유지한 Apple 공증 Universal DMG 공개" },
+      { state: "done", title: "BTN 2.0.3 공개", body: "build 202609041647에서 Xcode DerivedData 빌드 산출물을 버튼 한 번으로 휴지통에 옮기는 기능을 추가한 Apple 공증 Universal DMG 공개" },
       { state: "next", title: "작업 세션 연동", body: "Codex·Claude·Gemini 작업별로 생성된 자원을 더 정밀하게 구분하는 추적 기능 준비" },
     ],
     screenshots: [
       { src: "/apps/btn/screens/overview.png", alt: "BTN이 메모리 압박 경고와 안전한 해결 동선을 보여주는 실제 화면", layout: "menu" },
+      { src: "/apps/btn/screens/derived-data-clear.png", alt: "BTN의 Xcode Derived Data 지우기와 클리어 버튼", layout: "wide" },
     ],
     github: ["https://github.com/armsone/BTN"],
     privacy: [

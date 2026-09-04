@@ -87,7 +87,7 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     label: "BTN Mac",
     repo: "BTN",
     assetPattern: /\.dmg$/i,
-    fallbackUrl: "https://github.com/armsone/BTN/releases/download/v2.0.2/BTN-2.0.2.dmg",
+    fallbackUrl: "https://github.com/armsone/BTN/releases/download/v2.0.3/BTN-2.0.3.dmg",
   },
   TrackpadGuard: {
     label: "TrackpadGuard Mac",

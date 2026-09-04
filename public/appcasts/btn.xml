@@ -3,6 +3,14 @@
     <channel>
         <title>BTN</title>
         <item>
+            <title>2.0.3</title>
+            <pubDate>Fri, 04 Sep 2026 16:53:28 +0900</pubDate>
+            <sparkle:version>355247</sparkle:version>
+            <sparkle:shortVersionString>2.0.3</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/armsone/BTN/releases/download/v2.0.3/BTN-2.0.3.dmg" length="3839320" type="application/octet-stream" sparkle:edSignature="/C33PS48fEmLv64gqw2/tHNLHS+vRkl4Hn8zSoRWzFxc/DA5CrupunEBwUH4vQIr94BCkywZRhtrMmZPN2qRBg=="/>
+        </item>
+        <item>
             <title>2.0.2</title>
             <pubDate>Sat, 29 Aug 2026 16:23:29 +0900</pubDate>
             <sparkle:version>346580</sparkle:version>
@@ -17,15 +25,6 @@
             <sparkle:shortVersionString>2.0.1</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
             <enclosure url="https://github.com/armsone/BTN/releases/download/v2.0.1/BTN-2.0.1.dmg" length="3822982" type="application/octet-stream" sparkle:edSignature="dzHmXsHK1t9NxINohKHCp4HhXg0UoeZot5KMaNPeDv/EV3twMB7HKeITs5gXsKweBrsJkJCDxmXtVzp8NMnBDg=="/>
-        </item>
-        <item>
-            <title>2.0.0</title>
-            <pubDate>Sun, 23 Aug 2026 07:47:21 +0900</pubDate>
-            <link>https://github.com/armsone/BTN/releases/tag/v2.0.0</link>
-            <sparkle:version>337417</sparkle:version>
-            <sparkle:shortVersionString>2.0.0</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/armsone/BTN/releases/download/v2.0.0/BTN-2.0.0.dmg" length="3817087" type="application/octet-stream" sparkle:edSignature="EMBgJb1pWk/OO0cqQ3LmxYPjz9RGN0l+gwyMVERbQYrPlt+pOKDp3cKKtvNC+jnoJ2fHxb6jfpAvZLESz+38Aw=="/>
         </item>
     </channel>
 </rss>
