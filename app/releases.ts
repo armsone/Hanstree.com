@@ -99,13 +99,13 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     label: "오늘 뭐 먹지?? Mac",
     repo: "WhattoEat",
     assetPattern: /^WhattoEat-Mac-.*\.dmg$/i,
-    fallbackUrl: "https://github.com/armsone/WhattoEat/releases/download/v0.4.1/WhattoEat-Mac-0.4.1-202608252106.dmg",
+    fallbackUrl: "https://github.com/armsone/WhattoEat/releases/download/v0.4.4/WhattoEat-Mac-0.4.4-202609051202.dmg",
   },
   "WhattoEat-Android": {
     label: "오늘 뭐 먹지?? Android",
     repo: "WhattoEat-Android",
     assetPattern: /^WhattoEat-(?:Android-)?\d+\.\d+\.\d+\.apk$/i,
-    fallbackUrl: "https://github.com/armsone/WhattoEat-Android/releases/download/android-v0.4.3/WhattoEat-Android-0.4.3.apk",
+    fallbackUrl: "https://github.com/armsone/WhattoEat-Android/releases/download/android-v0.4.4/WhattoEat-Android-0.4.4.apk",
   },
   "DenimDex-Android": {
     label: "DenimDex Android",

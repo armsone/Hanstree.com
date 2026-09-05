@@ -18,6 +18,6 @@ export const testFlightBuilds: TestFlightBuild[] = [
   { slug: "htoms-brief", appName: "HtOMS 브리프", build: "202608291628", uploadedAt: "2026-08-29T16:37:14+09:00", inviteUrl: null, publicBetaState: "internalOnly" },
   { slug: "starmanager", appName: "Stargram", build: "202608292118", uploadedAt: "2026-08-29T21:37:47+09:00", expiresAt: "2026-11-27T21:37:47+09:00", inviteUrl: "https://testflight.apple.com/join/nzmW4WxW", publicBetaState: "approved" },
   { slug: "button", appName: "OurButton", build: "202608292118", uploadedAt: "2026-08-29T21:41:23+09:00", expiresAt: "2026-11-27T21:41:23+09:00", inviteUrl: "https://testflight.apple.com/join/RKcxgTkc", publicBetaState: "approved" },
-  { slug: "whattoeat", appName: "오늘 뭐 먹지??", build: "202608271840", uploadedAt: "2026-08-27T19:01:32+09:00", inviteUrl: "https://testflight.apple.com/join/A444RsAc", publicBetaState: "approved" },
+  { slug: "whattoeat", appName: "오늘 뭐 먹지??", build: "202609051202", uploadedAt: "2026-09-05T12:09:13+09:00", expiresAt: "2026-12-04T12:09:13+09:00", inviteUrl: "https://testflight.apple.com/join/A444RsAc", inviteAvailable: true, publicBetaState: "waitingForReview" },
   { slug: "denimdex", appName: "데님덱스", build: "202608312019", uploadedAt: "2026-08-31T20:37:07+09:00", inviteUrl: null, inviteAvailable: false, publicBetaState: "internalOnly" },
 ];

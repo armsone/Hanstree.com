@@ -981,9 +981,9 @@ export const apps: AppData[] = [
     icon: "/apps/whattoeat/icon.png",
     artwork: "phones",
     platforms: [
-      { name: "iPhone · iPad", status: "TestFlight", detail: "0.4.2 (202608271840) · iOS·iPadOS 17+", availabilityNote: "Public Beta 외부 심사 제출 · 승인 전까지 공개 링크에서는 0.4.1 제공" },
-      { name: "Mac", status: "공개", detail: "0.4.1 (202608252106) · macOS 13+ · Universal · Apple 공증 완료", url: releaseDownloadPath("WhattoEat"), downloadLabel: "Mac용 DMG 다운로드", checksum: "b2387eab4b08056f06539c5dd4fdad59e223f48c4693d1e89c29bfa10c37f847", availabilityNote: "공증된 DMG 설치·실행 검증 완료" },
-      { name: "Android · Google TV", status: "공개", detail: "0.4.3 · 빌드 202608291549 · 내부 코드 346549 · Android 8.0+", url: releaseDownloadPath("WhattoEat-Android"), downloadLabel: "Android용 APK 다운로드", checksum: "f94c4cfd5cc71645f94a5ba79053743d3d442b4fe83332f5f14579b5536c75a9", availabilityNote: "SM-F968N Android 16에서 동일 코드의 개발 빌드 교체 설치·실행, 단위 테스트와 공개 APK 릴리스 서명·해시 검증 완료 · 태블릿·TV 리모컨 검증 전" },
+      { name: "iPhone · iPad", status: "TestFlight", detail: "0.4.4 (202609051202) · iOS·iPadOS 17+", availabilityNote: "0.4.4 내부 테스트 제공 · 외부 베타 심사 대기 · 기존 공개 베타 참여 가능" },
+      { name: "Mac", status: "공개", detail: "0.4.4 (202609051202) · macOS 14+ · Universal · Apple 공증 완료", url: releaseDownloadPath("WhattoEat"), downloadLabel: "Mac용 DMG 다운로드", checksum: "0f10f83b51240731dd8ec01d307dceb05e75e667804204db855f670ca0cfa93d", availabilityNote: "Apple 공증과 공개 다운로드 무결성 확인 · Mac 교체 설치·실행 완료" },
+      { name: "Android · Google TV", status: "공개", detail: "0.4.4 · 빌드 202609051202 · 내부 코드 356402 · Android 8.0+", url: releaseDownloadPath("WhattoEat-Android"), downloadLabel: "Android용 APK 다운로드", checksum: "c30833f2b4404446d38f57e43c0e5e346410cc41fb4a177ee2dd9222675e6add", availabilityNote: "공개 APK 릴리스 서명·해시 확인 · 동일 소스의 개발판을 휴대전화 2대와 태블릿에 데이터 유지 교체 설치·실행 · 실제 위치 수신과 TV 조작 확인 전" },
     ],
     features: [
       { title: "가까운 13곳에서 한 끼 고르기", body: "현 위치 또는 직접 고른 지역에서 가까운 음식점 13곳을 추린 뒤, 오늘의 한 끼와 함께 볼 맛집을 사진이 시원하게 보이는 2열 목록으로 보여줍니다." },
@@ -992,12 +992,12 @@ export const apps: AppData[] = [
       { title: "원하는 지도 앱으로 바로", body: "네이버 지도, Apple 지도, 카카오맵과 Google 지도 중 하나를 정해 두고 식당 위치와 길 찾기를 이어갑니다." },
       { title: "영업 중인지 바로 전화하기", body: "전화번호가 있는 추천 식당은 원형 전화 버튼으로 바로 연결하고, 오늘의 결정에서는 번호도 함께 확인합니다." },
       { title: "가죽판에서 이어지는 선택", body: "첫 화면의 가죽 추천판을 제목 바로 아래에 두고 위치 선택 패널은 스티치 안쪽 폭에 맞췄습니다. 하단 메뉴는 같은 가죽 질감과 눌린 바늘 홈을 쓰고 추천 버튼 돌출부까지 스티치를 이었습니다." },
-      { title: "점심 가방으로 바로 추천", body: "하단 중앙의 점심 가방을 누르면 새 추천을 시작합니다. 선택 중에도 원과 글자는 차분한 흰색을 유지하고 아래 빨간 막대만 보여 줍니다." },
+      { title: "점심 가방으로 바로 추천", body: "홈과 하단의 추천 버튼을 누르면 전체 분류로 새 추천을 시작합니다. 선택 중에도 원과 글자는 차분한 흰색을 유지하고 아래 빨간 막대만 보여 줍니다." },
       { title: "실내에서도 멈추지 않는 위치 찾기", body: "GPS가 느린 실내에서는 운영체제가 Wi-Fi와 셀룰러를 함께 활용해 위치를 찾습니다. 12초 안에 새 위치가 없으면 5분 이내의 최근 위치를 사용하고, 그것도 없으면 지역 직접 선택과 다시 시도로 바로 이어갑니다." },
       { title: "위치 권한을 놓쳐도 바로 복구", body: "첫 실행에서 위치 권한을 안내하고, 다시 묻지 않도록 거부한 경우에는 앱 설정에서 권한을 켜는 길을 바로 보여 줍니다. 권한을 바꾸고 돌아오면 보던 화면에서 위치 찾기를 이어갑니다." },
       { title: "상황에 맞는 메뉴와 지도 검색", body: "든든한 식사, 간단한 한 끼, 패스트푸드, 디저트·카페, 회식·모임, 야식 중 원하는 상황을 고르고 추천 메뉴를 선택한 지도 앱에서 바로 검색할 수 있습니다." },
       { title: "최근과 찜을 지역별로", body: "오늘 결정한 한 끼와 다시 가고 싶은 식당을 지역별로 모아 보고, 하트나 밀기로 간단히 정리합니다." },
-      { title: "점심 전에 가볍게 알림", body: "점심시간과 몇 분 전에 받을지 정하면 이 기기에서 오늘의 한 끼 알림을 받을 수 있습니다." },
+      { title: "점심 전에 가볍게 알림", body: "점심시간과 알림 시각을 정하고, 휴일 제외를 켜면 토·일요일과 한클립 달력의 한국 공휴일에는 알리지 않습니다. Apple은 다음 60회까지 예약하고 앱을 열 때 갱신합니다. 새 설정은 Mac·Android 0.4.4에서 제공하며 iPhone·iPad는 외부 베타 심사 중입니다." },
     ],
     guide: [
       { title: "지역 정하기", body: "현 위치를 다시 잡거나 지역 이름과 장소를 검색해 먹을 동네를 고릅니다." },
@@ -1018,7 +1018,8 @@ export const apps: AppData[] = [
       { state: "done", title: "0.4.1 점심 가방 내비게이션 릴리스", body: "build 202608252106 iPhone·iPad TestFlight 내부 테스트 준비, 공증된 Mac용 DMG와 Android 0.4.1 APK 공개를 완료했습니다. 선택 상태는 아래 빨간 막대만 표시하도록 모든 플랫폼을 맞췄습니다." },
       { state: "done", title: "Android 0.4.2 실내 위치 복구 공개", body: "build 202608271840 · 내부 코드 343840 APK를 공개했습니다. Wi-Fi·셀룰러를 포함한 기본 위치 공급자와 5분 이내 최근 위치를 활용하고, 실패해도 지역 직접 선택으로 이어집니다." },
       { state: "done", title: "Android 0.4.3 위치 권한 복구 공개", body: "build 202608291549 · 내부 코드 346549 APK를 공개했습니다. 첫 실행 권한 안내와 영구 거부 후 앱 설정 복구, 앱 복귀 뒤 현재 흐름 재개를 보완했습니다." },
-      { state: "active", title: "iPhone·iPad 0.4.2 Public Beta 심사", body: "build 202608271840을 내부 테스트와 Public Beta 그룹에 연결하고 Apple 외부 베타 심사에 제출했습니다." },
+      { state: "done", title: "Mac·Android 0.4.4 공개", body: "build 202609051202. 휴일 제외 알림과 추천 전체 기본값을 추가하고 Android 10 위치 요청 오류를 수정했습니다. 공증된 Mac DMG와 기존 릴리스 키로 서명한 Android APK를 공개했습니다." },
+      { state: "active", title: "iPhone·iPad 0.4.4 Public Beta 심사", body: "build 202609051202 내부 테스트 제공과 Public Beta 외부 심사 제출을 완료했습니다. 새 빌드는 Apple 승인 대기 중입니다." },
       { state: "active", title: "태블릿·TV·접근성 후속 검증", body: "태블릿과 Google TV 리모컨, TalkBack 실제 읽기 순서, 밀기 후 재실행 저장과 지도 오류 분기를 실제 기기에서 추가 확인할 예정입니다." },
     ],
     screenshots: [
