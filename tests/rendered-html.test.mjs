@@ -631,10 +631,10 @@ test("shows the current CCMB three-service release", async () => {
   assert.doesNotMatch(html, /WEEKLY REMAINING/);
   assert.doesNotMatch(html, /81% · ₩12\.4/);
   assert.doesNotMatch(html, /v0\.4\.3/);
-  assert.match(html, /2\.0\.19/);
+  assert.match(html, /2\.0\.20/);
   assert.match(html, /Codex·Claude·Gemini/);
   assert.match(html, /release-download\?app=CCMB/);
-  assert.match(html, /4a63b6859d53080647e80cf3b7094da05e84e8fb0fe74042251c85073783feb5/);
+  assert.match(html, /9dba2e2c2531cec8dc48c03e8b4853cd09c7398fef4fc17f19095b48b26b13cf/);
   assert.match(html, /CCMB 전용 Claude 연결/);
   assert.match(html, /CCMB 안의 브라우저에서 Claude 계정을 한 번 연결합니다/);
   assert.match(html, /낭비를 줄이는 스마트 갱신/);
