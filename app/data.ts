@@ -443,7 +443,7 @@ export const apps: AppData[] = [
         downloadLabel: "Public Beta 참여",
         availabilityNote: "공개 링크 10,000명 활성 · 최신 빌드 내부·Public Beta 그룹 연결 완료 · 외부 제공은 Apple 심사 상태를 따름",
       },
-      { name: "macOS", status: "공개", detail: "2.0.23 (202609071446) · macOS 10.15+ · Universal · Apple 공증 완료 · CloudKit Production 서명", url: releaseDownloadPath("CCMB"), downloadLabel: "DMG 다운로드", checksum: "241ff61202316ce8f28b6e662e94a7cbd4e00600e5a1cd561fecd85cbbb825e2" },
+      { name: "macOS", status: "공개", detail: "2.0.24 (202609071657) · macOS 10.15+ · Universal · Apple 공증 완료 · CloudKit Production 서명", url: releaseDownloadPath("CCMB"), downloadLabel: "DMG 다운로드", checksum: "3ff9509b43cbe51276f33e8d6c1166ebb244e7aa50045b62f4785176697c41dd" },
     ],
     features: [
       { title: "멀리서도 남은 한도를 한눈에", body: "Mac CCMB가 같은 Apple ID의 CloudKit 개인 데이터베이스에 올린 최신 스냅샷을 iPhone·iPad가 읽기 전용으로 불러옵니다." },
@@ -462,6 +462,7 @@ export const apps: AppData[] = [
       { title: "정렬된 계정·갱신 정보", body: "세 서비스의 요금제·계정 정보·상대 갱신 시각을 같은 기준선에서 비교합니다." },
       { title: "간결해진 하단 조작", body: "업데이트 확인과 현재 버전을 합치고 투명도, 재시작과 종료 조작을 같은 3열 그리드 안에 정돈했습니다." },
       { title: "로컬 공유", body: "최신성 근거가 포함된 로컬 JSON을 다른 앱과 Codex 대화에서 안전하게 읽습니다." },
+      { title: "더 안정적인 Codex 사용량", body: "Codex CLI가 이미 로그인한 세션을 이용해 주간·Spark 한도, 초기화 쿠폰과 크레딧을 직접 읽어 표시합니다." },
       { title: "한 줄로 온전히 보이는 갱신 기록", body: "중복 서비스 이름과 말줄임표 없이 Spark·Fable을 포함한 갱신당 사용량을 한 줄로 표시하고, 막대 위 시각은 초 없는 24시간제로 보여 줍니다." },
       { title: "사라지지 않는 연결 복구", body: "응답 지연과 Mac의 잠자기·깨우기 뒤에도 앱을 종료하지 않고 데이터 연결만 안전하게 다시 시작합니다." },
       { title: "CCMB 전용 Claude 연결", body: "CCMB 안의 브라우저에서 Claude 계정을 한 번 연결합니다. Claude Code의 키체인 인증 정보를 읽지 않아 다른 앱의 승인 창이 반복되지 않습니다." },
@@ -488,6 +489,7 @@ export const apps: AppData[] = [
       { state: "done", title: "CCMB 2.0.20 공개", body: "macOS 메뉴바 시스템 서체와 크기를 사용하고 밝기 모드에 맞춰 숫자와 서비스별 퍼센트 기호를 표시하는 Apple 공증 Universal DMG 공개" },
       { state: "done", title: "CCMB 2.0.21 공개", body: "계정 조회가 지연되어도 사용량을 계속 읽고, Finder 실행 환경의 Codex CLI 경로를 넓게 찾는 Apple 공증 Universal DMG 공개" },
       { state: "done", title: "CCMB 2.0.23 공개", body: "사용자별 Codex CLI 설치 경로를 찾아 실행하고, 실행 명령·검색 경로·PATH·stderr를 진단 로그에 남기는 Apple 공증 Universal DMG·ZIP 공개" },
+      { state: "done", title: "CCMB 2.0.24 공개", body: "Codex CLI 로그인 세션 기반의 직접 사용량 조회와 주간·Spark·초기화 쿠폰 표시를 담은 Apple 공증 Universal DMG·ZIP 공개" },
     ],
     screenshots: [
       { src: "/apps/ccmb/screens/ios-dashboard.jpg", alt: "iPhone에서 Codex·Claude·Gemini의 원형 사용량 그래프와 자동 갱신을 보여주는 CCMB 대시보드", layout: "phone" },
