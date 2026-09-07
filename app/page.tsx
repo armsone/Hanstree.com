@@ -14,6 +14,8 @@ import { getSiteBrand } from "./site-brand";
 
 const principleVisuals: AdvantageVariant[] = ["compass", "timeline-dots", "devices-pair"];
 
+export const dynamic = "force-dynamic";
+
 const homeKoreanNames: Record<string, string> = {
   nasfinder: "나스파인더",
   "super-thumbnail": "수퍼썸네일",
