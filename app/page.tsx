@@ -10,6 +10,7 @@ import { TestFlightTracker } from "./components/TestFlightTracker";
 import { apps, findApp } from "./data";
 import { appCardImage } from "./media";
 import { testFlightBuilds } from "./testflight";
+import { getSiteBrand } from "./site-brand";
 
 const principleVisuals: AdvantageVariant[] = ["compass", "timeline-dots", "devices-pair"];
 
@@ -35,19 +36,22 @@ const homeKoreanNames: Record<string, string> = {
   autoshorts: "자동쇼츠",
 };
 
-export const metadata: Metadata = {
-  description: "한스트리가 직접 만든 앱, 디지털 제품과 창작 공간을 한눈에 살펴보는 결과물 인덱스입니다.",
-  alternates: { canonical: "https://hanstree.com" },
+export async function generateMetadata(): Promise<Metadata> {
+  const brand = await getSiteBrand();
+  return {
+  description: brand.name === "NASFINDER" ? "나스파인더의 기능과 지원 플랫폼, 최신 설치 정보를 한곳에서 확인하세요." : "한스트리가 직접 만든 앱, 디지털 제품과 창작 공간을 한눈에 살펴보는 결과물 인덱스입니다.",
+  alternates: { canonical: brand.canonical },
   openGraph: {
     type: "website",
     locale: "ko_KR",
-    siteName: "Hanstree",
-    title: "Hanstree — 직접 만든 결과물의 인덱스",
-    description: "나스파인더를 비롯한 디지털 제품과 Hanstree Studio 등 한스트리가 직접 만든 결과물을 소개합니다.",
-    url: "https://hanstree.com",
+    siteName: brand.koreanName,
+    title: brand.title,
+    description: brand.description,
+    url: brand.canonical,
     images: [{ url: "/og.png", width: 1731, height: 909, alt: "공간과 디지털 제품을 함께 만드는 Hanstree" }],
   },
-};
+  };
+}
 
 const platformTargetAliases = [
   ["iPhone", "iPad", "iOS", "iPadOS"], // Apple 모바일 제품군은 레코드당 1회
@@ -302,14 +306,15 @@ export default function Home() {
   );
 }
 
-export function SiteHeader() {
+export async function SiteHeader() {
+  const brand = await getSiteBrand();
   return (
     <header className="site-header">
       <div className="shell header-inner">
         {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-        <a className="wordmark header-wordmark" href="/" aria-label="Hanstree 홈">
-          <Image className="header-brand-icon" src="/hanstree/studio-symbol-dark.jpeg" alt="" width={886} height={886} sizes="32px" />
-          <span>HANSTREE</span>
+        <a className="wordmark header-wordmark" href="/" aria-label={`${brand.koreanName} 홈`}>
+          <Image className={`header-brand-icon${brand.name === "NASFINDER" ? " header-brand-icon-nasfinder" : ""}`} src={brand.icon} alt="" width={886} height={886} sizes="32px" />
+          <span>{brand.name}</span>
         </a>
         <nav aria-label="주요 메뉴">
           {/* Native anchors preserve same-page hash scrolling in the deployed vinext runtime. */}
@@ -335,12 +340,13 @@ export function SiteHeader() {
   );
 }
 
-export function SiteFooter() {
+export async function SiteFooter() {
+  const brand = await getSiteBrand();
   return (
     <footer className="site-footer">
       <div className="shell footer-inner">
         <div>
-          <Link className="wordmark" href="/"><span>HANSTREE</span></Link>
+          <Link className="wordmark" href="/"><span>{brand.name}</span></Link>
           <p>직접 만들고 오래 다듬어 온 결과물을 소개합니다.</p>
         </div>
         <div className="footer-links">
@@ -354,7 +360,7 @@ export function SiteFooter() {
           <Link href="https://github.com/armsone">GitHub</Link>
           <Link href="/admin/testflight" aria-label="관리자 로그인">관리자</Link>
         </div>
-        <p className="copyright">© {new Date().getFullYear()} Hanstree · armsone</p>
+        <p className="copyright">© {new Date().getFullYear()} {brand.koreanName} · armsone</p>
       </div>
     </footer>
   );
