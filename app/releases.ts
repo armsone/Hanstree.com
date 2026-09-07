@@ -81,7 +81,7 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     label: "CCMB Mac",
     repo: "CCMB",
     assetPattern: /\.dmg$/i,
-    fallbackUrl: "https://github.com/armsone/CCMB/releases/download/v2.0.21/CCMB-2.0.21.dmg",
+    fallbackUrl: "https://github.com/armsone/CCMB/releases/download/v2.0.22/CCMB-2.0.22.dmg",
   },
   BTN: {
     label: "BTN Mac",
