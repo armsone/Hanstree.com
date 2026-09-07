@@ -31,6 +31,10 @@ const NASFINDER: SiteBrand = {
 };
 
 export async function getSiteBrand(): Promise<SiteBrand> {
-  const host = (await headers()).get("host")?.split(":", 1)[0].toLowerCase();
+  const requestHeaders = await headers();
+  const forwardedHost = requestHeaders.get("x-forwarded-host")
+    ?? requestHeaders.get("x-original-host")
+    ?? requestHeaders.get("cf-connecting-host");
+  const host = (forwardedHost ?? requestHeaders.get("host"))?.split(",", 1)[0].trim().split(":", 1)[0].toLowerCase();
   return host === "nasfinder.com" || host?.endsWith(".nasfinder.com") ? NASFINDER : HANSTREE;
 }
