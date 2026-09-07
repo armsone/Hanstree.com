@@ -192,15 +192,15 @@ export const apps: AppData[] = [
     icon: "/apps/hanclip/icon.png",
     artwork: "phones",
     platforms: [
-      { name: "iOS · iPadOS", status: "TestFlight", detail: "2.2.1 (202608251900) · iOS·iPadOS 17+", availabilityNote: "Public Beta 승인 · 공개 테스트 참여 가능" },
+      { name: "iOS · iPadOS", status: "TestFlight", detail: "2.3.0 (202609071316) · iOS·iPadOS 17+", availabilityNote: "App Store Connect 업로드 완료 · 새 빌드 처리 및 외부 베타 검토 대기 · 기존 공개 링크는 유지" },
       { name: "Mac", status: "TestFlight", detail: "2.2.1 · Apple Silicon · iPad 앱 호환 모드", availabilityNote: "같은 TestFlight 빌드 · 공개 테스트 심사 중" },
       {
         name: "Android",
         status: "공개",
-        detail: "2.2.2 · 빌드 202609050842 · 내부 코드 356202 · Android 8.0+",
+        detail: "2.3.0 · 빌드 202609071316 · 내부 코드 359356 · Android 8.0+",
         url: releaseDownloadPath("HanClip-Android"),
         downloadLabel: "Android APK 바로 받기",
-        checksum: "5be09fda9ef2d13e7da2d77cf843a671bc13d27f90844c7961fffbe8c5a86c5f",
+        checksum: "5349ba912ef71070549ad49e542503781d3d9fc9bdac769600fad35a320e42a9",
         availabilityNote: "서명 APK 재다운로드·무결성 검증 완료 · 휴대전화·태블릿·Google TV 지원",
       },
     ],
@@ -224,8 +224,8 @@ export const apps: AppData[] = [
     ],
     progress: [
       { state: "done", title: "iOS 핵심 제작 흐름", body: "선택, 편집, 렌더링, 시사회와 저장 흐름 구현" },
-      { state: "active", title: "iOS·iPadOS 2.2.1 업로드", body: "build 202608251900을 TestFlight에 업로드하고 Apple 처리를 기다리는 중" },
-      { state: "done", title: "Android 2.2.2 공개", body: "오늘 선택을 유지하며 전날 사진을 추가하고, 하단 선택 버튼이 시스템 내비게이션 영역과 겹치지 않도록 개선한 서명 APK를 공개" },
+      { state: "active", title: "iOS·iPadOS 2.3.0 처리", body: "build 202609071316을 TestFlight에 업로드 완료 · Apple 처리와 외부 베타 검토를 기다리는 중" },
+      { state: "done", title: "Android 2.3.0 공개", body: "한양 Golf 모델 0.7의 시각 근거 기반 퍼터 안전망을 통합한 서명 APK를 공개" },
       { state: "done", title: "플랫폼 기술 계약 동기화", body: "기능·알고리즘·상태·오류·취소·권한·제스처·접근성 계약을 Apple과 Android에 대조 반영" },
       { state: "active", title: "Android AiShot 현장 검증", body: "실제 퍼팅과 다양한 스윙 환경에서 놓침과 오촬영을 계속 점검 중" },
       { state: "done", title: "Apple Silicon Mac 지원", body: "iPhone·iPad와 같은 빌드를 Mac의 ‘iPhone 및 iPad용 앱’으로 실행하도록 지원" },
@@ -268,9 +268,9 @@ export const apps: AppData[] = [
       {
         name: "Swift Package",
         status: "공개",
-        detail: "0.2.0 · Golf 모델 0.7.0 · Foundation 기반 독립 코어",
-        url: "https://github.com/armsone/HanAI/releases/tag/v0.2.0",
-        downloadLabel: "HANYANG 0.2.0 소스 릴리즈 보기",
+        detail: "0.3.0 · Golf 모델 0.7.0 · Foundation 기반 독립 코어",
+        url: "https://github.com/armsone/HanAI/releases/tag/v0.3.0",
+        downloadLabel: "HANYANG 0.3.0 소스 릴리즈 보기",
         availabilityNote: "한양 독립 프로젝트로 공개 · 특정 앱에 병합하지 않음",
       },
       {
@@ -295,13 +295,14 @@ export const apps: AppData[] = [
     guide: [
       { title: "브랜드는 한양 HANYANG", body: "사용자가 만나는 이름은 한양과 HANYANG입니다. 공개 저장소와 기존 코드 패키지는 호환성을 위해 현재 HanAI 식별자를 유지합니다." },
       { title: "도시 이름은 보이지 않게", body: "승정원·규장각·육조·사대문은 내부 세계관과 구조를 설명하는 언어입니다. 실제 화면에서는 기억·일정·파일·자동화처럼 바로 이해되는 이름을 사용합니다." },
-      { title: "현재의 기반", body: "0.2.0과 Golf 모델 0.7.0은 Swift·Kotlin 독립 코어, 정규화된 특징과 교차 플랫폼 fixture를 제공합니다." },
+      { title: "현재의 기반", body: "0.3.0의 Golf 모델 0.7.0은 화면 움직임·자세·오디오 근거를 보수적으로 결합하는 Swift 독립 코어를 제공합니다." },
       { title: "사용자가 경계를 결정", body: "무엇을 기억하고 어디까지 연결하며 어떤 행동을 실행할지는 사용자가 정합니다. 외부 전송과 되돌리기 어려운 행동은 분명히 구분하고 확인 뒤 진행합니다." },
     ],
     progress: [
       { state: "done", title: "독립 프로젝트 0.1.0 공개", body: "Swift·Kotlin 코어와 Golf 모델 0.7.0을 별도 GitHub Release로 공개하고 두 플랫폼 fixture 테스트를 확인" },
       { state: "done", title: "0.2.0 대표 사진 선택 공개", body: "가까운 중복을 줄이고 품질이 좋은 대표 사진을 남기는 동일한 Swift·Kotlin 계약을 검증해 소스 패키지와 Android JAR로 공개" },
       { state: "done", title: "한양 HANYANG 브랜드 정립", body: "한 사람의 기억과 정보, 도구가 모이는 ‘나의 디지털 수도’를 제품 정체성과 설계 언어로 확정" },
+      { state: "done", title: "0.3.0 퍼터 탐지 모델 공개", body: "시간을 분리한 holdout 상위 30개에서 26개 퍼터를 찾아 86.7%를 확인하고, 약한 충격은 시각 근거가 있을 때만 허용하는 Golf 모델 0.7을 공개" },
       { state: "active", title: "도시의 첫 기반, 미디어 지능", body: "사진·영상의 화면 움직임과 자세 흐름, 오디오 특징을 정규화해 의미 있는 순간을 기기 안에서 이해하는 기반을 다듬는 중" },
       { state: "next", title: "기억·정리·연결·실행", body: "사용자가 고른 정보의 장기 기억과 정리, 외부 서비스 연결, 판단 보조와 확인을 거친 안전한 실행으로 확장" },
     ],

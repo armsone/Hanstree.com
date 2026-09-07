@@ -13,7 +13,7 @@ export type TestFlightBuild = {
 // 확인되지 않은 날짜를 추정해서 입력하지 않습니다.
 export const testFlightBuilds: TestFlightBuild[] = [
   { slug: "nasfinder", appName: "나스파인더", build: "202608271227", uploadedAt: "2026-08-27T12:43:56+09:00", expiresAt: "2026-11-25T12:43:56+09:00", inviteUrl: "https://testflight.apple.com/join/3m3bhwJz", publicBetaState: "approved" },
-  { slug: "hanclip", appName: "한클립", build: "202608251900", uploadedAt: "2026-08-25T19:09:02+09:00", inviteUrl: "https://testflight.apple.com/join/m2YsgUJW", publicBetaState: "approved" },
+  { slug: "hanclip", appName: "한클립", build: "202609071316", uploadedAt: "2026-09-07T13:39:57+09:00", inviteUrl: "https://testflight.apple.com/join/m2YsgUJW", publicBetaState: "waitingForReview" },
   { slug: "stand", appName: "S.tand", build: "202608310934", uploadedAt: "2026-08-31T09:40:00+09:00", inviteUrl: "https://testflight.apple.com/join/mGUYTjdp", publicBetaState: "waitingForReview" },
   { slug: "htoms-brief", appName: "HtOMS 브리프", build: "202608291628", uploadedAt: "2026-08-29T16:37:14+09:00", inviteUrl: null, publicBetaState: "internalOnly" },
   { slug: "starmanager", appName: "Stargram", build: "202608292118", uploadedAt: "2026-08-29T21:37:47+09:00", expiresAt: "2026-11-27T21:37:47+09:00", inviteUrl: "https://testflight.apple.com/join/nzmW4WxW", publicBetaState: "approved" },
