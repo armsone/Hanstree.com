@@ -102,7 +102,8 @@ function TestFlightInviteLinks() {
   );
 }
 
-export default function Home() {
+export default async function Home() {
+  const brand = await getSiteBrand();
   const workCount = apps.reduce(
     (total, app) => total + app.platforms.reduce((sum, platform) => sum + countPlatformTargets(platform.name), 0),
     2, // Hanstree Studio · 먹탐자 Instagram
@@ -120,7 +121,7 @@ export default function Home() {
 
       <section className="works-index-hero shell reveal" id="works">
         <div className="works-index-intro">
-          <p className="eyebrow">HANSTREE · WORK INDEX</p>
+          <p className="eyebrow">{brand.name} · WORK INDEX</p>
           <h1>생각을,<br /><span>결과물로.</span></h1>
           <p>앱과 디지털 제품, 공간까지. 형태를 정해두기보다 직접 필요하고 좋아하는 것을 만들고, 오래 다듬어 온 기록입니다.</p>
         </div>
