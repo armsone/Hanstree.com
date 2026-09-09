@@ -28,6 +28,14 @@ export function AppHeroArtwork({ app }: { app: AppData }) {
 }
 
 export function AppArtwork({ app, mode = "spotlight" }: { app: AppData; mode?: "spotlight" | "system" }) {
+  if (app.artwork === "directions") {
+    return (
+      <div className="artwork artwork-bridge" aria-label="입력부터 네이버 지도 자동차 길찾기까지의 사용 흐름">
+        <Image src="/apps/alfred-navermap/flow.svg" alt="출발지와 도착지를 입력해 네이버 지도 자동차 길찾기를 여는 사용 흐름" width={1536} height={1024} sizes="(max-width: 640px) 92vw, 720px" unoptimized />
+      </div>
+    );
+  }
+
   if (app.artwork === "ai-search") {
     const providers = [
       ["지", "ChatGPT", "/apps/alfred-ai-search/providers/chatgpt.png"],

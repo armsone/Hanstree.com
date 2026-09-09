@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1536" height="1024" viewBox="0 0 1536 1024">
+<rect width="1536" height="1024" fill="#10284c"/>
+<g font-family="Apple SD Gothic Neo,Noto Sans KR,sans-serif" fill="white">
+<text x="120" y="165" font-size="28" fill="#8bbcff" letter-spacing="4">ALFRED NAVERMAP · 사용 흐름</text>
+<text x="120" y="270" font-size="64" font-weight="700">출발지와 도착지, 한 줄이면.</text>
+<rect x="120" y="360" width="1296" height="150" rx="20" fill="#fff"/>
+<text x="170" y="451" font-size="47" fill="#153259">길찾기 고양시 덕양구, 부안여고</text>
+<path d="M768 550v100m-24-24 24 24 24-24" fill="none" stroke="#8bbcff" stroke-width="8"/>
+<text x="120" y="752" font-size="48" font-weight="700">네이버 지도 · 자동차 길찾기</text>
+<text x="120" y="830" font-size="35" fill="#b8cbe6">덕양구 → 부안여자고등학교</text>
+<text x="120" y="926" font-size="25" fill="#8bbcff">macOS 13+ · Apple Silicon · Alfred Powerpack</text>
+</g></svg>

@@ -22,7 +22,7 @@ export type AppData = {
   heroImage?: string;
   spotlightImage?: string;
   systemImage?: string;
-  artwork: "files" | "phones" | "clock" | "menubar" | "cleanup" | "trackpad" | "thumbnail" | "htoms" | "search" | "church" | "server" | "intelligence" | "bridge" | "autoshorts" | "shorts" | "ai-search";
+  artwork: "files" | "phones" | "clock" | "menubar" | "cleanup" | "trackpad" | "thumbnail" | "htoms" | "search" | "church" | "server" | "intelligence" | "bridge" | "autoshorts" | "shorts" | "ai-search" | "directions";
   platforms: Platform[];
   features: { title: string; body: string; icon?: string }[];
   guide: { title: string; body: string }[];
@@ -1123,6 +1123,50 @@ export const apps: AppData[] = [
       "DenimDex는 ChatGPT 비밀번호와 로그인 쿠키를 읽거나 별도 서버에 저장하지 않습니다. 로그인은 ChatGPT 공식 화면에서 사용자가 직접 진행합니다.",
       "한국·일본 가격과 차익은 사진 및 일반 시장 지식에 기반한 참고 추정치이며 실시간 거래 데이터나 실제 판매 수익을 보장하지 않습니다.",
       "개인 NAS 기반 아카이브 동기화는 준비 중이며 현재 버전에서는 사용하지 않습니다.",
+    ],
+  },
+  {
+    slug: "alfred-navermap",
+    name: "네이버 지도 길찾기",
+    english: "Alfred NaverMap",
+    eyebrow: "TYPE TWO PLACES, FIND YOUR ROUTE",
+    tagline: "출발지와 도착지 한 줄로, 자동차 길찾기.",
+    summary: "Alfred에서 ‘길찾기 출발지, 도착지’를 입력하면 네이버 지도 자동차 경로가 열립니다. 두 장소를 따로 입력하러 지도를 오갈 필요가 없습니다.",
+    theme: "blue",
+    icon: "/apps/alfred-navermap/icon.svg",
+    heroImage: "/apps/alfred-navermap/flow.svg",
+    spotlightImage: "/apps/alfred-navermap/flow.svg",
+    artwork: "directions",
+    platforms: [
+      {
+        name: "macOS · Alfred Powerpack",
+        status: "공개",
+        detail: "0.1.0 · 빌드 202609092111 · macOS 13+ · Apple Silicon",
+        url: releaseDownloadPath("Alfred-NaverMap"),
+        downloadLabel: "Alfred 워크플로우 받기",
+        checksum: "a2a42c200987a5857efdef3b7ceb83801e704e27d32dc52a84d35fc10a45d290",
+        availabilityNote: "Developer ID 서명 · Apple 공증 · 공개 다운로드 파일 확인",
+      },
+    ],
+    features: [
+      { title: "쉼표 하나로 두 장소를", body: "‘길찾기 고양시 덕양구, 부안여고’처럼 출발지와 도착지를 한 줄에 입력합니다." },
+      { title: "자동차 경로로 바로", body: "네이버 지도가 자동차 탭으로 열립니다. 대중교통·도보·자전거는 지도에서 필요할 때 바꿀 수 있습니다." },
+      { title: "학교 약칭도 알아서", body: "여고·남고·여중은 전체 학교명으로 풀어 검색합니다. 같은 이름의 장소가 있다면 지역명을 함께 적어 주세요." },
+      { title: "별도 API 키 없이", body: "Mac의 기본 장소 검색 기능을 사용합니다. API 키나 브라우저 자동화 권한을 설정할 필요가 없습니다." },
+    ],
+    guide: [
+      { title: "워크플로우 가져오기", body: "다운로드한 .alfredworkflow 파일을 열어 Alfred에 가져옵니다. Alfred Powerpack이 필요합니다." },
+      { title: "출발지와 도착지 입력", body: "Alfred에서 ‘길찾기 고양시 덕양구, 부안여고’를 입력하고 Enter를 누릅니다." },
+      { title: "장소와 경로 확인", body: "네이버 지도에 표시된 두 장소를 확인합니다. 지역명만 쓰면 지역의 대표 지점이 선택되므로 정확한 위치는 상세 주소나 건물명으로 입력하세요." },
+    ],
+    progress: [
+      { state: "done", title: "0.1.0 공개", body: "자동차 기본 길찾기와 학교 약칭 검색을 제공하는 Apple Silicon용 워크플로우를 서명·공증하여 공개했습니다." },
+    ],
+    github: ["https://github.com/armsone/Alfred-NaverMap"],
+    privacy: [
+      "출발지와 도착지 검색어는 장소 검색을 위해 Apple 지도 서비스에 전송됩니다.",
+      "선택된 장소명과 좌표는 길찾기를 위해 네이버 지도에 전달됩니다.",
+      "워크플로우는 별도 개발자 서버나 분석 추적기를 사용하지 않습니다. 브라우저의 검색 기록에는 해당 서비스의 정책이 적용됩니다.",
     ],
   },
   {

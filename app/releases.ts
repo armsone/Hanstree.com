@@ -18,6 +18,7 @@ export const DOWNLOAD_KEYS = [
   "Stargram-Android",
   "HtOMS-BK",
   "AutoShorts",
+  "Alfred-NaverMap",
 ] as const;
 
 export type DownloadKey = (typeof DOWNLOAD_KEYS)[number];
@@ -41,6 +42,12 @@ export type ReleaseDownload = {
 };
 
 export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
+  "Alfred-NaverMap": {
+    label: "네이버 지도 길찾기",
+    repo: "Alfred-NaverMap",
+    assetPattern: /^Naver-Directions-\d+\.\d+\.\d+\.alfredworkflow$/i,
+    fallbackUrl: "https://github.com/armsone/Alfred-NaverMap/releases/download/v0.1.0/Naver-Directions-0.1.0.alfredworkflow",
+  },
   "NasFinder-Android": {
     label: "NasFinder Android",
     repo: "NasFinder-Android",
