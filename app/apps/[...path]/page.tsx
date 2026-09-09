@@ -335,7 +335,7 @@ function ProductSpotlight({ app }: { app: NonNullable<ReturnType<typeof findApp>
         </div>
         <div className="product-promo-image product-promo-artwork reveal"><AppArtwork app={app} mode="spotlight" /><div className="product-promo-image-label"><span>{app.eyebrow}</span><strong>{app.slug === "hanai" ? "기억과 지식이 모이는 규장각" : app.tagline}</strong></div></div>
         <div className="product-promo-facts reveal" aria-label={`${app.name}이 주는 핵심 가치`}>
-          {app.features.slice(0, 3).map((feature, index) => <p key={feature.title}><strong>{String(index + 1).padStart(2, "0")}</strong><span>{feature.title}</span></p>)}
+          {app.features.slice(0, app.slug === "alfred-navermap" ? 4 : 3).map((feature, index) => <p key={feature.title}><strong>{String(index + 1).padStart(2, "0")}</strong><span>{feature.title}</span></p>)}
         </div>
       </div>
       <div className="shell product-advantages">

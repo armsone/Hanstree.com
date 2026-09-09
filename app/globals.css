@@ -1216,3 +1216,62 @@ img { display: block; max-width: 100%; }
   .nav-space-menu > summary { min-height: 44px; padding: 10px 2px; display: inline-flex; align-items: center; }
   .nav-space-panel { left: 0; transform: none; }
 }
+
+/* Alfred NaverMap: phone / tablet / desktop use a 1 / 2 / 4 column grid.
+   Text is live HTML: it wraps instead of shrinking or being cropped in an image. */
+.directions-flow{width:100%;min-width:0;padding:clamp(22px,3vw,44px);border:1px solid #ffffff30;border-radius:28px;background:#10284c;color:#fff;box-shadow:0 24px 64px #10284c24;text-align:left;overflow-wrap:anywhere;word-break:keep-all}
+.directions-flow-label{margin:0 0 22px;color:#a5c8ff;font-size:.75rem;line-height:1.5;letter-spacing:.06em}
+.directions-flow-title{display:block;font-size:clamp(1.7rem,2.8vw,2.8rem);line-height:1.3;letter-spacing:-.045em}
+.directions-command{margin-top:28px;padding:20px;border-radius:16px;background:#f7f9fc;color:#10284c}
+.directions-command>span{display:block;margin-bottom:10px;font-size:.75rem;color:#516885}
+.directions-command code{font-family:inherit;font-size:clamp(1rem,1.6vw,1.35rem);font-weight:700;line-height:1.7;white-space:normal}
+.directions-flow-arrow{display:block;margin:16px 0;text-align:center;color:#a5c8ff;font-size:2.5rem;line-height:1}
+.directions-mode{display:inline-block;margin-bottom:14px;padding:7px 12px;border-radius:999px;background:#ccefdc;color:#145c38;font-size:.8rem;font-weight:750}
+.directions-result>strong{display:block;font-size:clamp(1.1rem,1.8vw,1.5rem);line-height:1.5}
+.directions-result>p{margin:10px 0 0;color:#c8d9ef;font-size:1rem;line-height:1.7}
+.directions-flow-note{margin:28px 0 0;color:#b3c6de;font-size:.8rem;line-height:1.6}
+.app-alfred-navermap{--product-columns:1;--product-span:1;overflow-wrap:anywhere}
+.app-alfred-navermap .app-hero,
+.app-alfred-navermap .product-promo-hero{grid-template-columns:repeat(var(--product-columns),minmax(0,1fr));gap:32px;min-height:0}
+.app-alfred-navermap .app-hero>*,
+.app-alfred-navermap .product-promo-hero>*{min-width:0;grid-column:span var(--product-span);width:100%;max-width:none}
+.app-alfred-navermap .product-promo-hero>.product-promo-facts{grid-column:1/-1}
+.app-alfred-navermap .product-promo-image{grid-row:auto;align-self:center;border:0;background:none;box-shadow:none;overflow:visible}
+.app-alfred-navermap .product-promo-image-label{display:none}
+.app-alfred-navermap .app-hero-copy h1{font-size:clamp(2.1rem,3.6vw,3.8rem);line-height:1.2}
+.app-alfred-navermap .product-promo-copy h2{font-size:clamp(2rem,3.4vw,3.5rem);line-height:1.2}
+.app-alfred-navermap .hero-platform-row{grid-template-columns:9px minmax(0,1fr) auto}
+.app-alfred-navermap .hero-platform-row>small{grid-column:2/4}
+.app-alfred-navermap .hero-actions{display:flex;flex-wrap:wrap}
+.app-alfred-navermap .hero-actions .button{flex:1 1 190px;width:auto;white-space:normal;text-align:center}
+.app-alfred-navermap .feature-grid,
+.app-alfred-navermap .product-advantage-grid,
+.app-alfred-navermap .product-promo-facts,
+.app-alfred-navermap .support-cards{grid-template-columns:repeat(var(--product-columns),minmax(0,1fr))}
+.app-alfred-navermap .feature-card,
+.app-alfred-navermap .product-advantage-card{min-width:0;min-height:0;padding:28px 22px}
+.app-alfred-navermap .product-advantage-card>div{flex-wrap:wrap;gap:8px}
+.app-alfred-navermap .product-advantage-card h3{font-size:1.45rem;line-height:1.4}
+.app-alfred-navermap .product-promo-facts p{min-width:0;padding:24px 16px;gap:14px;flex-wrap:wrap}
+.app-alfred-navermap .product-promo-facts strong{font-size:2.4rem;width:auto}
+.app-alfred-navermap .product-promo-facts span{font-size:.9rem}
+.app-alfred-navermap .single-artwork{max-width:900px;margin-inline:auto}
+.app-alfred-navermap .guide-layout,
+.app-alfred-navermap .download-section{grid-template-columns:minmax(0,1fr)}
+.app-alfred-navermap .guide-sticky{position:static}
+.app-alfred-navermap .guide-steps{display:grid;grid-template-columns:repeat(var(--product-columns),minmax(0,1fr));gap:24px;margin-top:32px}
+.app-alfred-navermap .guide-step{display:block;min-width:0;padding:24px 0}
+.app-alfred-navermap .guide-step h3{font-size:1.35rem;line-height:1.5}
+.app-alfred-navermap .support-cards>a{min-width:0;padding:28px 22px}
+.app-alfred-navermap .support-cards h3{font-size:1.4rem;line-height:1.5}
+@media(min-width:601px){.app-alfred-navermap{--product-columns:2}}
+@media(min-width:1200px){.app-alfred-navermap{--product-columns:4;--product-span:2}}
+@media(max-width:600px){
+  .app-alfred-navermap .site-header{position:relative}
+  .app-alfred-navermap .header-inner{height:auto;flex-wrap:wrap;padding-block:8px;gap:4px}
+  .app-alfred-navermap .header-inner nav{width:100%;justify-content:space-between;gap:8px}
+  .app-alfred-navermap .header-inner nav>a,
+  .app-alfred-navermap .nav-space-menu>summary{white-space:nowrap}
+  .app-alfred-navermap .section-nav{top:0}
+  .app-alfred-navermap .section-nav>div{height:auto;min-height:46px;flex-wrap:wrap;gap:0 18px;padding-block:6px;overflow:visible}
+}

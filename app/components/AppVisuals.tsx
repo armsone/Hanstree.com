@@ -16,7 +16,28 @@ export function AppStatus({ platform }: { platform: Platform }) {
   return platform.url ? <a className="platform-chip" href={platform.url}>{content}<span aria-hidden="true">↗</span></a> : <span className="platform-chip">{content}</span>;
 }
 
+function DirectionsFlow() {
+  return (
+    <div className="directions-flow" aria-label="Alfred 입력에서 네이버 지도 자동차 길찾기까지의 사용 예시">
+      <p className="directions-flow-label">ALFRED NAVERMAP · 사용 예시</p>
+      <strong className="directions-flow-title">출발지와 도착지,<br />한 줄이면.</strong>
+      <div className="directions-command">
+        <span>Alfred에 입력</span>
+        <code>길찾기 고양시 덕양구, 부안여고</code>
+      </div>
+      <span className="directions-flow-arrow" aria-hidden="true">↓</span>
+      <div className="directions-result">
+        <span className="directions-mode">자동차 길찾기</span>
+        <strong>네이버 지도에서 경로 확인</strong>
+        <p>고양시 덕양구 → 부안여자고등학교</p>
+      </div>
+      <p className="directions-flow-note">macOS · Alfred Powerpack 필요</p>
+    </div>
+  );
+}
+
 export function AppHeroArtwork({ app }: { app: AppData }) {
+  if (app.artwork === "directions") return <DirectionsFlow />;
   return (
     <div className={`hero-artwork hero-artwork-product hero-artwork-${app.slug}`} aria-label={`${app.name} 핵심 기능을 표현한 대표 이미지`}>
       <Image className="hero-artwork-backdrop" src={app.heroImage ?? `/apps/${app.slug}/${app.slug}-hero-v2.png`} alt={`${app.name} 대표 제품 화면`} width={1536} height={1024} priority sizes="(max-width: 920px) 100vw, 52vw" unoptimized />
@@ -29,11 +50,7 @@ export function AppHeroArtwork({ app }: { app: AppData }) {
 
 export function AppArtwork({ app, mode = "spotlight" }: { app: AppData; mode?: "spotlight" | "system" }) {
   if (app.artwork === "directions") {
-    return (
-      <div className="artwork artwork-bridge" aria-label="입력부터 네이버 지도 자동차 길찾기까지의 사용 흐름">
-        <Image src="/apps/alfred-navermap/flow.svg" alt="출발지와 도착지를 입력해 네이버 지도 자동차 길찾기를 여는 사용 흐름" width={1536} height={1024} sizes="(max-width: 640px) 92vw, 720px" unoptimized />
-      </div>
-    );
+    return <DirectionsFlow />;
   }
 
   if (app.artwork === "ai-search") {
