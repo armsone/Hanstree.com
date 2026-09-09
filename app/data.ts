@@ -1252,11 +1252,11 @@ export const apps: AppData[] = [
       {
         name: "Chrome · 네이버 웨일",
         status: "공개",
-        detail: "0.1.3 · Manifest V3 · 압축해제 확장 설치",
+        detail: "0.1.4 · 완전 소스 패키지 · Manifest V3 · 압축해제 확장 설치",
         url: releaseDownloadPath("AutoShorts"),
         downloadLabel: "자동쇼츠 ZIP 다운로드",
-        checksum: "f15ae73116d6e3913595c23f0e254f6bf9b6b26571a515caa0379b953a666546",
-        availabilityNote: "네이버 웨일에서 확장을 새로고침해 새 아이콘 적용을 확인",
+        checksum: "a9c3bdd0ecbc8ab808dda217e456c179044fd0c88e381f838dea07bdb427cb5a",
+        availabilityNote: "실행 파일·모든 아이콘 원본·설치 안내·테스트 소스를 포함한 완전한 복원 패키지",
       },
     ],
     features: [
@@ -1266,13 +1266,13 @@ export const apps: AppData[] = [
       { title: "원할 때 한 번에 멈춤", body: "도구 모음의 자동쇼츠 아이콘을 눌러 자동 넘김을 바로 켜거나 끌 수 있고 선택은 브라우저 안에 기억됩니다." },
     ],
     guide: [
-      { title: "ZIP 내려받기", body: "공식 GitHub Release에서 AutoShorts-0.1.3.zip을 내려받아 원하는 폴더에 압축을 풉니다." },
+      { title: "ZIP 내려받기", body: "공식 GitHub Release에서 AutoShorts-0.1.4-source.zip을 내려받아 원하는 폴더에 압축을 풉니다." },
       { title: "확장 관리 열기", body: "Chrome은 chrome://extensions, 네이버 웨일은 whale://extensions를 주소창에 입력하고 개발자 모드를 켭니다." },
       { title: "폴더 불러오기", body: "압축해제된 확장 프로그램 불러오기를 누르고 압축을 푼 AutoShorts 폴더를 선택합니다." },
       { title: "Shorts 보기", body: "YouTube Shorts를 열면 자동 넘김이 켜진 상태로 시작합니다. 잠시 멈추려면 도구 모음의 자동쇼츠 아이콘을 누릅니다." },
     ],
     progress: [
-      { state: "done", title: "0.1.3 공개", body: "밝은 웜화이트 바탕과 굵은 빨간 순환 화살표, 중앙 재생 버튼의 새 아이콘을 적용했습니다. 네이버 웨일에서 확장을 새로고침해 아이콘 반영을 확인했고 자동 넘김 동작과 개인정보 처리 방식은 0.1.2와 동일합니다." },
+      { state: "done", title: "0.1.4 완전 소스 공개", body: "실행 파일과 모든 아이콘 원본, SVG 원본, 설치 안내, 패키지 정보와 자동화 동작 테스트 소스를 하나의 복원 패키지에 담았습니다." },
       { state: "done", title: "반복·연속 이동 검증", body: "반복 영상 종료, 같은 video 요소 재사용, YouTube 내부 Shorts 진입, 중복 이동 방지와 설정 저장 자동 테스트를 통과했습니다." },
       { state: "done", title: "네이버 웨일 동작 확인", body: "실제 네이버 웨일에 압축해제 확장으로 설치해 자동 넘김이 작동하는 것을 확인했습니다." },
     ],
