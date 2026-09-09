@@ -336,11 +336,11 @@ export const apps: AppData[] = [
       {
         name: "Android · Google TV",
         status: "공개",
-        detail: "2.5.3 · Android 8.0+",
+        detail: "2.5.4 · Android 8.0+",
         url: releaseDownloadPath("S.tand-Android"),
         downloadLabel: "Android APK 바로 받기",
-        checksum: "19a802125d36e51afda2904dcbcd88ea7a180176d5f1b45239eda50bc7396e68",
-        availabilityNote: "Android·Google TV용 2.5.3 APK 공개 · 기존 설정과 기록을 유지하는 업데이트",
+        checksum: "f3d17da5fb8c473579b84d39049fad46362a9a6f24fb2b137f8d2d6400ffb970",
+        availabilityNote: "Android·Google TV용 2.5.4 APK 공개 · 빠방 카테고리 길게 누름 안정화 · 기존 설정과 기록을 유지하는 업데이트",
       },
     ],
     features: [
@@ -374,6 +374,7 @@ export const apps: AppData[] = [
       { title: "Mac에서 시작", body: "공증된 DMG를 열고 S.tand를 응용 프로그램 폴더로 옮긴 뒤 실행합니다. 이후에는 앱이 업데이트를 확인하고 종료·교체 설치·재실행까지 이어서 처리합니다." },
     ],
     progress: [
+      { state: "done", title: "2.5.4 Android·Google TV 공개", body: "빠방 카테고리 선택을 길게 눌렀을 때 목록 밖의 선택 항목에 포커스를 주며 앱이 종료될 수 있던 문제를 고쳤습니다." },
       { state: "done", title: "2.5.3 Mac·Android·Google TV 공개", body: "빠방 카테고리를 서버의 현재 목록에 맞춰 표시하고 게임·먹방·여행 채널을 지원합니다. Google TV의 빠방 패널은 리모컨 초점과 안전 여백을 다듬어 공개했습니다." },
       { state: "done", title: "2.5.0 빠방 미니플레이어 공개", body: "Mac·Android에 9개 채널, 테마 배경과 진하기 조절, 이동 위치 기억을 추가했습니다. 영상 배치·이동 떨림·음악 터치와 매이트 모드 전환 충돌을 수정했습니다. Mac 공증과 연결된 Mac·iPhone·Android 3대의 설치·실행을 확인했습니다." },
       { state: "active", title: "iPhone·iPad 2.5.0 외부 베타 심사", body: "빌드 202609082009를 기존 Public Beta 그룹에 연결해 심사에 제출했습니다. 승인되면 테스터에게 자동으로 안내되며, 공개 참여 링크와 10,000명 한도는 유지합니다. Android 내부 코드는 361209입니다." },
