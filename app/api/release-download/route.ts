@@ -1,5 +1,5 @@
 import { DOWNLOAD_KEYS, RELEASE_DOWNLOADS, type DownloadKey } from "../../releases";
-import { isTrustedDownloadNavigation } from "../../requestTraffic";
+import { requestLooksAutomated } from "../../requestTraffic";
 
 export const dynamic = "force-dynamic";
 
@@ -72,7 +72,9 @@ export async function GET(request: Request) {
     return Response.json({ download: RELEASE_DOWNLOADS[key].fallbackUrl }, { headers: { "Cache-Control": "no-store" } });
   }
 
-  if (!isTrustedDownloadNavigation(request)) {
+  // QR 스캔은 이전 페이지 주소를 보내지 않으므로, 허용 목록의 공개 파일은
+  // 일반 브라우저에서 직접 열 수 있게 합니다. 자동화 요청만 차단합니다.
+  if (requestLooksAutomated(request)) {
     return Response.json(
       { error: "홈페이지의 다운로드 버튼을 직접 눌러 주세요." },
       { status: 403, headers: { "Cache-Control": "no-store" } },

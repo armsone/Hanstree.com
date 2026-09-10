@@ -6,6 +6,7 @@ import { AdvantageVisual, type AdvantageVariant } from "../../components/Advanta
 import { AppDownloadCta } from "../../components/AppDownloadCta";
 import { AppArtwork, AppHeroArtwork, AppIcon } from "../../components/AppVisuals";
 import { ContactReveal } from "../../components/ContactReveal";
+import { DownloadQrCode } from "../../components/DownloadQrCode";
 import { findApp } from "../../data";
 import { SiteFooter, SiteHeader } from "../../page";
 import { testFlightBuilds } from "../../testflight";
@@ -113,6 +114,10 @@ function platformVisual(name: string): AdvantageVariant {
   if (/Android/.test(name)) return "android-bot";
   if (/Web/.test(name)) return "web-globe";
   return "devices-pair";
+}
+
+function downloadQrUrl(url: string) {
+  return new URL(url, "https://hanstree.com").toString();
 }
 
 const progressStateVisual: Record<"done" | "active" | "next", AdvantageVariant> = {
@@ -308,7 +313,7 @@ export default async function AppRoute({ params }: RouteProps) {
             const testFlight = platform.status === "TestFlight" ? testFlightStatus(app.slug) : null;
             const inviteUrl = testFlight?.inviteAvailable !== false ? testFlight?.inviteUrl ?? null : null;
             const pendingCopy = testFlight?.publicBetaState === "internalOnly" ? "회사 내부 전용" : testFlight?.publicBetaState === "waitingForReview" ? "Apple 공개 테스트 심사 중" : testFlight?.publicBetaState === "needsReviewAccount" ? "Apple 심사용 계정 준비 중" : "외부 테스트용 빌드 준비 중";
-            return <article key={platform.name}><div><AdvantageVisual variant={platformVisual(platform.name)} /><span className={`status-dot status-${platform.status.replace(" ", "-")}`} /><h3>{platform.name}</h3></div><p>{platform.detail} · {platform.status}</p>{platform.url ? <a href={platform.url}>{platform.downloadLabel ?? "다운로드 페이지"} <span aria-hidden="true">↗</span></a> : inviteUrl ? <a className="testflight-apply-download" href={inviteUrl}>TestFlight 바로 참여 <span aria-hidden="true">↗</span></a> : <span>{platform.status === "TestFlight" ? pendingCopy : platform.availabilityNote ?? "공개 링크 준비 중"}</span>}</article>;
+            return <article className={platform.url ? "download-item-with-qr" : undefined} key={platform.name}><div className="download-platform-copy"><div className="download-platform-head"><AdvantageVisual variant={platformVisual(platform.name)} /><span className={`status-dot status-${platform.status.replace(" ", "-")}`} /><h3>{platform.name}</h3></div><p>{platform.detail} · {platform.status}</p>{platform.url ? <a href={platform.url}>{platform.downloadLabel ?? "다운로드 페이지"} <span aria-hidden="true">↗</span></a> : inviteUrl ? <a className="testflight-apply-download" href={inviteUrl}>TestFlight 바로 참여 <span aria-hidden="true">↗</span></a> : <span>{platform.status === "TestFlight" ? pendingCopy : platform.availabilityNote ?? "공개 링크 준비 중"}</span>}</div>{platform.url && <DownloadQrCode href={downloadQrUrl(platform.url)} label={platform.downloadLabel ?? "공식 다운로드"} />}</article>;
           })}
         </div>
       </section>
