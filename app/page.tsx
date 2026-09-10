@@ -12,7 +12,7 @@ import { apps, findApp } from "./data";
 import { appCardImage } from "./media";
 import { testFlightBuilds } from "./testflight";
 import { getSiteBrand } from "./site-brand";
-import { SiteHeaderBrand } from "./components/SiteHeaderBrand";
+import { SiteFooter, SiteHeader } from "./components/SiteChrome";
 
 const principleVisuals: AdvantageVariant[] = ["compass", "timeline-dots", "devices-pair"];
 
@@ -309,62 +309,5 @@ export default async function Home() {
 
       <SiteFooter />
     </main>
-  );
-}
-
-export async function SiteHeader({ currentPageName }: { currentPageName?: string } = {}) {
-  const brand = await getSiteBrand();
-  return (
-    <header className="site-header">
-      <div className="shell header-inner">
-        {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-        <SiteHeaderBrand name={brand.name} koreanName={brand.koreanName} icon={brand.icon} showNasFinderIcon={brand.name === "NASFINDER"} currentPageName={currentPageName} />
-        <nav aria-label="주요 메뉴">
-          {/* Native anchors preserve same-page hash scrolling in the deployed vinext runtime. */}
-          {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-          <a href="/#works">만든 것들</a>
-          <details className="nav-space-menu">
-            <summary>스페이스</summary>
-            <div className="nav-space-panel">
-              {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-              <a href="/space/hanstree">한스트리 스튜디오</a>
-              {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-              <a href="/space/hanstree/instagram">먹탐자 Instagram</a>
-            </div>
-          </details>
-          {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-          <a href="/#apps">제품</a>
-          {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-          <a href="/#contact">이야기</a>
-          <Link href="/apps/nasfinder/support">지원</Link>
-        </nav>
-      </div>
-    </header>
-  );
-}
-
-export async function SiteFooter() {
-  const brand = await getSiteBrand();
-  return (
-    <footer className="site-footer">
-      <div className="shell footer-inner">
-        <div>
-          <Link className="wordmark" href="/"><span>{brand.name}</span></Link>
-          <p>직접 만들고 오래 다듬어 온 결과물을 소개합니다.</p>
-        </div>
-        <div className="footer-links">
-          {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-          <a href="/#works">만든 것들</a>
-          <Link href="/space/hanstree">한스트리 스튜디오</Link>
-          {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-          <a href="/#records">사이트 기록</a>
-          <Link href="/apps/nasfinder/privacy">개인정보처리방침</Link>
-          <Link href="/apps/nasfinder/support">지원</Link>
-          <Link href="https://github.com/armsone">GitHub</Link>
-          <Link href="/admin/testflight" aria-label="관리자 로그인">관리자</Link>
-        </div>
-        <p className="copyright">© {new Date().getFullYear()} {brand.koreanName} · armsone</p>
-      </div>
-    </footer>
   );
 }

@@ -8,7 +8,7 @@ import { AppArtwork, AppHeroArtwork, AppIcon } from "../../components/AppVisuals
 import { ContactReveal } from "../../components/ContactReveal";
 import { DownloadQrCode } from "../../components/DownloadQrCode";
 import { findApp } from "../../data";
-import { SiteFooter, SiteHeader } from "../../page";
+import { SiteFooter, SiteHeader } from "../../components/SiteChrome";
 import { testFlightBuilds } from "../../testflight";
 
 type RouteProps = { params: Promise<{ path: string[] }> };

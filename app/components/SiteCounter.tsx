@@ -47,7 +47,7 @@ export function SiteCounter() {
         {orderedRepoLabels.map(([repo, label]) => <div key={repo}><dt>{label}</dt><dd>{number(stats?.downloads[repo])}회</dd></div>)}
       </dl>
       {/* Native navigation avoids the current vinext client-router issue. */}
-      <a className="counter-detail-link" href="/admin/testflight">관리자에서 자세히 보기 <span aria-hidden="true">→</span></a>
+      <a className="counter-detail-link" href="/admin">관리자에서 자세히 보기 <span aria-hidden="true">→</span></a>
       <p className="counter-note">이 숫자는 방문자 수를 정확히 식별하는 분석 도구가 아닌 간단한 참고용 집계입니다. GitHub에서 직접 받은 횟수와는 다를 수 있습니다.</p>
     </section>
   );

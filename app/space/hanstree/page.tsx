@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { SiteFooter, SiteHeader } from "../../page";
+import { SiteFooter, SiteHeader } from "../../components/SiteChrome";
 
 export const metadata: Metadata = {
   title: "한스트리 스튜디오 — 골프에서 시작해 다시 만드는 곳",
