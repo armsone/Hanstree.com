@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import type { TestFlightBuild } from "../testflight";
+import { ClientDownloadQrCode } from "./ClientDownloadQrCode";
 import { useNearViewport } from "./useNearViewport";
 
 const LIFE_MS = 90 * 24 * 60 * 60 * 1000;
@@ -85,7 +86,7 @@ export function TestFlightTracker({ builds }: { builds: TestFlightBuild[] }) {
                 {build.build && <div><dt>빌드</dt><dd>{build.build}</dd></div>}
               </dl>
               {build.inviteAvailable !== false && build.inviteUrl
-                ? <a className="flight-link" href={build.inviteUrl}>TestFlight 참여 <span aria-hidden="true">↗</span></a>
+                ? <><a className="flight-link" href={build.inviteUrl}>TestFlight 참여 <span aria-hidden="true">↗</span></a><ClientDownloadQrCode className="testflight-card-qr" href={build.inviteUrl} label={`${build.appName} TestFlight 외부 테스터 참여`} /></>
                 : build.publicBetaState === "waitingForReview" && <span className="flight-link flight-link-pending">Apple 외부 베타 심사 중</span>}
             </> : <div className="flight-empty"><strong>업로드 기록 대기</strong><p>TestFlight 업로드 시각이 확인되면 90일 만료 시계가 시작됩니다.</p><div className="flight-track"><span /></div></div>}
           </article>
