@@ -118,7 +118,7 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     label: "DenimDex Android",
     repo: "DenimDex-Android",
     assetPattern: /^DenimDex-Android-\d+\.\d+\.\d+\.apk$/i,
-    fallbackUrl: "https://github.com/armsone/DenimDex-Android/releases/download/android-v0.3.1/DenimDex-Android-0.3.1.apk",
+    fallbackUrl: "https://github.com/armsone/DenimDex-Android/releases/download/android-v0.3.2/DenimDex-Android-0.3.2.apk",
   },
   "OurButton-Android": {
     label: "OurButton Android",
@@ -130,7 +130,7 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     label: "Stargram Android",
     repo: "Stargram-Android",
     assetPattern: /\.apk$/i,
-    fallbackUrl: "https://github.com/armsone/Stargram-Android/releases/download/android-v2.6.1/Stargram-Android-2.6.1.apk",
+    fallbackUrl: "https://github.com/armsone/Stargram-Android/releases/download/android-v2.6.4/Stargram-Android-2.6.4.apk",
   },
   "HtOMS-BK": {
     label: "HtOMS Brief Android",

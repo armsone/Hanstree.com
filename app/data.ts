@@ -845,14 +845,14 @@ export const apps: AppData[] = [
     icon: "/apps/starmanager/icon.png",
     artwork: "phones",
     platforms: [
-      { name: "iPhone · iPad", status: "TestFlight", detail: "2.6.0 · 빌드 202608292118 · iOS·iPadOS 18+", availabilityNote: "2.6.0 Public Beta 승인 · 공개 테스트 참여 가능" },
+      { name: "iPhone · iPad", status: "TestFlight", detail: "2.6.4 · 빌드 202609101649 · iOS·iPadOS 18+", availabilityNote: "2.6.4 Public Beta 심사 제출 완료 · 승인 전에는 기존 승인 빌드로 참여" },
       {
         name: "Android",
         status: "공개",
-        detail: "2.6.1 · 빌드 202609021723 · 내부 코드 352403 · Android 8.0+",
+        detail: "2.6.4 · 빌드 202609101658 · 내부 코드 363898 · Android 8.0+",
         url: releaseDownloadPath("Stargram-Android"),
         downloadLabel: "Android APK 바로 받기",
-        availabilityNote: "휴대전화·태블릿·Google TV 지원 · Android 실기기 3대에서 데이터 유지 교체 설치·실행 확인",
+        availabilityNote: "휴대전화·태블릿·Google TV 지원 · 기존 배포 서명 유지 · 2.6.4 실기기 동작 확인은 진행 예정",
       },
     ],
     features: [
@@ -861,6 +861,8 @@ export const apps: AppData[] = [
       { title: "필요할 때만 브라우저 보기", body: "브라우저 보기는 기본적으로 꺼져 있습니다. 설정에서 켜면 생성 시작부터 공식 웹 화면을 볼 수 있고, 꺼져 있어도 로그인·보안 확인이 필요할 때는 자동으로 화면을 엽니다." },
       { title: "로그인 상태를 직접 관리", body: "설정에서 Gemini·ChatGPT·Claude의 로그인 상태를 다시 확인하고, 모두 로그아웃한 뒤 필요한 서비스에 다시 로그인할 수 있습니다." },
       { title: "결과를 안정적으로 가져오기", body: "외부 AI의 완성된 답변을 감지해 Stargram 초안으로 바로 가져옵니다. 결과를 받거나 화면을 스크롤하면 입력 키보드는 다시 입력창을 누를 때까지 숨깁니다." },
+      { title: "한 번 보내고, 진행은 분명하게", body: "2.6.4는 사진 첨부와 실제 생성 시작을 구분해 확인하고, 이미 보낸 요청을 반복 전송하지 않습니다. 작업 화면 끝에도 여유를 두어 마지막 항목을 편하게 볼 수 있습니다." },
+      { title: "문제가 생기면 진단 로그 공유", body: "2.6.4 설정에서 AI 작업 단계와 소요 시간을 담은 진단 로그를 공유할 수 있습니다. 사진·글·답변·로그인 정보는 기록하지 않습니다." },
       { title: "원하는 AI를 바로 선택", body: "Gemini·ChatGPT·Claude·기기 AI를 한 줄에서 고르고 각 AI의 만들기 버튼으로 곧바로 실행합니다." },
       { title: "접어 두는 글 스타일", body: "글자 수·이모지·분위기·스타일·말투·나잇대·줄넘김·내 글 반영은 필요할 때만 펼칩니다. 추가 요청은 같은 패널에서 직접 적습니다." },
       { title: "새 캔버스로 다시 시작", body: "하단의 새 캔버스로 현재 이야기와 결과, 미디어만 비우고 나의 취향과 프로필은 그대로 유지합니다." },
@@ -888,6 +890,8 @@ export const apps: AppData[] = [
       { state: "done", title: "Android 2.6.1 공개", body: "Stargram 이름을 반영한 제품 2.6.1 · 빌드 202609021723 · 내부 코드 352403의 APK를 GitHub Releases에 공개" },
       { state: "done", title: "iPhone·iPad 2.5.1 설치·업로드", body: "2.5.1 (202608291746)을 사용 가능한 iPhone 2대에 데이터 유지 교체 설치하고 App Store Connect 업로드와 기존 내부 테스트 9명 연결을 확인" },
       { state: "done", title: "iOS·iPadOS 2.6.0 Public Beta 승인", body: "build 202608292118 Apple 외부 베타 심사 승인 · 기존 Public Beta 링크와 10,000명 한도 유지 · 공개 테스트 참여 가능" },
+      { state: "done", title: "Android 2.6.4 공개", body: "사진·글 전송 확인, 중복 전송 방지, 진단 로그 공유와 하단 여백 개선을 담은 APK를 공개했습니다. 빌드 202609101658 · 내부 코드 363898 · 공개 파일 무결성 확인 완료" },
+      { state: "active", title: "iPhone·iPad 2.6.4 베타 심사", body: "빌드 202609101649 업로드, 기존 내부 그룹 유지와 Public Beta 심사 제출을 마쳤습니다. 새 빌드의 외부 제공은 Apple 승인 후 가능합니다." },
       { state: "next", title: "게시 흐름 다듬기", body: "실제 공유 앱별 게시 결과와 사용자 피드백을 바탕으로 다음 개선 항목을 정리" },
     ],
     screenshots: [
@@ -905,6 +909,7 @@ export const apps: AppData[] = [
     ],
     privacy: [
       "프로필, 프리셋과 작성 설정은 사용자의 기기 안에 저장합니다.",
+      "2.6.4 진단 로그는 원문 없는 작업 단계·소요 시간·개수만 기기에 제한적으로 보관하며, 사용자가 공유를 선택할 때만 내보냅니다. 사진·프롬프트·답변·계정·토큰은 기록하지 않습니다.",
       "Apple AI를 사용할 수 있는 기기에서는 글 생성이 기기 안에서 처리됩니다.",
       "ChatGPT·Gemini·Claude를 선택하면 앱 안의 각 서비스 공식 웹페이지에 프롬프트를 전달하며 각 서비스의 개인정보처리방침이 적용됩니다.",
       "외부 AI 로그인 정보는 Stargram이 직접 보거나 저장하지 않으며, 각 서비스의 웹 로그인 세션은 이 기기의 앱 전용 웹 데이터에 유지됩니다.",
@@ -1060,16 +1065,16 @@ export const apps: AppData[] = [
       {
         name: "iPhone · iPad",
         status: "TestFlight",
-        detail: "0.3.1 (202608312019) · iOS·iPadOS 17+ · 내부 테스트 제공 중",
-        availabilityNote: "팬츠·재킷 9컷 촬영 순서와 실제 참고 이미지, 탭 확대 보기, 촬영 버튼 간격 개선을 담은 빌드를 기존 Internal 그룹에 연결했습니다. 이번 빌드는 외부 Public Beta에 추가하지 않았습니다.",
+        detail: "0.3.2 · 빌드 202609101658 · iOS·iPadOS 17+",
+        availabilityNote: "0.3.2 Public Beta 심사 제출 완료 · 기존 내부 그룹 유지 · 승인 전에는 기존 승인 빌드로 참여",
       },
       {
         name: "Android",
         status: "공개",
-        detail: "0.3.1 · 빌드 202608312019 · 내부 코드 349699 · Android 8.0+",
+        detail: "0.3.2 · 빌드 202609101702 · 내부 코드 363902 · Android 8.0+",
         url: releaseDownloadPath("DenimDex-Android"),
         downloadLabel: "Android용 APK 다운로드",
-        availabilityNote: "SM-F956N 휴대전화와 SM-T500 태블릿에 동일 소스 개발 빌드를 데이터 보존 방식으로 교체 설치·실행했고, 공개 APK는 기존 정식 인증서를 확인했습니다. Google TV 화면 확인은 남아 있습니다.",
+        availabilityNote: "휴대전화·태블릿·Google TV 지원 · 기존 정식 배포 서명 유지 · 0.3.2 실기기 동작 확인은 진행 예정",
       },
     ],
     features: [
@@ -1085,6 +1090,7 @@ export const apps: AppData[] = [
       { title: "나만의 데님 아카이브", body: "감정 결과와 고른 사진을 기기 안 개인 아카이브에 저장해 다시 확인하고, 필요 없는 기록은 직접 삭제할 수 있습니다." },
       { title: "사진은 가볍게, 단서는 선명하게", body: "선택 장수가 많아질수록 전송용 사본의 크기와 품질을 단계적으로 조절해 전체 용량을 약 16MB 안으로 맞춥니다. 원본 사진은 변경하지 않습니다." },
       { title: "작성 중인 글은 그대로 보호", body: "ChatGPT 입력창에 다른 글이 있으면 덮어쓰지 않고 멈춥니다. 빈 입력창에서도 실제로 요청이 들어갔는지 확인한 뒤 다음 단계로 넘어가며, 사진을 읽지 못해도 앱을 닫지 않고 다시 고를 수 있습니다." },
+      { title: "전송은 한 번, 문제 확인은 간단하게", body: "0.3.2는 사진 첨부와 생성 시작을 확인하고 중복 전송·취소 후 전송을 방지합니다. 문제가 생기면 설정에서 사진과 글이 포함되지 않은 진단 로그를 공유할 수 있습니다." },
     ],
     guide: [
       { title: "팬츠·재킷 고르기", body: "제품 종류를 고르면 전체 모습부터 작은 각인까지 아홉 장의 촬영 순서가 나타납니다. 자유 촬영으로 바꾸면 원하는 사진을 최대 30장까지 직접 정리할 수 있습니다." },
@@ -1099,6 +1105,8 @@ export const apps: AppData[] = [
       { state: "done", title: "개인 아카이브", body: "감정 결과와 사진을 기기 안에 저장하고 다시 보거나 삭제하는 흐름 구현" },
       { state: "done", title: "iPhone·iPad 0.3.1 내부 TestFlight", body: "build 202608312019를 기존 Internal 그룹에 연결했습니다. 팬츠·재킷 9컷 순서, 실제 참고 이미지와 확대 보기, 촬영 버튼 간격 개선을 포함하며 외부 Public Beta에는 추가하지 않았습니다." },
       { state: "done", title: "Android 0.3.1 공개", body: "build 202608312019 · 내부 코드 349699 APK를 공개했습니다. iPhone과 같은 9컷 순서, 18개 작은 참고 이미지와 18개 확대 이미지, 가이드와 종합 판단용 사진 역할 전달을 포함합니다." },
+      { state: "done", title: "Android 0.3.2 공개", body: "아이비 전송·취소 처리와 진단 로그 공유를 개선했습니다. 빌드 202609101702 · 내부 코드 363902 · 기존 배포 서명과 공개 파일 무결성 확인 완료" },
+      { state: "active", title: "iPhone·iPad 0.3.2 베타 심사", body: "빌드 202609101658의 iPhone 교체 설치·재실행, 업로드와 Public Beta 심사 제출을 마쳤습니다. 새 빌드의 외부 제공은 Apple 승인 후 가능합니다." },
       { state: "next", title: "아카이브 동기화", body: "개인 NAS 연결과 익명 기록 공유는 준비 중이며 현재 공개 기능에 포함하지 않음" },
     ],
     screenshots: [
@@ -1107,6 +1115,7 @@ export const apps: AppData[] = [
     github: ["https://github.com/armsone/DenimDex-iOS", "https://github.com/armsone/DenimDex-Android"],
     privacy: [
       "원본 사진과 저장한 감정 기록은 기본적으로 사용자의 기기 안에 보관됩니다.",
+      "0.3.2 진단 로그에는 원문 없는 단계·소요 시간·개수만 제한적으로 보관합니다. 사진·분석 요청·답변·로그인 정보는 기록하지 않으며, 사용자가 공유를 선택할 때만 내보냅니다.",
       "가치 확인을 시작하면 한양이 고른 사진의 전송용 사본과 분석 요청이 사용자가 로그인한 ChatGPT 공식 웹사이트로 전달됩니다. 전송용 사본은 작업이 끝나면 앱에서 폐기됩니다.",
       "DenimDex는 ChatGPT 비밀번호와 로그인 쿠키를 읽거나 별도 서버에 저장하지 않습니다. 로그인은 ChatGPT 공식 화면에서 사용자가 직접 진행합니다.",
       "한국·일본 가격과 차익은 사진 및 일반 시장 지식에 기반한 참고 추정치이며 실시간 거래 데이터나 실제 판매 수익을 보장하지 않습니다.",
@@ -1225,18 +1234,19 @@ export const apps: AppData[] = [
     artwork: "bridge",
     platforms: [
       {
-        name: "Stargram · iOS · Android",
+        name: "Stargram · DenimDex · iOS · Android",
         status: "공개",
-        detail: "AIBI 0.4.4 · Apple·Android 공통 엔진 · Stargram 동기화 완료",
-        url: "https://github.com/armsone/AIBI/releases/download/v0.4.4/AIBI-0.4.4.zip",
-        downloadLabel: "AIBI 0.4.4 소스 받기",
-        availabilityNote: "독립 소스 공개 · Stargram에는 검증된 같은 엔진 포함",
+        detail: "AIBI 0.5.0 · Apple·Android 공통 엔진 · 두 앱의 네 프로젝트에 반영",
+        url: "https://github.com/armsone/AIBI/releases/download/v0.5.0/AIBI-0.5.0.zip",
+        downloadLabel: "AIBI 0.5.0 소스 받기",
+        availabilityNote: "독립 소스와 두 Android 앱 공개 · Apple 새 빌드는 베타 심사 제출 완료",
       },
     ],
     features: [
       { title: "내 계정은 공식 페이지에 그대로", body: "비밀번호·쿠키·토큰을 복사하거나 저장하지 않고 사용자가 각 AI 공식 웹사이트에서 직접 만든 로그인 세션만 브라우저 표준 저장소로 재사용합니다." },
       { title: "필요할 때만 나타나는 AI 브라우저", body: "평소에는 작성 화면을 유지하며 진행 상태를 보여주고, 로그인·보안 확인처럼 사용자가 직접 해야 하는 순간에만 같은 작업을 보이는 브라우저로 안전하게 넘깁니다." },
-      { title: "완성된 답만 정확히 한 번", body: "입력과 실제 전송을 확인하고 스트리밍 결과가 안정될 때까지 관찰한 뒤, 호스트 앱의 검증을 통과한 최종 결과만 한 번 반영합니다." },
+      { title: "완성된 답만 정확히 한 번", body: "사진 첨부와 실제 생성 시작을 확인합니다. 전송 버튼은 한 번만 누르고 이후에는 상태를 관찰해, 안정된 최종 결과만 앱에 한 번 반영합니다." },
+      { title: "로그 하나로 원인 확인", body: "사진·글·답변·계정 정보 없이 작업 단계·소요 시간·개수를 기록합니다. 최근 10개 작업, 작업당 최대 400개 기록을 기기에 보관하고 사용자가 직접 공유할 수 있습니다." },
       { title: "사진을 순서대로, 빠짐없이", body: "기본 8장, 앱이 명시적으로 허용하면 최대 20장까지 순서를 유지해 전달합니다. 원본은 바꾸지 않고 긴 변 2,048px·장당 2MB 안의 전송용 사본만 차례대로 만듭니다." },
       { title: "로그아웃과 재로그인까지", body: "각 서비스의 로그인 상태를 다시 확인하고, 앱 전용 웹 세션을 모두 로그아웃한 뒤 필요한 계정으로 다시 로그인할 수 있습니다." },
       { title: "기다림과 취소가 분명하게", body: "생성 뒤 1분 59초의 남은 시간과 감소하는 진행 막대를 보여주며, 숨김·보이기 화면 어디서든 취소하면 작업과 브라우저를 즉시 정리합니다." },
@@ -1250,7 +1260,7 @@ export const apps: AppData[] = [
       { title: "검증된 결과 받기", body: "생성이 끝나고 결과가 안정되면 Stargram의 문체와 길이 규칙을 확인해 본문에 반영하고 브라우저를 정리합니다." },
     ],
     progress: [
-      { state: "done", title: "독립 기준 프로젝트 0.4.4 공개", body: "공통 계약, 제공자 변화 대응 절차, Apple·Android 엔진과 Stargram 배포 스냅샷을 검증해 독립 소스 릴리즈로 공개" },
+      { state: "done", title: "독립 기준 프로젝트 0.5.0 공개", body: "한 번 전송·실제 생성 확인·취소 처리·개인정보 없는 진단 로그를 공통화하고 Stargram·DenimDex의 Apple·Android 네 프로젝트에 반영했습니다." },
       { state: "done", title: "다중 사진 파이프라인", body: "Apple·Android·브라우저 런타임에서 최대 8장의 이미지 순서와 첨부 확인을 같은 계약으로 검증" },
       { state: "done", title: "최대 20장 선택과 입력창 복구", body: "앱별 선택으로 최대 20장을 원자적으로 첨부하고, 공식 AI 화면이 입력창을 늦게 교체해도 내용을 보존해 다시 입력하도록 개선" },
       { state: "done", title: "Stargram iOS 이식", body: "공유 WKWebView 세션, 숨김·보이기 실행, 로그인 판정, 결과 안정화, 1:59 제한과 취소 흐름을 빌드 검증" },
