@@ -5,6 +5,7 @@ import { AdvantageVisual, type AdvantageVariant } from "./components/AdvantageVi
 import { AppIcon, AppStatus } from "./components/AppVisuals";
 import { AndroidReleaseTracker } from "./components/AndroidReleaseTracker";
 import { ContactReveal } from "./components/ContactReveal";
+import { DownloadQrCode } from "./components/DownloadQrCode";
 import { SiteCounter } from "./components/SiteCounter";
 import { TestFlightTracker } from "./components/TestFlightTracker";
 import { apps, findApp } from "./data";
@@ -93,7 +94,7 @@ function TestFlightInviteLinks() {
             </div>
             <p className="testflight-invite-copy">{inviteUrl ? "신청서 없이 TestFlight에서 바로 참여할 수 있습니다." : build.publicBetaState === "waitingForReview" ? "Apple 공개 테스트 심사에 제출되어 승인을 기다리고 있습니다." : build.publicBetaState === "needsReviewAccount" ? "외부용 빌드는 준비됐고 Apple 심사용 계정을 등록하고 있습니다." : "외부 테스트용 새 빌드를 준비하고 있습니다."}</p>
             {inviteUrl ? (
-              <a className="testflight-invite-action" href={inviteUrl}>외부 테스터로 참여 <span aria-hidden="true">↗</span></a>
+              <><a className="testflight-invite-action" href={inviteUrl}>외부 테스터로 참여 <span aria-hidden="true">↗</span></a><DownloadQrCode className="testflight-invite-qr" href={inviteUrl} label={`${build.appName} 외부 테스터 참여`} /></>
             ) : (
               <span className="testflight-invite-pending"><i aria-hidden="true" />{build.publicBetaState === "waitingForReview" ? "Apple 심사 중" : build.publicBetaState === "needsReviewAccount" ? "심사 계정 준비" : "외부용 빌드 준비"}</span>
             )}

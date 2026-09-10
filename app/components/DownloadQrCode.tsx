@@ -1,6 +1,6 @@
 import QRCode from "qrcode";
 
-export async function DownloadQrCode({ href, label }: { href: string; label: string }) {
+export async function DownloadQrCode({ href, label, className }: { href: string; label: string; className?: string }) {
   const markup = await QRCode.toString(href, {
     type: "svg",
     errorCorrectionLevel: "M",
@@ -9,7 +9,7 @@ export async function DownloadQrCode({ href, label }: { href: string; label: str
   });
 
   return (
-    <aside className="download-qr" aria-label={`${label} QR 코드`}>
+    <aside className={`download-qr${className ? ` ${className}` : ""}`} aria-label={`${label} QR 코드`}>
       <div role="img" aria-label={`${label} QR 코드`} dangerouslySetInnerHTML={{ __html: markup }} />
       <small>휴대전화에서 받기</small>
     </aside>

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { AdvantageVisual, type AdvantageVariant } from "./AdvantageVisual";
+import { ClientDownloadQrCode } from "./ClientDownloadQrCode";
 import { releaseDownloadPath, type DownloadKey } from "../releases";
 import { useNearViewport } from "./useNearViewport";
 
@@ -107,9 +108,9 @@ export function AndroidReleaseTracker({ androidPlatformDetails }: { androidPlatf
                 <div><dt>크기</dt><dd>{formatBytes(release.asset?.size)}</dd></div>
               </dl>
               <div className="android-release-actions">
-                {release.asset && <a className="android-download-link" href={releaseDownloadPath(release.repo)} aria-label={`${displayName} ${productVersion} APK 바로 받기`}>
+                {release.asset && <><a className="android-download-link" href={releaseDownloadPath(release.repo)} aria-label={`${displayName} ${productVersion} APK 바로 받기`}>
                   <span>APK 바로 받기</span><b aria-hidden="true">↓</b>
-                </a>}
+                </a><ClientDownloadQrCode className="android-download-qr" href={new URL(releaseDownloadPath(release.repo), "https://hanstree.com").toString()} label={`${displayName} APK 다운로드`} /></>}
                 <a className="android-release-link" href={release.releaseUrl}>릴리스 설명 보기 <span aria-hidden="true">↗</span></a>
               </div>
               <p className="android-download-note">홈페이지가 확인한 공식 GitHub APK가 바로 다운로드됩니다.</p>
