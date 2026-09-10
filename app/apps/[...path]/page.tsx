@@ -201,7 +201,7 @@ export default async function AppRoute({ params }: RouteProps) {
 
   return (
     <main className={`app-page app-${app.slug} theme-${app.theme}`}>
-      <SiteHeader />
+      <SiteHeader currentPageName={app.name} />
       <section className="app-hero shell">
         <div className="app-hero-copy reveal">
           <Link className="breadcrumb" href="/#apps">← 모든 앱</Link>
@@ -308,7 +308,7 @@ export default async function AppRoute({ params }: RouteProps) {
             const testFlight = platform.status === "TestFlight" ? testFlightStatus(app.slug) : null;
             const inviteUrl = testFlight?.inviteAvailable !== false ? testFlight?.inviteUrl ?? null : null;
             const pendingCopy = testFlight?.publicBetaState === "internalOnly" ? "회사 내부 전용" : testFlight?.publicBetaState === "waitingForReview" ? "Apple 공개 테스트 심사 중" : testFlight?.publicBetaState === "needsReviewAccount" ? "Apple 심사용 계정 준비 중" : "외부 테스트용 빌드 준비 중";
-            return <article key={platform.name}><div><AdvantageVisual variant={platformVisual(platform.name)} /><span className={`status-dot status-${platform.status.replace(" ", "-")}`} /><h3>{platform.name}</h3></div><p>{platform.detail} · {platform.status}</p>{platform.url ? <a href={platform.url}>{platform.downloadLabel ?? "다운로드 페이지"} <span aria-hidden="true">↗</span></a> : inviteUrl ? <a className="testflight-apply-download" href={inviteUrl}>TestFlight 바로 참여 <span aria-hidden="true">↗</span></a> : <span>{platform.status === "TestFlight" ? pendingCopy : platform.availabilityNote ?? "공개 링크 준비 중"}</span>}{platform.checksum && <small className="download-checksum">SHA-256 {platform.checksum}</small>}</article>;
+            return <article key={platform.name}><div><AdvantageVisual variant={platformVisual(platform.name)} /><span className={`status-dot status-${platform.status.replace(" ", "-")}`} /><h3>{platform.name}</h3></div><p>{platform.detail} · {platform.status}</p>{platform.url ? <a href={platform.url}>{platform.downloadLabel ?? "다운로드 페이지"} <span aria-hidden="true">↗</span></a> : inviteUrl ? <a className="testflight-apply-download" href={inviteUrl}>TestFlight 바로 참여 <span aria-hidden="true">↗</span></a> : <span>{platform.status === "TestFlight" ? pendingCopy : platform.availabilityNote ?? "공개 링크 준비 중"}</span>}</article>;
           })}
         </div>
       </section>
@@ -822,7 +822,7 @@ function InfoPage({ app, section }: { app: NonNullable<ReturnType<typeof findApp
 
   return (
     <main className={`info-page theme-${app.theme}`}>
-      <SiteHeader />
+      <SiteHeader currentPageName={app.name} />
       <article className="legal-shell shell">
         <Link className="breadcrumb" href={`/apps/${app.slug}`}>← {app.name}으로 돌아가기</Link>
         <p className="eyebrow">{app.english.toUpperCase()}</p>
@@ -912,7 +912,7 @@ function LegalSection({ title, children }: { title: string; children: React.Reac
 function GoogleOAuthPage() {
   return (
     <main className="info-page theme-violet" lang="en">
-      <SiteHeader />
+      <SiteHeader currentPageName="나스파인더" />
       <article className="legal-shell shell oauth-disclosure">
         <Link className="breadcrumb" href="/apps/nasfinder">← Back to NasFinder</Link>
         <p className="eyebrow">GOOGLE API DISCLOSURE</p>

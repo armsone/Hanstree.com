@@ -26,7 +26,6 @@ export type AndroidReleaseInfo = {
     name: string;
     size: number;
     contentType: string;
-    digest: string | null;
     downloadCount: number;
   };
 };
@@ -66,7 +65,6 @@ export function verifiedFallbackRelease(source: AndroidReleaseSource): AndroidRe
       name: assetName,
       size: 0,
       contentType: "application/vnd.android.package-archive",
-      digest: null,
       downloadCount: 0,
     },
   };

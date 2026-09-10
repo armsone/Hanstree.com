@@ -6,7 +6,6 @@ export type Platform = {
   detail: string;
   url?: string;
   downloadLabel?: string;
-  checksum?: string;
   availabilityNote?: string;
 };
 
@@ -56,7 +55,6 @@ export const apps: AppData[] = [
         detail: "2.2.2 (202608271227) · macOS 14+ · Universal · Apple 공증 완료",
         url: releaseDownloadPath("NasFinder-Mac"),
         downloadLabel: "Mac용 DMG 바로 받기",
-        checksum: "d8c4efb8a75a390f07a68c568abff3d4801b0a0d80bd538b9aad4bf442ff4554",
         availabilityNote: "Developer ID 서명 · Apple 공증 · Gatekeeper 확인",
       },
       {
@@ -65,7 +63,6 @@ export const apps: AppData[] = [
         detail: "2.2.2 · 빌드 202608271106 · 내부 코드 343386 · Android 8.0+",
         url: releaseDownloadPath("NasFinder-Android"),
         downloadLabel: "Android APK 바로 받기",
-        checksum: "46b1b97479c856c8183fc598f348f8053a5dd53315b4d730f4f660066eeacc86",
         availabilityNote: "27,948,170바이트 · 기존 직접 설치 업데이트 계보 서명 확인",
       },
     ],
@@ -101,7 +98,7 @@ export const apps: AppData[] = [
       { state: "done", title: "Live Photo·Motion Photo 전송", body: "iPhone과 Android를 QR로 연결해 사진·영상·움직이는 사진의 원본 보존과 교차 변환 구현" },
       { state: "active", title: "iPhone·iPad 2.2.2 Public Beta", body: "build 202608271227 처리 완료 · 기존 내부 그룹 9명 보존 · 10,000명 공개 링크 유지 · 새 빌드 Apple 외부 베타 심사 대기 중" },
       { state: "done", title: "Mac용 NasFinder 2.2.2 공개", body: "즐겨찾기 폴더 표지와 살색 비율별 최대 2.5pt 처리를 반영한 Universal DMG를 Developer ID로 서명하고 Apple 공증·Gatekeeper 확인 후 공개" },
-      { state: "done", title: "Android 2.2.2 공개", body: "폴더 수퍼썸네일의 흐림 처리와 넘침 표시를 다듬은 빌드 202608271106 · 내부 코드 343386의 서명 APK와 SHA-256 체크섬을 GitHub Releases에 공개" },
+      { state: "done", title: "Android 2.2.2 공개", body: "폴더 수퍼썸네일의 흐림 처리와 넘침 표시를 다듬은 빌드 202608271106 · 내부 코드 343386의 서명 APK를 GitHub Releases에 공개" },
       { state: "done", title: "Super Thumbnail 2.2.0 동기화", body: "3/13 대표 장면, 50% 검은 화면의 6/13 재시도, 최종 1.5pt 단일 블러와 우선 표시를 Apple·Android·Mac에 반영" },
     ],
     screenshots: [
@@ -139,7 +136,6 @@ export const apps: AppData[] = [
         detail: "2.3.2 (202608291428) · macOS 14+ · Apple Silicon·Intel · Developer ID 서명·Apple 공증 완료",
         url: releaseDownloadPath("NasFinder-Super-Thumbnail"),
         downloadLabel: "Mac용 DMG 바로 받기",
-        checksum: "7c0c02bb250a3720e0957ed5361ec811ccfbdbd0dc4398cff0287208f5ec7eb2",
       },
     ],
     features: [
@@ -200,7 +196,6 @@ export const apps: AppData[] = [
         detail: "2.3.0 · 빌드 202609071316 · 내부 코드 359356 · Android 8.0+",
         url: releaseDownloadPath("HanClip-Android"),
         downloadLabel: "Android APK 바로 받기",
-        checksum: "5349ba912ef71070549ad49e542503781d3d9fc9bdac769600fad35a320e42a9",
         availabilityNote: "서명 APK 재다운로드·무결성 검증 완료 · 휴대전화·태블릿·Google TV 지원",
       },
     ],
@@ -279,7 +274,6 @@ export const apps: AppData[] = [
         detail: "0.2.0 · Golf 모델 0.7.0 · Kotlin 표준 라이브러리 기반 독립 코어",
         url: "https://github.com/armsone/HanAI/releases/download/v0.2.0/hanai-core-0.2.0.jar",
         downloadLabel: "Kotlin/JVM 0.2.0 JAR 받기",
-        checksum: "688a9f385bb4706ddfee4f79e4fe188da155bc7d76967191e76ab2debd992ad9",
         availabilityNote: "Swift와 같은 모델·상수·fixture 계약 · 공개 파일 무결성 확인",
       },
     ],
@@ -331,7 +325,6 @@ export const apps: AppData[] = [
         detail: "2.5.3 · macOS 14+ · Apple 공증 완료",
         url: releaseDownloadPath("S.tand-macOS"),
         downloadLabel: "Mac용 DMG 바로 받기",
-        checksum: "c5405eb84a281401a863ffc50e8302cca630ee604e63ccdd782fd42b09b08e86",
       },
       {
         name: "Android · Google TV",
@@ -339,7 +332,6 @@ export const apps: AppData[] = [
         detail: "2.5.4 · Android 8.0+",
         url: releaseDownloadPath("S.tand-Android"),
         downloadLabel: "Android APK 바로 받기",
-        checksum: "f3d17da5fb8c473579b84d39049fad46362a9a6f24fb2b137f8d2d6400ffb970",
         availabilityNote: "Android·Google TV용 2.5.4 APK 공개 · 빠방 카테고리 길게 누름 안정화 · 기존 설정과 기록을 유지하는 업데이트",
       },
     ],
@@ -451,7 +443,7 @@ export const apps: AppData[] = [
         downloadLabel: "Public Beta 참여",
         availabilityNote: "공개 링크 10,000명 활성 · 최신 빌드 내부·Public Beta 그룹 연결 완료 · 외부 제공은 Apple 심사 상태를 따름",
       },
-      { name: "macOS", status: "공개", detail: "2.0.25 (202609081055) · macOS 10.15+ · Universal · Apple 공증 완료 · CloudKit Production 서명", url: releaseDownloadPath("CCMB"), downloadLabel: "DMG 다운로드", checksum: "740836b6f12837bd17c9315991deadea52166c2a7cf92fd08ef35c914199d2d3" },
+      { name: "macOS", status: "공개", detail: "2.0.25 (202609081055) · macOS 10.15+ · Universal · Apple 공증 완료 · CloudKit Production 서명", url: releaseDownloadPath("CCMB"), downloadLabel: "DMG 다운로드" },
     ],
     features: [
       { title: "멀리서도 남은 한도를 한눈에", body: "Mac CCMB가 같은 Apple ID의 CloudKit 개인 데이터베이스에 올린 최신 스냅샷을 iPhone·iPad가 읽기 전용으로 불러옵니다." },
@@ -535,7 +527,6 @@ export const apps: AppData[] = [
         detail: "2.0.3 (202609041647) · 내부 build 355247 · macOS 13+ · Universal · Apple 공증 완료",
         url: releaseDownloadPath("BTN"),
         downloadLabel: "Mac용 DMG 바로 받기",
-        checksum: "c9ccfe0c67501ad56a75a4b72aa42e69d7a79e1c8a38841c601b31a049169aab",
       },
     ],
     features: [
@@ -593,7 +584,7 @@ export const apps: AppData[] = [
     icon: "/apps/trackpadguard/icon.png",
     artwork: "trackpad",
     platforms: [
-      { name: "macOS", status: "공개", detail: "2.0.6 (202609032354) · 내부 build 202609032354 · macOS 13+ · Universal · Apple 공증 완료", url: releaseDownloadPath("TrackpadGuard"), downloadLabel: "Mac용 DMG 바로 받기", checksum: "8f5d5f3bfb6438a63d73905a82bcbe66bc0e4e7924cec924ecc0f3eb3003871f" },
+      { name: "macOS", status: "공개", detail: "2.0.6 (202609032354) · 내부 build 202609032354 · macOS 13+ · Universal · Apple 공증 완료", url: releaseDownloadPath("TrackpadGuard"), downloadLabel: "Mac용 DMG 바로 받기" },
     ],
     features: [
       { title: "키 입력과 동시에 잠금", body: "문자를 입력하기 시작하면 트랙패드의 커서 이동, 클릭과 스크롤을 바로 차단합니다." },
@@ -655,7 +646,6 @@ export const apps: AppData[] = [
         detail: "2.1.1 · 빌드 202608291542 · 내부 코드 346542 · Android 8.0+",
         url: releaseDownloadPath("HtOMS-BK"),
         downloadLabel: "Android용 APK 다운로드",
-        checksum: "66ebee56a5724be93798dd7de7dbd6a80e2139d4cf4bfcc19ae6bbf45806c54d",
         availabilityNote: "서명 APK 재다운로드·무결성 검증 완료 · SM-F968N 데이터 유지 교체 설치·실행 확인",
       },
     ],
@@ -681,7 +671,7 @@ export const apps: AppData[] = [
       { state: "done", title: "iPhone·iPad 검증", body: "공통 빌드와 실제 iPhone 설치·실행 검증" },
       { state: "done", title: "iOS 내부 빌드 갱신", body: "build 202608291628을 회사 내부 TestFlight 그룹에 제공하고 외부 공개 링크는 비활성으로 유지" },
       { state: "done", title: "Android 대응 앱 구현", body: "2.0.0 휴대전화·태블릿·Google TV용 Compose 앱과 Glance 위젯의 단위 테스트·공개용 QA 빌드·린트 검증" },
-      { state: "done", title: "Android 2.1.1 공개", body: "edge-to-edge 안전 영역을 보강한 제품 2.1.1 · 빌드 202608291542 · 내부 코드 346542의 서명 APK와 SHA-256 체크섬을 GitHub Releases에 공개" },
+      { state: "done", title: "Android 2.1.1 공개", body: "edge-to-edge 안전 영역을 보강한 제품 2.1.1 · 빌드 202608291542 · 내부 코드 346542의 서명 APK를 GitHub Releases에 공개" },
       { state: "next", title: "Android 화면 매치업", body: "태블릿과 Google TV를 포함한 대표 기기 화면을 iPhone·iPad 기준과 비교해 세부 배치를 조정" },
     ],
     screenshots: [
@@ -792,7 +782,6 @@ export const apps: AppData[] = [
         detail: "2.1.0 · 빌드 202608292118 · 내부 코드 346907 · Android 8.0+",
         url: releaseDownloadPath("OurButton-Android"),
         downloadLabel: "Android APK 바로 받기",
-        checksum: "52b080541701047c43cac5706b21da18ee54a4ad523f0b0f16508fcd948cd563",
         availabilityNote: "기존 설치와 같은 서명의 Android 기기 2대에서 데이터 유지 교체 설치·실행 확인 · 다른 기존 서명의 태블릿 설치는 보존",
       },
     ],
@@ -825,7 +814,7 @@ export const apps: AppData[] = [
       { state: "done", title: "Android 2.0.1 공개", body: "제품 2.0.1 · 빌드 202608251400 · 내부 코드 340680의 기존 설치 호환 전용 서명 APK와 제품 버전 기준 자동 업데이트를 GitHub Releases에 공개" },
       { state: "done", title: "Android 2.0.2 여러 공간 안정화 공개", body: "공간을 바꿔도 진행 중인 전송 대상이 섞이지 않고 구성원·알림 상태를 정확히 새로고침하는 패치를 전용 서명 APK로 공개" },
       { state: "done", title: "iPhone 2.1.0 Public Beta 승인", body: "build 202608292118 Apple 외부 베타 심사 승인 · 기존 Public Beta 링크와 10,000명 한도 유지 · 공개 테스트 참여 가능" },
-      { state: "done", title: "Android 2.1.0 공개", body: "제품 2.1.0 · 빌드 202608292118 · 내부 코드 346907의 APK와 SHA-256 체크섬을 GitHub Releases에 공개하고 호환 서명의 실기기 2대에서 데이터 유지 교체 설치·실행 확인" },
+      { state: "done", title: "Android 2.1.0 공개", body: "제품 2.1.0 · 빌드 202608292118 · 내부 코드 346907의 APK를 GitHub Releases에 공개하고 호환 서명의 실기기 2대에서 데이터 유지 교체 설치·실행 확인" },
       { state: "done", title: "NAS 여러 공간 중계 반영", body: "운영 서버를 최신 여러 공간 서버로 교체하고 원거리 가족 목록 경로까지 확인" },
       { state: "done", title: "Android 원격 수신", body: "FCM 등록·백그라운드 대상 검증·원본 띵동 소리·호출 기록까지 NAS 실전 전달 확인" },
     ],
@@ -863,7 +852,6 @@ export const apps: AppData[] = [
         detail: "2.6.1 · 빌드 202609021723 · 내부 코드 352403 · Android 8.0+",
         url: releaseDownloadPath("Stargram-Android"),
         downloadLabel: "Android APK 바로 받기",
-        checksum: "193ed6f3ee88951229edb8b9868bced7125859869122c2850ce9c4728f8a46f9",
         availabilityNote: "휴대전화·태블릿·Google TV 지원 · Android 실기기 3대에서 데이터 유지 교체 설치·실행 확인",
       },
     ],
@@ -897,7 +885,7 @@ export const apps: AppData[] = [
       { state: "done", title: "iPhone·iPad 원본 분석", body: "실제로 도달 가능한 만들기·내 설정 화면과 상태·문구·동작을 소스 기준으로 정리" },
       { state: "done", title: "Android 구현과 실기기 검증", body: "휴대전화·태블릿 반응형 화면, 생성·검증·미디어·설정 흐름 구현과 테스트 완료" },
       { state: "done", title: "Android 2.5.1 공개", body: "제품 2.5.1 · 빌드 202608291746 · 내부 코드 346666의 자동화·공유·카메라 흐름을 담은 APK를 GitHub Releases에 공개하고 Android 실기기 3대에서 데이터 유지 교체 설치·실행 검증" },
-      { state: "done", title: "Android 2.6.1 공개", body: "Stargram 이름을 반영한 제품 2.6.1 · 빌드 202609021723 · 내부 코드 352403의 APK와 SHA-256 체크섬을 GitHub Releases에 공개" },
+      { state: "done", title: "Android 2.6.1 공개", body: "Stargram 이름을 반영한 제품 2.6.1 · 빌드 202609021723 · 내부 코드 352403의 APK를 GitHub Releases에 공개" },
       { state: "done", title: "iPhone·iPad 2.5.1 설치·업로드", body: "2.5.1 (202608291746)을 사용 가능한 iPhone 2대에 데이터 유지 교체 설치하고 App Store Connect 업로드와 기존 내부 테스트 9명 연결을 확인" },
       { state: "done", title: "iOS·iPadOS 2.6.0 Public Beta 승인", body: "build 202608292118 Apple 외부 베타 심사 승인 · 기존 Public Beta 링크와 10,000명 한도 유지 · 공개 테스트 참여 가능" },
       { state: "next", title: "게시 흐름 다듬기", body: "실제 공유 앱별 게시 결과와 사용자 피드백을 바탕으로 다음 개선 항목을 정리" },
@@ -999,8 +987,8 @@ export const apps: AppData[] = [
     artwork: "phones",
     platforms: [
       { name: "iPhone · iPad", status: "TestFlight", detail: "0.4.4 (202609051202) · iOS·iPadOS 17+", availabilityNote: "0.4.4 내부 테스트 제공 · 외부 베타 심사 대기 · 기존 공개 베타 참여 가능" },
-      { name: "Mac", status: "공개", detail: "0.4.4 (202609051202) · macOS 14+ · Universal · Apple 공증 완료", url: releaseDownloadPath("WhattoEat"), downloadLabel: "Mac용 DMG 다운로드", checksum: "0f10f83b51240731dd8ec01d307dceb05e75e667804204db855f670ca0cfa93d", availabilityNote: "Apple 공증과 공개 다운로드 무결성 확인 · Mac 교체 설치·실행 완료" },
-      { name: "Android · Google TV", status: "공개", detail: "0.4.4 · 빌드 202609051202 · 내부 코드 356402 · Android 8.0+", url: releaseDownloadPath("WhattoEat-Android"), downloadLabel: "Android용 APK 다운로드", checksum: "c30833f2b4404446d38f57e43c0e5e346410cc41fb4a177ee2dd9222675e6add", availabilityNote: "공개 APK 릴리스 서명·해시 확인 · 동일 소스의 개발판을 휴대전화 2대와 태블릿에 데이터 유지 교체 설치·실행 · 실제 위치 수신과 TV 조작 확인 전" },
+      { name: "Mac", status: "공개", detail: "0.4.4 (202609051202) · macOS 14+ · Universal · Apple 공증 완료", url: releaseDownloadPath("WhattoEat"), downloadLabel: "Mac용 DMG 다운로드", availabilityNote: "Apple 공증과 공개 다운로드 무결성 확인 · Mac 교체 설치·실행 완료" },
+      { name: "Android · Google TV", status: "공개", detail: "0.4.4 · 빌드 202609051202 · 내부 코드 356402 · Android 8.0+", url: releaseDownloadPath("WhattoEat-Android"), downloadLabel: "Android용 APK 다운로드", availabilityNote: "공개 APK 릴리스 서명·해시 확인 · 동일 소스의 개발판을 휴대전화 2대와 태블릿에 데이터 유지 교체 설치·실행 · 실제 위치 수신과 TV 조작 확인 전" },
     ],
     features: [
       { title: "가까운 13곳에서 한 끼 고르기", body: "현 위치 또는 직접 고른 지역에서 가까운 음식점 13곳을 추린 뒤, 오늘의 한 끼와 함께 볼 맛집을 사진이 시원하게 보이는 2열 목록으로 보여줍니다." },
@@ -1081,8 +1069,7 @@ export const apps: AppData[] = [
         detail: "0.3.1 · 빌드 202608312019 · 내부 코드 349699 · Android 8.0+",
         url: releaseDownloadPath("DenimDex-Android"),
         downloadLabel: "Android용 APK 다운로드",
-        checksum: "6cb584f80e28e4217e69ba5e323fcb93a8127b64c28ef9edbc56700b0c95b565",
-        availabilityNote: "SM-F956N 휴대전화와 SM-T500 태블릿에 동일 소스 개발 빌드를 데이터 보존 방식으로 교체 설치·실행했고, 공개 APK는 기존 정식 인증서와 SHA-256을 확인했습니다. Google TV 화면 확인은 남아 있습니다.",
+        availabilityNote: "SM-F956N 휴대전화와 SM-T500 태블릿에 동일 소스 개발 빌드를 데이터 보존 방식으로 교체 설치·실행했고, 공개 APK는 기존 정식 인증서를 확인했습니다. Google TV 화면 확인은 남아 있습니다.",
       },
     ],
     features: [
@@ -1145,7 +1132,6 @@ export const apps: AppData[] = [
         detail: "0.1.0 · 빌드 202609092111 · macOS 13+ · Apple Silicon",
         url: releaseDownloadPath("Alfred-NaverMap"),
         downloadLabel: "Alfred 워크플로우 받기",
-        checksum: "a2a42c200987a5857efdef3b7ceb83801e704e27d32dc52a84d35fc10a45d290",
         availabilityNote: "Developer ID 서명 · Apple 공증 · 공개 다운로드 파일 확인",
       },
     ],
@@ -1189,8 +1175,7 @@ export const apps: AppData[] = [
         detail: "0.7.2 · AI 앱 전면 활성화 후 입력창 준비 시 자동 붙여넣기",
         url: "https://github.com/armsone/Alfred-AI-Search/releases/download/v0.7.2/Alfred-AI-Search-0.7.2.alfredworkflow",
         downloadLabel: "Alfred 워크플로우 받기",
-        checksum: "1955ebbe7a8d2e37fa36ae0d6b07f973b4500b6f6d0c1bfde7234981ba3e7db5",
-        availabilityNote: "GitHub Release 공개 파일 다운로드와 SHA-256 무결성 확인 완료",
+        availabilityNote: "GitHub Release 공개 파일 다운로드 무결성 확인 완료",
       },
     ],
     features: [
@@ -1245,7 +1230,6 @@ export const apps: AppData[] = [
         detail: "AIBI 0.4.4 · Apple·Android 공통 엔진 · Stargram 동기화 완료",
         url: "https://github.com/armsone/AIBI/releases/download/v0.4.4/AIBI-0.4.4.zip",
         downloadLabel: "AIBI 0.4.4 소스 받기",
-        checksum: "0f67bbceb91c1d069d9224267a7b43b1ecb8aafe5e6973af79732c28371f7621",
         availabilityNote: "독립 소스 공개 · Stargram에는 검증된 같은 엔진 포함",
       },
     ],
@@ -1257,7 +1241,7 @@ export const apps: AppData[] = [
       { title: "로그아웃과 재로그인까지", body: "각 서비스의 로그인 상태를 다시 확인하고, 앱 전용 웹 세션을 모두 로그아웃한 뒤 필요한 계정으로 다시 로그인할 수 있습니다." },
       { title: "기다림과 취소가 분명하게", body: "생성 뒤 1분 59초의 남은 시간과 감소하는 진행 막대를 보여주며, 숨김·보이기 화면 어디서든 취소하면 작업과 브라우저를 즉시 정리합니다." },
       { title: "제공자 변화는 어댑터에서만", body: "Gemini·ChatGPT·Claude의 화면 구조 변화는 제공자별 선택자와 회귀 자료에 격리해 공통 상태 기계와 앱 결과 흐름을 흔들지 않습니다." },
-      { title: "앱별 수정은 덮어쓰지 않는 업데이트", body: "버전과 SHA-256 잠금으로 이식 파일을 관리합니다. 앱에서 따로 수정한 파일이 발견되면 자동 업데이트를 멈추고 충돌을 먼저 조정합니다." },
+      { title: "앱별 수정은 덮어쓰지 않는 업데이트", body: "버전과 무결성 잠금으로 이식 파일을 관리합니다. 앱에서 따로 수정한 파일이 발견되면 자동 업데이트를 멈추고 충돌을 먼저 조정합니다." },
     ],
     guide: [
       { title: "앱에서 AI 선택", body: "Stargram에서 Gemini·ChatGPT·Claude 중 하나를 누르면 별도 확인 단계 없이 아이비 작업이 시작됩니다." },
@@ -1271,7 +1255,7 @@ export const apps: AppData[] = [
       { state: "done", title: "최대 20장 선택과 입력창 복구", body: "앱별 선택으로 최대 20장을 원자적으로 첨부하고, 공식 AI 화면이 입력창을 늦게 교체해도 내용을 보존해 다시 입력하도록 개선" },
       { state: "done", title: "Stargram iOS 이식", body: "공유 WKWebView 세션, 숨김·보이기 실행, 로그인 판정, 결과 안정화, 1:59 제한과 취소 흐름을 빌드 검증" },
       { state: "done", title: "Stargram Android 이식", body: "EXIF 방향 보정·순차 축소·FileProvider 다중 첨부·숨김 키보드 정리와 로그인 관리를 연결하고 3대의 Android 기기에서 배포 빌드 설치·실행 검증" },
-      { state: "done", title: "충돌 방지 업데이트", body: "등록 앱 전체 사전 점검, SHA-256 잠금, 원자적 복사와 앱 로컬 수정 보호를 자동화" },
+      { state: "done", title: "충돌 방지 업데이트", body: "등록 앱 전체 사전 점검, 무결성 잠금, 원자적 복사와 앱 로컬 수정 보호를 자동화" },
       { state: "active", title: "제공자 변화 회귀 자료 확대", body: "개인정보를 제거한 로그인·생성 중·완료·오류 fixture와 실기기 추적을 제공자별로 축적" },
     ],
     github: ["https://github.com/armsone/AIBI"],
@@ -1301,7 +1285,6 @@ export const apps: AppData[] = [
         detail: "0.1.4 · 완전 소스 패키지 · Manifest V3 · 압축해제 확장 설치",
         url: releaseDownloadPath("AutoShorts"),
         downloadLabel: "자동쇼츠 ZIP 다운로드",
-        checksum: "a9c3bdd0ecbc8ab808dda217e456c179044fd0c88e381f838dea07bdb427cb5a",
         availabilityNote: "실행 파일·모든 아이콘 원본·설치 안내·테스트 소스를 포함한 완전한 복원 패키지",
       },
     ],

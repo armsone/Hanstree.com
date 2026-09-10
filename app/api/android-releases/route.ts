@@ -12,7 +12,6 @@ type GitHubAsset = {
   size: number;
   content_type: string;
   browser_download_url: string;
-  digest?: string | null;
   download_count: number;
 };
 
@@ -66,7 +65,6 @@ async function readLatestRelease(source: AndroidReleaseSource): Promise<AndroidR
       name: apk.name,
       size: apk.size,
       contentType: apk.content_type,
-      digest: apk.digest || null,
       downloadCount: apk.download_count,
     },
   };

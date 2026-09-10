@@ -11,6 +11,7 @@ import { apps, findApp } from "./data";
 import { appCardImage } from "./media";
 import { testFlightBuilds } from "./testflight";
 import { getSiteBrand } from "./site-brand";
+import { SiteHeaderBrand } from "./components/SiteHeaderBrand";
 
 const principleVisuals: AdvantageVariant[] = ["compass", "timeline-dots", "devices-pair"];
 
@@ -310,16 +311,13 @@ export default async function Home() {
   );
 }
 
-export async function SiteHeader() {
+export async function SiteHeader({ currentPageName }: { currentPageName?: string } = {}) {
   const brand = await getSiteBrand();
   return (
     <header className="site-header">
       <div className="shell header-inner">
         {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-        <a className="wordmark header-wordmark" href="/" aria-label={`${brand.koreanName} 홈`}>
-          <Image className={`header-brand-icon${brand.name === "NASFINDER" ? " header-brand-icon-nasfinder" : ""}`} src={brand.icon} alt="" width={886} height={886} sizes="32px" />
-          <span>{brand.name}</span>
-        </a>
+        <SiteHeaderBrand name={brand.name} koreanName={brand.koreanName} icon={brand.icon} showNasFinderIcon={brand.name === "NASFINDER"} currentPageName={currentPageName} />
         <nav aria-label="주요 메뉴">
           {/* Native anchors preserve same-page hash scrolling in the deployed vinext runtime. */}
           {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
