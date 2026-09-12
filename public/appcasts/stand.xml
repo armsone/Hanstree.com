@@ -3,6 +3,16 @@
     <channel>
         <title>S.tand</title>
         <item>
+            <title>2.5.6</title>
+            <pubDate>Sat, 12 Sep 2026 17:56:27 +0900</pubDate>
+            <link>https://hanstree.com/apps/stand</link>
+            <sparkle:version>202609121751</sparkle:version>
+            <sparkle:shortVersionString>2.5.6</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <description>날씨를 15분마다 갱신하고 재생목록을 빠방 사이트 순서로 표시합니다. 시작 안내 버튼의 가독성을 개선했습니다.</description>
+            <enclosure url="https://github.com/armsone/S.tand/releases/download/macos-v2.5.6/S.tand-macOS-2.5.6.dmg" length="13920458" type="application/octet-stream" sparkle:edSignature="xu3qyS10oo6D2vpzXZDlqlVlrQNOEJYgsZwCvnsrPqnfilIm31AoRsDOUWL5yk+6AS+lifNPLdiuPMgfEURrAg=="/>
+        </item>
+        <item>
             <title>2.5.4</title>
             <pubDate>Sat, 12 Sep 2026 14:19:41 +0900</pubDate>
             <link>https://hanstree.com/apps/stand</link>

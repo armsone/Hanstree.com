@@ -14,7 +14,7 @@ export type TestFlightBuild = {
 export const testFlightBuilds: TestFlightBuild[] = [
   { slug: "nasfinder", appName: "나스파인더", build: "202608271227", uploadedAt: "2026-08-27T12:43:56+09:00", expiresAt: "2026-11-25T12:43:56+09:00", inviteUrl: "https://testflight.apple.com/join/3m3bhwJz", publicBetaState: "approved" },
   { slug: "hanclip", appName: "한클립", build: "202609071316", uploadedAt: "2026-09-07T13:39:57+09:00", inviteUrl: "https://testflight.apple.com/join/m2YsgUJW", publicBetaState: "waitingForReview" },
-  { slug: "stand", appName: "S.tand", build: "202609121409", uploadedAt: "2026-09-12T14:12:31+09:00", inviteAvailable: true, inviteUrl: "https://testflight.apple.com/join/mGUYTjdp", publicBetaState: "waitingForReview" },
+  { slug: "stand", appName: "S.tand", build: "202609121751", uploadedAt: "2026-09-12T17:57:43+09:00", inviteAvailable: true, inviteUrl: "https://testflight.apple.com/join/mGUYTjdp", publicBetaState: "waitingForReview" },
   { slug: "htoms-brief", appName: "HtOMS 브리프", build: "202608291628", uploadedAt: "2026-08-29T16:37:14+09:00", inviteUrl: null, publicBetaState: "internalOnly" },
   { slug: "starmanager", appName: "Stargram", build: "202609101649", uploadedAt: "2026-09-10T20:32:23+09:00", inviteUrl: "https://testflight.apple.com/join/nzmW4WxW", inviteAvailable: true, publicBetaState: "waitingForReview" },
   { slug: "button", appName: "OurButton", build: "202608292118", uploadedAt: "2026-08-29T21:41:23+09:00", expiresAt: "2026-11-27T21:41:23+09:00", inviteUrl: "https://testflight.apple.com/join/RKcxgTkc", publicBetaState: "approved" },
