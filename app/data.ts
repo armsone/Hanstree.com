@@ -52,7 +52,7 @@ export const apps: AppData[] = [
       {
         name: "Mac용 NasFinder",
         status: "공개",
-        detail: "2.2.2 (202608271227) · macOS 14+ · Universal · Apple 공증 완료",
+        detail: "2.2.3 (202609051155) · macOS 14+ · Universal · Apple 공증 완료",
         url: releaseDownloadPath("NasFinder-Mac"),
         downloadLabel: "Mac용 DMG 바로 받기",
         availabilityNote: "Developer ID 서명 · Apple 공증 · Gatekeeper 확인",
@@ -60,7 +60,7 @@ export const apps: AppData[] = [
       {
         name: "Android",
         status: "공개",
-        detail: "2.2.2 · 빌드 202608271106 · 내부 코드 343386 · Android 8.0+",
+        detail: "2.2.3 · 빌드 202609051155 · 내부 코드 356395 · Android 8.0+",
         url: releaseDownloadPath("NasFinder-Android"),
         downloadLabel: "Android APK 바로 받기",
         availabilityNote: "27,948,170바이트 · 기존 직접 설치 업데이트 계보 서명 확인",
@@ -97,8 +97,8 @@ export const apps: AppData[] = [
       { state: "done", title: "iPhone·iPad·Mac 지원", body: "iPhone과 iPad 앱 완성, 동일 앱의 Apple Silicon Mac 설치와 실행 검증" },
       { state: "done", title: "Live Photo·Motion Photo 전송", body: "iPhone과 Android를 QR로 연결해 사진·영상·움직이는 사진의 원본 보존과 교차 변환 구현" },
       { state: "active", title: "iPhone·iPad 2.2.2 Public Beta", body: "build 202608271227 처리 완료 · 기존 내부 그룹 9명 보존 · 10,000명 공개 링크 유지 · 새 빌드 Apple 외부 베타 심사 대기 중" },
-      { state: "done", title: "Mac용 NasFinder 2.2.2 공개", body: "즐겨찾기 폴더 표지와 살색 비율별 최대 2.5pt 처리를 반영한 Universal DMG를 Developer ID로 서명하고 Apple 공증·Gatekeeper 확인 후 공개" },
-      { state: "done", title: "Android 2.2.2 공개", body: "폴더 수퍼썸네일의 흐림 처리와 넘침 표시를 다듬은 빌드 202608271106 · 내부 코드 343386의 서명 APK를 GitHub Releases에 공개" },
+      { state: "done", title: "Mac용 NasFinder 2.2.3 공개", body: "사진·영상 이어보기에서 사진을 건너뛰던 문제와 Mac의 배터리 조건 때문에 Super Thumbnail 작업이 막히던 문제를 수정했습니다. Developer ID 서명과 Apple 공증을 적용한 Universal DMG를 공개했습니다." },
+      { state: "done", title: "Android 2.2.3 공개", body: "사진을 열면 슬라이드쇼를 시작하고, 영상이 끝난 뒤 사진도 설정한 간격대로 이어봅니다. 빌드 202609051155 · 내부 코드 356395의 서명 APK를 공개했습니다." },
       { state: "done", title: "Super Thumbnail 2.2.0 동기화", body: "3/13 대표 장면, 50% 검은 화면의 6/13 재시도, 최종 1.5pt 단일 블러와 우선 표시를 Apple·Android·Mac에 반영" },
     ],
     screenshots: [
