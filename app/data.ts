@@ -1000,7 +1000,7 @@ export const apps: AppData[] = [
     platforms: [
       { name: "iPhone · iPad", status: "TestFlight", detail: "0.5.0 (202609132101) · iOS·iPadOS 17+", availabilityNote: "0.5.0 내부 테스트 제공 · Public Beta 심사 제출 완료 · 새 빌드는 Apple 승인 대기" },
       { name: "Mac", status: "공개", detail: "0.5.0 (202609132101) · macOS 14+ · Universal · Apple 공증 완료", url: releaseDownloadPath("WhattoEat"), downloadLabel: "Mac용 DMG 다운로드", availabilityNote: "Apple 공증과 공개 다운로드 무결성 확인 · Mac 교체 설치·실행 완료" },
-      { name: "Android · Google TV", status: "공개", detail: "0.5.0 · 빌드 202609132101 · 내부 코드 368461 · Android 8.0+", url: releaseDownloadPath("WhattoEat-Android"), downloadLabel: "Android용 APK 다운로드", availabilityNote: "기존 배포본과 동일한 서명·공개 APK 해시 확인 · 새 버전의 Android 실기기 실행은 연결 기기 부재로 미확인" },
+      { name: "Android · Google TV", status: "공개", detail: "0.5.2 · 빌드 202609132217 · 내부 코드 368537 · Android 8.0+", url: releaseDownloadPath("WhattoEat-Android"), downloadLabel: "Android용 APK 다운로드", availabilityNote: "앱에서 자동 확인·조건부 다운로드 · 완료 알림에서 설치 · Android 설치 확인 필요" },
     ],
     features: [
       { title: "공공기관이 이용한 식당을 먼저", body: "서울을 포함한 17개 지역에서 최근 18개월의 식사 이용 기록을 모았습니다. 부서 수 제한 없이 1건 이상이면 포함하며, 가까운 후보 중 이름과 주소가 일치하는 식당을 거리순으로 먼저 보여 줍니다." },
@@ -1039,6 +1039,8 @@ export const apps: AppData[] = [
       { state: "done", title: "Android 0.4.3 위치 권한 복구 공개", body: "build 202608291549 · 내부 코드 346549 APK를 공개했습니다. 첫 실행 권한 안내와 영구 거부 후 앱 설정 복구, 앱 복귀 뒤 현재 흐름 재개를 보완했습니다." },
       { state: "done", title: "Mac·Android 0.4.4 공개", body: "build 202609051202. 휴일 제외 알림과 추천 전체 기본값을 추가하고 Android 10 위치 요청 오류를 수정했습니다. 공증된 Mac DMG와 기존 릴리스 키로 서명한 Android APK를 공개했습니다." },
       { state: "done", title: "공공기관 기록 우선 추천 0.5.0 공개", body: "최근 18개월·이용 1건 기준으로 17개 지역 11,091곳을 재집계했습니다. Mac 공증 DMG와 서명된 Android APK를 공개하고 Mac 교체 설치·실행을 확인했습니다." },
+      { state: "done", title: "Android 0.5.1 업데이트 인식 수정", body: "공식 APK 파일명 대소문자 차이 때문에 업데이트가 누락되던 문제를 수정해 공개했습니다. 기존 앱은 수정된 파일을 찾아 자동으로 내려받고, Android 설치 확인 후 업데이트할 수 있습니다." },
+      { state: "done", title: "Android 0.5.2 업데이트 완료 알림", body: "업데이트 다운로드가 끝난 뒤에도 Android 알림을 남겨 앱을 찾아 들어오지 않아도 설치 단계로 이어지도록 개선했습니다. 앱 삭제 없이 Android 시스템 확인만 거치면 업데이트할 수 있습니다." },
       { state: "active", title: "iPhone·iPad 0.5.0 Public Beta 심사", body: "build 202609132101 업로드·처리와 기존 Public Beta 그룹 연결, 심사 제출을 완료했습니다. 새 빌드는 Apple 승인 대기 중입니다." },
       { state: "active", title: "태블릿·TV·접근성 후속 검증", body: "태블릿과 Google TV 리모컨, TalkBack 실제 읽기 순서, 밀기 후 재실행 저장과 지도 오류 분기를 실제 기기에서 추가 확인할 예정입니다." },
     ],
