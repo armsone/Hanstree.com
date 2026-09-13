@@ -1041,6 +1041,7 @@ export const apps: AppData[] = [
       { state: "done", title: "공공기관 기록 우선 추천 0.5.0 공개", body: "최근 18개월·이용 1건 기준으로 17개 지역 11,091곳을 재집계했습니다. Mac 공증 DMG와 서명된 Android APK를 공개하고 Mac 교체 설치·실행을 확인했습니다." },
       { state: "done", title: "Android 0.5.1 업데이트 인식 수정", body: "공식 APK 파일명 대소문자 차이 때문에 업데이트가 누락되던 문제를 수정해 공개했습니다. 기존 앱은 수정된 파일을 찾아 자동으로 내려받고, Android 설치 확인 후 업데이트할 수 있습니다." },
       { state: "done", title: "Android 0.5.2 업데이트 완료 알림", body: "업데이트 다운로드가 끝난 뒤에도 Android 알림을 남겨 앱을 찾아 들어오지 않아도 설치 단계로 이어지도록 개선했습니다. 앱 삭제 없이 Android 시스템 확인만 거치면 업데이트할 수 있습니다." },
+      { state: "done", title: "Android 0.5.3 새 버전 안내", body: "앱을 열면 새 버전 안내를 표시하고 업데이트 화면으로 이동합니다. 0.5.2 사용자는 이번 버전을 먼저 설치해야 하며, 앱 실행 안내는 그다음 업데이트부터 표시됩니다." },
       { state: "active", title: "iPhone·iPad 0.5.0 Public Beta 심사", body: "build 202609132101 업로드·처리와 기존 Public Beta 그룹 연결, 심사 제출을 완료했습니다. 새 빌드는 Apple 승인 대기 중입니다." },
       { state: "active", title: "태블릿·TV·접근성 후속 검증", body: "태블릿과 Google TV 리모컨, TalkBack 실제 읽기 순서, 밀기 후 재실행 저장과 지도 오류 분기를 실제 기기에서 추가 확인할 예정입니다." },
     ],
