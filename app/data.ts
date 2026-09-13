@@ -1000,7 +1000,7 @@ export const apps: AppData[] = [
     platforms: [
       { name: "iPhone · iPad", status: "TestFlight", detail: "0.5.0 (202609132101) · iOS·iPadOS 17+", availabilityNote: "0.5.0 내부 테스트 제공 · Public Beta 심사 제출 완료 · 새 빌드는 Apple 승인 대기" },
       { name: "Mac", status: "공개", detail: "0.5.0 (202609132101) · macOS 14+ · Universal · Apple 공증 완료", url: releaseDownloadPath("WhattoEat"), downloadLabel: "Mac용 DMG 다운로드", availabilityNote: "Apple 공증과 공개 다운로드 무결성 확인 · Mac 교체 설치·실행 완료" },
-      { name: "Android · Google TV", status: "공개", detail: "0.5.2 · 빌드 202609132217 · 내부 코드 368537 · Android 8.0+", url: releaseDownloadPath("WhattoEat-Android"), downloadLabel: "Android용 APK 다운로드", availabilityNote: "앱에서 자동 확인·조건부 다운로드 · 완료 알림에서 설치 · Android 설치 확인 필요" },
+      { name: "Android · Google TV", status: "공개", detail: "0.5.3 · 빌드 202609132251 · 내부 코드 368571 · Android 8.0+", url: releaseDownloadPath("WhattoEat-Android"), downloadLabel: "Android용 APK 다운로드", availabilityNote: "앱 실행 시 새 버전 안내 · 확인 후 업데이트 · GitHub 공개 릴리스" },
     ],
     features: [
       { title: "공공기관이 이용한 식당을 먼저", body: "서울을 포함한 17개 지역에서 최근 18개월의 식사 이용 기록을 모았습니다. 부서 수 제한 없이 1건 이상이면 포함하며, 가까운 후보 중 이름과 주소가 일치하는 식당을 거리순으로 먼저 보여 줍니다." },
