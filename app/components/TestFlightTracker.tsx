@@ -85,8 +85,10 @@ export function TestFlightTracker({ builds }: { builds: TestFlightBuild[] }) {
                 <div><dt>만료 예정</dt><dd>{formatDate(state.expires)}</dd></div>
                 {build.build && <div><dt>빌드</dt><dd>{build.build}</dd></div>}
               </dl>
+              {build.publicBetaState === "rejected" && <span className="flight-link flight-link-pending">Apple 수정 요청 · 새 빌드 필요</span>}
+              {build.publicBetaState === "waitingForReview" && <span className="flight-link flight-link-pending">최신 빌드 Apple 심사 대기</span>}
               {build.inviteAvailable !== false && build.inviteUrl
-                ? <><a className="flight-link" href={build.inviteUrl}>TestFlight 참여 <span aria-hidden="true">↗</span></a><ClientDownloadQrCode className="testflight-card-qr" href={build.inviteUrl} label={`${build.appName} TestFlight 외부 테스터 참여`} /></>
+                ? <><a className="flight-link" href={build.inviteUrl}>{build.publicBetaState === "waitingForReview" ? "기존 공개 링크 열기" : "TestFlight 참여"} <span aria-hidden="true">↗</span></a><ClientDownloadQrCode className="testflight-card-qr" href={build.inviteUrl} label={`${build.appName} TestFlight 공개 링크`} /></>
                 : build.publicBetaState === "waitingForReview" && <span className="flight-link flight-link-pending">Apple 외부 베타 심사 중</span>}
             </> : <div className="flight-empty"><strong>업로드 기록 대기</strong><p>TestFlight 업로드 시각이 확인되면 90일 만료 시계가 시작됩니다.</p><div className="flight-track"><span /></div></div>}
           </article>

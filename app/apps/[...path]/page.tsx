@@ -134,6 +134,7 @@ function HeroAvailability({ app }: { app: NonNullable<ReturnType<typeof findApp>
   const testFlight = testFlightStatus(app.slug);
   const inviteUrl = testFlight?.inviteAvailable !== false ? testFlight?.inviteUrl ?? null : null;
   const waitingForReview = testFlight?.publicBetaState === "waitingForReview";
+  const rejected = testFlight?.publicBetaState === "rejected";
   const needsReviewAccount = testFlight?.publicBetaState === "needsReviewAccount";
   const internalOnly = testFlight?.publicBetaState === "internalOnly";
   const testFlightPlatforms = app.platforms.filter((platform) => platform.status === "TestFlight");
@@ -144,11 +145,11 @@ function HeroAvailability({ app }: { app: NonNullable<ReturnType<typeof findApp>
       {testFlightPlatforms.length > 0 && (
         <div className={`hero-beta-card${inviteUrl ? " hero-beta-card-ready" : ""}`}>
           <div>
-            <span>{inviteUrl ? "PUBLIC BETA" : internalOnly ? "INTERNAL ONLY" : waitingForReview ? "PUBLIC BETA · IN REVIEW" : needsReviewAccount ? "PUBLIC BETA · REVIEW ACCESS" : "PUBLIC BETA · BUILD PREPARING"}</span>
-            <strong>{inviteUrl ? "신청서 없이 바로 테스트하세요." : internalOnly ? "회사 내부 업무용으로 공개 테스트를 운영하지 않습니다." : waitingForReview ? "Apple 공개 테스트 심사 중입니다." : needsReviewAccount ? "외부용 빌드는 준비됐고 심사용 계정을 등록하고 있습니다." : "외부 테스트용 새 빌드를 준비하고 있습니다."}</strong>
+            <span>{internalOnly ? "INTERNAL ONLY" : rejected ? "PUBLIC BETA · ACTION REQUIRED" : waitingForReview ? "PUBLIC BETA · IN REVIEW" : needsReviewAccount ? "PUBLIC BETA · REVIEW ACCESS" : inviteUrl ? "PUBLIC BETA" : "PUBLIC BETA · BUILD PREPARING"}</span>
+            <strong>{internalOnly ? "회사 내부 업무용으로 공개 테스트를 운영하지 않습니다." : rejected ? "Apple 심사에서 수정 요청이 있어 새 빌드가 필요합니다." : waitingForReview && inviteUrl ? "기존 공개 링크는 열려 있고, 최신 빌드는 Apple 심사를 기다리고 있습니다." : waitingForReview ? "Apple 공개 테스트 심사 중입니다." : needsReviewAccount ? "외부용 빌드는 준비됐고 심사용 계정을 등록하고 있습니다." : inviteUrl ? "신청서 없이 바로 테스트하세요." : "외부 테스트용 새 빌드를 준비하고 있습니다."}</strong>
             <small>{testFlightPlatforms.map((platform) => platform.name).join(" · ")}</small>
           </div>
-          {inviteUrl ? <a href={inviteUrl}>TestFlight에서 참여 <span aria-hidden="true">↗</span></a> : <span className="hero-beta-pending">{internalOnly ? "내부 전용" : waitingForReview ? "심사 중" : needsReviewAccount ? "심사 계정 준비" : "빌드 준비"}</span>}
+          {inviteUrl ? <a href={inviteUrl}>{waitingForReview ? "기존 공개 링크 열기" : "TestFlight에서 참여"} <span aria-hidden="true">↗</span></a> : <span className="hero-beta-pending">{internalOnly ? "내부 전용" : rejected ? "새 빌드 준비 필요" : waitingForReview ? "심사 중" : needsReviewAccount ? "심사 계정 준비" : "빌드 준비"}</span>}
         </div>
       )}
 
@@ -312,10 +313,10 @@ export default async function AppRoute({ params }: RouteProps) {
           {app.platforms.map((platform) => {
             const testFlight = platform.status === "TestFlight" ? testFlightStatus(app.slug) : null;
             const inviteUrl = testFlight?.inviteAvailable !== false ? testFlight?.inviteUrl ?? null : null;
-            const pendingCopy = testFlight?.publicBetaState === "internalOnly" ? "회사 내부 전용" : testFlight?.publicBetaState === "waitingForReview" ? "Apple 공개 테스트 심사 중" : testFlight?.publicBetaState === "needsReviewAccount" ? "Apple 심사용 계정 준비 중" : "외부 테스트용 빌드 준비 중";
+            const pendingCopy = testFlight?.publicBetaState === "internalOnly" ? "회사 내부 전용" : testFlight?.publicBetaState === "rejected" ? "Apple 심사 수정 요청 · 새 빌드 준비 필요" : testFlight?.publicBetaState === "waitingForReview" ? "새 빌드는 Apple 심사 대기 중" : testFlight?.publicBetaState === "needsReviewAccount" ? "Apple 심사용 계정 준비 중" : "외부 테스트용 빌드 준비 중";
             const qrUrl = platform.url ? downloadQrUrl(platform.url) : inviteUrl;
             const qrLabel = platform.url ? platform.downloadLabel ?? "공식 다운로드" : "TestFlight 외부 테스터 참여";
-            return <article className={qrUrl ? "download-item-with-qr" : undefined} key={platform.name}><div className="download-platform-copy"><div className="download-platform-head"><AdvantageVisual variant={platformVisual(platform.name)} /><span className={`status-dot status-${platform.status.replace(" ", "-")}`} /><h3>{platform.name}</h3></div><p>{platform.detail} · {platform.status}</p>{platform.url ? <a href={platform.url}>{platform.downloadLabel ?? "다운로드 페이지"} <span aria-hidden="true">↗</span></a> : inviteUrl ? <a className="testflight-apply-download" href={inviteUrl}>TestFlight 바로 참여 <span aria-hidden="true">↗</span></a> : <span>{platform.status === "TestFlight" ? pendingCopy : platform.availabilityNote ?? "공개 링크 준비 중"}</span>}</div>{qrUrl && <DownloadQrCode href={qrUrl} label={qrLabel} />}</article>;
+            return <article className={qrUrl ? "download-item-with-qr" : undefined} key={platform.name}><div className="download-platform-copy"><div className="download-platform-head"><AdvantageVisual variant={platformVisual(platform.name)} /><span className={`status-dot status-${platform.status.replace(" ", "-")}`} /><h3>{platform.name}</h3></div><p>{platform.detail} · {platform.status}</p>{platform.url ? <a href={platform.url}>{platform.downloadLabel ?? "다운로드 페이지"} <span aria-hidden="true">↗</span></a> : inviteUrl ? <a className="testflight-apply-download" href={inviteUrl}>{testFlight?.publicBetaState === "waitingForReview" ? "기존 TestFlight 공개 링크" : "TestFlight 바로 참여"} <span aria-hidden="true">↗</span></a> : <span>{platform.status === "TestFlight" ? pendingCopy : platform.availabilityNote ?? "공개 링크 준비 중"}</span>}</div>{qrUrl && <DownloadQrCode href={qrUrl} label={qrLabel} />}</article>;
           })}
         </div>
       </section>

@@ -318,7 +318,7 @@ export const apps: AppData[] = [
     icon: "/apps/stand/icon.png",
     artwork: "clock",
     platforms: [
-      { name: "iOS · iPadOS", status: "TestFlight", detail: "2.5.6 · 외부 베타 심사 대기 · iOS·iPadOS 17+", availabilityNote: "2.5.6 업로드·Public Beta 그룹 추가·심사 제출 완료 · 새 빌드 외부 제공은 Apple 승인 후" },
+      { name: "iOS · iPadOS", status: "TestFlight", detail: "2.5.6 · Public Beta 승인 · iOS·iPadOS 17+", availabilityNote: "2.5.6 외부 베타 승인 완료 · 공개 TestFlight 링크에서 참여 가능" },
       {
         name: "macOS",
         status: "공개",
@@ -338,7 +338,7 @@ export const apps: AppData[] = [
     features: [
       { title: "빠방의 현재 채널", body: "음악 목록 맨 앞에서 빠방을 선택하면 서버에 준비된 채널이 바로 나타납니다. 왼쪽은 재생·정지, 오른쪽은 다음 곡이며 길게 누르면 빠방 사이트와 같은 순서의 재생목록을 고릅니다." },
       { title: "덜 겹치는 빠방 재생목록", body: "최근에 들은 영상과 제목으로 확인한 같은 곡을 피하고, 아직 듣지 않은 곡부터 섞습니다. 후보를 모두 들으면 가장 오래전에 들은 곡부터 다시 준비합니다." },
-      { title: "잠깐 다녀와도 같은 위치에서", body: "다른 앱으로 이동하면 영상을 일시정지하고 미니플레이어를 1분 동안 유지합니다. 1분 안에 돌아오면 같은 영상의 같은 위치에서 이어듣기를 요청합니다. Mac·Android 2.5.6 공개, iPhone·iPad 2.5.6은 외부 심사 대기 중입니다." },
+      { title: "잠깐 다녀와도 같은 위치에서", body: "다른 앱으로 이동하면 영상을 일시정지하고 미니플레이어를 1분 동안 유지합니다. 1분 안에 돌아오면 같은 영상의 같은 위치에서 이어듣기를 요청합니다. Mac·Android 2.5.6 공개, iPhone·iPad 2.5.6 외부 베타 승인 완료." },
       { title: "고정된 미니플레이어", body: "미니플레이어는 설정 버튼과 한 묶음으로 고정되어 재생 중인 곡을 보여 줍니다. 별도 정지·다음·닫기·이동·투명도 버튼 없이 빠방 카드에서 바로 제어합니다." },
       { title: "켜 둔 동안 새로 받는 날씨", body: "위치 사용을 켜면 앱 화면이 열려 있는 동안 15분마다 날씨를 갱신하고, 약 3km 이상 이동했을 때도 다시 가져옵니다. 통신이 끊기면 기존 날씨를 유지하고 5분 뒤 재시도합니다. 화면을 벗어나거나 위치 사용을 끄면 위치 확인을 멈춥니다." },
       { title: "미니플레이어도 그레이 테마로", body: "Android에서도 그레이 테마를 고르면 미니플레이어의 영상과 미리보기에 흑백 처리가 적용됩니다. 다른 테마로 바꾸면 원래 색으로 돌아옵니다." },
@@ -375,7 +375,7 @@ export const apps: AppData[] = [
       { state: "done", title: "2.5.4 Android·Google TV 공개", body: "빠방 카테고리 선택을 길게 눌렀을 때 목록 밖의 선택 항목에 포커스를 주며 앱이 종료될 수 있던 문제를 고쳤습니다." },
       { state: "done", title: "2.5.3 Mac·Android·Google TV 공개", body: "빠방 카테고리를 서버의 현재 목록에 맞춰 표시하고 게임·먹방·여행 채널을 지원합니다. Google TV의 빠방 패널은 리모컨 초점과 안전 여백을 다듬어 공개했습니다." },
       { state: "done", title: "2.5.0 빠방 미니플레이어 공개", body: "Mac·Android에 9개 채널, 테마 배경과 진하기 조절, 이동 위치 기억을 추가했습니다. 영상 배치·이동 떨림·음악 터치와 매이트 모드 전환 충돌을 수정했습니다. Mac 공증과 연결된 Mac·iPhone·Android 3대의 설치·실행을 확인했습니다." },
-      { state: "active", title: "iPhone·iPad 2.5.6 외부 베타 심사", body: "기존 Public Beta 그룹에 새 빌드를 연결하고 심사 제출을 마쳤습니다. 새 빌드의 외부 제공은 Apple 승인 후 시작됩니다." },
+      { state: "done", title: "iPhone·iPad 2.5.6 외부 베타 승인", body: "Apple 외부 베타 심사 승인 완료 · 기존 Public Beta 링크와 10,000명 한도 유지 · 공개 TestFlight 링크에서 참여 가능" },
       { state: "done", title: "Mac 2.4.7 밝기 안전장치 공개", body: "앱 밝기와 iPhone 시스템 밝기를 분리하고 자동 밝기 변화를 다시 따라가도록 보강했습니다. 고정 모드의 밝기 잠금도 안정화했으며, Mac build 202609020556은 Apple 공증과 설치 검증을 마쳐 공개했습니다. 같은 iPhone·iPad 빌드도 공개 베타 승인을 받았습니다." },
       { state: "done", title: "2.4.6 잠소리 관리 공개", body: "잠자리 단위 패널과 길게 눌러 선택하는 전체 선택·해제, 합치기·지우기를 Apple·Android에 맞췄습니다. Mac DMG와 Android APK는 공개했고 iPhone·iPad build 202608310934도 공개 베타 승인을 받았습니다." },
       { state: "done", title: "2.4.0 밤샘 매이트 모드 공개", body: "화면 잠금·백그라운드 진입 전에 매이트 감지를 시작하고 실제 모니터링 상태를 기록하도록 보강했습니다. Android 폴드·트라이폴드 잠금 상태와 Apple 자동 전환 회귀 테스트를 확인한 build 202608301000입니다." },

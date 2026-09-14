@@ -14,6 +14,13 @@ const APP_SOURCES = [
 type AppStoreResource<T> = { id: string; attributes: T };
 type AppStoreResponse<T> = { data: Array<AppStoreResource<T>> };
 
+function publicBetaStateFromReview(state: string | undefined, fallback: TestFlightBuild["publicBetaState"]): TestFlightBuild["publicBetaState"] {
+  if (state === "APPROVED") return "approved";
+  if (state === "WAITING_FOR_REVIEW" || state === "IN_REVIEW") return "waitingForReview";
+  if (state === "REJECTED") return "rejected";
+  return fallback;
+}
+
 function base64Url(bytes: Uint8Array) {
   let binary = "";
   for (const byte of bytes) binary += String.fromCharCode(byte);
@@ -85,6 +92,11 @@ async function readLatestBuild(source: (typeof APP_SOURCES)[number], token: stri
   );
   const build = builds.data[0];
   if (!build) throw new Error(`Build not found: ${source.bundleId}`);
+  const submissions = await appStoreRequest<{ betaReviewState: string }>(
+    `/betaAppReviewSubmissions?filter[build]=${encodeURIComponent(build.id)}&limit=10`,
+    token,
+  );
+  const reviewState = submissions.data[0]?.attributes.betaReviewState;
 
   return {
     slug: source.slug,
@@ -94,7 +106,7 @@ async function readLatestBuild(source: (typeof APP_SOURCES)[number], token: stri
     expiresAt: build.attributes.expirationDate ?? null,
     inviteUrl: fallback?.inviteUrl ?? null,
     inviteAvailable: fallback?.inviteAvailable,
-    publicBetaState: fallback?.publicBetaState ?? "needsExternalBuild",
+    publicBetaState: publicBetaStateFromReview(reviewState, fallback?.publicBetaState ?? "needsExternalBuild"),
   };
 }
 
