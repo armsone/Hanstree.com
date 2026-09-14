@@ -50,7 +50,7 @@ export function AppHeroArtwork({ app }: { app: AppData }) {
 
 export function AppArtwork({ app, mode = "spotlight" }: { app: AppData; mode?: "spotlight" | "system" }) {
   if (app.slug === "cleanusb") {
-    return <div className="artwork" aria-label="CleanUSB 앱 아이콘"><Image src="/apps/cleanusb/icon.png" alt="CleanUSB 앱 아이콘" width={512} height={512} sizes="(max-width: 640px) 80vw, 512px" unoptimized /></div>;
+    return <div className="artwork" aria-label="CleanUSB 선택 정리 개념 이미지"><Image src="/apps/cleanusb/campaign-selection.webp" alt="삭제 전 파일을 살펴보는 CleanUSB 브랜드 이미지" width={1536} height={1024} sizes="(max-width: 640px) 92vw, 720px" unoptimized /></div>;
   }
 
   if (app.artwork === "directions") {

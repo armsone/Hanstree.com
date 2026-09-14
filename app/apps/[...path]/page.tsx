@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { AdvantageVisual, type AdvantageVariant } from "../../components/AdvantageVisual";
 import { AppDownloadCta } from "../../components/AppDownloadCta";
 import { AppArtwork, AppHeroArtwork, AppIcon } from "../../components/AppVisuals";
+import { CleanUSBPage } from "../../components/CleanUSBPage";
 import { ContactReveal } from "../../components/ContactReveal";
 import { DownloadQrCode } from "../../components/DownloadQrCode";
 import { findApp } from "../../data";
@@ -203,6 +204,7 @@ export default async function AppRoute({ params }: RouteProps) {
   if (section === "google-oauth" && app.slug !== "nasfinder") notFound();
   if (section && !["privacy", "terms", "support", "data-deletion", "google-oauth"].includes(section)) notFound();
   if (section === "google-oauth") return <GoogleOAuthPage />;
+  if (app.slug === "cleanusb" && !section) return <CleanUSBPage app={app} />;
   if (section) return <InfoPage app={app} section={section} />;
 
   return (
