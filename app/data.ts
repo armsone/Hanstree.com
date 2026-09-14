@@ -38,6 +38,36 @@ export type AppData = {
 
 export const apps: AppData[] = [
   {
+    slug: "cleanusb",
+    name: "클린USB",
+    english: "CleanUSB",
+    eyebrow: "CLEAN BEFORE YOU EJECT",
+    tagline: "USB를 뽑기 전, 불필요한 흔적만 정리하세요.",
+    summary: "USB와 외장 드라이브의 숨은 보조 파일을 미리 확인하고, 필요한 항목만 골라 정리합니다. 한국어 화면과 메뉴바에서 꺼내기까지 이어집니다.",
+    theme: "blue",
+    icon: "/apps/cleanusb/icon.png",
+    artwork: "cleanup",
+    platforms: [{ name: "Mac", status: "공개", detail: "0.1.0 (202609141608) · macOS 13+ · Apple Silicon·Intel Universal", url: releaseDownloadPath("CleanUSB-MacOS"), downloadLabel: "Mac용 DMG 받기", availabilityNote: "Developer ID 서명 · Apple 공증 완료" }],
+    features: [
+      { title: "삭제 전에 직접 확인", body: "파일 종류와 용량, 경로를 살펴보고 정리할 항목을 선택합니다. 경로 검색과 Finder에서 보기로 대상을 확인할 수 있습니다." },
+      { title: "자주 남는 보조 파일부터", body: "기본 대상은 .DS_Store와 Thumbs.db입니다. 메타데이터가 들어갈 수 있는 ._ 파일은 안내를 확인한 뒤 별도로 선택합니다." },
+      { title: "메뉴바에서 꺼내기까지", body: "메뉴바에서도 드라이브를 확인하고 정리와 일반 꺼내기를 실행합니다. 작업이 끝나지 않았거나 오류가 있으면 자동 꺼내기를 진행하지 않습니다." },
+      { title: "내가 시작할 때만 정리", body: "연결만으로 파일을 지우지 않습니다. 검사 후 선택한 파일을 확인하고 실행하며, 최근 작업 요약 20개는 이 Mac에 보관합니다." },
+    ],
+    guide: [
+      { title: "설치", body: "DMG를 열고 CleanUSB를 응용 프로그램 폴더로 옮긴 뒤 실행하세요." },
+      { title: "드라이브 검사", body: "USB나 외장 드라이브를 연결하고 검사하세요. 내부 디스크, 네트워크 드라이브, 읽기 전용 볼륨과 디스크 이미지는 대상에서 제외합니다." },
+      { title: "확인하고 정리", body: "목록에서 정리할 파일을 선택한 뒤 확인 창에서 실행하세요. ._ 파일은 리소스 포크나 태그 정보를 담을 수 있으므로 필요한 경우에만 선택하세요." },
+      { title: "꺼내기", body: "완료 결과를 확인하고 꺼내기를 누르세요. 다른 앱이 드라이브를 사용 중이면 해당 작업을 끝낸 후 다시 시도하세요." },
+    ],
+    progress: [
+      { state: "done", title: "0.1.0 공개", body: "Universal 앱 빌드, Developer ID 서명과 Apple 공증, 설치·실행 및 공개 DMG 다운로드 확인 완료" },
+      { state: "next", title: "실제 장치 검증 확대", body: "실물 USB의 삭제·꺼내기와 Intel Mac·이전 macOS에서의 실행 검증은 아직 완료되지 않았습니다." },
+    ],
+    github: ["https://github.com/armsone/CleanUSB-MacOS"],
+    privacy: ["드라이브 검사는 기기 안에서 처리하며 파일 내용을 서버로 전송하지 않습니다.", "최근 작업 요약은 이 Mac에 최대 20개 보관합니다.", "정리한 파일은 휴지통으로 이동하지 않고 삭제됩니다. 실행 전 대상을 확인하세요."],
+  },
+  {
     slug: "nasfinder",
     name: "나스파인더",
     english: "NasFinder",

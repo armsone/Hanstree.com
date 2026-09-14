@@ -49,6 +49,10 @@ export function AppHeroArtwork({ app }: { app: AppData }) {
 }
 
 export function AppArtwork({ app, mode = "spotlight" }: { app: AppData; mode?: "spotlight" | "system" }) {
+  if (app.slug === "cleanusb") {
+    return <div className="artwork" aria-label="CleanUSB 앱 아이콘"><Image src="/apps/cleanusb/icon.png" alt="CleanUSB 앱 아이콘" width={512} height={512} sizes="(max-width: 640px) 80vw, 512px" unoptimized /></div>;
+  }
+
   if (app.artwork === "directions") {
     return <DirectionsFlow />;
   }

@@ -2,6 +2,7 @@
 // /api/release-download는 이 목록에 있는 항목만 최신 정식 릴리스로 연결하며,
 // key는 사이트 집계(site_counters)의 다운로드 키와 동일하게 사용합니다.
 export const DOWNLOAD_KEYS = [
+  "CleanUSB-MacOS",
   "NasFinder-Android",
   "NasFinder-Mac",
   "NasFinder-Super-Thumbnail",
@@ -42,6 +43,12 @@ export type ReleaseDownload = {
 };
 
 export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
+  "CleanUSB-MacOS": {
+    label: "CleanUSB Mac",
+    repo: "CleanUSB-MacOS",
+    assetPattern: /^CleanUSB-\d+\.\d+\.\d+\.dmg$/i,
+    fallbackUrl: "https://github.com/armsone/CleanUSB-MacOS/releases/download/v0.1.0/CleanUSB-0.1.0.dmg",
+  },
   "Alfred-NaverMap": {
     label: "네이버 지도 길찾기",
     repo: "Alfred-NaverMap",
