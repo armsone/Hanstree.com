@@ -3,6 +3,7 @@
 // key는 사이트 집계(site_counters)의 다운로드 키와 동일하게 사용합니다.
 export const DOWNLOAD_KEYS = [
   "AIplaygrand-Win",
+  "AIplaygrand-Mac",
   "CleanUSB-MacOS",
   "NasFinder-Android",
   "NasFinder-Mac",
@@ -48,9 +49,16 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
   "AIplaygrand-Win": {
     label: "AIplaygrand Windows 테스트",
     repo: "AIplaygrand-Win",
-    pinnedPreviewTag: "v0.3.0",
-    assetPattern: /^AIplaygrand-Win-0\.3\.0-x64\.zip$/,
-    fallbackUrl: "https://github.com/armsone/AIplaygrand-Win/releases/download/v0.3.0/AIplaygrand-Win-0.3.0-x64.zip",
+    pinnedPreviewTag: "v0.4.0",
+    assetPattern: /^AIplaygrand-Win-0\.4\.0-x64\.zip$/,
+    fallbackUrl: "https://github.com/armsone/AIplaygrand-Win/releases/download/v0.4.0/AIplaygrand-Win-0.4.0-x64.zip",
+  },
+  "AIplaygrand-Mac": {
+    label: "AIplaygrand Mac 미리보기",
+    repo: "AIplaygrand-Win",
+    pinnedPreviewTag: "v0.4.0",
+    assetPattern: /^AIplaygrand-Win-Mac-0\.4\.0-arm64\.dmg$/,
+    fallbackUrl: "https://github.com/armsone/AIplaygrand-Win/releases/download/v0.4.0/AIplaygrand-Win-Mac-0.4.0-arm64.dmg",
   },
   "CleanUSB-MacOS": {
     label: "CleanUSB Mac",

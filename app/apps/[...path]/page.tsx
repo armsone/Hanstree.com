@@ -858,7 +858,7 @@ function InfoPage({ app, section }: { app: NonNullable<ReturnType<typeof findApp
             <LegalSection title="외부 서비스"><p>YouTube 영상 재생과 영상 정보 조회에는 Google 및 YouTube의 서비스와 정책이 적용됩니다. 빠방넷은 개인화 정보를 판매하지 않습니다.</p></LegalSection>
           </>}
           {app.slug === "aiplaygrand" && <>
-            <LegalSection title="저장 위치와 보유 기간"><p>팀 기록과 앱 웹창 쿠키는 실행 폴더의 Data/team.vault에 암호화하여 보관합니다. 직전 백업, 다운로드, 내보낸 파일과 이전 버전 원본은 별도로 남을 수 있습니다. 프로그램 파일을 삭제해도 Data와 별도 백업은 자동으로 삭제되지 않습니다.</p></LegalSection>
+            <LegalSection title="저장 위치와 보유 기간"><p>팀 기록·앱 웹창 쿠키·앱의 CLI 채팅과 릴레이 기록은 Data/team.vault에 암호화하여 보관합니다. 앱과 Data 폴더를 함께 보관하세요. CLI 자체 인증·설정·사용 이력은 PC에 별도로 남으며 이 보관함에 포함되지 않습니다. 직전 백업, 다운로드, 내보낸 파일과 이전 버전 원본도 별도로 남을 수 있습니다. 프로그램 파일을 삭제해도 Data와 별도 백업은 자동으로 삭제되지 않습니다.</p></LegalSection>
             <LegalSection title="삭제와 연결 해제"><p>서비스 창에서 로그아웃하고 저장하고 종료를 누르세요. 팀원 자리 제거만으로 로그인 데이터가 삭제되지는 않습니다. 전체 로컬 기록을 없애려면 앱과 CLI를 종료하고 필요한 기록을 확인한 뒤 Data 및 별도 백업을 직접 정리해야 합니다. CLI 인증과 사용 이력은 해당 공식 도구의 로그아웃·삭제 절차를 이용하세요. 외부 서비스에 보낸 질문과 답변은 해당 서비스에서 별도로 관리합니다.</p></LegalSection>
           </>}
           {app.slug !== "ppabang" && app.slug !== "aiplaygrand" && <>
