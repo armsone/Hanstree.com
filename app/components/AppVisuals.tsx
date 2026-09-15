@@ -37,6 +37,7 @@ function DirectionsFlow() {
 }
 
 export function AppHeroArtwork({ app }: { app: AppData }) {
+  if (app.slug === "aiplaygrand") return <Image src="/apps/aiplaygrand/flow.svg" alt="AIplaygrand 질문·실습·기록 사용 흐름도 — 앱 스크린샷 아님" width={1280} height={853} priority sizes="(max-width: 920px) 100vw, 52vw" unoptimized />;
   if (app.artwork === "directions") return <DirectionsFlow />;
   return (
     <div className={`hero-artwork hero-artwork-product hero-artwork-${app.slug}`} aria-label={`${app.name} 핵심 기능을 표현한 대표 이미지`}>
@@ -49,6 +50,7 @@ export function AppHeroArtwork({ app }: { app: AppData }) {
 }
 
 export function AppArtwork({ app, mode = "spotlight" }: { app: AppData; mode?: "spotlight" | "system" }) {
+  if (app.slug === "aiplaygrand") return <div className="artwork"><Image src="/apps/aiplaygrand/flow.svg" alt="AIplaygrand 팀 실습 사용 흐름도 — 앱 스크린샷 아님" width={1280} height={853} sizes="(max-width: 640px) 92vw, 720px" unoptimized /></div>;
   if (app.slug === "cleanusb") {
     return <div className="artwork" aria-label="CleanUSB 선택 정리 개념 이미지"><Image src="/apps/cleanusb/campaign-selection.webp" alt="삭제 전 파일을 살펴보는 CleanUSB 브랜드 이미지" width={1536} height={1024} sizes="(max-width: 640px) 92vw, 720px" unoptimized /></div>;
   }

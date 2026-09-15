@@ -16,8 +16,8 @@ type GitHubRelease = {
   assets: GitHubAsset[];
 };
 
-function findVerifiedAsset(release: GitHubRelease, assetPattern: RegExp, assetPrefix: string) {
-  if (release.draft || release.prerelease) return null;
+function findVerifiedAsset(release: GitHubRelease, assetPattern: RegExp, assetPrefix: string, allowPreview = false) {
+  if (release.draft || (release.prerelease && !allowPreview)) return null;
   return release.assets.find((asset) =>
     asset.state === "uploaded" &&
     asset.size > 0 &&
@@ -39,8 +39,14 @@ async function githubJson<T>(path: string): Promise<T> {
 }
 
 async function resolveLatestAssetUrl(key: DownloadKey) {
-  const { repo, assetPattern } = RELEASE_DOWNLOADS[key];
+  const { repo, assetPattern, pinnedPreviewTag } = RELEASE_DOWNLOADS[key];
   const assetPrefix = `https://github.com/armsone/${repo}/releases/download/`;
+  if (pinnedPreviewTag) {
+    const preview = await githubJson<GitHubRelease>(`/repos/armsone/${encodeURIComponent(repo)}/releases/tags/${encodeURIComponent(pinnedPreviewTag)}`);
+    const asset = findVerifiedAsset(preview, assetPattern, `${assetPrefix}${pinnedPreviewTag}/`, true);
+    if (!asset) throw new Error(`No verified preview asset for ${key}`);
+    return asset.browser_download_url;
+  }
   const latest = await githubJson<GitHubRelease>(`/repos/armsone/${encodeURIComponent(repo)}/releases/latest`);
   const latestAsset = findVerifiedAsset(latest, assetPattern, assetPrefix);
   if (latestAsset) return latestAsset.browser_download_url;

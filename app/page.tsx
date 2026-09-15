@@ -19,6 +19,7 @@ const principleVisuals: AdvantageVariant[] = ["compass", "timeline-dots", "devic
 export const dynamic = "force-dynamic";
 
 const homeKoreanNames: Record<string, string> = {
+  aiplaygrand: "에이아이 플레이그랜드",
   cleanusb: "클린USB",
   nasfinder: "나스파인더",
   "super-thumbnail": "수퍼썸네일",

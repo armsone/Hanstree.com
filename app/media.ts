@@ -2,6 +2,7 @@ import type { AppData } from "./data";
 
 export function appCardImage(app: AppData) {
   const featuredCards: Partial<Record<AppData["slug"], string>> = {
+    aiplaygrand: "/apps/aiplaygrand/flow.svg",
     ccmb: "/apps/ccmb/home-card-v2.png",
     "alfred-navermap": "/apps/alfred-navermap/flow.svg",
     "alfred-ai-search": "/apps/alfred-ai-search/home-card-v2.png",
@@ -13,6 +14,7 @@ export function appCardImage(app: AppData) {
 }
 
 export function appCardIcon(app: AppData) {
+  if (app.slug === "aiplaygrand") return "/apps/aiplaygrand/icon.svg";
   if (app.slug === "alfred-navermap") return "/apps/alfred-navermap/icon.svg";
   return `/apps/${app.slug}/icon-card.webp`;
 }

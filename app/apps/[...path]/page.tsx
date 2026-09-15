@@ -847,7 +847,7 @@ function InfoPage({ app, section }: { app: NonNullable<ReturnType<typeof findApp
               <article><span>01</span><AdvantageVisual variant="check-source" /><h3>무엇을</h3><p>사용자가 기능을 위해 선택하거나 연결한 정보만 다룹니다.</p></article>
               <article><span>02</span><AdvantageVisual variant="compass" /><h3>왜</h3><p>제품에서 사용자가 요청한 기능을 제공하는 데 사용합니다.</p></article>
               <article><span>03</span><AdvantageVisual variant="storage-network" /><h3>어디에</h3><p>브라우저 또는 기기 저장공간을 우선 사용하며 외부 서비스는 필요한 기능에서 직접 연결합니다.</p></article>
-              <article><span>04</span><AdvantageVisual variant="trash-clear" /><h3>어떻게 삭제</h3><p>제품의 관리 기능과 연결 해제, 브라우저 데이터 또는 앱 삭제로 정리할 수 있습니다.</p></article>
+              <article><span>04</span><AdvantageVisual variant="trash-clear" /><h3>어떻게 삭제</h3><p>{app.slug === "aiplaygrand" ? "프로그램 파일만 지워도 USB의 Data와 백업은 남습니다. 종료 후 보관 위치와 별도 백업을 확인해 직접 정리해야 합니다." : "제품의 관리 기능과 연결 해제, 브라우저 데이터 또는 앱 삭제로 정리할 수 있습니다."}</p></article>
             </div>
           </section>
           <LegalSection title="핵심 원칙"><ul>{app.privacy.map((item) => <li key={item}>{item}</li>)}</ul></LegalSection>
@@ -857,7 +857,11 @@ function InfoPage({ app, section }: { app: NonNullable<ReturnType<typeof findApp
             <LegalSection title="삭제와 연결 해제"><p>브라우저의 사이트 데이터에서 ppabang.net 데이터를 삭제하면 기기에 보관된 빠방넷 정보도 함께 제거됩니다. Google 계정의 보안 설정에서는 빠방넷에 허용한 연결 권한을 언제든 철회할 수 있습니다.</p></LegalSection>
             <LegalSection title="외부 서비스"><p>YouTube 영상 재생과 영상 정보 조회에는 Google 및 YouTube의 서비스와 정책이 적용됩니다. 빠방넷은 개인화 정보를 판매하지 않습니다.</p></LegalSection>
           </>}
-          {app.slug !== "ppabang" && <>
+          {app.slug === "aiplaygrand" && <>
+            <LegalSection title="저장 위치와 보유 기간"><p>팀 기록과 앱 웹창 쿠키는 실행 폴더의 Data/team.vault에 암호화하여 보관합니다. 직전 백업, 다운로드, 내보낸 파일과 이전 버전 원본은 별도로 남을 수 있습니다. 프로그램 파일을 삭제해도 Data와 별도 백업은 자동으로 삭제되지 않습니다.</p></LegalSection>
+            <LegalSection title="삭제와 연결 해제"><p>서비스 창에서 로그아웃하고 저장하고 종료를 누르세요. 팀원 자리 제거만으로 로그인 데이터가 삭제되지는 않습니다. 전체 로컬 기록을 없애려면 앱과 CLI를 종료하고 필요한 기록을 확인한 뒤 Data 및 별도 백업을 직접 정리해야 합니다. CLI 인증과 사용 이력은 해당 공식 도구의 로그아웃·삭제 절차를 이용하세요. 외부 서비스에 보낸 질문과 답변은 해당 서비스에서 별도로 관리합니다.</p></LegalSection>
+          </>}
+          {app.slug !== "ppabang" && app.slug !== "aiplaygrand" && <>
           <LegalSection title="처리 목적과 항목"><p>앱은 기능 수행에 필요한 권한, 사용자가 직접 선택한 파일과 사용자가 연결한 서비스의 인증 정보만 해당 기능을 제공하기 위해 처리합니다. 광고 목적의 개인정보 판매나 맞춤형 추적을 목적으로 처리하지 않습니다.</p></LegalSection>
           <LegalSection title="홈페이지 이용 통계"><p>Hanstree.com은 홈페이지 방문 횟수와 공식 APK 바로 받기 버튼을 누른 횟수를 숫자로만 집계합니다. 방문은 같은 브라우저에서 하루 한 번만 세기 위해 마지막 집계 날짜를 브라우저에 저장합니다. 집계 데이터베이스에는 방문자의 이름, 이메일, 계정, 쿠키 또는 IP 주소를 함께 저장하지 않으며 광고나 개인별 행동 추적에 사용하지 않습니다.</p></LegalSection>
           <LegalSection title="TestFlight 공개 베타"><p>홈페이지는 TestFlight 공개 링크를 통해 베타 앱 참여 경로만 제공합니다. 참여 신청을 위해 이름, 이메일, 기기 모델이나 참여 동기를 수집하지 않습니다. 공개 링크 참여와 앱 설치는 Apple의 TestFlight에서 처리됩니다. 과거 내부 테스터 신청 기능으로 접수된 기록은 더 이상 새로 수집하지 않으며, 삭제를 원하는 기존 신청자는 아래 개인정보 보호책임자에게 요청할 수 있습니다.</p></LegalSection>

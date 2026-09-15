@@ -38,6 +38,37 @@ export type AppData = {
 
 export const apps: AppData[] = [
   {
+    slug: "aiplaygrand",
+    name: "에이아이 플레이그랜드",
+    english: "AIplaygrand-Win",
+    eyebrow: "LEARN TOGETHER · TAKE IT WITH YOU",
+    tagline: "함께 만든 작은 발견을, USB에.",
+    summary: "질문을 나누고 답과 배운 점을 쌓아 보세요. Claude·Gemini·Codex의 웹과 CLI를 열어 초보 팀의 실습을 이어가는 Windows 포터블 앱입니다.",
+    theme: "blue",
+    icon: "/apps/aiplaygrand/icon.svg",
+    heroImage: "/apps/aiplaygrand/flow.svg",
+    artwork: "bridge",
+    platforms: [{ name: "Windows x64", status: "공개", detail: "0.3.0 · 공개 테스트 버전 · ZIP 포터블", url: releaseDownloadPath("AIplaygrand-Win"), downloadLabel: "Windows 테스트 ZIP 받기", availabilityNote: "Windows 실기기·실제 로그인 이동 미검증. 코드 서명 신뢰 미검증." }],
+    features: [
+      { title: "세 명에서 시작하는 우리 팀", body: "Claude 2명·Gemini 1명으로 시작하고 Codex를 포함해 팀원을 추가합니다. 웹 팀원별로 별도 로그인 창을 사용합니다." },
+      { title: "질문하고, 확인하고, 기록하기", body: "미션을 열면 질문이 복사됩니다. 공식 웹 또는 CLI 창에서 직접 전송하고 답과 배운 점을 기록합니다. API 키를 요구하지 않습니다." },
+      { title: "USB에 담는 암호화 보관함", body: "팀 기록과 앱 웹창 쿠키를 비밀번호로 보호합니다. 자동 저장과 직전 백업을 제공하고, 종료 후 폴더 전체를 옮길 수 있습니다." },
+      { title: "설치가 막히면 준비 상태부터", body: "Node.js·npm·Git·각 CLI 설치와 버전을 점검하고 공식 설치 안내를 엽니다. 준비된 PC에서는 CLI를 USB에 설치하도록 돕습니다." },
+    ],
+    guide: [
+      { title: "USB에 전체 압축 해제", body: "ZIP의 모든 파일을 쓰기 가능한 USB 폴더에 풀고 AIplaygrand-Win.exe를 실행하세요. exe만 복사하면 실행되지 않습니다." },
+      { title: "보관함과 로그인", body: "12자 이상 비밀번호를 정하고 각 팀원이 공식 서비스에 직접 로그인하세요. 보관함 비밀번호를 잊으면 복구할 수 없습니다." },
+      { title: "웹 또는 CLI에서 실습", body: "웹은 추가 CLI 설치 없이 사용합니다. CLI는 PC에서 로그인한 계정으로 열리며 웹 팀원 선택만으로 계정이 바뀌지 않습니다. 서비스의 연령·이용권 조건을 따라 사용하세요." },
+      { title: "안전하게 이동", body: "저장하고 종료를 누르고 별도 CLI 터미널도 닫으세요. Windows의 하드웨어 안전하게 제거 후 USB를 옮기고, 다른 저장소에도 전체 폴더를 백업하세요." },
+    ],
+    progress: [
+      { state: "done", title: "0.3.0 테스트 ZIP 공개", body: "자동 검사 13개, Mac 개발 화면과 폴더 이동 후 한글 기록 복원, 합성 쿠키 암호화·복원 및 공개 ZIP 다운로드 확인 완료." },
+      { state: "next", title: "Windows 실기기 검증", body: "Windows 실행·CLI 설치·물리 USB 이동·실제 계정 로그인 복원은 아직 검증되지 않았습니다. 로그인은 새 PC에서 다시 필요할 수 있습니다." },
+    ],
+    github: ["https://github.com/armsone/AIplaygrand-Win"],
+    privacy: ["팀 기록과 앱 웹창 쿠키는 USB의 암호화 보관함에 저장합니다. 보관함 비밀번호를 아는 사람은 팀 기록과 저장된 세션을 사용할 수 있습니다.", "CLI 인증·설정은 PC에서 각 도구가 관리합니다. 다운로드·내보낸 JSON·CLI 작업 파일과 이전 버전 원본은 암호화되지 않습니다.", "다른 브라우저의 로그인 정보를 가져오거나 사용량 제한을 우회하는 자동 계정 전환은 하지 않습니다. 웹 쿠키 복원은 로그인 유지를 보장하지 않습니다.", "공식 AI 서비스에 사용자가 직접 전송한 내용은 각 서비스 정책에 따라 처리됩니다. 악성코드가 있는 PC나 운영체제의 임시 기록까지 보호하는 무흔적 실행은 아닙니다."],
+  },
+  {
     slug: "cleanusb",
     name: "클린USB",
     english: "CleanUSB",
