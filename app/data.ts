@@ -49,8 +49,8 @@ export const apps: AppData[] = [
     heroImage: "/apps/aiplaygrand/flow.svg",
     artwork: "bridge",
     platforms: [
-      { name: "Windows x64", status: "공개", detail: "0.5.0 (202609160942) · ZIP 포터블", url: releaseDownloadPath("AIplaygrand-Win"), downloadLabel: "Windows ZIP 받기", availabilityNote: "Windows 실기기 실행·물리 USB 이동·실제 OAuth 복원과 실시간 사용량 흐름 미검증. 코드 서명 신뢰 미검증." },
-      { name: "Mac · Apple Silicon", status: "공개", detail: "0.5.0 (202609160942) · 서명·Apple 공증 완료", url: releaseDownloadPath("AIplaygrand-Mac"), downloadLabel: "Mac DMG 받기", availabilityNote: "Developer ID 서명·Apple 공증 완료. 이전 설치와 첫 보관함 화면 확인 완료(전체 계정 흐름 미검증). Intel Mac용이 아닙니다." },
+      { name: "Windows x64", status: "공개", detail: "0.6.0 (202609161147) · ZIP 포터블", url: releaseDownloadPath("AIplaygrand-Win"), downloadLabel: "Windows ZIP 받기", availabilityNote: "공개 검증용 배포. Windows 실기기 업데이트·재시작·실패 복구·물리 USB 이동·실제 OAuth 복원과 사용량 흐름 미검증. 실행 파일은 코드 미서명입니다." },
+      { name: "Mac · Apple Silicon", status: "공개", detail: "0.6.0 (202609161147) · 서명·Apple 공증 완료", url: releaseDownloadPath("AIplaygrand-Mac"), downloadLabel: "Mac DMG 받기", availabilityNote: "Developer ID 서명·Apple 공증과 데이터 유지 교체 설치 완료. 이번 버전 재실행·전체 계정 흐름 미검증. 자체 업데이트와 Intel Mac은 지원하지 않습니다." },
     ],
     features: [
       { title: "세 명에서 시작하는 우리 팀", body: "Claude 2명·Gemini 1명으로 시작하고 Codex를 포함해 팀원을 추가합니다. 웹 팀원별로 별도 로그인 창과 독립 CLI 좌석을 둘 수 있습니다." },
@@ -58,16 +58,18 @@ export const apps: AppData[] = [
       { title: "지켜보는 CLI 릴레이", body: "앞 단계 답을 다음 단계에 전달하는 3단계 릴레이를 제공합니다. 초기 단계는 공용 CLI를 사용합니다. 한도가 확인되면 전송·공유에 미리 동의한 같은 서비스의 독립 CLI 팀원에게 5초 취소 타이머 뒤 이어줍니다. 별도 릴레이 설정은 기본 꺼짐입니다." },
       { title: "USB에 담는 암호화 보관함", body: "팀 기록·웹 쿠키·앱 대화 기록을 비밀번호로 보호합니다. 독립 CLI 좌석의 로그인 파일은 명시적으로 보관함에 암호화해 비어 있는 PC 좌석으로 복원할 수 있습니다(공통 CLI 제외, macOS Claude 키체인 미지원)." },
       { title: "설치가 막히면 준비 상태부터", body: "Node.js·npm·Git·각 CLI 설치와 버전을 점검하고 공식 설치 안내를 엽니다. 준비된 PC에서는 CLI를 USB에 설치하도록 돕습니다." },
+      { title: "새 버전도 같은 폴더에서", body: "Windows에서는 실행 시 새 버전을 확인하고 업데이트 여부를 묻습니다. 동의하면 파일을 검증한 뒤 저장·종료하고 같은 폴더의 프로그램 파일을 교체하도록 구현했습니다. 진행 확인·취소와 백업·복구 처리를 제공하며 실제 Windows 동작은 확인 중입니다." },
     ],
     guide: [
       { title: "USB에 전체 압축 해제", body: "ZIP의 모든 파일을 쓰기 가능한 USB 폴더에 풀고 AIplaygrand-Win.exe를 실행하세요. exe만 복사하면 실행되지 않습니다." },
       { title: "보관함과 로그인", body: "12자 이상 비밀번호를 정하고 공식 서비스에 로그인하세요. 독립 CLI 좌석의 로그인은 명시적 선택 시 보관함에 암호화 보관할 수 있습니다. 보관함 비밀번호를 잊으면 복구할 수 없습니다." },
       { title: "웹 또는 CLI에서 실습", body: "앱은 API 키를 요구하지 않습니다. Codex 웹은 직접 전송해야 하며, CLI는 공식 도구 설치·로그인과 이용권이 필요합니다. 무료 웹 계정이 CLI 이용권을 보장하지 않습니다. 코드 제안을 확인하고 직접 실행하세요. 자동 인계는 전송·공유에 사전 동의한 팀원만 참여합니다." },
       { title: "안전하게 이동", body: "저장하고 종료를 누르고 별도 CLI 터미널도 닫으세요. 복원된 PC 평문 파일이나 백업 복사본은 활성 보관함 보호 대상이 아니며 새 기기 로그인 유지는 보장되지 않습니다. 하드웨어 안전하게 제거 후 USB를 옮기세요." },
+      { title: "처음 한 번은 0.6.0 직접 교체", body: "기존 앱을 종료하고 전체 폴더를 백업한 뒤 0.6.0 프로그램 파일을 직접 교체하세요. Data·Tools는 삭제하지 마세요. 이후 버전부터 앱 안에서 업데이트를 제안합니다. PowerShell 5.1·.NET 4.7.2 이상이 필요하며 보안 정책에 막히면 수동 교체해야 합니다. 교체 중에는 USB를 빼지 마세요." },
     ],
     progress: [
-      { state: "done", title: "0.5.0 공개", body: "Windows ZIP(x64)·Mac DMG(Apple Silicon) 패키지 빌드와 GitHub v0.5.0 공개 자산 HTTP 200 검증 완료. Mac은 Developer ID 서명·Apple 공증 및 이전 설치·첫 보관함 화면 확인을 마쳤습니다." },
-      { state: "next", title: "실제 팀 실습 검증", body: "Windows 실기기 실행·물리 USB 이동·실제 OAuth 복원과 실시간 사용량 흐름, Mac 전체 계정 흐름은 미검증입니다. 새 기기에서는 재로그인이 필요할 수 있습니다." },
+      { state: "done", title: "동의형 업데이트 0.6.0 공개", body: "Windows ZIP·공증된 Mac DMG를 GitHub v0.6.0으로 공개했습니다. 소스·패키지 일치와 체크섬, 공개 다운로드 연결을 확인했습니다. Mac은 데이터 유지 교체 설치까지 마쳤으며 이번 버전을 재실행하지는 않았습니다." },
+      { state: "next", title: "실제 팀 실습과 업데이트 검증", body: "Windows 업데이트·재시작·복구·물리 USB 이동·실제 OAuth 복원과 사용량 흐름, Mac 전체 계정 흐름은 미검증입니다. 전원 차단 시 완전한 복구를 보장하지 않습니다. 화면 공간과 첫 사용 안내 개선도 남아 있습니다." },
     ],
     github: ["https://github.com/armsone/AIplaygrand-Win"],
     privacy: [
