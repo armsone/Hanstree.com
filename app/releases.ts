@@ -47,18 +47,18 @@ export type ReleaseDownload = {
 
 export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
   "AIplaygrand-Win": {
-    label: "AIplaygrand Windows 테스트",
+    label: "AIplaygrand Windows",
     repo: "AIplaygrand-Win",
-    pinnedPreviewTag: "v0.4.0",
-    assetPattern: /^AIplaygrand-Win-0\.4\.0-x64\.zip$/,
-    fallbackUrl: "https://github.com/armsone/AIplaygrand-Win/releases/download/v0.4.0/AIplaygrand-Win-0.4.0-x64.zip",
+    pinnedPreviewTag: "v0.5.0",
+    assetPattern: /^AIplaygrand-Win-0\.5\.0-x64\.zip$/,
+    fallbackUrl: "https://github.com/armsone/AIplaygrand-Win/releases/download/v0.5.0/AIplaygrand-Win-0.5.0-x64.zip",
   },
   "AIplaygrand-Mac": {
-    label: "AIplaygrand Mac 미리보기",
+    label: "AIplaygrand Mac",
     repo: "AIplaygrand-Win",
-    pinnedPreviewTag: "v0.4.0",
-    assetPattern: /^AIplaygrand-Win-Mac-0\.4\.0-arm64\.dmg$/,
-    fallbackUrl: "https://github.com/armsone/AIplaygrand-Win/releases/download/v0.4.0/AIplaygrand-Win-Mac-0.4.0-arm64.dmg",
+    pinnedPreviewTag: "v0.5.0",
+    assetPattern: /^AIplaygrand-Win-Mac-0\.5\.0-arm64\.dmg$/,
+    fallbackUrl: "https://github.com/armsone/AIplaygrand-Win/releases/download/v0.5.0/AIplaygrand-Win-Mac-0.5.0-arm64.dmg",
   },
   "CleanUSB-MacOS": {
     label: "CleanUSB Mac",
