@@ -1,10 +1,11 @@
 import type { MetadataRoute } from "next";
 import { apps } from "./data";
+import { getSiteBrand } from "./site-brand";
 
-const origin = "https://hanstree.com";
 const publicSections = ["privacy", "support", "terms"] as const;
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const origin = (await getSiteBrand()).canonical;
   const productPages = apps.flatMap((app) => [
     { url: `${origin}/apps/${app.slug}`, changeFrequency: "weekly" as const, priority: 0.8 },
     ...publicSections.map((section) => ({

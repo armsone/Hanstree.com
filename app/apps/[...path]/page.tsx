@@ -11,6 +11,7 @@ import { DownloadQrCode } from "../../components/DownloadQrCode";
 import { findApp } from "../../data";
 import { SiteFooter, SiteHeader } from "../../components/SiteChrome";
 import { testFlightBuilds } from "../../testflight";
+import { getSiteBrand } from "../../site-brand";
 
 type RouteProps = { params: Promise<{ path: string[] }> };
 
@@ -176,6 +177,7 @@ function HeroAvailability({ app }: { app: NonNullable<ReturnType<typeof findApp>
 
 export async function generateMetadata({ params }: RouteProps): Promise<Metadata> {
   const { path } = await params;
+  const brand = await getSiteBrand();
   const app = findApp(path[0]);
   if (!app) return {};
   const section = path[1];
@@ -184,8 +186,8 @@ export async function generateMetadata({ params }: RouteProps): Promise<Metadata
   const socialImage = !suffix
     ? app.heroImage ?? app.icon ?? (app.slug === "stand" ? "/og-stand.png" : undefined)
     : undefined;
-  const socialImages = socialImage ? [new URL(socialImage, "https://hanstree.com").toString()] : [];
-  const canonical = new URL(`/apps/${path.join("/")}`, "https://hanstree.com").toString();
+  const socialImages = socialImage ? [new URL(socialImage, brand.canonical).toString()] : [];
+  const canonical = new URL(`/apps/${path.join("/")}`, brand.canonical).toString();
   return {
     title,
     description: app.summary,
