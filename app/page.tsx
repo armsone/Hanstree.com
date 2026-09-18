@@ -14,7 +14,7 @@ import { testFlightBuilds } from "./testflight";
 import { getSiteBrand } from "./site-brand";
 import { SiteFooter, SiteHeader } from "./components/SiteChrome";
 
-const principleVisuals: AdvantageVariant[] = ["compass", "timeline-dots", "devices-pair"];
+const principleVisuals: AdvantageVariant[] = ["target-swing", "check-source", "devices-pair"];
 
 export const dynamic = "force-dynamic";
 

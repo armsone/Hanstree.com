@@ -1,3 +1,4 @@
+import { AdvantageVisual } from "../../../components/AdvantageVisual";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -81,7 +82,7 @@ export default async function MeoktamjaInstagramPage() {
         <div className="shell">
           <div className="space-section-heading">
             <p className="eyebrow">FROM @ARMSONE</p>
-            <h2>먹고, 만나고,<br />기억한 순간들.</h2>
+            <AdvantageVisual variant="camera" /><h2>먹고, 만나고,<br />기억한 순간들.</h2>
             <p>공개된 Instagram 게시물을 이곳에서 바로 보고, 자세히 보고 싶은 사진을 누르면 Instagram 원본으로 이동합니다.</p>
             {instagram.live ? <p className="instagram-live-status">공식 API로 최신 게시물을 자동 업데이트합니다.</p> : null}
           </div>

@@ -1,7 +1,6 @@
 import Image from "next/image";
 import type { AppData, Platform } from "../data";
 import { appCardIcon } from "../media";
-import { LiveFlipClock, LiveSeoulWeather } from "./LiveFlipClock";
 
 // "/screens/" 아래 파일만 실제 캡처입니다. 그 밖의 hero·campaign 이미지는 기능을 표현한 렌더링 개념 이미지이므로 alt에서 "화면"이라고 부르지 않습니다.
 function isScreenshotPath(src: string) {
@@ -45,9 +44,16 @@ function DirectionsFlow() {
   );
 }
 
+// 완성된 렌더링 개념 이미지를 artwork-bridge 구성(전체 채움)으로 보여줍니다. 실제 화면이 아니므로 alt에 "화면"을 쓰지 않습니다.
+function ConceptScene({ src, alt, label }: { src: string; alt: string; label: string }) {
+  return (
+    <div className="artwork artwork-bridge" aria-label={label}>
+      <Image src={src} alt={alt} width={1536} height={1024} sizes="(max-width: 640px) 92vw, 720px" unoptimized />
+    </div>
+  );
+}
+
 export function AppHeroArtwork({ app }: { app: AppData }) {
-  if (app.slug === "aiplaygrand") return <Image src="/apps/aiplaygrand/flow.svg" alt="AIplaygrand 질문·실습·기록 사용 흐름도" width={1280} height={853} priority sizes="(max-width: 920px) 100vw, 52vw" unoptimized />;
-  if (app.artwork === "directions") return <DirectionsFlow />;
   const heroSrc = app.heroImage ?? `/apps/${app.slug}/${app.slug}-hero-v2.png`;
   return (
     <div className={`hero-artwork hero-artwork-product hero-artwork-${app.slug}`} aria-label={isScreenshotPath(heroSrc) ? `${app.name} 실제 앱 화면` : `${app.name} 핵심 기능을 표현한 대표 이미지`}>
@@ -61,218 +67,10 @@ export function AppHeroArtwork({ app }: { app: AppData }) {
 
 export function AppArtwork({ app, mode = "spotlight" }: { app: AppData; mode?: "spotlight" | "system" }) {
   if (app.slug === "aiplaygrand") return <div className="artwork"><Image src="/apps/aiplaygrand/flow.svg" alt="AIplaygrand 팀 실습 사용 흐름도" width={1280} height={853} sizes="(max-width: 640px) 92vw, 720px" unoptimized /></div>;
-  if (app.slug === "cleanusb") {
-    return <div className="artwork" aria-label="CleanUSB 선택 정리 개념 이미지"><Image src="/apps/cleanusb/campaign-selection.webp" alt="삭제 전 파일을 살펴보는 CleanUSB 브랜드 이미지" width={1536} height={1024} sizes="(max-width: 640px) 92vw, 720px" unoptimized /></div>;
-  }
-
-  if (app.artwork === "directions") {
-    return <DirectionsFlow />;
-  }
-
-  if (app.artwork === "ai-search") {
-    const providers = [
-      ["지", "ChatGPT", "/apps/alfred-ai-search/providers/chatgpt.png"],
-      ["클", "Claude", "/apps/alfred-ai-search/providers/claude.png"],
-      ["제", "Gemini", "/apps/alfred-ai-search/providers/gemini.png"],
-    ];
-    return (
-      <div className="artwork artwork-ai-search" aria-label="지·클·제 키워드와 ChatGPT, Claude, Gemini를 연결하는 Alfred AI Search 실제 화면">
-        <div className="ai-search-provider-row">
-          {providers.map(([keyword, name, icon]) => <span key={name}><Image src={icon} alt={`${name} 서비스 아이콘`} width={54} height={54} unoptimized /><b>{keyword}</b><small>{name}</small></span>)}
-        </div>
-        <div className="ai-search-screen">
-          <Image src="/apps/alfred-ai-search/screens/alfred-answer-view.png" alt="Alfred AI Search 답변 화면" width={1238} height={1764} sizes="(max-width: 640px) 72vw, 420px" unoptimized />
-        </div>
-        <p>Alfred 안에서 가볍게. 필요할 때 앱으로 깊게.</p>
-      </div>
-    );
-  }
-
-  if (app.artwork === "autoshorts") {
-    return (
-      <div className="artwork artwork-bridge" aria-label="쇼츠 한 편이 끝나면 다음 영상으로 자동 이동하는 자동쇼츠">
-        <Image src={app.heroImage ?? "/apps/autoshorts/autoshorts-hero.png"} alt="자동쇼츠의 자동 재생 흐름을 표현한 대표 이미지" width={1536} height={1024} sizes="(max-width: 640px) 92vw, 720px" unoptimized />
-      </div>
-    );
-  }
-
-  if (app.artwork === "shorts") {
-    return (
-      <div className="artwork artwork-bridge" aria-label={`${app.name} 쇼츠 연속 재생 대표 이미지`}>
-        <Image src={app.heroImage ?? `/apps/${app.slug}/home-card.webp`} alt={`${app.name} 쇼츠 연속 재생 대표 이미지`} width={1280} height={853} sizes="(max-width: 640px) 92vw, 720px" unoptimized />
-      </div>
-    );
-  }
-
-  if (app.slug === "denimdex") {
-    return (
-      <div className="artwork artwork-denimdex" aria-label="빈티지 데님의 원단과 셀비지, 버튼과 리벳을 살피는 DenimDex 감정 장면">
-        <Image src={app.heroImage ?? "/apps/denimdex/denimdex-hero-v2.png"} alt="원단과 셀비지, 버튼과 리벳을 살피는 DenimDex 감정 장면을 표현한 대표 이미지" width={1536} height={1024} sizes="(max-width: 640px) 92vw, 720px" unoptimized />
-      </div>
-    );
-  }
-
-  if (app.artwork === "bridge") {
-    return (
-      <div className="artwork artwork-bridge" aria-label="앱과 공식 AI 웹사이트 사이를 안전하게 잇는 아이비 연결 엔진">
-        <Image src={app.heroImage ?? "/apps/aibi/aibi-hero-v2.png"} alt="앱과 공식 AI 웹사이트를 잇는 아이비 연결 구조를 표현한 개념 이미지" width={1536} height={1024} sizes="(max-width: 640px) 92vw, 720px" unoptimized />
-      </div>
-    );
-  }
-
-  if (app.artwork === "intelligence") {
-    const isSystem = mode === "system";
-    const image = isSystem ? app.systemImage : app.spotlightImage;
-    return (
-      <div className="artwork artwork-intelligence" aria-label={isSystem ? "인터넷과 기기, 클라우드와 사람을 잇는 네 관문과 한양의 개인정보 보호 경계" : "사진과 문서, 일정과 기억을 사용자 중심으로 정리하는 한양의 지식 아카이브"}>
-        <Image src={image ?? app.heroImage ?? "/apps/hanai/hanai-hero-v2.png"} alt={isSystem ? "한양의 외부 연결과 개인정보 보호 구조를 표현한 개념 이미지" : "한양 지식 아카이브를 표현한 개념 이미지"} width={1672} height={941} sizes="(max-width: 640px) 92vw, 720px" unoptimized />
-        <span className="intelligence-aura" aria-hidden="true" />
-      </div>
-    );
-  }
-
-  if (app.artwork === "phones") {
-    return (
-      <div className="artwork artwork-phones" aria-label={`${app.name} 앱 화면`}>
-        {app.screenshots?.slice(0, 3).map((screen, index) => (
-          <div className={`phone-shot phone-shot-${index + 1}`} key={screen.src}>
-            <Image src={screen.src} alt={screen.alt} width={1206} height={2622} sizes="(max-width: 640px) 39vw, 220px" unoptimized />
-          </div>
-        ))}
-      </div>
-    );
-  }
-
-  if (app.artwork === "clock") {
-    return (
-      <div className="artwork artwork-clock" aria-label="S.tand 플립시계 화면 표현">
-        <LiveSeoulWeather />
-        <LiveFlipClock />
-        <div className="clock-mode"><span /> MATE MODE</div>
-      </div>
-    );
-  }
-
-  if (app.artwork === "menubar") {
-    return (
-      <div className="artwork artwork-menubar" aria-label="CCMB의 Codex, Claude, Gemini 사용량 패널을 표현한 이미지">
-        <div className="ccmb-menubar-preview" aria-label="메뉴 막대에 대표 색상으로 표시되는 세 서비스 남은 사용량의 예시 숫자">
-          <span className="ccmb-number-codex">92%</span><i aria-hidden="true">·</i><span className="ccmb-number-claude">0%</span><i aria-hidden="true">·</i><span className="ccmb-number-gemini">95%</span>
-        </div>
-        <div className="ccmb-panel-shot">
-          <Image
-            src="/apps/ccmb/ccmb-campaign.png"
-            alt="메뉴 막대 숫자와 Codex·Claude·Gemini 사용량 패널을 표현한 CCMB 대표 이미지 — 실제 화면 아님"
-            width={1672}
-            height={941}
-            sizes="(max-width: 640px) 92vw, 720px"
-            unoptimized
-          />
-        </div>
-      </div>
-    );
-  }
-
-  if (app.artwork === "cleanup") {
-    return (
-      <div className="artwork artwork-cleanup" aria-label="BTN 메모리 압박 진단 화면">
-        <div className="cleanup-glow" />
-        <div className="cleanup-window">
-          <Image src="/apps/btn/screens/overview.png" alt="BTN 메모리 압박 진단 화면" width={1520} height={1000} sizes="(max-width: 640px) 84vw, 520px" unoptimized />
-        </div>
-        <div className="cleanup-proof"><span />선택 전에는 아무것도 지우지 않음</div>
-      </div>
-    );
-  }
-
-  if (app.artwork === "thumbnail") {
-    return (
-      <div className="artwork artwork-thumbnail" aria-label="Super Thumbnail for Mac 생성 화면 표현">
-        <div className="thumbnail-window">
-          <div className="thumbnail-titlebar"><span aria-hidden="true">● ● ●</span><strong>Super Thumbnail</strong></div>
-          <div className="thumbnail-folder"><span>NAS</span><div><strong>Photos</strong><small>16,540개 미디어 · 1.57 TB</small></div></div>
-          <div className="thumbnail-progress">
-            <div><strong>수퍼썸네일 생성</strong><small>12,408 / 16,540</small></div>
-            <span><i /></span>
-          </div>
-          <div className="thumbnail-metrics"><span><small>남은 시간</small><strong>약 42분</strong></span><span><small>생성 용량</small><strong>8.6 GB</strong></span></div>
-        </div>
-      </div>
-    );
-  }
-
-  if (app.artwork === "trackpad") {
-    return (
-      <div className="artwork artwork-trackpad" aria-label="TrackpadGuard 트랙패드 해제 영역 표현">
-        <div className="guard-status"><span /> INPUT LOCKED</div>
-        <div className="guard-trackpad">
-          <div className="guard-cutout"><span>상단 1/3 제외</span></div>
-          <div className="guard-active-zone"><strong>TOUCH TO UNLOCK</strong></div>
-        </div>
-        <p>⌃⌥⌘ Esc · 긴급 해제</p>
-      </div>
-    );
-  }
-
-  if (app.artwork === "htoms") {
-    return (
-      <div className="artwork artwork-htoms" aria-label="HtOMS 브리프의 매출 요약과 서버 상태 화면">
-        <div className="htoms-window">
-          <div className="htoms-toolbar"><strong>HTOMS BRIEF</strong><span><span aria-hidden="true">↻&nbsp; </span>로그아웃</span></div>
-          <div className="htoms-heading"><i /><strong>매출 요약</strong><small>BRIEF · 오늘과 월간 판매</small></div>
-          <div className="htoms-card htoms-sales">
-            <div><small>오늘 매출 · TODAY</small><span>보통</span></div>
-            <strong>1,067<small>만원</small></strong><b>20일</b>
-          </div>
-          <div className="htoms-card htoms-refresh"><small>다음 갱신 · REFRESH</small><strong>09:59</strong></div>
-          <div className="htoms-card htoms-server"><small>서버 상태 · SERVER</small><strong>장항&nbsp;&nbsp; 인천&nbsp;&nbsp; 삼송&nbsp;&nbsp; 초월</strong></div>
-          <div className="htoms-card htoms-channel"><small>판매 채널</small><span><i /><i /><i /></span><p>스토어 20% · 방판 1% · 전화 79%</p></div>
-        </div>
-      </div>
-    );
-  }
-
-  if (app.artwork === "search") {
-    return (
-      <div className="artwork artwork-search" aria-label="인투샾 이름 검색 화면 표현">
-        <div className="search-brand"><b>#</b><span>intoSharp</span></div>
-        <div className="search-command"><span aria-hidden="true">⌕</span><strong>네이버 우리집</strong><b aria-hidden="true">↵</b></div>
-        <p>이름으로 이동하고, 이어서 검색하세요.</p>
-        <div className="search-links"><span>일</span><span>이야기마당</span><span>볼거리</span><span>연장</span></div>
-      </div>
-    );
-  }
-
-  if (app.artwork === "church") {
-    return (
-      <div className="artwork artwork-church" aria-label="에어처치 말씀과 착한나눔 화면 표현">
-        <div className="church-brand"><span />airchurch</div>
-        <p>오늘의 말씀을 가장 가까이</p>
-        <h3>좋은 말씀과<br />선한 마음이 만나는 곳</h3>
-        <div className="church-cards"><span><small>오늘의 말씀</small><strong>교회와 지역으로 찾기</strong></span><span><small>goodshare</small><strong>달란트로 마음 잇기</strong></span></div>
-      </div>
-    );
-  }
-
-  if (app.artwork === "server") {
-    return (
-      <div className="artwork artwork-server" aria-label="Synology NAS에서 안전하게 운영하는 Minecraft Bedrock 홈 서버">
-        <div className="server-art-icon">
-          <Image src="/apps/minecraft-server/icon.png" alt="Minecraft Bedrock 홈 서버 아이콘" width={1254} height={1254} sizes="(max-width: 640px) 72vw, 430px" unoptimized />
-        </div>
-        <div className="server-art-proof"><span />실제 가족 서버 운영 중</div>
-        <div className="server-art-facts"><span>PRIVATE</span><span>UDP 19132</span><span>WORLD SAFE</span></div>
-      </div>
-    );
-  }
-
-  return (
-    <div className="artwork artwork-files" aria-label="나스파인더 파일 탐색 화면 표현">
-      <div className="file-toolbar"><span aria-hidden="true">‹</span><strong>Photos</strong><span aria-hidden="true">•••</span></div>
-      <div className="file-grid">
-        {["DS", "SF", "SM", "WD", "DB", "GD"].map((label, index) => <span key={label} style={{ "--i": index } as React.CSSProperties}>{label}</span>)}
-      </div>
-      <div className="file-sheet"><span /> <p><strong>IMG_2048.HEIC</strong><small>Preview ready · 12.4 MB</small></p><b aria-hidden="true">↗</b></div>
-    </div>
-  );
+  if (app.artwork === "directions") return <DirectionsFlow />;
+  const image = (mode === "system" ? app.systemImage : app.spotlightImage) ?? app.heroImage ?? `/apps/${app.slug}/${app.slug}-hero-v2.png`;
+  const alt = app.slug === "hanai"
+    ? mode === "system" ? "한양의 외부 연결과 개인정보 보호 구조를 표현한 개념 이미지" : "한양 지식 아카이브를 표현한 개념 이미지"
+    : heroImageAlt(app, image);
+  return <ConceptScene src={image} alt={alt} label={alt} />;
 }

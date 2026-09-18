@@ -4,7 +4,8 @@ import type { AppData } from "../data";
 import { SiteFooter, SiteHeader } from "./SiteChrome";
 
 function DetailMark({ type }: { type: "inspect" | "select" | "eject" }) {
-  return <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{type === "inspect" ? <><circle cx="21" cy="20" r="11"/><path d="m29 29 10 10M17 20h8M21 16v8"/></> : type === "select" ? <><rect x="9" y="9" width="30" height="30" rx="7"/><path d="m16 24 6 6 11-13"/></> : <><path d="m24 10 14 19H10Z"/><path d="M11 37h26"/></>}</svg>;
+  const src = type === "inspect" ? "/apps/super-thumbnail/features/feature-07.webp" : type === "select" ? "/apps/btn/features/feature-08.webp" : "/apps/cleanusb/icon-v2.webp";
+  return <Image className="cu-detail-icon" src={src} alt="" width={96} height={96} unoptimized aria-hidden="true" />;
 }
 
 export function CleanUSBPage({ app }: { app: AppData }) {

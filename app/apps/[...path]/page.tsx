@@ -15,99 +15,163 @@ import { getSiteBrand } from "../../site-brand";
 
 type RouteProps = { params: Promise<{ path: string[] }> };
 
-const campaignSlugs = new Set(["super-thumbnail", "hanclip", "stand", "ccmb", "trackpadguard", "intosharp", "airchurch", "denimdex"]);
+const campaignSlugs = new Set(["super-thumbnail", "hanclip", "stand", "ccmb", "trackpadguard", "intosharp", "airchurch"]);
 
-const customFeatureIconSlugs = new Set([
-  "nasfinder", "super-thumbnail", "hanclip", "hanai", "stand", "ccmb", "btn", "trackpadguard",
-  "htoms-brief", "intosharp", "airchurch", "button", "starmanager", "minecraft-server", "whattoeat", "aibi", "autoshorts",
-]);
-
-const denimDexFeatureIcons: Record<string, string> = {
-  "팬츠와 재킷, 아홉 장이면 순서대로": "/apps/denimdex/features/photo-details.webp",
-  "제품 정보와 생산 단서를 먼저": "/apps/denimdex/features/manufacturing-clues.webp",
-  "근거에 맞춘 보수적 희귀도": "/apps/denimdex/features/rarity-evidence.webp",
-  "한국과 일본의 적정 매입가를 나란히": "/apps/denimdex/features/market-prices.webp",
-  "팔았을 때 남는 금액까지": "/apps/denimdex/features/net-profit.webp",
-  "판단 근거와 확실성을 함께": "/apps/denimdex/features/evidence-confidence.webp",
-  "나만의 데님 아카이브": "/apps/denimdex/features/denim-archive.webp",
-  "사진은 가볍게, 단서는 선명하게": "/apps/denimdex/features/photo-compression.webp",
+const contentVisuals: Record<string, AdvantageVariant> = {
+  "연결 추가": "storage-network",
+  "탐색과 미리보기": "eye-browse",
+  "폰하드와 전송": "phone-drive",
+  "기기 간 미디어 전송": "devices-pair",
+  "데이터 관리": "trash-clear",
+  "앱 정보 확인": "doc-scroll",
+  "앱 설치": "download",
+  "NAS 연결": "storage-network",
+  "작업 폴더 등록": "folder-pick",
+  "속도와 생성 방식 선택": "sliders",
+  "NasFinder에서 보기": "eye-browse",
+  "프리셋 선택": "palette",
+  "미디어 가져오기": "photo-stack",
+  "편집과 만들기": "sliders",
+  "저장과 공유": "preview-export",
+  "빠방 듣기": "music-grid",
+  "권한 선택": "shield-safe",
+  "세 가지 모드": "toggle-control",
+  "화면 편집": "palette",
+  "수면 기록": "timeline-dots",
+  "음악 채널": "music-grid",
+  "Google TV에서": "devices-pair",
+  "밤새 켜 두기": "night-glow",
+  "보이소 연결": "people",
+  "Mac에서 시작": "mac-local",
+  "설치 준비": "check-badge",
+  "DMG로 설치": "download",
+  "표시와 새로고침": "clock-refresh",
+  "다른 대화와 공유": "json-local",
+  "미디어와 이야기 입력": "photo-stack",
+  "사진 앱에서 보내기": "preview-export",
+  "AI로 초안 만들기": "chat",
+  "결과 가져오기": "download",
+  "키보드 숨기기": "keyboard-lock",
+  "미디어 추가": "photo-stack",
+  "공유": "preview-export",
+  "브라우저 보기와 붙여넣기": "web-globe",
+  "팬츠·재킷 고르기": "denim-clues",
+  "참고 이미지를 보고 촬영": "camera",
+  "가치 확인하기": "market-balance",
+  "핵심 감정 정보 확인": "check-source",
+  "아카이브에 저장": "archive-stack",
+  "USB에 전체 압축 해제": "folder-pick",
+  "보관함과 로그인": "lock-local",
+  "웹 또는 CLI에서 실습": "chat",
+  "안전하게 이동": "drive-eject",
+  "처음 한 번은 0.6.0 직접 교체": "clock-refresh",
+  "워크플로우 설치": "download",
+  "사용할 CLI 로그인": "lock-local",
+  "Return으로 빠르게 질문": "chat",
+  "답과 기록 다시 보기": "archive-stack",
+  "⌘Return으로 깊게 이어가기": "chat",
+  "설치": "download",
+  "드라이브 검사": "recursive-scan",
+  "확인하고 정리": "trash-clear",
+  "꺼내기": "drive-eject",
+  "앱 설치와 업그레이드": "download",
+  "손쉬운 사용 권한": "shield-safe",
+  "작동 영역 조절": "touch-zone",
+  "타이핑과 자동 해제": "keyboard-lock",
+  "영역 터치로 바로 해제": "touch-zone",
+  "다른 포인터 장치": "pointer-devices",
+  "긴급 해제": "shield-safe",
+  "메모리 압박 낮추기": "recovery-wake",
+  "남은 자원 찾기": "recursive-scan",
+  "DerivedData 바로 비우기": "trash-clear",
+  "이유와 위험도 확인": "check-source",
+  "정리할 항목 선택": "check-badge",
+  "최종 확인 후 실행": "shield-safe",
+  "워크플로우 가져오기": "download",
+  "출발지와 도착지 입력": "discovery-map",
+  "장소와 경로 확인": "discovery-map",
+  "ZIP 내려받기": "download",
+  "확장 관리 열기": "settings",
+  "폴더 불러오기": "folder-pick",
+  "Shorts 보기": "play-remote",
+  "지역 정하기": "discovery-map",
+  "메뉴 추천 받기": "meal",
+  "오늘은 여기로": "discovery-map",
+  "다음 선택 이어가기": "defaults-star",
+  "공간 만들기": "homepage-flag",
+  "이름과 역할 정하기": "people",
+  "받을 사람 선택": "people",
+  "호출 보내기": "bell",
+  "알림 권한 확인": "shield-safe",
+  "사이트 열기": "web-globe",
+  "원하는 곳에서 검색": "search-bar",
+  "이음말 둘러보기": "groups-grid",
+  "첫 화면으로 사용": "homepage-flag",
+  "말씀 찾기": "sermon-mic",
+  "찬양 듣기": "music-grid",
+  "교회 응원하기": "heart-share",
+  "달란트 나누기": "heart-share",
+  "광장 참여하기": "shield-community",
+  "빠방넷 열기": "web-globe",
+  "Google 연결하기": "lock-local",
+  "보고 싶은 목록 고르기": "film-reel",
+  "그대로 이어 보기": "play-remote",
+  "브랜드는 한양 HANYANG": "name-tag",
+  "도시 이름은 보이지 않게": "eye-browse",
+  "현재의 기반": "layers",
+  "사용자가 경계를 결정": "shield-safe",
+  "앱에서 AI 선택": "three-rings",
+  "공식 페이지에서 직접 로그인": "lock-local",
+  "진행 또는 브라우저 보기": "web-globe",
+  "검증된 결과 받기": "check-source",
+  "준비물 확인": "check-badge",
+  "데이터 폴더 만들기": "folder-pick",
+  "설정 파일 준비": "doc-scroll",
+  "Container Manager에서 시작": "storage-network",
+  "자녀 기기 연결": "devices-pair",
+  "백업과 안전 설정": "shield-safe",
+  "로그인": "lock-local",
+  "한 화면에서 확인": "progress-bar",
+  "즉시 갱신": "clock-refresh",
+  "핵심 원칙": "shield-safe",
+  "Google 연결": "web-globe",
+  "기기에 저장되는 정보": "mac-local",
+  "삭제와 연결 해제": "trash-clear",
+  "외부 서비스": "web-globe",
+  "저장 위치와 보유 기간": "archive-stack",
+  "처리 목적과 항목": "doc-scroll",
+  "홈페이지 이용 통계": "progress-bar",
+  "TestFlight 공개 베타": "download",
+  "보유 기간": "clock-refresh",
+  "파기 방법": "trash-clear",
+  "외부 서비스와 제공": "web-globe",
+  "사용자의 권리": "shield-safe",
+  "Google 서비스": "web-globe",
+  "Google 사진 데이터의 공유와 제공 (Data sharing and disclosure)": "photo-stack",
+  "보안과 데이터 보호 (Security and data protection)": "lock-local",
+  "개인정보 보호책임자": "life-ring",
+  "권익침해 구제": "life-ring",
+  "방침의 변경": "clock-refresh",
+  "서비스의 성격": "doc-scroll",
+  "사용자의 책임": "shield-safe",
+  "보증과 책임 범위": "shield-safe",
+  "외부 계정 연결 해제": "lock-local",
+  "기기 데이터 삭제": "trash-clear",
+  "도움이 필요한 경우": "life-ring",
+  "먼저 확인할 내용": "check-source",
+  "저장 정보 정리": "trash-clear",
+  "오류를 알려주실 때": "life-ring",
+  "Product purpose": "doc-scroll",
+  "Google Drive": "storage-network",
+  "Google Photos Picker": "photo-stack",
+  "Data sharing and disclosure": "devices-pair",
+  "Security and data protection": "shield-safe",
+  "Limited Use": "check-source",
+  "Control and deletion": "trash-clear"
 };
 
-function featureIconSource(app: NonNullable<ReturnType<typeof findApp>>, feature: (typeof app.features)[number], index: number) {
-  const denimDexIcon = app.slug === "denimdex" ? denimDexFeatureIcons[feature.title] : undefined;
-  const customFeatureIcon = customFeatureIconSlugs.has(app.slug) ? `/apps/${app.slug}/features/feature-${String(index + 1).padStart(2, "0")}.webp` : undefined;
-  return feature.icon ?? denimDexIcon ?? customFeatureIcon;
-}
-
-const contentVisualRules: [RegExp, AdvantageVariant][] = [
-  [/최대 30장|사진 1~8장|고른 사진을 모두|여러 각도.*촬영/, "photo-stack"],
-  [/생산 단서|라벨.*버튼.*리벳|제품 정보.*제조공장/, "denim-clues"],
-  [/희귀도/, "rarity-gem"],
-  [/한국.*일본.*매입가|원화.*엔화/, "market-balance"],
-  [/순수익|판매가.*수수료|예상 차익/, "profit-calculator"],
-  [/판단 근거|확실성|신뢰 수준/, "check-source"],
-  [/데님 아카이브|개인 아카이브/, "archive-stack"],
-  [/전송용 사본|16MB|크기와 품질.*조절/, "image-compress"],
-  [/Live Photo|Motion Photo|움직이는 사진/, "live-motion-swap"],
-  [/저장공간|클라우드|NAS|Dropbox|OneDrive|Google Drive|Synology|SFTP|SMB|WebDAV|FTP/, "storage-network"],
-  [/VLC|스트리밍|재생 제어|영상.*재생/, "play-remote"],
-  [/폰하드/, "phone-drive"],
-  [/폴더|Finder/, "folder-pick"],
-  [/재귀|검색.*파일|스캔/, "recursive-scan"],
-  [/Vault|호환|바로 호환/, "vault-ready"],
-  [/이어서|재개|건너뛰고|중단/, "resume-progress"],
-  [/진행률|남은 시간|한눈에.*상태|용량/, "progress-bar"],
-  [/서버로 보내지 않|Mac에서 직접|로컬에서만/, "mac-local"],
-  [/영화|필름|30편/, "film-reel"],
-  [/음악 길이|엔딩.*시간|빠른 영화/, "music-timeline"],
-  [/스윙|AiShot|타격/, "target-swing"],
-  [/화면비|워터마크|조절.*자막|내 방식으로/, "sliders"],
-  [/시사회|미리보기.*저장|저장하기 전에/, "preview-export"],
-  [/보관함|프로젝트 보관/, "archive-stack"],
-  [/커서.*이동|입력.*차단|글을 쓰는 동안/, "keyboard-lock"],
-  [/1초|자동 해제|초 후/, "timer-release"],
-  [/터치.*해제|영역.*터치|톡톡/, "touch-zone"],
-  [/마우스|트랙볼|펜 태블릿/, "pointer-devices"],
-  [/실패 안전|안전 설계/, "shield-safe"],
-  [/Keychain|Keystore|비밀번호|암호화|안전한 로그인/, "lock-local"],
-  [/세 가지|3열|세 AI|Codex.*Claude.*Gemini/, "three-rings"],
-  [/새로고침|갱신/, "clock-refresh"],
-  [/두 패널|패널/, "two-panels"],
-  [/JSON|로컬 공유|ccmb-usage/, "json-local"],
-  [/복구|잠자기|깨우기|네트워크 단절/, "recovery-wake"],
-  [/API 키|키를 앱에 넣지/, "no-key"],
-  [/플립|시계/, "flip-clock"],
-  [/밤|어두운|조명|매이트/, "night-glow"],
-  [/수면 기록|타임라인|기록.*확인|20개 기록/, "timeline-dots"],
-  [/테마|글꼴|꾸미기|내 화면 만들기/, "palette"],
-  [/음악 스트립|음악 채널|라디오/, "music-grid"],
-  [/백그라운드|권한 선택|선택하는/, "toggle-control"],
-  [/이름으로|이름을 입력/, "name-tag"],
-  [/검색/, "search-bar"],
-  [/한눈에|모아|이음말|카드에서/, "groups-grid"],
-  [/기억|기본값|즐겨찾기|다시 불러오기/, "defaults-star"],
-  [/시작 화면|첫 화면|홈 화면/, "homepage-flag"],
-  [/여러 기기|기기 간|호환 모드|가족 공간/, "devices-pair"],
-  [/설교|찬양/, "sermon-mic"],
-  [/발견|지역.*교회/, "discovery-map"],
-  [/나눔|달란트|필요한 곳/, "heart-share"],
-  [/광장|커뮤니티|별칭/, "shield-community"],
-  [/검증|교차 확인|출처/, "check-source"],
-  [/둘러보기|가입 없이/, "eye-browse"],
-  [/Android/, "android-bot"],
-  [/사이렌|호출|녹음/, "sermon-mic"],
-  [/찜|지도 앱|맛보기/, "discovery-map"],
-  [/매출|추이|현황/, "progress-bar"],
-  [/AI를 먼저 선택|네 가지 말투/, "sliders"],
-];
-
-const contentVisualFallback: AdvantageVariant[] = ["spark", "layers", "compass", "bolt", "toggle-control", "three-rings"];
-
-function pickContentVisual(text: string, index: number): AdvantageVariant {
-  for (const [pattern, variant] of contentVisualRules) {
-    if (pattern.test(text)) return variant;
-  }
-  return contentVisualFallback[index % contentVisualFallback.length];
+function pickContentVisual(title: string): AdvantageVariant {
+  return contentVisuals[title] ?? "doc-scroll";
 }
 
 function platformVisual(name: string): AdvantageVariant {
@@ -257,6 +321,8 @@ export default async function AppRoute({ params }: RouteProps) {
   if (section) return <InfoPage app={app} section={section} />;
 
   const family = productFamilyOf(app.slug);
+  const hasScreenSection = Boolean(app.screenshots?.length || app.systemImage || app.artwork === "directions" || app.slug === "aiplaygrand");
+  const hasActualScreens = Boolean(app.screenshots?.some((screen) => screen.src.includes("/screens/") && !screen.src.endsWith("usage-square.png")));
 
   return (
     <main className={`app-page app-${app.slug} theme-${app.theme}`}>
@@ -276,30 +342,30 @@ export default async function AppRoute({ params }: RouteProps) {
       <nav className="section-nav" aria-label={`${app.name} 페이지 내부 메뉴`}>
         <div className="shell">
           {app.slug === "nasfinder" ? (
-            <><Link href="#motion-bridge">움직이는 사진</Link><Link href="#why-nasfinder">왜 나스파인더</Link><Link href="#features">특징</Link><Link href="#screens">화면</Link><Link href="#download">설치</Link><Link href="#spec">사양</Link></>
+            <><Link href="#motion-bridge">움직이는 사진</Link><Link href="#why-nasfinder">왜 나스파인더</Link><Link href="#stories">활용</Link><Link href="#features">특징</Link>{hasScreenSection && <Link href="#screens">화면과 흐름</Link>}<Link href="#download">설치</Link><Link href="#spec">사양</Link></>
           ) : (
-            <><Link href="#product-campaign">왜 {app.name}</Link><Link href="#features">특징</Link><Link href="#screens">화면</Link>{app.matchup && <Link href="#matchup">매치업</Link>}<Link href="#guide">사용 방법</Link><Link href="#download">다운로드</Link><Link href="#spec">사양</Link></>
+            <>{(campaignSlugs.has(app.slug) || app.slug === "hanai") && <Link href="#product-campaign">왜 {app.name}</Link>}<Link href="#features">특징</Link>{hasScreenSection && <Link href="#screens">화면과 흐름</Link>}{app.matchup && <Link href="#matchup">매치업</Link>}<Link href="#guide">사용 방법</Link><Link href="#download">다운로드</Link><Link href="#spec">사양</Link></>
           )}
         </div>
       </nav>
 
       {app.slug === "nasfinder" && <><NasFinderMotionBridge /><NasFinderPromotion /></>}
-      {campaignSlugs.has(app.slug) ? <ProductPromotion app={app} /> : app.slug !== "nasfinder" && <ProductSpotlight app={app} />}
+      {campaignSlugs.has(app.slug) ? <ProductPromotion app={app} /> : app.slug === "hanai" && <ProductSpotlight app={app} />}
 
       <section className="feature-section shell" id="features">
         <div className="section-heading reveal"><div><p className="eyebrow">주요 특징</p><h2>복잡함은 덜고,<br />쓰임은 선명하게.</h2></div></div>
         <div className="feature-grid">
           {app.features.map((feature, index) => {
-            const icon = featureIconSource(app, feature, index);
+            const icon = feature.icon;
             const cardClassName = `feature-card feature-card-iconized reveal${icon ? " feature-card-inline-icon" : ""}`;
-            return <article className={cardClassName} key={feature.title}><span>0{index + 1}</span>{icon ? <Image className="feature-icon" src={icon} alt={`${feature.title} 기능 아이콘`} width={72} height={72} unoptimized /> : <AdvantageVisual variant={pickContentVisual(`${feature.title} ${feature.body}`, index)} />}<h3>{feature.title}</h3><p>{feature.body}</p></article>;
+            return <article className={cardClassName} key={feature.title}><span>{String(index + 1).padStart(2, "0")}</span>{icon ? <Image className="feature-icon" src={icon} alt="" aria-hidden="true" width={72} height={72} unoptimized /> : <AdvantageVisual variant={pickContentVisual(feature.title)} />}<h3>{feature.title}</h3><p>{feature.body}</p></article>;
           })}
         </div>
       </section>
 
-      <section className="screens-section" id="screens">
+      {hasScreenSection && <section className="screens-section" id="screens">
         <div className="shell">
-          <div className="section-heading reveal"><div><p className="eyebrow">{app.screenshots?.length ? "제품 화면" : "사용 장면"}</p><h2>눈으로 먼저 만나보세요.</h2></div><p>{app.screenshots?.length ? "제품의 화면과 주요 사용 흐름을 살펴보세요." : "제품의 쓰임을 표현한 이미지와 사용 예시입니다."}</p></div>
+          <div className="section-heading reveal"><div><p className="eyebrow">{hasActualScreens ? "제품 화면" : "작동 원리"}</p><h2>눈으로 먼저 만나보세요.</h2></div><p>{hasActualScreens ? "실제 제품 화면에서 주요 사용 흐름을 살펴보세요." : "제품의 사용 흐름을 설명하는 안내 이미지입니다."}</p></div>
           {app.screenshots && app.screenshots.length > 0 ? (
             <div className="screenshot-rail">{app.screenshots.map((screen) => {
               const dimensions = app.slug === "nasfinder"
@@ -321,13 +387,13 @@ export default async function AppRoute({ params }: RouteProps) {
             <div className="single-artwork reveal"><AppArtwork app={app} mode="system" /><p>{app.slug === "hanai" ? "사대문은 외부 연결의 관문이 되고, 한양도성은 개인 데이터의 경계가 됩니다." : "제품의 핵심 기능을 표현한 대표 이미지입니다."}</p></div>
           )}
         </div>
-      </section>
+      </section>}
 
       <section className="guide-section" id="guide">
         <div className="shell guide-layout">
-          <div className="guide-sticky reveal"><p className="eyebrow">빠른 시작 안내</p><h2>처음부터<br />차근차근.</h2><p>더 자세한 설명과 문제 해결 문서는 제품 개발 진행에 맞춰 계속 추가됩니다.</p></div>
+          <div className="guide-sticky reveal"><p className="eyebrow">빠른 시작 안내</p><h2>처음부터<br />차근차근.</h2><p>필요한 준비부터 첫 사용까지 순서대로 안내합니다.</p></div>
           <div className="guide-steps">
-            {app.guide.map((step, index) => <article className="guide-step reveal" key={step.title}><span>{String(index + 1).padStart(2, "0")}</span><div><AdvantageVisual variant={pickContentVisual(`${step.title} ${step.body}`, index)} /><h3>{step.title}</h3><p>{step.body}</p></div></article>)}
+            {app.guide.map((step, index) => <article className="guide-step reveal" key={step.title}><span>{String(index + 1).padStart(2, "0")}</span><div><AdvantageVisual variant={pickContentVisual(step.title)} /><h3>{step.title}</h3><p>{step.body}</p></div></article>)}
           </div>
         </div>
       </section>
@@ -370,10 +436,10 @@ export default async function AppRoute({ params }: RouteProps) {
       )}
 
       <section className="progress-section shell" id="progress">
-        <div className="section-heading reveal"><div><p className="eyebrow">진행 상황</p><h2>현재 진행 상황</h2></div><p>{app.slug === "alfred-navermap" ? "마지막 내용 확인: 2026년 9월 9일." : app.slug === "trackpadguard" ? "숫자보다 실제 상태를 보여드립니다. 마지막 내용 확인: 2026년 9월 3일." : app.slug === "alfred-ai-search" ? "숫자보다 실제 상태를 보여드립니다. 마지막 내용 확인: 2026년 8월 31일." : app.slug === "hanai" || app.slug === "hanclip" ? "숫자보다 실제 상태를 보여드립니다. 마지막 내용 확인: 2026년 9월 7일." : "숫자보다 실제 상태를 보여드립니다. 마지막 내용 확인: 2026년 8월 25일."}</p></div>
-        <div className="progress-list">
+        <div className="section-heading reveal"><div><p className="eyebrow">DEVELOPMENT NOTES</p><h2>만들어 가는 기록.</h2></div><p>공개된 내용과 검증 중인 내용을 구분해 확인하세요.</p></div>
+        <details className="catalogue-details"><summary><AdvantageVisual variant="check-source" />개발 및 검증 기록 보기</summary><div className="progress-list">
           {app.progress.map((item) => <article className="progress-item reveal" key={item.title}><div className={`progress-marker marker-${item.state}`}><AdvantageVisual variant={progressStateVisual[item.state]} /></div><div><p>{item.state === "done" ? "구현됨" : item.state === "active" ? "검증 중" : "다음 단계"}</p><h3>{item.title}</h3><span>{item.body}</span></div></article>)}
-        </div>
+        </div></details>
       </section>
 
       <section className="support-cards shell reveal">
@@ -406,8 +472,6 @@ function ProductSpec({ app }: { app: NonNullable<ReturnType<typeof findApp>> }) 
   const testFlight = testFlightStatus(app.slug);
   const inviteUrl = testFlight?.inviteAvailable !== false ? testFlight?.inviteUrl ?? null : null;
   const downloadPlatforms = app.platforms.filter((platform) => platform.url);
-  const doneCount = app.progress.filter((item) => item.state === "done").length;
-  const activeCount = app.progress.filter((item) => item.state === "active").length;
 
   return (
     <section className="spec-section shell" id="spec" aria-labelledby="spec-title">
@@ -453,11 +517,11 @@ function ProductSpec({ app }: { app: NonNullable<ReturnType<typeof findApp>> }) 
           </div>
           <div>
             <dt>진행 상황</dt>
-            <dd><Link href="#progress">구현 {doneCount} · 검증 중 {activeCount} · 전체 {app.progress.length}</Link></dd>
+            <dd><Link href="#progress">개발 및 검증 기록</Link></dd>
           </div>
           <div>
             <dt>문서</dt>
-            <dd>기능 {app.features.length}개 · <Link href="#guide">사용 안내 {app.guide.length}단계</Link>{app.matchup && <> · <Link href="#matchup">UI 매치업</Link></>}</dd>
+            <dd><Link href="#guide">사용 안내</Link>{app.matchup && <> · <Link href="#matchup">UI 매치업</Link></>}</dd>
           </div>
           <div className="spec-wide">
             <dt>공개 저장소</dt>
@@ -517,18 +581,12 @@ function ProductSpotlight({ app }: { app: NonNullable<ReturnType<typeof findApp>
         <div className="product-promo-copy reveal">
           <p className="eyebrow">MADE FOR A REAL MOMENT</p>
           <h2>{app.name}.<br /><span>쓰는 이유가 먼저.</span></h2>
-          <p>{app.summary}</p>
-          <div className="product-promo-actions"><Link className="button product-promo-primary" href="#screens">사용 장면 보기 <span aria-hidden="true">↓</span></Link><Link className="button product-promo-secondary" href="#download">지금 만나는 방법 <span aria-hidden="true">→</span></Link></div>
+          <p>{app.features[0]?.body ?? app.summary}</p>
+          <div className="product-promo-actions"><Link className="button product-promo-primary" href="#guide">사용 방법 보기 <span aria-hidden="true">↓</span></Link><Link className="button product-promo-secondary" href="#download">지금 만나는 방법 <span aria-hidden="true">→</span></Link></div>
         </div>
         <div className="product-promo-image product-promo-artwork reveal"><AppArtwork app={app} mode="spotlight" /><div className="product-promo-image-label"><span>{app.eyebrow}</span><strong>{app.slug === "hanai" ? "기억과 지식이 모이는 규장각" : app.tagline}</strong></div></div>
         <div className="product-promo-facts reveal" aria-label={`${app.name}이 주는 핵심 가치`}>
           {app.features.slice(0, app.slug === "alfred-navermap" ? 4 : 3).map((feature, index) => <p key={feature.title}><strong>{String(index + 1).padStart(2, "0")}</strong><span>{feature.title}</span></p>)}
-        </div>
-      </div>
-      <div className="shell product-advantages">
-        <div className="product-section-intro reveal"><p className="eyebrow">WHY IT MATTERS</p><h2>기능보다 먼저.<br /><span>달라지는 일.</span></h2><p>{app.tagline} 실제 사용에서 바로 느낄 수 있는 핵심 이점을 먼저 소개합니다.</p></div>
-        <div className="product-advantage-grid">
-          {app.features.slice(0, 4).map((feature, index) => <article className="product-advantage-card reveal" key={feature.title}><div><span>{String(index + 1).padStart(2, "0")}</span><small>{app.english.toUpperCase()}</small></div><Image className="campaign-feature-icon" src={featureIconSource(app, feature, index) ?? app.icon ?? "/icon-192.png"} alt={`${feature.title} 기능 아이콘`} width={72} height={72} unoptimized /><h3>{feature.title}</h3><p>{feature.body}</p></article>)}
         </div>
       </div>
     </section>
@@ -547,12 +605,13 @@ const productCampaigns = {
     facts: [["16,540", "검증한 미디어 파일"], ["1.57TB", "검증한 원본 폴더"], ["1–16", "파일 동시 작업자"]],
     advantages: [
       ["01", "CHOOSE IN FINDER", "지금 쓰는 NAS 폴더에서 바로 시작합니다.", "Finder에 연결한 NAS 공유나 Mac 폴더를 사용자가 직접 선택합니다.", "별도 업로드 공간을 만들지 않고 이미 정리한 보관함을 그대로 대상으로 삼습니다.", "folder-pick"],
-      ["02", "QUEUE + ADAPT", "원하는 만큼 빠르게, 뜨거워지면 알아서 가볍게.", "자동 체크박스를 켜고 안정적인 −/+ 버튼으로 파일 작업자를 1~16개 사이에서 정합니다.", "여유가 있으면 요청한 수를 쓰고, 발열이 심하면 절반, 위험 수준이면 1개로 줄였다가 식으면 복귀합니다. 폴더 작업은 적용 수의 절반(최소 1개)입니다.", "recursive-scan"],
+      ["02", "QUEUE + ADAPT", "원하는 만큼 빠르게, 뜨거워지면 알아서 가볍게.", "자동 체크박스를 켜고 안정적인 −/+ 버튼으로 파일 작업자를 1~16개 사이에서 정합니다.", "여유가 있으면 요청한 수를 쓰고, 발열이 심하면 절반, 위험 수준이면 1개로 줄였다가 식으면 복귀합니다. 폴더 작업은 적용 수의 절반(최소 1개)입니다.", "temperature"],
       ["03", "NASFINDER READY", "한 번 준비해 여러 기기에서 봅니다.", "수퍼썸네일을 NasFinder가 읽는 이름과 .NasFinder-Vault 구조로 저장합니다.", "iPhone·iPad·Mac·Android NasFinder가 같은 준비된 미리보기를 활용합니다.", "vault-ready"],
       ["04", "RESUME", "긴 작업은 멈췄다가 그대로 이어갑니다.", "이미 만든 썸네일은 건너뛰고 남은 미디어를 다시 검사합니다.", "처음부터 다시 만드는 대신 완료된 결과를 보존하며 대형 작업을 나눠 진행합니다.", "resume-progress"],
       ["05", "VISIBLE PROGRESS", "찾는 순간부터, 발견한 양이 보입니다.", "사진·영상과 하위 폴더를 찾는 동안 발견한 폴더 수와 파일 수를 실시간으로 표시합니다.", "탐색이 끝난 뒤에는 전체·완료 수, 예상 남은 시간과 처리 용량까지 이어서 확인합니다.", "progress-bar"],
       ["06", "ON YOUR MAC", "원본 미디어는 Mac에서 직접 처리합니다.", "사용자가 고른 Finder 폴더를 Mac에서 읽고 쓰며 파일을 개발자 서버로 보내지 않습니다.", "수퍼썸네일을 만들기 위해 대형 원본 보관함을 별도 서버에 업로드하지 않습니다.", "mac-local"],
     ],
+    storyIcons: ["folder-pick", "storage-network", "devices-pair"],
     stories: [
       ["01", "가족 사진 NAS를 준비할 때", "Finder에 연결한 가족 사진 폴더를 고르고 수퍼썸네일 생성을 시작합니다. 다음에는 iPhone NasFinder에서 파일명 대신 장면을 보며 원하는 사진을 찾습니다.", "NAS · 가족 사진 · 시각 탐색"],
       ["02", "여러 보관함을 한 번에 준비할 때", "사진 NAS와 영상 NAS 폴더를 함께 대기열에 올립니다. 폴더는 차례대로 안전하게 처리하고 내부 파일은 Mac의 남는 자원을 활용해 동시에 만듭니다.", "작업 대기열 · 자동 병렬 처리 · NAS"],
@@ -575,11 +634,12 @@ const productCampaigns = {
     advantages: [
       ["01", "ONE MOVIE", "고른 순간이 곧 영화가 됩니다.", "사진·영상·Live Photo·Motion Photo를 한 흐름에 담아 MP4로 만듭니다.", "서로 다른 촬영 형식을 따로 정리하지 않고 한 편으로 묶습니다.", "film-reel"],
       ["02", "QUICK MOVIE", "음악이 끝나면, 영화도 정확히 끝납니다.", "빠른 영화가 장면 길이를 나누고 엔딩을 포함한 전체 시간을 선택한 음악 길이에 맞춥니다.", "컷마다 시간을 계산하는 대신 음악과 함께 끝나는 흐름을 빠르게 만듭니다.", "music-timeline"],
-      ["03", "AISHOT", "큰 스윙도, 조용한 퍼팅도 놓치지 않도록.", "Apple판 AiShot은 준비부터 스윙까지의 화면 움직임과 기기 내 자세를 타격음과 함께 확인하고, 조용한 퍼팅은 작은 백스윙부터 팔로스루까지 동작이 완성될 때만 보수적으로 촬영합니다.", "말소리와 주변 타석 소리, 카메라 움직임은 낮추고 실제 샷 흐름이 확인된 순간부터 남기도록 돕습니다.", "target-swing"],
+      ["03", "AISHOT", "큰 스윙도, 조용한 퍼팅도 놓치지 않도록.", "Apple판 AiShot은 준비부터 스윙까지의 화면 움직임과 기기 내 자세를 타격음과 함께 확인하고, 조용한 퍼팅은 작은 백스윙부터 팔로스루까지 동작이 완성될 때만 보수적으로 촬영합니다.", "말소리와 주변 타석 소리, 카메라 움직임은 낮추고 실제 샷 흐름이 확인된 순간부터 남기도록 돕습니다.", "golf"],
       ["04", "FULL CONTROL", "자동으로 시작하고, 내 취향으로 끝냅니다.", "순서·길이·화면비·자막·음악·워터마크·엔딩 카드를 직접 조정합니다.", "빠른 초안 위에 나만의 이야기와 마무리를 더합니다.", "sliders"],
       ["05", "PREVIEW & EXPORT", "저장하기 전에, 완성본처럼 봅니다.", "미리보기로 결과를 확인한 뒤 사진·갤러리·파일로 저장합니다.", "내보낸 뒤 다시 만드는 일을 줄이고 원하는 곳으로 바로 보냅니다.", "preview-export"],
       ["06", "KEEP CREATING", "완성작도, 다음 편도 이어집니다.", "완성 영화는 앱 안에 최대 30편 보관하고 프로젝트와 컬렉션은 다시 열어 편집합니다.", "한 번 만든 소재를 버리지 않고 다른 화면비와 구성으로 다시 활용합니다.", "archive-stack"],
     ],
+    storyIcons: ["film-reel", "silent-film", "sliders"],
     stories: [
       ["01", "여행의 마지막 밤", "여행 사진과 짧은 영상을 고르고 음악 한 곡을 선택합니다. 빠른 영화로 길이를 맞춘 뒤 엔딩까지 미리 보고, 가족에게 보낼 MP4를 완성합니다.", "여행 · 음악 길이 · 빠른 영화"],
       ["02", "소리 없는 영상에서 순간을 찾을 때", "타임랩스나 슬로 모션처럼 오디오 트랙이 없는 영상도 화면 움직임으로 하이라이트를 찾습니다. 뚜렷한 변화가 없으면 영상 중앙을 기준으로 시작할 지점을 제안합니다.", "무음 영상 · 움직임 분석 · 중앙 대안"],
@@ -607,6 +667,7 @@ const productCampaigns = {
       ["05", "FAIL SAFE", "잠글 수 없는 상태라면, 잠그지 않습니다.", "멀티터치 좌표를 읽지 못하면 잠금을 시작하지 않고 비상 단축키도 제공합니다.", "예외 상황에서도 포인터를 잃지 않도록 빠져나올 길을 남깁니다.", "shield-safe"],
       ["06", "LOCAL BY DESIGN", "키 내용도, 터치 좌표도 쌓지 않습니다.", "키 입력 내용과 터치 좌표를 저장하거나 전송하지 않으며 서명된 업데이트를 사용합니다.", "입력 보호 기능이 내 작업 내용을 수집하는 도구가 되지 않습니다.", "lock-local"],
     ],
+    storyIcons: ["keyboard-lock", "touch-zone", "pointer-devices"],
     stories: [
       ["01", "긴 원고에 집중할 때", "손을 노트북에 편하게 올리고 문장을 이어갑니다. 입력 중 커서는 제자리에 있고, 잠깐 멈추면 1초 뒤 다시 포인터를 사용합니다.", "글쓰기 · 커서 보호 · 자동 해제"],
       ["02", "커서를 바로 꺼내야 할 때", "트랙패드 아래쪽에 해제 구역을 그려 둡니다. 타이핑 중에도 그 지점만 새로 터치해 잠금을 즉시 풀고, 빨간 메뉴 아이콘으로 상태를 확인합니다.", "사용자 구역 · 즉시 해제 · 상태 표시"],
@@ -621,7 +682,7 @@ const productCampaigns = {
     tone: "meter",
     eyebrow: "THREE SERVICES, ONE GLANCE",
     headline: <>AI 사용량,<br /><span>메뉴 막대 한 칸이면 끝.</span></>,
-    description: "Codex, Claude, and Gemini stay visible at a glance, while Gemini CLI and online session limits remain separate and the menu bar follows the route you can use now.",
+    description: "Codex·Claude·Gemini의 남은 사용량과 갱신 시간을 한곳에서 확인하세요. Gemini는 CLI와 온라인 한도를 구분해 다음 작업에 쓸 여유를 보여 줍니다.",
     image: "/apps/ccmb/ccmb-dashboard-private.png",
     imageAlt: "Codex·Claude·Gemini 사용량이 메뉴와 항상 표시 패널에 나란히 보이는 CCMB 캠페인 이미지",
     imageLabel: "CODEX · CLAUDE · GEMINI",
@@ -634,6 +695,7 @@ const productCampaigns = {
       ["05", "RECOVERY", "잠자기에서 깨어나도 다시 이어집니다.", "네트워크 변화와 잠자기·깨우기 뒤 복구하며 로그인 시 실행과 서명된 업데이트를 지원합니다.", "매번 앱 상태를 되돌리는 대신 메뉴 막대의 모니터링 흐름을 유지합니다.", "recovery-wake"],
       ["06", "NO BUILT-IN KEYS", "새 API 키를 앱에 넣지 않습니다.", "이미 로그인된 로컬 CLI와 CCMB 전용 브라우저 연결을 활용하며 분석·원격 텔레메트리를 보내지 않습니다.", "Gemini 온라인에서는 사용량 비율과 초기화 문구만 남기고 로그인 정보와 페이지 내용은 저장하지 않습니다.", "no-key"],
     ],
+    storyIcons: ["three-rings", "two-panels", "json-local"],
     stories: [
       ["01", "큰 작업을 시작하기 전에", "메뉴 막대의 세 가지 색 숫자와 패널을 열어 각 서비스의 남은 사용량과 갱신 시간을 봅니다. Gemini는 온라인과 CLI를 나눠 확인하고 오늘의 작업을 배분합니다.", "세 서비스 · 잔량 · 갱신 시간"],
       ["02", "패널을 늘 보이는 곳에", "작업 화면 옆에 항상 표시 패널을 두고 메뉴와 같은 수치를 확인합니다. 맥이 잠자기에서 깨어나거나 네트워크가 돌아온 뒤에도 흐름을 이어갑니다.", "항상 표시 · 복구 · 한눈에"],
@@ -659,12 +721,13 @@ const productCampaigns = {
       ["03", "LOCAL TIMELINE", "밤의 후보 소리를 아침에 훑어봅니다.", "코골이·잠꼬대·움직임으로 보이는 후보 소리를 기기 안에서 기록해 타임라인으로 보여 줍니다.", "밤새 앱을 지켜보지 않고 기록된 시점부터 확인합니다. 의료 진단 기능은 아닙니다.", "timeline-dots"],
       ["04", "MAKE IT YOURS", "시간을 보는 화면도 내 공간답게.", "밝기·시계 글꼴·레이아웃·테마를 조정합니다.", "같은 앱을 침실에는 차분하게, 책상에는 선명하게 맞춥니다.", "palette"],
       ["05", "SIX-SLOT MUSIC", "자주 듣는 소리를 여섯 칸에 둡니다.", "Apple Music·Classical 또는 Spotify·YouTube Music과 인터넷 라디오를 플랫폼에 맞춰 음악 스트립에 배치합니다.", "시계 화면을 떠나지 않고 자주 듣는 음악과 라디오로 들어갑니다.", "music-grid"],
-      ["06", "YOU CONTROL BACKGROUND", "감지와 재생의 범위는 내가 정합니다.", "배경 동작은 기본으로 꺼져 있고, QR로 근처 보이소를 연결하면 움직임·소리 이벤트를 공유합니다.", "앱 밖에서도 이어갈지, 가까운 기기와 연결할지를 사용자가 선택합니다.", "toggle-control"],
+      ["06", "YOU CONTROL BACKGROUND", "감지와 재생의 범위는 내가 정합니다.", "백그라운드 동작은 기본으로 켜져 있으며 설정에서 바꿀 수 있습니다. 자동 모드에서는 화면을 잠그거나 다른 앱으로 나갈 때 매이트 감지를 시작합니다.", "앱 밖에서도 이어갈지, 가까운 기기와 연결할지를 사용자가 선택합니다.", "toggle-control"],
     ],
+    storyIcons: ["night-glow", "timeline-dots", "music-grid"],
     stories: [
       ["01", "침대 옆 가로 시계", "태블릿을 가로로 세워 플립 클록과 날씨, 배터리를 봅니다. 방이 어두워지면 화면은 낮은 밝기를 유지하고, 메이트 모드는 2분 뒤부터 반응을 준비합니다.", "침실 · 플립 클록 · 메이트 모드"],
       ["02", "아침에 밤의 흐름을 볼 때", "기기 안에 남은 코골이·잠꼬대·움직임 후보의 시점을 타임라인으로 훑습니다. 의료 판단이 아니라 밤의 흐름을 되짚는 참고 기록으로 봅니다.", "로컬 기록 · 후보 소리 · 타임라인"],
-      ["03", "시계와 음악을 한자리에", "여섯 칸 음악 스트립에 자주 듣는 서비스와 라디오를 둡니다. 배경 동작은 꺼 둔 채 앱 안에서만 감지와 재생을 사용합니다.", "음악 스트립 · 라디오 · 사용자 제어"],
+      ["03", "시계와 음악을 한자리에", "여섯 칸 음악 스트립에 자주 듣는 서비스와 라디오를 둡니다. 앱 안에서만 사용하고 싶다면 설정에서 백그라운드 동작을 끌 수 있습니다.", "음악 스트립 · 라디오 · 사용자 제어"],
     ],
     ctaEyebrow: "SET THE NIGHT YOUR WAY",
     ctaTitle: <>밤을 더 밝히지 말고.<br /><span>필요한 만큼만 곁에.</span></>,
@@ -688,6 +751,7 @@ const productCampaigns = {
       ["05", "START PAGE", "브라우저를 여는 순간 바로 만납니다.", "인투샾을 브라우저의 시작 페이지로 등록해 사용할 수 있습니다.", "새 탭에서 무엇을 할지 다시 고르는 대신 내 인터넷 입구에서 곧바로 시작합니다.", "homepage-flag"],
       ["06", "DESKTOP & MOBILE", "PC에서도, 휴대폰 첫 화면에서도.", "PC·모바일에 반응하는 공개 웹 서비스이며 홈 화면 바로가기로도 열 수 있습니다.", "기기에 맞는 화면으로 같은 이름 기반 시작 경험을 이어갑니다.", "devices-pair"],
     ],
+    storyIcons: ["name-tag", "groups-grid", "homepage-flag"],
     stories: [
       ["01", "출근해서 브라우저를 열 때", "시작 페이지로 지정한 인투샾이 먼저 열립니다. 자주 쓰는 사이트 이름을 입력해 바로 이동하고, 다음 업무도 같은 한 줄에서 검색합니다.", "시작 페이지 · 이름 이동 · 업무"],
       ["02", "찾는 목적이 계속 바뀔 때", "같은 검색줄에서 지도와 쇼핑, YouTube를 차례로 바꿔 검색합니다. 입력 방식은 그대로 두고 결과를 볼 서비스만 고릅니다.", "통합 검색 · 지도 · 쇼핑 · 영상"],
@@ -715,6 +779,7 @@ const productCampaigns = {
       ["05", "CHECKED SOURCES", "확인하고, 틀리면 다시 살펴봅니다.", "교단·노회·공식 홈페이지·영상 채널을 교차 확인하고 신고·재검토·이의제기 절차를 둡니다.", "정보의 출처와 수정 경로를 함께 두되 검증의 완전성을 보장한다고 주장하지 않습니다.", "check-source"],
       ["06", "EASY FIRST", "큰 글씨와 넓은 버튼으로 시작하세요.", "말씀 보기·찬양 듣기·교회 찾기를 첫 화면의 큰 바로가기에서 고를 수 있습니다.", "복잡한 메뉴를 헤매지 않고 원하는 일을 바로 시작하며, 가입 없이 공개 콘텐츠를 둘러봅니다.", "eye-browse"],
     ],
+    storyIcons: ["discovery-map", "heart-share", "eye-browse"],
     stories: [
       ["01", "새로운 동네에서 교회를 찾을 때", "첫 화면의 큰 ‘교회 찾기’ 버튼을 누르고 지역과 교회 이름으로 말씀을 찾습니다. 순위 없이 작은 교회와 지역 교회의 최신 설교와 찬양을 함께 살펴봅니다.", "큰 바로가기 · 지역 교회 · 공식 채널"],
       ["02", "내 달란트를 나누고 싶을 때", "할 수 있는 일과 가능한 지역을 착한나눔에 남깁니다. 공개 전 검토를 거친 뒤 실제 필요와 이어질 가능성을 기다립니다.", "시간 · 기술 · 공간 · 기도"],
@@ -755,14 +820,14 @@ function ProductPromotion({ app }: { app: NonNullable<ReturnType<typeof findApp>
       <div className="shell product-advantages">
         <div className="product-section-intro reveal">
           <p className="eyebrow">FEATURES WITH A PURPOSE</p>
-          <h2>기능을 나열하지 않고.<br /><span>달라지는 일을 보여드립니다.</span></h2>
+          <h2>쓰는 순간 느껴지는.<br /><span>작지만 분명한 차이.</span></h2>
           <p>{app.name}의 기능 하나하나가 실제 사용에서 어떤 이점으로 이어지는지 확인하세요.</p>
         </div>
         <div className="product-advantage-grid">
-          {campaign.advantages.map(([number, kicker, title, body, benefit], index) => (
+          {campaign.advantages.map(([number, kicker, title, body, benefit, visual]) => (
             <article className="product-advantage-card reveal" key={number}>
               <div><span>{number}</span><small>{kicker}</small></div>
-              <Image className="campaign-feature-icon" src={featureIconSource(app, app.features[index] ?? app.features[0], index) ?? app.icon ?? "/icon-192.png"} alt={`${title} 기능 아이콘`} width={72} height={72} unoptimized />
+              <AdvantageVisual variant={visual} />
               <h3>{title}</h3><p>{body}</p><strong>{benefit}</strong>
             </article>
           ))}
@@ -780,8 +845,8 @@ function ProductPromotion({ app }: { app: NonNullable<ReturnType<typeof findApp>
             {campaign.stories.map(([number, title, quote, tag], index) => (
               <article className="product-story-card reveal" key={number}>
                 <div><span>{number}</span><small>{tag}</small></div>
-                <AdvantageVisual variant={pickContentVisual(`${title} ${tag}`, index)} />
-                <h3>{title}</h3><blockquote>“{quote}”</blockquote>
+                <AdvantageVisual variant={campaign.storyIcons[index]} />
+                <h3>{title}</h3><p className="story-scenario">{quote}</p>
               </article>
             ))}
           </div>
@@ -812,35 +877,10 @@ function NasFinderMotionBridge() {
           </Link>
         </div>
 
-        <div className="motion-bridge-visual reveal" aria-label="Live Photo와 Motion Photo의 양방향 변환">
-          <div className="motion-device motion-device-apple">
-            <div className="motion-device-top"><span>iPhone</span><b>LIVE</b></div>
-            <div className="motion-frame">
-              <i className="motion-sun" />
-              <i className="motion-hill motion-hill-back" />
-              <i className="motion-hill motion-hill-front" />
-              <span className="motion-play" aria-hidden="true">▶</span>
-            </div>
-            <strong>Live Photo</strong>
-          </div>
-
-          <div className="motion-swap" aria-hidden="true">
-            <span>자동 변환</span>
-            <strong>⇄</strong>
-            <small>QR로 연결</small>
-          </div>
-
-          <div className="motion-device motion-device-android">
-            <div className="motion-device-top"><span>Android</span><b>MOTION</b></div>
-            <div className="motion-frame">
-              <i className="motion-sun" />
-              <i className="motion-hill motion-hill-back" />
-              <i className="motion-hill motion-hill-front" />
-              <span className="motion-play" aria-hidden="true">▶</span>
-            </div>
-            <strong>Motion Photo</strong>
-          </div>
-        </div>
+        <figure className="motion-bridge-visual reveal">
+          <Image src="/apps/nasfinder/motion-bridge-20260918.webp" alt="같은 바닷가의 순간을 보여 주는 iPhone과 Android를 연결한 제품 연출 이미지" width={1536} height={1024} sizes="(max-width: 920px) 100vw, 60vw" unoptimized />
+          <figcaption><span>iPhone · Live Photo</span><b aria-hidden="true">⇄</b><span>Android · Motion Photo</span><small>QR로 연결하는 양방향 전송 · 기능을 표현한 연출 이미지</small></figcaption>
+        </figure>
 
         <div className="motion-bridge-proof reveal" aria-label="핵심 기능 요약">
           <p><span>01</span><strong>Live Photo → Motion Photo</strong><small>Android에 맞춰 전달</small></p>
@@ -892,24 +932,32 @@ function NasFinderPromotion() {
     {
       number: "01",
       title: "가족의 휴대폰이 서로 달라도",
+      image: "/apps/nasfinder/story-family-20260918.webp",
+      visual: "live-motion-swap" as AdvantageVariant,
       scenario: "여행에서 한 사람은 Android로 Motion Photo를 찍고, 가족은 iPhone을 사용합니다. 나스파인더로 QR만 맞추면 서로의 움직이는 사진이 각자의 사진 보관함에 맞는 형태로 들어옵니다.",
       tag: "가족 · 여행 · 움직이는 사진",
     },
     {
       number: "02",
       title: "NAS 속 영상을 소파에서 찾을 때",
+      image: "/apps/nasfinder/story-sofa-20260918.webp",
+      visual: "play-remote" as AdvantageVariant,
       scenario: "Mac용 Super Thumbnail로 큰 미디어 폴더의 미리보기를 준비해 둡니다. iPad에서 Synology를 열어 화면으로 영상을 찾고, VLC 기반 재생으로 먼저 확인한 뒤 필요한 파일만 내려받습니다.",
       tag: "Super Thumbnail · VLC · NAS",
     },
     {
       number: "03",
       title: "컴퓨터의 파일을 폰에서 써야 할 때",
+      image: "/apps/nasfinder/story-transfer-20260918.webp",
+      visual: "phone-drive" as AdvantageVariant,
       scenario: "같은 Wi‑Fi에서 컴퓨터 브라우저로 폰하드를 열어 자료를 보냅니다. 케이블이나 별도 전송 프로그램 없이, 받은 파일을 폰에서 바로 다음 작업에 사용합니다.",
       tag: "휴대용 하드 · 같은 Wi‑Fi · 업무 파일",
     },
     {
       number: "04",
       title: "다른 앱에서 NAS 파일이 필요할 때",
+      image: "/apps/nasfinder/story-document-20260918.webp",
+      visual: "folder-pick" as AdvantageVariant,
       scenario: "문서 앱에서 파일을 첨부하려고 Apple 파일 앱을 엽니다. Synology 위치로 바로 들어가 강화된 미리보기로 내용을 확인하고, 필요한 파일을 골라 작업을 이어갑니다.",
       tag: "파일 앱 · 강화된 미리보기 · 시스템 연동",
     },
@@ -917,39 +965,6 @@ function NasFinderPromotion() {
 
   return (
     <section className="nas-promo" id="why-nasfinder">
-      <div className="shell nas-promo-hero">
-        <div className="nas-promo-copy reveal">
-          <p className="eyebrow">NOT JUST A FILE BROWSER</p>
-          <h2>내 파일도,<br />움직이는 추억도.<br /><span>기기 경계 없이.</span></h2>
-          <p>
-            저장소가 흩어져 있어도, 사용하는 기기가 달라도 괜찮습니다.
-            나스파인더는 찾기·보기·정리·전송을 한 흐름으로 묶어
-            파일이 있는 곳과 지금 손에 든 기기를 바로 연결합니다.
-          </p>
-          <div className="nas-promo-actions">
-            <Link className="button nas-promo-primary" href="#download">플랫폼별 설치 보기 <span aria-hidden="true">↓</span></Link>
-            <Link className="button nas-promo-secondary" href="#stories">내가 쓰는 장면 보기 <span aria-hidden="true">→</span></Link>
-          </div>
-        </div>
-        <div className="nas-promo-image reveal">
-          <Image
-            src="/apps/nasfinder/live-motion-campaign.png"
-            alt="Live Photo와 Motion Photo가 iPhone과 Android 사이에서 양방향으로 이동하는 모습을 표현한 나스파인더 캠페인 이미지"
-            width={1672}
-            height={941}
-            sizes="(max-width: 920px) 100vw, 58vw"
-            priority
-            unoptimized
-          />
-          <div className="nas-promo-image-label"><span>FLAGSHIP FEATURE</span><strong>Live Photo ⇄ Motion Photo</strong></div>
-        </div>
-        <div className="nas-promo-facts reveal" aria-label="나스파인더 핵심 지원 범위">
-          <p><strong>08</strong><span>지원 저장소·연결</span></p>
-          <p><strong>04</strong><span>iPhone · iPad · Mac · Android</span></p>
-          <p><strong>⇄</strong><span>움직이는 사진 양방향 변환</span></p>
-        </div>
-      </div>
-
       <div className="shell nas-advantages">
         <div className="nas-section-intro reveal">
           <p className="eyebrow">FEATURES THAT PAY OFF</p>
@@ -957,10 +972,10 @@ function NasFinderPromotion() {
           <p>연결, 재생, 폰하드와 움직이는 사진. 가장 중요한 네 가지 이점을 먼저 보여드리고, 전체 기능은 아래 특징에서 이어서 소개합니다.</p>
         </div>
         <div className="nas-advantage-grid">
-          {advantages.map((advantage, index) => (
+          {advantages.map((advantage) => (
             <article className="nas-advantage-card reveal" key={advantage.number}>
               <div><span>{advantage.number}</span><small>{advantage.kicker}</small></div>
-              <Image className="campaign-feature-icon" src={`/apps/nasfinder/features/feature-${String(index + 1).padStart(2, "0")}.webp`} alt={`${advantage.title} 기능 아이콘`} width={72} height={72} unoptimized />
+              <AdvantageVisual variant={advantage.visual} />
               <h3>{advantage.title}</h3>
               <p>{advantage.body}</p>
               <strong>{advantage.benefit}</strong>
@@ -974,15 +989,18 @@ function NasFinderPromotion() {
           <div className="nas-section-intro nas-story-intro reveal">
             <p className="eyebrow">USE IT YOUR WAY</p>
             <h2>내 일상에서는,<br /><span>이렇게 달라집니다.</span></h2>
-            <p>실제 기능으로 가능한 예시 사용 장면입니다. 사용자 후기를 인용한 내용이 아닙니다.</p>
+            <p>기능의 쓰임을 보여 주는 연출 사진과 사용 예시입니다.</p>
           </div>
           <div className="nas-story-grid">
-            {stories.map((story, index) => (
+            {stories.map((story) => (
               <article className="nas-story-card reveal" key={story.number}>
-                <div><span>{story.number}</span><small>{story.tag}</small></div>
-                <AdvantageVisual variant={pickContentVisual(`${story.title} ${story.tag}`, index)} />
-                <h3>{story.title}</h3>
-                <p className="story-scenario">{story.scenario}</p>
+                <Image className="nas-story-photo" src={story.image} alt={`${story.title}의 사용 상황을 표현한 연출 사진`} width={1536} height={1024} sizes="(max-width: 920px) 100vw, 50vw" unoptimized />
+                <div className="nas-story-content">
+                  <div className="story-meta"><span>{story.number}</span><small>{story.tag}</small></div>
+                  <AdvantageVisual variant={story.visual} />
+                  <h3>{story.title}</h3>
+                  <p className="story-scenario">{story.scenario}</p>
+                </div>
               </article>
             ))}
           </div>
@@ -1097,7 +1115,7 @@ function InfoPage({ app, section }: { app: NonNullable<ReturnType<typeof findApp
 }
 
 function LegalSection({ title, children }: { title: string; children: React.ReactNode }) {
-  return <section className="legal-section"><h2><AdvantageVisual variant={pickContentVisual(title, 0)} /><span>{title}</span></h2><div>{children}</div></section>;
+  return <section className="legal-section"><h2><AdvantageVisual variant={pickContentVisual(title)} /><span>{title}</span></h2><div>{children}</div></section>;
 }
 
 function GoogleOAuthPage() {

@@ -25,24 +25,28 @@ const experiences = [
   {
     number: "01",
     label: "THE CENTER",
+    icon: "/icons/golf-20260918.webp",
     title: "몸과 생각을 함께 움직이는 골프",
     copy: "한스트리 스튜디오의 중심은 골프존 비전플러스와 220인치 대형 스크린입니다. 집중해서 스윙하고 몸을 움직이는 시간은 막힌 생각을 환기하고 다시 작업으로 돌아갈 힘을 만듭니다.",
   },
   {
     number: "02",
     label: "PLAY & INSPIRE",
+    icon: "/hanstree/cinema-art.jpg",
     title: "노래와 영화, 게임으로 시야를 바꾸기",
     copy: "TJ 노래방, Apple TV와 다양한 OTT, PlayStation 5와 레트로 게임기가 한 공간에 이어집니다. 같은 대형 스크린은 골프장이 되었다가 영화관과 무대가 됩니다.",
   },
   {
     number: "03",
     label: "MAKE",
+    icon: "/hanstree/workstations-art.jpg",
     title: "네 대의 PC에서 생각을 결과로",
     copy: "네 대의 PC와 넓은 작업·회의 탁자에서 아이디어를 구상하고 실제 제품으로 만듭니다. NasFinder를 비롯한 Hanstree의 디지털 결과물이 이곳에서 시작됩니다.",
   },
   {
     number: "04",
     label: "MOVE & RECOVER",
+    icon: "/hanstree/treadmill-art.jpg",
     title: "꾸준히 만들기 위한 체력과 회복",
     copy: "러닝머신과 샤워 시설, 편안한 휴식 환경을 갖추고 있습니다. 부드러운 조명과 강력한 환기·공기청정, 냉난방, 방음과 출입 보안이 오랫동안 몰입할 수 있는 바탕이 됩니다.",
   },
@@ -102,7 +106,7 @@ export default function HanstreeSpacePage() {
           {experiences.map((experience) => (
             <article key={experience.number}>
               <div><span>{experience.number}</span><small>{experience.label}</small></div>
-              <h3>{experience.title}</h3>
+              <Image className="space-experience-icon" src={experience.icon} alt="" width={96} height={96} unoptimized aria-hidden="true" /><h3>{experience.title}</h3>
               <p>{experience.copy}</p>
             </article>
           ))}
