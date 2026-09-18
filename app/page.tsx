@@ -41,6 +41,7 @@ const homeKoreanNames: Record<string, string> = {
   "alfred-navermap": "네이버 지도 길찾기",
   aibi: "아이비",
   autoshorts: "자동쇼츠",
+  ppabang: "빠방넷",
 };
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -122,45 +123,133 @@ export default async function Home() {
     }),
   );
 
+  const cleanusbApp = findApp("cleanusb");
+  const ccmbApp = findApp("ccmb");
+
   return (
     <main className="home-hanstree">
       <SiteHeader />
 
       <section className="works-index-hero shell reveal" id="works">
         <div className="works-index-intro">
-          <p className="eyebrow">{brand.name} · WORK INDEX</p>
-          <h1>생각을,<br /><span>결과물로.</span></h1>
-          <p>앱과 디지털 제품, 공간까지. 형태를 정해두기보다 직접 필요하고 좋아하는 것을 만들고, 오래 다듬어 온 기록입니다.</p>
+          <div className="hero-intro-copy">
+            <p className="eyebrow">{brand.name} · INDEPENDENT MAKER</p>
+            <h1>쓸모 있는 것을<br /><span>정성껏 만듭니다.</span></h1>
+            <p className="hero-lead">
+              일상의 작은 불편에서 시작한 앱과 디지털 도구, 좋아하는 것을 담은 공간까지. 직접 만들고 꾸준히 다듬는 한스트리의 작업을 만나보세요.
+            </p>
+            <div className="hero-editorial-actions">
+              <a className="editorial-btn editorial-btn-primary" href="#apps">
+                {apps.length}개 제품 둘러보기 <span aria-hidden="true">↓</span>
+              </a>
+              <a className="editorial-btn editorial-btn-secondary" href="#contact">
+                메이커 이야기 <span aria-hidden="true">→</span>
+              </a>
+              <a className="editorial-btn editorial-btn-ghost" href="#works-index">
+                전체 색인 <span aria-hidden="true">↓</span>
+              </a>
+            </div>
+          </div>
+
+          <div className="hero-editorial-feature" aria-label="한스트리 대표 작업 선별">
+            <Link className="editorial-feature-main" href="/space/hanstree" aria-label="한스트리 스튜디오 자세히 보기">
+              <div className="editorial-feature-image-wrap">
+                <Image
+                  className="editorial-feature-image"
+                  src="/hanstree/screen-art.jpg"
+                  alt="한스트리 스튜디오 작업 공간"
+                  width={1448}
+                  height={1086}
+                  priority
+                  sizes="(max-width: 920px) 100vw, 42vw"
+                />
+                <span className="editorial-feature-tag">STUDIO SPACE</span>
+              </div>
+              <div className="editorial-feature-info">
+                <div className="editorial-feature-meta">
+                  <Image className="app-icon editorial-feature-symbol" src="/hanstree/studio-symbol-dark.jpeg" alt="" width={886} height={886} sizes="38px" />
+                  <div>
+                    <strong>한스트리 스튜디오</strong>
+                    <small>Hanstree Studio · 창작 공간</small>
+                  </div>
+                </div>
+                <span className="editorial-feature-arrow" aria-hidden="true">↗</span>
+              </div>
+            </Link>
+
+            <div className="editorial-feature-sub-grid">
+              {cleanusbApp && (
+                <Link className="editorial-feature-sub" href={`/apps/${cleanusbApp.slug}`} aria-label={`${cleanusbApp.name} 제품 자세히 보기`}>
+                  <div className="editorial-feature-sub-thumb">
+                    <Image
+                      src={appCardImage(cleanusbApp)}
+                      alt={`${cleanusbApp.name} 대표 이미지`}
+                      width={640}
+                      height={427}
+                      sizes="(max-width: 600px) 44vw, 20vw"
+                      unoptimized
+                    />
+                    <AppIcon app={cleanusbApp} />
+                  </div>
+                  <div className="editorial-feature-sub-text">
+                    <span className="editorial-sub-tag">MAC UTILITY</span>
+                    <strong>{homeKoreanNames[cleanusbApp.slug] ?? cleanusbApp.name}</strong>
+                    <small>{cleanusbApp.tagline}</small>
+                  </div>
+                </Link>
+              )}
+
+              {ccmbApp && (
+                <Link className="editorial-feature-sub" href={`/apps/${ccmbApp.slug}`} aria-label={`${ccmbApp.name} 제품 자세히 보기`}>
+                  <div className="editorial-feature-sub-thumb">
+                    <Image
+                      src="/apps/ccmb/ccmb-campaign-v044.png"
+                      alt={`${ccmbApp.name} 대표 이미지`}
+                      width={640}
+                      height={427}
+                      sizes="(max-width: 600px) 44vw, 20vw"
+                      unoptimized
+                    />
+                    <AppIcon app={ccmbApp} />
+                  </div>
+                  <div className="editorial-feature-sub-text">
+                    <span className="editorial-sub-tag">MENUBAR TOOL</span>
+                    <strong>{homeKoreanNames[ccmbApp.slug] ?? ccmbApp.name}</strong>
+                    <small>{ccmbApp.tagline}</small>
+                  </div>
+                </Link>
+              )}
+            </div>
+          </div>
         </div>
-        <div className="hero-product-wall works-index-wall" aria-label="한스트리가 직접 만든 결과물 전체">
+
+        <div className="hero-product-wall works-index-wall" id="works-index" aria-label="한스트리가 직접 만든 결과물 전체">
           <div className="hero-product-wall-heading">
-            <p>{String(workCount).padStart(2, "0")} WORKS. STILL COUNTING.</p>
-            <h2>직접 만든 결과물의 인덱스</h2>
+            <div>
+              <p>THE COMPLETE INDEX</p>
+              <h2>{apps.length}개 제품, 그리고 한스트리의 공간과 기록</h2>
+            </div>
+            <p className="works-wall-sub">아이콘을 누르면 각 제품과 공간의 상세 소개로 바로 이동합니다.</p>
           </div>
           <div className="hero-product-grid" role="list">
             <Link className="hero-product hero-product-space" href="/space/hanstree" role="listitem" aria-label="한스트리 스튜디오 자세히 보기">
-              <Image className="hero-product-image" src="/hanstree/screen-art.jpg" alt="" width={1448} height={1086} priority sizes="(max-width: 600px) 29vw, (max-width: 920px) 22vw, 150px" />
-              <Image className="app-icon hanstree-product-icon" src="/hanstree/studio-symbol-dark.jpeg" alt="" width={886} height={886} sizes="48px" />
+              <div className="hero-product-thumb-wrap">
+                <Image className="app-icon hanstree-product-icon" src="/hanstree/studio-symbol-dark.jpeg" alt="" width={886} height={886} sizes="38px" />
+              </div>
               <span className="hero-product-copy"><strong>한스트리 스튜디오</strong><small>Hanstree Studio</small></span>
             </Link>
-            {apps.map((app, index) => (
+            {apps.map((app) => (
               <Link className={`hero-product hero-product-${app.slug}`} href={`/apps/${app.slug}`} key={app.slug} role="listitem" aria-label={`${app.name} 제품 자세히 보기`}>
-                <Image
-                  className="hero-product-image"
-                  src={app.slug === "ccmb" ? "/apps/ccmb/ccmb-campaign-v044.png" : appCardImage(app)}
-                  alt={`${app.name} 대표 이미지`}
-                  width={1280}
-                  height={853}
-                  priority={index === 0}
-                  sizes="(max-width: 600px) 29vw, (max-width: 920px) 13vw, 150px"
-                  unoptimized
-                />
-                <AppIcon app={app} />
+                <div className="hero-product-thumb-wrap">
+                  <AppIcon app={app} />
+                </div>
                 <span className="hero-product-copy"><strong>{homeKoreanNames[app.slug] ?? app.name}</strong><small>{app.english}</small></span>
               </Link>
             ))}
             <Link className="hero-product hero-product-instagram" href="/space/hanstree/instagram" role="listitem" aria-label="먹탐자 Instagram 자세히 보기">
-              <Image className="hero-product-image" src="/instagram/meoktamja-hero.jpeg" alt="" width={960} height={638} sizes="(max-width: 600px) 29vw, (max-width: 920px) 22vw, 150px" />
+              <div className="hero-product-thumb-wrap">
+                <Image className="app-icon" src="/instagram/meoktamja-hero.jpeg" alt="" width={960} height={638} sizes="38px" />
+              </div>
               <span className="hero-product-copy"><strong>먹탐자</strong><small>Instagram · @armsone</small></span>
             </Link>
           </div>
@@ -178,12 +267,12 @@ export default async function Home() {
       <section className="apps-section shell" id="apps">
         <div className="section-heading reveal">
           <div>
-            <p className="eyebrow">THE APPS</p>
+            <p className="eyebrow">THE APPS & TOOLS</p>
             <h2>일상의 문제를 해결하는 제품들</h2>
           </div>
           <p>
-            먼저 갖고 싶어지는 이유와 실제 화면을 보여드리고,
-            설치·지원·개인정보 정보까지 한곳에서 이어드립니다.
+            직접 쓰려고 만들었기에 더 꼼꼼히 챙겼습니다.
+            핵심 쓰임새와 실제 화면을 먼저 확인하고, 지원 플랫폼과 배포 상태까지 한눈에 이어집니다.
           </p>
         </div>
 
@@ -219,36 +308,41 @@ export default async function Home() {
                   const index = apps.indexOf(app); // 전체 카탈로그 기준 번호를 이어갑니다
                   return (
                     <article className={`app-row app-row-${app.slug} reveal theme-${app.theme}`} key={app.slug}>
-                      <Link className="app-row-hit-area" href={`/apps/${app.slug}`} aria-label={`${app.name} 제품 자세히 보기`} />
-                      <div className="app-row-number">{String(index + 1).padStart(2, "0")}</div>
-                      <div className="app-row-copy">
+                      <div className="app-card-head">
+                        <span className="app-card-index">{String(index + 1).padStart(2, "0")}</span>
                         <div className="app-title-line">
                           <AppIcon app={app} />
                           <div>
                             <p>{app.english}</p>
-                            <h3>{homeKoreanNames[app.slug] ?? app.name}</h3>
+                            <h3>
+                              <Link href={`/apps/${app.slug}`}>{homeKoreanNames[app.slug] ?? app.name}</Link>
+                            </h3>
                           </div>
                         </div>
-                        <p className="app-tagline">{app.tagline}</p>
-                        <div className="chip-row">
-                          {app.platforms.map((platform) => (
-                            <AppStatus key={platform.name} platform={platform} />
-                          ))}
-                        </div>
-                        <span className="text-link">
-                          제품 자세히 보기 <span aria-hidden="true">→</span>
-                        </span>
                       </div>
-                      <div className="app-row-representative">
+                      <p className="app-tagline">{app.tagline}</p>
+
+                      <Link className="app-row-representative" href={`/apps/${app.slug}`} aria-label={`${app.name} 상세 화면 보기`}>
                         <Image
                           src={app.slug === "ccmb" ? "/apps/ccmb/ccmb-dashboard-private.png" : appCardImage(app)}
                           alt={`${app.name} 대표 화면`}
                           width={1280}
                           height={853}
-                          sizes="(max-width: 920px) 100vw, 52vw"
+                          sizes="(max-width: 600px) 100vw, (max-width: 920px) 50vw, 560px"
                           unoptimized
                         />
                         <span><small>REPRESENTATIVE SCENE</small><strong>{app.features[0]?.title ?? app.tagline}</strong></span>
+                      </Link>
+
+                      <div className="app-card-foot">
+                        <div className="chip-row">
+                          {app.platforms.map((platform) => (
+                            <AppStatus key={platform.name} platform={platform} />
+                          ))}
+                        </div>
+                        <Link className="editorial-detail-link" href={`/apps/${app.slug}`}>
+                          제품 자세히 보기 <span aria-hidden="true">→</span>
+                        </Link>
                       </div>
                     </article>
                   );
