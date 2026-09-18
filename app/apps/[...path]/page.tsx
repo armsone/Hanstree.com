@@ -113,7 +113,6 @@ const contentVisuals: Record<string, AdvantageVariant> = {
   "달란트 나누기": "heart-share",
   "광장 참여하기": "shield-community",
   "빠방넷 열기": "web-globe",
-  "Google 연결하기": "lock-local",
   "보고 싶은 목록 고르기": "film-reel",
   "그대로 이어 보기": "play-remote",
   "브랜드는 한양 HANYANG": "name-tag",
@@ -619,7 +618,7 @@ const productCampaigns = {
     ],
     ctaEyebrow: "YOUR ARCHIVE, READY TO SEE",
     ctaTitle: <>폴더는 그대로 두고.<br /><span>찾는 경험만 바꾸세요.</span></>,
-    ctaBody: "공증된 Apple Silicon Mac 앱으로 NAS와 Mac의 큰 미디어 폴더에 NasFinder용 미리보기를 준비하세요.",
+    ctaBody: "Apple Silicon과 Intel Mac을 지원하는 공증 앱으로 NAS와 Mac의 큰 미디어 폴더에 NasFinder용 미리보기를 준비하세요.",
     ctaLabel: "Mac용 수퍼썸네일 받기",
   },
   hanclip: {
@@ -742,10 +741,10 @@ const productCampaigns = {
     image: "/apps/intosharp/intosharp-campaign.png",
     imageAlt: "하나의 검색줄에서 검색, 영상, 지도, 쇼핑과 자주 가는 사이트로 이어지는 인투샾 캠페인 이미지",
     imageLabel: "ONE LINE → SEARCH · VIDEO · MAP · SHOPPING",
-    facts: [["01", "하나의 시작 화면"], ["05", "선택 가능한 검색 목적"], ["2X", "PC · 모바일 반응형"]],
+    facts: [["01", "하나의 시작 화면"], ["08", "선택 가능한 검색 서비스"], ["2X", "PC · 모바일 반응형"]],
     advantages: [
       ["01", "NAME, NOT URL", "사이트 주소 대신 이름으로 엽니다.", "등록된 사이트 이름을 검색줄에 입력하면 해당 페이지로 이동합니다.", "긴 주소를 외우거나 즐겨찾기 폴더를 헤매지 않고 기억나는 이름부터 입력합니다.", "name-tag"],
-      ["02", "ONE-LINE SEARCH", "검색도 같은 한 줄에서 시작합니다.", "네이버·Google·YouTube·지도·쇼핑을 고르고 검색어를 입력합니다.", "찾으려는 종류에 맞춰 검색 목적지만 바꾸고 입력 흐름은 그대로 유지합니다.", "search-bar"],
+      ["02", "ONE-LINE SEARCH", "검색도 같은 한 줄에서 시작합니다.", "네이버·Google·다음·Bing·YouTube·쇼핑·지도·쿠팡 중 검색할 곳을 고르고 검색어를 입력합니다.", "찾으려는 종류에 맞춰 검색 목적지만 바꾸고 입력 흐름은 그대로 유지합니다.", "search-bar"],
       ["03", "PURPOSE GROUPS", "자주 가는 곳을 쓰임별로 펼쳐 봅니다.", "일·이야기마당·볼거리·연장처럼 목적에 따라 나눈 이음말을 한 화면에 모읍니다.", "링크 이름을 몰라도 지금 하려는 일의 카테고리부터 찾아갑니다.", "groups-grid"],
       ["04", "YOUR DEFAULTS", "내가 고른 검색과 화면을 기억합니다.", "선택한 검색 서비스와 밝고 어두운 테마를 같은 브라우저에 저장합니다.", "매번 같은 설정을 되풀이하지 않고 익숙한 시작 화면으로 돌아옵니다.", "defaults-star"],
       ["05", "START PAGE", "브라우저를 여는 순간 바로 만납니다.", "인투샾을 브라우저의 시작 페이지로 등록해 사용할 수 있습니다.", "새 탭에서 무엇을 할지 다시 고르는 대신 내 인터넷 입구에서 곧바로 시작합니다.", "homepage-flag"],
@@ -1023,7 +1022,16 @@ function InfoPage({ app, section }: { app: NonNullable<ReturnType<typeof findApp
   const isPrivacy = section === "privacy";
   const isTerms = section === "terms";
   const isDeletion = section === "data-deletion";
-  const title = isPrivacy ? "개인정보처리방침" : isTerms ? "이용약관" : isDeletion ? "연결 해제 및 데이터 삭제" : "지원과 문의";
+  const title = isPrivacy
+    ? "개인정보처리방침"
+    : isTerms
+      ? "이용약관"
+      : isDeletion
+        ? (app.slug === "ppabang" ? "데이터 삭제 및 권한 철회" : "연결 해제 및 데이터 삭제")
+        : "지원과 문의";
+
+  const isBrowserOrWeb = app.platforms.some((p) => /Web|웹|확장/.test(p.name)) || app.privacy.some((item) => item.includes("브라우저") || item.includes("웹"));
+  const isNativeApp = app.platforms.some((p) => /iPhone|iPad|iOS|Mac|Android/.test(p.name));
 
   return (
     <main className={`info-page theme-${app.theme}`}>
@@ -1032,24 +1040,36 @@ function InfoPage({ app, section }: { app: NonNullable<ReturnType<typeof findApp
         <Link className="breadcrumb" href={`/apps/${app.slug}`}>← {app.name}으로 돌아가기</Link>
         <p className="eyebrow">{app.english.toUpperCase()}</p>
         <h1>{title}</h1>
-        <p className="legal-intro">{isPrivacy ? `${app.name}가 어떤 정보를 왜 다루고, 어디에 보관하며, 사용자가 어떻게 삭제할 수 있는지 설명합니다.` : isTerms ? `${app.name}를 이용하기 전에 알아야 할 기본 조건과 책임 범위를 안내합니다.` : isDeletion ? "Google을 비롯한 외부 계정 연결을 해제하고 기기에 저장된 데이터를 삭제하는 방법입니다." : "불편한 점이나 제안이 있다면 아래 내용을 먼저 확인한 뒤 알려주세요."}</p>
+        <p className="legal-intro">
+          {isPrivacy
+            ? `${app.name}가 어떤 정보를 왜 다루고, 어디에 보관하며, 사용자가 어떻게 삭제할 수 있는지 설명합니다.`
+            : isTerms
+              ? `${app.name}를 이용하기 전에 알아야 할 기본 조건과 책임 범위를 안내합니다.`
+              : isDeletion
+                ? (app.slug === "ppabang"
+                    ? "브라우저에 저장된 사이트 데이터를 삭제하는 방법과 과거 Google 계정 연결 권한을 철회하는 방법입니다."
+                    : app.slug === "aiplaygrand"
+                      ? "암호화 보관함 및 CLI 로그인 데이터의 보관 위치를 확인하고 로컬 데이터를 안전하게 삭제하는 방법입니다."
+                      : `${app.name}의 기기 데이터 삭제 및 외부 서비스 연결 해제 안내입니다. 제품별 핵심 원칙에 따라 관리할 수 있습니다.`)
+                : "불편한 점이나 제안이 있다면 아래 내용을 먼저 확인한 뒤 알려주세요."}
+        </p>
 
         {isPrivacy && <>
           <section className="privacy-at-glance" aria-labelledby="privacy-summary-title">
             <p className="eyebrow">개인정보 처리 요약</p>
             <h2 id="privacy-summary-title">먼저, 핵심만 쉽게 알려드립니다.</h2>
             <div>
-              <article><span>01</span><AdvantageVisual variant="check-source" /><h3>무엇을</h3><p>사용자가 기능을 위해 선택하거나 연결한 정보만 다룹니다.</p></article>
-              <article><span>02</span><AdvantageVisual variant="compass" /><h3>왜</h3><p>제품에서 사용자가 요청한 기능을 제공하는 데 사용합니다.</p></article>
-              <article><span>03</span><AdvantageVisual variant="storage-network" /><h3>어디에</h3><p>브라우저 또는 기기 저장공간을 우선 사용하며 외부 서비스는 필요한 기능에서 직접 연결합니다.</p></article>
-              <article><span>04</span><AdvantageVisual variant="trash-clear" /><h3>어떻게 삭제</h3><p>{app.slug === "aiplaygrand" ? "프로그램 파일만 지워도 USB의 Data와 백업은 남습니다. 종료 후 보관 위치와 별도 백업을 확인해 직접 정리해야 합니다." : "제품의 관리 기능과 연결 해제, 브라우저 데이터 또는 앱 삭제로 정리할 수 있습니다."}</p></article>
+              <article><span>01</span><AdvantageVisual variant="check-source" /><h3>무엇을</h3><p>처리하는 정보는 제품마다 다르며, 아래 핵심 원칙과 세부 설명에 명시된 기능 필수 항목에 한합니다.</p></article>
+              <article><span>02</span><AdvantageVisual variant="compass" /><h3>왜</h3><p>제품에서 사용자가 요청한 기능을 제공하는 목적으로만 사용합니다.</p></article>
+              <article><span>03</span><AdvantageVisual variant="storage-network" /><h3>어디에</h3><p>보관 위치와 방식은 제품마다 다르며, 기기·브라우저 저장공간이나 요청된 외부 서비스 정책을 따릅니다.</p></article>
+              <article><span>04</span><AdvantageVisual variant="trash-clear" /><h3>어떻게 삭제</h3><p>{app.slug === "aiplaygrand" ? "프로그램 파일만 지워도 USB의 Data와 백업은 남습니다. 종료 후 보관 위치와 별도 백업을 확인해 직접 정리해야 합니다." : "제품별 원칙에 따라 앱 내 관리 메뉴, 브라우저 데이터 정리 또는 계정 연결 해제로 삭제합니다. 외부 파일과 백업은 별도 정리가 필요할 수 있습니다."}</p></article>
             </div>
           </section>
           <LegalSection title="핵심 원칙"><ul>{app.privacy.map((item) => <li key={item}>{item}</li>)}</ul></LegalSection>
           {app.slug === "ppabang" && <>
-            <LegalSection title="Google 연결"><p>Google 연결은 사용자가 직접 동의한 경우에만 YouTube 읽기 전용 권한을 사용합니다. 좋아요 영상과 구독 채널의 공개 영상 정보는 개인 맞춤 피드 구성에만 사용하며 영상 업로드·수정·삭제 권한은 요청하지 않습니다.</p></LegalSection>
-            <LegalSection title="기기에 저장되는 정보"><p>완료 시청·빠른 넘김 기록과 최근 영상의 제목·채널명·영상 식별자는 현재 브라우저 저장공간에 보관됩니다. Google 액세스 토큰은 현재 브라우저 실행 중에만 사용하며 서버에 저장하지 않습니다. Google TV의 자동 갱신 권한은 화면 코드에서 읽을 수 없는 보안 쿠키로 현재 기기에 보관됩니다.</p></LegalSection>
-            <LegalSection title="삭제와 연결 해제"><p>브라우저의 사이트 데이터에서 ppabang.net 데이터를 삭제하면 기기에 보관된 빠방넷 정보도 함께 제거됩니다. Google 계정의 보안 설정에서는 빠방넷에 허용한 연결 권한을 언제든 철회할 수 있습니다.</p></LegalSection>
+            <LegalSection title="Google 연결"><p>빠방넷은 Google 계정 로그인이나 비밀번호, Google 계정 연결용 쿠키를 사용하지 않으며 별도의 Google 계정 연결을 요구하지 않습니다. 좋아요 영상이나 구독 채널 정보를 조회하지 않고 서버에 모아 둔 카테고리별 쇼츠를 로그인 없이 제공합니다.</p></LegalSection>
+            <LegalSection title="기기에 저장되는 정보"><p>완료 시청·빠른 넘김 기록과 최근 영상의 제목·채널명·영상 식별자는 현재 브라우저 저장공간에 보관됩니다. 최근 재생 영상 최대 2,500개의 식별자와 곡 구분값으로 중복을 줄이며, 이 기록은 서버의 재생 이력으로 저장되지 않습니다.</p></LegalSection>
+            <LegalSection title="삭제와 연결 해제"><p>브라우저의 사이트 데이터에서 ppabang.net 데이터를 삭제하면 기기에 보관된 시청 기록 등 빠방넷 정보가 함께 제거됩니다. 현재 빠방넷은 계정 연결 없이 동작하므로 앱 내 연결 메뉴가 없으며, 과거에 Google 연결을 사용했던 경우 Google 계정 보안 설정에서 기존 권한을 철회할 수 있습니다.</p></LegalSection>
             <LegalSection title="외부 서비스"><p>YouTube 영상 재생과 영상 정보 조회에는 Google 및 YouTube의 서비스와 정책이 적용됩니다. 빠방넷은 개인화 정보를 판매하지 않습니다.</p></LegalSection>
           </>}
           {app.slug === "aiplaygrand" && <>
@@ -1057,13 +1077,13 @@ function InfoPage({ app, section }: { app: NonNullable<ReturnType<typeof findApp
             <LegalSection title="삭제와 연결 해제"><p>서비스 창에서 로그아웃하고 저장하고 종료를 누르세요. 팀원 자리 제거만으로 로그인 데이터가 삭제되지는 않습니다. 전체 로컬 기록을 없애려면 앱과 CLI를 종료하고 필요한 기록을 확인한 뒤 Data 및 별도 백업을 직접 정리해야 합니다. CLI 인증과 사용 이력은 해당 공식 도구의 로그아웃·삭제 절차를 이용하세요. 외부 서비스에 보낸 질문과 답변은 해당 서비스에서 별도로 관리합니다.</p></LegalSection>
           </>}
           {app.slug !== "ppabang" && app.slug !== "aiplaygrand" && <>
-          <LegalSection title="처리 목적과 항목"><p>앱은 기능 수행에 필요한 권한, 사용자가 직접 선택한 파일과 사용자가 연결한 서비스의 인증 정보만 해당 기능을 제공하기 위해 처리합니다. 광고 목적의 개인정보 판매나 맞춤형 추적을 목적으로 처리하지 않습니다.</p></LegalSection>
+          <LegalSection title="처리 목적과 항목"><p>제품마다 처리하는 정보와 목적은 상단 ‘핵심 원칙’에 따르며, 사용자가 요청한 기능을 제공하는 데 필요한 최소한의 범위로 한정됩니다. 광고 목적의 개인정보 판매나 맞춤형 추적을 목적으로 처리하지 않습니다.</p></LegalSection>
           <LegalSection title="홈페이지 이용 통계"><p>Hanstree.com은 홈페이지 방문 횟수와 공식 APK 바로 받기 버튼을 누른 횟수를 숫자로만 집계합니다. 방문은 같은 브라우저에서 하루 한 번만 세기 위해 마지막 집계 날짜를 브라우저에 저장합니다. 집계 데이터베이스에는 방문자의 이름, 이메일, 계정, 쿠키 또는 IP 주소를 함께 저장하지 않으며 광고나 개인별 행동 추적에 사용하지 않습니다.</p></LegalSection>
           <LegalSection title="TestFlight 공개 베타"><p>홈페이지는 TestFlight 공개 링크를 통해 베타 앱 참여 경로만 제공합니다. 참여 신청을 위해 이름, 이메일, 기기 모델이나 참여 동기를 수집하지 않습니다. 공개 링크 참여와 앱 설치는 Apple의 TestFlight에서 처리됩니다. 과거 내부 테스터 신청 기능으로 접수된 기록은 더 이상 새로 수집하지 않으며, 삭제를 원하는 기존 신청자는 아래 개인정보 보호책임자에게 요청할 수 있습니다.</p></LegalSection>
-          <LegalSection title="보유 기간"><p>연결 정보와 인증 정보는 사용자가 연결을 해제하거나 앱을 삭제할 때까지, 앱 안의 프로젝트·받은 파일·녹음은 사용자가 삭제하거나 앱을 삭제할 때까지 기기에 보관됩니다. 다운로드와 미리보기 캐시는 앱의 정리 기능, 시스템의 저장공간 관리 또는 앱 삭제로 제거됩니다. 사진 앱·갤러리·파일 앱으로 내보낸 결과물은 해당 위치에서 별도로 삭제해야 합니다.</p></LegalSection>
-          <LegalSection title="파기 방법"><p>앱에서 삭제한 로컬 데이터는 앱의 저장공간에서 제거합니다. Keychain에 보관된 인증 정보는 연결 해제 또는 앱이 제공하는 계정 삭제 절차로 삭제합니다. 외부 서비스에 남은 접근 권한은 해당 서비스의 계정 보안 페이지에서도 철회할 수 있습니다.</p></LegalSection>
-          <LegalSection title="외부 서비스와 제공"><p>앱은 사용자가 선택한 기능을 수행할 때 외부 저장소, 날씨, 라디오, 웹사이트 또는 배포 서비스와 통신할 수 있습니다. 사용자가 파일 전송이나 공유를 직접 요청한 경우에만 선택한 대상에 해당 정보가 전달되며, 연결한 서비스에는 각 제공자의 개인정보처리방침과 보관 기준이 적용됩니다.</p></LegalSection>
-          <LegalSection title="사용자의 권리"><p>사용자는 운영체제 설정에서 앱 권한을 철회하고, 앱에서 연결·프로젝트·파일·캐시를 삭제하거나 외부 계정을 연결 해제할 수 있습니다. 개인정보 열람·정정·삭제·처리정지에 관한 문의는 아래 개인정보 보호책임자에게 요청할 수 있습니다.</p></LegalSection>
+          <LegalSection title="보유 기간"><p>정보의 보관과 파기는 각 제품별 고유 원칙을 따릅니다. 기기 내부 데이터는 사용자가 삭제하거나 앱 내 관리 기능, 시스템 저장공간 설정을 통해 정리할 수 있습니다. 다만 앱을 삭제하더라도 사진 앱·갤러리·파일 앱이나 외장 드라이브로 내보낸 파일, 별도 백업, 외부 서비스에 이미 전송된 데이터는 자동으로 삭제되지 않으므로 해당 위치나 서비스에서 직접 확인하고 삭제해야 합니다.</p></LegalSection>
+          <LegalSection title="파기 방법"><p>제품에서 삭제한 로컬 데이터는 해당 앱 또는 브라우저의 전용 저장공간에서 파기됩니다. 계정 연동이나 로그인 기능이 있는 제품의 경우 연결 해제 시 기기에 저장된 인증 정보를 삭제하며, 필요한 경우 해당 외부 서비스의 계정 보안 설정에서도 앱 접근 권한을 직접 철회할 수 있습니다.</p></LegalSection>
+          <LegalSection title="외부 서비스와 제공"><p>앱은 사용자가 요청한 기능을 수행하기 위해 외부 저장소, 날씨, 지도, 라디오, AI 검색, 외부 AI 또는 웹사이트와 통신할 수 있습니다. 파일 전송뿐만 아니라 날씨 조회, 식당 검색, AI 질의 등 요청된 기능에 필요한 데이터가 개별 정책에 따라 해당 서비스로 전달되며, 각 서비스에는 해당 제공자의 개인정보처리방침이 적용됩니다.</p></LegalSection>
+          <LegalSection title="사용자의 권리"><p>사용자는 운영체제 설정에서 앱에 부여한 권한을 언제든 철회할 수 있습니다. 또한 제품에 해당 기능이 존재하는 경우 앱 내 관리 메뉴에서 저장 파일·캐시·기록을 삭제하거나 외부 계정 연결을 해제할 수 있습니다. 개인정보 열람·정정·삭제·처리정지에 관한 문의는 아래 개인정보 보호책임자에게 요청할 수 있습니다.</p></LegalSection>
           </>}
           {app.slug === "nasfinder" && <>
             <LegalSection title="Google 서비스"><p>Google 계정 연결 기능은 사용자가 요청한 파일 작업에 필요한 정보만 처리합니다. Google Photos 가져오기는 iPhone·iPad와 Android에 소스 구현된 상태이며 실제 Google 계정 검증이 아직 완료되지 않았으므로 현재 공개판 제공을 뜻하지 않습니다. 구현된 흐름은 Google Drive와 분리된 별도 OAuth 연결을 사용하며, 민감 범위인 https://www.googleapis.com/auth/photospicker.mediaitems.readonly 하나만 요청합니다. 전체 보관함을 탐색하거나 복제하지 않고, Google Photos Picker에서 사용자가 직접 선택한 사진·영상만 해당 기기의 폰하드로 내려받습니다. 내려받은 항목은 미리보기·공유·삭제할 수 있으며, 사용자가 NAS 또는 연결된 저장소를 직접 선택했을 때만 그 대상으로 전송합니다. Google Photos 데이터는 광고, 추적, 얼굴 인식, 데이터 판매 또는 AI 학습에 사용하지 않습니다. Google Photos OAuth 토큰은 Google Drive와 분리해 Apple 기기의 Keychain과 Android Keystore로 보호한 앱 전용 저장공간에 각각 보관하도록 구현했으며, 설정에서 Google Photos 연결을 해제할 수 있습니다. 기기 안의 받은 파일과 캐시는 앱에서 삭제할 수 있고, 외부로 내보낸 파일은 해당 대상에서 별도로 삭제해야 합니다.</p></LegalSection>
@@ -1088,16 +1108,77 @@ function InfoPage({ app, section }: { app: NonNullable<ReturnType<typeof findApp
           <LegalSection title="보증과 책임 범위"><p>데이터 손실 가능성이 있는 파일 작업이나 테스트 기능을 사용하기 전에 중요한 자료를 별도로 백업해야 합니다. 앱은 의료·안전 진단이나 무중단 저장 서비스를 보증하지 않습니다.</p></LegalSection>
         </>}
 
-        {isDeletion && <>
-          <LegalSection title="외부 계정 연결 해제"><ol><li>{app.name}의 설정 또는 연결 목록을 엽니다.</li><li>연결된 계정이나 저장소를 선택합니다.</li><li>연결 삭제 또는 로그아웃을 선택합니다.</li><li>필요하면 해당 서비스의 계정 보안 페이지에서도 앱 접근 권한을 취소합니다.</li></ol></LegalSection>
-          <LegalSection title="기기 데이터 삭제"><p>받은 파일, 다운로드, 썸네일과 기타 캐시는 앱 안의 관리 메뉴에서 삭제합니다. 모든 로컬 데이터를 제거하려면 내보낸 결과물을 먼저 확인한 뒤 앱을 삭제할 수 있습니다.</p></LegalSection>
-          <LegalSection title="도움이 필요한 경우"><p>아래 GitHub 공개 문의 경로를 이용하되 계정 정보, 서버 주소, 파일명과 화면 속 개인정보는 가려 주세요.</p></LegalSection>
-        </>}
+        {isDeletion && (
+          app.slug === "ppabang" ? <>
+            <LegalSection title="기기 데이터 삭제">
+              <p>빠방넷은 로그인 없이 동작하며 시청 기록과 빠른 넘김 정보는 기기 브라우저에만 저장됩니다. 브라우저의 사이트 데이터를 삭제하면 로컬 정보가 제거됩니다. 서버에 이미 집계된 방문·재생 합계는 함께 지워지지 않습니다.</p>
+              <ol>
+                <li>사용 중인 웹 브라우저(Chrome, Safari 등)의 설정 또는 주소창 옆 사이트 설정을 엽니다.</li>
+                <li>‘쿠키 및 사이트 데이터’ 또는 ‘저장공간’ 관리로 이동합니다.</li>
+                <li>ppabang.net의 사이트 데이터를 삭제합니다.</li>
+              </ol>
+            </LegalSection>
+            <LegalSection title="외부 계정 연결 해제">
+              <p>현재 빠방넷은 Google 계정 연결을 사용하지 않으므로 앱 안에는 별도의 연결 해제 메뉴가 없습니다. 과거에 Google 연결을 사용했던 경우 Google 계정 보안 설정에서 기존 연결 권한을 철회할 수 있습니다.</p>
+              <ol>
+                <li>Google 계정(myaccount.google.com)의 보안 설정으로 이동합니다.</li>
+                <li>‘내 계정과 연결된 서드 파티 앱 및 서비스’ 목록을 확인합니다.</li>
+                <li>빠방넷(ppabang.net)에 부여했던 접근 권한을 삭제합니다.</li>
+              </ol>
+            </LegalSection>
+            <LegalSection title="도움이 필요한 경우">
+              <p>문의 사항이나 도움이 필요하면 아래 직접 문의 경로로 연락해 주세요.</p>
+              <div className="privacy-contact"><ContactReveal /></div>
+            </LegalSection>
+          </> : app.slug === "aiplaygrand" ? <>
+            <LegalSection title="핵심 원칙"><ul>{app.privacy.map((item) => <li key={item}>{item}</li>)}</ul></LegalSection>
+            <LegalSection title="저장 위치와 보유 기간"><p>팀 기록·앱 웹창 쿠키·앱의 CLI 채팅과 릴레이 기록은 Data/team.vault에 암호화하여 보관합니다. 앱과 Data 폴더를 함께 보관하세요. CLI 자체 인증·설정·사용 이력은 PC에 별도로 남으며 이 보관함에 포함되지 않습니다. 직전 백업, 다운로드, 내보낸 파일과 이전 버전 원본도 별도로 남을 수 있습니다. 프로그램 파일을 삭제해도 Data와 별도 백업은 자동으로 삭제되지 않습니다.</p></LegalSection>
+            <LegalSection title="삭제와 연결 해제"><p>서비스 창에서 로그아웃하고 저장하고 종료를 누르세요. 팀원 자리 제거만으로 로그인 데이터가 삭제되지는 않습니다. 전체 로컬 기록을 없애려면 앱과 CLI를 종료하고 필요한 기록을 확인한 뒤 Data 및 별도 백업을 직접 정리해야 합니다. CLI 인증과 사용 이력은 해당 공식 도구의 로그아웃·삭제 절차를 이용하세요. 외부 서비스에 보낸 질문과 답변은 해당 서비스에서 별도로 관리합니다.</p></LegalSection>
+            <LegalSection title="도움이 필요한 경우">
+              <p>데이터 삭제나 보관함 정리에 관해 도움이 필요하시면 아래 지원 경로로 문의해 주세요. 문의 시 계정 정보, 서버 주소, 파일명과 화면 속 개인정보는 반드시 가려 주세요.</p>
+              <div className="support-options">
+                <Link className="button button-quiet" href={`/apps/${app.slug}/support`}>지원 페이지 바로가기</Link>
+                {app.github.map((url) => (
+                  <Link className="button button-primary" href={`${url}/issues`} key={url}>GitHub 문의 및 제보 <span aria-hidden="true">↗</span></Link>
+                ))}
+                <ContactReveal />
+              </div>
+            </LegalSection>
+          </> : <>
+            <LegalSection title="핵심 원칙"><ul>{app.privacy.map((item) => <li key={item}>{item}</li>)}</ul></LegalSection>
+            <LegalSection title="외부 계정 연결 해제">
+              <p>이 안내는 외부 계정(클라우드 저장소, 외부 AI 서비스 등) 연동 기능을 실제로 사용한 경우에만 해당합니다. 별도 로그인이 없거나 외부 계정을 연결하지 않은 경우에는 계정 연결 해제 절차가 필요하지 않습니다.</p>
+              <ol>
+                <li>{app.name}에서 외부 계정이나 저장소를 연결해 사용하는 경우, 앱 내 설정 또는 연결 관리 화면에서 해당 연결을 해제하거나 로그아웃합니다.</li>
+                <li>필요한 경우 해당 외부 서비스의 계정 보안 페이지에서도 앱에 부여된 접근 권한을 직접 철회할 수 있습니다.</li>
+              </ol>
+            </LegalSection>
+            <LegalSection title="기기 데이터 삭제">
+              <p>데이터 보관 및 삭제는 상단 ‘핵심 원칙’에 따릅니다.</p>
+              {isBrowserOrWeb && (
+                <p><strong>웹 및 브라우저 데이터:</strong> 웹 브라우저나 앱 내 웹 세션을 사용하는 경우, 브라우저 설정(쿠키 및 사이트 데이터)에서 해당 사이트 데이터를 삭제하여 로컬 정보를 정리할 수 있습니다.</p>
+              )}
+              {isNativeApp && (
+                <p><strong>앱 저장 데이터:</strong> 앱 내에 캐시나 파일 관리 기능이 있는 경우 해당 메뉴에서 삭제할 수 있으며, 앱 삭제 시 지워지는 범위는 운영체제에 따라 다릅니다. Mac의 지원 파일이나 키체인 정보는 앱 삭제 후에도 남을 수 있으므로 제품별 보관 위치와 연결 해제 절차를 확인하세요. 단, 사진 앱·갤러리·파일 앱 또는 외장 드라이브로 이미 내보낸 파일, 별도 백업, 외부 서비스에 이미 전송된 데이터는 앱 삭제로 자동 제거되지 않으므로 해당 위치에서 직접 정리해야 합니다.</p>
+              )}
+            </LegalSection>
+            <LegalSection title="도움이 필요한 경우">
+              <p>데이터 삭제나 연결 해제에 관해 도움이 필요하시면 아래 지원 경로로 문의해 주세요. 문의 시 계정 정보, 서버 주소, 파일명과 화면 속 개인정보는 반드시 가려 주세요.</p>
+              <div className="support-options">
+                <Link className="button button-quiet" href={`/apps/${app.slug}/support`}>지원 페이지 바로가기</Link>
+                {app.github.map((url) => (
+                  <Link className="button button-primary" href={`${url}/issues`} key={url}>GitHub 문의 및 제보 <span aria-hidden="true">↗</span></Link>
+                ))}
+                <ContactReveal />
+              </div>
+            </LegalSection>
+          </>
+        )}
 
         {!isPrivacy && !isTerms && !isDeletion && <>
           {app.slug === "ppabang" ? <>
-            <LegalSection title="먼저 확인할 내용"><ul><li>공식 주소 https://ppabang.net에서 빠방넷을 엽니다.</li><li>YouTube 영상과 Google 연결을 사용할 수 있도록 네트워크 연결을 확인합니다.</li><li>Google TV에서는 화면의 QR 코드 또는 일회용 기기 코드를 휴대전화에서 승인합니다.</li><li>Google 연결은 YouTube 읽기 전용 권한만 요청합니다. 연결 권한은 Google 계정 보안 설정에서 철회할 수 있습니다.</li></ul></LegalSection>
-            <LegalSection title="저장 정보 정리"><p>빠방넷에 저장된 재생 기록과 최근 영상 정보는 브라우저의 ppabang.net 사이트 데이터를 삭제하면 함께 제거됩니다.</p></LegalSection>
+            <LegalSection title="먼저 확인할 내용"><ul><li>공식 주소 https://ppabang.net에서 빠방넷을 엽니다.</li><li>YouTube 영상을 원활히 재생할 수 있도록 네트워크 연결 상태를 확인합니다.</li><li>Google TV에서는 별도 로그인이나 연결 없이 리모컨 방향키로 카테고리를 이동하며 쇼츠를 선택합니다.</li><li>빠방넷은 Google 계정 로그인이나 연결 없이 동작합니다. 과거에 Google 연결을 사용했던 경우 Google 계정 보안 설정에서 기존 권한을 철회할 수 있습니다.</li></ul></LegalSection>
+            <LegalSection title="저장 정보 정리"><p>빠방넷에 저장된 시청 기록과 최근 영상 정보는 브라우저의 ppabang.net 사이트 데이터를 삭제하면 함께 제거됩니다.</p></LegalSection>
           </> : <>
             <LegalSection title="먼저 확인할 내용"><ul><li>앱과 운영체제를 최신 버전으로 업데이트합니다.</li><li>필요한 권한과 네트워크 연결 상태를 확인합니다.</li><li>앱을 완전히 종료한 뒤 다시 실행합니다.</li><li>같은 문제가 반복되면 재현 단계를 기록합니다.</li></ul></LegalSection>
             <LegalSection title="오류를 알려주실 때"><p>앱 버전, 기기와 운영체제, 사용한 기능, 재현 단계와 예상한 결과를 적어 주세요. 화면이나 로그에 계정·서버·파일 등 개인 정보가 있다면 반드시 가려 주세요.</p></LegalSection>
@@ -1107,7 +1188,7 @@ function InfoPage({ app, section }: { app: NonNullable<ReturnType<typeof findApp
             <ContactReveal />
           </div>
         </>}
-        <p className="policy-note">시행일: 2026년 8월 14일 · 마지막 변경일: {app.slug === "ppabang" ? "2026년 9월 4일" : app.slug === "nasfinder" ? "2026년 8월 22일" : "2026년 8월 15일"}</p>
+        <p className="policy-note">시행일: 2026년 8월 14일 · 마지막 변경일: 2026년 9월 18일</p>
       </article>
       <SiteFooter currentPageName={app.name} />
     </main>

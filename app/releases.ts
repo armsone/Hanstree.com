@@ -136,7 +136,7 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     label: "오늘 뭐 먹지?? Android",
     repo: "WhattoEat-Android",
     assetPattern: /^WhattoEat-(?:Android-)?\d+\.\d+\.\d+\.apk$/i,
-    fallbackUrl: "https://github.com/armsone/WhattoEat-Android/releases/download/android-v0.5.3/WhatToEat-Android-0.5.3.apk",
+    fallbackUrl: "https://github.com/armsone/WhattoEat-Android/releases/download/android-v0.5.3/WhattoEat-Android-0.5.3.apk",
   },
   "DenimDex-Android": {
     label: "DenimDex Android",
@@ -148,7 +148,7 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     label: "OurButton Android",
     repo: "OurButton-Android",
     assetPattern: /\.apk$/i,
-    fallbackUrl: "https://github.com/armsone/OurButton-Android/releases/download/android-v2.1.0/app-release.apk",
+    fallbackUrl: "https://github.com/armsone/OurButton-Android/releases/download/android-v2.2.0/OurButton-Android-2.2.0.apk",
   },
   "Stargram-Android": {
     label: "Stargram Android",

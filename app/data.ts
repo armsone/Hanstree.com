@@ -51,7 +51,7 @@ const appCatalog: AppData[] = [
     artwork: "bridge",
     platforms: [
       { name: "Windows x64", status: "공개", detail: "0.6.2 (202609180907) · ZIP 포터블", url: releaseDownloadPath("AIplaygrand-Win"), downloadLabel: "Windows ZIP 받기", availabilityNote: "공개 검증용 배포. Windows 실기기 업데이트·재시작·실패 복구·물리 USB 이동·실제 OAuth 복원과 사용량 흐름 미검증. 실행 파일은 코드 미서명입니다." },
-      { name: "Mac · Apple Silicon", status: "공개", detail: "0.6.0 (202609161147) · 서명·Apple 공증 완료", url: releaseDownloadPath("AIplaygrand-Mac"), downloadLabel: "Mac DMG 받기", availabilityNote: "Developer ID 서명·Apple 공증과 데이터 유지 교체 설치 완료. 이번 버전 재실행·전체 계정 흐름 미검증. 자체 업데이트와 Intel Mac은 지원하지 않습니다." },
+      { name: "Mac · Apple Silicon", status: "공개", detail: "0.6.0 (202609161147) · 사전 공개 · 서명·Apple 공증 완료", url: releaseDownloadPath("AIplaygrand-Mac"), downloadLabel: "Mac DMG 받기", availabilityNote: "Developer ID 서명·Apple 공증과 데이터 유지 교체 설치 완료. 이번 버전 재실행·전체 계정 흐름 미검증. 자체 업데이트와 Intel Mac은 지원하지 않습니다." },
     ],
     features: [
       { title: "세 명에서 시작하는 우리 팀", body: "Claude 2명·Gemini 1명으로 시작하고 Codex를 포함해 팀원을 추가합니다. 웹 팀원별로 별도 로그인 창과 독립 CLI 좌석을 둘 수 있습니다.", icon: "/apps/ccmb/features/feature-01.webp" },
@@ -124,7 +124,7 @@ const appCatalog: AppData[] = [
     icon: "/apps/nasfinder/icon.png",
     artwork: "files",
     platforms: [
-      { name: "iPhone · iPad", status: "TestFlight", detail: "2.2.2 (202608271227) · iOS·iPadOS 17+", availabilityNote: "공개 링크 유지 · 새 빌드 Apple 외부 베타 심사 대기" },
+      { name: "iPhone · iPad", status: "TestFlight", detail: "2.2.3 (202609051155) · iOS·iPadOS 17+", availabilityNote: "2.2.3 Public Beta 승인 · 공개 TestFlight 링크에서 참여 가능" },
       {
         name: "Mac용 NasFinder",
         status: "공개",
@@ -172,7 +172,8 @@ const appCatalog: AppData[] = [
       { state: "active", title: "Google Photos Picker", body: "iPhone·iPad와 Android에서 사용자가 Picker로 직접 선택한 사진·영상만 폰하드로 가져오는 소스 구현 완료 · 실제 Google 계정 검증 대기" },
       { state: "done", title: "iPhone·iPad·Mac 지원", body: "iPhone과 iPad 앱 완성, 동일 앱의 Apple Silicon Mac 설치와 실행 검증" },
       { state: "done", title: "Live Photo·Motion Photo 전송", body: "iPhone과 Android를 QR로 연결해 사진·영상·움직이는 사진의 원본 보존과 교차 변환 구현" },
-      { state: "active", title: "iPhone·iPad 2.2.2 Public Beta", body: "build 202608271227 처리 완료 · 기존 내부 그룹 9명 보존 · 10,000명 공개 링크 유지 · 새 빌드 Apple 외부 베타 심사 대기 중" },
+      { state: "done", title: "iPhone·iPad 2.2.2 Public Beta", body: "build 202608271227 처리 완료 · 기존 내부 그룹 9명 보존 · 10,000명 공개 링크 유지" },
+      { state: "done", title: "iPhone·iPad 2.2.3 Public Beta 승인", body: "build 202609051155 Apple 외부 베타 심사 승인 완료 · 기존 Public Beta 링크와 10,000명 한도 유지 · 공개 테스트 참여 가능" },
       { state: "done", title: "Mac용 NasFinder 2.2.3 공개", body: "사진·영상 이어보기에서 사진을 건너뛰던 문제와 Mac의 배터리 조건 때문에 Super Thumbnail 작업이 막히던 문제를 수정했습니다. Developer ID 서명과 Apple 공증을 적용한 Universal DMG를 공개했습니다." },
       { state: "done", title: "Android 2.2.3 공개", body: "사진을 열면 슬라이드쇼를 시작하고, 영상이 끝난 뒤 사진도 설정한 간격대로 이어봅니다. 빌드 202609051155 · 내부 코드 356395의 서명 APK를 공개했습니다." },
       { state: "done", title: "Super Thumbnail 2.2.0 동기화", body: "3/13 대표 장면, 50% 검은 화면의 6/13 재시도, 최종 1.5pt 단일 블러와 우선 표시를 Apple·Android·Mac에 반영" },
@@ -264,8 +265,8 @@ const appCatalog: AppData[] = [
     icon: "/apps/hanclip/icon.png",
     artwork: "phones",
     platforms: [
-      { name: "iOS · iPadOS", status: "TestFlight", detail: "2.3.0 (202609071316) · iOS·iPadOS 17+", availabilityNote: "App Store Connect 업로드 완료 · 새 빌드 처리 및 외부 베타 검토 대기 · 기존 공개 링크는 유지" },
-      { name: "Mac", status: "TestFlight", detail: "2.2.1 · Apple Silicon · iPad 앱 호환 모드", availabilityNote: "같은 TestFlight 빌드 · 공개 테스트 심사 중" },
+      { name: "iOS · iPadOS", status: "TestFlight", detail: "2.3.0 (202609071316) · iOS·iPadOS 17+", availabilityNote: "2.3.0 Public Beta 승인 · 공개 TestFlight 링크에서 참여 가능" },
+      { name: "Mac", status: "TestFlight", detail: "2.3.0 · Apple Silicon · iPad 앱 호환 모드", availabilityNote: "같은 TestFlight 빌드 · 2.3.0 Public Beta 승인 완료" },
       {
         name: "Android",
         status: "공개",
@@ -295,7 +296,7 @@ const appCatalog: AppData[] = [
     ],
     progress: [
       { state: "done", title: "iOS 핵심 제작 흐름", body: "선택, 편집, 렌더링, 시사회와 저장 흐름 구현" },
-      { state: "active", title: "iOS·iPadOS 2.3.0 처리", body: "build 202609071316을 TestFlight에 업로드 완료 · Apple 처리와 외부 베타 검토를 기다리는 중" },
+      { state: "done", title: "iOS·iPadOS 2.3.0 Public Beta 승인", body: "build 202609071316 Apple 외부 베타 심사 승인 완료 · 기존 Public Beta 링크와 10,000명 한도 유지 · Apple Silicon Mac 호환 모드 포함 공개 테스트 참여 가능" },
       { state: "done", title: "Android 2.3.0 공개", body: "한양 Golf 모델 0.7의 시각 근거 기반 퍼터 안전망을 통합한 서명 APK를 공개" },
       { state: "done", title: "플랫폼 기술 계약 동기화", body: "기능·알고리즘·상태·오류·취소·권한·제스처·접근성 계약을 Apple과 Android에 대조 반영" },
       { state: "active", title: "Android AiShot 현장 검증", body: "실제 퍼팅과 다양한 스윙 환경에서 놓침과 오촬영을 계속 점검 중" },
@@ -394,7 +395,7 @@ const appCatalog: AppData[] = [
     icon: "/apps/stand/icon.png",
     artwork: "clock",
     platforms: [
-      { name: "iOS · iPadOS", status: "TestFlight", detail: "2.5.6 · Public Beta 승인 · iOS·iPadOS 17+", availabilityNote: "2.5.6 외부 베타 승인 완료 · 공개 TestFlight 링크에서 참여 가능" },
+      { name: "iOS · iPadOS", status: "TestFlight", detail: "2.5.6 (202609121751) · iOS·iPadOS 17+", availabilityNote: "2.5.6 외부 베타 승인 완료 · 공개 TestFlight 링크에서 참여 가능" },
       {
         name: "macOS",
         status: "공개",
@@ -521,10 +522,10 @@ const appCatalog: AppData[] = [
       {
         name: "iPhone · iPad",
         status: "TestFlight",
-        detail: "0.1.1 (202609021456) · iOS·iPadOS 17+",
+        detail: "0.1.4 (202609021538) · iOS·iPadOS 17+",
         url: "https://testflight.apple.com/join/q9jesHZa",
         downloadLabel: "Public Beta 참여",
-        availabilityNote: "공개 링크 10,000명 활성 · 최신 빌드 내부·Public Beta 그룹 연결 완료 · 외부 제공은 Apple 심사 상태를 따름",
+        availabilityNote: "0.1.4 공개 베타 참여 가능 · 업로드된 0.1.5는 아직 외부 제공되지 않습니다.",
       },
       { name: "macOS", status: "공개", detail: "2.0.25 (202609081055) · macOS 10.15+ · Universal · Apple 공증 완료 · CloudKit Production 서명", url: releaseDownloadPath("CCMB"), downloadLabel: "DMG 다운로드" },
     ],
@@ -559,7 +560,7 @@ const appCatalog: AppData[] = [
       { title: "다른 대화와 공유", body: "로컬 ccmb-usage 명령으로 최신성 여부가 포함된 사용량 정보를 확인합니다." },
     ],
     progress: [
-      { state: "active", title: "iPhone·iPad 0.1.1 Public Beta", body: "요일 포함 날짜와 24시간 표기를 담은 build 202609021456의 Apple 처리가 완료됐고 기존 Internal·Public Beta 그룹에 연결했습니다." },
+      { state: "done", title: "iPhone·iPad 0.1.4 Public Beta", body: "build 202609021538은 공개 베타에서 이용할 수 있습니다. 0.1.5 업로드 빌드는 수출 규정 정보 확인이 남아 외부 제공 전입니다." },
       { state: "done", title: "공개 배포", body: "Universal DMG와 GitHub Releases 배포 흐름 제공" },
       { state: "done", title: "서명된 자동 업데이트", body: "Sparkle 기반 업데이트와 무결성 확인" },
       { state: "done", title: "로컬 사용량 공유", body: "다른 앱과 대화를 위한 최신성 포함 JSON 및 명령 제공" },
@@ -782,8 +783,9 @@ const appCatalog: AppData[] = [
     ],
     features: [
       { title: "이름으로 바로 이동", body: "주소를 외울 필요 없이 등록된 사이트 이름을 입력하면 해당 페이지를 바로 엽니다.", icon: "/apps/intosharp/features/feature-01.webp" },
-      { title: "검색까지 한 줄에서", body: "네이버·Google·YouTube·지도·쇼핑을 고르고 검색어를 입력해 원하는 곳에서 바로 찾습니다.", icon: "/apps/intosharp/features/feature-02.webp" },
+      { title: "검색까지 한 줄에서", body: "네이버·Google·다음·Bing·YouTube·쇼핑·지도·쿠팡 중 검색할 곳을 고르고 검색어를 입력합니다.", icon: "/apps/intosharp/features/feature-02.webp" },
       { title: "자주 가는 곳을 한눈에", body: "일, 이야기마당, 볼거리, 연장 등 쓰임에 따라 나눈 이음말을 한 화면에서 확인합니다.", icon: "/apps/intosharp/features/feature-03.webp" },
+      { title: "내 링크와 메모를 한곳에", body: "로그인 없이 개인 링크판을 나누고 링크마다 메모와 할 일을 적습니다. 현재 브라우저에만 저장되며 백업·복원으로 파일을 보관할 수 있습니다.", icon: "/apps/intosharp/features/feature-03.webp" },
       { title: "내 시작 화면으로", body: "검색 서비스와 밝고 어두운 화면을 기기에 기억해 다음 방문에도 이어서 사용합니다.", icon: "/apps/intosharp/features/feature-04.webp" },
     ],
     guide: [
@@ -800,6 +802,7 @@ const appCatalog: AppData[] = [
     ],
     github: [],
     privacy: [
+      "개인 링크판·메모·할 일은 현재 브라우저에 저장되며 다른 기기와 자동 동기화되지 않습니다. 사이트 데이터 삭제 전 백업·복원에서 파일로 내보낼 수 있습니다.",
       "선택한 검색 서비스와 화면 테마는 다음 방문을 위해 브라우저에 저장될 수 있습니다.",
       "검색을 실행하면 입력한 검색어가 사용자가 선택한 외부 검색 서비스로 전달되며 해당 서비스의 개인정보처리방침이 적용됩니다.",
       "관리 기능의 인증정보 원문은 공개 페이지 데이터에 저장하지 않습니다.",
@@ -858,14 +861,14 @@ const appCatalog: AppData[] = [
     icon: "/apps/button/icon.png",
     artwork: "phones",
     platforms: [
-      { name: "iPhone", status: "TestFlight", detail: "2.1.0 · 빌드 202608292118 · iOS 17+", availabilityNote: "2.1.0 Public Beta 승인 · 공개 테스트 참여 가능" },
+      { name: "iPhone", status: "TestFlight", detail: "2.2.0 (202609051204) · iOS 17+", availabilityNote: "2.2.0 Public Beta 승인 · 공개 테스트 참여 가능" },
       {
         name: "Android",
         status: "공개",
-        detail: "2.1.0 · 빌드 202608292118 · 내부 코드 346907 · Android 8.0+",
+        detail: "2.2.0 · 빌드 202609051204 · 내부 코드 356404 · Android 8.0+",
         url: releaseDownloadPath("OurButton-Android"),
         downloadLabel: "Android APK 바로 받기",
-        availabilityNote: "기존 설치와 같은 서명의 Android 기기 2대에서 데이터 유지 교체 설치·실행 확인 · 다른 기존 서명의 태블릿 설치는 보존",
+        availabilityNote: "2.2.0 공식 APK 공개 · 관리자 모드와 원격 알림 등록 개선",
       },
     ],
     features: [
@@ -897,9 +900,11 @@ const appCatalog: AppData[] = [
       { state: "done", title: "Android 2.0.1 공개", body: "제품 2.0.1 · 빌드 202608251400 · 내부 코드 340680의 기존 설치 호환 전용 서명 APK와 제품 버전 기준 자동 업데이트를 GitHub Releases에 공개" },
       { state: "done", title: "Android 2.0.2 여러 공간 안정화 공개", body: "공간을 바꿔도 진행 중인 전송 대상이 섞이지 않고 구성원·알림 상태를 정확히 새로고침하는 패치를 전용 서명 APK로 공개" },
       { state: "done", title: "iPhone 2.1.0 Public Beta 승인", body: "build 202608292118 Apple 외부 베타 심사 승인 · 기존 Public Beta 링크와 10,000명 한도 유지 · 공개 테스트 참여 가능" },
+      { state: "done", title: "Android 2.2.0 공개", body: "빌드 202609051204 · 내부 코드 356404의 공식 APK를 공개했습니다. 관리자 모드와 원격 알림 등록을 개선했습니다." },
       { state: "done", title: "Android 2.1.0 공개", body: "제품 2.1.0 · 빌드 202608292118 · 내부 코드 346907의 APK를 GitHub Releases에 공개하고 호환 서명의 실기기 2대에서 데이터 유지 교체 설치·실행 확인" },
       { state: "done", title: "NAS 여러 공간 중계 반영", body: "운영 서버를 최신 여러 공간 서버로 교체하고 원거리 가족 목록 경로까지 확인" },
       { state: "done", title: "Android 원격 수신", body: "FCM 등록·백그라운드 대상 검증·원본 띵동 소리·호출 기록까지 NAS 실전 전달 확인" },
+      { state: "done", title: "iPhone 2.2.0 Public Beta 승인", body: "build 202609051204 Apple 외부 베타 심사 승인 완료 · 기존 Public Beta 링크와 10,000명 한도 유지 · 공개 테스트 참여 가능" },
     ],
     screenshots: [
       { src: "/apps/button/screens/android-voice_recording.png", alt: "OurButton Android 부모 홈에서 방 이름 아래 녹음 중 상태가 표시된 화면" },
@@ -928,7 +933,7 @@ const appCatalog: AppData[] = [
     icon: "/apps/starmanager/icon.png",
     artwork: "phones",
     platforms: [
-      { name: "iPhone · iPad", status: "TestFlight", detail: "2.6.4 · 빌드 202609101649 · iOS·iPadOS 18+", availabilityNote: "2.6.4 Public Beta 심사 제출 완료 · 승인 전에는 기존 승인 빌드로 참여" },
+      { name: "iPhone · iPad", status: "TestFlight", detail: "2.6.4 (202609101649) · iOS·iPadOS 18+", availabilityNote: "2.6.4 Public Beta 승인 · 공개 TestFlight 링크에서 참여 가능" },
       {
         name: "Android",
         status: "공개",
@@ -974,7 +979,7 @@ const appCatalog: AppData[] = [
       { state: "done", title: "iPhone·iPad 2.5.1 설치·업로드", body: "2.5.1 (202608291746)을 사용 가능한 iPhone 2대에 데이터 유지 교체 설치하고 App Store Connect 업로드와 기존 내부 테스트 9명 연결을 확인" },
       { state: "done", title: "iOS·iPadOS 2.6.0 Public Beta 승인", body: "build 202608292118 Apple 외부 베타 심사 승인 · 기존 Public Beta 링크와 10,000명 한도 유지 · 공개 테스트 참여 가능" },
       { state: "done", title: "Android 2.6.4 공개", body: "사진·글 전송 확인, 중복 전송 방지, 진단 로그 공유와 하단 여백 개선을 담은 APK를 공개했습니다. 빌드 202609101658 · 내부 코드 363898 · 공개 파일 무결성 확인 완료" },
-      { state: "active", title: "iPhone·iPad 2.6.4 베타 심사", body: "빌드 202609101649 업로드, 기존 내부 그룹 유지와 Public Beta 심사 제출을 마쳤습니다. 새 빌드의 외부 제공은 Apple 승인 후 가능합니다." },
+      { state: "done", title: "iOS·iPadOS 2.6.4 Public Beta 승인", body: "build 202609101649 Apple 외부 베타 심사 승인 완료 · 기존 Public Beta 링크와 10,000명 한도 유지 · 공개 테스트 참여 가능" },
       { state: "next", title: "게시 흐름 다듬기", body: "실제 공유 앱별 게시 결과와 사용자 피드백을 바탕으로 다음 개선 항목을 정리" },
     ],
     screenshots: [
@@ -1069,19 +1074,19 @@ const appCatalog: AppData[] = [
     english: "What to Eat",
     eyebrow: "ONE GOOD MEAL, NEARBY",
     tagline: "오늘의 한 끼를, 가까운 곳에서.",
-    summary: "점심때마다 ‘오늘 뭐 먹지’가 반복된다면. 가까운 음식점 13곳 중 공공기관의 식사 이용 기록이 확인된 곳을 먼저 제안하고, 최근 18개월의 기록을 담은 11,091곳 명단으로 이용 기록과 출처까지 확인하며 오늘의 한 끼를 고릅니다.",
+    summary: "점심때마다 ‘오늘 뭐 먹지’가 고민될 때. 가까운 음식점 최대 13곳을 살펴보고, 공공기관 이용 기록과 이름·주소가 일치하는 곳을 우선순위로 확인하며 오늘의 한 끼를 고릅니다. 18개월 내 이용 기록과 출처 원문까지 직접 살펴볼 수 있습니다.",
     theme: "coral",
     icon: "/apps/whattoeat/icon.png",
     artwork: "phones",
     platforms: [
-      { name: "iPhone · iPad", status: "TestFlight", detail: "0.5.0 (202609132101) · iOS·iPadOS 17+", availabilityNote: "0.5.0 내부 테스트 제공 · Public Beta 심사 제출 완료 · 새 빌드는 Apple 승인 대기" },
+      { name: "iPhone · iPad", status: "TestFlight", detail: "0.5.0 (202609132101) · iOS·iPadOS 17+", availabilityNote: "0.5.0 Public Beta 승인 · 공개 TestFlight 링크에서 참여 가능" },
       { name: "Mac", status: "공개", detail: "0.5.0 (202609132101) · macOS 14+ · Universal · Apple 공증 완료", url: releaseDownloadPath("WhattoEat"), downloadLabel: "Mac용 DMG 다운로드", availabilityNote: "Apple 공증과 공개 다운로드 무결성 확인 · Mac 교체 설치·실행 완료" },
       { name: "Android · Google TV", status: "공개", detail: "0.5.3 · 빌드 202609132251 · 내부 코드 368571 · Android 8.0+", url: releaseDownloadPath("WhattoEat-Android"), downloadLabel: "Android용 APK 다운로드", availabilityNote: "앱 실행 시 새 버전 안내 · 확인 후 업데이트 · GitHub 공개 릴리스" },
     ],
     features: [
-      { title: "공공기관이 이용한 식당을 먼저", body: "서울을 포함한 17개 지역에서 최근 18개월의 식사 이용 기록을 모았습니다. 부서 수 제한 없이 1건 이상이면 포함하며, 가까운 후보 중 이름과 주소가 일치하는 식당을 거리순으로 먼저 보여 줍니다.", icon: "/apps/whattoeat/features/feature-01.webp" },
+      { title: "공공기관이 이용한 식당을 먼저", body: "28개 수집 기관(17개 내부 지역)의 공공 식사 이용 기록(2026년 9월 13일 기준 11,091곳 번들 카탈로그, 전국 완전 전수 조사는 아님)을 바탕으로 합니다. 앱 실행 시점 기준 최근 18개월 내 1건 이상 결제 기록이 있고 이름과 정규화된 주소가 일치하는 곳을 우선순위로 먼저 보여 줍니다.", icon: "/apps/whattoeat/features/feature-01.webp" },
       { title: "추천의 근거를 직접 확인", body: "공공기관 이용 기록 표시를 보고 식당을 고른 뒤 결제일과 공식 원문을 확인하세요. 주소가 빠진 일부 기록은 기관 주변의 공식 사업장 정보로 보완했습니다.", icon: "/apps/airchurch/features/feature-05.webp" },
-      { title: "가까운 13곳에서 한 끼 고르기", body: "현 위치 또는 직접 고른 지역에서 가까운 음식점 13곳을 추린 뒤, 오늘의 한 끼와 함께 볼 맛집을 사진이 시원하게 보이는 2열 목록으로 보여줍니다.", icon: "/apps/whattoeat/features/feature-03.webp" },
+      { title: "가까운 최대 13곳에서 한 끼 고르기", body: "현 위치 또는 직접 고른 지역에서 가까운 음식점을 최대 13곳까지 추린 뒤, 오늘의 한 끼와 함께 볼 맛집을 사진이 시원하게 보이는 2열 목록으로 보여줍니다.", icon: "/apps/whattoeat/features/feature-03.webp" },
       { title: "기다리는 순간도 한 끼답게", body: "추천을 고르는 동안 음식 토큰과 주사위가 움직이는 애니메이션으로 선택의 기대감을 이어갑니다.", icon: "/apps/whattoeat/features/feature-07.webp" },
       { title: "사진으로 먼저 맛보기", body: "Kakao Local에서 가까운 식당을 찾고 TourAPI의 검증된 식당 사진을 우선합니다. 사진이 없으면 Openverse에서 대표 메뉴와 이름을 함께 판단한 예시 사진을 찾아 빈 화면 없이 제안합니다.", icon: "/apps/super-thumbnail/features/feature-04.webp" },
       { title: "원하는 지도 앱으로 바로", body: "네이버 지도, Apple 지도, 카카오맵과 Google 지도 중 하나를 정해 두고 식당 위치와 길 찾기를 이어갑니다.", icon: "/apps/whattoeat/features/feature-04.webp" },
@@ -1092,7 +1097,7 @@ const appCatalog: AppData[] = [
       { title: "위치 권한을 놓쳐도 바로 복구", body: "첫 실행에서 위치 권한을 안내하고, 다시 묻지 않도록 거부한 경우에는 앱 설정에서 권한을 켜는 길을 바로 보여 줍니다. 권한을 바꾸고 돌아오면 보던 화면에서 위치 찾기를 이어갑니다.", icon: "/apps/trackpadguard/features/feature-05.webp" },
       { title: "상황에 맞는 메뉴와 지도 검색", body: "든든한 식사, 간단한 한 끼, 패스트푸드, 디저트·카페, 회식·모임, 야식 중 원하는 상황을 고르고 추천 메뉴를 선택한 지도 앱에서 바로 검색할 수 있습니다.", icon: "/apps/whattoeat/features/feature-09.webp" },
       { title: "최근과 찜을 지역별로", body: "오늘 결정한 한 끼와 다시 가고 싶은 식당을 지역별로 모아 보고, 하트나 밀기로 간단히 정리합니다.", icon: "/apps/whattoeat/features/feature-10.webp" },
-      { title: "점심 전에 가볍게 알림", body: "점심시간과 알림 시각을 정하고, 휴일 제외를 켜면 토·일요일과 한클립 달력의 한국 공휴일에는 알리지 않습니다. Apple은 다음 60회까지 예약하고 앱을 열 때 갱신합니다. 새 설정은 Mac·Android에서 제공하며 최신 iPhone·iPad 빌드는 외부 베타 심사 중입니다.", icon: "/apps/whattoeat/features/feature-11.webp" },
+      { title: "점심 전에 가볍게 알림", body: "점심시간과 알림 시각을 정하고, 휴일 제외를 켜면 토·일요일과 한클립 달력의 한국 공휴일에는 알리지 않습니다. Apple은 다음 60회까지 예약하고 앱을 열 때 갱신합니다. iPhone·iPad·Mac·Android에서 점심 알림 설정을 사용할 수 있습니다.", icon: "/apps/whattoeat/features/feature-11.webp" },
     ],
     guide: [
       { title: "지역 정하기", body: "현 위치를 다시 잡거나 지역 이름과 장소를 검색해 먹을 동네를 고릅니다." },
@@ -1114,11 +1119,11 @@ const appCatalog: AppData[] = [
       { state: "done", title: "Android 0.4.2 실내 위치 복구 공개", body: "build 202608271840 · 내부 코드 343840 APK를 공개했습니다. Wi-Fi·셀룰러를 포함한 기본 위치 공급자와 5분 이내 최근 위치를 활용하고, 실패해도 지역 직접 선택으로 이어집니다." },
       { state: "done", title: "Android 0.4.3 위치 권한 복구 공개", body: "build 202608291549 · 내부 코드 346549 APK를 공개했습니다. 첫 실행 권한 안내와 영구 거부 후 앱 설정 복구, 앱 복귀 뒤 현재 흐름 재개를 보완했습니다." },
       { state: "done", title: "Mac·Android 0.4.4 공개", body: "build 202609051202. 휴일 제외 알림과 추천 전체 기본값을 추가하고 Android 10 위치 요청 오류를 수정했습니다. 공증된 Mac DMG와 기존 릴리스 키로 서명한 Android APK를 공개했습니다." },
-      { state: "done", title: "공공기관 기록 우선 추천 0.5.0 공개", body: "최근 18개월·이용 1건 기준으로 17개 지역 11,091곳을 재집계했습니다. Mac 공증 DMG와 서명된 Android APK를 공개하고 Mac 교체 설치·실행을 확인했습니다." },
+      { state: "done", title: "공공기관 기록 우선 추천 0.5.0 공개", body: "2026년 9월 13일 기준 28개 기관의 17개 내부 지역 11,091곳 번들 카탈로그(최근 18개월·결제 1건 이상)를 탑재했습니다. Mac 공증 DMG와 서명된 Android APK를 공개하고 Mac 교체 설치·실행을 확인했습니다." },
       { state: "done", title: "Android 0.5.1 업데이트 인식 수정", body: "공식 APK 파일명 대소문자 차이 때문에 업데이트가 누락되던 문제를 수정해 공개했습니다. 기존 앱은 수정된 파일을 찾아 자동으로 내려받고, Android 설치 확인 후 업데이트할 수 있습니다." },
       { state: "done", title: "Android 0.5.2 업데이트 완료 알림", body: "업데이트 다운로드가 끝난 뒤에도 Android 알림을 남겨 앱을 찾아 들어오지 않아도 설치 단계로 이어지도록 개선했습니다. 앱 삭제 없이 Android 시스템 확인만 거치면 업데이트할 수 있습니다." },
       { state: "done", title: "Android 0.5.3 새 버전 안내", body: "앱을 열면 새 버전 안내를 표시하고 업데이트 화면으로 이동합니다. 0.5.2 사용자는 이번 버전을 먼저 설치해야 하며, 앱 실행 안내는 그다음 업데이트부터 표시됩니다." },
-      { state: "active", title: "iPhone·iPad 0.5.0 Public Beta 심사", body: "build 202609132101 업로드·처리와 기존 Public Beta 그룹 연결, 심사 제출을 완료했습니다. 새 빌드는 Apple 승인 대기 중입니다." },
+      { state: "done", title: "iPhone·iPad 0.5.0 Public Beta 승인", body: "build 202609132101 Apple 외부 베타 심사 승인 완료 · 기존 Public Beta 링크와 10,000명 한도 유지 · 공개 테스트 참여 가능" },
       { state: "active", title: "태블릿·TV·접근성 후속 검증", body: "태블릿과 Google TV 리모컨, TalkBack 실제 읽기 순서, 밀기 후 재실행 저장과 지도 오류 분기를 실제 기기에서 추가 확인할 예정입니다." },
     ],
     screenshots: [
@@ -1155,8 +1160,8 @@ const appCatalog: AppData[] = [
       {
         name: "iPhone · iPad",
         status: "TestFlight",
-        detail: "0.3.2 · 빌드 202609101658 · iOS·iPadOS 17+",
-        availabilityNote: "0.3.2 Public Beta 심사 제출 완료 · 기존 내부 그룹 유지 · 승인 전에는 기존 승인 빌드로 참여",
+        detail: "0.3.2 (202609101658) · iOS·iPadOS 17+",
+        availabilityNote: "0.3.2 Public Beta 승인 · 공개 TestFlight 링크에서 참여 가능",
       },
       {
         name: "Android",
@@ -1196,7 +1201,7 @@ const appCatalog: AppData[] = [
       { state: "done", title: "iPhone·iPad 0.3.1 내부 TestFlight", body: "build 202608312019를 기존 Internal 그룹에 연결했습니다. 팬츠·재킷 9컷 순서, 실제 참고 이미지와 확대 보기, 촬영 버튼 간격 개선을 포함하며 외부 Public Beta에는 추가하지 않았습니다." },
       { state: "done", title: "Android 0.3.1 공개", body: "build 202608312019 · 내부 코드 349699 APK를 공개했습니다. iPhone과 같은 9컷 순서, 18개 작은 참고 이미지와 18개 확대 이미지, 가이드와 종합 판단용 사진 역할 전달을 포함합니다." },
       { state: "done", title: "Android 0.3.2 공개", body: "아이비 전송·취소 처리와 진단 로그 공유를 개선했습니다. 빌드 202609101702 · 내부 코드 363902 · 기존 배포 서명과 공개 파일 무결성 확인 완료" },
-      { state: "active", title: "iPhone·iPad 0.3.2 베타 심사", body: "빌드 202609101658의 iPhone 교체 설치·재실행, 업로드와 Public Beta 심사 제출을 마쳤습니다. 새 빌드의 외부 제공은 Apple 승인 후 가능합니다." },
+      { state: "done", title: "iOS·iPadOS 0.3.2 Public Beta 승인", body: "build 202609101658 Apple 외부 베타 심사 승인 완료 · 기존 Public Beta 링크와 10,000명 한도 유지 · 공개 테스트 참여 가능" },
       { state: "next", title: "아카이브 동기화", body: "개인 NAS 연결과 익명 기록 공유는 준비 중이며 현재 공개 기능에 포함하지 않음" },
     ],
     screenshots: [
@@ -1329,7 +1334,7 @@ const appCatalog: AppData[] = [
         detail: "AIBI 0.5.0 · Apple·Android 공통 엔진 · 두 앱의 네 프로젝트에 반영",
         url: "https://github.com/armsone/AIBI/releases/download/v0.5.0/AIBI-0.5.0.zip",
         downloadLabel: "AIBI 0.5.0 소스 받기",
-        availabilityNote: "독립 소스와 두 Android 앱 공개 · Apple 새 빌드는 베타 심사 제출 완료",
+        availabilityNote: "독립 소스와 두 Android 앱 공개 · 연동 앱(Stargram·DenimDex)의 Apple TestFlight 승인 확인",
       },
     ],
     features: [
@@ -1418,7 +1423,7 @@ const appCatalog: AppData[] = [
     english: "ppabang.net",
     eyebrow: "YOUR SHORTS, KEEP MOVING",
     tagline: "내 취향 쇼츠를, 끊김 없이.",
-    summary: "TV 앞에서 리모컨으로 내 취향 쇼츠만 골라 보고 싶다면. 빠방넷은 좋아요와 구독 채널을 바탕으로 짧은 영상을 이어 보고, 새 영상과 여러 주제도 리모컨으로 고르는 웹 쇼츠 플레이어입니다. 한 목록을 다 보면 다음 목록으로 자연스럽게 이어집니다.",
+    summary: "TV 앞에서 리모컨으로 원하는 쇼츠를 편하게 골라 보고 싶다면. 빠방넷은 로그인 없이 서버에 모아 둔 카테고리별 쇼츠를 자동으로 구성하고, 완료 시청과 빠른 넘김을 기기에 저장해 다음 피드 순서에 반영하는 웹 쇼츠 플레이어입니다. Google TV에서도 리모컨으로 카테고리를 고르며 끊김 없이 이어 봅니다.",
     theme: "coral",
     icon: "/apps/ppabang/icon.png",
     heroImage: "/apps/ppabang/hero-20260918.webp",
@@ -1431,40 +1436,38 @@ const appCatalog: AppData[] = [
         detail: "공식 웹 · 반복 방지 셔플 · Google TV 포함",
         url: "https://ppabang.net/",
         downloadLabel: "빠방넷 열기",
-        availabilityNote: "Google TV에서 QR·기기 코드 연결과 리모컨 카테고리 선택 지원",
+        availabilityNote: "Google TV에서 리모컨 카테고리 선택 지원",
       },
     ],
     features: [
-      { title: "내 취향으로 이어지는 쇼츠", body: "Google의 YouTube 읽기 전용 권한으로 좋아요와 구독 채널을 확인해 개인 맞춤 재생목록을 구성합니다.", icon: "/apps/autoshorts/features/feature-01.webp" },
+      { title: "로그인 없이, 카테고리 선택", body: "Google 계정 로그인 없이 서버에 모아 둔 카테고리별 쇼츠를 자동으로 구성합니다. 완료 시청과 빠른 넘김을 기기에 저장해 다음 피드 순서에 반영합니다.", icon: "/apps/autoshorts/features/feature-01.webp" },
       { title: "같은 곡은 덜 나오게", body: "최근 재생 영상 2,500개를 기억하고 아직 듣지 않은 곡부터 섞습니다. 확인 가능한 곡명은 다른 영상으로 올라온 같은 곡도 묶으며, 후보를 모두 들었을 때만 오래전에 들은 것부터 다시 준비합니다. 모음 영상 내부의 개별 곡이나 불명확한 제목까지 식별하지는 않습니다.", icon: "/apps/stand/features/feature-10.webp" },
       { title: "1분 안에 돌아와 이어 보기", body: "다른 탭·앱으로 이동하면 일시정지합니다. 페이지가 유지되고 1분 안에 돌아오면 같은 위치에서 재생을 요청합니다. 자동 재생이 허용되지 않거나 늦게 돌아오면 이어듣기 버튼을 사용합니다.", icon: "/apps/super-thumbnail/features/feature-08.webp" },
-      { title: "TV에서는 휴대전화로 간단히 연결", body: "Google TV 화면의 QR 코드나 기기 코드를 휴대전화에서 승인하고, 다음 새 영상 갱신부터는 현재 기기에 저장된 연결을 다시 사용합니다.", icon: "/apps/stand/features/feature-12.webp" },
+      { title: "TV에서는 리모컨으로 카테고리 탐색", body: "Google TV 화면에서도 별도 로그인이나 연결 절차 없이 리모컨 방향키로 카테고리를 이동하며 원하는 쇼츠를 바로 골라 봅니다.", icon: "/apps/stand/features/feature-12.webp" },
       { title: "취향별 세 카테고리 추가", body: "스타크래프트를 포함한 게임 채널, 먹방·맛집 채널, 캠핑·차박·먹방을 제외한 순수 여행 채널을 각각 따로 골라 볼 수 있습니다.", icon: "/apps/intosharp/features/feature-03.webp" },
       { title: "한국 여자 골프를 먼저", body: "골프 목록은 한국 여자 골프 채널을 우선하며, 가능한 범위에서 아마추어 최대 30개와 프로 최대 20개 채널의 영상부터 채널별 한 편씩 구성합니다.", icon: "/icons/golf-20260918.webp" },
     ],
     guide: [
       { title: "빠방넷 열기", body: "PC·모바일 또는 Google TV 브라우저에서 ppabang.net을 엽니다." },
-      { title: "Google 연결하기", body: "웹에서는 Google 동의 화면을 이용하고, Google TV에서는 화면의 QR 코드나 기기 코드를 휴대전화에서 승인합니다." },
-      { title: "보고 싶은 목록 고르기", body: "화면의 카테고리를 누르거나 Google TV 리모컨 방향키로 이동해 내 취향, 새 영상, 골프와 다른 주제를 선택합니다." },
-      { title: "그대로 이어 보기", body: "재생이 끝나면 다음 쇼츠로 이동합니다. 목록을 한 번 다 보면 저장된 Google 연결로 새 목록을 준비해 이어 봅니다." },
+      { title: "보고 싶은 목록 고르기", body: "화면의 카테고리를 누르거나 Google TV 리모컨 방향키로 이동해 톱텐, 골프, 게임, 먹방 등 원하는 주제를 선택합니다." },
+      { title: "그대로 이어 보기", body: "재생이 끝나면 다음 쇼츠로 이동합니다. 한 목록을 다 보면 새 재생목록으로 이어집니다." },
     ],
     progress: [
       { state: "done", title: "게임·먹방·순수 여행 카테고리 추가", body: "스타크래프트를 포함한 게임, 선호 먹방·맛집, 그리고 캠핑·차박·먹방을 제외한 순수 여행 쇼츠 카테고리를 추가했습니다." },
       { state: "done", title: "최근 곡 반복 방지와 잠깐 다녀오기", body: "최근 재생 기록을 목록 갱신 뒤에도 유지하고 웹과 S.tand에 같은 곡 선택 방식을 적용했습니다. 다른 앱·탭에서는 영상을 멈추고 1분 안에 돌아오면 같은 위치에서 이어듣기를 요청합니다." },
       { state: "done", title: "빠방넷 웹 공개", body: "ppabang.net Sites v25를 Google TV를 포함한 웹 서비스로 공개했습니다." },
-      { state: "done", title: "Google TV 연결과 리모컨 탐색", body: "QR·기기 코드 연결, 저장 연결 재사용과 방향키 카테고리 선택을 반영했습니다." },
+      { state: "done", title: "Google TV 리모컨 탐색", body: "Google TV 환경에서 리모컨 방향키로 카테고리를 이동하고 쇼츠를 선택하는 탐색 방식을 반영했습니다." },
       { state: "done", title: "새 목록과 한국 여자 골프 우선 구성", body: "목록 1회 종료 뒤 새 목록 전환과 한국 여자 골프 채널별 한 편 우선 구성을 반영했습니다." },
-      { state: "done", title: "Google TV 저장 연결 자동 갱신 복구", body: "Google TV 저장 연결의 자동 갱신이 실패하면 만료된 토큰을 다시 사용하지 않고 5분 간격으로 최대 3회 재시도한 뒤 정상 주기로 돌아가도록 복구했습니다." },
+      { state: "done", title: "Google 연결 제거 및 로그인 없는 서비스 전환", body: "Google 계정 연결을 없애고 로그인 없이 서버에 모아 둔 카테고리별 쇼츠를 바로 즐길 수 있도록 전환했습니다." },
     ],
     github: [],
     privacy: [
-      "Google 계정의 아이디·비밀번호·브라우저 쿠키를 요구하거나 저장하지 않습니다.",
-      "사용자가 동의한 경우에만 YouTube 읽기 전용 권한으로 좋아요 영상과 구독 채널의 공개 영상 정보를 개인 맞춤 피드 구성에 사용합니다.",
+      "Google 계정 로그인이나 비밀번호, Google 계정 연결용 쿠키를 사용하지 않으며 별도의 Google 계정 연결을 요구하지 않습니다.",
       "완료 시청·빠른 넘김 기록과 최근 영상의 제목·채널명·영상 식별자는 현재 기기의 브라우저 저장공간에 보관합니다.",
       "최근 재생 영상 최대 2,500개의 식별자·시각·곡 구분값으로 반복을 줄입니다. 새 목록 요청 시 제외 목록을 서버에 보내지만 서버에 재생 이력으로 저장하지 않습니다. 웹 브라우저와 S.tand의 기록은 각 저장공간에 따로 보관됩니다.",
-      "Google 액세스 토큰은 서버에 저장하지 않고 현재 브라우저 실행 중에만 사용합니다. Google TV의 자동 갱신용 권한은 화면 코드에서 읽을 수 없는 보안 쿠키로 현재 기기에 보관합니다.",
+      "방문·재생 횟수 집계에는 브라우저의 무작위 식별값과 별도 이벤트 식별값을 사용합니다. 서버에는 방문·재생을 서로 연결하지 않은 해시와 날짜별 합계를 보관하며, 사이트 데이터 삭제로 이미 집계된 합계가 지워지지는 않습니다.",
       "개인화 정보를 판매하지 않으며, YouTube 영상 재생과 정보 조회에는 Google 및 YouTube의 서비스와 정책이 적용됩니다.",
-      "브라우저의 ppabang.net 사이트 데이터를 삭제하면 기기에 저장된 빠방넷 정보가 제거되며, Google 계정 보안 설정에서 연결 권한을 철회할 수 있습니다.",
+      "브라우저의 ppabang.net 사이트 데이터를 삭제하면 기기에 저장된 빠방넷 정보가 제거됩니다. 과거에 Google 연결을 사용했던 경우 Google 계정 보안 설정에서 기존 권한을 철회할 수 있습니다.",
     ],
   },
 ];
