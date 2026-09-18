@@ -1,6 +1,6 @@
 import { AdvantageVisual } from "../../../components/AdvantageVisual";
 import type { Metadata } from "next";
-import Image from "next/image";
+import Image from "../../../components/SiteImage";
 import Link from "next/link";
 import { SiteFooter, SiteHeader } from "../../../components/SiteChrome";
 

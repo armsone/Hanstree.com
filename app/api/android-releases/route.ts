@@ -88,7 +88,7 @@ export async function GET() {
   return NextResponse.json(
     { checkedAt, releases, source: usedFallback ? "verified-fallback" : "github-live" },
     { headers: { "Cache-Control": usedFallback
-      ? "no-store"
+      ? "public, max-age=60, s-maxage=60"
       : "public, max-age=300, s-maxage=1800, stale-while-revalidate=3600" } },
   );
 }

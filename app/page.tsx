@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import Image from "./components/SiteImage";
 import Link from "next/link";
 import { AdvantageVisual, type AdvantageVariant } from "./components/AdvantageVisual";
 import { AppIcon, AppStatus } from "./components/AppVisuals";

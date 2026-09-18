@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
+import Image from "./SiteImage";
 import { useEffect, useState } from "react";
 import type { TestFlightBuild } from "../testflight";
 import { ClientDownloadQrCode } from "./ClientDownloadQrCode";

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "./SiteImage";
 import Link from "next/link";
 import type { AppData } from "../data";
 import { SiteFooter, SiteHeader } from "./SiteChrome";

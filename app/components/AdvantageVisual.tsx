@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import Image from "next/image";
+import Image from "./SiteImage";
 
 export type AdvantageVariant =
   | "storage-network" | "play-remote" | "phone-drive" | "live-motion-swap"

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "./SiteImage";
 import type { AppData, Platform } from "../data";
 import { appCardIcon } from "../media";
 

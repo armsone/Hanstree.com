@@ -1,0 +1,1130 @@
+{
+  "/apps/aibi/aibi-hero-v2.png": {
+    "src": "/optimized/e7cc20f1a888339f-1536.webp",
+    "width": 1536,
+    "height": 1024,
+    "srcSet": "/optimized/e7cc20f1a888339f-128.webp 128w, /optimized/e7cc20f1a888339f-640.webp 640w, /optimized/e7cc20f1a888339f-1280.webp 1280w, /optimized/e7cc20f1a888339f-1536.webp 1536w"
+  },
+  "/apps/aibi/home-card.webp": {
+    "src": "/apps/aibi/home-card.webp",
+    "width": 1280,
+    "height": 853,
+    "srcSet": "/optimized/4e0386cb1c37d35c-128.webp 128w, /optimized/4e0386cb1c37d35c-640.webp 640w, /apps/aibi/home-card.webp 1280w"
+  },
+  "/apps/aibi/icon.png": {
+    "src": "/optimized/2aa667bfd242747a-1024.webp",
+    "width": 1024,
+    "height": 1024,
+    "srcSet": "/optimized/2aa667bfd242747a-128.webp 128w, /optimized/2aa667bfd242747a-640.webp 640w, /optimized/2aa667bfd242747a-1024.webp 1024w"
+  },
+  "/apps/aiplaygrand/hero-20260918.webp": {
+    "src": "/optimized/791e7734876fa8c8-1536.webp",
+    "width": 1536,
+    "height": 1024,
+    "srcSet": "/optimized/791e7734876fa8c8-128.webp 128w, /optimized/791e7734876fa8c8-640.webp 640w, /optimized/791e7734876fa8c8-1280.webp 1280w, /optimized/791e7734876fa8c8-1536.webp 1536w"
+  },
+  "/apps/aiplaygrand/icon.png": {
+    "src": "/optimized/6990414c744bbc5c-1024.webp",
+    "width": 1024,
+    "height": 1024,
+    "srcSet": "/optimized/6990414c744bbc5c-128.webp 128w, /optimized/6990414c744bbc5c-640.webp 640w, /optimized/6990414c744bbc5c-1024.webp 1024w"
+  },
+  "/apps/airchurch/airchurch-campaign.png": {
+    "src": "/optimized/d6c5580235e6f62a-1672.webp",
+    "width": 1672,
+    "height": 941,
+    "srcSet": "/optimized/d6c5580235e6f62a-128.webp 128w, /optimized/d6c5580235e6f62a-640.webp 640w, /optimized/d6c5580235e6f62a-1280.webp 1280w, /optimized/d6c5580235e6f62a-1672.webp 1672w"
+  },
+  "/apps/airchurch/airchurch-hero-v2.png": {
+    "src": "/optimized/4b2fc3601050efce-1536.webp",
+    "width": 1536,
+    "height": 1024,
+    "srcSet": "/optimized/4b2fc3601050efce-128.webp 128w, /optimized/4b2fc3601050efce-640.webp 640w, /optimized/4b2fc3601050efce-1280.webp 1280w, /optimized/4b2fc3601050efce-1536.webp 1536w"
+  },
+  "/apps/airchurch/home-card.webp": {
+    "src": "/apps/airchurch/home-card.webp",
+    "width": 1280,
+    "height": 853,
+    "srcSet": "/optimized/7b85619b9aa18f5a-128.webp 128w, /optimized/7b85619b9aa18f5a-640.webp 640w, /apps/airchurch/home-card.webp 1280w"
+  },
+  "/apps/airchurch/icon.png": {
+    "src": "/optimized/2b066c31ee074d23-512.webp",
+    "width": 512,
+    "height": 512,
+    "srcSet": "/optimized/2b066c31ee074d23-128.webp 128w, /optimized/2b066c31ee074d23-512.webp 512w"
+  },
+  "/apps/alfred-ai-search/home-card-v2.png": {
+    "src": "/optimized/6a4321bc896c0051-1536.webp",
+    "width": 1536,
+    "height": 1024,
+    "srcSet": "/optimized/6a4321bc896c0051-128.webp 128w, /optimized/6a4321bc896c0051-640.webp 640w, /optimized/6a4321bc896c0051-1280.webp 1280w, /optimized/6a4321bc896c0051-1536.webp 1536w"
+  },
+  "/apps/alfred-ai-search/home-card.webp": {
+    "src": "/optimized/0b1e78157110fc91-1280.webp",
+    "width": 1280,
+    "height": 853,
+    "srcSet": "/optimized/0b1e78157110fc91-128.webp 128w, /optimized/0b1e78157110fc91-640.webp 640w, /optimized/0b1e78157110fc91-1280.webp 1280w"
+  },
+  "/apps/alfred-ai-search/icon.png": {
+    "src": "/optimized/7831dbd9372ce40e-512.webp",
+    "width": 512,
+    "height": 512,
+    "srcSet": "/optimized/7831dbd9372ce40e-128.webp 128w, /optimized/7831dbd9372ce40e-512.webp 512w"
+  },
+  "/apps/alfred-ai-search/providers/claude.png": {
+    "src": "/optimized/dd1707b6ee303a5f-512.webp",
+    "width": 512,
+    "height": 512,
+    "srcSet": "/optimized/dd1707b6ee303a5f-128.webp 128w, /optimized/dd1707b6ee303a5f-512.webp 512w"
+  },
+  "/apps/alfred-ai-search/providers/gemini.png": {
+    "src": "/optimized/fc9fc09ed4c996af-512.webp",
+    "width": 512,
+    "height": 512,
+    "srcSet": "/optimized/fc9fc09ed4c996af-128.webp 128w, /optimized/fc9fc09ed4c996af-512.webp 512w"
+  },
+  "/apps/alfred-ai-search/screens/alfred-answer-view.png": {
+    "src": "/optimized/6c5de47b97d7ea27-1238.webp",
+    "width": 1238,
+    "height": 1764,
+    "srcSet": "/optimized/6c5de47b97d7ea27-128.webp 128w, /optimized/6c5de47b97d7ea27-640.webp 640w, /optimized/6c5de47b97d7ea27-1238.webp 1238w"
+  },
+  "/apps/alfred-navermap/hero-20260918.webp": {
+    "src": "/optimized/18e6ead81d13ec4b-1536.webp",
+    "width": 1536,
+    "height": 1024,
+    "srcSet": "/optimized/18e6ead81d13ec4b-128.webp 128w, /optimized/18e6ead81d13ec4b-640.webp 640w, /optimized/18e6ead81d13ec4b-1280.webp 1280w, /optimized/18e6ead81d13ec4b-1536.webp 1536w"
+  },
+  "/apps/autoshorts/autoshorts-hero.png": {
+    "src": "/optimized/dc3cc9c6867f960e-1536.webp",
+    "width": 1536,
+    "height": 1024,
+    "srcSet": "/optimized/dc3cc9c6867f960e-128.webp 128w, /optimized/dc3cc9c6867f960e-640.webp 640w, /optimized/dc3cc9c6867f960e-1280.webp 1280w, /optimized/dc3cc9c6867f960e-1536.webp 1536w"
+  },
+  "/apps/autoshorts/features/feature-01.webp": {
+    "src": "/optimized/933ba35ec823630e-512.webp",
+    "width": 512,
+    "height": 512,
+    "srcSet": "/optimized/933ba35ec823630e-128.webp 128w, /optimized/933ba35ec823630e-512.webp 512w"
+  },
+  "/apps/autoshorts/features/feature-02.webp": {
+    "src": "/optimized/cbc469d92b572979-512.webp",
+    "width": 512,
+    "height": 512,
+    "srcSet": "/optimized/cbc469d92b572979-128.webp 128w, /optimized/cbc469d92b572979-512.webp 512w"
+  },
+  "/apps/autoshorts/features/feature-03.webp": {
+    "src": "/optimized/a3d189d8cbe2f1c4-512.webp",
+    "width": 512,
+    "height": 512,
+    "srcSet": "/optimized/a3d189d8cbe2f1c4-128.webp 128w, /optimized/a3d189d8cbe2f1c4-512.webp 512w"
+  },
+  "/apps/autoshorts/features/feature-04.webp": {
+    "src": "/optimized/2e2419799b14748e-512.webp",
+    "width": 512,
+    "height": 512,
+    "srcSet": "/optimized/2e2419799b14748e-128.webp 128w, /optimized/2e2419799b14748e-512.webp 512w"
+  },
+  "/apps/autoshorts/home-card-v2.png": {
+    "src": "/optimized/f57ff792ff1f53ca-1536.webp",
+    "width": 1536,
+    "height": 1024,
+    "srcSet": "/optimized/f57ff792ff1f53ca-128.webp 128w, /optimized/f57ff792ff1f53ca-640.webp 640w, /optimized/f57ff792ff1f53ca-1280.webp 1280w, /optimized/f57ff792ff1f53ca-1536.webp 1536w"
+  },
+  "/apps/autoshorts/home-card.webp": {
+    "src": "/optimized/458944296dd87622-1536.webp",
+    "width": 1536,
+    "height": 1024,
+    "srcSet": "/optimized/458944296dd87622-128.webp 128w, /optimized/458944296dd87622-640.webp 640w, /optimized/458944296dd87622-1280.webp 1280w, /optimized/458944296dd87622-1536.webp 1536w"
+  },
+  "/apps/autoshorts/icon-card.webp": {
+    "src": "/optimized/a2da115b1183514b-512.webp",
+    "width": 512,
+    "height": 512,
+    "srcSet": "/optimized/a2da115b1183514b-128.webp 128w, /optimized/a2da115b1183514b-512.webp 512w"
+  },
+  "/apps/autoshorts/icon.png": {
+    "src": "/optimized/8bfdf2a54be811b0-512.webp",
+    "width": 512,
+    "height": 512,
+    "srcSet": "/optimized/8bfdf2a54be811b0-128.webp 128w, /optimized/8bfdf2a54be811b0-512.webp 512w"
+  },
+  "/apps/btn/btn-hero-v2.png": {
+    "src": "/optimized/3d97254dbb31bbab-1536.webp",
+    "width": 1536,
+    "height": 1024,
+    "srcSet": "/optimized/3d97254dbb31bbab-128.webp 128w, /optimized/3d97254dbb31bbab-640.webp 640w, /optimized/3d97254dbb31bbab-1280.webp 1280w, /optimized/3d97254dbb31bbab-1536.webp 1536w"
+  },
+  "/apps/btn/home-card.webp": {
+    "src": "/apps/btn/home-card.webp",
+    "width": 1280,
+    "height": 853,
+    "srcSet": "/optimized/de8b4d742ba4e9d2-128.webp 128w, /optimized/de8b4d742ba4e9d2-640.webp 640w, /apps/btn/home-card.webp 1280w"
+  },
+  "/apps/btn/icon.png": {
+    "src": "/optimized/cdc46b2ea3f7ef02-512.webp",
+    "width": 512,
+    "height": 512,
+    "srcSet": "/optimized/cdc46b2ea3f7ef02-128.webp 128w, /optimized/cdc46b2ea3f7ef02-512.webp 512w"
+  },
+  "/apps/btn/screens/derived-data-clear.png": {
+    "src": "/optimized/40871ceb3fa5d46f-638.webp",
+    "width": 638,
+    "height": 112,
+    "srcSet": "/optimized/40871ceb3fa5d46f-128.webp 128w, /optimized/40871ceb3fa5d46f-638.webp 638w"
+  },
+  "/apps/btn/screens/overview.png": {
+    "src": "/optimized/08dc8bd141c7c3fd-1520.webp",
+    "width": 1520,
+    "height": 1000,
+    "srcSet": "/optimized/08dc8bd141c7c3fd-128.webp 128w, /optimized/08dc8bd141c7c3fd-640.webp 640w, /optimized/08dc8bd141c7c3fd-1280.webp 1280w, /optimized/08dc8bd141c7c3fd-1520.webp 1520w"
+  },
+  "/apps/button/button-hero-v2.png": {
+    "src": "/optimized/c3cdbca32fe7e316-1536.webp",
+    "width": 1536,
+    "height": 1024,
+    "srcSet": "/optimized/c3cdbca32fe7e316-128.webp 128w, /optimized/c3cdbca32fe7e316-640.webp 640w, /optimized/c3cdbca32fe7e316-1280.webp 1280w, /optimized/c3cdbca32fe7e316-1536.webp 1536w"
+  },
+  "/apps/button/home-card.webp": {
+    "src": "/apps/button/home-card.webp",
+    "width": 1280,
+    "height": 853,
+    "srcSet": "/optimized/3a78fdfda9ce303c-128.webp 128w, /optimized/3a78fdfda9ce303c-640.webp 640w, /apps/button/home-card.webp 1280w"
+  },
+  "/apps/button/icon.png": {
+    "src": "/optimized/7de5cd6762a98d4a-1024.webp",
+    "width": 1024,
+    "height": 1024,
+    "srcSet": "/optimized/7de5cd6762a98d4a-128.webp 128w, /optimized/7de5cd6762a98d4a-640.webp 640w, /optimized/7de5cd6762a98d4a-1024.webp 1024w"
+  },
+  "/apps/button/screens/android-child-ack.png": {
+    "src": "/optimized/bee225580b60250c-822.webp",
+    "width": 822,
+    "height": 1918,
+    "srcSet": "/optimized/bee225580b60250c-128.webp 128w, /optimized/bee225580b60250c-640.webp 640w, /optimized/bee225580b60250c-822.webp 822w"
+  },
+  "/apps/button/screens/android-parent-sent.png": {
+    "src": "/optimized/736fb0d386b8feeb-822.webp",
+    "width": 822,
+    "height": 1918,
+    "srcSet": "/optimized/736fb0d386b8feeb-128.webp 128w, /optimized/736fb0d386b8feeb-640.webp 640w, /optimized/736fb0d386b8feeb-822.webp 822w"
+  },
+  "/apps/button/screens/android-parent-targeted.png": {
+    "src": "/optimized/de5e204cc5c81538-822.webp",
+    "width": 822,
+    "height": 1918,
+    "srcSet": "/optimized/de5e204cc5c81538-128.webp 128w, /optimized/de5e204cc5c81538-822.webp 822w"
+  },
+  "/apps/button/screens/android-settings.png": {
+    "src": "/optimized/c35c858fa6116859-822.webp",
+    "width": 822,
+    "height": 1918,
+    "srcSet": "/optimized/c35c858fa6116859-128.webp 128w, /optimized/c35c858fa6116859-640.webp 640w, /optimized/c35c858fa6116859-822.webp 822w"
+  },
+  "/apps/button/screens/android-siren_countdown.png": {
+    "src": "/optimized/78f2acef7e24b591-822.webp",
+    "width": 822,
+    "height": 1918,
+    "srcSet": "/optimized/78f2acef7e24b591-128.webp 128w, /optimized/78f2acef7e24b591-822.webp 822w"
+  },
+  "/apps/button/screens/android-voice_recording.png": {
+    "src": "/optimized/a12f2bcad53f24de-822.webp",
+    "width": 822,
+    "height": 1918,
+    "srcSet": "/optimized/a12f2bcad53f24de-128.webp 128w, /optimized/a12f2bcad53f24de-822.webp 822w"
+  },
+  "/apps/ccmb/ccmb-campaign-v044.png": {
+    "src": "/optimized/deee26e6bbf3818a-1672.webp",
+    "width": 1672,
+    "height": 941,
+    "srcSet": "/optimized/deee26e6bbf3818a-128.webp 128w, /optimized/deee26e6bbf3818a-640.webp 640w, /optimized/deee26e6bbf3818a-1280.webp 1280w, /optimized/deee26e6bbf3818a-1672.webp 1672w"
+  },
+  "/apps/ccmb/ccmb-campaign.png": {
+    "src": "/optimized/deee26e6bbf3818a-1672.webp",
+    "width": 1672,
+    "height": 941,
+    "srcSet": "/optimized/deee26e6bbf3818a-128.webp 128w, /optimized/deee26e6bbf3818a-640.webp 640w, /optimized/deee26e6bbf3818a-1280.webp 1280w, /optimized/deee26e6bbf3818a-1672.webp 1672w"
+  },
+  "/apps/ccmb/ccmb-dashboard-private.png": {
+    "src": "/optimized/e2ec383a4622b39f-1279.webp",
+    "width": 1279,
+    "height": 1230,
+    "srcSet": "/optimized/e2ec383a4622b39f-128.webp 128w, /optimized/e2ec383a4622b39f-640.webp 640w, /optimized/e2ec383a4622b39f-1279.webp 1279w"
+  },
+  "/apps/ccmb/ccmb-hero-v2.png": {
+    "src": "/optimized/f8cc5cf1d649c3b3-1536.webp",
+    "width": 1536,
+    "height": 1024,
+    "srcSet": "/optimized/f8cc5cf1d649c3b3-128.webp 128w, /optimized/f8cc5cf1d649c3b3-640.webp 640w, /optimized/f8cc5cf1d649c3b3-1280.webp 1280w, /optimized/f8cc5cf1d649c3b3-1536.webp 1536w"
+  },
+  "/apps/ccmb/home-card-v2.png": {
+    "src": "/optimized/c7acf923205c8b61-1536.webp",
+    "width": 1536,
+    "height": 1024,
+    "srcSet": "/optimized/c7acf923205c8b61-128.webp 128w, /optimized/c7acf923205c8b61-640.webp 640w, /optimized/c7acf923205c8b61-1280.webp 1280w, /optimized/c7acf923205c8b61-1536.webp 1536w"
+  },
+  "/apps/ccmb/home-card.webp": {
+    "src": "/apps/ccmb/home-card.webp",
+    "width": 1280,
+    "height": 853,
+    "srcSet": "/optimized/e2113e4a4d4083f7-128.webp 128w, /optimized/e2113e4a4d4083f7-640.webp 640w, /apps/ccmb/home-card.webp 1280w"
+  },
+  "/apps/ccmb/icon.png": {
+    "src": "/optimized/0e0936b902820d27-1024.webp",
+    "width": 1024,
+    "height": 1024,
+    "srcSet": "/optimized/0e0936b902820d27-128.webp 128w, /optimized/0e0936b902820d27-640.webp 640w, /optimized/0e0936b902820d27-1024.webp 1024w"
+  },
+  "/apps/ccmb/screens/ccmb-usage-menu.png": {
+    "src": "/optimized/66659ef0280c14e2-1636.webp",
+    "width": 1636,
+    "height": 1206,
+    "srcSet": "/optimized/66659ef0280c14e2-128.webp 128w, /optimized/66659ef0280c14e2-640.webp 640w, /optimized/66659ef0280c14e2-1280.webp 1280w, /optimized/66659ef0280c14e2-1636.webp 1636w"
+  },
+  "/apps/ccmb/screens/ios-dashboard.jpg": {
+    "src": "/apps/ccmb/screens/ios-dashboard.jpg",
+    "width": 588,
+    "height": 1280,
+    "srcSet": "/optimized/f0021ea66244410e-128.webp 128w, /apps/ccmb/screens/ios-dashboard.jpg 588w"
+  },
+  "/apps/ccmb/screens/macos-menubar.png": {
+    "src": "/optimized/ce5eff9b6053d115-860.webp",
+    "width": 860,
+    "height": 60,
+    "srcSet": "/optimized/ce5eff9b6053d115-128.webp 128w, /optimized/ce5eff9b6053d115-640.webp 640w, /optimized/ce5eff9b6053d115-860.webp 860w"
+  },
+  "/apps/cleanusb/campaign-hero.webp": {
+    "src": "/optimized/0a8e24fc68af2348-1536.webp",
+    "width": 1536,
+    "height": 1024,
+    "srcSet": "/optimized/0a8e24fc68af2348-128.webp 128w, /optimized/0a8e24fc68af2348-640.webp 640w, /optimized/0a8e24fc68af2348-1280.webp 1280w, /optimized/0a8e24fc68af2348-1536.webp 1536w"
+  },
+  "/apps/cleanusb/campaign-selection.webp": {
+    "src": "/optimized/4448b0acb2c949ce-1536.webp",
+    "width": 1536,
+    "height": 1024,
+    "srcSet": "/optimized/4448b0acb2c949ce-128.webp 128w, /optimized/4448b0acb2c949ce-640.webp 640w, /optimized/4448b0acb2c949ce-1280.webp 1280w, /optimized/4448b0acb2c949ce-1536.webp 1536w"
+  },
+  "/apps/cleanusb/home-card.webp": {
+    "src": "/optimized/2a6728a0b23f0c1a-960.webp",
+    "width": 960,
+    "height": 640,
+    "srcSet": "/optimized/2a6728a0b23f0c1a-128.webp 128w, /optimized/2a6728a0b23f0c1a-640.webp 640w, /optimized/2a6728a0b23f0c1a-960.webp 960w"
+  },
+  "/apps/cleanusb/icon-v2.webp": {
+    "src": "/optimized/b91f949a0f822565-1254.webp",
+    "width": 1254,
+    "height": 1254,
+    "srcSet": "/optimized/b91f949a0f822565-128.webp 128w, /optimized/b91f949a0f822565-640.webp 640w, /optimized/b91f949a0f822565-1254.webp 1254w"
+  },
+  "/apps/cleanusb/icon.png": {
+    "src": "/optimized/7e2bf9df75c92149-512.webp",
+    "width": 512,
+    "height": 512,
+    "srcSet": "/optimized/7e2bf9df75c92149-128.webp 128w, /optimized/7e2bf9df75c92149-512.webp 512w"
+  },
+  "/apps/cleanusb/screens/start.png": {
+    "src": "/optimized/541988646ecbb805-980.webp",
+    "width": 980,
+    "height": 640,
+    "srcSet": "/optimized/541988646ecbb805-128.webp 128w, /optimized/541988646ecbb805-640.webp 640w, /optimized/541988646ecbb805-980.webp 980w"
+  },
+  "/apps/denimdex/denimdex-hero-v2.png": {
+    "src": "/optimized/b541ad2c151d479e-1536.webp",
+    "width": 1536,
+    "height": 1024,
+    "srcSet": "/optimized/b541ad2c151d479e-128.webp 128w, /optimized/b541ad2c151d479e-640.webp 640w, /optimized/b541ad2c151d479e-1280.webp 1280w, /optimized/b541ad2c151d479e-1536.webp 1536w"
+  },
+  "/apps/denimdex/home-card.webp": {
+    "src": "/apps/denimdex/home-card.webp",
+    "width": 1280,
+    "height": 853,
+    "srcSet": "/optimized/1fd6139c18282156-128.webp 128w, /optimized/1fd6139c18282156-640.webp 640w, /apps/denimdex/home-card.webp 1280w"
+  },
+  "/apps/denimdex/icon.png": {
+    "src": "/optimized/b762a70b92739048-1024.webp",
+    "width": 1024,
+    "height": 1024,
+    "srcSet": "/optimized/b762a70b92739048-128.webp 128w, /optimized/b762a70b92739048-640.webp 640w, /optimized/b762a70b92739048-1024.webp 1024w"
+  },
+  "/apps/denimdex/screens/home.png": {
+    "src": "/optimized/3a4a5c87ef35e76d-1206.webp",
+    "width": 1206,
+    "height": 2622,
+    "srcSet": "/optimized/3a4a5c87ef35e76d-128.webp 128w, /optimized/3a4a5c87ef35e76d-640.webp 640w, /optimized/3a4a5c87ef35e76d-1206.webp 1206w"
+  },
+  "/apps/hanai/hanai-hero-v2.png": {
+    "src": "/optimized/a96ed8dcabe6ca15-1672.webp",
+    "width": 1672,
+    "height": 941,
+    "srcSet": "/optimized/a96ed8dcabe6ca15-128.webp 128w, /optimized/a96ed8dcabe6ca15-640.webp 640w, /optimized/a96ed8dcabe6ca15-1280.webp 1280w, /optimized/a96ed8dcabe6ca15-1672.webp 1672w"
+  },
+  "/apps/hanai/hanyang-city-hero-v3.png": {
+    "src": "/optimized/eb5795604e9c8dc2-1672.webp",
+    "width": 1672,
+    "height": 941,
+    "srcSet": "/optimized/eb5795604e9c8dc2-128.webp 128w, /optimized/eb5795604e9c8dc2-640.webp 640w, /optimized/eb5795604e9c8dc2-1280.webp 1280w, /optimized/eb5795604e9c8dc2-1672.webp 1672w"
+  },
+  "/apps/hanai/hanyang-memory-archive-v1.png": {
+    "src": "/optimized/d7023949d96f114e-1672.webp",
+    "width": 1672,
+    "height": 941,
+    "srcSet": "/optimized/d7023949d96f114e-128.webp 128w, /optimized/d7023949d96f114e-640.webp 640w, /optimized/d7023949d96f114e-1280.webp 1280w, /optimized/d7023949d96f114e-1672.webp 1672w"
+  },
+  "/apps/hanai/hanyang-secure-gates-v1.png": {
+    "src": "/optimized/11ec0930602110ae-1672.webp",
+    "width": 1672,
+    "height": 941,
+    "srcSet": "/optimized/11ec0930602110ae-128.webp 128w, /optimized/11ec0930602110ae-640.webp 640w, /optimized/11ec0930602110ae-1280.webp 1280w, /optimized/11ec0930602110ae-1672.webp 1672w"
+  },
+  "/apps/hanai/home-card.webp": {
+    "src": "/apps/hanai/home-card.webp",
+    "width": 1280,
+    "height": 720,
+    "srcSet": "/optimized/9b7808e43e6b1a6a-128.webp 128w, /optimized/9b7808e43e6b1a6a-640.webp 640w, /apps/hanai/home-card.webp 1280w"
+  },
+  "/apps/hanai/icon.png": {
+    "src": "/optimized/e8bc94f1583d7005-1254.webp",
+    "width": 1254,
+    "height": 1254,
+    "srcSet": "/optimized/e8bc94f1583d7005-128.webp 128w, /optimized/e8bc94f1583d7005-640.webp 640w, /optimized/e8bc94f1583d7005-1254.webp 1254w"
+  },
+  "/apps/hanclip/hanclip-campaign.png": {
+    "src": "/optimized/700409294657d117-1672.webp",
+    "width": 1672,
+    "height": 941,
+    "srcSet": "/optimized/700409294657d117-128.webp 128w, /optimized/700409294657d117-640.webp 640w, /optimized/700409294657d117-1280.webp 1280w, /optimized/700409294657d117-1672.webp 1672w"
+  },
+  "/apps/hanclip/hanclip-hero-v2.png": {
+    "src": "/optimized/226a3e4fbd21f64d-1536.webp",
+    "width": 1536,
+    "height": 1024,
+    "srcSet": "/optimized/226a3e4fbd21f64d-128.webp 128w, /optimized/226a3e4fbd21f64d-640.webp 640w, /optimized/226a3e4fbd21f64d-1280.webp 1280w, /optimized/226a3e4fbd21f64d-1536.webp 1536w"
+  },
+  "/apps/hanclip/home-card.webp": {
+    "src": "/apps/hanclip/home-card.webp",
+    "width": 1280,
+    "height": 853,
+    "srcSet": "/optimized/e2dec1e99ff131f4-128.webp 128w, /optimized/e2dec1e99ff131f4-640.webp 640w, /apps/hanclip/home-card.webp 1280w"
+  },
+  "/apps/hanclip/icon.png": {
+    "src": "/optimized/0da635a7faa0071a-1024.webp",
+    "width": 1024,
+    "height": 1024,
+    "srcSet": "/optimized/0da635a7faa0071a-128.webp 128w, /optimized/0da635a7faa0071a-640.webp 640w, /optimized/0da635a7faa0071a-1024.webp 1024w"
+  },
+  "/apps/hanclip/screen-home.png": {
+    "src": "/optimized/af6b0fdc9cc83440-1206.webp",
+    "width": 1206,
+    "height": 2622,
+    "srcSet": "/optimized/af6b0fdc9cc83440-128.webp 128w, /optimized/af6b0fdc9cc83440-640.webp 640w, /optimized/af6b0fdc9cc83440-1206.webp 1206w"
+  },
+  "/apps/hanclip/screen-preview.png": {
+    "src": "/optimized/66826ae1d44c0885-1206.webp",
+    "width": 1206,
+    "height": 2622,
+    "srcSet": "/optimized/66826ae1d44c0885-128.webp 128w, /optimized/66826ae1d44c0885-640.webp 640w, /optimized/66826ae1d44c0885-1206.webp 1206w"
+  },
+  "/apps/hanclip/screen-ratios.png": {
+    "src": "/optimized/73686e6a201a7c36-1206.webp",
+    "width": 1206,
+    "height": 2622,
+    "srcSet": "/optimized/73686e6a201a7c36-128.webp 128w, /optimized/73686e6a201a7c36-640.webp 640w, /optimized/73686e6a201a7c36-1206.webp 1206w"
+  },
+  "/apps/hanclip/screens/android-duration.png": {
+    "src": "/optimized/15246ab7480154ea-1080.webp",
+    "width": 1080,
+    "height": 2424,
+    "srcSet": "/optimized/15246ab7480154ea-128.webp 128w, /optimized/15246ab7480154ea-640.webp 640w, /optimized/15246ab7480154ea-1080.webp 1080w"
+  },
+  "/apps/hanclip/screens/android-editor-pets.png": {
+    "src": "/optimized/e59eb76b357cd251-828.webp",
+    "width": 828,
+    "height": 1899,
+    "srcSet": "/optimized/e59eb76b357cd251-128.webp 128w, /optimized/e59eb76b357cd251-640.webp 640w, /optimized/e59eb76b357cd251-828.webp 828w"
+  },
+  "/apps/hanclip/screens/android-home-dark.png": {
+    "src": "/optimized/397f782b58697de1-1206.webp",
+    "width": 1206,
+    "height": 2622,
+    "srcSet": "/optimized/397f782b58697de1-128.webp 128w, /optimized/397f782b58697de1-640.webp 640w, /optimized/397f782b58697de1-1206.webp 1206w"
+  },
+  "/apps/hanclip/screens/android-quick-select.png": {
+    "src": "/optimized/4580424899ba4ed1-1080.webp",
+    "width": 1080,
+    "height": 2424,
+    "srcSet": "/optimized/4580424899ba4ed1-128.webp 128w, /optimized/4580424899ba4ed1-640.webp 640w, /optimized/4580424899ba4ed1-1080.webp 1080w"
+  },
+  "/apps/hanclip/screens/ios-add-media.png": {
+    "src": "/optimized/749a663f1845ef18-1206.webp",
+    "width": 1206,
+    "height": 2622,
+    "srcSet": "/optimized/749a663f1845ef18-128.webp 128w, /optimized/749a663f1845ef18-640.webp 640w, /optimized/749a663f1845ef18-1206.webp 1206w"
+  },
+  "/apps/hanclip/screens/ios-home.png": {
+    "src": "/optimized/8a4b284313de9315-1206.webp",
+    "width": 1206,
+    "height": 2622,
+    "srcSet": "/optimized/8a4b284313de9315-128.webp 128w, /optimized/8a4b284313de9315-640.webp 640w, /optimized/8a4b284313de9315-1206.webp 1206w"
+  },
+  "/apps/htoms-brief/home-card.webp": {
+    "src": "/apps/htoms-brief/home-card.webp",
+    "width": 1280,
+    "height": 853,
+    "srcSet": "/optimized/af201220c60a1494-128.webp 128w, /optimized/af201220c60a1494-640.webp 640w, /apps/htoms-brief/home-card.webp 1280w"
+  },
+  "/apps/htoms-brief/htoms-brief-hero-v2.png": {
+    "src": "/optimized/1c2a8f3bf504007e-1536.webp",
+    "width": 1536,
+    "height": 1024,
+    "srcSet": "/optimized/1c2a8f3bf504007e-128.webp 128w, /optimized/1c2a8f3bf504007e-640.webp 640w, /optimized/1c2a8f3bf504007e-1280.webp 1280w, /optimized/1c2a8f3bf504007e-1536.webp 1536w"
+  },
+  "/apps/htoms-brief/icon.png": {
+    "src": "/optimized/62c28165467bde29-1254.webp",
+    "width": 1254,
+    "height": 1254,
+    "srcSet": "/optimized/62c28165467bde29-128.webp 128w, /optimized/62c28165467bde29-640.webp 640w, /optimized/62c28165467bde29-1254.webp 1254w"
+  },
+  "/apps/htoms-brief/screens/login.png": {
+    "src": "/optimized/e1f66a65ef943df3-1206.webp",
+    "width": 1206,
+    "height": 2622,
+    "srcSet": "/optimized/e1f66a65ef943df3-128.webp 128w, /optimized/e1f66a65ef943df3-640.webp 640w, /optimized/e1f66a65ef943df3-1206.webp 1206w"
+  },
+  "/apps/intosharp/home-card.webp": {
+    "src": "/apps/intosharp/home-card.webp",
+    "width": 1280,
+    "height": 853,
+    "srcSet": "/optimized/b344834da70ea1a4-128.webp 128w, /optimized/b344834da70ea1a4-640.webp 640w, /apps/intosharp/home-card.webp 1280w"
+  },
+  "/apps/intosharp/icon.png": {
+    "src": "/optimized/d2427ad0050b0fd8-512.webp",
+    "width": 512,
+    "height": 512,
+    "srcSet": "/optimized/d2427ad0050b0fd8-128.webp 128w, /optimized/d2427ad0050b0fd8-512.webp 512w"
+  },
+  "/apps/intosharp/intosharp-campaign.png": {
+    "src": "/optimized/ab5c36ad98608407-1672.webp",
+    "width": 1672,
+    "height": 941,
+    "srcSet": "/optimized/ab5c36ad98608407-128.webp 128w, /optimized/ab5c36ad98608407-640.webp 640w, /optimized/ab5c36ad98608407-1280.webp 1280w, /optimized/ab5c36ad98608407-1672.webp 1672w"
+  },
+  "/apps/intosharp/intosharp-hero-v2.png": {
+    "src": "/optimized/0890cf83d462eef9-1536.webp",
+    "width": 1536,
+    "height": 1024,
+    "srcSet": "/optimized/0890cf83d462eef9-128.webp 128w, /optimized/0890cf83d462eef9-640.webp 640w, /optimized/0890cf83d462eef9-1280.webp 1280w, /optimized/0890cf83d462eef9-1536.webp 1536w"
+  },
+  "/apps/minecraft-server/home-card.webp": {
+    "src": "/apps/minecraft-server/home-card.webp",
+    "width": 1280,
+    "height": 853,
+    "srcSet": "/optimized/42e6aaf2bdf6df9a-128.webp 128w, /optimized/42e6aaf2bdf6df9a-640.webp 640w, /apps/minecraft-server/home-card.webp 1280w"
+  },
+  "/apps/minecraft-server/icon.png": {
+    "src": "/optimized/c4f793c5277f2ca9-1254.webp",
+    "width": 1254,
+    "height": 1254,
+    "srcSet": "/optimized/c4f793c5277f2ca9-128.webp 128w, /optimized/c4f793c5277f2ca9-640.webp 640w, /optimized/c4f793c5277f2ca9-1254.webp 1254w"
+  },
+  "/apps/minecraft-server/minecraft-server-hero-v2.png": {
+    "src": "/optimized/01bb7cfbd2a546ba-1536.webp",
+    "width": 1536,
+    "height": 1024,
+    "srcSet": "/optimized/01bb7cfbd2a546ba-128.webp 128w, /optimized/01bb7cfbd2a546ba-640.webp 640w, /optimized/01bb7cfbd2a546ba-1280.webp 1280w, /optimized/01bb7cfbd2a546ba-1536.webp 1536w"
+  },
+  "/apps/nasfinder/home-card.webp": {
+    "src": "/apps/nasfinder/home-card.webp",
+    "width": 1280,
+    "height": 801,
+    "srcSet": "/optimized/23ef212f0e1191bb-128.webp 128w, /optimized/23ef212f0e1191bb-640.webp 640w, /apps/nasfinder/home-card.webp 1280w"
+  },
+  "/apps/nasfinder/icon.png": {
+    "src": "/optimized/981004e9c5488dce-1024.webp",
+    "width": 1024,
+    "height": 1024,
+    "srcSet": "/optimized/981004e9c5488dce-128.webp 128w, /optimized/981004e9c5488dce-640.webp 640w, /optimized/981004e9c5488dce-1024.webp 1024w"
+  },
+  "/apps/nasfinder/live-motion-campaign.png": {
+    "src": "/optimized/97a1113d012c3f91-1672.webp",
+    "width": 1672,
+    "height": 941,
+    "srcSet": "/optimized/97a1113d012c3f91-128.webp 128w, /optimized/97a1113d012c3f91-640.webp 640w, /optimized/97a1113d012c3f91-1280.webp 1280w, /optimized/97a1113d012c3f91-1672.webp 1672w"
+  },
+  "/apps/nasfinder/motion-bridge-20260918.webp": {
+    "src": "/optimized/847124a3212c8371-1536.webp",
+    "width": 1536,
+    "height": 1024,
+    "srcSet": "/optimized/847124a3212c8371-128.webp 128w, /optimized/847124a3212c8371-640.webp 640w, /optimized/847124a3212c8371-1280.webp 1280w, /optimized/847124a3212c8371-1536.webp 1536w"
+  },
+  "/apps/nasfinder/nasfinder-hero-v2.png": {
+    "src": "/optimized/4dc0683c35ff4020-1586.webp",
+    "width": 1586,
+    "height": 992,
+    "srcSet": "/optimized/4dc0683c35ff4020-128.webp 128w, /optimized/4dc0683c35ff4020-640.webp 640w, /optimized/4dc0683c35ff4020-1280.webp 1280w, /optimized/4dc0683c35ff4020-1586.webp 1586w"
+  },
+  "/apps/nasfinder/phone-hard.png": {
+    "src": "/optimized/b80db1ca4763dce5-512.webp",
+    "width": 512,
+    "height": 512,
+    "srcSet": "/optimized/b80db1ca4763dce5-128.webp 128w, /optimized/b80db1ca4763dce5-512.webp 512w"
+  },
+  "/apps/nasfinder/screens/android-add-connection.png": {
+    "src": "/optimized/1510b54f698c23b4-1080.webp",
+    "width": 1080,
+    "height": 2424,
+    "srcSet": "/optimized/1510b54f698c23b4-128.webp 128w, /optimized/1510b54f698c23b4-640.webp 640w, /optimized/1510b54f698c23b4-1080.webp 1080w"
+  },
+  "/apps/nasfinder/screens/android-home.png": {
+    "src": "/optimized/06dd259a04752741-822.webp",
+    "width": 822,
+    "height": 1918,
+    "srcSet": "/optimized/06dd259a04752741-128.webp 128w, /optimized/06dd259a04752741-640.webp 640w, /optimized/06dd259a04752741-822.webp 822w"
+  },
+  "/apps/nasfinder/screens/android-received.png": {
+    "src": "/optimized/1783fe623d68e947-822.webp",
+    "width": 822,
+    "height": 1918,
+    "srcSet": "/optimized/1783fe623d68e947-128.webp 128w, /optimized/1783fe623d68e947-640.webp 640w, /optimized/1783fe623d68e947-822.webp 822w"
+  },
+  "/apps/nasfinder/screens/android-super-thumbnail.png": {
+    "src": "/optimized/2eec0a1f9bd9f0fc-1080.webp",
+    "width": 1080,
+    "height": 2424,
+    "srcSet": "/optimized/2eec0a1f9bd9f0fc-128.webp 128w, /optimized/2eec0a1f9bd9f0fc-640.webp 640w, /optimized/2eec0a1f9bd9f0fc-1080.webp 1080w"
+  },
+  "/apps/nasfinder/screens/android-theme.png": {
+    "src": "/optimized/f34f0c25b931b7c6-1080.webp",
+    "width": 1080,
+    "height": 2424,
+    "srcSet": "/optimized/f34f0c25b931b7c6-128.webp 128w, /optimized/f34f0c25b931b7c6-640.webp 640w, /optimized/f34f0c25b931b7c6-1080.webp 1080w"
+  },
+  "/apps/nasfinder/screens/android-thumbnail-cache.png": {
+    "src": "/optimized/c56e40ada6a2d339-1080.webp",
+    "width": 1080,
+    "height": 2424,
+    "srcSet": "/optimized/c56e40ada6a2d339-128.webp 128w, /optimized/c56e40ada6a2d339-640.webp 640w, /optimized/c56e40ada6a2d339-1080.webp 1080w"
+  },
+  "/apps/nasfinder/screens/iphone-favorites-folder-thumbnails.png": {
+    "src": "/optimized/52d709bef2b94e01-418.webp",
+    "width": 418,
+    "height": 920,
+    "srcSet": "/optimized/52d709bef2b94e01-128.webp 128w, /optimized/52d709bef2b94e01-418.webp 418w"
+  },
+  "/apps/nasfinder/story-document-20260918.webp": {
+    "src": "/optimized/dc30347d430276c6-1536.webp",
+    "width": 1536,
+    "height": 1024,
+    "srcSet": "/optimized/dc30347d430276c6-128.webp 128w, /optimized/dc30347d430276c6-640.webp 640w, /optimized/dc30347d430276c6-1280.webp 1280w, /optimized/dc30347d430276c6-1536.webp 1536w"
+  },
+  "/apps/nasfinder/story-family-20260918.webp": {
+    "src": "/optimized/390ff1581c55e7c9-1536.webp",
+    "width": 1536,
+    "height": 1024,
+    "srcSet": "/optimized/390ff1581c55e7c9-128.webp 128w, /optimized/390ff1581c55e7c9-640.webp 640w, /optimized/390ff1581c55e7c9-1280.webp 1280w, /optimized/390ff1581c55e7c9-1536.webp 1536w"
+  },
+  "/apps/nasfinder/story-sofa-20260918.webp": {
+    "src": "/optimized/8545495635d0a55f-1536.webp",
+    "width": 1536,
+    "height": 1024,
+    "srcSet": "/optimized/8545495635d0a55f-128.webp 128w, /optimized/8545495635d0a55f-640.webp 640w, /optimized/8545495635d0a55f-1280.webp 1280w, /optimized/8545495635d0a55f-1536.webp 1536w"
+  },
+  "/apps/nasfinder/story-transfer-20260918.webp": {
+    "src": "/optimized/fc894e15e04c5d2f-1536.webp",
+    "width": 1536,
+    "height": 1024,
+    "srcSet": "/optimized/fc894e15e04c5d2f-128.webp 128w, /optimized/fc894e15e04c5d2f-640.webp 640w, /optimized/fc894e15e04c5d2f-1280.webp 1280w, /optimized/fc894e15e04c5d2f-1536.webp 1536w"
+  },
+  "/apps/ppabang/hero-20260918.webp": {
+    "src": "/optimized/ab3f085f908750d8-1536.webp",
+    "width": 1536,
+    "height": 1024,
+    "srcSet": "/optimized/ab3f085f908750d8-128.webp 128w, /optimized/ab3f085f908750d8-640.webp 640w, /optimized/ab3f085f908750d8-1280.webp 1280w, /optimized/ab3f085f908750d8-1536.webp 1536w"
+  },
+  "/apps/ppabang/home-card.webp": {
+    "src": "/optimized/5fd1099a958153fd-1280.webp",
+    "width": 1280,
+    "height": 853,
+    "srcSet": "/optimized/5fd1099a958153fd-128.webp 128w, /optimized/5fd1099a958153fd-640.webp 640w, /optimized/5fd1099a958153fd-1280.webp 1280w"
+  },
+  "/apps/ppabang/icon.png": {
+    "src": "/optimized/567cc36b3996f5c7-512.webp",
+    "width": 512,
+    "height": 512,
+    "srcSet": "/optimized/567cc36b3996f5c7-128.webp 128w, /optimized/567cc36b3996f5c7-512.webp 512w"
+  },
+  "/apps/ppabang/ppabang-hero.png": {
+    "src": "/optimized/251f57edfb3c1cd7-1200.webp",
+    "width": 1200,
+    "height": 630,
+    "srcSet": "/optimized/251f57edfb3c1cd7-128.webp 128w, /optimized/251f57edfb3c1cd7-640.webp 640w, /optimized/251f57edfb3c1cd7-1200.webp 1200w"
+  },
+  "/apps/stand/home-card.webp": {
+    "src": "/apps/stand/home-card.webp",
+    "width": 1280,
+    "height": 853,
+    "srcSet": "/optimized/965e2e2ac6986ec4-128.webp 128w, /optimized/965e2e2ac6986ec4-640.webp 640w, /apps/stand/home-card.webp 1280w"
+  },
+  "/apps/stand/icon.png": {
+    "src": "/optimized/43a411d0f05be45a-1024.webp",
+    "width": 1024,
+    "height": 1024,
+    "srcSet": "/optimized/43a411d0f05be45a-128.webp 128w, /optimized/43a411d0f05be45a-640.webp 640w, /optimized/43a411d0f05be45a-1024.webp 1024w"
+  },
+  "/apps/stand/screens/android-boyiso.png": {
+    "src": "/optimized/e80e0fc1da73c96a-822.webp",
+    "width": 822,
+    "height": 1918,
+    "srcSet": "/optimized/e80e0fc1da73c96a-128.webp 128w, /optimized/e80e0fc1da73c96a-640.webp 640w, /optimized/e80e0fc1da73c96a-822.webp 822w"
+  },
+  "/apps/stand/screens/android-editor.png": {
+    "src": "/optimized/720a274a84e3414d-822.webp",
+    "width": 822,
+    "height": 1918,
+    "srcSet": "/optimized/720a274a84e3414d-128.webp 128w, /optimized/720a274a84e3414d-640.webp 640w, /optimized/720a274a84e3414d-822.webp 822w"
+  },
+  "/apps/stand/screens/android-home-two-line-cards.png": {
+    "src": "/optimized/372251dfdb5daae0-1080.webp",
+    "width": 1080,
+    "height": 2424,
+    "srcSet": "/optimized/372251dfdb5daae0-128.webp 128w, /optimized/372251dfdb5daae0-640.webp 640w, /optimized/372251dfdb5daae0-1080.webp 1080w"
+  },
+  "/apps/stand/screens/android-recordings.png": {
+    "src": "/optimized/08c53fec34c98e98-822.webp",
+    "width": 822,
+    "height": 1918,
+    "srcSet": "/optimized/08c53fec34c98e98-128.webp 128w, /optimized/08c53fec34c98e98-640.webp 640w, /optimized/08c53fec34c98e98-822.webp 822w"
+  },
+  "/apps/stand/screens/android-settings-music.png": {
+    "src": "/optimized/c39a01be47907209-1920.webp",
+    "width": 2424,
+    "height": 1080,
+    "srcSet": "/optimized/c39a01be47907209-128.webp 128w, /optimized/c39a01be47907209-640.webp 640w, /optimized/c39a01be47907209-1280.webp 1280w, /optimized/c39a01be47907209-1920.webp 1920w"
+  },
+  "/apps/stand/screens/android-settings-overview.png": {
+    "src": "/optimized/801b3f0baaeefd86-1920.webp",
+    "width": 2424,
+    "height": 1080,
+    "srcSet": "/optimized/801b3f0baaeefd86-128.webp 128w, /optimized/801b3f0baaeefd86-640.webp 640w, /optimized/801b3f0baaeefd86-1280.webp 1280w, /optimized/801b3f0baaeefd86-1920.webp 1920w"
+  },
+  "/apps/stand/screens/google-tv-home.png": {
+    "src": "/optimized/5d546b285b3699f2-1920.webp",
+    "width": 1920,
+    "height": 1080,
+    "srcSet": "/optimized/5d546b285b3699f2-128.webp 128w, /optimized/5d546b285b3699f2-640.webp 640w, /optimized/5d546b285b3699f2-1280.webp 1280w, /optimized/5d546b285b3699f2-1920.webp 1920w"
+  },
+  "/apps/stand/screens/ios-boyiso-walkie.png": {
+    "src": "/optimized/314c72c295cf12eb-1206.webp",
+    "width": 1206,
+    "height": 2622,
+    "srcSet": "/optimized/314c72c295cf12eb-128.webp 128w, /optimized/314c72c295cf12eb-640.webp 640w, /optimized/314c72c295cf12eb-1206.webp 1206w"
+  },
+  "/apps/stand/screens/ios-clock-fonts.png": {
+    "src": "/optimized/0be4c1fb29676978-1206.webp",
+    "width": 1206,
+    "height": 2622,
+    "srcSet": "/optimized/0be4c1fb29676978-128.webp 128w, /optimized/0be4c1fb29676978-640.webp 640w, /optimized/0be4c1fb29676978-1206.webp 1206w"
+  },
+  "/apps/stand/screens/ios-home-landscape-flat.png": {
+    "src": "/optimized/4a79ae097b0247ca-1206.webp",
+    "width": 1206,
+    "height": 2622,
+    "srcSet": "/optimized/4a79ae097b0247ca-128.webp 128w, /optimized/4a79ae097b0247ca-640.webp 640w, /optimized/4a79ae097b0247ca-1206.webp 1206w"
+  },
+  "/apps/stand/screens/ios-home-portrait.png": {
+    "src": "/optimized/ffe02ccd3b4df99c-1206.webp",
+    "width": 1206,
+    "height": 2622,
+    "srcSet": "/optimized/ffe02ccd3b4df99c-128.webp 128w, /optimized/ffe02ccd3b4df99c-640.webp 640w, /optimized/ffe02ccd3b4df99c-1206.webp 1206w"
+  },
+  "/apps/stand/screens/ios-sleep-report.png": {
+    "src": "/optimized/e1f0363146595185-1206.webp",
+    "width": 1206,
+    "height": 2622,
+    "srcSet": "/optimized/e1f0363146595185-128.webp 128w, /optimized/e1f0363146595185-640.webp 640w, /optimized/e1f0363146595185-1206.webp 1206w"
+  },
+  "/apps/stand/stand-campaign.png": {
+    "src": "/optimized/622c98a3902fef55-1672.webp",
+    "width": 1672,
+    "height": 941,
+    "srcSet": "/optimized/622c98a3902fef55-128.webp 128w, /optimized/622c98a3902fef55-640.webp 640w, /optimized/622c98a3902fef55-1280.webp 1280w, /optimized/622c98a3902fef55-1672.webp 1672w"
+  },
+  "/apps/stand/stand-hero-v2.png": {
+    "src": "/optimized/956c8c813d6a5a10-1536.webp",
+    "width": 1536,
+    "height": 1024,
+    "srcSet": "/optimized/956c8c813d6a5a10-128.webp 128w, /optimized/956c8c813d6a5a10-640.webp 640w, /optimized/956c8c813d6a5a10-1280.webp 1280w, /optimized/956c8c813d6a5a10-1536.webp 1536w"
+  },
+  "/apps/stand/widget.png": {
+    "src": "/optimized/769c27857d90eaa0-720.webp",
+    "width": 720,
+    "height": 720,
+    "srcSet": "/optimized/769c27857d90eaa0-128.webp 128w, /optimized/769c27857d90eaa0-640.webp 640w, /optimized/769c27857d90eaa0-720.webp 720w"
+  },
+  "/apps/starmanager/home-card.webp": {
+    "src": "/apps/starmanager/home-card.webp",
+    "width": 1280,
+    "height": 853,
+    "srcSet": "/optimized/bcee1508c057c00d-128.webp 128w, /optimized/bcee1508c057c00d-640.webp 640w, /apps/starmanager/home-card.webp 1280w"
+  },
+  "/apps/starmanager/icon.png": {
+    "src": "/optimized/2dde5db52c9c8062-1024.webp",
+    "width": 1024,
+    "height": 1024,
+    "srcSet": "/optimized/2dde5db52c9c8062-128.webp 128w, /optimized/2dde5db52c9c8062-640.webp 640w, /optimized/2dde5db52c9c8062-1024.webp 1024w"
+  },
+  "/apps/starmanager/screens/android-ai-login.png": {
+    "src": "/optimized/9231a55547d66a9e-822.webp",
+    "width": 822,
+    "height": 1918,
+    "srcSet": "/optimized/9231a55547d66a9e-128.webp 128w, /optimized/9231a55547d66a9e-640.webp 640w, /optimized/9231a55547d66a9e-822.webp 822w"
+  },
+  "/apps/starmanager/screens/android-composer.png": {
+    "src": "/optimized/ac2f6d0d7adb3b52-822.webp",
+    "width": 822,
+    "height": 1918,
+    "srcSet": "/optimized/ac2f6d0d7adb3b52-128.webp 128w, /optimized/ac2f6d0d7adb3b52-640.webp 640w, /optimized/ac2f6d0d7adb3b52-822.webp 822w"
+  },
+  "/apps/starmanager/screens/android-result.png": {
+    "src": "/optimized/7eeca409914d0164-822.webp",
+    "width": 822,
+    "height": 1918,
+    "srcSet": "/optimized/7eeca409914d0164-128.webp 128w, /optimized/7eeca409914d0164-640.webp 640w, /optimized/7eeca409914d0164-822.webp 822w"
+  },
+  "/apps/starmanager/screens/android-settings.png": {
+    "src": "/optimized/bd6134977a74ef9d-822.webp",
+    "width": 822,
+    "height": 1918,
+    "srcSet": "/optimized/bd6134977a74ef9d-128.webp 128w, /optimized/bd6134977a74ef9d-640.webp 640w, /optimized/bd6134977a74ef9d-822.webp 822w"
+  },
+  "/apps/starmanager/screens/android-style-settings.png": {
+    "src": "/optimized/2bb34145181eb8a6-822.webp",
+    "width": 822,
+    "height": 1918,
+    "srcSet": "/optimized/2bb34145181eb8a6-128.webp 128w, /optimized/2bb34145181eb8a6-640.webp 640w, /optimized/2bb34145181eb8a6-822.webp 822w"
+  },
+  "/apps/starmanager/screens/ios-composer.png": {
+    "src": "/apps/starmanager/screens/ios-composer.png",
+    "width": 418,
+    "height": 920,
+    "srcSet": "/optimized/e9771f2cb7f863de-128.webp 128w, /apps/starmanager/screens/ios-composer.png 418w"
+  },
+  "/apps/starmanager/screens/ios-style-settings.png": {
+    "src": "/apps/starmanager/screens/ios-style-settings.png",
+    "width": 418,
+    "height": 920,
+    "srcSet": "/optimized/cd713b8061bfd978-128.webp 128w, /apps/starmanager/screens/ios-style-settings.png 418w"
+  },
+  "/apps/starmanager/starmanager-hero-v2.png": {
+    "src": "/optimized/662eb9be90f5d431-1536.webp",
+    "width": 1536,
+    "height": 1024,
+    "srcSet": "/optimized/662eb9be90f5d431-128.webp 128w, /optimized/662eb9be90f5d431-640.webp 640w, /optimized/662eb9be90f5d431-1280.webp 1280w, /optimized/662eb9be90f5d431-1536.webp 1536w"
+  },
+  "/apps/super-thumbnail/home-card.webp": {
+    "src": "/apps/super-thumbnail/home-card.webp",
+    "width": 1280,
+    "height": 853,
+    "srcSet": "/optimized/eaaca8abb3391f2f-128.webp 128w, /optimized/eaaca8abb3391f2f-640.webp 640w, /apps/super-thumbnail/home-card.webp 1280w"
+  },
+  "/apps/super-thumbnail/icon.png": {
+    "src": "/optimized/0d62d4112bccc85c-1024.webp",
+    "width": 1024,
+    "height": 1024,
+    "srcSet": "/optimized/0d62d4112bccc85c-128.webp 128w, /optimized/0d62d4112bccc85c-640.webp 640w, /optimized/0d62d4112bccc85c-1024.webp 1024w"
+  },
+  "/apps/super-thumbnail/super-thumbnail-campaign.png": {
+    "src": "/optimized/c5e624a618a07318-1672.webp",
+    "width": 1672,
+    "height": 941,
+    "srcSet": "/optimized/c5e624a618a07318-128.webp 128w, /optimized/c5e624a618a07318-640.webp 640w, /optimized/c5e624a618a07318-1280.webp 1280w, /optimized/c5e624a618a07318-1672.webp 1672w"
+  },
+  "/apps/super-thumbnail/super-thumbnail-hero-v2.png": {
+    "src": "/optimized/fea4bef3eb44a775-1536.webp",
+    "width": 1536,
+    "height": 1024,
+    "srcSet": "/optimized/fea4bef3eb44a775-128.webp 128w, /optimized/fea4bef3eb44a775-640.webp 640w, /optimized/fea4bef3eb44a775-1280.webp 1280w, /optimized/fea4bef3eb44a775-1536.webp 1536w"
+  },
+  "/apps/trackpadguard/home-card.webp": {
+    "src": "/apps/trackpadguard/home-card.webp",
+    "width": 1280,
+    "height": 853,
+    "srcSet": "/optimized/95755887c635c9bb-128.webp 128w, /optimized/95755887c635c9bb-640.webp 640w, /apps/trackpadguard/home-card.webp 1280w"
+  },
+  "/apps/trackpadguard/icon.png": {
+    "src": "/optimized/651a9d2864e4dd55-1024.webp",
+    "width": 1024,
+    "height": 1024,
+    "srcSet": "/optimized/651a9d2864e4dd55-128.webp 128w, /optimized/651a9d2864e4dd55-640.webp 640w, /optimized/651a9d2864e4dd55-1024.webp 1024w"
+  },
+  "/apps/trackpadguard/screens/usage-square.png": {
+    "src": "/optimized/35f67b2a5ebe6ab4-1254.webp",
+    "width": 1254,
+    "height": 1254,
+    "srcSet": "/optimized/35f67b2a5ebe6ab4-128.webp 128w, /optimized/35f67b2a5ebe6ab4-640.webp 640w, /optimized/35f67b2a5ebe6ab4-1254.webp 1254w"
+  },
+  "/apps/trackpadguard/trackpadguard-campaign.png": {
+    "src": "/optimized/4a8b0676a3b8e68f-1672.webp",
+    "width": 1672,
+    "height": 941,
+    "srcSet": "/optimized/4a8b0676a3b8e68f-128.webp 128w, /optimized/4a8b0676a3b8e68f-640.webp 640w, /optimized/4a8b0676a3b8e68f-1280.webp 1280w, /optimized/4a8b0676a3b8e68f-1672.webp 1672w"
+  },
+  "/apps/trackpadguard/trackpadguard-hero-v2.png": {
+    "src": "/optimized/e27a637d11d2acdd-1536.webp",
+    "width": 1536,
+    "height": 1024,
+    "srcSet": "/optimized/e27a637d11d2acdd-128.webp 128w, /optimized/e27a637d11d2acdd-640.webp 640w, /optimized/e27a637d11d2acdd-1280.webp 1280w, /optimized/e27a637d11d2acdd-1536.webp 1536w"
+  },
+  "/apps/whattoeat/home-card.webp": {
+    "src": "/apps/whattoeat/home-card.webp",
+    "width": 1280,
+    "height": 853,
+    "srcSet": "/optimized/dd7479b03dec0e4d-128.webp 128w, /optimized/dd7479b03dec0e4d-640.webp 640w, /apps/whattoeat/home-card.webp 1280w"
+  },
+  "/apps/whattoeat/icon.png": {
+    "src": "/optimized/86c04e4b49bef1a0-1024.webp",
+    "width": 1024,
+    "height": 1024,
+    "srcSet": "/optimized/86c04e4b49bef1a0-128.webp 128w, /optimized/86c04e4b49bef1a0-640.webp 640w, /optimized/86c04e4b49bef1a0-1024.webp 1024w"
+  },
+  "/apps/whattoeat/screens/android-bag-navigation.png": {
+    "src": "/optimized/4e5127293e6327c3-822.webp",
+    "width": 822,
+    "height": 1918,
+    "srcSet": "/optimized/4e5127293e6327c3-128.webp 128w, /optimized/4e5127293e6327c3-640.webp 640w, /optimized/4e5127293e6327c3-822.webp 822w"
+  },
+  "/apps/whattoeat/screens/android-live-remote-results.png": {
+    "src": "/optimized/1376aabd77c08aa8-822.webp",
+    "width": 822,
+    "height": 1918,
+    "srcSet": "/optimized/1376aabd77c08aa8-128.webp 128w, /optimized/1376aabd77c08aa8-640.webp 640w, /optimized/1376aabd77c08aa8-822.webp 822w"
+  },
+  "/apps/whattoeat/screens/android-photo-information.png": {
+    "src": "/optimized/57f70fe13d1ef26e-822.webp",
+    "width": 822,
+    "height": 1918,
+    "srcSet": "/optimized/57f70fe13d1ef26e-128.webp 128w, /optimized/57f70fe13d1ef26e-640.webp 640w, /optimized/57f70fe13d1ef26e-822.webp 822w"
+  },
+  "/apps/whattoeat/screens/decision.png": {
+    "src": "/optimized/636852e2f71ae07f-1206.webp",
+    "width": 1206,
+    "height": 2622,
+    "srcSet": "/optimized/636852e2f71ae07f-128.webp 128w, /optimized/636852e2f71ae07f-640.webp 640w, /optimized/636852e2f71ae07f-1206.webp 1206w"
+  },
+  "/apps/whattoeat/screens/home.png": {
+    "src": "/optimized/d37fc6fe303e906f-1206.webp",
+    "width": 1206,
+    "height": 2622,
+    "srcSet": "/optimized/d37fc6fe303e906f-128.webp 128w, /optimized/d37fc6fe303e906f-640.webp 640w, /optimized/d37fc6fe303e906f-1206.webp 1206w"
+  },
+  "/apps/whattoeat/screens/recommendation.png": {
+    "src": "/optimized/a96ea6acd78a6112-1206.webp",
+    "width": 1206,
+    "height": 2622,
+    "srcSet": "/optimized/a96ea6acd78a6112-128.webp 128w, /optimized/a96ea6acd78a6112-640.webp 640w, /optimized/a96ea6acd78a6112-1206.webp 1206w"
+  },
+  "/apps/whattoeat/screens/region.png": {
+    "src": "/optimized/320012eede0cfcc9-1206.webp",
+    "width": 1206,
+    "height": 2622,
+    "srcSet": "/optimized/320012eede0cfcc9-128.webp 128w, /optimized/320012eede0cfcc9-640.webp 640w, /optimized/320012eede0cfcc9-1206.webp 1206w"
+  },
+  "/apps/whattoeat/screens/settings.png": {
+    "src": "/optimized/c83fdfa72ecbbbfb-1206.webp",
+    "width": 1206,
+    "height": 2622,
+    "srcSet": "/optimized/c83fdfa72ecbbbfb-128.webp 128w, /optimized/c83fdfa72ecbbbfb-640.webp 640w, /optimized/c83fdfa72ecbbbfb-1206.webp 1206w"
+  },
+  "/apps/whattoeat/whattoeat-hero-v2.png": {
+    "src": "/optimized/d509858e05627a76-1536.webp",
+    "width": 1536,
+    "height": 1024,
+    "srcSet": "/optimized/d509858e05627a76-128.webp 128w, /optimized/d509858e05627a76-640.webp 640w, /optimized/d509858e05627a76-1280.webp 1280w, /optimized/d509858e05627a76-1536.webp 1536w"
+  },
+  "/brands/testflight.jpg": {
+    "src": "/optimized/8d1e268aee4ac17d-512.webp",
+    "width": 512,
+    "height": 512,
+    "srcSet": "/optimized/8d1e268aee4ac17d-128.webp 128w, /optimized/8d1e268aee4ac17d-512.webp 512w"
+  },
+  "/hanstree/bedroom-art.jpg": {
+    "src": "/optimized/fb2cee0841091e4f-1448.webp",
+    "width": 1448,
+    "height": 1086,
+    "srcSet": "/optimized/fb2cee0841091e4f-128.webp 128w, /optimized/fb2cee0841091e4f-640.webp 640w, /optimized/fb2cee0841091e4f-1280.webp 1280w, /optimized/fb2cee0841091e4f-1448.webp 1448w"
+  },
+  "/hanstree/billiards-art.jpg": {
+    "src": "/optimized/6d5a68021d116345-1448.webp",
+    "width": 1448,
+    "height": 1086,
+    "srcSet": "/optimized/6d5a68021d116345-128.webp 128w, /optimized/6d5a68021d116345-640.webp 640w, /optimized/6d5a68021d116345-1280.webp 1280w, /optimized/6d5a68021d116345-1448.webp 1448w"
+  },
+  "/hanstree/camp-kitchen-art.jpg": {
+    "src": "/optimized/ee090f445f0e29b9-1448.webp",
+    "width": 1448,
+    "height": 1086,
+    "srcSet": "/optimized/ee090f445f0e29b9-128.webp 128w, /optimized/ee090f445f0e29b9-640.webp 640w, /optimized/ee090f445f0e29b9-1280.webp 1280w, /optimized/ee090f445f0e29b9-1448.webp 1448w"
+  },
+  "/hanstree/cinema-art.jpg": {
+    "src": "/optimized/5eb3a71c03457fe8-1448.webp",
+    "width": 1448,
+    "height": 1086,
+    "srcSet": "/optimized/5eb3a71c03457fe8-128.webp 128w, /optimized/5eb3a71c03457fe8-640.webp 640w, /optimized/5eb3a71c03457fe8-1280.webp 1280w, /optimized/5eb3a71c03457fe8-1448.webp 1448w"
+  },
+  "/hanstree/comfort-art.jpg": {
+    "src": "/optimized/72c58e8964bfad8e-1448.webp",
+    "width": 1448,
+    "height": 1086,
+    "srcSet": "/optimized/72c58e8964bfad8e-128.webp 128w, /optimized/72c58e8964bfad8e-640.webp 640w, /optimized/72c58e8964bfad8e-1280.webp 1280w, /optimized/72c58e8964bfad8e-1448.webp 1448w"
+  },
+  "/hanstree/games-art.jpg": {
+    "src": "/optimized/e3d11a4c93ca615a-1448.webp",
+    "width": 1448,
+    "height": 1086,
+    "srcSet": "/optimized/e3d11a4c93ca615a-128.webp 128w, /optimized/e3d11a4c93ca615a-640.webp 640w, /optimized/e3d11a4c93ca615a-1280.webp 1280w, /optimized/e3d11a4c93ca615a-1448.webp 1448w"
+  },
+  "/hanstree/golf-gear-art.jpg": {
+    "src": "/optimized/3a1f4ca54df063b9-1086.webp",
+    "width": 1086,
+    "height": 1448,
+    "srcSet": "/optimized/3a1f4ca54df063b9-128.webp 128w, /optimized/3a1f4ca54df063b9-640.webp 640w, /optimized/3a1f4ca54df063b9-1086.webp 1086w"
+  },
+  "/hanstree/golf-gear.jpg": {
+    "src": "/hanstree/golf-gear.jpg",
+    "width": 768,
+    "height": 1024,
+    "srcSet": "/optimized/aa1055c3e9707fb0-128.webp 128w, /optimized/aa1055c3e9707fb0-640.webp 640w, /hanstree/golf-gear.jpg 768w"
+  },
+  "/hanstree/identity-art.jpg": {
+    "src": "/optimized/c01cb87ec66b334a-1448.webp",
+    "width": 1448,
+    "height": 1086,
+    "srcSet": "/optimized/c01cb87ec66b334a-128.webp 128w, /optimized/c01cb87ec66b334a-640.webp 640w, /optimized/c01cb87ec66b334a-1280.webp 1280w, /optimized/c01cb87ec66b334a-1448.webp 1448w"
+  },
+  "/hanstree/karaoke-art.jpg": {
+    "src": "/optimized/0f8f5170bbf26b12-1448.webp",
+    "width": 1448,
+    "height": 1086,
+    "srcSet": "/optimized/0f8f5170bbf26b12-128.webp 128w, /optimized/0f8f5170bbf26b12-640.webp 640w, /optimized/0f8f5170bbf26b12-1280.webp 1280w, /optimized/0f8f5170bbf26b12-1448.webp 1448w"
+  },
+  "/hanstree/lounge-art.jpg": {
+    "src": "/optimized/9763ceee70b9c7b1-1448.webp",
+    "width": 1448,
+    "height": 1086,
+    "srcSet": "/optimized/9763ceee70b9c7b1-128.webp 128w, /optimized/9763ceee70b9c7b1-640.webp 640w, /optimized/9763ceee70b9c7b1-1280.webp 1280w, /optimized/9763ceee70b9c7b1-1448.webp 1448w"
+  },
+  "/hanstree/lounge.jpg": {
+    "src": "/optimized/36a6806d771c29d1-901.webp",
+    "width": 901,
+    "height": 676,
+    "srcSet": "/optimized/36a6806d771c29d1-128.webp 128w, /optimized/36a6806d771c29d1-640.webp 640w, /optimized/36a6806d771c29d1-901.webp 901w"
+  },
+  "/hanstree/meeting-art.jpg": {
+    "src": "/optimized/a71d67c4d2d0ddcf-1448.webp",
+    "width": 1448,
+    "height": 1086,
+    "srcSet": "/optimized/a71d67c4d2d0ddcf-128.webp 128w, /optimized/a71d67c4d2d0ddcf-640.webp 640w, /optimized/a71d67c4d2d0ddcf-1280.webp 1280w, /optimized/a71d67c4d2d0ddcf-1448.webp 1448w"
+  },
+  "/hanstree/piano-art.jpg": {
+    "src": "/optimized/44568e335fec8c71-1448.webp",
+    "width": 1448,
+    "height": 1086,
+    "srcSet": "/optimized/44568e335fec8c71-128.webp 128w, /optimized/44568e335fec8c71-640.webp 640w, /optimized/44568e335fec8c71-1280.webp 1280w, /optimized/44568e335fec8c71-1448.webp 1448w"
+  },
+  "/hanstree/screen-art.jpg": {
+    "src": "/optimized/84d9ec41f836f6bd-1448.webp",
+    "width": 1448,
+    "height": 1086,
+    "srcSet": "/optimized/84d9ec41f836f6bd-128.webp 128w, /optimized/84d9ec41f836f6bd-640.webp 640w, /optimized/84d9ec41f836f6bd-1280.webp 1280w, /optimized/84d9ec41f836f6bd-1448.webp 1448w"
+  },
+  "/hanstree/screen.jpg": {
+    "src": "/hanstree/screen.jpg",
+    "width": 1024,
+    "height": 768,
+    "srcSet": "/optimized/3d5d4aaf40c424fc-128.webp 128w, /optimized/3d5d4aaf40c424fc-640.webp 640w, /hanstree/screen.jpg 1024w"
+  },
+  "/hanstree/shower-art.jpg": {
+    "src": "/optimized/7e8cb4f5c0a09ef9-1448.webp",
+    "width": 1448,
+    "height": 1086,
+    "srcSet": "/optimized/7e8cb4f5c0a09ef9-128.webp 128w, /optimized/7e8cb4f5c0a09ef9-640.webp 640w, /optimized/7e8cb4f5c0a09ef9-1280.webp 1280w, /optimized/7e8cb4f5c0a09ef9-1448.webp 1448w"
+  },
+  "/hanstree/sign.jpg": {
+    "src": "/hanstree/sign.jpg",
+    "width": 1024,
+    "height": 768,
+    "srcSet": "/optimized/bd73d01da6ca8b61-128.webp 128w, /optimized/bd73d01da6ca8b61-640.webp 640w, /hanstree/sign.jpg 1024w"
+  },
+  "/hanstree/studio-symbol-dark.jpeg": {
+    "src": "/optimized/2426d500efbb0498-886.webp",
+    "width": 886,
+    "height": 886,
+    "srcSet": "/optimized/2426d500efbb0498-128.webp 128w, /optimized/2426d500efbb0498-640.webp 640w, /optimized/2426d500efbb0498-886.webp 886w"
+  },
+  "/hanstree/studio-wordmark-light.jpeg": {
+    "src": "/optimized/5224cf4062e209b6-886.webp",
+    "width": 886,
+    "height": 886,
+    "srcSet": "/optimized/5224cf4062e209b6-128.webp 128w, /optimized/5224cf4062e209b6-640.webp 640w, /optimized/5224cf4062e209b6-886.webp 886w"
+  },
+  "/hanstree/treadmill-art.jpg": {
+    "src": "/optimized/f9b813c53551e6eb-1448.webp",
+    "width": 1448,
+    "height": 1086,
+    "srcSet": "/optimized/f9b813c53551e6eb-128.webp 128w, /optimized/f9b813c53551e6eb-640.webp 640w, /optimized/f9b813c53551e6eb-1280.webp 1280w, /optimized/f9b813c53551e6eb-1448.webp 1448w"
+  },
+  "/hanstree/workstations-art.jpg": {
+    "src": "/optimized/3d7e266bd45c9c34-1448.webp",
+    "width": 1448,
+    "height": 1086,
+    "srcSet": "/optimized/3d7e266bd45c9c34-128.webp 128w, /optimized/3d7e266bd45c9c34-640.webp 640w, /optimized/3d7e266bd45c9c34-1280.webp 1280w, /optimized/3d7e266bd45c9c34-1448.webp 1448w"
+  },
+  "/icon-1024.png": {
+    "src": "/optimized/06def0ac7132a306-1024.webp",
+    "width": 1024,
+    "height": 1024,
+    "srcSet": "/optimized/06def0ac7132a306-128.webp 128w, /optimized/06def0ac7132a306-640.webp 640w, /optimized/06def0ac7132a306-1024.webp 1024w"
+  },
+  "/icon-512.png": {
+    "src": "/optimized/f678b84daf771825-512.webp",
+    "width": 512,
+    "height": 512,
+    "srcSet": "/optimized/f678b84daf771825-128.webp 128w, /optimized/f678b84daf771825-512.webp 512w"
+  },
+  "/icon-maskable-1024.png": {
+    "src": "/optimized/22af31c2e0ab4c64-1024.webp",
+    "width": 1024,
+    "height": 1024,
+    "srcSet": "/optimized/22af31c2e0ab4c64-128.webp 128w, /optimized/22af31c2e0ab4c64-640.webp 640w, /optimized/22af31c2e0ab4c64-1024.webp 1024w"
+  },
+  "/icon-maskable-512.png": {
+    "src": "/optimized/efff49871f18c1f9-512.webp",
+    "width": 512,
+    "height": 512,
+    "srcSet": "/optimized/efff49871f18c1f9-128.webp 128w, /optimized/efff49871f18c1f9-512.webp 512w"
+  },
+  "/instagram/meoktamja-hero.jpeg": {
+    "src": "/optimized/04322c34a347dcc5-960.webp",
+    "width": 960,
+    "height": 638,
+    "srcSet": "/optimized/04322c34a347dcc5-128.webp 128w, /optimized/04322c34a347dcc5-640.webp 640w, /optimized/04322c34a347dcc5-960.webp 960w"
+  },
+  "/og-catalog-20260918.png": {
+    "src": "/optimized/341e4dc2e8b9c65f-1727.webp",
+    "width": 1727,
+    "height": 910,
+    "srcSet": "/optimized/341e4dc2e8b9c65f-128.webp 128w, /optimized/341e4dc2e8b9c65f-640.webp 640w, /optimized/341e4dc2e8b9c65f-1280.webp 1280w, /optimized/341e4dc2e8b9c65f-1727.webp 1727w"
+  },
+  "/og-stand.png": {
+    "src": "/optimized/9688506a9a05917d-1200.webp",
+    "width": 1200,
+    "height": 630,
+    "srcSet": "/optimized/9688506a9a05917d-128.webp 128w, /optimized/9688506a9a05917d-640.webp 640w, /optimized/9688506a9a05917d-1200.webp 1200w"
+  },
+  "/og.png": {
+    "src": "/optimized/7db4b88954095148-1731.webp",
+    "width": 1731,
+    "height": 909,
+    "srcSet": "/optimized/7db4b88954095148-128.webp 128w, /optimized/7db4b88954095148-640.webp 640w, /optimized/7db4b88954095148-1280.webp 1280w, /optimized/7db4b88954095148-1731.webp 1731w"
+  }
+}
