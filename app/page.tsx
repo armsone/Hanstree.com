@@ -187,16 +187,18 @@ export default async function Home() {
           </p>
         </div>
 
-        {/* 제품군 이동: 해시 링크만 사용해 직접 링크·키보드 포커스를 그대로 유지합니다. */}
-        <nav className="family-nav reveal" aria-label="제품군 바로가기">
+        {/* 제품군 이동: 해시 링크만 사용해 직접 링크·키보드 포커스를 그대로 유지합니다. 목록을 지나는 동안 상단에 붙어 있어 어디서든 다른 제품군으로 건너뜁니다. */}
+        <nav className="family-nav" aria-label="제품군 바로가기">
           <a href="#apps">전체 <small>{apps.length}</small></a>
-          {productFamilies.map((family) => (
-            <a href={`#family-${family.id}`} key={family.id}>{family.name} <small>{familyApps(family).length}</small></a>
+          {productFamilies.map((family, familyIndex) => (
+            <a href={`#family-${family.id}`} key={family.id}><b>{String(familyIndex + 1).padStart(2, "0")}</b>{family.name} <small>{familyApps(family).length}</small></a>
           ))}
         </nav>
 
         <div className="app-list">
-          {productFamilies.map((family, familyIndex) => (
+          {productFamilies.map((family, familyIndex) => {
+            const nextFamily = productFamilies[familyIndex + 1];
+            return (
             // 제품군마다 details로 묶어 작은 화면에서 접어 둘 수 있게 합니다. 기본은 모두 펼침.
             <details className="app-family" id={`family-${family.id}`} key={family.id} open>
               <summary className="app-family-heading">
@@ -204,6 +206,14 @@ export default async function Home() {
                 <span className="app-family-title"><small>{family.english}</small><strong>{family.name}</strong></span>
                 <span className="app-family-summary">{family.summary} · {familyApps(family).length}개</span>
               </summary>
+              {/* 제품군 안 빠른 이동: 큰 카드를 다 내리지 않고 아이콘·이름만 보고 바로 제품 페이지로 갑니다. */}
+              <ul className="app-family-quick" aria-label={`${family.name} 제품 바로가기`}>
+                {familyApps(family).map((app) => (
+                  <li key={app.slug}>
+                    <Link href={`/apps/${app.slug}`}><span className="app-family-quick-icon" aria-hidden="true"><AppIcon app={app} /></span><span>{homeKoreanNames[app.slug] ?? app.name}</span></Link>
+                  </li>
+                ))}
+              </ul>
               <div className="app-family-list">
                 {familyApps(family).map((app) => {
                   const index = apps.indexOf(app); // 전체 카탈로그 기준 번호를 이어갑니다
@@ -244,9 +254,13 @@ export default async function Home() {
                   );
                 })}
               </div>
-              <a className="app-family-top" href="#apps">제품군 목록으로 <span aria-hidden="true">↑</span></a>
+              <div className="app-family-foot">
+                <a className="app-family-top" href="#apps">제품군 목록으로 <span aria-hidden="true">↑</span></a>
+                {nextFamily ? <a className="app-family-next" href={`#family-${nextFamily.id}`}>다음 · {nextFamily.name} <span aria-hidden="true">↓</span></a> : <a className="app-family-next" href="#testflight">TestFlight 체험으로 <span aria-hidden="true">↓</span></a>}
+              </div>
             </details>
-          ))}
+            );
+          })}
         </div>
       </section>
 

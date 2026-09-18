@@ -229,12 +229,14 @@ export default async function AppRoute({ params }: RouteProps) {
       <nav className="section-nav" aria-label={`${app.name} 페이지 내부 메뉴`}>
         <div className="shell">
           {app.slug === "nasfinder" ? (
-            <><Link href="#motion-bridge">움직이는 사진</Link><Link href="#why-nasfinder">왜 나스파인더</Link><Link href="#features">특징</Link><Link href="#screens">화면</Link><Link href="#download">설치</Link></>
+            <><Link href="#spec">사양</Link><Link href="#motion-bridge">움직이는 사진</Link><Link href="#why-nasfinder">왜 나스파인더</Link><Link href="#features">특징</Link><Link href="#screens">화면</Link><Link href="#download">설치</Link></>
           ) : (
-            <><Link href="#product-campaign">왜 {app.name}</Link><Link href="#features">특징</Link><Link href="#screens">화면</Link>{app.matchup && <Link href="#matchup">매치업</Link>}<Link href="#progress">진행 상황</Link><Link href="#guide">설명서</Link><Link href="#download">다운로드</Link></>
+            <><Link href="#spec">사양</Link><Link href="#product-campaign">왜 {app.name}</Link><Link href="#features">특징</Link><Link href="#screens">화면</Link>{app.matchup && <Link href="#matchup">매치업</Link>}<Link href="#progress">진행 상황</Link><Link href="#guide">설명서</Link><Link href="#download">다운로드</Link></>
           )}
         </div>
       </nav>
+
+      <ProductSpec app={app} />
 
       {app.slug === "nasfinder" && <><NasFinderMotionBridge /><NasFinderPromotion /></>}
       {campaignSlugs.has(app.slug) ? <ProductPromotion app={app} /> : app.slug !== "nasfinder" && <ProductSpotlight app={app} />}
@@ -335,6 +337,92 @@ export default async function AppRoute({ params }: RouteProps) {
       <RelatedProducts app={app} />
       <SiteFooter currentPageName={app.name} />
     </main>
+  );
+}
+
+const testFlightStateLabel: Record<NonNullable<ReturnType<typeof testFlightStatus>>["publicBetaState"], string> = {
+  approved: "공개 베타 참여 가능",
+  waitingForReview: "Apple 심사 대기",
+  rejected: "새 빌드 준비 필요",
+  needsExternalBuild: "외부용 빌드 준비",
+  needsReviewAccount: "심사 계정 준비",
+  internalOnly: "내부 전용",
+};
+
+function githubRepoLabel(url: string) {
+  return url.replace(/^https?:\/\/(www\.)?github\.com\//, "").replace(/\/$/, "");
+}
+
+// 구조화된 제품 사양. 이미 data.ts·testflight.ts에 있는 값만 dl로 정리해 보여 주고, 새 사실은 만들지 않습니다.
+function ProductSpec({ app }: { app: NonNullable<ReturnType<typeof findApp>> }) {
+  const family = productFamilyOf(app.slug);
+  const testFlight = testFlightStatus(app.slug);
+  const inviteUrl = testFlight?.inviteAvailable !== false ? testFlight?.inviteUrl ?? null : null;
+  const downloadPlatforms = app.platforms.filter((platform) => platform.url);
+  const doneCount = app.progress.filter((item) => item.state === "done").length;
+  const activeCount = app.progress.filter((item) => item.state === "active").length;
+
+  return (
+    <section className="spec-section shell" id="spec" aria-labelledby="spec-title">
+      <div className="spec-panel reveal">
+        <div className="spec-head">
+          <div><p className="eyebrow">AT A GLANCE</p><h2 id="spec-title">{app.name} 제품 사양</h2></div>
+          <p>아래 항목은 이 페이지의 상태 표시와 같은 자료를 요약한 것입니다.</p>
+        </div>
+        <dl className="spec-grid">
+          <div>
+            <dt>제품명</dt>
+            <dd>{app.name} <small>{app.english}</small></dd>
+          </div>
+          <div>
+            <dt>제품군</dt>
+            <dd>{family ? <Link href={`/#family-${family.id}`}>{family.name}</Link> : <Link href="/#apps">모든 제품</Link>}</dd>
+          </div>
+          <div>
+            <dt>성격</dt>
+            <dd>{app.eyebrow}</dd>
+          </div>
+          <div>
+            <dt>제작</dt>
+            <dd>Hanstree · armsone</dd>
+          </div>
+          <div className="spec-wide">
+            <dt>지원 플랫폼 · 현재 상태</dt>
+            <dd>
+              <span className="spec-list">
+                {app.platforms.map((platform) => (
+                  <span key={platform.name}><i className={`status-dot status-${platform.status.replace(" ", "-")}`} aria-hidden="true" />{platform.name} · {platform.status}</span>
+                ))}
+              </span>
+            </dd>
+          </div>
+          <div>
+            <dt>공식 다운로드</dt>
+            <dd>{downloadPlatforms.length > 0 ? <Link href="#download">{downloadPlatforms.map((platform) => platform.name).join(" · ")}</Link> : "공개 링크 준비 중"}</dd>
+          </div>
+          <div>
+            <dt>TestFlight</dt>
+            <dd>{testFlight ? <>{inviteUrl ? <a href={inviteUrl}>{testFlightStateLabel[testFlight.publicBetaState]}</a> : testFlightStateLabel[testFlight.publicBetaState]}{testFlight.build && <small>빌드 {testFlight.build}</small>}</> : "해당 없음"}</dd>
+          </div>
+          <div>
+            <dt>진행 상황</dt>
+            <dd><Link href="#progress">구현 {doneCount} · 검증 중 {activeCount} · 전체 {app.progress.length}</Link></dd>
+          </div>
+          <div>
+            <dt>문서</dt>
+            <dd>기능 {app.features.length}개 · <Link href="#guide">사용 안내 {app.guide.length}단계</Link>{app.matchup && <> · <Link href="#matchup">UI 매치업</Link></>}</dd>
+          </div>
+          <div className="spec-wide">
+            <dt>공개 저장소</dt>
+            <dd>{app.github.length > 0 ? <span className="spec-list">{app.github.map((url) => <a href={url} key={url}>{githubRepoLabel(url)} <span aria-hidden="true">↗</span></a>)}</span> : "비공개"}</dd>
+          </div>
+          <div className="spec-wide">
+            <dt>정책과 지원</dt>
+            <dd><span className="spec-list"><Link href={`/apps/${app.slug}/privacy`}>개인정보처리방침</Link><Link href={`/apps/${app.slug}/terms`}>이용약관</Link><Link href={`/apps/${app.slug}/support`}>지원과 문의</Link></span></dd>
+          </div>
+        </dl>
+      </div>
+    </section>
   );
 }
 

@@ -10,7 +10,9 @@ export function AdminDashboardClient() {
   const [userId, setUserId] = useState("armsone");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
-  const [setupToken, setSetupToken] = useState("");
+  const [setupToken, setSetupToken] = useState(() => (
+    typeof window === "undefined" ? "" : new URLSearchParams(window.location.search).get("setup") ?? ""
+  ));
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -27,8 +29,8 @@ export function AdminDashboardClient() {
   }, []);
 
   useEffect(() => {
-    setSetupToken(new URLSearchParams(window.location.search).get("setup") ?? "");
-    void readAuth();
+    const timer = window.setTimeout(() => void readAuth(), 0);
+    return () => window.clearTimeout(timer);
   }, [readAuth]);
 
   const submit = async (body: Record<string, string>) => {

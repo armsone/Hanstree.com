@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { findAppByName, productFamilyOf } from "../data";
+import { findAppByName, productFamilies, productFamilyOf } from "../data";
 import { getSiteBrand } from "../site-brand";
 import { SiteHeaderBrand } from "./SiteHeaderBrand";
 
@@ -60,25 +60,53 @@ export async function SiteHeader({ currentPageName }: ChromeProps = {}) {
   );
 }
 
+// 푸터는 사이트맵 역할을 합니다. 브랜드 · 제품 · 스페이스 · 지원과 고지 네 묶음으로 나누고,
+// 실제 존재하는 경로(홈 해시, /space, /apps/{slug}/{privacy|support|terms}, /admin)만 사용합니다.
 export async function SiteFooter({ currentPageName }: ChromeProps = {}) {
   const { brand, app, appsHref, supportHref, supportLabel, privacyHref } = await chromeLinks(currentPageName);
+  const family = app ? productFamilyOf(app.slug) : undefined;
   return (
     <footer className="site-footer">
       <div className="shell footer-inner">
-        <div>
+        <div className="footer-brand">
           <Link className="wordmark" href="/"><span>{brand.name}</span></Link>
           <p>직접 만들고 오래 다듬어 온 결과물을 소개합니다.</p>
+          <p className="footer-brand-parent">Hanstree가 만드는 앱과 공간 · <Link href="https://github.com/armsone">GitHub</Link></p>
         </div>
-        <div className="footer-links">
-          <Link href="/#works">만든 것들</Link>
-          {app && <Link href={appsHref}>같은 계열 제품</Link>}
-          <Link href="/space/hanstree">한스트리 스튜디오</Link>
-          <Link href="/#records">사이트 기록</Link>
-          <Link href={privacyHref}>{app ? `${app.name} 개인정보처리방침` : "개인정보처리방침"}</Link>
-          <Link href={supportHref}>{app ? `${app.name} 지원` : supportLabel}</Link>
-          <Link href="https://github.com/armsone">GitHub</Link>
-          <Link href="/admin" aria-label="관리자 로그인">관리자</Link>
-        </div>
+        <nav className="footer-sitemap" aria-label="사이트맵">
+          <div className="footer-group">
+            <p className="footer-group-title" id="footer-products">제품</p>
+            <ul aria-labelledby="footer-products">
+              <li><Link href="/#works">만든 것들</Link></li>
+              <li><Link href="/#apps">모든 제품</Link></li>
+              {productFamilies.map((item) => (
+                <li key={item.id}><Link href={`/#family-${item.id}`} aria-current={family?.id === item.id ? "true" : undefined}>{item.name}</Link></li>
+              ))}
+              <li><Link href="/#testflight">TestFlight 체험</Link></li>
+              <li><Link href="/#android-releases">Android 최신판</Link></li>
+            </ul>
+          </div>
+          <div className="footer-group">
+            <p className="footer-group-title" id="footer-spaces">스페이스</p>
+            <ul aria-labelledby="footer-spaces">
+              <li><Link href="/space/hanstree">한스트리 스튜디오</Link></li>
+              <li><Link href="/space/hanstree/instagram">먹탐자 Instagram</Link></li>
+              <li><Link href="/#contact">이야기와 문의</Link></li>
+              <li><Link href="/#records">사이트 기록</Link></li>
+            </ul>
+          </div>
+          <div className="footer-group">
+            <p className="footer-group-title" id="footer-support">{app ? `${app.name} 지원과 고지` : "지원과 고지"}</p>
+            <ul aria-labelledby="footer-support">
+              {app && <li><Link href={`/apps/${app.slug}`}>{app.name} 제품 페이지</Link></li>}
+              {app && family && <li><Link href={appsHref}>같은 계열 · {family.name}</Link></li>}
+              <li><Link href={supportHref}>{app ? `${app.name} 지원` : supportLabel}</Link></li>
+              <li><Link href={privacyHref}>{app ? `${app.name} 개인정보처리방침` : "개인정보처리방침"}</Link></li>
+              {app && <li><Link href={`/apps/${app.slug}/terms`}>{app.name} 이용약관</Link></li>}
+              <li><Link href="/admin" aria-label="관리자 로그인">관리자</Link></li>
+            </ul>
+          </div>
+        </nav>
         <p className="copyright">© {new Date().getFullYear()} {brand.koreanName} · armsone</p>
       </div>
     </footer>
