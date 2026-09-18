@@ -81,6 +81,54 @@ const appCatalog: AppData[] = [
     ],
   },
   {
+    slug: "hanstree-workroom",
+    name: "한스트리 워크룸",
+    english: "Hanstree Workroom",
+    eyebrow: "ONE OWNER · ONE WORKROOM",
+    tagline: "떠오른 생각을, 팀장에게 말로.",
+    summary: "아이디어가 떠오를 때마다 어디서든 브라우저를 열어 맡기고 싶다면. 한스트리 워크룸은 내 NAS에 둔 개인용 작업실입니다. 아이디어마다 프로젝트를 만들고, AI 팀장에게 말로 요청하면 진행과 결과가 차곡차곡 쌓입니다. 지금은 주인 한 사람만 쓰는 0.1.0 개발 단계이며, 누구나 가입해 쓰는 공개 서비스가 아닙니다.",
+    theme: "violet",
+    icon: "/apps/hanstree-workroom/icon.svg",
+    heroImage: "/apps/hanstree-workroom/icon.svg",
+    artwork: "bridge",
+    platforms: [
+      {
+        name: "Web · 개인용 웹 작업실",
+        status: "개발 중",
+        detail: "0.1.0 · 소유자 1인 전용 · NAS에서 실행",
+        url: "https://hanstree.synology.me:5443",
+        downloadLabel: "작업실 열기",
+        availabilityNote: "소유자 로그인 필요 · 회원가입·팀원 계정·설치 파일·TestFlight 없음",
+      },
+    ],
+    features: [
+      { title: "아이디어별 프로젝트", body: "브라우저에서 프로젝트 폴더와 대화를 여러 개 만들어 아이디어마다 따로 이어갑니다. 실제 프로젝트 만들기를 확인했습니다.", icon: "/apps/ccmb/features/feature-01.webp" },
+      { title: "팀장에게 말로 요청", body: "Codex 팀장에게 말하듯 요청합니다. 팀장은 필요하면 NAS에 설치된 Claude와 Gemini를 불러 함께 일합니다. 실제 AI의 읽기 전용 응답을 확인했습니다.", icon: "/apps/starmanager/features/feature-02.webp" },
+      { title: "진행과 결과", body: "브라우저를 닫아도 서버가 작업을 이어가고, 돌아오면 진행과 결과를 확인합니다. 모든 프로젝트를 통틀어 한 번에 한 작업만 실행합니다.", icon: "/apps/super-thumbnail/features/feature-08.webp" },
+      { title: "주간 잔여량", body: "Codex·Claude·Gemini 세 서비스의 이번 주 남은 사용량을 작업실에서 바로 확인합니다. 세 서비스 모두 실시간 조회를 확인했습니다.", icon: "/apps/ccmb/features/feature-12.webp" },
+      { title: "공통 스킬 56개 인식", body: "평소 쓰던 공통 스킬 56개를 인식합니다. 다만 Mac 전용 도구와 연결 기능은 NAS에서 모두 그대로 쓸 수 있는 것은 아닙니다.", icon: "/apps/aibi/features/feature-05.webp" },
+      { title: "주인 비밀번호로 보호", body: "작업실 비밀번호로 접근을 제한합니다. 대화와 파일은 내 NAS에 보관하고, 연결해 둔 AI 계정으로 작업합니다.", icon: "/apps/nasfinder/features/feature-08.webp" },
+    ],
+    guide: [
+      { title: "작업실 열기", body: "브라우저에서 작업실 주소를 열고 소유자 비밀번호로 로그인합니다. 공개 회원가입은 없으며 작업실 비밀번호가 필요합니다." },
+      { title: "프로젝트 만들기", body: "아이디어마다 프로젝트를 만들고 그 안에서 대화를 시작합니다. Mac의 Codex 앱 대화는 자동으로 가져오지 않습니다." },
+      { title: "팀장에게 요청", body: "하고 싶은 일을 말로 적어 보냅니다. 앞선 작업이 끝나야 다음 작업이 시작됩니다." },
+      { title: "결과와 잔여량 확인", body: "브라우저를 닫았다가 돌아와 진행과 결과를 확인하고, 주간 잔여량을 보며 다음 요청을 정합니다." },
+    ],
+    progress: [
+      { state: "done", title: "0.1.0 핵심 흐름 확인", body: "실제 AI의 읽기 전용 응답, 프로젝트 만들기, Codex·Claude·Gemini 세 서비스의 주간 잔여량 실시간 조회를 확인했습니다." },
+      { state: "done", title: "외부 HTTPS 접속", body: "외부 주소에서 암호화된 연결과 로그인 화면을 확인했습니다. 설치 없이 브라우저에서 소유자 비밀번호로 들어갑니다." },
+      { state: "next", title: "아직 없는 것", body: "팀원 계정, 공개 회원가입, 설치 파일 배포는 없으며 작업 간 완전한 격리도 보장하지 않습니다. 공개 릴리즈 다운로드와 TestFlight는 제공하지 않습니다." },
+    ],
+    github: [],
+    privacy: [
+      "대화와 프로젝트 파일은 소유자의 NAS에 저장합니다.",
+      "작업실 접근은 비밀번호로 제한합니다. 비밀번호를 아는 사람은 작업실과 연결된 AI 계정을 사용할 수 있습니다.",
+      "AI 작업을 요청하면 그 작업에 필요한 내용과 자료가 해당 AI 서비스(OpenAI·Anthropic·Google)로 전달되며 각 서비스의 정책이 적용됩니다.",
+      "작업 간 완전한 격리를 보장하지 않으므로 소유자 한 사람의 개인 용도로만 사용합니다.",
+    ],
+  },
+  {
     slug: "cleanusb",
     name: "클린USB",
     english: "CleanUSB",
@@ -1484,7 +1532,7 @@ export type ProductFamily = {
 // 제품군 순서 = 카탈로그 공개 순서. 새 제품은 알맞은 slugs에 추가하면 됩니다.
 export const productFamilies: ProductFamily[] = [
   { id: "media", name: "미디어·저장공간", english: "MEDIA & STORAGE", summary: "파일과 사진·영상을 보고, 만들고, 곁에 두는 앱", slugs: ["nasfinder", "super-thumbnail", "hanclip", "stand"] },
-  { id: "ai", name: "AI·창작", english: "AI & CREATION", summary: "AI 도구와 함께 배우고, 확인하고, 만드는 제품", slugs: ["ccmb", "starmanager", "denimdex", "aiplaygrand", "alfred-ai-search"] },
+  { id: "ai", name: "AI·창작", english: "AI & CREATION", summary: "AI 도구와 함께 배우고, 확인하고, 만드는 제품", slugs: ["ccmb", "starmanager", "denimdex", "aiplaygrand", "hanstree-workroom", "alfred-ai-search"] },
   { id: "mac", name: "Mac 생산성·유틸리티", english: "MAC PRODUCTIVITY & UTILITIES", summary: "작업 흐름을 지키는 작은 도구와 확장", slugs: ["cleanusb", "trackpadguard", "btn", "alfred-navermap", "autoshorts"] },
   { id: "life", name: "생활·가족·커뮤니티", english: "LIFE, FAMILY & COMMUNITY", summary: "일상과 가족, 모임에서 쓰는 웹과 앱", slugs: ["whattoeat", "button", "intosharp", "airchurch", "ppabang"] },
   { id: "engine", name: "엔진·인프라", english: "ENGINES & INFRASTRUCTURE", summary: "다른 제품을 받치는 코어와 서버, 업무 도구", slugs: ["hanai", "aibi", "minecraft-server", "htoms-brief"] },

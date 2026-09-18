@@ -1,9 +1,12 @@
 import Link from "next/link";
-import { findAppByName, productFamilies, productFamilyOf } from "../data";
+import { findApp, findAppByName, productFamilies, productFamilyOf } from "../data";
 import { getSiteBrand } from "../site-brand";
 import { SiteHeaderBrand } from "./SiteHeaderBrand";
 
 type ChromeProps = { currentPageName?: string };
+
+// 스페이스 메뉴의 워크룸 링크는 카탈로그의 플랫폼 주소를 그대로 씁니다. 주소는 data.ts 한 곳에서만 바꿉니다.
+const workroomHref = findApp("hanstree-workroom")?.platforms[0]?.url ?? "/apps/hanstree-workroom";
 
 // 지원·개인정보 링크는 지금 보고 있는 제품을 따라갑니다. 제품 밖에서는 NasFinder 사이트일 때만 NasFinder 지원으로,
 // 그 외에는 홈의 이야기(문의) 영역으로 보냅니다. 존재하지 않는 지원 페이지는 만들지 않습니다.
@@ -37,6 +40,7 @@ export async function SiteHeader({ currentPageName }: ChromeProps = {}) {
             <div className="nav-space-panel">
               <Link href="/space/hanstree">한스트리 스튜디오</Link>
               <Link href="/space/hanstree/instagram">먹탐자 Instagram</Link>
+              <Link href={workroomHref}>한스트리 워크룸</Link>
             </div>
           </details>
           <Link href={appsHref}>제품</Link>
@@ -51,6 +55,7 @@ export async function SiteHeader({ currentPageName }: ChromeProps = {}) {
             <Link href={appsHref}>{app ? "제품 · 같은 계열" : "제품"}</Link>
             <Link href="/space/hanstree">한스트리 스튜디오</Link>
             <Link href="/space/hanstree/instagram">먹탐자 Instagram</Link>
+            <Link href={workroomHref}>한스트리 워크룸</Link>
             <Link href="/#contact">이야기</Link>
             {showHeaderSupport && <Link href={supportHref}>{app ? `${app.name} 지원` : supportLabel}</Link>}
           </div>
@@ -91,6 +96,7 @@ export async function SiteFooter({ currentPageName }: ChromeProps = {}) {
             <ul aria-labelledby="footer-spaces">
               <li><Link href="/space/hanstree">한스트리 스튜디오</Link></li>
               <li><Link href="/space/hanstree/instagram">먹탐자 Instagram</Link></li>
+              <li><Link href={workroomHref}>한스트리 워크룸</Link></li>
               <li><Link href="/#contact">이야기와 문의</Link></li>
               <li><Link href="/#records">사이트 기록</Link></li>
             </ul>

@@ -398,7 +398,7 @@ export default async function AppRoute({ params }: RouteProps) {
       </section>
 
       <section className="download-section shell reveal" id="download">
-        <div><p className="eyebrow">다운로드 및 설치</p><h2>{app.name}, 지금 시작해 보세요.</h2><p>플랫폼별 현재 상태와 공식 주소·배포 파일을 구분해 표시합니다. 별도 도구는 용도까지 확인한 뒤 내려받을 수 있습니다.</p></div>
+        <div><p className="eyebrow">{app.slug === "hanstree-workroom" ? "웹 작업실" : "다운로드 및 설치"}</p><h2>{app.slug === "hanstree-workroom" ? `${app.name}, 작업실에 들어가기.` : `${app.name}, 지금 시작해 보세요.`}</h2><p>플랫폼별 현재 상태와 공식 주소·배포 파일을 구분해 표시합니다. 별도 도구는 용도까지 확인한 뒤 내려받을 수 있습니다.</p></div>
         <div className="download-list">
           {app.platforms.map((platform) => {
             const testFlight = platform.status === "TestFlight" ? testFlightStatus(app.slug) : null;
