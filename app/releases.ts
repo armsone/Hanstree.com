@@ -49,9 +49,9 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
   "AIplaygrand-Win": {
     label: "AIplaygrand Windows",
     repo: "AIplaygrand-Win",
-    pinnedPreviewTag: "v0.6.0",
-    assetPattern: /^AIplaygrand-Win-0\.6\.0-x64\.zip$/,
-    fallbackUrl: "https://github.com/armsone/AIplaygrand-Win/releases/download/v0.6.0/AIplaygrand-Win-0.6.0-x64.zip",
+    pinnedPreviewTag: "v0.6.2",
+    assetPattern: /^AIplaygrand-Win-0\.6\.2-x64\.zip$/,
+    fallbackUrl: "https://github.com/armsone/AIplaygrand-Win/releases/download/v0.6.2/AIplaygrand-Win-0.6.2-x64.zip",
   },
   "AIplaygrand-Mac": {
     label: "AIplaygrand Mac",

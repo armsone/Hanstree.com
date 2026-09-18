@@ -50,7 +50,7 @@ const appCatalog: AppData[] = [
     heroImage: "/apps/aiplaygrand/flow.svg",
     artwork: "bridge",
     platforms: [
-      { name: "Windows x64", status: "공개", detail: "0.6.0 (202609161147) · ZIP 포터블", url: releaseDownloadPath("AIplaygrand-Win"), downloadLabel: "Windows ZIP 받기", availabilityNote: "공개 검증용 배포. Windows 실기기 업데이트·재시작·실패 복구·물리 USB 이동·실제 OAuth 복원과 사용량 흐름 미검증. 실행 파일은 코드 미서명입니다." },
+      { name: "Windows x64", status: "공개", detail: "0.6.2 (202609180907) · ZIP 포터블", url: releaseDownloadPath("AIplaygrand-Win"), downloadLabel: "Windows ZIP 받기", availabilityNote: "공개 검증용 배포. Windows 실기기 업데이트·재시작·실패 복구·물리 USB 이동·실제 OAuth 복원과 사용량 흐름 미검증. 실행 파일은 코드 미서명입니다." },
       { name: "Mac · Apple Silicon", status: "공개", detail: "0.6.0 (202609161147) · 서명·Apple 공증 완료", url: releaseDownloadPath("AIplaygrand-Mac"), downloadLabel: "Mac DMG 받기", availabilityNote: "Developer ID 서명·Apple 공증과 데이터 유지 교체 설치 완료. 이번 버전 재실행·전체 계정 흐름 미검증. 자체 업데이트와 Intel Mac은 지원하지 않습니다." },
     ],
     features: [
@@ -63,13 +63,13 @@ const appCatalog: AppData[] = [
     ],
     guide: [
       { title: "USB에 전체 압축 해제", body: "ZIP의 모든 파일을 쓰기 가능한 USB 폴더에 풀고 AIplaygrand-Win.exe를 실행하세요. exe만 복사하면 실행되지 않습니다." },
-      { title: "보관함과 로그인", body: "12자 이상 비밀번호를 정하고 공식 서비스에 로그인하세요. 독립 CLI 좌석의 로그인은 명시적 선택 시 보관함에 암호화 보관할 수 있습니다. 보관함 비밀번호를 잊으면 복구할 수 없습니다." },
+      { title: "보관함과 로그인", body: "보관함 비밀번호에는 길이·문자 조합 규칙이 없습니다. 공식 서비스에 로그인하고, 독립 CLI 좌석의 로그인은 명시적 선택 시 보관함에 암호화 보관할 수 있습니다. 보관함 비밀번호를 잊으면 복구할 수 없습니다." },
       { title: "웹 또는 CLI에서 실습", body: "앱은 API 키를 요구하지 않습니다. Codex 웹은 직접 전송해야 하며, CLI는 공식 도구 설치·로그인과 이용권이 필요합니다. 무료 웹 계정이 CLI 이용권을 보장하지 않습니다. 코드 제안을 확인하고 직접 실행하세요. 자동 인계는 전송·공유에 사전 동의한 팀원만 참여합니다." },
       { title: "안전하게 이동", body: "저장하고 종료를 누르고 별도 CLI 터미널도 닫으세요. 복원된 PC 평문 파일이나 백업 복사본은 활성 보관함 보호 대상이 아니며 새 기기 로그인 유지는 보장되지 않습니다. 하드웨어 안전하게 제거 후 USB를 옮기세요." },
       { title: "처음 한 번은 0.6.0 직접 교체", body: "기존 앱을 종료하고 전체 폴더를 백업한 뒤 0.6.0 프로그램 파일을 직접 교체하세요. Data·Tools는 삭제하지 마세요. 이후 버전부터 앱 안에서 업데이트를 제안합니다. PowerShell 5.1·.NET 4.7.2 이상이 필요하며 보안 정책에 막히면 수동 교체해야 합니다. 교체 중에는 USB를 빼지 마세요." },
     ],
     progress: [
-      { state: "done", title: "동의형 업데이트 0.6.0 공개", body: "Windows ZIP·공증된 Mac DMG를 GitHub v0.6.0으로 공개했습니다. 소스·패키지 일치와 체크섬, 공개 다운로드 연결을 확인했습니다. Mac은 데이터 유지 교체 설치까지 마쳤으며 이번 버전을 재실행하지는 않았습니다." },
+      { state: "done", title: "Windows 0.6.2 공개", body: "Windows ZIP을 GitHub v0.6.2로 공개했습니다. 화면 작업 공간과 보관함 비밀번호 무제약 변경을 포함하며, 공개 자산·체크섬·다운로드 연결을 확인했습니다." },
       { state: "next", title: "실제 팀 실습과 업데이트 검증", body: "Windows 업데이트·재시작·복구·물리 USB 이동·실제 OAuth 복원과 사용량 흐름, Mac 전체 계정 흐름은 미검증입니다. 전원 차단 시 완전한 복구를 보장하지 않습니다. 화면 공간과 첫 사용 안내 개선도 남아 있습니다." },
     ],
     github: ["https://github.com/armsone/AIplaygrand-Win"],
