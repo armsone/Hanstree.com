@@ -582,7 +582,7 @@ const appCatalog: AppData[] = [
       { src: "/apps/ccmb/ccmb-dashboard-private.png", alt: "개인정보를 제거한 이전 Mac 화면 · Spark 항목은 현재 2.0.26에서 제거됐습니다.", layout: "menu" },
       { src: "/apps/ccmb/screens/macos-menubar.png", alt: "macOS 메뉴 막대에 표시된 CCMB 사용량", layout: "wide" },
     ],
-    github: ["https://github.com/armsone/CCMB"],
+    github: ["https://github.com/armsone/CCMB", "https://github.com/armsone/CCMB-iOS"],
     privacy: [
       "iPhone·iPad는 CloudKit에 쓰지 않고 같은 Apple ID의 개인 데이터베이스에서 고정된 최신 사용량 스냅샷 하나만 읽습니다.",
       "CloudKit과 CCMB-usage-v1.json에는 토큰·쿠키·OAuth 자격증명·원시 CLI 응답·Mac 로컬 경로를 넣지 않습니다.",
