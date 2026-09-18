@@ -8,7 +8,7 @@ import { ContactReveal } from "./components/ContactReveal";
 import { DownloadQrCode } from "./components/DownloadQrCode";
 import { SiteCounter } from "./components/SiteCounter";
 import { TestFlightTracker } from "./components/TestFlightTracker";
-import { apps, findApp } from "./data";
+import { apps, familyApps, findApp, productFamilies } from "./data";
 import { appCardImage } from "./media";
 import { testFlightBuilds } from "./testflight";
 import { getSiteBrand } from "./site-brand";
@@ -187,41 +187,65 @@ export default async function Home() {
           </p>
         </div>
 
+        {/* 제품군 이동: 해시 링크만 사용해 직접 링크·키보드 포커스를 그대로 유지합니다. */}
+        <nav className="family-nav reveal" aria-label="제품군 바로가기">
+          <a href="#apps">전체 <small>{apps.length}</small></a>
+          {productFamilies.map((family) => (
+            <a href={`#family-${family.id}`} key={family.id}>{family.name} <small>{familyApps(family).length}</small></a>
+          ))}
+        </nav>
+
         <div className="app-list">
-          {apps.map((app, index) => (
-            <article className={`app-row app-row-${app.slug} reveal theme-${app.theme}`} key={app.slug}>
-              <Link className="app-row-hit-area" href={`/apps/${app.slug}`} aria-label={`${app.name} 제품 자세히 보기`} />
-              <div className="app-row-number">0{index + 1}</div>
-              <div className="app-row-copy">
-                <div className="app-title-line">
-                  <AppIcon app={app} />
-                  <div>
-                    <p>{app.english}</p>
-                    <h3>{homeKoreanNames[app.slug] ?? app.name}</h3>
-                  </div>
-                </div>
-                <p className="app-tagline">{app.tagline}</p>
-                <div className="chip-row">
-                  {app.platforms.map((platform) => (
-                    <AppStatus key={platform.name} platform={platform} />
-                  ))}
-                </div>
-                <span className="text-link">
-                  제품 자세히 보기 <span aria-hidden="true">→</span>
-                </span>
+          {productFamilies.map((family, familyIndex) => (
+            // 제품군마다 details로 묶어 작은 화면에서 접어 둘 수 있게 합니다. 기본은 모두 펼침.
+            <details className="app-family" id={`family-${family.id}`} key={family.id} open>
+              <summary className="app-family-heading">
+                <span className="app-family-index">{String(familyIndex + 1).padStart(2, "0")}</span>
+                <span className="app-family-title"><small>{family.english}</small><strong>{family.name}</strong></span>
+                <span className="app-family-summary">{family.summary} · {familyApps(family).length}개</span>
+              </summary>
+              <div className="app-family-list">
+                {familyApps(family).map((app) => {
+                  const index = apps.indexOf(app); // 전체 카탈로그 기준 번호를 이어갑니다
+                  return (
+                    <article className={`app-row app-row-${app.slug} reveal theme-${app.theme}`} key={app.slug}>
+                      <Link className="app-row-hit-area" href={`/apps/${app.slug}`} aria-label={`${app.name} 제품 자세히 보기`} />
+                      <div className="app-row-number">{String(index + 1).padStart(2, "0")}</div>
+                      <div className="app-row-copy">
+                        <div className="app-title-line">
+                          <AppIcon app={app} />
+                          <div>
+                            <p>{app.english}</p>
+                            <h3>{homeKoreanNames[app.slug] ?? app.name}</h3>
+                          </div>
+                        </div>
+                        <p className="app-tagline">{app.tagline}</p>
+                        <div className="chip-row">
+                          {app.platforms.map((platform) => (
+                            <AppStatus key={platform.name} platform={platform} />
+                          ))}
+                        </div>
+                        <span className="text-link">
+                          제품 자세히 보기 <span aria-hidden="true">→</span>
+                        </span>
+                      </div>
+                      <div className="app-row-representative">
+                        <Image
+                          src={app.slug === "ccmb" ? "/apps/ccmb/ccmb-dashboard-private.png" : appCardImage(app)}
+                          alt={`${app.name} 대표 화면`}
+                          width={1280}
+                          height={853}
+                          sizes="(max-width: 920px) 100vw, 52vw"
+                          unoptimized
+                        />
+                        <span><small>REPRESENTATIVE SCENE</small><strong>{app.features[0]?.title ?? app.tagline}</strong></span>
+                      </div>
+                    </article>
+                  );
+                })}
               </div>
-              <div className="app-row-representative">
-                <Image
-                  src={app.slug === "ccmb" ? "/apps/ccmb/ccmb-dashboard-private.png" : appCardImage(app)}
-                  alt={`${app.name} 대표 화면`}
-                  width={1280}
-                  height={853}
-                  sizes="(max-width: 920px) 100vw, 52vw"
-                  unoptimized
-                />
-                <span><small>REPRESENTATIVE SCENE</small><strong>{app.features[0]?.title ?? app.tagline}</strong></span>
-              </div>
-            </article>
+              <a className="app-family-top" href="#apps">제품군 목록으로 <span aria-hidden="true">↑</span></a>
+            </details>
           ))}
         </div>
       </section>

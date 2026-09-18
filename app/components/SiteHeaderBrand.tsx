@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 type SiteHeaderBrandProps = {
@@ -25,10 +26,10 @@ export function SiteHeaderBrand({ name, koreanName, icon, showNasFinderIcon, cur
   const ariaLabel = currentPageName ? `${koreanName} · ${currentPageName} 홈` : `${koreanName} 홈`;
 
   return (
-    <a className={`wordmark header-wordmark${showCurrentPage ? " header-wordmark-current" : ""}`} href="/" aria-label={ariaLabel}>
+    <Link className={`wordmark header-wordmark${showCurrentPage ? " header-wordmark-current" : ""}`} href="/" aria-label={ariaLabel}>
       <Image className={`header-brand-icon${showNasFinderIcon ? " header-brand-icon-nasfinder" : ""}`} src={icon} alt="" width={886} height={886} sizes="32px" />
       <span>{name}</span>
       {currentPageName && <span className="header-current-page" aria-hidden="true">{currentPageName}</span>}
-    </a>
+    </Link>
   );
 }

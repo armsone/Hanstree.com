@@ -8,7 +8,7 @@ import { AppArtwork, AppHeroArtwork, AppIcon } from "../../components/AppVisuals
 import { CleanUSBPage } from "../../components/CleanUSBPage";
 import { ContactReveal } from "../../components/ContactReveal";
 import { DownloadQrCode } from "../../components/DownloadQrCode";
-import { findApp } from "../../data";
+import { apps, familyApps, findApp, productFamilyOf } from "../../data";
 import { SiteFooter, SiteHeader } from "../../components/SiteChrome";
 import { testFlightBuilds } from "../../testflight";
 import { getSiteBrand } from "../../site-brand";
@@ -209,12 +209,14 @@ export default async function AppRoute({ params }: RouteProps) {
   if (app.slug === "cleanusb" && !section) return <CleanUSBPage app={app} />;
   if (section) return <InfoPage app={app} section={section} />;
 
+  const family = productFamilyOf(app.slug);
+
   return (
     <main className={`app-page app-${app.slug} theme-${app.theme}`}>
       <SiteHeader currentPageName={app.name} />
       <section className="app-hero shell">
         <div className="app-hero-copy reveal">
-          <Link className="breadcrumb" href="/#apps">← 모든 앱</Link>
+          <Link className="breadcrumb" href={family ? `/#family-${family.id}` : "/#apps"}>← 모든 앱{family && <> · <span>{family.name}</span></>}</Link>
           <div className="app-ident"><AppIcon app={app} /><span>{app.english}</span></div>
           <p className="eyebrow">{app.eyebrow}</p>
           <h1>{app.tagline}</h1>
@@ -330,8 +332,46 @@ export default async function AppRoute({ params }: RouteProps) {
         <Link href={`/apps/${app.slug}/support`}><span>SUPPORT</span><AdvantageVisual variant="life-ring" /><h3>지원과 문의</h3><p>문제 해결과 오류 제보에 필요한 내용을 안내합니다.</p><b>→</b></Link>
         <Link href={`/apps/${app.slug}/terms`}><span>TERMS</span><AdvantageVisual variant="doc-scroll" /><h3>이용약관</h3><p>제품 이용 조건과 책임 범위를 확인합니다.</p><b>→</b></Link>
       </section>
-      <SiteFooter />
+      <RelatedProducts app={app} />
+      <SiteFooter currentPageName={app.name} />
     </main>
+  );
+}
+
+// 상세 페이지가 지원 카드에서 끝나지 않도록 같은 제품군과 앞뒤 제품으로 이어줍니다. 제품군 순서는 data.ts를 따릅니다.
+function RelatedProducts({ app }: { app: NonNullable<ReturnType<typeof findApp>> }) {
+  const family = productFamilyOf(app.slug);
+  const siblings = family ? familyApps(family).filter((item) => item.slug !== app.slug) : [];
+  const position = apps.indexOf(app);
+  const previous = position > 0 ? apps[position - 1] : undefined;
+  const next = position >= 0 && position < apps.length - 1 ? apps[position + 1] : undefined;
+
+  return (
+    <section className="related-section shell reveal" aria-labelledby="related-products-title">
+      <div className="section-heading">
+        <div>
+          <p className="eyebrow">{family ? `${family.english} · KEEP EXPLORING` : "KEEP EXPLORING"}</p>
+          <h2 id="related-products-title">{family ? <>{family.name} 계열의<br />다른 제품.</> : <>다른 제품도<br />살펴보세요.</>}</h2>
+        </div>
+        <p>{family ? family.summary : "한스트리가 만든 제품 인덱스로 이어집니다."}{family && <> · <Link className="inline-link" href={`/#family-${family.id}`}>계열 전체 보기</Link></>}</p>
+      </div>
+      {siblings.length > 0 && (
+        <div className="related-grid">
+          {siblings.map((item) => (
+            <Link className={`related-card theme-${item.theme}`} href={`/apps/${item.slug}`} key={item.slug}>
+              <AppIcon app={item} />
+              <span className="related-card-copy"><small>{item.english}</small><strong>{item.name}</strong><em>{item.tagline}</em></span>
+              <b aria-hidden="true">→</b>
+            </Link>
+          ))}
+        </div>
+      )}
+      <nav className="related-sequence" aria-label="제품 순서 이동">
+        {previous ? <Link href={`/apps/${previous.slug}`}><small>이전 제품</small><strong>← {previous.name}</strong></Link> : <span />}
+        <Link href="/#apps"><small>전체</small><strong>모든 제품</strong></Link>
+        {next ? <Link href={`/apps/${next.slug}`}><small>다음 제품</small><strong>{next.name} →</strong></Link> : <span />}
+      </nav>
+    </section>
   );
 }
 
@@ -916,7 +956,7 @@ function InfoPage({ app, section }: { app: NonNullable<ReturnType<typeof findApp
         </>}
         <p className="policy-note">시행일: 2026년 8월 14일 · 마지막 변경일: {app.slug === "ppabang" ? "2026년 9월 4일" : app.slug === "nasfinder" ? "2026년 8월 22일" : "2026년 8월 15일"}</p>
       </article>
-      <SiteFooter />
+      <SiteFooter currentPageName={app.name} />
     </main>
   );
 }
@@ -949,7 +989,7 @@ function GoogleOAuthPage() {
         </div>
         <p className="policy-note">Source implementation disclosure · Live Google account verification pending · Last reviewed August 25, 2026</p>
       </article>
-      <SiteFooter />
+      <SiteFooter currentPageName="나스파인더" />
     </main>
   );
 }

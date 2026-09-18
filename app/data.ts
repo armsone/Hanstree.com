@@ -36,7 +36,8 @@ export type AppData = {
   };
 };
 
-export const apps: AppData[] = [
+// 제품 사실은 아래 카탈로그 리터럴에만 둡니다. 공개 순서는 파일 끝의 productFamilies 순서로 정렬해 내보냅니다.
+const appCatalog: AppData[] = [
   {
     slug: "aiplaygrand",
     name: "에이아이 플레이그랜드",
@@ -1471,6 +1472,43 @@ export const apps: AppData[] = [
   },
 ];
 
+export type ProductFamily = {
+  id: string;
+  name: string;
+  english: string;
+  summary: string;
+  slugs: string[];
+};
+
+// 제품군 순서 = 카탈로그 공개 순서. 새 제품은 알맞은 slugs에 추가하면 됩니다.
+export const productFamilies: ProductFamily[] = [
+  { id: "media", name: "미디어·저장공간", english: "MEDIA & STORAGE", summary: "파일과 사진·영상을 보고, 만들고, 곁에 두는 앱", slugs: ["nasfinder", "super-thumbnail", "hanclip", "stand"] },
+  { id: "ai", name: "AI·창작", english: "AI & CREATION", summary: "AI 도구와 함께 배우고, 확인하고, 만드는 제품", slugs: ["ccmb", "starmanager", "denimdex", "aiplaygrand", "alfred-ai-search"] },
+  { id: "mac", name: "Mac 생산성·유틸리티", english: "MAC PRODUCTIVITY & UTILITIES", summary: "작업 흐름을 지키는 작은 도구와 확장", slugs: ["cleanusb", "trackpadguard", "btn", "alfred-navermap", "autoshorts"] },
+  { id: "life", name: "생활·가족·커뮤니티", english: "LIFE, FAMILY & COMMUNITY", summary: "일상과 가족, 모임에서 쓰는 웹과 앱", slugs: ["whattoeat", "button", "intosharp", "airchurch", "ppabang"] },
+  { id: "engine", name: "엔진·인프라", english: "ENGINES & INFRASTRUCTURE", summary: "다른 제품을 받치는 코어와 서버, 업무 도구", slugs: ["hanai", "aibi", "minecraft-server", "htoms-brief"] },
+];
+
+const familyRank = new Map<string, number>(productFamilies.flatMap((family, familyIndex) => family.slugs.map((slug, slugIndex) => [slug, familyIndex * 100 + slugIndex] as const)));
+
+// 제품군에 없는 slug는 뒤에 카탈로그 순서 그대로 남깁니다.
+export const apps: AppData[] = appCatalog
+  .map((app, index) => ({ app, rank: familyRank.get(app.slug) ?? 100_000 + index }))
+  .sort((a, b) => a.rank - b.rank)
+  .map(({ app }) => app);
+
 export function findApp(slug: string) {
   return apps.find((app) => app.slug === (slug === "backtonormal" ? "btn" : slug));
+}
+
+export function findAppByName(name: string | undefined) {
+  return name ? apps.find((app) => app.name === name) : undefined;
+}
+
+export function productFamilyOf(slug: string) {
+  return productFamilies.find((family) => family.slugs.includes(slug));
+}
+
+export function familyApps(family: ProductFamily) {
+  return apps.filter((app) => family.slugs.includes(app.slug));
 }
