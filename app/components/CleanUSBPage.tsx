@@ -12,7 +12,7 @@ export function CleanUSBPage({ app }: { app: AppData }) {
   return <main className="app-page app-cleanusb cleanusb-editorial">
     <SiteHeader currentPageName={app.name}/>
     <section className="cu-cover shell">
-      <Link className="breadcrumb" href="/#apps">← 한스트리의 모든 앱</Link>
+      <Link className="breadcrumb" href="/#apps">← 한스트리의 모든 제품</Link>
       <div className="cu-cover-grid">
         <div className="cu-cover-copy">
           <div className="cu-identity"><Image src="/apps/cleanusb/icon-card.webp" alt="CleanUSB 브랜드 아이콘" width={80} height={80} priority unoptimized/><span>CleanUSB<small>Mac을 위한 작은 마무리</small></span></div>

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     title: "한스트리 스튜디오 — 골프에서 시작해 다시 만드는 곳",
     description: "창의성과 체력을 함께 채우고, 다음 디지털 제품을 만드는 Hanstree의 공간 프로젝트입니다.",
     url: "https://hanstree.com/space/hanstree",
-    images: [{ url: "/hanstree/screen-art.jpg", width: 1448, height: 1086, alt: "한스트리 스튜디오의 220인치 스크린 골프 공간" }],
+    images: [{ url: "/hanstree/screen-art.jpg", width: 1448, height: 1086, alt: "한스트리 스튜디오의 220인치 스크린 골프 공간을 그린 일러스트" }],
   },
   twitter: {
     card: "summary_large_image",
@@ -74,13 +74,13 @@ export default function HanstreeSpacePage() {
 
       <section className="space-hero shell">
         <div className="space-hero-copy reveal">
-          <Link className="breadcrumb" href="/#works">← 한스트리가 만든 것들</Link>
+          <Link className="breadcrumb" href="/#works"><span aria-hidden="true">← </span>한스트리가 만든 것들</Link>
           <p className="eyebrow">SPACE PROJECT · HANSTREE STUDIO</p>
           <h1>골프를 치고,<br />새로운 에너지를 얻어<br /><span>다시 만드는 곳.</span></h1>
           <p>창의력은 머리만으로 유지되지 않습니다. 한스트리 스튜디오는 좋아하는 활동으로 몸과 생각을 환기하고, 그 힘을 실제 결과물로 이어가기 위해 직접 구성한 개인 창작 공간입니다.</p>
         </div>
         <div className="space-hero-image reveal">
-          <Image src="/hanstree/screen-art.jpg" alt="한스트리 스튜디오의 대형 스크린 골프 공간" width={1448} height={1086} priority sizes="(max-width: 920px) 100vw, 58vw" />
+          <Image src="/hanstree/screen-art.jpg" alt="한스트리 스튜디오의 220인치 스크린 골프 공간을 그린 일러스트" width={1448} height={1086} priority sizes="(max-width: 920px) 100vw, 58vw" />
           <div><span>GOLFZON VISION PLUS</span><strong>220인치 대형 스크린</strong></div>
         </div>
       </section>
@@ -119,7 +119,7 @@ export default function HanstreeSpacePage() {
           <div className="space-gallery">
             {gallery.map((image) => (
               <figure key={image.src}>
-                <Image src={image.src} alt={image.alt} width={1024} height={768} sizes="(max-width: 720px) 100vw, 50vw" />
+                <Image src={image.src} alt={`${image.alt} — 일러스트`} width={1024} height={768} loading="lazy" sizes="(max-width: 720px) 100vw, 50vw" />
                 <figcaption>{image.caption}</figcaption>
               </figure>
             ))}

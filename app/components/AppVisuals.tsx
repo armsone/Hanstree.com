@@ -3,12 +3,21 @@ import type { AppData, Platform } from "../data";
 import { appCardIcon } from "../media";
 import { LiveFlipClock, LiveSeoulWeather } from "./LiveFlipClock";
 
+// "/screens/" 아래 파일만 실제 캡처입니다. 그 밖의 hero·campaign 이미지는 기능을 표현한 렌더링 개념 이미지이므로 alt에서 "화면"이라고 부르지 않습니다.
+function isScreenshotPath(src: string) {
+  return src.includes("/screens/");
+}
+
+function heroImageAlt(app: AppData, src: string) {
+  return isScreenshotPath(src) ? `${app.name} 실제 앱 화면` : `${app.name}의 핵심 기능을 표현한 대표 이미지`;
+}
+
 export function AppIcon({ app, priority = false }: { app: AppData; priority?: boolean }) {
   if (app.icon) {
     return <Image className="app-icon" src={appCardIcon(app)} alt={`${app.name} 앱 아이콘`} width={256} height={256} priority={priority} sizes="(max-width: 640px) 58px, 72px" unoptimized />;
   }
 
-  return <span className={`app-icon app-icon-letter theme-${app.theme}`} aria-hidden="true">C</span>;
+  return <span className={`app-icon app-icon-letter theme-${app.theme}`} aria-hidden="true">{app.english.charAt(0).toUpperCase()}</span>;
 }
 
 export function AppStatus({ platform }: { platform: Platform }) {
@@ -37,11 +46,12 @@ function DirectionsFlow() {
 }
 
 export function AppHeroArtwork({ app }: { app: AppData }) {
-  if (app.slug === "aiplaygrand") return <Image src="/apps/aiplaygrand/flow.svg" alt="AIplaygrand 질문·실습·기록 사용 흐름도 — 앱 스크린샷 아님" width={1280} height={853} priority sizes="(max-width: 920px) 100vw, 52vw" unoptimized />;
+  if (app.slug === "aiplaygrand") return <Image src="/apps/aiplaygrand/flow.svg" alt="AIplaygrand 질문·실습·기록 사용 흐름도" width={1280} height={853} priority sizes="(max-width: 920px) 100vw, 52vw" unoptimized />;
   if (app.artwork === "directions") return <DirectionsFlow />;
+  const heroSrc = app.heroImage ?? `/apps/${app.slug}/${app.slug}-hero-v2.png`;
   return (
-    <div className={`hero-artwork hero-artwork-product hero-artwork-${app.slug}`} aria-label={`${app.name} 핵심 기능을 표현한 대표 이미지`}>
-      <Image className="hero-artwork-backdrop" src={app.heroImage ?? `/apps/${app.slug}/${app.slug}-hero-v2.png`} alt={`${app.name} 대표 제품 화면`} width={1536} height={1024} priority sizes="(max-width: 920px) 100vw, 52vw" unoptimized />
+    <div className={`hero-artwork hero-artwork-product hero-artwork-${app.slug}`} aria-label={isScreenshotPath(heroSrc) ? `${app.name} 실제 앱 화면` : `${app.name} 핵심 기능을 표현한 대표 이미지`}>
+      <Image className="hero-artwork-backdrop" src={heroSrc} alt={heroImageAlt(app, heroSrc)} width={1536} height={1024} priority sizes="(max-width: 920px) 100vw, 52vw" unoptimized />
       <div className="hero-artwork-brand"><AppIcon app={app} /><span><small>PRODUCT SCENE</small><strong>{app.english}</strong></span></div>
       <div className="hero-artwork-proof"><span />{app.slug === "nasfinder" ? "NAS · CLOUD · DEVICE" : "CORE EXPERIENCE"}</div>
       <div className="hero-artwork-caption"><strong>{app.features[0]?.title ?? app.tagline}</strong><span>{app.platforms.map((platform) => platform.name).join(" · ")}</span></div>
@@ -50,7 +60,7 @@ export function AppHeroArtwork({ app }: { app: AppData }) {
 }
 
 export function AppArtwork({ app, mode = "spotlight" }: { app: AppData; mode?: "spotlight" | "system" }) {
-  if (app.slug === "aiplaygrand") return <div className="artwork"><Image src="/apps/aiplaygrand/flow.svg" alt="AIplaygrand 팀 실습 사용 흐름도 — 앱 스크린샷 아님" width={1280} height={853} sizes="(max-width: 640px) 92vw, 720px" unoptimized /></div>;
+  if (app.slug === "aiplaygrand") return <div className="artwork"><Image src="/apps/aiplaygrand/flow.svg" alt="AIplaygrand 팀 실습 사용 흐름도" width={1280} height={853} sizes="(max-width: 640px) 92vw, 720px" unoptimized /></div>;
   if (app.slug === "cleanusb") {
     return <div className="artwork" aria-label="CleanUSB 선택 정리 개념 이미지"><Image src="/apps/cleanusb/campaign-selection.webp" alt="삭제 전 파일을 살펴보는 CleanUSB 브랜드 이미지" width={1536} height={1024} sizes="(max-width: 640px) 92vw, 720px" unoptimized /></div>;
   }
@@ -81,7 +91,7 @@ export function AppArtwork({ app, mode = "spotlight" }: { app: AppData; mode?: "
   if (app.artwork === "autoshorts") {
     return (
       <div className="artwork artwork-bridge" aria-label="쇼츠 한 편이 끝나면 다음 영상으로 자동 이동하는 자동쇼츠">
-        <Image src={app.heroImage ?? "/apps/autoshorts/autoshorts-hero.png"} alt="자동쇼츠 자동 재생 대표 화면" width={1536} height={1024} sizes="(max-width: 640px) 92vw, 720px" unoptimized />
+        <Image src={app.heroImage ?? "/apps/autoshorts/autoshorts-hero.png"} alt="자동쇼츠의 자동 재생 흐름을 표현한 대표 이미지" width={1536} height={1024} sizes="(max-width: 640px) 92vw, 720px" unoptimized />
       </div>
     );
   }
@@ -97,7 +107,7 @@ export function AppArtwork({ app, mode = "spotlight" }: { app: AppData; mode?: "
   if (app.slug === "denimdex") {
     return (
       <div className="artwork artwork-denimdex" aria-label="빈티지 데님의 원단과 셀비지, 버튼과 리벳을 살피는 DenimDex 감정 장면">
-        <Image src={app.heroImage ?? "/apps/denimdex/denimdex-hero-v2.png"} alt="DenimDex 빈티지 데님 감정 화면" width={1536} height={1024} sizes="(max-width: 640px) 92vw, 720px" unoptimized />
+        <Image src={app.heroImage ?? "/apps/denimdex/denimdex-hero-v2.png"} alt="원단과 셀비지, 버튼과 리벳을 살피는 DenimDex 감정 장면을 표현한 대표 이미지" width={1536} height={1024} sizes="(max-width: 640px) 92vw, 720px" unoptimized />
       </div>
     );
   }
@@ -105,7 +115,7 @@ export function AppArtwork({ app, mode = "spotlight" }: { app: AppData; mode?: "
   if (app.artwork === "bridge") {
     return (
       <div className="artwork artwork-bridge" aria-label="앱과 공식 AI 웹사이트 사이를 안전하게 잇는 아이비 연결 엔진">
-        <Image src={app.heroImage ?? "/apps/aibi/aibi-hero-v2.png"} alt="아이비 AI 웹사이트 연결 화면" width={1536} height={1024} sizes="(max-width: 640px) 92vw, 720px" unoptimized />
+        <Image src={app.heroImage ?? "/apps/aibi/aibi-hero-v2.png"} alt="앱과 공식 AI 웹사이트를 잇는 아이비 연결 구조를 표현한 개념 이미지" width={1536} height={1024} sizes="(max-width: 640px) 92vw, 720px" unoptimized />
       </div>
     );
   }
@@ -115,7 +125,7 @@ export function AppArtwork({ app, mode = "spotlight" }: { app: AppData; mode?: "
     const image = isSystem ? app.systemImage : app.spotlightImage;
     return (
       <div className="artwork artwork-intelligence" aria-label={isSystem ? "인터넷과 기기, 클라우드와 사람을 잇는 네 관문과 한양의 개인정보 보호 경계" : "사진과 문서, 일정과 기억을 사용자 중심으로 정리하는 한양의 지식 아카이브"}>
-        <Image src={image ?? app.heroImage ?? "/apps/hanai/hanai-hero-v2.png"} alt={isSystem ? "한양의 외부 연결과 개인정보 보호 구조" : "한양 지식 아카이브 대표 화면"} width={1672} height={941} sizes="(max-width: 640px) 92vw, 720px" unoptimized />
+        <Image src={image ?? app.heroImage ?? "/apps/hanai/hanai-hero-v2.png"} alt={isSystem ? "한양의 외부 연결과 개인정보 보호 구조를 표현한 개념 이미지" : "한양 지식 아카이브를 표현한 개념 이미지"} width={1672} height={941} sizes="(max-width: 640px) 92vw, 720px" unoptimized />
         <span className="intelligence-aura" aria-hidden="true" />
       </div>
     );
@@ -145,14 +155,14 @@ export function AppArtwork({ app, mode = "spotlight" }: { app: AppData; mode?: "
 
   if (app.artwork === "menubar") {
     return (
-      <div className="artwork artwork-menubar" aria-label="CCMB의 Codex, Claude, Gemini 사용량 패널">
-        <div className="ccmb-menubar-preview" aria-label="메뉴 막대에 대표 색상으로 표시된 세 서비스의 남은 사용량">
-          <span className="ccmb-number-codex">92%</span><i>·</i><span className="ccmb-number-claude">0%</span><i>·</i><span className="ccmb-number-gemini">95%</span>
+      <div className="artwork artwork-menubar" aria-label="CCMB의 Codex, Claude, Gemini 사용량 패널을 표현한 이미지">
+        <div className="ccmb-menubar-preview" aria-label="메뉴 막대에 대표 색상으로 표시되는 세 서비스 남은 사용량의 예시 숫자">
+          <span className="ccmb-number-codex">92%</span><i aria-hidden="true">·</i><span className="ccmb-number-claude">0%</span><i aria-hidden="true">·</i><span className="ccmb-number-gemini">95%</span>
         </div>
         <div className="ccmb-panel-shot">
           <Image
             src="/apps/ccmb/ccmb-campaign.png"
-            alt="메뉴 막대 숫자와 Codex·Claude·Gemini 사용량 패널"
+            alt="메뉴 막대 숫자와 Codex·Claude·Gemini 사용량 패널을 표현한 CCMB 대표 이미지 — 실제 화면 아님"
             width={1672}
             height={941}
             sizes="(max-width: 640px) 92vw, 720px"
@@ -208,7 +218,7 @@ export function AppArtwork({ app, mode = "spotlight" }: { app: AppData; mode?: "
     return (
       <div className="artwork artwork-htoms" aria-label="HtOMS 브리프의 매출 요약과 서버 상태 화면">
         <div className="htoms-window">
-          <div className="htoms-toolbar"><strong>HTOMS BRIEF</strong><span>↻&nbsp; 로그아웃</span></div>
+          <div className="htoms-toolbar"><strong>HTOMS BRIEF</strong><span><span aria-hidden="true">↻&nbsp; </span>로그아웃</span></div>
           <div className="htoms-heading"><i /><strong>매출 요약</strong><small>BRIEF · 오늘과 월간 판매</small></div>
           <div className="htoms-card htoms-sales">
             <div><small>오늘 매출 · TODAY</small><span>보통</span></div>
@@ -226,7 +236,7 @@ export function AppArtwork({ app, mode = "spotlight" }: { app: AppData; mode?: "
     return (
       <div className="artwork artwork-search" aria-label="인투샾 이름 검색 화면 표현">
         <div className="search-brand"><b>#</b><span>intoSharp</span></div>
-        <div className="search-command"><span>⌕</span><strong>네이버 우리집</strong><b>↵</b></div>
+        <div className="search-command"><span aria-hidden="true">⌕</span><strong>네이버 우리집</strong><b aria-hidden="true">↵</b></div>
         <p>이름으로 이동하고, 이어서 검색하세요.</p>
         <div className="search-links"><span>일</span><span>이야기마당</span><span>볼거리</span><span>연장</span></div>
       </div>
@@ -258,11 +268,11 @@ export function AppArtwork({ app, mode = "spotlight" }: { app: AppData; mode?: "
 
   return (
     <div className="artwork artwork-files" aria-label="나스파인더 파일 탐색 화면 표현">
-      <div className="file-toolbar"><span>‹</span><strong>Photos</strong><span>•••</span></div>
+      <div className="file-toolbar"><span aria-hidden="true">‹</span><strong>Photos</strong><span aria-hidden="true">•••</span></div>
       <div className="file-grid">
         {["DS", "SF", "SM", "WD", "DB", "GD"].map((label, index) => <span key={label} style={{ "--i": index } as React.CSSProperties}>{label}</span>)}
       </div>
-      <div className="file-sheet"><span /> <p><strong>IMG_2048.HEIC</strong><small>Preview ready · 12.4 MB</small></p><b>↗</b></div>
+      <div className="file-sheet"><span /> <p><strong>IMG_2048.HEIC</strong><small>Preview ready · 12.4 MB</small></p><b aria-hidden="true">↗</b></div>
     </div>
   );
 }

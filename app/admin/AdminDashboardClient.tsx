@@ -98,7 +98,7 @@ export function AdminDashboardClient() {
         <div className="admin-login-wrapper">
           <div className="admin-login-card">
             <div className="admin-login-head">
-              <p className="eyebrow">SITE RECORDS ADMIN</p>
+              <p className="eyebrow">사이트 기록 · 관리자</p>
               <h1>사이트 기록 관리자</h1>
               <p className="admin-login-sub">관리자만 유입 경로까지 확인할 수 있습니다.</p>
             </div>
@@ -125,7 +125,7 @@ export function AdminDashboardClient() {
       ) : (
         <div className="admin-dashboard">
           <header className="admin-dash-header">
-            <div><p className="eyebrow">SITE RECORDS ADMIN</p><h1>사이트 기록</h1><p className="admin-ident">관리자 화면에서는 유입 경로까지 표시합니다.</p></div>
+            <div><p className="eyebrow">사이트 기록 · 관리자</p><h1>사이트 기록</h1><p className="admin-ident">관리자 화면에서는 유입 경로까지 표시합니다.</p></div>
             <button type="button" className="button button-primary admin-logout-btn" onClick={handleLogout}>로그아웃</button>
           </header>
           <SiteInsights embedded showSources />

@@ -15,8 +15,8 @@ const HANSTREE: SiteBrand = {
   koreanName: "한스트리",
   icon: "/hanstree/studio-symbol-dark.jpeg",
   appleIcon: "/apple-touch-icon-hanstree.png?v=20260904",
-  title: "Hanstree — 직접 만든 결과물의 인덱스",
-  description: "나스파인더를 비롯한 디지털 제품과 창작 공간 Hanstree Studio까지, 직접 필요하고 좋아해서 만들고 오래 다듬은 결과물을 소개합니다.",
+  title: "Hanstree — 일상을 바꾸는 앱과 도구",
+  description: "NAS 속 사진 보기, 가족 호출, 수면 기록, AI 사용량 확인까지. 일상의 작은 불편을 해결하는 한스트리의 앱과 도구를 골라 보세요.",
   canonical: "https://hanstree.com",
 };
 
@@ -24,7 +24,8 @@ const NASFINDER: SiteBrand = {
   name: "NASFINDER",
   koreanName: "나스파인더",
   icon: "/apps/nasfinder/icon.png",
-  appleIcon: "/apple-touch-icon.png",
+  // /apple-touch-icon.png은 Hanstree 심볼(검정 배경 잎 모양)이라 nasfinder.com에서는 NasFinder 앱 아이콘(정사각 PNG)을 그대로 씁니다.
+  appleIcon: "/apps/nasfinder/icon.png",
   title: "NasFinder — 내 저장공간을, 모든 기기에서",
   description: "NAS·클라우드·네트워크 장비와 기기 안의 파일을 한곳에서 보고 재생하는 NasFinder를 소개합니다.",
   canonical: "https://nasfinder.com",

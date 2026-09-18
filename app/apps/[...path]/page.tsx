@@ -144,19 +144,71 @@ function HeroAvailability({ app }: { app: NonNullable<ReturnType<typeof findApp>
 
   return (
     <div className="hero-availability">
+      <div className="hero-actions">
+        {hasDownload ? (
+          <AppDownloadCta className="button button-primary" platforms={app.platforms} />
+        ) : inviteUrl ? (
+          <a className="button button-primary" href={inviteUrl} target="_blank" rel="noreferrer">
+            TestFlight 참여 <span aria-hidden="true">↗</span>
+          </a>
+        ) : (
+          <Link className="button button-primary" href="#progress">
+            진행 상황 보기 <span aria-hidden="true">↓</span>
+          </Link>
+        )}
+        <Link className="button button-quiet" href="#guide">
+          사용 안내 <span aria-hidden="true">↓</span>
+        </Link>
+      </div>
+
       {testFlightPlatforms.length > 0 && (
         <div className={`hero-beta-card${inviteUrl ? " hero-beta-card-ready" : ""}`}>
           <div>
-            <span>{internalOnly ? "INTERNAL ONLY" : rejected ? "PUBLIC BETA · ACTION REQUIRED" : waitingForReview ? "PUBLIC BETA · IN REVIEW" : needsReviewAccount ? "PUBLIC BETA · REVIEW ACCESS" : inviteUrl ? "PUBLIC BETA" : "PUBLIC BETA · BUILD PREPARING"}</span>
-            <strong>{internalOnly ? "회사 내부 업무용으로 공개 테스트를 운영하지 않습니다." : rejected ? "Apple 심사에서 수정 요청이 있어 새 빌드가 필요합니다." : waitingForReview && inviteUrl ? "기존 공개 링크는 열려 있고, 최신 빌드는 Apple 심사를 기다리고 있습니다." : waitingForReview ? "Apple 공개 테스트 심사 중입니다." : needsReviewAccount ? "외부용 빌드는 준비됐고 심사용 계정을 등록하고 있습니다." : inviteUrl ? "신청서 없이 바로 테스트하세요." : "외부 테스트용 새 빌드를 준비하고 있습니다."}</strong>
+            <span>
+              {internalOnly
+                ? "내부 전용 테스트"
+                : rejected
+                  ? "공개 베타 · Apple 심사 수정 요청"
+                  : waitingForReview
+                    ? "공개 베타 · Apple 심사 대기 중"
+                    : needsReviewAccount
+                      ? "공개 베타 · 심사용 계정 등록"
+                      : inviteUrl
+                        ? "TestFlight 공개 베타"
+                        : "공개 베타 · 빌드 준비 중"}
+            </span>
+            <strong>
+              {internalOnly
+                ? "회사 내부 업무용으로 공개 테스트를 운영하지 않습니다."
+                : rejected
+                  ? "Apple 심사에서 수정 요청이 있어 새 빌드가 필요합니다."
+                  : waitingForReview && inviteUrl
+                    ? "기존 공개 링크는 열려 있고, 최신 빌드는 Apple 심사를 기다리고 있습니다."
+                    : waitingForReview
+                      ? "Apple 공개 테스트 심사 중입니다."
+                      : needsReviewAccount
+                        ? "외부용 빌드는 준비됐고 심사용 계정을 등록하고 있습니다."
+                        : inviteUrl
+                          ? "신청서 없이 바로 테스트에 참여할 수 있습니다."
+                          : "외부 테스트용 새 빌드를 준비하고 있습니다."}
+            </strong>
             <small>{testFlightPlatforms.map((platform) => platform.name).join(" · ")}</small>
           </div>
-          {inviteUrl ? <a href={inviteUrl}>{waitingForReview ? "기존 공개 링크 열기" : "TestFlight에서 참여"} <span aria-hidden="true">↗</span></a> : <span className="hero-beta-pending">{internalOnly ? "내부 전용" : rejected ? "새 빌드 준비 필요" : waitingForReview ? "심사 중" : needsReviewAccount ? "심사 계정 준비" : "빌드 준비"}</span>}
+          {inviteUrl ? (
+            <a href={inviteUrl} target="_blank" rel="noreferrer">
+              {waitingForReview ? "기존 공개 링크 열기" : "TestFlight에서 참여"} <span aria-hidden="true">↗</span>
+            </a>
+          ) : (
+            <span className="hero-beta-pending">
+              {internalOnly ? "내부 전용" : rejected ? "새 빌드 준비 필요" : waitingForReview ? "심사 중" : needsReviewAccount ? "심사 계정 준비" : "빌드 준비"}
+            </span>
+          )}
         </div>
       )}
 
-      <div className="hero-platforms" aria-label={`${app.name} 지원 플랫폼과 현재 제공 상태`}>
-        <div className="hero-platforms-heading"><strong>지원 기기</strong><span>현재 제공 상태</span></div>
+      <details className="hero-platforms">
+        <summary>지원 기기와 제공 상태 확인</summary>
+        <div className="hero-platforms-heading"><strong>지원 기기 및 플랫폼</strong><span>현재 제공 상태</span></div>
         {app.platforms.map((platform) => (
           <div className="hero-platform-row" key={platform.name}>
             <span className={`status-dot status-${platform.status.replace(" ", "-")}`} />
@@ -165,12 +217,7 @@ function HeroAvailability({ app }: { app: NonNullable<ReturnType<typeof findApp>
             <small>{platform.detail}</small>
           </div>
         ))}
-      </div>
-
-      <div className="hero-actions">
-        {hasDownload ? <AppDownloadCta className="button button-primary" platforms={app.platforms} /> : !inviteUrl && <Link className="button button-primary" href="#progress">진행 상황 보기 <span aria-hidden="true">↓</span></Link>}
-        <Link className="button button-quiet" href="#guide">사용법 보기</Link>
-      </div>
+      </details>
     </div>
   );
 }
@@ -216,7 +263,7 @@ export default async function AppRoute({ params }: RouteProps) {
       <SiteHeader currentPageName={app.name} />
       <section className="app-hero shell">
         <div className="app-hero-copy reveal">
-          <Link className="breadcrumb" href={family ? `/#family-${family.id}` : "/#apps"}>← 모든 앱{family && <> · <span>{family.name}</span></>}</Link>
+          <Link className="breadcrumb" href={family ? `/#family-${family.id}` : "/#apps"}>← 모든 제품{family && <> · <span>{family.name}</span></>}</Link>
           <div className="app-ident"><AppIcon app={app} /><span>{app.english}</span></div>
           <p className="eyebrow">{app.eyebrow}</p>
           <h1>{app.tagline}</h1>
@@ -229,20 +276,18 @@ export default async function AppRoute({ params }: RouteProps) {
       <nav className="section-nav" aria-label={`${app.name} 페이지 내부 메뉴`}>
         <div className="shell">
           {app.slug === "nasfinder" ? (
-            <><Link href="#spec">사양</Link><Link href="#motion-bridge">움직이는 사진</Link><Link href="#why-nasfinder">왜 나스파인더</Link><Link href="#features">특징</Link><Link href="#screens">화면</Link><Link href="#download">설치</Link></>
+            <><Link href="#motion-bridge">움직이는 사진</Link><Link href="#why-nasfinder">왜 나스파인더</Link><Link href="#features">특징</Link><Link href="#screens">화면</Link><Link href="#download">설치</Link><Link href="#spec">사양</Link></>
           ) : (
-            <><Link href="#spec">사양</Link><Link href="#product-campaign">왜 {app.name}</Link><Link href="#features">특징</Link><Link href="#screens">화면</Link>{app.matchup && <Link href="#matchup">매치업</Link>}<Link href="#progress">진행 상황</Link><Link href="#guide">설명서</Link><Link href="#download">다운로드</Link></>
+            <><Link href="#product-campaign">왜 {app.name}</Link><Link href="#features">특징</Link><Link href="#screens">화면</Link>{app.matchup && <Link href="#matchup">매치업</Link>}<Link href="#guide">사용 방법</Link><Link href="#download">다운로드</Link><Link href="#spec">사양</Link></>
           )}
         </div>
       </nav>
-
-      <ProductSpec app={app} />
 
       {app.slug === "nasfinder" && <><NasFinderMotionBridge /><NasFinderPromotion /></>}
       {campaignSlugs.has(app.slug) ? <ProductPromotion app={app} /> : app.slug !== "nasfinder" && <ProductSpotlight app={app} />}
 
       <section className="feature-section shell" id="features">
-        <div className="section-heading reveal"><div><p className="eyebrow">FEATURES</p><h2>복잡함은 덜고,<br />쓰임은 선명하게.</h2></div></div>
+        <div className="section-heading reveal"><div><p className="eyebrow">주요 특징</p><h2>복잡함은 덜고,<br />쓰임은 선명하게.</h2></div></div>
         <div className="feature-grid">
           {app.features.map((feature, index) => {
             const icon = featureIconSource(app, feature, index);
@@ -254,7 +299,7 @@ export default async function AppRoute({ params }: RouteProps) {
 
       <section className="screens-section" id="screens">
         <div className="shell">
-          <div className="section-heading reveal"><div><p className="eyebrow">IN THE PRODUCT</p><h2>화면으로 먼저 만나보세요.</h2></div><p>실제 공개 자료를 우선 사용하고, 개인 정보가 담긴 화면은 데모 데이터로 교체합니다.</p></div>
+          <div className="section-heading reveal"><div><p className="eyebrow">{app.screenshots?.length ? "제품 화면" : "사용 장면"}</p><h2>눈으로 먼저 만나보세요.</h2></div><p>{app.screenshots?.length ? "제품의 화면과 주요 사용 흐름을 살펴보세요." : "제품의 쓰임을 표현한 이미지와 사용 예시입니다."}</p></div>
           {app.screenshots && app.screenshots.length > 0 ? (
             <div className="screenshot-rail">{app.screenshots.map((screen) => {
               const dimensions = app.slug === "nasfinder"
@@ -273,17 +318,42 @@ export default async function AppRoute({ params }: RouteProps) {
               return <figure className={`screen-${screen.layout ?? "phone"}`} key={screen.src}><div className="screenshot-media"><Image src={screen.src} alt={screen.alt} width={dimensions.width} height={dimensions.height} sizes={screen.layout ? "(max-width: 640px) 92vw, 1080px" : "(max-width: 640px) 78vw, 360px"} unoptimized /></div><figcaption>{screen.alt}</figcaption></figure>;
             })}</div>
           ) : (
-            <div className="single-artwork reveal"><AppArtwork app={app} mode="system" /><p>{app.slug === "hanai" ? "사대문은 외부 연결의 관문이 되고, 한양도성은 개인 데이터의 경계가 됩니다." : "대표 화면 이미지는 현재 제품 상태에 맞춰 계속 보강합니다."}</p></div>
+            <div className="single-artwork reveal"><AppArtwork app={app} mode="system" /><p>{app.slug === "hanai" ? "사대문은 외부 연결의 관문이 되고, 한양도성은 개인 데이터의 경계가 됩니다." : "제품의 핵심 기능을 표현한 대표 이미지입니다."}</p></div>
           )}
         </div>
       </section>
+
+      <section className="guide-section" id="guide">
+        <div className="shell guide-layout">
+          <div className="guide-sticky reveal"><p className="eyebrow">빠른 시작 안내</p><h2>처음부터<br />차근차근.</h2><p>더 자세한 설명과 문제 해결 문서는 제품 개발 진행에 맞춰 계속 추가됩니다.</p></div>
+          <div className="guide-steps">
+            {app.guide.map((step, index) => <article className="guide-step reveal" key={step.title}><span>{String(index + 1).padStart(2, "0")}</span><div><AdvantageVisual variant={pickContentVisual(`${step.title} ${step.body}`, index)} /><h3>{step.title}</h3><p>{step.body}</p></div></article>)}
+          </div>
+        </div>
+      </section>
+
+      <section className="download-section shell reveal" id="download">
+        <div><p className="eyebrow">다운로드 및 설치</p><h2>{app.name}, 지금 시작해 보세요.</h2><p>플랫폼별 현재 상태와 공식 주소·배포 파일을 구분해 표시합니다. 별도 도구는 용도까지 확인한 뒤 내려받을 수 있습니다.</p></div>
+        <div className="download-list">
+          {app.platforms.map((platform) => {
+            const testFlight = platform.status === "TestFlight" ? testFlightStatus(app.slug) : null;
+            const inviteUrl = testFlight?.inviteAvailable !== false ? testFlight?.inviteUrl ?? null : null;
+            const pendingCopy = testFlight?.publicBetaState === "internalOnly" ? "회사 내부 전용" : testFlight?.publicBetaState === "rejected" ? "Apple 심사 수정 요청 · 새 빌드 준비 필요" : testFlight?.publicBetaState === "waitingForReview" ? "새 빌드는 Apple 심사 대기 중" : testFlight?.publicBetaState === "needsReviewAccount" ? "Apple 심사용 계정 준비 중" : "외부 테스트용 빌드 준비 중";
+            const qrUrl = platform.url ? downloadQrUrl(platform.url) : inviteUrl;
+            const qrLabel = platform.url ? platform.downloadLabel ?? "공식 다운로드" : "TestFlight 외부 테스터 참여";
+            return <article className={qrUrl ? "download-item-with-qr" : undefined} key={platform.name}><div className="download-platform-copy"><div className="download-platform-head"><AdvantageVisual variant={platformVisual(platform.name)} /><span className={`status-dot status-${platform.status.replace(" ", "-")}`} /><h3>{platform.name}</h3></div><p>{platform.detail} · {platform.status}</p>{platform.url ? <a href={platform.url}>{platform.downloadLabel ?? "다운로드 페이지"} <span aria-hidden="true">↗</span></a> : inviteUrl ? <a className="testflight-apply-download" href={inviteUrl}>{testFlight?.publicBetaState === "waitingForReview" ? "기존 TestFlight 공개 링크" : "TestFlight 바로 참여"} <span aria-hidden="true">↗</span></a> : <span>{platform.status === "TestFlight" ? pendingCopy : platform.availabilityNote ?? "공개 링크 준비 중"}</span>}</div>{qrUrl && <DownloadQrCode href={qrUrl} label={qrLabel} />}</article>;
+          })}
+        </div>
+      </section>
+
+      <ProductSpec app={app} />
 
       {app.matchup && (
         <section className="matchup-section" id="matchup">
           <div className="shell">
             <div className="section-heading reveal">
-              <div><p className="eyebrow">DETERMINISTIC UI MATCHUP</p><h2>느낌이 아니라,<br />재현 가능한 화면으로.</h2></div>
-              <p>한국어·서울 시간대·고정 시각·애니메이션 비활성 조건에서 iOS와 Android를 같은 의미 ID로 캡처하고 비교합니다.</p>
+              <div><p className="eyebrow">기기별 사용 경험</p><h2>iPhone에서도,<br />Android에서도 익숙하게.</h2></div>
+              <p>같은 기능을 두 기기에서 편하게 쓸 수 있도록 화면과 사용 흐름을 비교하며 다듬습니다.</p>
             </div>
             <div className="matchup-layout">
               <div className="matchup-metrics reveal">
@@ -300,39 +370,16 @@ export default async function AppRoute({ params }: RouteProps) {
       )}
 
       <section className="progress-section shell" id="progress">
-        <div className="section-heading reveal"><div><p className="eyebrow">BUILDING IN PUBLIC</p><h2>현재 진행 상황</h2></div><p>{app.slug === "alfred-navermap" ? "마지막 내용 확인: 2026년 9월 9일." : app.slug === "trackpadguard" ? "숫자보다 실제 상태를 보여드립니다. 마지막 내용 확인: 2026년 9월 3일." : app.slug === "alfred-ai-search" ? "숫자보다 실제 상태를 보여드립니다. 마지막 내용 확인: 2026년 8월 31일." : app.slug === "hanai" || app.slug === "hanclip" ? "숫자보다 실제 상태를 보여드립니다. 마지막 내용 확인: 2026년 9월 7일." : "숫자보다 실제 상태를 보여드립니다. 마지막 내용 확인: 2026년 8월 25일."}</p></div>
+        <div className="section-heading reveal"><div><p className="eyebrow">진행 상황</p><h2>현재 진행 상황</h2></div><p>{app.slug === "alfred-navermap" ? "마지막 내용 확인: 2026년 9월 9일." : app.slug === "trackpadguard" ? "숫자보다 실제 상태를 보여드립니다. 마지막 내용 확인: 2026년 9월 3일." : app.slug === "alfred-ai-search" ? "숫자보다 실제 상태를 보여드립니다. 마지막 내용 확인: 2026년 8월 31일." : app.slug === "hanai" || app.slug === "hanclip" ? "숫자보다 실제 상태를 보여드립니다. 마지막 내용 확인: 2026년 9월 7일." : "숫자보다 실제 상태를 보여드립니다. 마지막 내용 확인: 2026년 8월 25일."}</p></div>
         <div className="progress-list">
           {app.progress.map((item) => <article className="progress-item reveal" key={item.title}><div className={`progress-marker marker-${item.state}`}><AdvantageVisual variant={progressStateVisual[item.state]} /></div><div><p>{item.state === "done" ? "구현됨" : item.state === "active" ? "검증 중" : "다음 단계"}</p><h3>{item.title}</h3><span>{item.body}</span></div></article>)}
         </div>
       </section>
 
-      <section className="guide-section" id="guide">
-        <div className="shell guide-layout">
-          <div className="guide-sticky reveal"><p className="eyebrow">QUICK GUIDE</p><h2>처음부터<br />차근차근.</h2><p>더 자세한 설명과 문제 해결 문서는 제품 개발 진행에 맞춰 계속 추가됩니다.</p></div>
-          <div className="guide-steps">
-            {app.guide.map((step, index) => <article className="guide-step reveal" key={step.title}><span>{String(index + 1).padStart(2, "0")}</span><div><AdvantageVisual variant={pickContentVisual(`${step.title} ${step.body}`, index)} /><h3>{step.title}</h3><p>{step.body}</p></div></article>)}
-          </div>
-        </div>
-      </section>
-
-      <section className="download-section shell reveal" id="download">
-        <div><p className="eyebrow">OPEN, DOWNLOAD & TEST</p><h2>공개된 제품과 전용 도구.</h2><p>플랫폼별 현재 상태와 공식 주소·배포 파일을 구분해 표시합니다. 별도 도구는 용도까지 확인한 뒤 내려받을 수 있습니다.</p></div>
-        <div className="download-list">
-          {app.platforms.map((platform) => {
-            const testFlight = platform.status === "TestFlight" ? testFlightStatus(app.slug) : null;
-            const inviteUrl = testFlight?.inviteAvailable !== false ? testFlight?.inviteUrl ?? null : null;
-            const pendingCopy = testFlight?.publicBetaState === "internalOnly" ? "회사 내부 전용" : testFlight?.publicBetaState === "rejected" ? "Apple 심사 수정 요청 · 새 빌드 준비 필요" : testFlight?.publicBetaState === "waitingForReview" ? "새 빌드는 Apple 심사 대기 중" : testFlight?.publicBetaState === "needsReviewAccount" ? "Apple 심사용 계정 준비 중" : "외부 테스트용 빌드 준비 중";
-            const qrUrl = platform.url ? downloadQrUrl(platform.url) : inviteUrl;
-            const qrLabel = platform.url ? platform.downloadLabel ?? "공식 다운로드" : "TestFlight 외부 테스터 참여";
-            return <article className={qrUrl ? "download-item-with-qr" : undefined} key={platform.name}><div className="download-platform-copy"><div className="download-platform-head"><AdvantageVisual variant={platformVisual(platform.name)} /><span className={`status-dot status-${platform.status.replace(" ", "-")}`} /><h3>{platform.name}</h3></div><p>{platform.detail} · {platform.status}</p>{platform.url ? <a href={platform.url}>{platform.downloadLabel ?? "다운로드 페이지"} <span aria-hidden="true">↗</span></a> : inviteUrl ? <a className="testflight-apply-download" href={inviteUrl}>{testFlight?.publicBetaState === "waitingForReview" ? "기존 TestFlight 공개 링크" : "TestFlight 바로 참여"} <span aria-hidden="true">↗</span></a> : <span>{platform.status === "TestFlight" ? pendingCopy : platform.availabilityNote ?? "공개 링크 준비 중"}</span>}</div>{qrUrl && <DownloadQrCode href={qrUrl} label={qrLabel} />}</article>;
-          })}
-        </div>
-      </section>
-
       <section className="support-cards shell reveal">
-        <Link href={`/apps/${app.slug}/privacy`}><span>PRIVACY</span><AdvantageVisual variant="shield-safe" /><h3>개인정보처리방침</h3><p>앱이 다루는 데이터와 보관·삭제 방식을 확인합니다.</p><b>→</b></Link>
-        <Link href={`/apps/${app.slug}/support`}><span>SUPPORT</span><AdvantageVisual variant="life-ring" /><h3>지원과 문의</h3><p>문제 해결과 오류 제보에 필요한 내용을 안내합니다.</p><b>→</b></Link>
-        <Link href={`/apps/${app.slug}/terms`}><span>TERMS</span><AdvantageVisual variant="doc-scroll" /><h3>이용약관</h3><p>제품 이용 조건과 책임 범위를 확인합니다.</p><b>→</b></Link>
+        <Link href={`/apps/${app.slug}/privacy`}><span>개인정보 보호</span><AdvantageVisual variant="shield-safe" /><h3>개인정보처리방침</h3><p>앱이 다루는 데이터와 보관·삭제 방식을 확인합니다.</p><b>→</b></Link>
+        <Link href={`/apps/${app.slug}/support`}><span>지원과 문의</span><AdvantageVisual variant="life-ring" /><h3>지원과 문의</h3><p>문제 해결과 오류 제보에 필요한 내용을 안내합니다.</p><b>→</b></Link>
+        <Link href={`/apps/${app.slug}/terms`}><span>이용약관</span><AdvantageVisual variant="doc-scroll" /><h3>이용약관</h3><p>제품 이용 조건과 책임 범위를 확인합니다.</p><b>→</b></Link>
       </section>
       <RelatedProducts app={app} />
       <SiteFooter currentPageName={app.name} />
@@ -366,7 +413,7 @@ function ProductSpec({ app }: { app: NonNullable<ReturnType<typeof findApp>> }) 
     <section className="spec-section shell" id="spec" aria-labelledby="spec-title">
       <div className="spec-panel reveal">
         <div className="spec-head">
-          <div><p className="eyebrow">AT A GLANCE</p><h2 id="spec-title">{app.name} 제품 사양</h2></div>
+          <div><p className="eyebrow">한눈에 보는 사양</p><h2 id="spec-title">{app.name} 제품 사양</h2></div>
           <p>아래 항목은 이 페이지의 상태 표시와 같은 자료를 요약한 것입니다.</p>
         </div>
         <dl className="spec-grid">
@@ -438,7 +485,7 @@ function RelatedProducts({ app }: { app: NonNullable<ReturnType<typeof findApp>>
     <section className="related-section shell reveal" aria-labelledby="related-products-title">
       <div className="section-heading">
         <div>
-          <p className="eyebrow">{family ? `${family.english} · KEEP EXPLORING` : "KEEP EXPLORING"}</p>
+          <p className="eyebrow">{family ? `${family.english} · 함께 둘러보기` : "함께 둘러보기"}</p>
           <h2 id="related-products-title">{family ? <>{family.name} 계열의<br />다른 제품.</> : <>다른 제품도<br />살펴보세요.</>}</h2>
         </div>
         <p>{family ? family.summary : "한스트리가 만든 제품 인덱스로 이어집니다."}{family && <> · <Link className="inline-link" href={`/#family-${family.id}`}>계열 전체 보기</Link></>}</p>
@@ -471,7 +518,7 @@ function ProductSpotlight({ app }: { app: NonNullable<ReturnType<typeof findApp>
           <p className="eyebrow">MADE FOR A REAL MOMENT</p>
           <h2>{app.name}.<br /><span>쓰는 이유가 먼저.</span></h2>
           <p>{app.summary}</p>
-          <div className="product-promo-actions"><Link className="button product-promo-primary" href="#screens">실제 화면 보기 <span aria-hidden="true">↓</span></Link><Link className="button product-promo-secondary" href="#download">지금 만나는 방법 <span aria-hidden="true">→</span></Link></div>
+          <div className="product-promo-actions"><Link className="button product-promo-primary" href="#screens">사용 장면 보기 <span aria-hidden="true">↓</span></Link><Link className="button product-promo-secondary" href="#download">지금 만나는 방법 <span aria-hidden="true">→</span></Link></div>
         </div>
         <div className="product-promo-image product-promo-artwork reveal"><AppArtwork app={app} mode="spotlight" /><div className="product-promo-image-label"><span>{app.eyebrow}</span><strong>{app.slug === "hanai" ? "기억과 지식이 모이는 규장각" : app.tagline}</strong></div></div>
         <div className="product-promo-facts reveal" aria-label={`${app.name}이 주는 핵심 가치`}>
@@ -481,7 +528,7 @@ function ProductSpotlight({ app }: { app: NonNullable<ReturnType<typeof findApp>
       <div className="shell product-advantages">
         <div className="product-section-intro reveal"><p className="eyebrow">WHY IT MATTERS</p><h2>기능보다 먼저.<br /><span>달라지는 일.</span></h2><p>{app.tagline} 실제 사용에서 바로 느낄 수 있는 핵심 이점을 먼저 소개합니다.</p></div>
         <div className="product-advantage-grid">
-          {app.features.slice(0, 4).map((feature, index) => <article className="product-advantage-card reveal" key={feature.title}><div><span>{String(index + 1).padStart(2, "0")}</span><small>{app.english.toUpperCase()}</small></div><Image className="campaign-feature-icon" src={featureIconSource(app, feature, index) ?? app.icon ?? "/icon.png"} alt={`${feature.title} 기능 아이콘`} width={72} height={72} unoptimized /><h3>{feature.title}</h3><p>{feature.body}</p></article>)}
+          {app.features.slice(0, 4).map((feature, index) => <article className="product-advantage-card reveal" key={feature.title}><div><span>{String(index + 1).padStart(2, "0")}</span><small>{app.english.toUpperCase()}</small></div><Image className="campaign-feature-icon" src={featureIconSource(app, feature, index) ?? app.icon ?? "/icon-192.png"} alt={`${feature.title} 기능 아이콘`} width={72} height={72} unoptimized /><h3>{feature.title}</h3><p>{feature.body}</p></article>)}
         </div>
       </div>
     </section>
@@ -715,7 +762,7 @@ function ProductPromotion({ app }: { app: NonNullable<ReturnType<typeof findApp>
           {campaign.advantages.map(([number, kicker, title, body, benefit], index) => (
             <article className="product-advantage-card reveal" key={number}>
               <div><span>{number}</span><small>{kicker}</small></div>
-              <Image className="campaign-feature-icon" src={featureIconSource(app, app.features[index] ?? app.features[0], index) ?? app.icon ?? "/icon.png"} alt={`${title} 기능 아이콘`} width={72} height={72} unoptimized />
+              <Image className="campaign-feature-icon" src={featureIconSource(app, app.features[index] ?? app.features[0], index) ?? app.icon ?? "/icon-192.png"} alt={`${title} 기능 아이콘`} width={72} height={72} unoptimized />
               <h3>{title}</h3><p>{body}</p><strong>{benefit}</strong>
             </article>
           ))}
@@ -971,7 +1018,7 @@ function InfoPage({ app, section }: { app: NonNullable<ReturnType<typeof findApp
 
         {isPrivacy && <>
           <section className="privacy-at-glance" aria-labelledby="privacy-summary-title">
-            <p className="eyebrow">PRIVACY AT A GLANCE</p>
+            <p className="eyebrow">개인정보 처리 요약</p>
             <h2 id="privacy-summary-title">먼저, 핵심만 쉽게 알려드립니다.</h2>
             <div>
               <article><span>01</span><AdvantageVisual variant="check-source" /><h3>무엇을</h3><p>사용자가 기능을 위해 선택하거나 연결한 정보만 다룹니다.</p></article>

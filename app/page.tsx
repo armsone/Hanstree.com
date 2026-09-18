@@ -46,8 +46,9 @@ const homeKoreanNames: Record<string, string> = {
 
 export async function generateMetadata(): Promise<Metadata> {
   const brand = await getSiteBrand();
+  const shareImage = brand.name === "NASFINDER" ? brand.icon : "/og-catalog-20260918.png";
   return {
-  description: brand.name === "NASFINDER" ? "나스파인더의 기능과 지원 플랫폼, 최신 설치 정보를 한곳에서 확인하세요." : "한스트리가 직접 만든 앱, 디지털 제품과 창작 공간을 한눈에 살펴보는 결과물 인덱스입니다.",
+  description: brand.name === "NASFINDER" ? "나스파인더의 기능과 지원 플랫폼, 최신 설치 정보를 한곳에서 확인하세요." : "NAS 속 사진 보기, 가족 호출, 밤새 수면 기록, AI 사용량 확인까지. 한스트리가 직접 만들고 다듬는 앱과 도구를 한곳에서 고르고 바로 받아 보세요.",
   alternates: { canonical: brand.canonical },
   openGraph: {
     type: "website",
@@ -56,7 +57,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: brand.title,
     description: brand.description,
     url: brand.canonical,
-    images: [{ url: "/og.png", width: 1731, height: 909, alt: "공간과 디지털 제품을 함께 만드는 Hanstree" }],
+    images: [{ url: shareImage, width: brand.name === "NASFINDER" ? 1024 : 1727, height: brand.name === "NASFINDER" ? 1024 : 910, alt: `${brand.koreanName}의 앱과 도구` }],
   },
   };
 }
@@ -134,24 +135,24 @@ export default async function Home() {
         <div className="works-index-intro">
           <div className="hero-intro-copy">
             <p className="eyebrow">{brand.name} · INDEPENDENT MAKER</p>
-            <h1>쓸모 있는 것을<br /><span>정성껏 만듭니다.</span></h1>
+            <h1>일상의 작은 불편,<br /><span>마음에 드는 도구 하나로.</span></h1>
             <p className="hero-lead">
-              일상의 작은 불편에서 시작한 앱과 디지털 도구, 좋아하는 것을 담은 공간까지. 직접 만들고 꾸준히 다듬는 한스트리의 작업을 만나보세요.
+              NAS 속 사진을 폰에서 바로 열고, 가족을 버튼 하나로 부르고, 밤새 잠소리를 기록하고. 일상의 작은 불편에서 시작해 직접 쓰며 다듬은 한스트리의 앱과 도구를, 지금 바로 받아 써 보세요.
             </p>
             <div className="hero-editorial-actions">
               <a className="editorial-btn editorial-btn-primary" href="#apps">
-                {apps.length}개 제품 둘러보기 <span aria-hidden="true">↓</span>
+                제품 카탈로그 보기 <span aria-hidden="true">↓</span>
               </a>
               <a className="editorial-btn editorial-btn-secondary" href="#contact">
-                메이커 이야기 <span aria-hidden="true">→</span>
+                만든 사람 이야기 <span aria-hidden="true">→</span>
               </a>
               <a className="editorial-btn editorial-btn-ghost" href="#works-index">
-                전체 색인 <span aria-hidden="true">↓</span>
+                전체 제품 한눈에 <span aria-hidden="true">↓</span>
               </a>
             </div>
           </div>
 
-          <div className="hero-editorial-feature" aria-label="한스트리 대표 작업 선별">
+          <div className="hero-editorial-feature" aria-label="지금 눈여겨볼 제품과 공간">
             <Link className="editorial-feature-main" href="/space/hanstree" aria-label="한스트리 스튜디오 자세히 보기">
               <div className="editorial-feature-image-wrap">
                 <Image
@@ -223,13 +224,13 @@ export default async function Home() {
           </div>
         </div>
 
-        <div className="hero-product-wall works-index-wall" id="works-index" aria-label="한스트리가 직접 만든 결과물 전체">
+        <div className="hero-product-wall works-index-wall" id="works-index" aria-label="한스트리의 모든 제품과 공간">
           <div className="hero-product-wall-heading">
             <div>
-              <p>THE COMPLETE INDEX</p>
-              <h2>{apps.length}개 제품, 그리고 한스트리의 공간과 기록</h2>
+              <p>THE FULL CATALOGUE</p>
+              <h2>모든 제품과 공간을, 한 화면에서 고르세요.</h2>
             </div>
-            <p className="works-wall-sub">아이콘을 누르면 각 제품과 공간의 상세 소개로 바로 이동합니다.</p>
+            <p className="works-wall-sub">아이콘을 누르면 각 제품의 소개와 받는 방법으로 바로 이동합니다.</p>
           </div>
           <div className="hero-product-grid" role="list">
             <Link className="hero-product hero-product-space" href="/space/hanstree" role="listitem" aria-label="한스트리 스튜디오 자세히 보기">
@@ -258,8 +259,8 @@ export default async function Home() {
 
       <section className="signal-bar" aria-label="사이트 요약">
         <div className="shell signal-grid">
-          <p><strong>{String(workCount).padStart(2, "0")}</strong><span>현재 소개하는 결과물</span></p>
-          <p><strong>08</strong><span>iPhone · iPad · macOS · Android · Google TV · Web · NasOS · Windows (커밍)</span></p>
+          <p><strong>{String(workCount).padStart(2, "0")}</strong><span>지금 만날 수 있는 결과물</span></p>
+          <p><strong>08</strong><span>iPhone · iPad · macOS · Android · Google TV · Web · NasOS · Windows</span></p>
           <p><strong>01</strong><span>한 사람의 꾸준한 기록</span></p>
         </div>
       </section>
@@ -268,11 +269,11 @@ export default async function Home() {
         <div className="section-heading reveal">
           <div>
             <p className="eyebrow">THE APPS & TOOLS</p>
-            <h2>일상의 문제를 해결하는 제품들</h2>
+            <h2>오늘의 불편 하나에, 앱 하나.</h2>
           </div>
           <p>
             직접 쓰려고 만들었기에 더 꼼꼼히 챙겼습니다.
-            핵심 쓰임새와 실제 화면을 먼저 확인하고, 지원 플랫폼과 배포 상태까지 한눈에 이어집니다.
+            제품마다 한 줄 약속과 대표 이미지를 먼저 보고, 지원 기기와 받는 방법까지 바로 이어집니다.
           </p>
         </div>
 
@@ -322,10 +323,10 @@ export default async function Home() {
                       </div>
                       <p className="app-tagline">{app.tagline}</p>
 
-                      <Link className="app-row-representative" href={`/apps/${app.slug}`} aria-label={`${app.name} 상세 화면 보기`}>
+                      <Link className="app-row-representative" href={`/apps/${app.slug}`} aria-label={`${app.name} 제품 자세히 보기`}>
                         <Image
                           src={app.slug === "ccmb" ? "/apps/ccmb/ccmb-dashboard-private.png" : appCardImage(app)}
-                          alt={`${app.name} 대표 화면`}
+                          alt={`${app.name} 대표 이미지`}
                           width={1280}
                           height={853}
                           sizes="(max-width: 600px) 100vw, (max-width: 920px) 50vw, 560px"
@@ -362,7 +363,7 @@ export default async function Home() {
         <div className="shell">
           <div className="section-heading reveal">
             <div><p className="eyebrow">EARLY ACCESS</p><h2 className="section-brand-title"><img src="/brands/testflight.jpg" alt="TestFlight" /><span>새로운 앱을 가장 먼저</span></h2></div>
-            <p>TestFlight에서 지금 체험할 수 있는 앱과 남은 기간을 함께 보여드립니다. 마음에 드는 앱의 다음 모습을 먼저 만나보세요.</p>
+            <p>정식 공개 전 다음 버전을 iPhone·iPad에서 먼저 써 볼 수 있습니다. 지금 체험할 수 있는 앱과 남은 기간을 함께 보여드립니다.</p>
           </div>
           <TestFlightTracker builds={testFlightBuilds} />
         </div>
@@ -382,7 +383,7 @@ export default async function Home() {
         <div className="shell">
           <div className="section-heading reveal">
             <div><p className="eyebrow">READY FOR ANDROID</p><h2 className="section-brand-title"><span className="android-title-icon"><img src="/brands/android.svg" alt="Android" /></span><span>Android에서 바로 시작</span></h2></div>
-            <p>앱 아이콘으로 원하는 제품을 고르고 공식 최신판을 바로 받으세요. 출처와 APK 정보는 홈페이지가 확인한 경우에만 표시합니다.</p>
+            <p>스토어를 거치지 않고, 원하는 제품의 아이콘을 골라 공식 최신판을 바로 받으세요. 출처와 APK 정보는 홈페이지가 확인한 경우에만 표시합니다.</p>
           </div>
           <div className="install-update-note reveal" style={{ marginBottom: 36 }}>
             <strong>앱 안 업데이트를 준비하고 있습니다</strong>
@@ -430,7 +431,7 @@ export default async function Home() {
       <section className="contact-band shell reveal" id="contact">
         <div>
           <p className="eyebrow">TALK WITH THE MAKER</p>
-          <h2>써보고, 이야기해 주세요.</h2>
+          <h2>마음에 드는 걸 써보고, 이야기해 주세요.</h2>
           <p className="maker-title"><strong>한병기</strong><span>바이브 코더</span></p>
           <p>저는 개발자가 아닙니다. 그래서 개발자보다 조금 낮춰 부르는 ‘코더’를 제 방식대로 붙였습니다. 거기에 바이브를 더해, 만들고 싶은 생각을 실제 앱으로 완성해 갑니다.</p>
           <p>버그 제보와 기능 제안은 공개된 GitHub 공간에서 함께 확인할 수 있습니다.</p>

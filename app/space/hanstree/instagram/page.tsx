@@ -65,7 +65,7 @@ export default async function MeoktamjaInstagramPage() {
 
       <section className="instagram-work-hero shell">
         <div className="instagram-work-copy reveal">
-          <Link className="breadcrumb" href="/space/hanstree">← 한스트리 스튜디오</Link>
+          <Link className="breadcrumb" href="/space/hanstree"><span aria-hidden="true">← </span>한스트리 스튜디오</Link>
           <p className="eyebrow">WORK 21 · INSTAGRAM</p>
           <h1>먹탐자</h1>
           <p className="instagram-work-english">Instagram · @armsone</p>
@@ -88,7 +88,8 @@ export default async function MeoktamjaInstagramPage() {
           <div className="instagram-embed-grid">
             {instagram.live ? instagram.posts.map((post, index) => (
               <article className="instagram-api-card" key={post.id}>
-                <img src={post.thumbnail_url || post.media_url} alt={post.caption?.trim() || `먹탐자 Instagram 게시물 ${index + 1}`} loading="lazy" />
+                {/* 캡션은 아래 strong에 그대로 보이므로 alt에서 반복하지 않습니다. */}
+                <img src={post.thumbnail_url || post.media_url} alt={`먹탐자 Instagram 게시물 ${index + 1}${post.media_type === "VIDEO" ? " (영상 썸네일)" : ""}`} loading="lazy" decoding="async" />
                 <span className="instagram-api-card-copy">
                   <small>{post.timestamp ? new Intl.DateTimeFormat("ko-KR", { dateStyle: "medium" }).format(new Date(post.timestamp)) : "INSTAGRAM"}</small>
                   <strong>{post.caption?.trim() || "먹탐자의 새로운 기록"}</strong>
