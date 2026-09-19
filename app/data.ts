@@ -90,7 +90,7 @@ const appCatalog: AppData[] = [
     theme: "violet",
     icon: "/apps/hanstree-workroom/icon-019.png",
     heroImage: "/apps/hanstree-workroom/icon-019.png",
-    screenshots: [{ src: "/apps/hanstree-workroom/screens/login-019.png", alt: "Hanstree-AI 0.1.9 실제 NAS 로그인 화면 · 로그인 전 상태", layout: "phone" }],
+    screenshots: [{ src: "/apps/hanstree-workroom/screens/login-019.png", alt: "Hanstree-AI 0.2.0 실제 NAS 로그인 화면 · 로그인 전 상태", layout: "phone" }],
     artwork: "bridge",
     platforms: [
       {
