@@ -40,7 +40,7 @@ export async function SiteHeader({ currentPageName }: ChromeProps = {}) {
             <div className="nav-space-panel">
               <Link href="/space/hanstree">한스트리 스튜디오</Link>
               <Link href="/space/hanstree/instagram">먹탐자 Instagram</Link>
-              <Link href={workroomHref}>한스트리 워크룸</Link>
+              <Link href={workroomHref}>Hanstree-AI</Link>
             </div>
           </details>
           <Link href={appsHref}>제품</Link>
@@ -55,7 +55,7 @@ export async function SiteHeader({ currentPageName }: ChromeProps = {}) {
             <Link href={appsHref}>{app ? "제품 · 같은 계열" : "제품"}</Link>
             <Link href="/space/hanstree">한스트리 스튜디오</Link>
             <Link href="/space/hanstree/instagram">먹탐자 Instagram</Link>
-            <Link href={workroomHref}>한스트리 워크룸</Link>
+            <Link href={workroomHref}>Hanstree-AI</Link>
             <Link href="/#contact">이야기</Link>
             {showHeaderSupport && <Link href={supportHref}>{app ? `${app.name} 지원` : supportLabel}</Link>}
           </div>
@@ -96,7 +96,7 @@ export async function SiteFooter({ currentPageName }: ChromeProps = {}) {
             <ul aria-labelledby="footer-spaces">
               <li><Link href="/space/hanstree">한스트리 스튜디오</Link></li>
               <li><Link href="/space/hanstree/instagram">먹탐자 Instagram</Link></li>
-              <li><Link href={workroomHref}>한스트리 워크룸</Link></li>
+              <li><Link href={workroomHref}>Hanstree-AI</Link></li>
               <li><Link href="/#contact">이야기와 문의</Link></li>
               <li><Link href="/#records">사이트 기록</Link></li>
             </ul>

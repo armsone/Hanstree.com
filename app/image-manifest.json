@@ -467,6 +467,18 @@
     "height": 2622,
     "srcSet": "/optimized/8a4b284313de9315-128.webp 128w, /optimized/8a4b284313de9315-640.webp 640w, /optimized/8a4b284313de9315-1206.webp 1206w"
   },
+  "/apps/hanstree-workroom/icon-019.png": {
+    "src": "/optimized/b5881590315fff9c-1254.webp",
+    "width": 1254,
+    "height": 1254,
+    "srcSet": "/optimized/b5881590315fff9c-128.webp 128w, /optimized/b5881590315fff9c-640.webp 640w, /optimized/b5881590315fff9c-1254.webp 1254w"
+  },
+  "/apps/hanstree-workroom/screens/login-019.png": {
+    "src": "/apps/hanstree-workroom/screens/login-019.png",
+    "width": 518,
+    "height": 1323,
+    "srcSet": "/optimized/1a9882fb6cebb0de-128.webp 128w, /apps/hanstree-workroom/screens/login-019.png 518w"
+  },
   "/apps/htoms-brief/home-card.webp": {
     "src": "/apps/htoms-brief/home-card.webp",
     "width": 1280,
