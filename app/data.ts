@@ -39,48 +39,6 @@ export type AppData = {
 // 제품 사실은 아래 카탈로그 리터럴에만 둡니다. 공개 순서는 파일 끝의 productFamilies 순서로 정렬해 내보냅니다.
 const appCatalog: AppData[] = [
   {
-    slug: "aiplaygrand",
-    name: "에이아이 플레이그랜드",
-    english: "AIplaygrand-Win",
-    eyebrow: "LEARN TOGETHER · TAKE IT WITH YOU",
-    tagline: "함께 만든 작은 발견을, USB에.",
-    summary: "AI를 함께 배우는 시간, 팀의 대화와 발견이 PC마다 흩어지지 않게. Claude·Gemini·Codex와 웹 창이나 앱 안 명령줄(CLI) 채팅으로 배우고, 한 답변을 다음 단계로 넘겨주는 릴레이를 지켜본 뒤, 팀 기록을 암호화해 USB 하나에 담아 가는 Windows 포터블 앱입니다. Mac용도 함께 공개했습니다.",
-    theme: "blue",
-    icon: "/apps/aiplaygrand/icon.png",
-    heroImage: "/apps/aiplaygrand/hero-20260918.webp",
-    artwork: "bridge",
-    platforms: [
-      { name: "Windows x64", status: "공개", detail: "0.6.2 (202609180907) · ZIP 포터블", url: releaseDownloadPath("AIplaygrand-Win"), downloadLabel: "Windows ZIP 받기", availabilityNote: "공개 검증용 배포. Windows 실기기 업데이트·재시작·실패 복구·물리 USB 이동·실제 OAuth 복원과 사용량 흐름 미검증. 실행 파일은 코드 미서명입니다." },
-      { name: "Mac · Apple Silicon", status: "공개", detail: "0.6.0 (202609161147) · 사전 공개 · 서명·Apple 공증 완료", url: releaseDownloadPath("AIplaygrand-Mac"), downloadLabel: "Mac DMG 받기", availabilityNote: "Developer ID 서명·Apple 공증과 데이터 유지 교체 설치 완료. 이번 버전 재실행·전체 계정 흐름 미검증. 자체 업데이트와 Intel Mac은 지원하지 않습니다." },
-    ],
-    features: [
-      { title: "세 명에서 시작하는 우리 팀", body: "Claude 2명·Gemini 1명으로 시작하고 Codex를 포함해 팀원을 추가합니다. 웹 팀원별로 별도 로그인 창과 독립 CLI 좌석을 둘 수 있습니다.", icon: "/apps/ccmb/features/feature-01.webp" },
-      { title: "세 AI와 앱 안에서 대화", body: "Claude·Gemini 웹 자동 전송을 지원하며 Codex 클라우드 웹은 창 열기를 지원합니다. 앱 안 CLI 채팅에서는 질문·후속 질문·중지·복사를 사용합니다.", icon: "/apps/starmanager/features/feature-02.webp" },
-      { title: "지켜보는 CLI 릴레이", body: "앞 단계 답을 다음 단계에 전달하는 3단계 릴레이를 제공합니다. 초기 단계는 공용 CLI를 사용합니다. 한도가 확인되면 전송·공유에 미리 동의한 같은 서비스의 독립 CLI 팀원에게 5초 취소 타이머 뒤 이어줍니다. 별도 릴레이 설정은 기본 꺼짐입니다.", icon: "/apps/aibi/features/feature-05.webp" },
-      { title: "USB에 담는 암호화 보관함", body: "팀 기록·웹 쿠키·앱 대화 기록을 비밀번호로 보호합니다. 독립 CLI 좌석의 로그인 파일은 명시적으로 보관함에 암호화해 비어 있는 PC 좌석으로 복원할 수 있습니다(공통 CLI 제외, macOS Claude 키체인 미지원).", icon: "/apps/nasfinder/features/feature-08.webp" },
-      { title: "설치가 막히면 준비 상태부터", body: "Node.js·npm·Git·각 CLI 설치와 버전을 점검하고 공식 설치 안내를 엽니다. 준비된 PC에서는 CLI를 USB에 설치하도록 돕습니다.", icon: "/apps/btn/features/feature-08.webp" },
-      { title: "새 버전도 같은 폴더에서", body: "Windows에서는 실행 시 새 버전을 확인하고 업데이트 여부를 묻습니다. 동의하면 파일을 검증한 뒤 저장·종료하고 같은 폴더의 프로그램 파일을 교체하도록 구현했습니다. 진행 확인·취소와 백업·복구 처리를 제공하며 실제 Windows 동작은 확인 중입니다.", icon: "/apps/ccmb/features/feature-12.webp" },
-    ],
-    guide: [
-      { title: "USB에 전체 압축 해제", body: "ZIP의 모든 파일을 쓰기 가능한 USB 폴더에 풀고 AIplaygrand-Win.exe를 실행하세요. exe만 복사하면 실행되지 않습니다." },
-      { title: "보관함과 로그인", body: "보관함 비밀번호에는 길이·문자 조합 규칙이 없습니다. 공식 서비스에 로그인하고, 독립 CLI 좌석의 로그인은 명시적 선택 시 보관함에 암호화 보관할 수 있습니다. 보관함 비밀번호를 잊으면 복구할 수 없습니다." },
-      { title: "웹 또는 CLI에서 실습", body: "앱은 API 키를 요구하지 않습니다. Codex 웹은 직접 전송해야 하며, CLI는 공식 도구 설치·로그인과 이용권이 필요합니다. 무료 웹 계정이 CLI 이용권을 보장하지 않습니다. 코드 제안을 확인하고 직접 실행하세요. 자동 인계는 전송·공유에 사전 동의한 팀원만 참여합니다." },
-      { title: "안전하게 이동", body: "저장하고 종료를 누르고 별도 CLI 터미널도 닫으세요. 복원된 PC 평문 파일이나 백업 복사본은 활성 보관함 보호 대상이 아니며 새 기기 로그인 유지는 보장되지 않습니다. 하드웨어 안전하게 제거 후 USB를 옮기세요." },
-      { title: "처음 한 번은 0.6.0 직접 교체", body: "기존 앱을 종료하고 전체 폴더를 백업한 뒤 0.6.0 프로그램 파일을 직접 교체하세요. Data·Tools는 삭제하지 마세요. 이후 버전부터 앱 안에서 업데이트를 제안합니다. PowerShell 5.1·.NET 4.7.2 이상이 필요하며 보안 정책에 막히면 수동 교체해야 합니다. 교체 중에는 USB를 빼지 마세요." },
-    ],
-    progress: [
-      { state: "done", title: "Windows 0.6.2 공개", body: "Windows ZIP을 GitHub v0.6.2로 공개했습니다. 화면 작업 공간과 보관함 비밀번호 무제약 변경을 포함하며, 공개 자산·체크섬·다운로드 연결을 확인했습니다." },
-      { state: "next", title: "실제 팀 실습과 업데이트 검증", body: "Windows 업데이트·재시작·복구·물리 USB 이동·실제 OAuth 복원과 사용량 흐름, Mac 전체 계정 흐름은 미검증입니다. 전원 차단 시 완전한 복구를 보장하지 않습니다. 화면 공간과 첫 사용 안내 개선도 남아 있습니다." },
-    ],
-    github: ["https://github.com/armsone/AIplaygrand-Win"],
-    privacy: [
-      "팀 기록·앱 웹창 쿠키·앱의 CLI 채팅과 릴레이 기록은 암호화 보관함에 저장합니다. 비밀번호를 아는 사람은 기록과 저장된 웹 세션을 사용할 수 있습니다. 전송하지 않은 CLI 초안은 저장하지 않습니다.",
-      "독립 CLI 좌석의 로그인 파일은 명시적 선택 시 보관함에 암호화하여 저장하고 비어 있는 PC 좌석으로 복원할 수 있습니다(공통 CLI 제외, macOS Claude 키체인 미지원). PC에 평문으로 복원된 파일, 다운로드, 내보낸 파일과 백업 복사본은 활성 보관함 보호 대상이 아니며 새 기기에서의 로그인 유지는 보장되지 않습니다.",
-      "다른 브라우저의 로그인 정보를 가져오거나 사용량 제한을 우회하는 임의 계정 전환은 하지 않습니다. 웹 쿠키 복원은 로그인 유지를 보장하지 않습니다. Claude·Gemini 웹 자동 전송을 지원하지만 Codex 클라우드 웹은 창 열기까지만 지원하며 자동 전송되지 않습니다.",
-      "사용자가 전송하거나 CLI 채팅·릴레이를 시작하면 질문과 필요한 앞 단계 결과가 해당 공식 AI 서비스로 전달됩니다. 각 서비스 정책이 적용됩니다. 악성코드가 있는 PC나 운영체제의 임시 기록까지 보호하는 무흔적 실행은 아닙니다.",
-    ],
-  },
-  {
     slug: "hanstree-workroom",
     name: "Hanstree-AI",
     english: "Hanstree-AI",
@@ -1536,7 +1494,7 @@ export type ProductFamily = {
 // 제품군 순서 = 카탈로그 공개 순서. 새 제품은 알맞은 slugs에 추가하면 됩니다.
 export const productFamilies: ProductFamily[] = [
   { id: "media", name: "미디어·저장공간", english: "MEDIA & STORAGE", summary: "파일과 사진·영상을 보고, 만들고, 곁에 두는 앱", slugs: ["nasfinder", "super-thumbnail", "hanclip", "stand"] },
-  { id: "ai", name: "AI·창작", english: "AI & CREATION", summary: "AI 도구와 함께 배우고, 확인하고, 만드는 제품", slugs: ["ccmb", "starmanager", "denimdex", "aiplaygrand", "hanstree-workroom", "alfred-ai-search"] },
+  { id: "ai", name: "AI·창작", english: "AI & CREATION", summary: "AI 도구와 함께 배우고, 확인하고, 만드는 제품", slugs: ["ccmb", "starmanager", "denimdex", "hanstree-workroom", "alfred-ai-search"] },
   { id: "mac", name: "Mac 생산성·유틸리티", english: "MAC PRODUCTIVITY & UTILITIES", summary: "작업 흐름을 지키는 작은 도구와 확장", slugs: ["cleanusb", "trackpadguard", "btn", "alfred-navermap", "autoshorts"] },
   { id: "life", name: "생활·가족·커뮤니티", english: "LIFE, FAMILY & COMMUNITY", summary: "일상과 가족, 모임에서 쓰는 웹과 앱", slugs: ["whattoeat", "button", "intosharp", "airchurch", "ppabang"] },
   { id: "engine", name: "엔진·인프라", english: "ENGINES & INFRASTRUCTURE", summary: "다른 제품을 받치는 코어와 서버, 업무 도구", slugs: ["hanai", "aibi", "minecraft-server", "htoms-brief"] },

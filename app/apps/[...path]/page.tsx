@@ -320,7 +320,7 @@ export default async function AppRoute({ params }: RouteProps) {
   if (section) return <InfoPage app={app} section={section} />;
 
   const family = productFamilyOf(app.slug);
-  const hasScreenSection = Boolean(app.screenshots?.length || app.systemImage || app.artwork === "directions" || app.slug === "aiplaygrand");
+  const hasScreenSection = Boolean(app.screenshots?.length || app.systemImage || app.artwork === "directions");
   const hasActualScreens = Boolean(app.screenshots?.some((screen) => screen.src.includes("/screens/") && !screen.src.endsWith("usage-square.png")));
 
   return (
@@ -1048,9 +1048,7 @@ function InfoPage({ app, section }: { app: NonNullable<ReturnType<typeof findApp
               : isDeletion
                 ? (app.slug === "ppabang"
                     ? "브라우저에 저장된 사이트 데이터를 삭제하는 방법과 과거 Google 계정 연결 권한을 철회하는 방법입니다."
-                    : app.slug === "aiplaygrand"
-                      ? "암호화 보관함 및 CLI 로그인 데이터의 보관 위치를 확인하고 로컬 데이터를 안전하게 삭제하는 방법입니다."
-                      : `${app.name}의 기기 데이터 삭제 및 외부 서비스 연결 해제 안내입니다. 제품별 핵심 원칙에 따라 관리할 수 있습니다.`)
+                    : `${app.name}의 기기 데이터 삭제 및 외부 서비스 연결 해제 안내입니다. 제품별 핵심 원칙에 따라 관리할 수 있습니다.`)
                 : "불편한 점이나 제안이 있다면 아래 내용을 먼저 확인한 뒤 알려주세요."}
         </p>
 
@@ -1062,7 +1060,7 @@ function InfoPage({ app, section }: { app: NonNullable<ReturnType<typeof findApp
               <article><span>01</span><AdvantageVisual variant="check-source" /><h3>무엇을</h3><p>처리하는 정보는 제품마다 다르며, 아래 핵심 원칙과 세부 설명에 명시된 기능 필수 항목에 한합니다.</p></article>
               <article><span>02</span><AdvantageVisual variant="compass" /><h3>왜</h3><p>제품에서 사용자가 요청한 기능을 제공하는 목적으로만 사용합니다.</p></article>
               <article><span>03</span><AdvantageVisual variant="storage-network" /><h3>어디에</h3><p>보관 위치와 방식은 제품마다 다르며, 기기·브라우저 저장공간이나 요청된 외부 서비스 정책을 따릅니다.</p></article>
-              <article><span>04</span><AdvantageVisual variant="trash-clear" /><h3>어떻게 삭제</h3><p>{app.slug === "aiplaygrand" ? "프로그램 파일만 지워도 USB의 Data와 백업은 남습니다. 종료 후 보관 위치와 별도 백업을 확인해 직접 정리해야 합니다." : "제품별 원칙에 따라 앱 내 관리 메뉴, 브라우저 데이터 정리 또는 계정 연결 해제로 삭제합니다. 외부 파일과 백업은 별도 정리가 필요할 수 있습니다."}</p></article>
+              <article><span>04</span><AdvantageVisual variant="trash-clear" /><h3>어떻게 삭제</h3><p>제품별 원칙에 따라 앱 내 관리 메뉴, 브라우저 데이터 정리 또는 계정 연결 해제로 삭제합니다. 외부 파일과 백업은 별도 정리가 필요할 수 있습니다.</p></article>
             </div>
           </section>
           <LegalSection title="핵심 원칙"><ul>{app.privacy.map((item) => <li key={item}>{item}</li>)}</ul></LegalSection>
@@ -1072,11 +1070,7 @@ function InfoPage({ app, section }: { app: NonNullable<ReturnType<typeof findApp
             <LegalSection title="삭제와 연결 해제"><p>브라우저의 사이트 데이터에서 ppabang.net 데이터를 삭제하면 기기에 보관된 시청 기록 등 빠방넷 정보가 함께 제거됩니다. 현재 빠방넷은 계정 연결 없이 동작하므로 앱 내 연결 메뉴가 없으며, 과거에 Google 연결을 사용했던 경우 Google 계정 보안 설정에서 기존 권한을 철회할 수 있습니다.</p></LegalSection>
             <LegalSection title="외부 서비스"><p>YouTube 영상 재생과 영상 정보 조회에는 Google 및 YouTube의 서비스와 정책이 적용됩니다. 빠방넷은 개인화 정보를 판매하지 않습니다.</p></LegalSection>
           </>}
-          {app.slug === "aiplaygrand" && <>
-            <LegalSection title="저장 위치와 보유 기간"><p>팀 기록·앱 웹창 쿠키·앱의 CLI 채팅과 릴레이 기록은 Data/team.vault에 암호화하여 보관합니다. 앱과 Data 폴더를 함께 보관하세요. CLI 자체 인증·설정·사용 이력은 PC에 별도로 남으며 이 보관함에 포함되지 않습니다. 직전 백업, 다운로드, 내보낸 파일과 이전 버전 원본도 별도로 남을 수 있습니다. 프로그램 파일을 삭제해도 Data와 별도 백업은 자동으로 삭제되지 않습니다.</p></LegalSection>
-            <LegalSection title="삭제와 연결 해제"><p>서비스 창에서 로그아웃하고 저장하고 종료를 누르세요. 팀원 자리 제거만으로 로그인 데이터가 삭제되지는 않습니다. 전체 로컬 기록을 없애려면 앱과 CLI를 종료하고 필요한 기록을 확인한 뒤 Data 및 별도 백업을 직접 정리해야 합니다. CLI 인증과 사용 이력은 해당 공식 도구의 로그아웃·삭제 절차를 이용하세요. 외부 서비스에 보낸 질문과 답변은 해당 서비스에서 별도로 관리합니다.</p></LegalSection>
-          </>}
-          {app.slug !== "ppabang" && app.slug !== "aiplaygrand" && <>
+          {app.slug !== "ppabang" && <>
           <LegalSection title="처리 목적과 항목"><p>제품마다 처리하는 정보와 목적은 상단 ‘핵심 원칙’에 따르며, 사용자가 요청한 기능을 제공하는 데 필요한 최소한의 범위로 한정됩니다. 광고 목적의 개인정보 판매나 맞춤형 추적을 목적으로 처리하지 않습니다.</p></LegalSection>
           <LegalSection title="홈페이지 이용 통계"><p>Hanstree.com은 홈페이지 방문 횟수와 공식 APK 바로 받기 버튼을 누른 횟수를 숫자로만 집계합니다. 방문은 같은 브라우저에서 하루 한 번만 세기 위해 마지막 집계 날짜를 브라우저에 저장합니다. 집계 데이터베이스에는 방문자의 이름, 이메일, 계정, 쿠키 또는 IP 주소를 함께 저장하지 않으며 광고나 개인별 행동 추적에 사용하지 않습니다.</p></LegalSection>
           <LegalSection title="TestFlight 공개 베타"><p>홈페이지는 TestFlight 공개 링크를 통해 베타 앱 참여 경로만 제공합니다. 참여 신청을 위해 이름, 이메일, 기기 모델이나 참여 동기를 수집하지 않습니다. 공개 링크 참여와 앱 설치는 Apple의 TestFlight에서 처리됩니다. 과거 내부 테스터 신청 기능으로 접수된 기록은 더 이상 새로 수집하지 않으며, 삭제를 원하는 기존 신청자는 아래 개인정보 보호책임자에게 요청할 수 있습니다.</p></LegalSection>
@@ -1129,20 +1123,6 @@ function InfoPage({ app, section }: { app: NonNullable<ReturnType<typeof findApp
             <LegalSection title="도움이 필요한 경우">
               <p>문의 사항이나 도움이 필요하면 아래 직접 문의 경로로 연락해 주세요.</p>
               <div className="privacy-contact"><ContactReveal /></div>
-            </LegalSection>
-          </> : app.slug === "aiplaygrand" ? <>
-            <LegalSection title="핵심 원칙"><ul>{app.privacy.map((item) => <li key={item}>{item}</li>)}</ul></LegalSection>
-            <LegalSection title="저장 위치와 보유 기간"><p>팀 기록·앱 웹창 쿠키·앱의 CLI 채팅과 릴레이 기록은 Data/team.vault에 암호화하여 보관합니다. 앱과 Data 폴더를 함께 보관하세요. CLI 자체 인증·설정·사용 이력은 PC에 별도로 남으며 이 보관함에 포함되지 않습니다. 직전 백업, 다운로드, 내보낸 파일과 이전 버전 원본도 별도로 남을 수 있습니다. 프로그램 파일을 삭제해도 Data와 별도 백업은 자동으로 삭제되지 않습니다.</p></LegalSection>
-            <LegalSection title="삭제와 연결 해제"><p>서비스 창에서 로그아웃하고 저장하고 종료를 누르세요. 팀원 자리 제거만으로 로그인 데이터가 삭제되지는 않습니다. 전체 로컬 기록을 없애려면 앱과 CLI를 종료하고 필요한 기록을 확인한 뒤 Data 및 별도 백업을 직접 정리해야 합니다. CLI 인증과 사용 이력은 해당 공식 도구의 로그아웃·삭제 절차를 이용하세요. 외부 서비스에 보낸 질문과 답변은 해당 서비스에서 별도로 관리합니다.</p></LegalSection>
-            <LegalSection title="도움이 필요한 경우">
-              <p>데이터 삭제나 보관함 정리에 관해 도움이 필요하시면 아래 지원 경로로 문의해 주세요. 문의 시 계정 정보, 서버 주소, 파일명과 화면 속 개인정보는 반드시 가려 주세요.</p>
-              <div className="support-options">
-                <Link className="button button-quiet" href={`/apps/${app.slug}/support`}>지원 페이지 바로가기</Link>
-                {app.github.map((url) => (
-                  <Link className="button button-primary" href={`${url}/issues`} key={url}>GitHub 문의 및 제보 <span aria-hidden="true">↗</span></Link>
-                ))}
-                <ContactReveal />
-              </div>
             </LegalSection>
           </> : <>
             <LegalSection title="핵심 원칙"><ul>{app.privacy.map((item) => <li key={item}>{item}</li>)}</ul></LegalSection>

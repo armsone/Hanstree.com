@@ -2,8 +2,6 @@
 // /api/release-download는 이 목록에 있는 항목만 최신 정식 릴리스로 연결하며,
 // key는 사이트 집계(site_counters)의 다운로드 키와 동일하게 사용합니다.
 export const DOWNLOAD_KEYS = [
-  "AIplaygrand-Win",
-  "AIplaygrand-Mac",
   "CleanUSB-MacOS",
   "NasFinder-Android",
   "NasFinder-Mac",
@@ -46,20 +44,6 @@ export type ReleaseDownload = {
 };
 
 export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
-  "AIplaygrand-Win": {
-    label: "AIplaygrand Windows",
-    repo: "AIplaygrand-Win",
-    pinnedPreviewTag: "v0.6.2",
-    assetPattern: /^AIplaygrand-Win-0\.6\.2-x64\.zip$/,
-    fallbackUrl: "https://github.com/armsone/AIplaygrand-Win/releases/download/v0.6.2/AIplaygrand-Win-0.6.2-x64.zip",
-  },
-  "AIplaygrand-Mac": {
-    label: "AIplaygrand Mac",
-    repo: "AIplaygrand-Win",
-    pinnedPreviewTag: "v0.6.0",
-    assetPattern: /^AIplaygrand-Win-Mac-0\.6\.0-arm64\.dmg$/,
-    fallbackUrl: "https://github.com/armsone/AIplaygrand-Win/releases/download/v0.6.0/AIplaygrand-Win-Mac-0.6.0-arm64.dmg",
-  },
   "CleanUSB-MacOS": {
     label: "CleanUSB Mac",
     repo: "CleanUSB-MacOS",

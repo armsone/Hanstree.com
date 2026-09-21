@@ -66,7 +66,6 @@ export function AppHeroArtwork({ app }: { app: AppData }) {
 }
 
 export function AppArtwork({ app, mode = "spotlight" }: { app: AppData; mode?: "spotlight" | "system" }) {
-  if (app.slug === "aiplaygrand") return <div className="artwork"><Image src="/apps/aiplaygrand/flow.svg" alt="AIplaygrand 팀 실습 사용 흐름도" width={1280} height={853} sizes="(max-width: 640px) 92vw, 720px" unoptimized /></div>;
   if (app.artwork === "directions") return <DirectionsFlow />;
   const image = (mode === "system" ? app.systemImage : app.spotlightImage) ?? app.heroImage ?? `/apps/${app.slug}/${app.slug}-hero-v2.png`;
   const alt = app.slug === "hanai"

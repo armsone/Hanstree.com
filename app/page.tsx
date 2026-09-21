@@ -19,7 +19,6 @@ const principleVisuals: AdvantageVariant[] = ["target-swing", "check-source", "d
 export const dynamic = "force-dynamic";
 
 const homeKoreanNames: Record<string, string> = {
-  aiplaygrand: "에이아이 플레이그랜드",
   "hanstree-workroom": "Hanstree-AI",
   cleanusb: "클린USB",
   nasfinder: "나스파인더",

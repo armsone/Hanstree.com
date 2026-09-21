@@ -17,18 +17,6 @@
     "height": 1024,
     "srcSet": "/optimized/2aa667bfd242747a-128.webp 128w, /optimized/2aa667bfd242747a-640.webp 640w, /optimized/2aa667bfd242747a-1024.webp 1024w"
   },
-  "/apps/aiplaygrand/hero-20260918.webp": {
-    "src": "/optimized/791e7734876fa8c8-1536.webp",
-    "width": 1536,
-    "height": 1024,
-    "srcSet": "/optimized/791e7734876fa8c8-128.webp 128w, /optimized/791e7734876fa8c8-640.webp 640w, /optimized/791e7734876fa8c8-1280.webp 1280w, /optimized/791e7734876fa8c8-1536.webp 1536w"
-  },
-  "/apps/aiplaygrand/icon.png": {
-    "src": "/optimized/6990414c744bbc5c-1024.webp",
-    "width": 1024,
-    "height": 1024,
-    "srcSet": "/optimized/6990414c744bbc5c-128.webp 128w, /optimized/6990414c744bbc5c-640.webp 640w, /optimized/6990414c744bbc5c-1024.webp 1024w"
-  },
   "/apps/airchurch/airchurch-campaign.png": {
     "src": "/optimized/d6c5580235e6f62a-1672.webp",
     "width": 1672,
