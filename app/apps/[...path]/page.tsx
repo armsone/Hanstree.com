@@ -1168,7 +1168,7 @@ function InfoPage({ app, section }: { app: NonNullable<ReturnType<typeof findApp
             <ContactReveal />
           </div>
         </>}
-        <p className="policy-note">시행일: 2026년 8월 14일 · 마지막 변경일: 2026년 9월 18일</p>
+        <p className="policy-note">시행일: 2026년 8월 14일 · 마지막 변경일: {(isPrivacy || isDeletion) && app.privacyUpdatedAt ? app.privacyUpdatedAt : "2026년 9월 18일"}</p>
       </article>
       <SiteFooter currentPageName={app.name} />
     </main>

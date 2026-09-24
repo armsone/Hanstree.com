@@ -29,6 +29,7 @@ export type AppData = {
   screenshots?: { src: string; alt: string; layout?: "phone" | "menu" | "landscape" | "tv" | "wide" | "square" }[];
   github: string[];
   privacy: string[];
+  privacyUpdatedAt?: string;
   matchup?: {
     metrics: { value: string; label: string }[];
     scope: string[];
@@ -89,6 +90,7 @@ const appCatalog: AppData[] = [
       { state: "next", title: "제공 범위", body: "공개 회원가입, 일반 배포용 설치 파일, 공개 소스 다운로드와 TestFlight는 제공하지 않습니다. 계정별 화면·요청 권한을 구분하지만 작업 실행 환경의 완전한 격리는 보장하지 않습니다." },
     ],
     github: [],
+    privacyUpdatedAt: "2026년 9월 24일",
     privacy: [
       "대화와 프로젝트 파일은 소유자의 NAS에 저장합니다.",
       "작업실 접근은 계정 로그인으로 제한하며, 프로젝트 조회와 관리 요청에는 계정·역할별 권한을 적용합니다.",
