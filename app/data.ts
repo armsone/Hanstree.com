@@ -550,7 +550,7 @@ const appCatalog: AppData[] = [
         downloadLabel: "Public Beta 참여",
         availabilityNote: "0.1.4 공개 베타 참여 가능 · Spark 표시를 정리한 0.1.6은 Apple 외부 심사 대기 중입니다.",
       },
-      { name: "macOS", status: "공개", detail: "2.0.28 (202609272024) · macOS 10.15+ · Universal · Apple 공증 완료 · CloudKit Production 서명", url: releaseDownloadPath("CCMB"), downloadLabel: "DMG 다운로드" },
+      { name: "macOS", status: "공개", detail: "2.0.29 (202609300958) · macOS 10.15+ · Universal · Apple 공증 완료 · CloudKit Production 서명", url: releaseDownloadPath("CCMB"), downloadLabel: "DMG 다운로드" },
     ],
     features: [
       { title: "멀리서도 남은 한도를 한눈에", body: "Mac CCMB가 같은 Apple ID의 CloudKit 개인 데이터베이스에 올린 최신 스냅샷을 iPhone·iPad가 읽기 전용으로 불러옵니다.", icon: "/apps/ccmb/features/feature-02.webp" },
@@ -601,10 +601,11 @@ const appCatalog: AppData[] = [
       { state: "done", title: "CCMB 2.0.26 공개", body: "종료된 Codex Spark의 잔량·초기화·소비 그래프 표시를 정리하고 과거 기록은 보존합니다. 빌드 202609181254의 Apple 공증 Universal DMG와 자동 업데이트를 공개했습니다." },
       { state: "done", title: "CCMB 2.0.27 공개", body: "현재 사용 중인 모델과 다르게 보일 수 있던 Claude 요약의 모델 표시를 제거했습니다. 세션·주간 사용량과 모델별 한도는 유지합니다. 빌드 202609262331의 Apple 공증 Universal DMG와 자동 업데이트를 공개했습니다." },
       { state: "done", title: "CCMB 2.0.28 공개", body: "Claude 계정 연결 버튼과 연결 중 상태를 표시하고, 인증 거절·통신 오류·저장된 인증 정보 접근 오류를 구분하도록 개선했습니다. 중복 사용량 요청을 줄인 빌드 202609272024의 Apple 공증 Universal DMG와 자동 업데이트를 공개했습니다." },
+      { state: "done", title: "CCMB 2.0.29 공개", body: "로그인한 계정을 기준으로 Codex 주간 잔여량을 계산해 공식 앱·CLI·웹과 다르게 보이던 문제를 고쳤고, 계정을 확인할 수 없을 때는 잘못된 수치를 표시하지 않습니다. 빌드 202609300958의 Apple 공증 Universal DMG와 자동 업데이트를 공개했습니다." },
     ],
     screenshots: [
       { src: "/apps/ccmb/screens/ios-dashboard.jpg", alt: "이전 iPhone 화면 · Spark 항목은 심사 중인 0.1.6에서 제거됩니다.", layout: "phone" },
-      { src: "/apps/ccmb/ccmb-dashboard-private.png", alt: "개인정보를 제거한 이전 Mac 화면 · 현재 2.0.28에는 Spark 항목과 Claude 모델 요약 표시가 없습니다.", layout: "menu" },
+      { src: "/apps/ccmb/ccmb-dashboard-private.png", alt: "개인정보를 제거한 이전 Mac 화면 · 현재 2.0.29에는 Spark 항목과 Claude 모델 요약 표시가 없습니다.", layout: "menu" },
       { src: "/apps/ccmb/screens/macos-menubar.png", alt: "macOS 메뉴 막대에 표시된 CCMB 사용량", layout: "wide" },
     ],
     github: ["https://github.com/armsone/CCMB", "https://github.com/armsone/CCMB-iOS"],
