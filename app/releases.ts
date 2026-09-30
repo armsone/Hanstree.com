@@ -90,7 +90,7 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     label: "S.tand Android",
     repo: "S.tand-Android",
     assetPattern: /\.apk$/i,
-    fallbackUrl: "https://github.com/armsone/S.tand-Android/releases/download/android-v2.5.6/S.tand-Android-2.5.6.apk",
+    fallbackUrl: "https://github.com/armsone/S.tand-Android/releases/download/android-v2.6.0/S.tand-Android-2.6.0.apk",
   },
   CCMB: {
     label: "CCMB Mac",
