@@ -3,33 +3,13 @@
     <channel>
         <title>S.tand</title>
         <item>
-            <title>2.5.6</title>
-            <pubDate>Sat, 12 Sep 2026 17:56:27 +0900</pubDate>
-            <link>https://hanstree.com/apps/stand</link>
-            <sparkle:version>202609121751</sparkle:version>
-            <sparkle:shortVersionString>2.5.6</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <description>날씨를 15분마다 갱신하고 재생목록을 빠방 사이트 순서로 표시합니다. 시작 안내 버튼의 가독성을 개선했습니다.</description>
-            <enclosure url="https://github.com/armsone/S.tand/releases/download/macos-v2.5.6/S.tand-macOS-2.5.6.dmg" length="13920458" type="application/octet-stream" sparkle:edSignature="xu3qyS10oo6D2vpzXZDlqlVlrQNOEJYgsZwCvnsrPqnfilIm31AoRsDOUWL5yk+6AS+lifNPLdiuPMgfEURrAg=="/>
-        </item>
-        <item>
-            <title>2.5.4</title>
-            <pubDate>Sat, 12 Sep 2026 14:19:41 +0900</pubDate>
-            <link>https://hanstree.com/apps/stand</link>
-            <sparkle:version>202609121409</sparkle:version>
-            <sparkle:shortVersionString>2.5.4</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <description>다른 앱에 잠깐 다녀와도 1분 안에 빠방을 같은 위치에서 이어듣습니다. 다른 앱을 사용하는 동안 영상은 일시정지합니다.</description>
-            <enclosure url="https://github.com/armsone/S.tand/releases/download/macos-v2.5.4/S.tand-macOS-2.5.4.dmg" length="13906730" type="application/octet-stream" sparkle:edSignature="KN0SwWr33hgJeummcFbRa8EovdoJcQSetdrmVaCGdtvuxFLCS/mRBxWOXJ23pCqH4g0LHt40QiaZdq7ePsH2BA=="/>
-        </item>
-        <item>
-            <title>2.5.0</title>
-            <pubDate>Tue, 08 Sep 2026 20:11:57 +0900</pubDate>
+            <title>2.5.7</title>
+            <pubDate>Wed, 30 Sep 2026 14:34:27 +0900</pubDate>
             <link>https://nasfinder.com/apps/stand</link>
-            <sparkle:version>202609082009</sparkle:version>
-            <sparkle:shortVersionString>2.5.0</sparkle:shortVersionString>
+            <sparkle:version>202609301404</sparkle:version>
+            <sparkle:shortVersionString>2.5.7</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/armsone/S.tand/releases/download/macos-v2.5.0/S.tand-macOS-2.5.0.dmg" length="13898081" type="application/octet-stream" sparkle:edSignature="PFMij8gCrpbusxXv8GNWY04C724S0gxqsI77zWA6i+nc69bunwHA+kNBT+5q6c2njCxZpPUrYLaQ46sRC7j1Dg=="/>
+            <enclosure url="https://github.com/armsone/S.tand/releases/download/macos-v2.5.7/S.tand-macOS-2.5.7.dmg" length="13909121" type="application/octet-stream" sparkle:edSignature="ZS5tGhkDLmF8DpFMQBtBMa+0SQdo1brlqdWwt4idhOd0jRKy6UHtrPMw3MtjdVH19NJZ1tvcykcc2KpEsRo7BA=="/>
         </item>
     </channel>
 </rss>
