@@ -347,12 +347,6 @@ test("renders HtOMS with its own sales dashboard artwork", async () => {
   assert.match(html, /매출 요약/);
   assert.match(html, /서버 상태 · SERVER/);
   assert.match(html, /회사 내부 테스트 전용 · 내부 테스터 9명 유지 · 공개 링크 없음/);
-  assert.match(html, /Android · Google TV/);
-  assert.match(html, /Android용 APK 다운로드/);
-  assert.match(html, /release-download\?app=HtOMS-BK/);
-  assert.match(html, /346542/);
-  assert.match(html, /66ebee56a5724be93798dd7de7dbd6a80e2139d4cf4bfcc19ae6bbf45806c54d/);
-  assert.match(html, /Android 대응 앱 구현/);
   assert.doesNotMatch(html, />Photos</);
   assert.doesNotMatch(html, /IMG_2048\.HEIC/);
 });
@@ -739,17 +733,13 @@ test("routes public download buttons through the allowlisted release redirect", 
     "sec-fetch-mode": "navigate",
     "sec-fetch-dest": "document",
   };
-  const [ccmb, trackpadGuard, standMac, nasFinderMac, htoms, iManager, legacyIManager] = await Promise.all([
+  const [ccmb, trackpadGuard, standMac, nasFinderMac, iManager, legacyIManager] = await Promise.all([
     render("/api/release-download?app=CCMB", interactiveHeaders),
     render("/api/release-download?app=TrackpadGuard", interactiveHeaders),
     render("/api/release-download?app=S.tand-macOS", interactiveHeaders),
     render("/api/release-download?app=NasFinder-Mac", {
       ...interactiveHeaders,
       referer: "http://localhost/apps/nasfinder",
-    }),
-    render("/api/release-download?app=HtOMS-BK", {
-      ...interactiveHeaders,
-      referer: "http://localhost/apps/htoms-brief",
     }),
     render("/api/release-download?app=iManager-Android", {
       ...interactiveHeaders,
@@ -769,8 +759,6 @@ test("routes public download buttons through the allowlisted release redirect", 
   assert.match(standMac.headers.get("location") ?? "", /^https:\/\/github\.com\/armsone\/S\.tand\/releases\//);
   assert.equal(nasFinderMac.status, 302);
   assert.match(nasFinderMac.headers.get("location") ?? "", /^https:\/\/github\.com\/armsone\/NasFinder\/releases\//);
-  assert.equal(htoms.status, 302);
-  assert.match(htoms.headers.get("location") ?? "", /^https:\/\/github\.com\/armsone\/HtOMS-BK\/releases\/download\/android-v2\.1\.1\/HtOMS-Brief-Android-2\.1\.1\.apk$/);
   assert.equal(iManager.status, 302);
   assert.match(iManager.headers.get("location") ?? "", /^https:\/\/github\.com\/armsone\/iManagerAI-Android\/releases\/download\/android-v2\.6\.0\/app-release\.apk$/);
   assert.equal(legacyIManager.status, 302);

@@ -17,7 +17,6 @@ export const DOWNLOAD_KEYS = [
   "DenimDex-Android",
   "OurButton-Android",
   "Stargram-Android",
-  "HtOMS-BK",
   "AutoShorts",
   "Alfred-NaverMap",
 ] as const;
@@ -139,12 +138,6 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     repo: "Stargram-Android",
     assetPattern: /\.apk$/i,
     fallbackUrl: "https://github.com/armsone/Stargram-Android/releases/download/android-v2.6.5/Stargram-Android-2.6.5.apk",
-  },
-  "HtOMS-BK": {
-    label: "HtOMS Brief Android",
-    repo: "HtOMS-BK",
-    assetPattern: /^HtOMS-Brief-Android-.*\.apk$/i,
-    fallbackUrl: "https://github.com/armsone/HtOMS-BK/releases/download/android-v2.1.1/HtOMS-Brief-Android-2.1.1.apk",
   },
   AutoShorts: {
     label: "AutoShorts",
