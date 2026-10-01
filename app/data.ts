@@ -424,7 +424,7 @@ const appCatalog: AppData[] = [
     icon: "/apps/stand/icon.png",
     artwork: "clock",
     platforms: [
-      { name: "iOS · iPadOS", status: "TestFlight", detail: "2.5.7 (202609301404) · iOS·iPadOS 17+", availabilityNote: "2.5.7 외부 베타 심사 제출 · 심사 대기 중 · 기존 2.5.6 공개 TestFlight 링크는 그대로 참여 가능" },
+      { name: "iOS · iPadOS", status: "TestFlight", detail: "2.5.7 (202609301404) · iOS·iPadOS 17+", availabilityNote: "2.5.7 외부 베타 승인 완료 · 공개 TestFlight 링크에서 참여 가능" },
       {
         name: "macOS",
         status: "공개",
@@ -478,7 +478,7 @@ const appCatalog: AppData[] = [
     progress: [
       { state: "done", title: "Android·Google TV 2.6.0 공개", body: "홈에는 빠방과 첫 인터넷 라디오만 남기고, 보이소는 홈과 설정에서 숨기되 기존 데이터를 보존했습니다. 영상 왼쪽·재생/일시정지, 다음, 카테고리 버튼 오른쪽 배치와 3열 카테고리 선택기를 반영했습니다. 회전 시 플레이어 재사용과 TV 리모컨 버튼도 보완한 build 202609302025 APK를 공개했습니다." },
       { state: "done", title: "Mac 2.5.7 공개", body: "미니플레이어 열기·닫기, 재생·일시정지, 다음 곡 제어와 카테고리·잠소리 화면을 개선한 build 202609301404를 Apple 공증까지 마쳐 공개했습니다." },
-      { state: "active", title: "iOS·iPadOS 2.5.7 심사 제출", body: "같은 build 202609301404를 Apple 외부 베타 심사에 제출해 심사 대기 중입니다. 기존 2.5.6 공개 TestFlight 링크와 참여는 그대로 유지됩니다." },
+      { state: "done", title: "iOS·iPadOS 2.5.7 외부 베타 승인", body: "미니플레이어 열기·닫기와 재생 제어, 카테고리·잠소리 화면을 개선한 build 202609301404의 Apple 외부 베타 심사가 승인되었습니다. 기존 Public Beta 공개 링크에서 최신 빌드에 참여할 수 있습니다." },
       { state: "done", title: "2.5.6 날씨·재생목록 개선", body: "Mac·Android에 날씨 자동 갱신과 빠방 사이트 순서의 재생목록을 공개했습니다. Android 미니플레이어 흑백 처리와 Apple 시작 안내 버튼 가독성도 개선했습니다. iPhone·iPad는 같은 버전을 TestFlight 심사에 제출했습니다." },
       { state: "done", title: "빠방 반복 방지와 1분 복귀", body: "빠방 웹의 최근 재생 기록과 곡 중복 방지를 반영했습니다. 1분 복귀 기능은 Mac 2.5.4·Android 2.5.5로 공개했고, iOS·iPadOS 2.5.4는 TestFlight Public Beta 심사 제출을 마쳤습니다." },
       { state: "done", title: "2.5.4 Android·Google TV 공개", body: "빠방 카테고리 선택을 길게 눌렀을 때 목록 밖의 선택 항목에 포커스를 주며 앱이 종료될 수 있던 문제를 고쳤습니다." },

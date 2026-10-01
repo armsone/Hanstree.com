@@ -205,12 +205,13 @@ test("collects verified external tester links between TestFlight and Android dow
 
   const section = html.slice(inviteIndex, androidIndex);
   assert.match(section, /외부 테스터 참여/);
-  assert.equal((section.match(/class="testflight-invite-card/g) ?? []).length, 7);
-  assert.equal((section.match(/class="app-icon/g) ?? []).length, 7);
-  assert.equal((section.match(/최신 빌드는 Apple 심사를 기다리고 있습니다/g) ?? []).length, 1);
+  assert.equal((section.match(/class="testflight-invite-card/g) ?? []).length, 8);
+  assert.equal((section.match(/class="app-icon/g) ?? []).length, 8);
+  assert.equal((section.match(/최신 빌드는 Apple 심사를 기다리고 있습니다/g) ?? []).length, 0);
   assert.equal((section.match(/심사 계정 준비/g) ?? []).length, 0);
   assert.equal((section.match(/외부용 빌드 준비/g) ?? []).length, 0);
-  assert.equal((section.match(/href="https:\/\/testflight\.apple\.com\/join\//g) ?? []).length, 7);
+  assert.equal((section.match(/href="https:\/\/testflight\.apple\.com\/join\//g) ?? []).length, 8);
+  assert.match(section, /href="https:\/\/testflight\.apple\.com\/join\/q9jesHZa"/);
   assert.match(section, /href="https:\/\/testflight\.apple\.com\/join\/3m3bhwJz"/);
   assert.match(section, /href="https:\/\/testflight\.apple\.com\/join\/m2YsgUJW"/);
   assert.match(section, /href="https:\/\/testflight\.apple\.com\/join\/A444RsAc"/);
@@ -713,19 +714,14 @@ test("reports the current WhattoEat TestFlight invitation and latest build revie
   const builds = await buildsResponse.json();
   const whattoeat = builds.builds.find((build) => build.slug === "whattoeat");
 
-  assert.match(page, /0\.4\.3/);
-  assert.match(page, /202608291549/);
-  assert.match(page, /내부 코드 346549/);
-  assert.match(page, /점심 가방으로 바로 추천/);
-  assert.match(page, /실내에서도 멈추지 않는 위치 찾기/);
-  assert.match(page, /위치 권한을 놓쳐도 바로 복구/);
-  assert.match(page, /상황에 맞는 메뉴와 지도 검색/);
-  assert.match(page, /기존 공개 링크 열기/);
-  assert.match(page, /android-bag-navigation\.png/);
-  assert.match(page, /최신 빌드는 Apple 심사를 기다리고 있습니다/);
+  assert.match(page, /0\.5\.0 \(202609132101\)/);
+  assert.match(page, /0\.5\.0 Public Beta 승인/);
+  assert.match(page, /href="https:\/\/testflight\.apple\.com\/join\/A444RsAc"/);
+  assert.match(page, /TestFlight 바로 참여/);
+  assert.doesNotMatch(page, /최신 빌드는 Apple 심사를 기다리고 있습니다|기존 공개 링크 열기/);
   assert.equal(whattoeat?.build, "202609132101");
   assert.equal(whattoeat?.inviteUrl, "https://testflight.apple.com/join/A444RsAc");
-  assert.equal(whattoeat?.publicBetaState, "waitingForReview");
+  assert.equal(whattoeat?.publicBetaState, "approved");
 });
 
 test("routes public download buttons through the allowlisted release redirect", async () => {
@@ -812,14 +808,14 @@ test("keeps verified TestFlight fallback data for iManagerAI, OurButton, and HtO
   assert.equal(bySlug.get("hanclip")?.expiresAt, "2026-12-05T20:40:40-08:00");
   assert.equal(bySlug.get("hanclip")?.publicBetaState, "approved");
   assert.equal(bySlug.get("hanclip")?.inviteUrl, "https://testflight.apple.com/join/m2YsgUJW");
-  assert.equal(bySlug.get("stand")?.build, "202609121751");
-  assert.equal(bySlug.get("stand")?.uploadedAt, "2026-09-12T01:58:28-07:00");
-  assert.equal(bySlug.get("stand")?.expiresAt, "2026-12-11T00:58:28-08:00");
+  assert.equal(bySlug.get("stand")?.build, "202609301404");
+  assert.equal(bySlug.get("stand")?.uploadedAt, "2026-09-30T14:30+09:00");
+  assert.equal(bySlug.get("stand")?.expiresAt, null);
   assert.equal(bySlug.get("stand")?.inviteUrl, "https://testflight.apple.com/join/mGUYTjdp");
   assert.equal(bySlug.get("stand")?.publicBetaState, "approved");
-  assert.equal(bySlug.get("starmanager")?.build, "202609101649");
-  assert.equal(bySlug.get("starmanager")?.uploadedAt, "2026-09-10T04:33:35-07:00");
-  assert.equal(bySlug.get("starmanager")?.expiresAt, "2026-12-09T03:33:35-08:00");
+  assert.equal(bySlug.get("starmanager")?.build, "202609242307");
+  assert.equal(bySlug.get("starmanager")?.uploadedAt, "2026-09-24T08:01:19-07:00");
+  assert.equal(bySlug.get("starmanager")?.expiresAt, "2026-12-23T07:01:19-08:00");
   assert.equal(bySlug.get("starmanager")?.inviteUrl, "https://testflight.apple.com/join/nzmW4WxW");
   assert.equal(bySlug.get("starmanager")?.publicBetaState, "approved");
   assert.equal(bySlug.get("button")?.build, "202609051204");
@@ -838,7 +834,7 @@ test("keeps verified TestFlight fallback data for iManagerAI, OurButton, and HtO
   assert.equal(bySlug.get("whattoeat")?.build, "202609132101");
   assert.equal(bySlug.get("whattoeat")?.uploadedAt, "2026-09-13T05:09:41-07:00");
   assert.equal(bySlug.get("whattoeat")?.expiresAt, "2026-12-12T04:09:41-08:00");
-  assert.equal(bySlug.get("whattoeat")?.publicBetaState, "waitingForReview");
+  assert.equal(bySlug.get("whattoeat")?.publicBetaState, "approved");
 });
 
 test("tracks every public download in the site counter with download wording", async () => {
