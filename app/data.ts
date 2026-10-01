@@ -969,8 +969,8 @@ const appCatalog: AppData[] = [
       {
         name: "iPhone · iPad",
         status: "TestFlight",
-        detail: "2.6.5 (202609242307) 심사 대기 · 2.6.4 이용 가능 · iOS·iPadOS 18+",
-        availabilityNote: "최신 2.6.5 Apple 심사 대기 중 · 공개 TestFlight 링크에서는 기존 승인된 2.6.4 이용 가능",
+        detail: "2.6.5 (202609242307) TestFlight 승인 완료 · iOS·iPadOS 18+",
+        availabilityNote: "최신 2.6.5 외부 베타 심사 승인 완료 · 공개 TestFlight 링크에서 참여 가능",
       },
       {
         name: "Android",
