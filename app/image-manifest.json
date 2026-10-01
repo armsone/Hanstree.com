@@ -485,12 +485,6 @@
     "height": 1254,
     "srcSet": "/optimized/62c28165467bde29-128.webp 128w, /optimized/62c28165467bde29-640.webp 640w, /optimized/62c28165467bde29-1254.webp 1254w"
   },
-  "/apps/htoms-brief/screens/login.png": {
-    "src": "/optimized/e1f66a65ef943df3-1206.webp",
-    "width": 1206,
-    "height": 2622,
-    "srcSet": "/optimized/e1f66a65ef943df3-128.webp 128w, /optimized/e1f66a65ef943df3-640.webp 640w, /optimized/e1f66a65ef943df3-1206.webp 1206w"
-  },
   "/apps/intosharp/home-card.webp": {
     "src": "/apps/intosharp/home-card.webp",
     "width": 1280,
