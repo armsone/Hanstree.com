@@ -19,5 +19,5 @@ export const testFlightBuilds: TestFlightBuild[] = [
   { slug: "starmanager", appName: "Stargram", build: "202609242307", uploadedAt: "2026-09-24T08:01:19-07:00", expiresAt: "2026-12-23T07:01:19-08:00", inviteUrl: "https://testflight.apple.com/join/nzmW4WxW", inviteAvailable: true, publicBetaState: "approved" },
   { slug: "button", appName: "OurButton", build: "202609051204", uploadedAt: "2026-09-04T20:10:47-07:00", expiresAt: "2026-12-03T19:10:47-08:00", inviteUrl: "https://testflight.apple.com/join/RKcxgTkc", publicBetaState: "approved" },
   { slug: "whattoeat", appName: "오늘 뭐 먹지??", build: "202609132101", uploadedAt: "2026-09-13T05:09:41-07:00", expiresAt: "2026-12-12T04:09:41-08:00", inviteUrl: "https://testflight.apple.com/join/A444RsAc", inviteAvailable: true, publicBetaState: "approved" },
-  { slug: "denimdex", appName: "데님덱스", build: "202609101658", uploadedAt: "2026-09-10T04:42:01-07:00", expiresAt: "2026-12-09T03:42:01-08:00", inviteUrl: "https://testflight.apple.com/join/5pBrz6ME", inviteAvailable: true, publicBetaState: "approved" },
+  { slug: "denimdex", appName: "데님덱스", build: "202610030015", uploadedAt: "2026-10-02T08:59:00-07:00", expiresAt: "2026-12-31T07:59:00-08:00", inviteUrl: "https://testflight.apple.com/join/5pBrz6ME", inviteAvailable: true, publicBetaState: "approved" },
 ];
