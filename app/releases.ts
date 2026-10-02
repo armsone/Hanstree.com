@@ -125,7 +125,7 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     label: "DenimDex Android",
     repo: "DenimDex-Android",
     assetPattern: /^DenimDex-Android-\d+\.\d+\.\d+\.apk$/i,
-    fallbackUrl: "https://github.com/armsone/DenimDex-Android/releases/download/android-v0.3.2/DenimDex-Android-0.3.2.apk",
+    fallbackUrl: "https://github.com/armsone/DenimDex-Android/releases/download/android-v0.3.3/DenimDex-Android-0.3.3.apk",
   },
   "OurButton-Android": {
     label: "OurButton Android",

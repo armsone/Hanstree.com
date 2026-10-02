@@ -955,8 +955,8 @@ const appCatalog: AppData[] = [
       {
         name: "iPhone · iPad",
         status: "TestFlight",
-        detail: "2.6.5 (202609242307) TestFlight 승인 완료 · iOS·iPadOS 18+",
-        availabilityNote: "최신 2.6.5 외부 베타 심사 승인 완료 · 공개 TestFlight 링크에서 참여 가능",
+        detail: "2.6.6 (202610030015) · iOS·iPadOS 18+",
+        availabilityNote: "공개 승인된 2.6.5 Public Beta 링크는 그대로 유지됩니다 · AIBI 0.5.2 반영한 2.6.6은 기존 Public Beta 그룹에 추가되어 Apple 외부 심사 대기 중입니다.",
       },
       {
         name: "Android",
@@ -964,7 +964,7 @@ const appCatalog: AppData[] = [
         detail: "2.6.5 · 빌드 202609242307 · 내부 코드 384427 · Android 8.0+",
         url: releaseDownloadPath("Stargram-Android"),
         downloadLabel: "Android APK 바로 받기",
-        availabilityNote: "휴대전화·태블릿·Google TV 지원 · 기존 배포 서명 유지 · 실기기 1대 데이터 유지 교체 설치 및 실행 확인 완료 · 새 제공자 기능 시험은 미수행",
+        availabilityNote: "휴대전화·태블릿·Google TV 지원 · 기존 배포 서명 유지 · 공개 다운로드는 승인된 2.6.5로 유지 · AIBI 0.5.2를 반영한 2.6.6은 소스 반영·빌드·Git 백업을 마쳤으나 서명 문제로 공개 게시는 보류 중입니다.",
       },
     ],
     features: [
@@ -1005,6 +1005,7 @@ const appCatalog: AppData[] = [
       { state: "done", title: "Android 2.6.4 공개", body: "사진·글 전송 확인, 중복 전송 방지, 진단 로그 공유와 하단 여백 개선을 담은 APK를 공개했습니다. 빌드 202609101658 · 내부 코드 363898 · 공개 파일 무결성 확인 완료" },
       { state: "done", title: "iOS·iPadOS 2.6.4 Public Beta 승인", body: "build 202609101649 Apple 외부 베타 심사 승인 완료 · 기존 Public Beta 링크와 10,000명 한도 유지 · 공개 테스트 참여 가능" },
       { state: "done", title: "2.6.5 릴리스·심사 제출", body: "Gemini·Claude 사진과 글 전달을 보강하고 취소된 첨부 정리 및 입력창 준비 감지를 적용했습니다. Android 2.6.5 서명 APK(빌드 202609242307) 공개 및 실기기 설치를 확인하고, iOS·iPadOS 새 빌드는 Apple 외부 베타 심사에 제출했습니다." },
+      { state: "done", title: "2.6.6 AIBI 0.5.2 반영·심사 제출", body: "AIBI 0.5.2의 입력창 없는 첨부 오류와 대화 이력 영역 오탐 수정을 반영했습니다. iOS·iPadOS 빌드 202610030015를 기존 Public Beta 그룹에 추가하고 테스터 자동 알림과 함께 Apple 외부 심사에 최종 제출해 심사 대기 중이며, iPhone 앱 재시작 3회와 Gemini·ChatGPT·Claude 각 3회 생성을 확인했습니다. Android 2.6.6은 소스 반영·빌드·Git 백업을 마쳤으나 서명 문제로 공개 게시는 보류되어 기존 2.6.5 다운로드를 유지합니다." },
       { state: "next", title: "게시 흐름 다듬기", body: "실제 공유 앱별 게시 결과와 사용자 피드백을 바탕으로 다음 개선 항목을 정리" },
     ],
     screenshots: [
@@ -1185,16 +1186,16 @@ const appCatalog: AppData[] = [
       {
         name: "iPhone · iPad",
         status: "TestFlight",
-        detail: "0.3.2 (202609101658) · iOS·iPadOS 17+",
-        availabilityNote: "0.3.2 Public Beta 승인 · 공개 TestFlight 링크에서 참여 가능",
+        detail: "0.3.3 (202610030015) · iOS·iPadOS 17+",
+        availabilityNote: "공개 승인된 0.3.2 Public Beta 링크는 그대로 유지됩니다 · AIBI 0.5.2를 반영한 0.3.3은 기존 Public Beta 그룹에 추가되어 Apple 외부 심사 대기 중입니다.",
       },
       {
         name: "Android",
         status: "공개",
-        detail: "0.3.2 · 빌드 202609101702 · 내부 코드 363902 · Android 8.0+",
+        detail: "0.3.3 · VersionCode 396015 · 빌드 202610030015 · Android 8.0+",
         url: releaseDownloadPath("DenimDex-Android"),
         downloadLabel: "Android용 APK 다운로드",
-        availabilityNote: "휴대전화·태블릿·Google TV 지원 · 기존 정식 배포 서명 유지 · 0.3.2 실기기 동작 확인은 진행 예정",
+        availabilityNote: "휴대전화·태블릿·Google TV 지원 · 기존 정식 배포 서명 유지 · 실제 다운로드 SHA-256 해시 일치 확인 완료 · Android 실기기가 없어 반복 동작 검증은 미수행",
       },
     ],
     features: [
@@ -1227,6 +1228,7 @@ const appCatalog: AppData[] = [
       { state: "done", title: "Android 0.3.1 공개", body: "build 202608312019 · 내부 코드 349699 APK를 공개했습니다. iPhone과 같은 9컷 순서, 18개 작은 참고 이미지와 18개 확대 이미지, 가이드와 종합 판단용 사진 역할 전달을 포함합니다." },
       { state: "done", title: "Android 0.3.2 공개", body: "아이비 전송·취소 처리와 진단 로그 공유를 개선했습니다. 빌드 202609101702 · 내부 코드 363902 · 기존 배포 서명과 공개 파일 무결성 확인 완료" },
       { state: "done", title: "iOS·iPadOS 0.3.2 Public Beta 승인", body: "build 202609101658 Apple 외부 베타 심사 승인 완료 · 기존 Public Beta 링크와 10,000명 한도 유지 · 공개 테스트 참여 가능" },
+      { state: "done", title: "0.3.3 AIBI 0.5.2 반영·공개", body: "AIBI 0.5.2의 입력창 없는 첨부 오류와 대화 이력 영역 오탐 수정을 반영했습니다. iOS·iPadOS 빌드 202610030015를 기존 Public Beta 그룹에 추가해 심사 제출을 완료했으며 현재 심사 대기 중입니다. iPhone 재시작 2회와 ChatGPT 사진 요청 3회 성공을 확인했고 다른 AI 기능 추가는 없습니다. Android 0.3.3(VersionCode 396015 · 빌드 202610030015)은 기존 인증서로 서명한 APK를 공개하고 실제 다운로드 SHA-256 해시 일치를 확인했으며, Android 실기기가 없어 반복 동작 검증은 수행하지 않았습니다." },
       { state: "next", title: "아카이브 동기화", body: "개인 NAS 연결과 익명 기록 공유는 준비 중이며 현재 공개 기능에 포함하지 않음" },
     ],
     screenshots: [
@@ -1356,10 +1358,10 @@ const appCatalog: AppData[] = [
       {
         name: "Stargram · DenimDex · iOS · Android",
         status: "공개",
-        detail: "AIBI 0.5.1 · Apple·Android 공통 엔진 · Stargram Apple·Android 반영",
-        url: "https://github.com/armsone/AIBI/releases/download/v0.5.1/AIBI-0.5.1.zip",
-        downloadLabel: "AIBI 0.5.1 소스 받기",
-        availabilityNote: "0.5.1 공개 · Stargram Apple 및 Android 제공자 입력·첨부 처리 개선 반영 · DenimDex는 기존 0.5.0 유지",
+        detail: "AIBI 0.5.2 · Apple·Android 공통 엔진 · Stargram·DenimDex Apple·Android 네 프로젝트 반영",
+        url: "https://github.com/armsone/AIBI/releases/download/v0.5.2/AIBI-0.5.2.zip",
+        downloadLabel: "AIBI 0.5.2 소스 받기",
+        availabilityNote: "0.5.2 공개 · Stargram·DenimDex Apple·Android 네 프로젝트 소스 반영 · 설치된 Codex 스킬 동기화 완료 · 입력창 없는 첨부 오류와 대화 이력 영역 오탐 제거",
       },
     ],
     features: [
@@ -1382,6 +1384,7 @@ const appCatalog: AppData[] = [
     progress: [
       { state: "done", title: "독립 기준 프로젝트 0.5.0 공개", body: "한 번 전송·실제 생성 확인·취소 처리·개인정보 없는 진단 로그를 공통화하고 Stargram·DenimDex의 Apple·Android 네 프로젝트에 반영했습니다." },
       { state: "done", title: "0.5.1 제공자 입력·첨부 처리 개선", body: "Stargram Apple과 Android의 제공자 입력창 준비 감지와 첨부 취소 정리를 보강했습니다. DenimDex는 점검 후 변경 없이 유지했으며, 독립 소스 아카이브를 공개했습니다." },
+      { state: "done", title: "0.5.2 입력창·대화 이력 오류 수정", body: "입력창 없는 첨부 오류와 대화 이력 영역 오탐을 제거하고, Stargram·DenimDex의 Apple·Android 네 프로젝트에 반영해 설치 스킬 동기화를 완료했습니다. 독립 소스 아카이브를 공개했습니다." },
       { state: "done", title: "다중 사진 파이프라인", body: "Apple·Android·브라우저 런타임에서 최대 8장의 이미지 순서와 첨부 확인을 같은 계약으로 검증" },
       { state: "done", title: "최대 20장 선택과 입력창 복구", body: "앱별 선택으로 최대 20장을 원자적으로 첨부하고, 공식 AI 화면이 입력창을 늦게 교체해도 내용을 보존해 다시 입력하도록 개선" },
       { state: "done", title: "Stargram iOS 이식", body: "공유 WKWebView 세션, 숨김·보이기 실행, 로그인 판정, 결과 안정화, 1:59 제한과 취소 흐름을 빌드 검증" },
