@@ -152,26 +152,24 @@ test("keeps every app detail hero focused on one clear entry path and a represen
   assert.match(nasfinder, /여러 저장공간을 한곳에서/);
 });
 
-test("shows DenimDex brand engines with their real icons and truthful beta state", async () => {
+test("shows DenimDex brand engines and its approved external beta state", async () => {
   const response = await render("/apps/denimdex");
   assert.equal(response.status, 200);
   const html = await response.text();
 
-  assert.match(html, /\/apps\/hanai\/icon\.png/);
-  assert.match(html, /\/apps\/aibi\/icon\.png/);
-  assert.match(html, /Apple 공개 테스트 심사 중/);
-  assert.match(html, /기존 Internal과 Public Beta 그룹/);
-  assert.match(html, /0\.2\.1/);
-  assert.match(html, /202608291602/);
-  assert.match(html, /내부 코드 346562/);
+  assert.match(html, /한양이 비슷한 사진을 먼저 정리/);
+  assert.match(html, /아이비로 이어지는 ChatGPT 감정/);
+  assert.match(html, /0\.3\.3 외부 베타 심사가 승인되었습니다/);
+  assert.match(html, /기존 Public Beta 그룹/);
+  assert.match(html, /0\.3\.3/);
+  assert.match(html, /202610030015/);
   assert.match(html, /release-download\?app=DenimDex-Android/);
   assert.match(html, /작성 중인 글은 그대로 보호/);
-  assert.match(html, /38c7585761ffe2431a2285a94bdac1c56557aceb39ee34fd8c64c37ffb728d11/);
   assert.match(html, /추정 생산연도/);
   assert.match(html, /추정 제조공장/);
   assert.match(html, /보수적 희귀도/);
   assert.match(html, /적정 매입가/);
-  assert.doesNotMatch(html, /TestFlight 바로 참여/);
+  assert.match(html, /href="https:\/\/testflight\.apple\.com\/join\/5pBrz6ME"/);
 });
 
 test("renders the requested home navigation and keeps the maker name as plain text", async () => {
@@ -207,7 +205,8 @@ test("collects verified external tester links between TestFlight and Android dow
   assert.match(section, /외부 테스터 참여/);
   assert.equal((section.match(/class="testflight-invite-card/g) ?? []).length, 8);
   assert.equal((section.match(/class="app-icon/g) ?? []).length, 8);
-  assert.equal((section.match(/최신 빌드는 Apple 심사를 기다리고 있습니다/g) ?? []).length, 0);
+  assert.equal((section.match(/최신 빌드는 Apple 심사를 기다리고 있습니다/g) ?? []).length, 1);
+  assert.match(section, /CCMB[\s\S]*?최신 빌드는 Apple 심사를 기다리고 있습니다/);
   assert.equal((section.match(/심사 계정 준비/g) ?? []).length, 0);
   assert.equal((section.match(/외부용 빌드 준비/g) ?? []).length, 0);
   assert.equal((section.match(/href="https:\/\/testflight\.apple\.com\/join\//g) ?? []).length, 8);
@@ -782,7 +781,7 @@ test("refuses bot and direct download requests before redirecting", async () => 
   assert.equal(directRequest.headers.get("location"), null);
 });
 
-test("keeps verified TestFlight fallback data for iManagerAI, OurButton, and HtOMS", async () => {
+test("keeps verified public TestFlight data and excludes internal-only HtOMS", async () => {
   const response = await render("/api/testflight-builds");
   assert.equal(response.status, 200);
 
@@ -811,12 +810,10 @@ test("keeps verified TestFlight fallback data for iManagerAI, OurButton, and HtO
   assert.equal(bySlug.get("button")?.uploadedAt, "2026-09-04T20:10:47-07:00");
   assert.equal(bySlug.get("button")?.expiresAt, "2026-12-03T19:10:47-08:00");
   assert.equal(bySlug.get("button")?.publicBetaState, "approved");
-  assert.equal(bySlug.get("htoms-brief")?.build, "202608291628");
-  assert.equal(bySlug.get("htoms-brief")?.uploadedAt, "2026-08-29T16:37:14+09:00");
-  assert.equal(bySlug.get("htoms-brief")?.publicBetaState, "internalOnly");
-  assert.equal(bySlug.get("denimdex")?.build, "202609101658");
-  assert.equal(bySlug.get("denimdex")?.uploadedAt, "2026-09-10T04:42:01-07:00");
-  assert.equal(bySlug.get("denimdex")?.expiresAt, "2026-12-09T03:42:01-08:00");
+  assert.equal(bySlug.has("htoms-brief"), false);
+  assert.equal(bySlug.get("denimdex")?.build, "202610030015");
+  assert.equal(bySlug.get("denimdex")?.uploadedAt, "2026-10-02T08:59:00-07:00");
+  assert.equal(bySlug.get("denimdex")?.expiresAt, "2026-12-31T07:59:00-08:00");
   assert.equal(bySlug.get("denimdex")?.inviteUrl, "https://testflight.apple.com/join/5pBrz6ME");
   assert.equal(bySlug.get("denimdex")?.publicBetaState, "approved");
   assert.equal(bySlug.get("whattoeat")?.build, "202609132101");

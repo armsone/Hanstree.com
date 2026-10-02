@@ -1187,7 +1187,7 @@ const appCatalog: AppData[] = [
         name: "iPhone · iPad",
         status: "TestFlight",
         detail: "0.3.3 (202610030015) · iOS·iPadOS 17+",
-        availabilityNote: "공개 승인된 0.3.2 Public Beta 링크는 그대로 유지됩니다 · AIBI 0.5.2를 반영한 0.3.3은 기존 Public Beta 그룹에 추가되어 Apple 외부 심사 대기 중입니다.",
+        availabilityNote: "0.3.3 외부 베타 심사가 승인되었습니다 · 기존 Public Beta 그룹과 공개 링크를 통해 참여할 수 있습니다.",
       },
       {
         name: "Android",
@@ -1228,7 +1228,7 @@ const appCatalog: AppData[] = [
       { state: "done", title: "Android 0.3.1 공개", body: "build 202608312019 · 내부 코드 349699 APK를 공개했습니다. iPhone과 같은 9컷 순서, 18개 작은 참고 이미지와 18개 확대 이미지, 가이드와 종합 판단용 사진 역할 전달을 포함합니다." },
       { state: "done", title: "Android 0.3.2 공개", body: "아이비 전송·취소 처리와 진단 로그 공유를 개선했습니다. 빌드 202609101702 · 내부 코드 363902 · 기존 배포 서명과 공개 파일 무결성 확인 완료" },
       { state: "done", title: "iOS·iPadOS 0.3.2 Public Beta 승인", body: "build 202609101658 Apple 외부 베타 심사 승인 완료 · 기존 Public Beta 링크와 10,000명 한도 유지 · 공개 테스트 참여 가능" },
-      { state: "done", title: "0.3.3 AIBI 0.5.2 반영·공개", body: "AIBI 0.5.2의 입력창 없는 첨부 오류와 대화 이력 영역 오탐 수정을 반영했습니다. iOS·iPadOS 빌드 202610030015를 기존 Public Beta 그룹에 추가해 심사 제출을 완료했으며 현재 심사 대기 중입니다. iPhone 재시작 2회와 ChatGPT 사진 요청 3회 성공을 확인했고 다른 AI 기능 추가는 없습니다. Android 0.3.3(VersionCode 396015 · 빌드 202610030015)은 기존 인증서로 서명한 APK를 공개하고 실제 다운로드 SHA-256 해시 일치를 확인했으며, Android 실기기가 없어 반복 동작 검증은 수행하지 않았습니다." },
+      { state: "done", title: "0.3.3 AIBI 0.5.2 반영·공개", body: "AIBI 0.5.2의 입력창 없는 첨부 오류와 대화 이력 영역 오탐 수정을 반영했습니다. iOS·iPadOS 빌드 202610030015의 Apple 외부 베타 심사가 승인되어 기존 Public Beta 그룹과 공개 링크에서 참여할 수 있습니다. iPhone 재시작 2회와 ChatGPT 사진 요청 3회 성공을 확인했고 다른 AI 기능 추가는 없습니다. Android 0.3.3(VersionCode 396015 · 빌드 202610030015)은 기존 인증서로 서명한 APK를 공개하고 실제 다운로드 SHA-256 해시 일치를 확인했으며, Android 실기기가 없어 반복 동작 검증은 수행하지 않았습니다." },
       { state: "next", title: "아카이브 동기화", body: "개인 NAS 연결과 익명 기록 공유는 준비 중이며 현재 공개 기능에 포함하지 않음" },
     ],
     screenshots: [
