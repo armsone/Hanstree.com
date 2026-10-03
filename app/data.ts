@@ -430,7 +430,7 @@ const appCatalog: AppData[] = [
     icon: "/apps/stand/icon.png",
     artwork: "clock",
     platforms: [
-      { name: "iOS · iPadOS", status: "TestFlight", detail: "2.5.7 (202609301404) · iOS·iPadOS 17+", availabilityNote: "2.5.7 외부 베타 승인 완료 · 공개 TestFlight 링크에서 참여 가능" },
+      { name: "iOS · iPadOS", status: "TestFlight", detail: "2.5.8 (202610031012) · iOS·iPadOS 17+", availabilityNote: "2.5.8 외부 베타 심사 대기 · 기존 공개 링크 유지" },
       {
         name: "macOS",
         status: "공개",
@@ -482,6 +482,7 @@ const appCatalog: AppData[] = [
       { title: "Mac에서 시작", body: "공증된 DMG를 열고 S.tand를 응용 프로그램 폴더로 옮긴 뒤 실행합니다. 이후에는 앱이 업데이트를 확인하고 종료·교체 설치·재실행까지 이어서 처리합니다." },
     ],
     progress: [
+      { state: "done", title: "iPhone·iPad 2.5.8 외부 심사 제출", body: "build 202610031012를 업로드하고 기존 Public Beta 그룹에 추가했습니다. 한국어 심사 노트와 자동 알림을 포함해 외부 심사를 제출했으며 현재 Apple 외부 심사 대기(WAITING_FOR_REVIEW) 상태입니다. 기존 공개 TestFlight 링크는 그대로 유지됩니다." },
       { state: "done", title: "Mac 2.5.8 미니플레이어 시작 정리", body: "미니플레이어를 열면 첫 영상을 자동재생 없이 일시정지로 준비하고, 첫 영상이 준비되는 동안 잘못 보이던 '숏츠 없음' 시작 표지를 숨겼습니다. 실제로 숏츠가 없을 때는 그대로 안내하며, 재생은 사용자가 누를 때 시작합니다. build 202610031012를 Apple 공증까지 마쳐 공개했습니다." },
       { state: "done", title: "Android·Google TV 2.6.3 공개", body: "Google TV에서 시스템 위치 확인이 실패하면 ipwho.is로 추정한 대략적 지역을 IP 추정 지역으로 표시하고 그 지역의 날씨를 대신 가져오도록 반영했습니다. 휴대전화·태블릿·라디오 화면 배치는 그대로입니다. build 202610021625 · 코드 395545 APK를 공개했으며, 소스 검토와 서명을 확인했습니다. 실제 Google TV 기기에서의 동작은 아직 검증하지 않았습니다." },
       { state: "done", title: "Android·Google TV 2.6.2 공개", body: "Google TV 상단 카테고리 선택 버튼과 빠방 음악 카드의 너비를 넓혀 아이돌 뮤비처럼 긴 이름을 표시할 공간을 확보했습니다. 아이콘과 이름은 각 버튼 안에서 가운데로 배치했으며, 버튼 높이와 글자 크기, 휴대전화·태블릿·라디오 화면 배치는 그대로 유지했습니다. build 202610021431 · 코드 395431 APK를 공개했습니다." },
