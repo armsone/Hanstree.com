@@ -568,7 +568,7 @@ const appCatalog: AppData[] = [
         downloadLabel: "Public Beta 참여",
         availabilityNote: "0.1.4 공개 베타 참여 링크는 그대로 유지됩니다 · NAS 사용량 기록을 더한 0.2.0은 기존 Public Beta 그룹에 추가되어 Apple 외부 심사 대기 중입니다.",
       },
-      { name: "macOS", status: "공개", detail: "2.0.30 (202610011700) · macOS 10.15+ · Universal · Apple 공증 완료 · CloudKit Production 서명", url: releaseDownloadPath("CCMB"), downloadLabel: "DMG 다운로드" },
+      { name: "macOS", status: "공개", detail: "2.0.31 (202610040848) · macOS 10.15+ · Universal · Apple 공증 완료 · CloudKit Production 서명", url: releaseDownloadPath("CCMB"), downloadLabel: "DMG 다운로드" },
     ],
     features: [
       { title: "멀리서도 남은 한도를 한눈에", body: "Mac CCMB가 같은 Apple ID의 CloudKit 개인 데이터베이스에 올린 최신 스냅샷을 iPhone·iPad가 읽기 전용으로 불러옵니다.", icon: "/apps/ccmb/features/feature-02.webp" },
@@ -624,10 +624,11 @@ const appCatalog: AppData[] = [
       { state: "done", title: "CCMB 2.0.28 공개", body: "Claude 계정 연결 버튼과 연결 중 상태를 표시하고, 인증 거절·통신 오류·저장된 인증 정보 접근 오류를 구분하도록 개선했습니다. 중복 사용량 요청을 줄인 빌드 202609272024의 Apple 공증 Universal DMG와 자동 업데이트를 공개했습니다." },
       { state: "done", title: "CCMB 2.0.29 공개", body: "로그인한 계정을 기준으로 Codex 주간 잔여량을 계산해 공식 앱·CLI·웹과 다르게 보이던 문제를 고쳤고, 계정을 확인할 수 없을 때는 잘못된 수치를 표시하지 않습니다. 빌드 202609300958의 Apple 공증 Universal DMG와 자동 업데이트를 공개했습니다." },
       { state: "done", title: "CCMB 2.0.30 공개", body: "아래쪽 Codex 사용량 버튼이 새로운 ChatGPT 사용량 설정 페이지를 열도록 수정했습니다. 빌드 202610011700의 Apple 공증 Universal DMG와 자동 업데이트를 공개했습니다." },
+      { state: "done", title: "CCMB 2.0.31 공개", body: "Mac 열정 그래프의 남은 사용량을 0.1% 단위로 표시해 작은 변화도 확인할 수 있습니다. 빌드 202610040848의 Apple 공증 Universal DMG와 자동 업데이트를 공개했습니다." },
     ],
     screenshots: [
       { src: "/apps/ccmb/screens/ios-dashboard.jpg", alt: "이전 iPhone 화면 · 외부 심사 대기 중인 0.2.0의 새 NAS 사용량 기록 화면은 반영되지 않았습니다.", layout: "phone" },
-      { src: "/apps/ccmb/ccmb-dashboard-private.png", alt: "개인정보를 제거한 이전 Mac 화면 · 현재 2.0.30에는 Spark 항목과 Claude 모델 요약 표시가 없습니다.", layout: "menu" },
+      { src: "/apps/ccmb/ccmb-dashboard-private.png", alt: "개인정보를 제거한 이전 Mac 화면 · 현재 2.0.31에는 Spark 항목과 Claude 모델 요약 표시가 없으며, 그래프의 0.1% 표시는 이 이전 화면에 반영되지 않았습니다.", layout: "menu" },
       { src: "/apps/ccmb/screens/macos-menubar.png", alt: "macOS 메뉴 막대에 표시된 CCMB 사용량", layout: "wide" },
     ],
     github: ["https://github.com/armsone/CCMB", "https://github.com/armsone/CCMB-iOS"],
