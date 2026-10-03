@@ -441,10 +441,10 @@ const appCatalog: AppData[] = [
       {
         name: "Android · Google TV",
         status: "공개",
-        detail: "2.6.4 · Android 8.0+",
+        detail: "2.6.5 · Android 8.0+",
         url: releaseDownloadPath("S.tand-Android"),
         downloadLabel: "Android APK 바로 받기",
-        availabilityNote: "Android·Google TV용 2.6.4 APK 공개 · TV 웹 최소 폭 200px가 144dp 영역을 넘쳐 잘리던 문제를 컨테이너 크기를 따르도록 수정 · 시작 직후에는 재생 대기 중 기본 아이콘만 보이고 자동 재생하지 않음 · 휴대전화·태블릿·라디오 배치 유지",
+        availabilityNote: "Android·Google TV용 2.6.5 APK 공개 · 태블릿과 펼친 트라이폴드의 넓은 폭에서 빠방·라디오 버튼 그룹을 가운데로 정렬 · 버튼 크기·간격과 넘침 스크롤은 그대로 유지 · 휴대전화·태블릿·라디오 배치 유지",
       },
     ],
     features: [
@@ -483,6 +483,7 @@ const appCatalog: AppData[] = [
     ],
     progress: [
       { state: "done", title: "iPhone·iPad 2.5.8 외부 심사 제출", body: "build 202610031012를 업로드하고 기존 Public Beta 그룹에 추가했습니다. 한국어 심사 노트와 자동 알림을 포함해 외부 심사를 제출했으며 현재 Apple 외부 심사 대기(WAITING_FOR_REVIEW) 상태입니다. 기존 공개 TestFlight 링크는 그대로 유지됩니다." },
+      { state: "done", title: "Android·Google TV 2.6.5 공개", body: "태블릿과 펼친 트라이폴드처럼 폭이 넓은 화면에서 빠방·라디오 버튼 그룹을 가운데로 정렬했습니다. 버튼 크기·간격과 콜백, 넘칠 때의 스크롤 동작은 그대로 유지했습니다. GitHub 태그 android-v2.6.5 · build 202610031746 · 코드 397066 APK를 공개했으며, 공개 자산 31,343,908바이트와 내려받은 APK의 SHA-256 해시가 일치함을 확인했고 2.6.4와 같은 서명입니다. 실제 기기에서의 설치·동작은 아직 검증하지 않았습니다." },
       { state: "done", title: "Android·Google TV 2.6.4 공개", body: "Google TV 웹 화면에서 최소 폭 200px가 144dp 카드 영역을 넘쳐 잘리던 문제를 컨테이너 크기를 따르도록 고쳤습니다. 시작 직후에는 자동 재생 없이 네이티브 재생 대기 아이콘과 '재생 대기 중' 문구만 보이며, 실제 재생을 요청한 뒤 발생하는 오류만 그대로 표시합니다. build 202610031029 · 코드 396629 APK를 공개했으며, 2.6.3과 같은 서명과 실제 내려받은 APK의 해시를 확인했습니다. 실제 기기에서의 설치·동작은 아직 검증하지 않았습니다." },
       { state: "done", title: "Mac 2.5.8 미니플레이어 시작 정리", body: "미니플레이어를 열면 첫 영상을 자동재생 없이 일시정지로 준비하고, 첫 영상이 준비되는 동안 잘못 보이던 '숏츠 없음' 시작 표지를 숨겼습니다. 실제로 숏츠가 없을 때는 그대로 안내하며, 재생은 사용자가 누를 때 시작합니다. build 202610031012를 Apple 공증까지 마쳐 공개했습니다." },
       { state: "done", title: "Android·Google TV 2.6.3 공개", body: "Google TV에서 시스템 위치 확인이 실패하면 ipwho.is로 추정한 대략적 지역을 IP 추정 지역으로 표시하고 그 지역의 날씨를 대신 가져오도록 반영했습니다. 휴대전화·태블릿·라디오 화면 배치는 그대로입니다. build 202610021625 · 코드 395545 APK를 공개했으며, 소스 검토와 서명을 확인했습니다. 실제 Google TV 기기에서의 동작은 아직 검증하지 않았습니다." },
@@ -963,7 +964,7 @@ const appCatalog: AppData[] = [
         name: "iPhone · iPad",
         status: "TestFlight",
         detail: "2.6.6 (202610030015) · iOS·iPadOS 18+",
-        availabilityNote: "공개 승인된 2.6.5 Public Beta 링크는 그대로 유지됩니다 · AIBI 0.5.2 반영한 2.6.6은 기존 Public Beta 그룹에 추가되어 Apple 외부 심사 대기 중입니다.",
+        availabilityNote: "2.6.6 외부 베타 심사 승인 완료 · 기존 공개 TestFlight 링크에서 참여할 수 있습니다.",
       },
       {
         name: "Android",
@@ -1012,7 +1013,7 @@ const appCatalog: AppData[] = [
       { state: "done", title: "Android 2.6.4 공개", body: "사진·글 전송 확인, 중복 전송 방지, 진단 로그 공유와 하단 여백 개선을 담은 APK를 공개했습니다. 빌드 202609101658 · 내부 코드 363898 · 공개 파일 무결성 확인 완료" },
       { state: "done", title: "iOS·iPadOS 2.6.4 Public Beta 승인", body: "build 202609101649 Apple 외부 베타 심사 승인 완료 · 기존 Public Beta 링크와 10,000명 한도 유지 · 공개 테스트 참여 가능" },
       { state: "done", title: "2.6.5 릴리스·심사 제출", body: "Gemini·Claude 사진과 글 전달을 보강하고 취소된 첨부 정리 및 입력창 준비 감지를 적용했습니다. Android 2.6.5 서명 APK(빌드 202609242307) 공개 및 실기기 설치를 확인하고, iOS·iPadOS 새 빌드는 Apple 외부 베타 심사에 제출했습니다." },
-      { state: "done", title: "2.6.6 AIBI 0.5.2 반영·심사 제출", body: "AIBI 0.5.2의 입력창 없는 첨부 오류와 대화 이력 영역 오탐 수정을 반영했습니다. iOS·iPadOS 빌드 202610030015를 기존 Public Beta 그룹에 추가하고 테스터 자동 알림과 함께 Apple 외부 심사에 최종 제출해 심사 대기 중이며, iPhone 앱 재시작 3회와 Gemini·ChatGPT·Claude 각 3회 생성을 확인했습니다. Android 2.6.6은 소스 반영·빌드·Git 백업을 마쳤으나 서명 문제로 공개 게시는 보류되어 기존 2.6.5 다운로드를 유지합니다." },
+      { state: "done", title: "2.6.6 AIBI 0.5.2 반영·Public Beta 승인", body: "AIBI 0.5.2의 입력창 없는 첨부 오류와 대화 이력 영역 오탐 수정을 반영했습니다. iOS·iPadOS 빌드 202610030015가 Apple 외부 베타 심사 승인을 받았으며 기존 Public Beta 공개 링크로 참여할 수 있습니다. iPhone 앱 재시작 3회와 Gemini·ChatGPT·Claude 각 3회 생성을 확인했습니다. Android 2.6.6은 서명 문제로 공개 보류 중이며 기존 2.6.5 다운로드를 유지합니다." },
       { state: "next", title: "게시 흐름 다듬기", body: "실제 공유 앱별 게시 결과와 사용자 피드백을 바탕으로 다음 개선 항목을 정리" },
     ],
     screenshots: [
