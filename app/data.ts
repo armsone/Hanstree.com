@@ -305,13 +305,14 @@ const appCatalog: AppData[] = [
       {
         name: "Android",
         status: "공개",
-        detail: "2.3.0 · 빌드 202609071316 · 내부 코드 359356 · Android 8.0+",
+        detail: "2.4.0 · 빌드 202610050057 · 내부 코드 398937 · Android 8.0+",
         url: releaseDownloadPath("HanClip-Android"),
         downloadLabel: "Android APK 바로 받기",
-        availabilityNote: "서명 APK 재다운로드·무결성 검증 완료 · 휴대전화·태블릿·Google TV 지원",
+        availabilityNote: "공개 APK 다운로드·서명·해시 확인 · 사진 선별 및 원본 앨범 이동은 Android 11+ · 실기기 동작 확인 전",
       },
     ],
     features: [
+      { title: "Android 사진 선별", body: "갤러리에서 공유한 사진 중 원하는 장수만큼 좋은 사진을 골라 봅니다. 결과를 확인하고 앨범을 지정하면 복사본 없이 원본을 이동합니다. 이전 앨범에서 빠지는 이동 방식은 실행 전에 안내하고 승인을 받습니다.", icon: "/apps/hanclip/features/feature-05.webp" },
       { title: "빠른 영화 만들기", body: "실제 장면 수와 영상 분량에 맞춰 시간을 고르게 배분하고, 엔딩을 포함한 완성시간을 음악 길이에 맞춘 뒤 결과를 다듬습니다.", icon: "/apps/hanclip/features/feature-01.webp" },
       { title: "AiShot", body: "Apple과 Android에서 골프 스윙의 준비·동작·임팩트와 타격음을 함께 살핍니다. 소리가 거의 없는 퍼팅은 준비 자세부터 작은 백스윙·전진·팔로스루까지 몸동작 순서가 확실하고 화면이 안정적일 때만 보수적으로 촬영합니다.", icon: "/apps/hanclip/features/feature-02.webp" },
       { title: "무음 영상도 장면 분석", body: "타임랩스·슬로 모션처럼 오디오 트랙이 없는 영상은 화면 움직임을 분석하고, 뚜렷한 변화가 없으면 영상 중앙을 기준으로 하이라이트를 제안합니다.", icon: "/apps/hanclip/features/feature-03.webp" },
@@ -324,6 +325,7 @@ const appCatalog: AppData[] = [
       { title: "찾기 쉬운 테마와 저작권", body: "테마 설정을 카피라이트보다 먼저 보여주고, 긴 저작권 설명은 필요한 제목을 눌렀을 때만 펼쳐 봅니다. 워터마크 사용 여부도 한 줄 어디서나 쉽게 조작합니다.", icon: "/apps/starmanager/features/feature-08.webp" },
     ],
     guide: [
+      { title: "Android 좋은 사진 고르기", body: "Android 11 이상에서 갤러리 사진을 공유하고 ‘한양 사진 고르기’를 선택합니다. 뽑을 장수와 앨범을 정한 뒤 결과를 확인하고 원본 이동을 승인합니다. 휴대전화 원본과 사진 전체 접근이 필요하며, 클라우드 항목은 이동하지 않습니다." },
       { title: "프리셋 선택", body: "새 영화, 퀵모드, AiShot 또는 여행·인생·골프 프리셋에서 시작합니다." },
       { title: "미디어 가져오기", body: "사진첩·갤러리·달력·파일이나 다른 앱의 공유 메뉴에서 재료를 고릅니다." },
       { title: "편집과 만들기", body: "자동 묶음과 분할 결과를 확인하고 자막·음악·로고를 더해 영화를 만듭니다." },
@@ -332,7 +334,8 @@ const appCatalog: AppData[] = [
     progress: [
       { state: "done", title: "iOS 핵심 제작 흐름", body: "선택, 편집, 렌더링, 시사회와 저장 흐름 구현" },
       { state: "done", title: "iOS·iPadOS 2.3.0 Public Beta 승인", body: "build 202609071316 Apple 외부 베타 심사 승인 완료 · 기존 Public Beta 링크와 10,000명 한도 유지 · Apple Silicon Mac 호환 모드 포함 공개 테스트 참여 가능" },
-      { state: "done", title: "Android 2.3.0 공개", body: "한양 Golf 모델 0.7의 시각 근거 기반 퍼터 안전망을 통합한 서명 APK를 공개" },
+      { state: "done", title: "Android 2.4.0 공개", body: "한클립 안의 ‘한양 사진 고르기’ 공유 화면과 원본 앨범 이동 기능을 포함한 APK 공개 · 빌드 202610050057 · 기존 공개본과 동일 서명 확인" },
+      { state: "active", title: "Android 사진 선별 실기기 확인", body: "선별·이동·부분 실패 복구는 소스 검토와 빌드를 완료했으며, 실제 기기의 동작 확인은 남아 있습니다." },
       { state: "done", title: "플랫폼 기술 계약 동기화", body: "기능·알고리즘·상태·오류·취소·권한·제스처·접근성 계약을 Apple과 Android에 대조 반영" },
       { state: "active", title: "Android AiShot 현장 검증", body: "실제 퍼팅과 다양한 스윙 환경에서 놓침과 오촬영을 계속 점검 중" },
       { state: "done", title: "Apple Silicon Mac 지원", body: "iPhone·iPad와 같은 빌드를 Mac의 ‘iPhone 및 iPad용 앱’으로 실행하도록 지원" },
