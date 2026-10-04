@@ -563,10 +563,10 @@ const appCatalog: AppData[] = [
       {
         name: "iPhone · iPad",
         status: "TestFlight",
-        detail: "0.2.0 (202610011722) · iOS·iPadOS 17+",
+        detail: "0.2.1 (202610040848) · iOS·iPadOS 17+",
         url: "https://testflight.apple.com/join/q9jesHZa",
         downloadLabel: "Public Beta 참여",
-        availabilityNote: "0.1.4 공개 베타 참여 링크는 그대로 유지됩니다 · NAS 사용량 기록을 더한 0.2.0은 기존 Public Beta 그룹에 추가되어 Apple 외부 심사 대기 중입니다.",
+        availabilityNote: "0.1.4 공개 베타 참여 링크는 그대로 유지됩니다 · iOS 퍼센트 링과 나의AI열정 퍼센트를 소수점 한 자리(0.1%)로 표시한 0.2.1은 기존 Public Beta 그룹에 추가되어 Apple 외부 심사 대기(WAITING_FOR_REVIEW) 중입니다. 이 빌드가 바로 공개된다는 뜻은 아니며, 공개 베타 참여는 기존 0.1.4 상태를 유지합니다.",
       },
       { name: "macOS", status: "공개", detail: "2.0.32 (202610040900) · macOS 10.15+ · Universal · Apple 공증 완료 · CloudKit Production 서명", url: releaseDownloadPath("CCMB"), downloadLabel: "DMG 다운로드" },
     ],
@@ -575,6 +575,7 @@ const appCatalog: AppData[] = [
       { title: "자동 전환과 세 가지 전용 테마", body: "자동은 iPhone의 주간·야간 상태만 읽어 CCMB 자체 주간·야간 디자인을 전환합니다. 주간·야간·굵은 선의 캐주얼을 직접 고르면 화면과 전용 홈 화면 아이콘이 함께 바뀝니다.", icon: "/apps/stand/features/feature-11.webp" },
       { title: "누르는 순간 다시 시작하는 갱신", body: "자동갱신 줄 전체를 누르면 iCloud의 최신 값을 즉시 확인하고, 선택한 자동갱신 주기도 그 순간부터 다시 시작합니다. 겹친 요청은 버리지 않고 직전 조회가 끝난 뒤 한 번 더 확인합니다.", icon: "/apps/ccmb/features/feature-03.webp" },
       { title: "서비스 색으로 움직이는 원형 그래프", body: "앱을 열거나 갱신하면 원형 그래프가 100%에서 0%로 줄어든 뒤 실제 잔량까지 다시 차오릅니다. Codex와 Claude는 고유색을, Gemini 네 한도는 파랑·빨강·노랑·초록을 사용합니다.", icon: "/apps/ccmb/features/feature-01.webp" },
+      { title: "iOS 퍼센트 소수점 표시", body: "외부 심사 대기 중인 iOS·iPadOS 0.2.1에서는 퍼센트 링과 나의 AI 열정 퍼센트를 소수점 한 자리(0.1%)까지 표시합니다.", icon: "/apps/ccmb/features/feature-01.webp" },
       { title: "가까운 날짜를 바로 읽는 24시간 표기", body: "Mac과 iPhone 모두 초기화 날짜가 오늘·내일·모레면 말로 표시하고, 그 이후에는 9/7(월) 19:00처럼 요일·24시간 형식으로 보여 줍니다. Gemini가 한국어·영어 문장으로 주는 시각도 같은 규칙으로 정리합니다.", icon: "/apps/htoms-brief/features/feature-03.webp" },
       { title: "iCloud가 아니어도 이어지는 보조 경로", body: "Dropbox·Google Drive·iCloud Drive의 CCMB-usage-v1.json을 Files에서 한 번 선택하면 보안 북마크로 다시 읽습니다.", icon: "/apps/ccmb/features/feature-08.webp" },
       { title: "소진 임박과 최근 소비를 함께", body: "현재 쓸 수 있는 한도 중 가장 먼저 소진될 항목을 자동으로 고르고, 최근 40회 갱신 소비를 서비스별 세로 막대로 비교합니다.", icon: "/apps/htoms-brief/features/feature-01.webp" },
@@ -605,6 +606,7 @@ const appCatalog: AppData[] = [
     progress: [
       { state: "done", title: "iPhone·iPad 0.1.4 Public Beta", body: "build 202609021538은 공개 베타에서 이용할 수 있습니다. Spark 표시를 정리한 0.1.6 (202609181254)은 기존 Public Beta 그룹에 추가하고 외부 심사를 제출했습니다." },
       { state: "done", title: "iPhone·iPad 0.2.0 외부 심사 제출", body: "NAS 사용량 기록을 더한 build 202610011722를 업로드하고 기존 Public Beta 그룹에 추가했습니다. 한국어 심사 노트와 자동 알림을 포함해 외부 심사를 제출했으며 현재 Apple 외부 심사 대기(WAITING_FOR_REVIEW) 상태입니다." },
+      { state: "done", title: "iPhone·iPad 0.2.1 외부 심사 제출", body: "퍼센트 링과 나의AI열정 퍼센트를 소수점 한 자리(0.1%)로 표시한 build 202610040848을 서명된 아카이브로 업로드했습니다. VALID 상태로 처리되어 기존 Public Beta 그룹에 추가했고, autoNotify를 켜 외부 심사를 제출했으며 현재 Apple 외부 심사 대기(WAITING_FOR_REVIEW) 상태입니다. 실제 iPhone에 기존 데이터를 보존한 채 설치·실행되는 것을 확인했습니다. 공개 참여 링크는 기존 0.1.4 상태를 그대로 유지합니다." },
       { state: "done", title: "공개 배포", body: "Universal DMG와 GitHub Releases 배포 흐름 제공" },
       { state: "done", title: "서명된 자동 업데이트", body: "Sparkle 기반 업데이트와 무결성 확인" },
       { state: "done", title: "로컬 사용량 공유", body: "다른 앱과 대화를 위한 최신성 포함 JSON 및 명령 제공" },
@@ -628,7 +630,7 @@ const appCatalog: AppData[] = [
       { state: "done", title: "CCMB 2.0.32 공개", body: "막대 열정 그래프의 갱신당 사용량과 막대 위 상세값만 0.1% 단위로 표시합니다. 원형 그래프와 메뉴 막대 등 다른 퍼센트는 정수로 표시합니다. 빌드 202610040900의 Apple 공증 Universal DMG와 자동 업데이트를 공개했습니다." },
     ],
     screenshots: [
-      { src: "/apps/ccmb/screens/ios-dashboard.jpg", alt: "이전 iPhone 화면 · 외부 심사 대기 중인 0.2.0의 새 NAS 사용량 기록 화면은 반영되지 않았습니다.", layout: "phone" },
+      { src: "/apps/ccmb/screens/ios-dashboard.jpg", alt: "이전 iPhone 화면 · 외부 심사 대기 중인 0.2.1의 NAS 사용량 기록과 퍼센트 소수점 표시 변화는 이 화면에 반영되지 않았습니다.", layout: "phone" },
       { src: "/apps/ccmb/ccmb-dashboard-private.png", alt: "개인정보를 제거한 이전 Mac 화면 · 현재 2.0.32에는 Spark 항목과 Claude 모델 요약 표시가 없으며, 막대 그래프의 0.1% 표시는 이 이전 화면에 반영되지 않았습니다.", layout: "menu" },
       { src: "/apps/ccmb/screens/macos-menubar.png", alt: "macOS 메뉴 막대에 표시된 CCMB 사용량", layout: "wide" },
     ],
