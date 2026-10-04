@@ -77,7 +77,7 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     label: "HanClip Android",
     repo: "HanClip-Android",
     assetPattern: /\.apk$/i,
-    fallbackUrl: "https://github.com/armsone/HanClip-Android/releases/download/android-v2.3.0/HanClip-Android-2.3.0.apk",
+    fallbackUrl: "https://github.com/armsone/HanClip-Android/releases/download/android-v2.4.0/HanClip-Android-2.4.0.apk",
   },
   "S.tand-macOS": {
     label: "S.tand Mac",
