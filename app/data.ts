@@ -568,7 +568,7 @@ const appCatalog: AppData[] = [
         downloadLabel: "Public Beta 참여",
         availabilityNote: "0.1.4 공개 베타 참여 링크는 그대로 유지됩니다 · iOS 퍼센트 링과 나의AI열정 퍼센트를 소수점 한 자리(0.1%)로 표시한 0.2.1은 기존 Public Beta 그룹에 추가되어 Apple 외부 심사 대기(WAITING_FOR_REVIEW) 중입니다. 이 빌드가 바로 공개된다는 뜻은 아니며, 공개 베타 참여는 기존 0.1.4 상태를 유지합니다.",
       },
-      { name: "macOS", status: "공개", detail: "2.0.32 (202610040900) · macOS 10.15+ · Universal · Apple 공증 완료 · CloudKit Production 서명", url: releaseDownloadPath("CCMB"), downloadLabel: "DMG 다운로드" },
+      { name: "macOS", status: "공개", detail: "2.0.33 (202610041041) · macOS 10.15+ · Universal · Apple 공증 완료 · CloudKit Production 서명", url: releaseDownloadPath("CCMB"), downloadLabel: "DMG 다운로드" },
     ],
     features: [
       { title: "멀리서도 남은 한도를 한눈에", body: "Mac CCMB가 같은 Apple ID의 CloudKit 개인 데이터베이스에 올린 최신 스냅샷을 iPhone·iPad가 읽기 전용으로 불러옵니다.", icon: "/apps/ccmb/features/feature-02.webp" },
@@ -627,11 +627,12 @@ const appCatalog: AppData[] = [
       { state: "done", title: "CCMB 2.0.29 공개", body: "로그인한 계정을 기준으로 Codex 주간 잔여량을 계산해 공식 앱·CLI·웹과 다르게 보이던 문제를 고쳤고, 계정을 확인할 수 없을 때는 잘못된 수치를 표시하지 않습니다. 빌드 202609300958의 Apple 공증 Universal DMG와 자동 업데이트를 공개했습니다." },
       { state: "done", title: "CCMB 2.0.30 공개", body: "아래쪽 Codex 사용량 버튼이 새로운 ChatGPT 사용량 설정 페이지를 열도록 수정했습니다. 빌드 202610011700의 Apple 공증 Universal DMG와 자동 업데이트를 공개했습니다." },
       { state: "done", title: "CCMB 2.0.31 공개", body: "Mac 원형 그래프의 남은 사용량에 소수점 표시를 적용했습니다. 빌드 202610040848의 Apple 공증 Universal DMG와 자동 업데이트를 공개했습니다." },
+      { state: "done", title: "CCMB 2.0.33 공개", body: "열정 막대그래프의 정수는 1%, 소수는 최대 한 자리인 1.2%로 표시합니다. 불필요한 .0 표시는 제거했고, 원형 그래프 등 다른 퍼센트의 정수 표시와 수집 데이터의 소수 정밀도는 유지합니다. 빌드 202610041041의 Apple 공증 Universal DMG와 자동 업데이트를 공개했습니다." },
       { state: "done", title: "CCMB 2.0.32 공개", body: "막대 열정 그래프의 갱신당 사용량과 막대 위 상세값만 0.1% 단위로 표시합니다. 원형 그래프와 메뉴 막대 등 다른 퍼센트는 정수로 표시합니다. 빌드 202610040900의 Apple 공증 Universal DMG와 자동 업데이트를 공개했습니다." },
     ],
     screenshots: [
       { src: "/apps/ccmb/screens/ios-dashboard.jpg", alt: "이전 iPhone 화면 · 외부 심사 대기 중인 0.2.1의 NAS 사용량 기록과 퍼센트 소수점 표시 변화는 이 화면에 반영되지 않았습니다.", layout: "phone" },
-      { src: "/apps/ccmb/ccmb-dashboard-private.png", alt: "개인정보를 제거한 이전 Mac 화면 · 현재 2.0.32에는 Spark 항목과 Claude 모델 요약 표시가 없으며, 막대 그래프의 0.1% 표시는 이 이전 화면에 반영되지 않았습니다.", layout: "menu" },
+      { src: "/apps/ccmb/ccmb-dashboard-private.png", alt: "개인정보를 제거한 이전 Mac 화면 · 현재 2.0.33에는 Spark 항목과 Claude 모델 요약 표시가 없으며, 막대 그래프의 0.1% 표시는 이 이전 화면에 반영되지 않았습니다.", layout: "menu" },
       { src: "/apps/ccmb/screens/macos-menubar.png", alt: "macOS 메뉴 막대에 표시된 CCMB 사용량", layout: "wide" },
     ],
     github: ["https://github.com/armsone/CCMB", "https://github.com/armsone/CCMB-iOS"],
