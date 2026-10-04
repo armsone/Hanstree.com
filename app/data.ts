@@ -312,8 +312,8 @@ const appCatalog: AppData[] = [
       },
     ],
     features: [
-      { title: "Android 사진 선별", body: "갤러리에서 공유한 사진 중 원하는 장수만큼 좋은 사진을 골라 봅니다. 결과를 확인하고 앨범을 지정하면 복사본 없이 원본을 이동합니다. 이전 앨범에서 빠지는 이동 방식은 실행 전에 안내하고 승인을 받습니다.", icon: "/apps/hanclip/features/feature-05.webp" },
       { title: "빠른 영화 만들기", body: "실제 장면 수와 영상 분량에 맞춰 시간을 고르게 배분하고, 엔딩을 포함한 완성시간을 음악 길이에 맞춘 뒤 결과를 다듬습니다.", icon: "/apps/hanclip/features/feature-01.webp" },
+      { title: "Android 사진 선별", body: "갤러리에서 공유한 사진 중 원하는 장수만큼 좋은 사진을 골라 봅니다. 결과를 확인하고 앨범을 지정하면 복사본 없이 원본을 이동합니다. 이전 앨범에서 빠지는 이동 방식은 실행 전에 안내하고 승인을 받습니다.", icon: "/apps/hanclip/features/feature-05.webp" },
       { title: "AiShot", body: "Apple과 Android에서 골프 스윙의 준비·동작·임팩트와 타격음을 함께 살핍니다. 소리가 거의 없는 퍼팅은 준비 자세부터 작은 백스윙·전진·팔로스루까지 몸동작 순서가 확실하고 화면이 안정적일 때만 보수적으로 촬영합니다.", icon: "/apps/hanclip/features/feature-02.webp" },
       { title: "무음 영상도 장면 분석", body: "타임랩스·슬로 모션처럼 오디오 트랙이 없는 영상은 화면 움직임을 분석하고, 뚜렷한 변화가 없으면 영상 중앙을 기준으로 하이라이트를 제안합니다.", icon: "/apps/hanclip/features/feature-03.webp" },
       { title: "장면을 내 방식으로", body: "순서, 길이, 화면비, 자막과 음악, 워터마크와 엔딩 카드를 조절합니다.", icon: "/apps/hanclip/features/feature-04.webp" },
