@@ -444,10 +444,10 @@ const appCatalog: AppData[] = [
       {
         name: "Android · Google TV",
         status: "공개",
-        detail: "2.6.5 · Android 8.0+",
+        detail: "2.6.6 · Android 8.0+",
         url: releaseDownloadPath("S.tand-Android"),
         downloadLabel: "Android APK 바로 받기",
-        availabilityNote: "Android·Google TV용 2.6.5 APK 공개 · 태블릿과 펼친 트라이폴드의 넓은 폭에서 빠방·라디오 버튼 그룹을 가운데로 정렬 · 버튼 크기·간격과 넘침 스크롤은 그대로 유지 · 휴대전화·태블릿·라디오 배치 유지",
+        availabilityNote: "Android·Google TV용 2.6.6 APK 공개 · 오래된 Wi-Fi 전용 태블릿처럼 시스템 위치 확인이 막힌 기기에서도 최근 시스템 대략적 위치로 날씨를 대신 표시 · 추가 권한 없음 · 실제 기기 데이터 보존 재설치와 날씨 표시를 검증",
       },
     ],
     features: [
@@ -485,6 +485,7 @@ const appCatalog: AppData[] = [
       { title: "Mac에서 시작", body: "공증된 DMG를 열고 S.tand를 응용 프로그램 폴더로 옮긴 뒤 실행합니다. 이후에는 앱이 업데이트를 확인하고 종료·교체 설치·재실행까지 이어서 처리합니다." },
     ],
     progress: [
+      { state: "done", title: "Android·Google TV 2.6.6 공개", body: "오래된 Wi-Fi 전용 태블릿처럼 시스템 위치 확인이 계속 실패하던 기기에서, 새 고정을 기다리며 날씨가 멈추는 대신 최근 시스템이 알고 있던 대략적 위치로 날씨를 바로 보여 주도록 했습니다. 이동 거리에 따른 갱신 규칙은 그대로이며 추가 권한은 없습니다. GitHub 태그 android-v2.6.6 · build 202610052308 · 코드 400268 APK를 공개했으며, 공개 자산 31,343,908바이트와 SHA-256 3240d0747d8565025a58c97112d275b786938327867e8e2033823ce203074995가 일치함을 확인했습니다. 실제 SM-T500(Android 10) 기기에서 기존 데이터를 보존한 재설치와 날씨 온도·상태·지역 표시까지 검증을 마쳤습니다." },
       { state: "done", title: "iPhone·iPad 2.5.8 외부 심사 제출", body: "build 202610031012를 업로드하고 기존 Public Beta 그룹에 추가했습니다. 한국어 심사 노트와 자동 알림을 포함해 외부 심사를 제출했으며 현재 Apple 외부 심사 대기(WAITING_FOR_REVIEW) 상태입니다. 기존 공개 TestFlight 링크는 그대로 유지됩니다." },
       { state: "done", title: "Android·Google TV 2.6.5 공개", body: "태블릿과 펼친 트라이폴드처럼 폭이 넓은 화면에서 빠방·라디오 버튼 그룹을 가운데로 정렬했습니다. 버튼 크기·간격과 콜백, 넘칠 때의 스크롤 동작은 그대로 유지했습니다. GitHub 태그 android-v2.6.5 · build 202610031746 · 코드 397066 APK를 공개했으며, 공개 자산 31,343,908바이트와 내려받은 APK의 SHA-256 해시가 일치함을 확인했고 2.6.4와 같은 서명입니다. 실제 기기에서의 설치·동작은 아직 검증하지 않았습니다." },
       { state: "done", title: "Android·Google TV 2.6.4 공개", body: "Google TV 웹 화면에서 최소 폭 200px가 144dp 카드 영역을 넘쳐 잘리던 문제를 컨테이너 크기를 따르도록 고쳤습니다. 시작 직후에는 자동 재생 없이 네이티브 재생 대기 아이콘과 '재생 대기 중' 문구만 보이며, 실제 재생을 요청한 뒤 발생하는 오류만 그대로 표시합니다. build 202610031029 · 코드 396629 APK를 공개했으며, 2.6.3과 같은 서명과 실제 내려받은 APK의 해시를 확인했습니다. 실제 기기에서의 설치·동작은 아직 검증하지 않았습니다." },
