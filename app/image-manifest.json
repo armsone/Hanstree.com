@@ -509,6 +509,12 @@
     "height": 1024,
     "srcSet": "/optimized/0890cf83d462eef9-128.webp 128w, /optimized/0890cf83d462eef9-640.webp 640w, /optimized/0890cf83d462eef9-1280.webp 1280w, /optimized/0890cf83d462eef9-1536.webp 1536w"
   },
+  "/apps/mailtranslator/icon.png": {
+    "src": "/optimized/7a331989b6083f4e-1024.webp",
+    "width": 1024,
+    "height": 1024,
+    "srcSet": "/optimized/7a331989b6083f4e-128.webp 128w, /optimized/7a331989b6083f4e-640.webp 640w, /optimized/7a331989b6083f4e-1024.webp 1024w"
+  },
   "/apps/minecraft-server/home-card.webp": {
     "src": "/apps/minecraft-server/home-card.webp",
     "width": 1280,

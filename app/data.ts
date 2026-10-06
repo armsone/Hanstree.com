@@ -772,6 +772,52 @@ const appCatalog: AppData[] = [
     ],
   },
   {
+    slug: "mailtranslator",
+    name: "메일 번역기",
+    english: "MailTranslator",
+    eyebrow: "READ YOUR MAIL IN YOUR LANGUAGE",
+    tagline: "선택한 메일 한 통을, 제목부터 이미지까지.",
+    summary: "Apple Mail에서 받은 외국어 메일, 제목만 봐도 막막할 때가 있나요? 메일 번역기는 Mail에서 선택한 메일 한 통의 제목과 본문을 번역하고 이미지 속 글자까지 인식해 가능한 한 원래 배치를 유지한 채 보여주는 Mac 전용 앱입니다.",
+    theme: "blue",
+    icon: "/apps/mailtranslator/icon.png",
+    artwork: "menubar",
+    platforms: [
+      {
+        name: "macOS",
+        status: "공개",
+        detail: "0.1.0 (202610061955) · Apple Silicon(M1+) · macOS 15+ · Developer ID 서명·Apple 공증 완료",
+        url: releaseDownloadPath("MailTranslator-MacOS"),
+        downloadLabel: "Mac용 DMG 바로 받기",
+        availabilityNote: "Hardened Runtime 적용",
+      },
+    ],
+    features: [
+      { title: "제목·본문·이미지 글자까지", body: "Mail에서 선택한 메일 한 통의 제목과 본문을 번역하고, 이미지 속 글자도 Mac 안에서 인식해 해당 위치에 번역을 덧씁니다. 표·색상·글꼴·이미지 배치를 가능한 한 유지합니다.", icon: "/apps/trackpadguard/features/feature-04.webp" },
+      { title: "기본은 기기 안 번역", body: "기본값은 Mac 기본 번역과 이미지 글자 인식으로, 기기 안에서 처리합니다. 번역 방식에서 ChatGPT·Claude·Gemini로 바꾸면 각 서비스의 로그인된 공식 웹페이지로 전환합니다.", icon: "/apps/btn/features/feature-01.webp" },
+      { title: "보낼 때만 분명한 동의", body: "방식을 고르기만 해서는 전송하지 않습니다. 번역을 실제로 요청할 때만 전송 동의를 확인하며, 동의 후 제목·본문 텍스트·이미지에서 인식한 글자가 선택한 서비스로 전달됩니다. 본문에 개인정보가 있으면 본문과 함께 전송됩니다.", icon: "/apps/trackpadguard/features/feature-05.webp" },
+      { title: "Mail 위를 따라다니는 번역 버튼", body: "Mail 도구막대 빈 공간에 붙는 떠 있는 번역 버튼을 켤 수 있습니다. 옮긴 위치는 다음 실행에도 기억되며, Mail의 도구막대 사용자화 목록에 추가되는 정식 확장 항목은 아닙니다.", icon: "/apps/trackpadguard/features/feature-03.webp" },
+      { title: "빈 결과 창 없이 Mail과 함께 실행", body: "Mail을 열면 번역기도 함께 켜지도록 등록할 수 있고, 이때는 빈 결과 창을 띄우지 않습니다. 파일 메뉴에서 이 자동 실행을 끌 수 있으며, 시스템이 백그라운드 실행 허용을 요구하면 직접 승인해야 합니다.", icon: "/apps/ccmb/features/feature-12.webp" },
+    ],
+    guide: [
+      { title: "설치", body: "DMG를 열고 MailTranslator.app을 Applications 폴더로 옮긴 뒤 메일 번역기를 실행합니다." },
+      { title: "번역 방식 선택", body: "도구막대 번역 방식에서 Mac 기본 번역, Apple Intelligence 우선, ChatGPT, Claude, Gemini 중 고릅니다. 외부 AI는 설정(⌘,)에서 해당 공식 웹페이지에 로그인합니다." },
+      { title: "Mail 자동화 허용", body: "Mail에서 메일을 선택하고 번역 버튼이나 선택한 메일 번역(⇧⌘T)을 누르면 macOS가 Mail 제어를 묻습니다. 허용해야 선택한 메일을 가져옵니다." },
+      { title: "상단 번역 버튼 켜기", body: "파일 → 메일 상단 번역 버튼 켜기를 선택하고 버튼이나 손잡이를 끌어 Mail 도구막대의 원하는 위치에 놓습니다." },
+    ],
+    progress: [
+      { state: "done", title: "0.1.0 공개", body: "빌드 202610061955. 제목·본문 번역과 이미지 글자 인식, Mail 상단 번역 버튼, Mac 기본 번역과 ChatGPT·Claude·Gemini 전환을 Apple Silicon·macOS 15+ 대상 Developer ID 서명·Hardened Runtime·Apple 공증 DMG로 공개했습니다." },
+      { state: "next", title: "다양한 메일 레이아웃 확인", body: "복잡한 인라인 서식과 배경 이미지, 이미지 글자 배치의 재현을 계속 점검합니다." },
+    ],
+    github: [],
+    privacy: [
+      "Apple 번역과 이미지 글자 인식은 Mac 안에서 처리합니다.",
+      "ChatGPT·Claude·Gemini로 번역하면 제목·본문 텍스트·이미지에서 인식한 글자만 선택한 서비스로 보냅니다. 원본 HTML·이미지 파일·보낸 사람/받는 사람 주소 헤더는 전송하지 않지만, 본문 안의 개인정보는 본문과 함께 전송될 수 있습니다.",
+      "앱은 메일 원본과 번역 결과를 별도 파일로 저장하거나 진단 로그에 남기지 않습니다. 다만 외부 AI 웹 로그인 유지를 위한 브라우저의 캐시·사이트 데이터와 해당 서비스 서버의 대화 기록에는 내용이 남을 수 있습니다.",
+      "Mail에서 직접 요청한 메시지의 원격 이미지는 한 번 불러오며, 이미지 서버에 IP 주소와 열람 시각이 전달될 수 있습니다.",
+      "손쉬운 사용 권한이 있어도 이 앱의 버튼 기능은 Mail 창과 도구막대의 위치·크기만 읽으며, 번역할 메시지 원본은 버튼 클릭 때 별도의 Mail 자동화 경로로 읽습니다.",
+    ],
+  },
+  {
     slug: "htoms-brief",
     name: "HtOMS 브리프",
     english: "HtOMS Brief",
@@ -1124,7 +1170,7 @@ const appCatalog: AppData[] = [
     platforms: [
       { name: "iPhone · iPad", status: "TestFlight", detail: "0.5.0 (202609132101) · iOS·iPadOS 17+", availabilityNote: "0.5.0 Public Beta 승인 · 공개 TestFlight 링크에서 참여 가능" },
       { name: "Mac", status: "공개", detail: "0.5.1 (202610061956) · macOS 14+ · Universal · Apple 공증 완료", url: releaseDownloadPath("WhattoEat"), downloadLabel: "Mac용 DMG 다운로드", availabilityNote: "Apple 공증과 공개 다운로드 무결성 확인 · Mac 교체 설치·실행 완료" },
-      { name: "Android · Google TV", status: "공개", detail: "0.5.3 · 빌드 202609132251 · 내부 코드 368571 · Android 8.0+", url: releaseDownloadPath("WhattoEat-Android"), downloadLabel: "Android용 APK 다운로드", availabilityNote: "앱 실행 시 새 버전 안내 · 확인 후 업데이트 · GitHub 공개 릴리스" },
+      { name: "Android · Google TV", status: "공개", detail: "0.5.4 · 빌드 202610062007 · 내부 코드 401527 · Android 8.0+", url: releaseDownloadPath("WhattoEat-Android"), downloadLabel: "Android용 APK 다운로드", availabilityNote: "앱 실행 시 새 버전 안내 · 확인 후 업데이트 · GitHub 공개 릴리스" },
     ],
     features: [
       { title: "공공기관이 이용한 식당을 먼저", body: "28개 수집 기관(17개 내부 지역)의 공공 식사 이용 기록(2026년 9월 13일 기준 11,091곳 번들 카탈로그, 전국 완전 전수 조사는 아님)을 바탕으로 합니다. 앱 실행 시점 기준 최근 18개월 내 1건 이상 결제 기록이 있고 이름과 정규화된 주소가 일치하는 곳을 우선순위로 먼저 보여 줍니다.", icon: "/apps/whattoeat/features/feature-01.webp" },
@@ -1140,7 +1186,7 @@ const appCatalog: AppData[] = [
       { title: "위치 권한을 놓쳐도 바로 복구", body: "첫 실행에서 위치 권한을 안내하고, 다시 묻지 않도록 거부한 경우에는 앱 설정에서 권한을 켜는 길을 바로 보여 줍니다. 권한을 바꾸고 돌아오면 보던 화면에서 위치 찾기를 이어갑니다.", icon: "/apps/trackpadguard/features/feature-05.webp" },
       { title: "상황에 맞는 메뉴와 지도 검색", body: "든든한 식사, 간단한 한 끼, 패스트푸드, 디저트·카페, 회식·모임, 야식 중 원하는 상황을 고르고 추천 메뉴를 선택한 지도 앱에서 바로 검색할 수 있습니다.", icon: "/apps/whattoeat/features/feature-09.webp" },
       { title: "최근과 찜을 지역별로", body: "오늘 결정한 한 끼와 다시 가고 싶은 식당을 지역별로 모아 보고, 하트나 밀기로 간단히 정리합니다.", icon: "/apps/whattoeat/features/feature-10.webp" },
-      { title: "점심 전에 가볍게 알림", body: "점심시간과 알림 시각을 정하고, 휴일 제외를 켜면 토·일요일과 한클립 달력의 한국 공휴일에는 알리지 않습니다. Apple은 다음 60회까지 예약하고 앱을 열 때 갱신합니다. iPhone·iPad·Mac·Android에서 점심 알림 설정을 사용할 수 있습니다. Apple 0.5.1에서는 알림을 누르면 앱이 열리면서 바로 추천을 시작하고, 앱을 사용 중일 때도 알림을 표시합니다.", icon: "/apps/whattoeat/features/feature-11.webp" },
+      { title: "점심 전에 가볍게 알림", body: "점심시간과 알림 시각을 정하고, 휴일 제외를 켜면 토·일요일과 한클립 달력의 한국 공휴일에는 알리지 않습니다. Apple은 다음 60회까지 예약하고 앱을 열 때 갱신합니다. iPhone·iPad·Mac·Android에서 점심 알림 설정을 사용할 수 있습니다. Apple 0.5.1에서는 알림을 누르면 앱이 열리면서 바로 추천을 시작하고, 앱을 사용 중일 때도 알림을 표시합니다. Android 0.5.4에서도 점심 알림을 누르면 바로 추천을 시작하며, 런처 아이콘으로 여는 일반 실행은 기존과 동일하게 홈 화면부터 보여줍니다.", icon: "/apps/whattoeat/features/feature-11.webp" },
     ],
     guide: [
       { title: "지역 정하기", body: "현 위치를 다시 잡거나 지역 이름과 장소를 검색해 먹을 동네를 고릅니다." },
@@ -1168,6 +1214,7 @@ const appCatalog: AppData[] = [
       { state: "done", title: "Android 0.5.2 업데이트 완료 알림", body: "업데이트 다운로드가 끝난 뒤에도 Android 알림을 남겨 앱을 찾아 들어오지 않아도 설치 단계로 이어지도록 개선했습니다. 앱 삭제 없이 Android 시스템 확인만 거치면 업데이트할 수 있습니다." },
       { state: "done", title: "Android 0.5.3 새 버전 안내", body: "앱을 열면 새 버전 안내를 표시하고 업데이트 화면으로 이동합니다. 0.5.2 사용자는 이번 버전을 먼저 설치해야 하며, 앱 실행 안내는 그다음 업데이트부터 표시됩니다." },
       { state: "done", title: "iPhone·iPad 0.5.0 Public Beta 승인", body: "build 202609132101 Apple 외부 베타 심사 승인 완료 · 기존 Public Beta 링크와 10,000명 한도 유지 · 공개 테스트 참여 가능" },
+      { state: "done", title: "Android 0.5.4 점심 알림에서 바로 추천", body: "빌드 202610062007 · 내부 코드 401527 APK를 공개했습니다. 점심 알림을 누르면 앱이 열리면서 바로 추천을 시작하고, 런처 아이콘으로 여는 일반 실행은 기존 흐름을 그대로 유지합니다. 기존 Android 8.0+ 지원 범위는 그대로 유지했습니다." },
       { state: "active", title: "태블릿·TV·접근성 후속 검증", body: "태블릿과 Google TV 리모컨, TalkBack 실제 읽기 순서, 밀기 후 재실행 저장과 지도 오류 분기를 실제 기기에서 추가 확인할 예정입니다." },
     ],
     screenshots: [
@@ -1531,7 +1578,7 @@ export type ProductFamily = {
 export const productFamilies: ProductFamily[] = [
   { id: "media", name: "미디어·저장공간", english: "MEDIA & STORAGE", summary: "파일과 사진·영상을 보고, 만들고, 곁에 두는 앱", slugs: ["nasfinder", "super-thumbnail", "hanclip", "stand"] },
   { id: "ai", name: "AI·창작", english: "AI & CREATION", summary: "AI 도구와 함께 배우고, 확인하고, 만드는 제품", slugs: ["ccmb", "starmanager", "denimdex", "hanstree-workroom", "alfred-ai-search"] },
-  { id: "mac", name: "Mac 생산성·유틸리티", english: "MAC PRODUCTIVITY & UTILITIES", summary: "작업 흐름을 지키는 작은 도구와 확장", slugs: ["cleanusb", "trackpadguard", "btn", "alfred-navermap", "autoshorts"] },
+  { id: "mac", name: "Mac 생산성·유틸리티", english: "MAC PRODUCTIVITY & UTILITIES", summary: "작업 흐름을 지키는 작은 도구와 확장", slugs: ["cleanusb", "trackpadguard", "btn", "alfred-navermap", "autoshorts", "mailtranslator"] },
   { id: "life", name: "생활·가족·커뮤니티", english: "LIFE, FAMILY & COMMUNITY", summary: "일상과 가족, 모임에서 쓰는 웹과 앱", slugs: ["whattoeat", "button", "intosharp", "airchurch", "ppabang"] },
   { id: "engine", name: "엔진·인프라", english: "ENGINES & INFRASTRUCTURE", summary: "다른 제품을 받치는 코어와 서버, 업무 도구", slugs: ["hanai", "aibi", "minecraft-server", "htoms-brief"] },
 ];

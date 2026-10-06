@@ -19,6 +19,7 @@ export const DOWNLOAD_KEYS = [
   "Stargram-Android",
   "AutoShorts",
   "Alfred-NaverMap",
+  "MailTranslator-MacOS",
 ] as const;
 
 export type DownloadKey = (typeof DOWNLOAD_KEYS)[number];
@@ -119,7 +120,7 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     label: "오늘 뭐 먹지?? Android",
     repo: "WhattoEat-Android",
     assetPattern: /^WhattoEat-(?:Android-)?\d+\.\d+\.\d+\.apk$/i,
-    fallbackUrl: "https://github.com/armsone/WhattoEat-Android/releases/download/android-v0.5.3/WhattoEat-Android-0.5.3.apk",
+    fallbackUrl: "https://github.com/armsone/WhattoEat-Android/releases/download/android-v0.5.4/WhattoEat-Android-0.5.4.apk",
   },
   "DenimDex-Android": {
     label: "DenimDex Android",
@@ -144,6 +145,12 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     repo: "AutoShorts",
     assetPattern: /^AutoShorts-\d+\.\d+\.\d+(?:-source)?\.zip$/i,
     fallbackUrl: "https://github.com/armsone/AutoShorts/releases/download/v0.1.4/AutoShorts-0.1.4-source.zip",
+  },
+  "MailTranslator-MacOS": {
+    label: "MailTranslator Mac",
+    repo: "MailTranslator-MacOS",
+    assetPattern: /^MailTranslator-MacOS-\d+\.\d+\.\d+-arm64\.dmg$/i,
+    fallbackUrl: "https://github.com/armsone/MailTranslator-MacOS/releases/download/macos-v0.1.0/MailTranslator-MacOS-0.1.0-arm64.dmg",
   },
 };
 
