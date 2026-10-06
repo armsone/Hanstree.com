@@ -1123,7 +1123,7 @@ const appCatalog: AppData[] = [
     artwork: "phones",
     platforms: [
       { name: "iPhone · iPad", status: "TestFlight", detail: "0.5.0 (202609132101) · iOS·iPadOS 17+", availabilityNote: "0.5.0 Public Beta 승인 · 공개 TestFlight 링크에서 참여 가능" },
-      { name: "Mac", status: "공개", detail: "0.5.0 (202609132101) · macOS 14+ · Universal · Apple 공증 완료", url: releaseDownloadPath("WhattoEat"), downloadLabel: "Mac용 DMG 다운로드", availabilityNote: "Apple 공증과 공개 다운로드 무결성 확인 · Mac 교체 설치·실행 완료" },
+      { name: "Mac", status: "공개", detail: "0.5.1 (202610061956) · macOS 14+ · Universal · Apple 공증 완료", url: releaseDownloadPath("WhattoEat"), downloadLabel: "Mac용 DMG 다운로드", availabilityNote: "Apple 공증과 공개 다운로드 무결성 확인 · Mac 교체 설치·실행 완료" },
       { name: "Android · Google TV", status: "공개", detail: "0.5.3 · 빌드 202609132251 · 내부 코드 368571 · Android 8.0+", url: releaseDownloadPath("WhattoEat-Android"), downloadLabel: "Android용 APK 다운로드", availabilityNote: "앱 실행 시 새 버전 안내 · 확인 후 업데이트 · GitHub 공개 릴리스" },
     ],
     features: [
@@ -1140,7 +1140,7 @@ const appCatalog: AppData[] = [
       { title: "위치 권한을 놓쳐도 바로 복구", body: "첫 실행에서 위치 권한을 안내하고, 다시 묻지 않도록 거부한 경우에는 앱 설정에서 권한을 켜는 길을 바로 보여 줍니다. 권한을 바꾸고 돌아오면 보던 화면에서 위치 찾기를 이어갑니다.", icon: "/apps/trackpadguard/features/feature-05.webp" },
       { title: "상황에 맞는 메뉴와 지도 검색", body: "든든한 식사, 간단한 한 끼, 패스트푸드, 디저트·카페, 회식·모임, 야식 중 원하는 상황을 고르고 추천 메뉴를 선택한 지도 앱에서 바로 검색할 수 있습니다.", icon: "/apps/whattoeat/features/feature-09.webp" },
       { title: "최근과 찜을 지역별로", body: "오늘 결정한 한 끼와 다시 가고 싶은 식당을 지역별로 모아 보고, 하트나 밀기로 간단히 정리합니다.", icon: "/apps/whattoeat/features/feature-10.webp" },
-      { title: "점심 전에 가볍게 알림", body: "점심시간과 알림 시각을 정하고, 휴일 제외를 켜면 토·일요일과 한클립 달력의 한국 공휴일에는 알리지 않습니다. Apple은 다음 60회까지 예약하고 앱을 열 때 갱신합니다. iPhone·iPad·Mac·Android에서 점심 알림 설정을 사용할 수 있습니다.", icon: "/apps/whattoeat/features/feature-11.webp" },
+      { title: "점심 전에 가볍게 알림", body: "점심시간과 알림 시각을 정하고, 휴일 제외를 켜면 토·일요일과 한클립 달력의 한국 공휴일에는 알리지 않습니다. Apple은 다음 60회까지 예약하고 앱을 열 때 갱신합니다. iPhone·iPad·Mac·Android에서 점심 알림 설정을 사용할 수 있습니다. Apple 0.5.1에서는 알림을 누르면 앱이 열리면서 바로 추천을 시작하고, 앱을 사용 중일 때도 알림을 표시합니다.", icon: "/apps/whattoeat/features/feature-11.webp" },
     ],
     guide: [
       { title: "지역 정하기", body: "현 위치를 다시 잡거나 지역 이름과 장소를 검색해 먹을 동네를 고릅니다." },
@@ -1149,6 +1149,7 @@ const appCatalog: AppData[] = [
       { title: "다음 선택 이어가기", body: "최근과 찜에서 지역별 식당을 다시 보고, 필요 없는 항목은 바로 지웁니다." },
     ],
     progress: [
+      { state: "done", title: "Apple 0.5.1 점심 알림에서 바로 추천", body: "점심 알림을 누르면 새 추천을 시작합니다. Mac 공증 DMG를 공개하고, iPhone·iPad 빌드 202610061956은 TestFlight 업로드·Public Beta 추가·외부 베타 심사 제출을 마쳤습니다. 새 빌드의 외부 제공 승인은 확인 대기입니다." },
       { state: "done", title: "iPhone·iPad·Mac 앱 완성", body: "한 소스로 iPhone, iPad와 Mac Catalyst 화면·기능 구현" },
       { state: "done", title: "추천과 사진·지도 연결", body: "위치 기반 후보 선정, 메뉴 사진 대체, 외부 지도 앱 연결 구현" },
       { state: "done", title: "0.2.3 내부 테스트", body: "build 202608240838 iOS·iPadOS와 macOS를 내부 TestFlight 그룹에 배포" },
