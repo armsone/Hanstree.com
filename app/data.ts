@@ -1528,6 +1528,58 @@ const appCatalog: AppData[] = [
       "브라우저의 ppabang.net 사이트 데이터를 삭제하면 기기에 저장된 빠방넷 정보가 제거됩니다. 과거에 Google 연결을 사용했던 경우 Google 계정 보안 설정에서 기존 권한을 철회할 수 있습니다.",
     ],
   },
+  {
+    slug: "smtranslator",
+    name: "스크린 메일 번역기",
+    english: "SMTranslator",
+    eyebrow: "SCREEN & MAIL, ONE TRANSLATOR",
+    tagline: "화면도, 메일도, 한 앱에서.",
+    summary: "다른 언어의 화면과 메일을 오가며 따로 번역기를 열었다면. SMTranslator는 화면의 번역 영역을 직접 맞추면 번역한 글을 같은 위치에 겹쳐 보여주고, 메일 앱의 제목·본문도 그대로 번역해 비교하는 Mac 메뉴 막대 앱입니다.",
+    theme: "amber",
+    icon: "/apps/smtranslator/icon.png",
+    heroImage: "/apps/smtranslator/icon.png",
+    artwork: "menubar",
+    platforms: [
+      {
+        name: "Mac",
+        status: "공개",
+        detail: "0.3.2 (202610081518) · macOS 15+ · Apple Silicon(arm64)",
+        url: releaseDownloadPath("SMTranslator-MacOS"),
+        downloadLabel: "Mac용 DMG 받기",
+        availabilityNote: "Developer ID 서명 · Apple 공증 완료",
+      },
+    ],
+    features: [
+      { title: "화면 번역 영역을 직접 맞추기", body: "번역하고 싶은 화면 영역을 손으로 지정하면 그 위치에 맞춰 번역한 글을 같은 자리에 겹쳐 보여줍니다. 캡처와 번역은 수동으로 실행하며 자동으로 갱신되지 않습니다." },
+      { title: "번역 보기와 원문 보기 전환", body: "번역 글 아래에는 실제 화면이 그대로 있어 언제든 원문으로 돌아가 비교할 수 있습니다." },
+      { title: "읽기 편한 기본 표시", body: "기본 투명도 95%에 배경은 자동으로, 글자는 흑백으로 맞추며 색은 수동으로 조절할 수 있습니다." },
+      { title: "메뉴 막대와 Dock 중 선택", body: "메뉴 막대 상주와 Dock 표시 중 원하는 방식을 고르고, Mac 로그인과 함께 자동 시작하며 자동 업데이트를 사용합니다." },
+      { title: "언어별로 묶고, 도착한 순서대로", body: "같은 언어로 보이는 여러 줄을 묶어서 보여주고, 번역 결과가 도착하는 순서대로 화면에 표시합니다. 언어를 판별하지 못한 글은 원문을 그대로 두고 번역을 건너뛰며 별도의 확인 창을 띄우지 않습니다." },
+      { title: "제목줄 더블클릭으로 창 맞추기", body: "창 제목줄의 빈 곳을 더블클릭하면 뒤에 겹친 다른 앱 창의 크기에 맞춰 번역 창을 맞춥니다." },
+      { title: "크기 기억과 전체화면 맞춤", body: "마지막으로 사용한 창 크기를 기억하고, 메뉴에서 전체화면에 맞추는 명령을 바로 실행할 수 있습니다." },
+      { title: "Mail 원래 기능은 그대로", body: ".eml 파일, 이미지, 선택한 메일의 제목·본문과 서식, 두 번역 비교와 복사, 플로팅 번역 버튼을 메일 번역 창에 함께 통합했습니다." },
+      { title: "기본은 Mac 내장 번역, 선택은 폭넓게", body: "기본으로 macOS 내장 번역과 Apple Intelligence를 사용하고, 원하면 ChatGPT·Claude·Gemini 같은 외부 AI 번역을 선택해 쓸 수 있는 코드를 유지하고 있습니다." },
+    ],
+    guide: [
+      { title: "화면 번역 열기", body: "등록한 전역 단축키(T)로 화면 번역 창을 열고, 번역할 화면 영역을 지정해 캡처·번역하세요." },
+      { title: "메일 번역 열기", body: "등록한 전역 단축키(M)로 메일 번역 창을 열어 Mail의 선택한 메일이나 .eml 파일의 제목·본문을 번역해 비교하세요." },
+      { title: "번역·원문 전환", body: "Space로 저장된 번역과 실제 화면을 오가고, 저장된 번역이 없으면 새로 번역합니다. 번역을 보는 중 Enter를 누르면 원문으로 돌아가고, 원문을 보는 상태에서 Enter를 누르면 새로 캡처해 번역합니다." },
+      { title: "창 숨기기", body: "Esc로 번역 창을 숨깁니다." },
+      { title: "창 크기 맞추기", body: "제목줄의 빈 곳을 더블클릭하면 뒤에 겹친 창의 크기에 맞추고, 메뉴의 전체화면 맞춤으로 화면 전체 크기로 바꿀 수 있습니다." },
+      { title: "외부 AI 번역 선택", body: "ChatGPT·Claude·Gemini 중 하나를 선택하면 로그인과 전송 동의 절차를 거쳐 번역할 본문 텍스트를 해당 서비스로 보냅니다." },
+    ],
+    progress: [
+      { state: "done", title: "0.3.2 공개", body: "빌드 202610081518 · macOS 15 이상 Apple Silicon(arm64) 전용 · Developer ID 서명과 Apple 공증을 마친 DMG를 설치·실행하고, 화면·메일 번역 두 전역 단축키 등록과 자동 업데이트 동작을 확인했습니다. 공개 DMG를 익명으로 내려받아 SHA256 51f03a78ee41b4cfe178cb778f0a2a14be98ff5243ede026a1bcee073aab2835, 4,242,644바이트로 해시와 크기를 확인했습니다." },
+      { state: "next", title: "대표 화면 캡처", body: "실제 앱 화면을 담는 캡처 도구 실행이 아직 되지 않아 대표 스크린샷을 올리지 못했습니다. 지금은 실제 앱 아이콘으로 제품을 보여주고 있습니다." },
+    ],
+    github: ["https://github.com/armsone/SMTranslator-MacOS"],
+    privacy: [
+      "화면 캡처와 문자 인식(OCR)은 기기 안에서 처리합니다. 화면 기록 등 필요한 시스템 권한은 해당 동작을 실행할 때 macOS가 요청합니다.",
+      "기본 번역은 macOS 내장 번역과 Apple Intelligence를 사용하며 Apple의 처리 방식이 적용됩니다.",
+      "ChatGPT·Claude·Gemini 등 외부 AI 번역을 선택하면 로그인과 전송 동의 절차를 거쳐 번역할 본문 텍스트가 해당 서비스로 전송되며, 각 서비스의 정책이 적용됩니다.",
+      "Mail 메일 번역은 선택한 메일이나 .eml 파일의 제목·본문·서식을 읽어 번역에 사용합니다.",
+    ],
+  },
 ];
 
 export type ProductFamily = {
@@ -1542,7 +1594,7 @@ export type ProductFamily = {
 export const productFamilies: ProductFamily[] = [
   { id: "media", name: "미디어·저장공간", english: "MEDIA & STORAGE", summary: "파일과 사진·영상을 보고, 만들고, 곁에 두는 앱", slugs: ["nasfinder", "super-thumbnail", "hanclip", "stand"] },
   { id: "ai", name: "AI·창작", english: "AI & CREATION", summary: "AI 도구와 함께 배우고, 확인하고, 만드는 제품", slugs: ["ccmb", "starmanager", "denimdex", "hanstree-workroom", "alfred-ai-search"] },
-  { id: "mac", name: "Mac 생산성·유틸리티", english: "MAC PRODUCTIVITY & UTILITIES", summary: "작업 흐름을 지키는 작은 도구와 확장", slugs: ["cleanusb", "trackpadguard", "btn", "alfred-navermap", "autoshorts"] },
+  { id: "mac", name: "Mac 생산성·유틸리티", english: "MAC PRODUCTIVITY & UTILITIES", summary: "작업 흐름을 지키는 작은 도구와 확장", slugs: ["cleanusb", "trackpadguard", "btn", "alfred-navermap", "autoshorts", "smtranslator"] },
   { id: "life", name: "생활·가족·커뮤니티", english: "LIFE, FAMILY & COMMUNITY", summary: "일상과 가족, 모임에서 쓰는 웹과 앱", slugs: ["whattoeat", "button", "intosharp", "airchurch", "ppabang"] },
   { id: "engine", name: "엔진·인프라", english: "ENGINES & INFRASTRUCTURE", summary: "다른 제품을 받치는 코어와 서버, 업무 도구", slugs: ["hanai", "aibi", "minecraft-server", "htoms-brief"] },
 ];

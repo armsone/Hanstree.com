@@ -665,6 +665,12 @@
     "height": 630,
     "srcSet": "/optimized/251f57edfb3c1cd7-128.webp 128w, /optimized/251f57edfb3c1cd7-640.webp 640w, /optimized/251f57edfb3c1cd7-1200.webp 1200w"
   },
+  "/apps/smtranslator/icon.png": {
+    "src": "/optimized/c37cc1406e3e98e3-1254.webp",
+    "width": 1254,
+    "height": 1254,
+    "srcSet": "/optimized/c37cc1406e3e98e3-128.webp 128w, /optimized/c37cc1406e3e98e3-640.webp 640w, /optimized/c37cc1406e3e98e3-1254.webp 1254w"
+  },
   "/apps/stand/home-card.webp": {
     "src": "/apps/stand/home-card.webp",
     "width": 1280,

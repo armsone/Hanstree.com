@@ -19,6 +19,7 @@ export const DOWNLOAD_KEYS = [
   "Stargram-Android",
   "AutoShorts",
   "Alfred-NaverMap",
+  "SMTranslator-MacOS",
 ] as const;
 
 export type DownloadKey = (typeof DOWNLOAD_KEYS)[number];
@@ -144,6 +145,12 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     repo: "AutoShorts",
     assetPattern: /^AutoShorts-\d+\.\d+\.\d+(?:-source)?\.zip$/i,
     fallbackUrl: "https://github.com/armsone/AutoShorts/releases/download/v0.1.4/AutoShorts-0.1.4-source.zip",
+  },
+  "SMTranslator-MacOS": {
+    label: "SMTranslator Mac",
+    repo: "SMTranslator-MacOS",
+    assetPattern: /^SMTranslator-\d+\.\d+\.\d+\.dmg$/i,
+    fallbackUrl: "https://github.com/armsone/SMTranslator-MacOS/releases/download/v0.3.2/SMTranslator-0.3.2.dmg",
   },
 };
 

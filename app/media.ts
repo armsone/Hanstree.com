@@ -8,6 +8,7 @@ export function appCardImage(app: AppData) {
     "alfred-ai-search": "/apps/alfred-ai-search/home-card-v2.png",
     autoshorts: "/apps/autoshorts/home-card-v2.png",
     "hanstree-workroom": "/apps/hanstree-workroom/icon-019.png",
+    smtranslator: "/apps/smtranslator/icon.png",
   };
 
   return featuredCards[app.slug] ?? `/apps/${app.slug}/home-card.webp`;
@@ -16,5 +17,6 @@ export function appCardImage(app: AppData) {
 export function appCardIcon(app: AppData) {
   if (app.slug === "alfred-navermap") return "/apps/alfred-navermap/icon.svg";
   if (app.slug === "hanstree-workroom") return "/apps/hanstree-workroom/icon-019.png";
+  if (app.slug === "smtranslator") return "/apps/smtranslator/icon.png";
   return `/apps/${app.slug}/icon-card.webp`;
 }
