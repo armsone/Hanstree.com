@@ -38,3 +38,10 @@ yarn-error.log*
 /.wrangler/
 /outputs/
 /work/
+
+# build/deployment artifacts
+/tsconfig.tsbuildinfo
+/.sites-android264/
+/.sites-stand-release/
+/.openai/*.tar.gz
+/.openai/*-build.log
