@@ -467,24 +467,6 @@
     "height": 1323,
     "srcSet": "/optimized/1a9882fb6cebb0de-128.webp 128w, /apps/hanstree-workroom/screens/login-019.png 518w"
   },
-  "/apps/htoms-brief/home-card.webp": {
-    "src": "/apps/htoms-brief/home-card.webp",
-    "width": 1280,
-    "height": 853,
-    "srcSet": "/optimized/af201220c60a1494-128.webp 128w, /optimized/af201220c60a1494-640.webp 640w, /apps/htoms-brief/home-card.webp 1280w"
-  },
-  "/apps/htoms-brief/htoms-brief-hero-v2.png": {
-    "src": "/optimized/1c2a8f3bf504007e-1536.webp",
-    "width": 1536,
-    "height": 1024,
-    "srcSet": "/optimized/1c2a8f3bf504007e-128.webp 128w, /optimized/1c2a8f3bf504007e-640.webp 640w, /optimized/1c2a8f3bf504007e-1280.webp 1280w, /optimized/1c2a8f3bf504007e-1536.webp 1536w"
-  },
-  "/apps/htoms-brief/icon.png": {
-    "src": "/optimized/62c28165467bde29-1254.webp",
-    "width": 1254,
-    "height": 1254,
-    "srcSet": "/optimized/62c28165467bde29-128.webp 128w, /optimized/62c28165467bde29-640.webp 640w, /optimized/62c28165467bde29-1254.webp 1254w"
-  },
   "/apps/intosharp/home-card.webp": {
     "src": "/apps/intosharp/home-card.webp",
     "width": 1280,

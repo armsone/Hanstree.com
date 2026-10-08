@@ -29,7 +29,6 @@ const homeKoreanNames: Record<string, string> = {
   ccmb: "씨씨엠비",
   btn: "비티엔",
   trackpadguard: "트랙패드가드",
-  "htoms-brief": "에이치티오엠에스 브리프",
   intosharp: "인투샾",
   airchurch: "에어처치",
   button: "아워버튼",

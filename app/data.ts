@@ -21,7 +21,7 @@ export type AppData = {
   heroImage?: string;
   spotlightImage?: string;
   systemImage?: string;
-  artwork: "files" | "phones" | "clock" | "menubar" | "cleanup" | "trackpad" | "thumbnail" | "htoms" | "search" | "church" | "server" | "intelligence" | "bridge" | "autoshorts" | "shorts" | "ai-search" | "directions";
+  artwork: "files" | "phones" | "clock" | "menubar" | "cleanup" | "trackpad" | "thumbnail" | "search" | "church" | "server" | "intelligence" | "bridge" | "autoshorts" | "shorts" | "ai-search" | "directions";
   platforms: Platform[];
   features: { title: string; body: string; icon?: string }[];
   guide: { title: string; body: string }[];
@@ -589,9 +589,9 @@ const appCatalog: AppData[] = [
       { title: "누르는 순간 다시 시작하는 갱신", body: "자동갱신 줄 전체를 누르면 iCloud의 최신 값을 즉시 확인하고, 선택한 자동갱신 주기도 그 순간부터 다시 시작합니다. 겹친 요청은 버리지 않고 직전 조회가 끝난 뒤 한 번 더 확인합니다.", icon: "/apps/ccmb/features/feature-03.webp" },
       { title: "서비스 색으로 움직이는 원형 그래프", body: "앱을 열거나 갱신하면 원형 그래프가 100%에서 0%로 줄어든 뒤 실제 잔량까지 다시 차오릅니다. Codex와 Claude는 고유색을, Gemini 네 한도는 파랑·빨강·노랑·초록을 사용합니다.", icon: "/apps/ccmb/features/feature-01.webp" },
       { title: "한눈에 읽는 iPhone 원형 그래프", body: "외부 심사 대기 중인 iOS·iPadOS 0.2.2는 원형 그래프 안의 남은 비율을 반올림한 정수로 보여 줍니다. 나의 AI 열정 그래프의 소수점 표시는 유지합니다.", icon: "/apps/ccmb/features/feature-01.webp" },
-      { title: "가까운 날짜를 바로 읽는 24시간 표기", body: "Mac과 iPhone 모두 초기화 날짜가 오늘·내일·모레면 말로 표시하고, 그 이후에는 9/7(월) 19:00처럼 요일·24시간 형식으로 보여 줍니다. Gemini가 한국어·영어 문장으로 주는 시각도 같은 규칙으로 정리합니다.", icon: "/apps/htoms-brief/features/feature-03.webp" },
+      { title: "가까운 날짜를 바로 읽는 24시간 표기", body: "Mac과 iPhone 모두 초기화 날짜가 오늘·내일·모레면 말로 표시하고, 그 이후에는 9/7(월) 19:00처럼 요일·24시간 형식으로 보여 줍니다. Gemini가 한국어·영어 문장으로 주는 시각도 같은 규칙으로 정리합니다.", icon: "/apps/ccmb/features/shared-clock.webp" },
       { title: "iCloud가 아니어도 이어지는 보조 경로", body: "Dropbox·Google Drive·iCloud Drive의 CCMB-usage-v1.json을 Files에서 한 번 선택하면 보안 북마크로 다시 읽습니다.", icon: "/apps/ccmb/features/feature-08.webp" },
-      { title: "소진 임박과 최근 소비를 함께", body: "현재 쓸 수 있는 한도 중 가장 먼저 소진될 항목을 자동으로 고르고, 최근 40회 갱신 소비를 서비스별 세로 막대로 비교합니다.", icon: "/apps/htoms-brief/features/feature-01.webp" },
+      { title: "소진 임박과 최근 소비를 함께", body: "현재 쓸 수 있는 한도 중 가장 먼저 소진될 항목을 자동으로 고르고, 최근 40회 갱신 소비를 서비스별 세로 막대로 비교합니다.", icon: "/apps/ccmb/features/shared-bars.webp" },
       { title: "NAS에서 불러오는 실제 사용량 변화", body: "로그인으로 연결한 NAS가 Mac과 별도로 약 3분마다 기록한 사용량 변화 중 최근 40개까지 iPhone·iPad가 읽기 전용으로 불러옵니다. 기록이 40개보다 적게 쌓였다면 있는 만큼만 보여줍니다.", icon: "/apps/ccmb/features/feature-09.webp" },
       { title: "세 AI를 한눈에", body: "Codex·Claude·Gemini를 3열로 정렬하고 Gemini는 CLI와 온라인의 세션·주간 잔량을 네 개의 원으로 함께 보여 줍니다.", icon: "/apps/ccmb/features/feature-06.webp" },
       { title: "지금 쓸 Gemini를 메뉴 막대에", body: "온라인 주간 잔량이 50%를 넘으면 온라인 세션을, 이후에는 CLI 세션을 세 번째 숫자로 표시해 현재 사용할 경로를 바로 알 수 있습니다.", icon: "/apps/ccmb/features/feature-09.webp" },
@@ -779,39 +779,6 @@ const appCatalog: AppData[] = [
       "키 입력 내용은 저장하거나 전송하지 않고 키가 눌렸다는 상태만 잠금 시작에 사용합니다.",
       "트랙패드 접촉 좌표는 잠금 해제 영역 판정에만 사용하며 앱 밖으로 보내거나 기록하지 않습니다.",
       "앱 자체 분석, 광고 추적과 원격 측정 기능을 포함하지 않습니다.",
-    ],
-  },
-  {
-    slug: "htoms-brief",
-    name: "HtOMS 브리프",
-    english: "HtOMS Brief",
-    eyebrow: "TODAY'S OMS, AT A GLANCE",
-    tagline: "오늘의 매출과 서버 상태를, 한 페이지에서.",
-    summary: "출근길에 오늘 매출과 서버 상태만 빠르게 확인하고 싶을 때. HtOMS 브리프는 HtOMS의 실제 OMS 데이터를 읽어 오늘·이번 달 매출, 시간대·월간 추이, 출고 현황과 외부 서버 상태를 한 화면에 보여주는 읽기 전용 앱입니다. 회사 내부용 도구로 OMS 계정 로그인이 필요합니다.",
-    theme: "blue",
-    icon: "/apps/htoms-brief/icon.png",
-    artwork: "htoms",
-    platforms: [],
-    features: [
-      { title: "실제 OMS 매출 데이터", body: "로그인한 계정으로 오늘·이번 달 매출과 시간대·월간 추이를 실제 API에서 읽어 표시합니다.", icon: "/apps/htoms-brief/features/feature-01.webp" },
-      { title: "한 페이지 브리프", body: "오늘의 매출, 위치별 현황, 외부 서버 상태와 출고 현황을 세로 한 화면 흐름으로 확인합니다.", icon: "/apps/htoms-brief/features/feature-02.webp" },
-      { title: "10분 자동 갱신", body: "다음 갱신까지 남은 시간을 역타이머로 보여주고 0초가 되면 자동으로 다시 가져옵니다. 화면을 누르면 즉시 갱신합니다.", icon: "/apps/htoms-brief/features/feature-03.webp" },
-      { title: "외부 서버 이상 표시", body: "장항·인천·삼송·초월 서버는 평소 회색, 문제가 생기면 빨간색으로 바뀝니다.", icon: "/apps/htoms-brief/features/feature-04.webp" },
-    ],
-    guide: [
-      { title: "로그인", body: "회사 OMS 계정으로 로그인하면 실제 조회 권한에 따라 브리프 데이터를 가져옵니다." },
-      { title: "한 화면에서 확인", body: "오늘의 매출 아래 위치별 현황과 서버 상태를 보고, 이어서 매출 추이와 출고 현황을 확인합니다." },
-      { title: "즉시 갱신", body: "다음 자동 갱신까지 남은 시간이 표시되며, 기다리지 않고 화면을 눌러 바로 새로 가져올 수 있습니다." },
-    ],
-    progress: [
-      { state: "done", title: "실제 OMS 연동", body: "로그인, 매출·출고·위치·외부 서버 데이터 조회 구현" },
-      { state: "done", title: "한 페이지 대시보드", body: "분리됐던 정보를 한 화면의 읽기 흐름으로 통합" },
-      { state: "done", title: "자동·수동 갱신", body: "10분 역타이머와 터치 즉시 갱신 구현" },
-    ],
-    github: ["https://github.com/armsone/HtOMS-BK"],
-    privacy: [
-      "앱은 업무 현황 확인을 위한 읽기 전용 API 요청만 수행하며 주문을 생성하거나 변경하지 않습니다.",
-      "화면에는 매출·출고 집계와 서버 상태를 표시하고 개별 주문의 개인정보를 별도로 보관하지 않습니다.",
     ],
   },
   {
@@ -1596,7 +1563,7 @@ export const productFamilies: ProductFamily[] = [
   { id: "ai", name: "AI·창작", english: "AI & CREATION", summary: "AI 도구와 함께 배우고, 확인하고, 만드는 제품", slugs: ["ccmb", "starmanager", "denimdex", "hanstree-workroom", "alfred-ai-search"] },
   { id: "mac", name: "Mac 생산성·유틸리티", english: "MAC PRODUCTIVITY & UTILITIES", summary: "작업 흐름을 지키는 작은 도구와 확장", slugs: ["cleanusb", "trackpadguard", "btn", "alfred-navermap", "autoshorts", "smtranslator"] },
   { id: "life", name: "생활·가족·커뮤니티", english: "LIFE, FAMILY & COMMUNITY", summary: "일상과 가족, 모임에서 쓰는 웹과 앱", slugs: ["whattoeat", "button", "intosharp", "airchurch", "ppabang"] },
-  { id: "engine", name: "엔진·인프라", english: "ENGINES & INFRASTRUCTURE", summary: "다른 제품을 받치는 코어와 서버, 업무 도구", slugs: ["hanai", "aibi", "minecraft-server", "htoms-brief"] },
+  { id: "engine", name: "엔진·인프라", english: "ENGINES & INFRASTRUCTURE", summary: "다른 제품을 받치는 코어와 서버, 업무 도구", slugs: ["hanai", "aibi", "minecraft-server"] },
 ];
 
 const familyRank = new Map<string, number>(productFamilies.flatMap((family, familyIndex) => family.slugs.map((slug, slugIndex) => [slug, familyIndex * 100 + slugIndex] as const)));
