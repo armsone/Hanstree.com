@@ -3,22 +3,13 @@
     <channel>
         <title>S.tand</title>
         <item>
-            <title>2.5.8</title>
-            <pubDate>Sat, 03 Oct 2026 10:12:00 +0900</pubDate>
+            <title>2.5.9</title>
+            <pubDate>Thu, 08 Oct 2026 18:11:11 +0900</pubDate>
             <link>https://nasfinder.com/apps/stand</link>
-            <sparkle:version>202610031012</sparkle:version>
-            <sparkle:shortVersionString>2.5.8</sparkle:shortVersionString>
+            <sparkle:version>202610081804</sparkle:version>
+            <sparkle:shortVersionString>2.5.9</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/armsone/S.tand/releases/download/macos-v2.5.8/S.tand-macOS-2.5.8.dmg" length="13909482" type="application/octet-stream" sparkle:edSignature="PBtwEY+OnBb3uPmB+msXD83lNCHMz1Mt3R8T2S7zwYkfzSmH8l5QJK5DcOgNi6I/Yf4Mgcae4gMrnzTdZCi8DQ=="/>
-        </item>
-        <item>
-            <title>2.5.7</title>
-            <pubDate>Wed, 30 Sep 2026 14:34:27 +0900</pubDate>
-            <link>https://nasfinder.com/apps/stand</link>
-            <sparkle:version>202609301404</sparkle:version>
-            <sparkle:shortVersionString>2.5.7</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/armsone/S.tand/releases/download/macos-v2.5.7/S.tand-macOS-2.5.7.dmg" length="13909121" type="application/octet-stream" sparkle:edSignature="ZS5tGhkDLmF8DpFMQBtBMa+0SQdo1brlqdWwt4idhOd0jRKy6UHtrPMw3MtjdVH19NJZ1tvcykcc2KpEsRo7BA=="/>
+            <enclosure url="https://github.com/armsone/S.tand/releases/download/macos-v2.5.9/S.tand-macOS-2.5.9.dmg" length="13906664" type="application/octet-stream" sparkle:edSignature="BjReRtYB8Sejht9TFooAFNYsouSeNcs7Uo0aIeA7L/aFZzqtz5b3+97cE1MQ1UxsVJ68K8YnqPgMb+lqln5eCQ=="/>
         </item>
     </channel>
 </rss>
