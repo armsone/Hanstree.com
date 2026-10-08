@@ -515,6 +515,12 @@
     "height": 1024,
     "srcSet": "/optimized/7a331989b6083f4e-128.webp 128w, /optimized/7a331989b6083f4e-640.webp 640w, /optimized/7a331989b6083f4e-1024.webp 1024w"
   },
+  "/apps/mailtranslator/mailtranslator-hero-v2.png": {
+    "src": "/optimized/1e3b0ec155677902-1536.webp",
+    "width": 1536,
+    "height": 1024,
+    "srcSet": "/optimized/1e3b0ec155677902-128.webp 128w, /optimized/1e3b0ec155677902-640.webp 640w, /optimized/1e3b0ec155677902-1280.webp 1280w, /optimized/1e3b0ec155677902-1536.webp 1536w"
+  },
   "/apps/minecraft-server/home-card.webp": {
     "src": "/apps/minecraft-server/home-card.webp",
     "width": 1280,
