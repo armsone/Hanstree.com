@@ -150,7 +150,7 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     label: "MailTranslator Mac",
     repo: "MailTranslator-MacOS",
     assetPattern: /^MailTranslator-MacOS-\d+\.\d+\.\d+-arm64\.dmg$/i,
-    fallbackUrl: "https://github.com/armsone/MailTranslator-MacOS/releases/download/macos-v0.1.0/MailTranslator-MacOS-0.1.0-arm64.dmg",
+    fallbackUrl: "https://github.com/armsone/MailTranslator-MacOS/releases/download/macos-v0.2.0/MailTranslator-MacOS-0.2.0-arm64.dmg",
   },
 };
 
