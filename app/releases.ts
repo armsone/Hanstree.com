@@ -19,7 +19,6 @@ export const DOWNLOAD_KEYS = [
   "Stargram-Android",
   "AutoShorts",
   "Alfred-NaverMap",
-  "MailTranslator-MacOS",
 ] as const;
 
 export type DownloadKey = (typeof DOWNLOAD_KEYS)[number];
@@ -145,12 +144,6 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     repo: "AutoShorts",
     assetPattern: /^AutoShorts-\d+\.\d+\.\d+(?:-source)?\.zip$/i,
     fallbackUrl: "https://github.com/armsone/AutoShorts/releases/download/v0.1.4/AutoShorts-0.1.4-source.zip",
-  },
-  "MailTranslator-MacOS": {
-    label: "MailTranslator Mac",
-    repo: "MailTranslator-MacOS",
-    assetPattern: /^MailTranslator-MacOS-\d+\.\d+\.\d+-arm64\.dmg$/i,
-    fallbackUrl: "https://github.com/armsone/MailTranslator-MacOS/releases/download/macos-v0.2.0/MailTranslator-MacOS-0.2.0-arm64.dmg",
   },
 };
 
