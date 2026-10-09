@@ -150,7 +150,7 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     label: "SMTranslator Mac",
     repo: "SMTranslator-MacOS",
     assetPattern: /^SMTranslator-\d+\.\d+\.\d+\.dmg$/i,
-    fallbackUrl: "https://github.com/armsone/SMTranslator-MacOS/releases/download/v0.6.6/SMTranslator-0.6.6.dmg",
+    fallbackUrl: "https://github.com/armsone/SMTranslator-MacOS/releases/download/v0.7.0/SMTranslator-0.7.0.dmg",
   },
 };
 
