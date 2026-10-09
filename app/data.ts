@@ -1043,7 +1043,7 @@ const appCatalog: AppData[] = [
     english: "NasOS · Minecraft Server",
     eyebrow: "A PRIVATE WORLD FOR THE FAMILY",
     tagline: "아이들은 함께 짓고, 부모는 안심합니다.",
-    summary: "아이와 친구들만 들어오는 우리 집 마인크래프트 세계를 NAS에 두고 싶다면. NasOS는 실제로 사용하는 NAS 서버 설정을 설치 가능한 결과물로 공개하며, 첫 구성은 자녀와 함께 쓰는 Minecraft Bedrock 사설 서버용 Docker 설정과 부모용 운영 안내서입니다. 지금도 소규모 서버로 계속 사용 중입니다.",
+    summary: "아이와 친구들만 들어오는 우리 집 마인크래프트 세계를 NAS에 두고 싶다면. NasOS는 실제로 사용하는 NAS 서버 설정을 설치 가능한 결과물로 공개하며, 첫 구성은 자녀와 함께 쓰는 Minecraft Bedrock 사설 서버용 Docker 설정과 부모용 운영 안내서입니다. 지금도 소규모 서버로 계속 사용 중이며, 한스트리 마을 행동 팩을 더하면 혼자 NPC와 연습하거나 친구들과 최대 5명이 함께 팀을 이루어 게임할 수 있습니다.",
     theme: "blue",
     icon: "/apps/minecraft-server/icon.png",
     artwork: "server",
@@ -1056,6 +1056,14 @@ const appCatalog: AppData[] = [
         downloadLabel: "NasOS 서버 설정 받기",
         availabilityNote: "개인정보를 제거한 서버 설정과 운영 안내서 공개 완료",
       },
+      {
+        name: "한스트리 마을 · Bedrock 행동 팩",
+        status: "공개",
+        detail: "0.4.0 · 베드워즈 · 라이벌즈 · NPC 연습",
+        url: "https://github.com/armsone/NasOS/releases/tag/village-v0.4.0",
+        downloadLabel: "한스트리 마을 0.4.0 받기",
+        availabilityNote: "NAS 설치·팩 로딩·마을·두 경기장 시작 확인 · 실제 경기 플레이 미확인",
+      },
     ],
     features: [
       { title: "명령어 없이 설치", body: "Docker 명령어나 SSH를 몰라도 DSM의 Container Manager와 File Station 화면만 따라가며 서버를 준비할 수 있습니다.", icon: "/apps/minecraft-server/features/feature-01.webp" },
@@ -1064,6 +1072,9 @@ const appCatalog: AppData[] = [
       { title: "외부 접속은 더 조심스럽게", body: "외부 접속이 필요하면 허용 목록을 먼저 켜고, 관리 포트를 여는 대신 Tailscale 같은 사설 메시 VPN을 우선합니다.", icon: "/apps/minecraft-server/features/feature-04.webp" },
       { title: "작게 시작하는 안정 설정", body: "소규모 인원에 맞춘 메모리와 시야 거리, 온라인 계정 인증, 자동 재시작 설정으로 NAS의 다른 작업과 함께 운영합니다.", icon: "/apps/minecraft-server/features/feature-05.webp" },
       { title: "업데이트 전에는 백업", body: "월드 데이터 폴더를 Snapshot Replication이나 Hyper Backup으로 보관한 뒤 서버 이미지를 안전하게 갱신합니다.", icon: "/apps/minecraft-server/features/feature-06.webp" },
+      { title: "몬스터와 떨어진 마을", body: "한스트리 마을 행동 팩은 몬스터가 들어오거나 스폰되면 즉시 제거하고, NPC와의 기본 교감과 관리자용 이름 편집 메뉴를 제공합니다.", icon: "/apps/minecraft-server/features/feature-01.webp" },
+      { title: "방장이 정하는 경기 구성", body: "방장이 인원 수와 팀, NPC 최대 5명 포함 여부, 난이도를 직접 고른 뒤 경기를 시작합니다. 사람 전원이 같은 팀으로 협동하거나 자동 균형, 직접 지정 중에서 고를 수 있습니다.", icon: "/apps/minecraft-server/features/feature-05.webp" },
+      { title: "인원이 바뀌면 다시 구성", body: "경기 중 참가·퇴장·접속 끊김으로 인원이 바뀌면 진행 경기는 보상·연승 변화 없이 끝납니다. 모두 방으로 돌아가 팀·NPC·난이도를 다시 정하고 준비한 뒤 새 경기를 시작합니다. NPC는 단순한 경로를 따르는 연습 상대이며 실제 사람 수준의 AI는 아닙니다.", icon: "/apps/minecraft-server/features/feature-03.webp" },
     ],
     guide: [
       { title: "준비물 확인", body: "Container Manager를 지원하는 Synology NAS, Minecraft Bedrock 앱과 계정, 같은 내부 네트워크를 준비합니다." },
@@ -1078,6 +1089,8 @@ const appCatalog: AppData[] = [
       { state: "done", title: "가족 사용 검증", body: "소규모 사설 서버가 실제로 실행되고 Bedrock 기기에서 계속 사용 중" },
       { state: "done", title: "개인정보 제거", body: "NAS 모델·버전, 주소, 경로, 서버 이름과 플레이어 식별정보를 공개 문서에서 제거" },
       { state: "done", title: "NasOS 0.1.0 공개", body: "개인정보를 제거한 서버 설정과 운영 안내서를 독립 GitHub 저장소와 릴리스로 공개" },
+      { state: "done", title: "한스트리 마을 0.4.0 공개", body: "베드워즈·라이벌즈 경기장과 NPC 연습을 담은 Bedrock 행동 팩을 독립 GitHub 릴리스로 공개" },
+      { state: "done", title: "NAS 시작 확인", body: "NAS 설치와 팩 로딩, 마을과 두 경기장이 시작되는 것을 확인했습니다. 실제 다인원 경기 플레이는 아직 확인하지 못했습니다." },
     ],
     github: ["https://github.com/armsone/NasOS"],
     privacy: [
