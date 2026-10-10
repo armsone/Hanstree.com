@@ -1516,7 +1516,7 @@ const appCatalog: AppData[] = [
     summary: "화면은 읽던 자리에서, 메일은 서식을 살려서, 웹은 이미지 속 글자까지. 바로보기는 화면·Mail·웹 번역을 한곳에서 시작하는 Mac 앱입니다. 필요할 때 번역하고 원문으로 돌아가 비교하세요.",
     theme: "blue",
     icon: "/apps/barobogi/icon.png",
-    heroImage: "/apps/barobogi/reading/manga.png",
+    heroImage: "/apps/barobogi/barobogi-campaign.png",
     screenshots: [
       { src: "/apps/barobogi/screens/settings-0.7.5.png", alt: "바로보기(Barobogi) 0.7.5 실제 일반 설정 화면 · Dock 표시, Mail 연동, 로그인 시 자동 시작 항목을 보여줍니다." },
     ],

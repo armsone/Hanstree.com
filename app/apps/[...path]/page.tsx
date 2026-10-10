@@ -363,13 +363,6 @@ export default async function AppRoute({ params }: RouteProps) {
         </div>
         <div className="app-hero-visual reveal">
           <AppHeroArtwork app={app} />
-          {app.slug === "barobogi" && (
-            <p className="hero-artwork-plain-caption">
-              <strong>일본어가 세로쓰기면, 한글도 세로쓰기</strong>
-              <span>기능 설명용 예시 · 세로쓰기 인식 macOS 26 이상</span>
-              <a href={app.heroImage ?? `/apps/${app.slug}/${app.slug}-hero-v2.png`} target="_blank" rel="noopener noreferrer">원본 크기로 보기 ↗</a>
-            </p>
-          )}
         </div>
       </section>
 
@@ -872,6 +865,12 @@ const barobogiReadingShowcase = [
     kicker: "메일 번역",
     title: "제목·본문·표·이미지를 서식 그대로.",
     body: "Apple Mail에서 선택한 메일의 제목과 본문, 표와 이미지 속 글자를 원본 서식과 배치를 살려 번역해 원문과 비교합니다.",
+  },
+  {
+    src: "/apps/barobogi/reading/manga.png",
+    kicker: "일본 만화 번역",
+    title: "일본어가 세로쓰기면, 한글도 세로쓰기.",
+    body: "말풍선 속 일본어가 세로로 쓰여 있으면 한글 번역도 세로쓰기로 보여줘 말풍선 자리와 읽는 흐름을 그대로 살립니다. 세로쓰기 인식에는 macOS 26 이상이 필요합니다.",
   },
 ];
 
