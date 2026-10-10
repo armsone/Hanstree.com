@@ -355,13 +355,22 @@ export default async function AppRoute({ params }: RouteProps) {
       <section className="app-hero shell">
         <div className="app-hero-copy reveal">
           <Link className="breadcrumb" href={family ? `/#family-${family.id}` : "/#apps"}>← 모든 제품{family && <> · <span>{family.name}</span></>}</Link>
-          <div className="app-ident"><AppIcon app={app} /><span>{app.slug === "barobogi" ? `${app.name} · ${app.english}` : app.english}</span></div>
+          <div className="app-ident"><AppIcon app={app} /><span>{app.slug === "barobogi" ? `${app.english} }{ ${app.name}` : app.english}</span></div>
           <p className="eyebrow">{app.eyebrow}</p>
           <h1>{app.tagline}</h1>
           <p className="app-summary">{app.summary}</p>
           <HeroAvailability app={app} />
         </div>
-        <div className="app-hero-visual reveal"><AppHeroArtwork app={app} /></div>
+        <div className="app-hero-visual reveal">
+          <AppHeroArtwork app={app} />
+          {app.slug === "barobogi" && (
+            <p className="hero-artwork-plain-caption">
+              <strong>일본어가 세로쓰기면, 한글도 세로쓰기</strong>
+              <span>기능 설명용 예시 · 세로쓰기 인식 macOS 26 이상</span>
+              <a href={app.heroImage ?? `/apps/${app.slug}/${app.slug}-hero-v2.png`} target="_blank" rel="noopener noreferrer">원본 크기로 보기 ↗</a>
+            </p>
+          )}
+        </div>
       </section>
 
       <nav className="section-nav" aria-label={`${app.name} 페이지 내부 메뉴`}>
@@ -817,9 +826,9 @@ const productCampaigns = {
   },
   barobogi: {
     tone: "meter",
-    eyebrow: "DON'T COPY IT OUT, TRANSLATE IN PLACE",
+    eyebrow: "맥용 번역 앱",
     headline: <>옮기지 말고,<br /><span>그 자리에서 바로보기.</span></>,
-    description: "화면 속 글자, Mail의 제목·본문, 웹페이지 글자를 다른 번역기로 옮기지 않아도 됩니다. 바로보기는 지금 보던 자리에서 바로 번역을 보여주는 Mac 메뉴 막대 앱입니다.",
+    description: "브라우저 번역을 켜도 이미지 속 글자는 그대로 남는 경우가 많습니다. 일본 만화의 말풍선이나 잡지 이미지가 특히 그렇습니다. 바로보기는 텍스트뿐 아니라 이미지 속 글자도 읽어 한글로 보여주는 Mac 번역 앱입니다.",
     image: "/apps/barobogi/barobogi-campaign.png",
     imageAlt: "화면 영역, Mail, 웹페이지를 각각 보던 자리에서 바로 번역으로 바꿔 보여주는 바로보기 캠페인 이미지",
     imageLabel: "SCREEN · MAIL · WEB → TRANSLATED, IN PLACE",
@@ -838,16 +847,94 @@ const productCampaigns = {
       ["02", "외국어로 온 메일을 확인할 때", "Mail에서 메시지를 선택하고 메일 번역을 열면 제목·본문·표·이미지 속 글자를 서식 그대로 번역해 비교합니다.", "Mail · 서식 유지 · 이미지 번역"],
       ["03", "웹페이지를 읽다가 번역이 필요할 때", "브라우저 아이콘을 누르면 지금 탭이 번역 보기로 바뀌고, 스크롤하거나 페이지를 넘겨도 보이는 부분을 계속 번역합니다.", "Chrome · Whale · Safari"],
     ],
-    ctaEyebrow: "READ WHERE YOU ALREADY ARE",
+    ctaEyebrow: "보던 자리에서 바로",
     ctaTitle: <>번역기를 따로 열지 말고.<br /><span>보던 자리에서 바로보기.</span></>,
     ctaBody: "macOS 15 이상 Apple Silicon Mac에서 화면·Mail·웹 번역을 한 곳에서 시작하세요. 현재 공개 다운로드는 0.7.3입니다.",
     ctaLabel: "Mac용 바로보기 받기",
   },
 } as const;
 
+const barobogiReadingShowcase = [
+  {
+    src: "/apps/barobogi/reading/web.png",
+    kicker: "웹페이지 번역",
+    title: "브라우저 번역, 이미지 속 글자까지.",
+    body: "Chrome·Whale·Safari 확장을 켜면 웹페이지의 일반 글자와 이미지 속 글자를 함께 번역합니다. 허용한 사이트는 스크롤하거나 페이지를 넘겨도 보이는 부분을 계속 번역합니다.",
+  },
+  {
+    src: "/apps/barobogi/reading/magazine.png",
+    kicker: "외국 잡지 번역",
+    title: "사진 옆 설명과 제목 이미지도 함께.",
+    body: "잡지의 사진 옆 설명이나 이미지로 된 제목처럼 글자가 그림 속에 있어 읽기 어려웠던 부분도 번역해서 볼 수 있습니다.",
+  },
+  {
+    src: "/apps/barobogi/reading/mail.png",
+    kicker: "메일 번역",
+    title: "제목·본문·표·이미지를 서식 그대로.",
+    body: "Apple Mail에서 선택한 메일의 제목과 본문, 표와 이미지 속 글자를 원본 서식과 배치를 살려 번역해 원문과 비교합니다.",
+  },
+];
+
+function BarobogiReadingShowcase({ campaign }: { campaign: typeof productCampaigns.barobogi }) {
+  return (
+    <section className="product-promo campaign-meter" id="product-campaign">
+      <div className="shell product-promo-hero" style={{ gridTemplateColumns: "1fr" }}>
+        <div className="product-promo-copy reveal">
+          <p className="eyebrow">{campaign.eyebrow}</p>
+          <h2>{campaign.headline}</h2>
+          <p>{campaign.description}</p>
+          <p>
+            일본 만화의 말풍선처럼 글자가 세로로 쓰여 있으면 한글 번역도 세로쓰기로 보여줍니다. 그림을 보며 대사를 읽는 흐름이 이어집니다.
+            세로쓰기 인식에는 macOS 26 이상의 문서 인식 기능이 필요하며, 작은 글자·복잡한 배치·특이한 글꼴은 인식과 번역 결과가 달라질 수 있습니다.
+          </p>
+          <div className="product-promo-actions">
+            <Link className="button product-promo-primary" href="#download">{campaign.ctaLabel} <span aria-hidden="true">↓</span></Link>
+            <Link className="button product-promo-secondary" href="#guide">사용법 먼저 보기 <span aria-hidden="true">→</span></Link>
+          </div>
+        </div>
+      </div>
+
+      <div className="shell product-advantages">
+        <div className="product-section-intro reveal">
+          <p className="eyebrow">이렇게 씁니다</p>
+          <h2>보던 자리에서,<br /><span>원문과 번역을 나란히.</span></h2>
+          <p>아래 이미지는 기능을 쉽게 설명하기 위해 만든 예시이며, 실제 앱 화면이나 번역 결과를 캡처한 것은 아닙니다.</p>
+        </div>
+        <div className="reading-showcase">
+          {barobogiReadingShowcase.map((item) => (
+            <article className="reading-showcase-item reveal" key={item.src}>
+              <div className="reading-showcase-media">
+                <div className="reading-showcase-figure">
+                  <Image src={item.src} alt={`${item.title} 원문과 한글 번역을 비교한 예시 이미지`} width={1536} height={1024} sizes="(max-width: 760px) 100vw, 50vw" unoptimized />
+                </div>
+                <a className="reading-showcase-link" href={item.src} target="_blank" rel="noopener noreferrer">원본 크기로 보기 ↗</a>
+              </div>
+              <div className="reading-showcase-copy">
+                <small>{item.kicker}</small>
+                <h3>{item.title}</h3>
+                <p>{item.body}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div className="product-story-band" id="campaign-stories">
+        <div className="shell">
+          <div className="product-promo-cta reveal">
+            <p className="eyebrow">{campaign.ctaEyebrow}</p><h2>{campaign.ctaTitle}</h2><p>{campaign.ctaBody}</p>
+            <div><Link className="button product-promo-primary" href="#download">{campaign.ctaLabel} <span aria-hidden="true">↓</span></Link><Link className="button product-promo-secondary" href="#guide">사용법 먼저 보기 <span aria-hidden="true">→</span></Link></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function ProductPromotion({ app }: { app: NonNullable<ReturnType<typeof findApp>> }) {
   const campaign = productCampaigns[app.slug as keyof typeof productCampaigns];
   if (!campaign) return null;
+  if (app.slug === "barobogi") return <BarobogiReadingShowcase campaign={campaign as typeof productCampaigns.barobogi} />;
 
   return (
     <section className={`product-promo campaign-${campaign.tone}`} id="product-campaign">

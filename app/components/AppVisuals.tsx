@@ -55,10 +55,17 @@ function ConceptScene({ src, alt, label }: { src: string; alt: string; label: st
 
 export function AppHeroArtwork({ app }: { app: AppData }) {
   const heroSrc = app.heroImage ?? `/apps/${app.slug}/${app.slug}-hero-v2.png`;
+  if (app.slug === "barobogi") {
+    return (
+      <div className="hero-artwork hero-artwork-plain hero-artwork-barobogi" aria-label={`${app.name} 핵심 기능을 표현한 대표 이미지`}>
+        <Image src={heroSrc} alt={heroImageAlt(app, heroSrc)} width={1536} height={1024} priority sizes="(max-width: 920px) 100vw, 52vw" unoptimized />
+      </div>
+    );
+  }
   return (
     <div className={`hero-artwork hero-artwork-product hero-artwork-${app.slug}`} aria-label={isScreenshotPath(heroSrc) ? `${app.name} 실제 앱 화면` : `${app.name} 핵심 기능을 표현한 대표 이미지`}>
       <Image className="hero-artwork-backdrop" src={heroSrc} alt={heroImageAlt(app, heroSrc)} width={1536} height={1024} priority sizes="(max-width: 920px) 100vw, 52vw" unoptimized />
-      <div className="hero-artwork-brand"><AppIcon app={app} /><span><small>{app.slug === "barobogi" ? "소개용 개념 이미지" : "PRODUCT SCENE"}</small><strong>{app.slug === "barobogi" ? `${app.name} · ${app.english}` : app.english}</strong></span></div>
+      <div className="hero-artwork-brand"><AppIcon app={app} /><span><small>{app.slug === "barobogi" ? "소개용 예시 이미지" : "PRODUCT SCENE"}</small><strong>{app.slug === "barobogi" ? "Barobogi }{ 바로보기" : app.english}</strong></span></div>
       <div className="hero-artwork-proof"><span />{app.slug === "nasfinder" ? "NAS · CLOUD · DEVICE" : "CORE EXPERIENCE"}</div>
       <div className="hero-artwork-caption"><strong>{app.features[0]?.title ?? app.tagline}</strong><span>{app.platforms.map((platform) => app.slug === "barobogi" ? `${platform.name} ${platform.status}` : platform.name).join(" · ")}</span></div>
     </div>

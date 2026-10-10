@@ -149,6 +149,30 @@
     "height": 1254,
     "srcSet": "/optimized/c37cc1406e3e98e3-128.webp 128w, /optimized/c37cc1406e3e98e3-640.webp 640w, /optimized/c37cc1406e3e98e3-1254.webp 1254w"
   },
+  "/apps/barobogi/reading/magazine.png": {
+    "src": "/optimized/3f12dfb4153ced89-1536.webp",
+    "width": 1536,
+    "height": 1024,
+    "srcSet": "/optimized/3f12dfb4153ced89-128.webp 128w, /optimized/3f12dfb4153ced89-640.webp 640w, /optimized/3f12dfb4153ced89-1280.webp 1280w, /optimized/3f12dfb4153ced89-1536.webp 1536w"
+  },
+  "/apps/barobogi/reading/mail.png": {
+    "src": "/optimized/77c269c6e0c58049-1536.webp",
+    "width": 1536,
+    "height": 1024,
+    "srcSet": "/optimized/77c269c6e0c58049-128.webp 128w, /optimized/77c269c6e0c58049-640.webp 640w, /optimized/77c269c6e0c58049-1280.webp 1280w, /optimized/77c269c6e0c58049-1536.webp 1536w"
+  },
+  "/apps/barobogi/reading/manga.png": {
+    "src": "/optimized/211ec2da50e6dade-1536.webp",
+    "width": 1536,
+    "height": 1024,
+    "srcSet": "/optimized/211ec2da50e6dade-128.webp 128w, /optimized/211ec2da50e6dade-640.webp 640w, /optimized/211ec2da50e6dade-1280.webp 1280w, /optimized/211ec2da50e6dade-1536.webp 1536w"
+  },
+  "/apps/barobogi/reading/web.png": {
+    "src": "/optimized/254ef5af5ab1a848-1536.webp",
+    "width": 1536,
+    "height": 1024,
+    "srcSet": "/optimized/254ef5af5ab1a848-128.webp 128w, /optimized/254ef5af5ab1a848-640.webp 640w, /optimized/254ef5af5ab1a848-1280.webp 1280w, /optimized/254ef5af5ab1a848-1536.webp 1536w"
+  },
   "/apps/barobogi/screens/settings-0.6.5.png": {
     "src": "/optimized/8666980c2d4a84c6-1120.webp",
     "width": 1120,
