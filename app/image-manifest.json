@@ -137,6 +137,30 @@
     "height": 512,
     "srcSet": "/optimized/8bfdf2a54be811b0-128.webp 128w, /optimized/8bfdf2a54be811b0-512.webp 512w"
   },
+  "/apps/barobogi/barobogi-campaign.png": {
+    "src": "/optimized/33ed12b1b53d6b02-1672.webp",
+    "width": 1672,
+    "height": 941,
+    "srcSet": "/optimized/33ed12b1b53d6b02-128.webp 128w, /optimized/33ed12b1b53d6b02-640.webp 640w, /optimized/33ed12b1b53d6b02-1280.webp 1280w, /optimized/33ed12b1b53d6b02-1672.webp 1672w"
+  },
+  "/apps/barobogi/icon.png": {
+    "src": "/optimized/c37cc1406e3e98e3-1254.webp",
+    "width": 1254,
+    "height": 1254,
+    "srcSet": "/optimized/c37cc1406e3e98e3-128.webp 128w, /optimized/c37cc1406e3e98e3-640.webp 640w, /optimized/c37cc1406e3e98e3-1254.webp 1254w"
+  },
+  "/apps/barobogi/screens/settings-0.6.5.png": {
+    "src": "/optimized/8666980c2d4a84c6-1120.webp",
+    "width": 1120,
+    "height": 1304,
+    "srcSet": "/optimized/8666980c2d4a84c6-128.webp 128w, /optimized/8666980c2d4a84c6-640.webp 640w, /optimized/8666980c2d4a84c6-1120.webp 1120w"
+  },
+  "/apps/barobogi/screens/settings-0.7.5.png": {
+    "src": "/optimized/e8e51b905eed76d4-1120.webp",
+    "width": 1120,
+    "height": 1344,
+    "srcSet": "/optimized/e8e51b905eed76d4-128.webp 128w, /optimized/e8e51b905eed76d4-640.webp 640w, /optimized/e8e51b905eed76d4-1120.webp 1120w"
+  },
   "/apps/btn/btn-hero-v2.png": {
     "src": "/optimized/3d97254dbb31bbab-1536.webp",
     "width": 1536,

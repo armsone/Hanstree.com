@@ -14,13 +14,19 @@ export type AdvantageVariant =
   | "photo-stack" | "denim-clues" | "rarity-gem" | "market-balance" | "profit-calculator" | "image-compress"
   | "temperature" | "golf" | "silent-film"
   | "download" | "settings" | "people" | "bell" | "camera" | "meal" | "chat" | "drive-eject"
-  | "android-bot" | "web-globe" | "life-ring" | "doc-scroll" | "trash-clear" | "check-badge";
+  | "android-bot" | "web-globe" | "life-ring" | "doc-scroll" | "trash-clear" | "check-badge"
+  | "region-capture" | "doc-swap" | "mail-letter" | "browser-image" | "menu-bar-mac";
 
 const glow = <circle className="av-glow" cx="22" cy="22" r="19" />;
 
 const glyphs: Partial<Record<AdvantageVariant, ReactNode>> = {
   "android-bot": <><path d="M13 20a9 9 0 0 1 18 0v10H13z" /><path d="M13 30v6M31 30v6M17 8l2 4M27 8l-2 4" /><circle cx="18" cy="19" r="1.6" fill="currentColor" stroke="none" /><circle cx="26" cy="19" r="1.6" fill="currentColor" stroke="none" /></>,
   "web-globe": <><circle cx="22" cy="22" r="15" /><path d="M7 22h30M22 7c4 4 6 9.5 6 15s-2 11-6 15c-4-4-6-9.5-6-15s2-11 6-15z" /></>,
+  "region-capture": <><rect x="8" y="9" width="28" height="26" rx="2" strokeDasharray="4 3" /><path d="M14 19h16M14 25h11" /><circle cx="8" cy="9" r="1.6" fill="currentColor" stroke="none" /><circle cx="36" cy="9" r="1.6" fill="currentColor" stroke="none" /><circle cx="8" cy="35" r="1.6" fill="currentColor" stroke="none" /><circle cx="36" cy="35" r="1.6" fill="currentColor" stroke="none" /></>,
+  "doc-swap": <><rect x="6" y="8" width="15" height="20" rx="1.5" /><path d="M10 13h7M10 17h7M10 21h4" /><rect x="23" y="16" width="15" height="20" rx="1.5" /><path d="M27 21h7M27 25h7M27 29h4" /><path d="M20 20l3-3-3-3M24 24l-3 3 3 3" /></>,
+  "mail-letter": <><rect x="6" y="11" width="32" height="22" rx="2" /><path d="M7 13l15 12 15-12" /></>,
+  "browser-image": <><rect x="6" y="9" width="32" height="26" rx="2" /><path d="M6 15h32" /><circle cx="10" cy="12" r="0.9" fill="currentColor" stroke="none" /><circle cx="13" cy="12" r="0.9" fill="currentColor" stroke="none" /><rect x="11" y="19" width="22" height="13" rx="1" /><circle cx="16" cy="24" r="2" /><path d="M11 32l6-6 4 4 6-7 6 9" /></>,
+  "menu-bar-mac": <><rect x="6" y="9" width="32" height="5" rx="1.5" /><circle cx="11" cy="11.5" r="0.9" fill="currentColor" stroke="none" /><path d="M24 11.5h9" /><rect x="10" y="18" width="24" height="17" rx="2" /><path d="M16 26h12" /></>,
 };
 
 

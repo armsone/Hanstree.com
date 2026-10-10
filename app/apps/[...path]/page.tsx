@@ -15,7 +15,7 @@ import { getSiteBrand } from "../../site-brand";
 
 type RouteProps = { params: Promise<{ path: string[] }> };
 
-const campaignSlugs = new Set(["super-thumbnail", "hanclip", "stand", "ccmb", "trackpadguard", "intosharp", "airchurch"]);
+const campaignSlugs = new Set(["super-thumbnail", "hanclip", "stand", "ccmb", "trackpadguard", "intosharp", "airchurch", "barobogi"]);
 
 const contentVisuals: Record<string, AdvantageVariant> = {
   "연결 추가": "storage-network",
@@ -166,7 +166,21 @@ const contentVisuals: Record<string, AdvantageVariant> = {
   "Data sharing and disclosure": "devices-pair",
   "Security and data protection": "shield-safe",
   "Limited Use": "check-source",
-  "Control and deletion": "trash-clear"
+  "Control and deletion": "trash-clear",
+  "화면 번역, 보던 자리에 그대로": "region-capture",
+  "원문과 번역, 큰 전환 스위치 하나로": "doc-swap",
+  "Mail 제목·본문을 서식 그대로": "mail-letter",
+  "Chrome·Whale·Safari, 같은 자리에서": "browser-image",
+  "아이콘 한 번, 바로 번역 보기": "toggle-control",
+  "먼저 기기 안에서, 다듬기도 기기 안에서": "lock-local",
+  "언어는 자동으로 갈라 보고, 팩은 앱 안에서": "download",
+  "전역 단축키 두 개로 바로 열기": "keyboard-lock",
+  "메뉴 막대 상주와 기본 동작은 조용하게": "menu-bar-mac",
+  "화면 번역 열기": "region-capture",
+  "메일 번역 열기": "mail-letter",
+  "브라우저 확장 설치": "browser-image",
+  "번역 보기로 전환": "doc-swap",
+  "필요하면 언어 팩 받기": "download"
 };
 
 function pickContentVisual(title: string): AdvantageVariant {
@@ -222,6 +236,18 @@ function HeroAvailability({ app }: { app: NonNullable<ReturnType<typeof findApp>
         <Link className="button button-quiet" href="#guide">
           사용 안내 <span aria-hidden="true">↓</span>
         </Link>
+      </div>
+
+      <div className="hero-platform-chips" aria-label="플랫폼별 제공 상태">
+        {app.platforms.map((platform) => {
+          const version = platform.detail.match(/\d+\.\d+(?:\.\d+)?/)?.[0];
+          return (
+            <span className={`hero-platform-chip hero-platform-chip-${platform.status.replace(" ", "-")}`} key={platform.name}>
+              {platform.name} {platform.status}
+              {version ? ` ${version}` : ""}
+            </span>
+          );
+        })}
       </div>
 
       {testFlightPlatforms.length > 0 && (
@@ -329,7 +355,7 @@ export default async function AppRoute({ params }: RouteProps) {
       <section className="app-hero shell">
         <div className="app-hero-copy reveal">
           <Link className="breadcrumb" href={family ? `/#family-${family.id}` : "/#apps"}>← 모든 제품{family && <> · <span>{family.name}</span></>}</Link>
-          <div className="app-ident"><AppIcon app={app} /><span>{app.english}</span></div>
+          <div className="app-ident"><AppIcon app={app} /><span>{app.slug === "barobogi" ? `${app.name} · ${app.english}` : app.english}</span></div>
           <p className="eyebrow">{app.eyebrow}</p>
           <h1>{app.tagline}</h1>
           <p className="app-summary">{app.summary}</p>
@@ -789,6 +815,34 @@ const productCampaigns = {
     ctaBody: "가입 없이 먼저 둘러보고, 우리 교회를 응원하고, 내가 가진 달란트로 가까운 필요에 참여하세요.",
     ctaLabel: "에어처치 바로 열기",
   },
+  barobogi: {
+    tone: "meter",
+    eyebrow: "DON'T COPY IT OUT, TRANSLATE IN PLACE",
+    headline: <>옮기지 말고,<br /><span>그 자리에서 바로보기.</span></>,
+    description: "화면 속 글자, Mail의 제목·본문, 웹페이지 글자를 다른 번역기로 옮기지 않아도 됩니다. 바로보기는 지금 보던 자리에서 바로 번역을 보여주는 Mac 메뉴 막대 앱입니다.",
+    image: "/apps/barobogi/barobogi-campaign.png",
+    imageAlt: "화면 영역, Mail, 웹페이지를 각각 보던 자리에서 바로 번역으로 바꿔 보여주는 바로보기 캠페인 이미지",
+    imageLabel: "SCREEN · MAIL · WEB → TRANSLATED, IN PLACE",
+    facts: [["03", "화면·Mail·웹 번역 범위"], ["0.7.3", "현재 공개 버전"], ["ON-DEVICE", "Mac 기본 번역 우선"]],
+    advantages: [
+      ["01", "SCREEN, IN PLACE", "화면 번역, 보던 자리에 그대로.", "번역할 화면 영역을 지정하면 그 자리를 캡처해 번역문을 원문 줄이 있던 바로 그 위치에 겹쳐 보여줍니다.", "번역 버튼을 누를 때만 다시 캡처하며 자동·주기 캡처는 없습니다.", "region-capture"],
+      ["02", "SWITCH, NOT GUESS", "원문과 번역, 큰 전환 스위치 하나로.", "창 위쪽의 전환 스위치로 지금 보는 쪽을 바로 알고, Space로 다시 번역하지 않고 오갑니다.", "Enter는 새로 캡처해 번역합니다.", "doc-swap"],
+      ["03", "MAIL, FORMATTED", "Mail 제목·본문을 서식 그대로.", "선택한 메시지나 .eml 파일의 제목·본문·표·이미지 속 글자를 원본 서식을 유지한 채 번역해 비교합니다.", "이미지 번역은 원본 이미지 위에 제자리로 덧씁니다.", "mail-letter"],
+      ["04", "SAME SPOT, THREE BROWSERS", "Chrome·Whale·Safari, 같은 자리에서.", "페이지 글자와 화면에 보이는 이미지 속 글자를 이 Mac의 바로보기로 보내 같은 위치에서 번역합니다.", "허용한 사이트는 스크롤·페이지 이동에도 계속 번역합니다.", "browser-image"],
+      ["05", "ONE TAP, TRANSLATED", "아이콘 한 번, 바로 번역 보기.", "브라우저 툴바의 바로보기 아이콘을 누르면 지금 탭이 항상 번역 보기로 바뀝니다.", "원문이 필요하면 팝업의 원문 보기를 누릅니다.", "toggle-control"],
+      ["06", "ON-DEVICE FIRST", "먼저 기기 안에서, 다듬기도 기기 안에서.", "화면·메일·브라우저 번역 모두 Mac 기본 번역을 사용하며 외부로 아무것도 보내지 않습니다.", "지원 기기에서는 Apple Intelligence가 기기 안에서 표현만 다듬습니다.", "lock-local"],
+    ],
+    storyIcons: ["region-capture", "mail-letter", "browser-image"],
+    stories: [
+      ["01", "화면에 보이는 외국어 문구를 바로 읽을 때", "화면 번역 영역을 지정하고 번역을 누르면 원문이 있던 자리에 번역문이 겹쳐 보입니다. 큰 전환 스위치로 원문과 번역을 바로 오갑니다.", "화면 캡처 · 제자리 번역 · 전환 스위치"],
+      ["02", "외국어로 온 메일을 확인할 때", "Mail에서 메시지를 선택하고 메일 번역을 열면 제목·본문·표·이미지 속 글자를 서식 그대로 번역해 비교합니다.", "Mail · 서식 유지 · 이미지 번역"],
+      ["03", "웹페이지를 읽다가 번역이 필요할 때", "브라우저 아이콘을 누르면 지금 탭이 번역 보기로 바뀌고, 스크롤하거나 페이지를 넘겨도 보이는 부분을 계속 번역합니다.", "Chrome · Whale · Safari"],
+    ],
+    ctaEyebrow: "READ WHERE YOU ALREADY ARE",
+    ctaTitle: <>번역기를 따로 열지 말고.<br /><span>보던 자리에서 바로보기.</span></>,
+    ctaBody: "macOS 15 이상 Apple Silicon Mac에서 화면·Mail·웹 번역을 한 곳에서 시작하세요. 현재 공개 다운로드는 0.7.3입니다.",
+    ctaLabel: "Mac용 바로보기 받기",
+  },
 } as const;
 
 function ProductPromotion({ app }: { app: NonNullable<ReturnType<typeof findApp>> }) {
@@ -809,7 +863,7 @@ function ProductPromotion({ app }: { app: NonNullable<ReturnType<typeof findApp>
         </div>
         <div className="product-promo-image reveal">
           <Image src={campaign.image} alt={campaign.imageAlt} width={1672} height={941} sizes="(max-width: 920px) 100vw, 58vw" unoptimized />
-          <div className="product-promo-image-label"><span>CAMPAIGN FEATURE</span><strong>{campaign.imageLabel}</strong></div>
+          <div className="product-promo-image-label"><span>{app.slug === "barobogi" ? "화면·메일·웹 번역을 표현한 개념 이미지" : "CAMPAIGN FEATURE"}</span><strong>{campaign.imageLabel}</strong></div>
         </div>
         <div className="product-promo-facts reveal" aria-label={`${app.name} 핵심 지원 범위`}>
           {campaign.facts.map(([value, label]) => <p key={label}><strong>{value}</strong><span>{label}</span></p>)}

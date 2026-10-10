@@ -213,6 +213,11 @@ img { display: block; max-width: 100%; }
 .app-ident .app-icon { width: 58px; height: 58px; border-radius: 17px; border: 1px solid var(--line); box-shadow: 0 10px 24px rgba(36, 38, 33, 0.08); }
 .app-summary { max-width: 680px; margin: 0 0 28px; color: var(--ink-secondary); font-size: clamp(1.02rem, 1.25vw, 1.15rem); line-height: 1.8; font-weight: 500; word-break: keep-all; }
 .hero-availability { max-width: 700px; }
+.hero-platform-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 0; }
+.hero-platform-chip { padding: 6px 12px; border-radius: 999px; background: var(--paper-subtle); color: var(--ink-secondary); font-size: .72rem; font-weight: 650; box-shadow: inset 0 0 0 1px var(--line); }
+.hero-platform-chip-공개, .hero-platform-chip-완료 { background: rgba(37,169,108,.12); color: #1d7a52; box-shadow: inset 0 0 0 1px rgba(37,169,108,.3); }
+.hero-platform-chip-준비-중, .hero-platform-chip-개발-중 { background: var(--paper-subtle); color: var(--muted); }
+.hero-platform-chip-TestFlight { background: rgba(21,84,168,.12); color: #1554a8; box-shadow: inset 0 0 0 1px rgba(21,84,168,.28); }
 .hero-beta-card { min-height: 80px; padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; gap: 18px; border: 1px solid var(--line); border-radius: 20px; background: #ffffff; box-shadow: 0 10px 30px rgba(36, 38, 33, 0.05); margin-bottom: 14px; }
 .hero-beta-card > div { min-width: 0; display: grid; gap: 4px; }
 .hero-beta-card > div > span { color: var(--muted); font: 650 .62rem var(--font-geist-mono), monospace; letter-spacing: .1em; }
@@ -2360,6 +2365,7 @@ img { display: block; max-width: 100%; }
 .app-alfred-navermap .product-promo-image-label{display:none}
 .app-alfred-navermap .app-hero-copy h1{font-size:clamp(2.1rem,3.6vw,3.8rem);line-height:1.2}
 .app-alfred-navermap .product-promo-copy h2{font-size:clamp(2rem,3.4vw,3.5rem);line-height:1.2}
+.app-barobogi .product-promo-copy h2{font-size:clamp(2.6rem,4.6vw,4.6rem);line-height:1.08}
 .app-alfred-navermap .hero-platform-row{grid-template-columns:9px minmax(0,1fr) auto}
 .app-alfred-navermap .hero-platform-row>small{grid-column:2/4}
 .app-alfred-navermap .hero-actions{display:flex;flex-wrap:wrap}

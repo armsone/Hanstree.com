@@ -58,9 +58,9 @@ export function AppHeroArtwork({ app }: { app: AppData }) {
   return (
     <div className={`hero-artwork hero-artwork-product hero-artwork-${app.slug}`} aria-label={isScreenshotPath(heroSrc) ? `${app.name} 실제 앱 화면` : `${app.name} 핵심 기능을 표현한 대표 이미지`}>
       <Image className="hero-artwork-backdrop" src={heroSrc} alt={heroImageAlt(app, heroSrc)} width={1536} height={1024} priority sizes="(max-width: 920px) 100vw, 52vw" unoptimized />
-      <div className="hero-artwork-brand"><AppIcon app={app} /><span><small>PRODUCT SCENE</small><strong>{app.english}</strong></span></div>
+      <div className="hero-artwork-brand"><AppIcon app={app} /><span><small>{app.slug === "barobogi" ? "소개용 개념 이미지" : "PRODUCT SCENE"}</small><strong>{app.slug === "barobogi" ? `${app.name} · ${app.english}` : app.english}</strong></span></div>
       <div className="hero-artwork-proof"><span />{app.slug === "nasfinder" ? "NAS · CLOUD · DEVICE" : "CORE EXPERIENCE"}</div>
-      <div className="hero-artwork-caption"><strong>{app.features[0]?.title ?? app.tagline}</strong><span>{app.platforms.map((platform) => platform.name).join(" · ")}</span></div>
+      <div className="hero-artwork-caption"><strong>{app.features[0]?.title ?? app.tagline}</strong><span>{app.platforms.map((platform) => app.slug === "barobogi" ? `${platform.name} ${platform.status}` : platform.name).join(" · ")}</span></div>
     </div>
   );
 }
