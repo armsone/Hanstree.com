@@ -15,8 +15,12 @@ export function appCardImage(app: AppData) {
 }
 
 export function appCardIcon(app: AppData) {
-  if (app.slug === "alfred-navermap") return "/apps/alfred-navermap/icon.svg";
-  if (app.slug === "hanstree-workroom") return "/apps/hanstree-workroom/icon-019.png";
-  if (app.slug === "barobogi") return "/apps/barobogi/icon.png";
-  return `/apps/${app.slug}/icon-card.webp`;
+  return appCardIconBySlug(app.slug);
+}
+
+export function appCardIconBySlug(slug: string) {
+  if (slug === "alfred-navermap") return "/apps/alfred-navermap/icon.svg";
+  if (slug === "hanstree-workroom") return "/apps/hanstree-workroom/icon-019.png";
+  if (slug === "barobogi") return "/apps/barobogi/icon.png";
+  return `/apps/${slug}/icon-card.webp`;
 }

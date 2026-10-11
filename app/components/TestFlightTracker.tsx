@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "./SiteImage";
 import { useEffect, useState } from "react";
 import type { TestFlightBuild } from "../testflight";
+import { appCardIconBySlug } from "../media";
 import { ClientDownloadQrCode } from "./ClientDownloadQrCode";
 import { useNearViewport } from "./useNearViewport";
 
@@ -72,7 +73,7 @@ export function TestFlightTracker({ builds }: { builds: TestFlightBuild[] }) {
         return (
           <article className="testflight-card" key={build.slug}>
             <div className="testflight-card-head">
-              <div><Image className="release-app-icon" src={`/apps/${build.slug}/icon-card.webp`} alt={`${build.appName} 앱 아이콘`} width={256} height={256} sizes="52px" unoptimized /><div><span className="flight-dot" /><h3>{build.appName}</h3></div></div>
+              <div><Image className="release-app-icon" src={appCardIconBySlug(build.slug)} alt={`${build.appName} 앱 아이콘`} width={256} height={256} sizes="52px" unoptimized /><div><span className="flight-dot" /><h3>{build.appName}</h3></div></div>
               <Link href={`/apps/${build.slug}`}>앱 보기</Link>
             </div>
             {state ? <>
