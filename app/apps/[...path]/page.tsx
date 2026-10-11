@@ -300,7 +300,9 @@ function HeroAvailability({ app }: { app: NonNullable<ReturnType<typeof findApp>
                 : rejected
                   ? "공개 베타 · Apple 심사 수정 요청"
                   : waitingForReview
-                    ? "공개 베타 · Apple 심사 대기 중"
+                    ? app.slug === "barobogi"
+                      ? "공개 베타 · Apple 외부 심사 중"
+                      : "공개 베타 · Apple 심사 대기 중"
                     : needsReviewAccount
                       ? "공개 베타 · 심사용 계정 등록"
                       : inviteUrl
@@ -315,7 +317,9 @@ function HeroAvailability({ app }: { app: NonNullable<ReturnType<typeof findApp>
                   : waitingForReview && inviteUrl
                     ? "기존 공개 링크는 열려 있고, 최신 빌드는 Apple 심사를 기다리고 있습니다."
                     : waitingForReview
-                      ? "Apple 공개 테스트 심사 중입니다."
+                      ? app.slug === "barobogi"
+                        ? "공개 참여는 Apple 심사 중입니다."
+                        : "Apple 공개 테스트 심사 중입니다."
                       : needsReviewAccount
                         ? "외부용 빌드는 준비됐고 심사용 계정을 등록하고 있습니다."
                         : inviteUrl
@@ -556,7 +560,9 @@ export default async function AppRoute({ params }: RouteProps) {
           {app.platforms.map((platform) => {
             const testFlight = platform.status === "TestFlight" ? testFlightStatus(app.slug) : null;
             const inviteUrl = testFlight?.inviteAvailable !== false ? testFlight?.inviteUrl ?? null : null;
-            const pendingCopy = testFlight?.publicBetaState === "internalOnly" ? "회사 내부 전용" : testFlight?.publicBetaState === "rejected" ? "Apple 심사 수정 요청 · 새 빌드 준비 필요" : testFlight?.publicBetaState === "waitingForReview" ? "새 빌드는 Apple 심사 대기 중" : testFlight?.publicBetaState === "needsReviewAccount" ? "Apple 심사용 계정 준비 중" : "외부 테스트용 빌드 준비 중";
+            const pendingCopy = app.slug === "barobogi" && testFlight?.publicBetaState === "waitingForReview" && platform.availabilityNote
+              ? platform.availabilityNote
+              : testFlight?.publicBetaState === "internalOnly" ? "회사 내부 전용" : testFlight?.publicBetaState === "rejected" ? "Apple 심사 수정 요청 · 새 빌드 준비 필요" : testFlight?.publicBetaState === "waitingForReview" ? "새 빌드는 Apple 심사 대기 중" : testFlight?.publicBetaState === "needsReviewAccount" ? "Apple 심사용 계정 준비 중" : "외부 테스트용 빌드 준비 중";
             const qrUrl = platform.url ? downloadQrUrl(platform.url) : inviteUrl;
             const qrLabel = platform.url ? platform.downloadLabel ?? "공식 다운로드" : "TestFlight 외부 테스터 참여";
             return <article className={qrUrl ? "download-item-with-qr" : undefined} key={platform.name} id={platformAnchorId(platform.name)}><div className="download-platform-copy"><div className="download-platform-head"><AdvantageVisual variant={platformVisual(platform.name)} /><span className={`status-dot status-${platform.status.replace(" ", "-")}`} /><h3>{platform.name}</h3></div><p>{platform.detail} · {platform.status}</p>{platform.url ? <a href={platform.url}>{platform.downloadLabel ?? "다운로드 페이지"} <span aria-hidden="true">↗</span></a> : inviteUrl ? <a className="testflight-apply-download" href={inviteUrl}>{testFlight?.publicBetaState === "waitingForReview" ? "기존 TestFlight 공개 링크" : "TestFlight 바로 참여"} <span aria-hidden="true">↗</span></a> : <span>{platform.status === "TestFlight" ? pendingCopy : platform.availabilityNote ?? "공개 링크 준비 중"}</span>}{app.slug === "barobogi" && platform.url && platform.availabilityNote && <small className="download-availability-note">{platform.availabilityNote}</small>}{app.slug === "barobogi" && platform.name.includes("Windows") && platform.url && <a href="/apps/barobogi/downloads/install.html" target="_blank" rel="noreferrer">설치·사용 안내 보기 <span aria-hidden="true">↗</span></a>}</div>{qrUrl && <DownloadQrCode href={qrUrl} label={qrLabel} />}</article>;
@@ -665,7 +671,12 @@ function ProductSpec({ app }: { app: NonNullable<ReturnType<typeof findApp>> }) 
           </div>
           <div>
             <dt>TestFlight</dt>
-            <dd>{testFlight ? <>{inviteUrl ? <a href={inviteUrl}>{testFlightStateLabel[testFlight.publicBetaState]}</a> : testFlightStateLabel[testFlight.publicBetaState]}{testFlight.build && <small>빌드 {testFlight.build}</small>}</> : "해당 없음"}</dd>
+            <dd>{testFlight ? <>{(() => {
+              const label = app.slug === "barobogi" && testFlight.publicBetaState === "waitingForReview"
+                ? "Apple 외부 베타 심사 중"
+                : testFlightStateLabel[testFlight.publicBetaState];
+              return inviteUrl ? <a href={inviteUrl}>{label}</a> : label;
+            })()}{testFlight.build && <small>빌드 {testFlight.build}</small>}</> : "해당 없음"}</dd>
           </div>
           <div>
             <dt>진행 상황</dt>
