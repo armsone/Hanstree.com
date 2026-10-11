@@ -825,7 +825,7 @@ const productCampaigns = {
     image: "/apps/barobogi/barobogi-campaign.png",
     imageAlt: "화면 영역, Mail, 웹페이지를 각각 보던 자리에서 바로 번역으로 바꿔 보여주는 바로보기 캠페인 이미지",
     imageLabel: "SCREEN · MAIL · WEB → TRANSLATED, IN PLACE",
-    facts: [["03", "화면·Mail·웹 번역 범위"], ["0.7.90", "현재 공개 버전"], ["ON-DEVICE", "Mac 기본 번역 우선"]],
+    facts: [["03", "화면·Mail·웹 번역 범위"], ["0.7.92", "현재 공개 버전"], ["ON-DEVICE", "Mac 기본 번역 우선"]],
     advantages: [
       ["01", "SCREEN, IN PLACE", "화면 번역, 보던 자리에 그대로.", "번역할 화면 영역을 지정하면 그 자리를 캡처해 번역문을 원문 줄이 있던 바로 그 위치에 겹쳐 보여줍니다.", "번역 버튼을 누를 때만 다시 캡처하며 자동·주기 캡처는 없습니다.", "region-capture"],
       ["02", "SWITCH, NOT GUESS", "원문과 번역, 큰 전환 스위치 하나로.", "창 위쪽의 전환 스위치로 지금 보는 쪽을 바로 알고, Space로 다시 번역하지 않고 오갑니다.", "Enter는 새로 캡처해 번역합니다.", "doc-swap"],
@@ -842,7 +842,7 @@ const productCampaigns = {
     ],
     ctaEyebrow: "보던 자리에서 바로",
     ctaTitle: <>번역기를 따로 열지 말고.<br /><span>보던 자리에서 바로보기.</span></>,
-    ctaBody: "macOS 15 이상 Apple Silicon Mac에서 화면·Mail·웹 번역을 한 곳에서 시작하세요. 현재 공개 다운로드는 0.7.90입니다.",
+    ctaBody: "macOS 15 이상 Apple Silicon Mac에서 화면·Mail·웹 번역을 한 곳에서 시작하세요. 현재 공개 다운로드는 0.7.92입니다.",
     ctaLabel: "Mac용 바로보기 받기",
   },
 } as const;
