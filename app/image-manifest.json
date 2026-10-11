@@ -173,6 +173,18 @@
     "height": 1024,
     "srcSet": "/optimized/254ef5af5ab1a848-128.webp 128w, /optimized/254ef5af5ab1a848-640.webp 640w, /optimized/254ef5af5ab1a848-1280.webp 1280w, /optimized/254ef5af5ab1a848-1536.webp 1536w"
   },
+  "/apps/barobogi/screens/ios-translation-0.7.1.png": {
+    "src": "/apps/barobogi/screens/ios-translation-0.7.1.png",
+    "width": 792,
+    "height": 1744,
+    "srcSet": "/optimized/f8aa471d7d34f563-128.webp 128w, /optimized/f8aa471d7d34f563-640.webp 640w, /apps/barobogi/screens/ios-translation-0.7.1.png 792w"
+  },
+  "/apps/barobogi/screens/ios-web-0.7.1.png": {
+    "src": "/optimized/37e5844b6bb2766f-792.webp",
+    "width": 792,
+    "height": 1744,
+    "srcSet": "/optimized/37e5844b6bb2766f-128.webp 128w, /optimized/37e5844b6bb2766f-640.webp 640w, /optimized/37e5844b6bb2766f-792.webp 792w"
+  },
   "/apps/barobogi/screens/settings-0.6.5.png": {
     "src": "/optimized/8666980c2d4a84c6-1120.webp",
     "width": 1120,

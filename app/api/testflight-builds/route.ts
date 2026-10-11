@@ -10,6 +10,7 @@ const APP_SOURCES = [
   { slug: "denimdex", appName: "데님덱스", bundleId: "com.armsone.DenimDex" },
   { slug: "button", appName: "OurButton", bundleId: "com.armsone.button" },
   { slug: "whattoeat", appName: "오늘 뭐 먹지??", bundleId: "com.nasfinder.WhattoEat" },
+  { slug: "barobogi", appName: "바로보기", bundleId: "com.hanstree.barobogi" },
 ] as const;
 
 type AppStoreResource<T> = { id: string; attributes: T };
