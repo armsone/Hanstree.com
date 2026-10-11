@@ -1,6 +1,7 @@
 /** Cloudflare Worker entry point for the vinext-starter template. */
 import { handleImageOptimization, DEFAULT_DEVICE_SIZES, DEFAULT_IMAGE_SIZES } from "vinext/server/image-optimization";
 import handler from "vinext/server/app-router-entry";
+import optimizedMedia from "../app/image-manifest.json";
 import { handleWhattoEatAPI, type WhattoEatEnv } from "./whattoeat-api";
 
 interface Env extends WhattoEatEnv {
@@ -32,6 +33,13 @@ const releaseCache = new Map<string, { body: string; headers: [string, string][]
 const worker = {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
+    const media = (optimizedMedia as Record<string, { src: string; srcSet: string }>)[url.pathname];
+    // Sites does not apply generated _redirects: keep original public image URLs working here.
+    if ((request.method === "GET" || request.method === "HEAD") && media &&
+        media.src.startsWith("/optimized/") && !media.src.includes("..") &&
+        !media.srcSet.includes(url.pathname)) {
+      return new Response(null, { status: 302, headers: { Location: media.src } });
+    }
 
     const isBrowserNavigation = request.headers.get("sec-fetch-dest") === "document";
     const isAutomatedBrowser = /HeadlessChrome|Lighthouse|PageSpeed|PhantomJS|crawler|spider|bot/i.test(request.headers.get("user-agent") ?? "");

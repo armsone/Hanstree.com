@@ -825,14 +825,14 @@ const productCampaigns = {
     image: "/apps/barobogi/barobogi-campaign.png",
     imageAlt: "화면 영역, Mail, 웹페이지를 각각 보던 자리에서 바로 번역으로 바꿔 보여주는 바로보기 캠페인 이미지",
     imageLabel: "SCREEN · MAIL · WEB → TRANSLATED, IN PLACE",
-    facts: [["03", "화면·Mail·웹 번역 범위"], ["0.7.3", "현재 공개 버전"], ["ON-DEVICE", "Mac 기본 번역 우선"]],
+    facts: [["03", "화면·Mail·웹 번역 범위"], ["0.7.90", "현재 공개 버전"], ["ON-DEVICE", "Mac 기본 번역 우선"]],
     advantages: [
       ["01", "SCREEN, IN PLACE", "화면 번역, 보던 자리에 그대로.", "번역할 화면 영역을 지정하면 그 자리를 캡처해 번역문을 원문 줄이 있던 바로 그 위치에 겹쳐 보여줍니다.", "번역 버튼을 누를 때만 다시 캡처하며 자동·주기 캡처는 없습니다.", "region-capture"],
       ["02", "SWITCH, NOT GUESS", "원문과 번역, 큰 전환 스위치 하나로.", "창 위쪽의 전환 스위치로 지금 보는 쪽을 바로 알고, Space로 다시 번역하지 않고 오갑니다.", "Enter는 새로 캡처해 번역합니다.", "doc-swap"],
       ["03", "MAIL, FORMATTED", "Mail 제목·본문을 서식 그대로.", "선택한 메시지나 .eml 파일의 제목·본문·표·이미지 속 글자를 원본 서식을 유지한 채 번역해 비교합니다.", "이미지 번역은 원본 이미지 위에 제자리로 덧씁니다.", "mail-letter"],
       ["04", "SAME SPOT, THREE BROWSERS", "Chrome·Whale·Safari, 같은 자리에서.", "페이지 글자와 화면에 보이는 이미지 속 글자를 이 Mac의 바로보기로 보내 같은 위치에서 번역합니다.", "허용한 사이트는 스크롤·페이지 이동에도 계속 번역합니다.", "browser-image"],
       ["05", "ONE TAP, TRANSLATED", "아이콘 한 번, 바로 번역 보기.", "브라우저 툴바의 바로보기 아이콘을 누르면 지금 탭이 항상 번역 보기로 바뀝니다.", "원문이 필요하면 팝업의 원문 보기를 누릅니다.", "toggle-control"],
-      ["06", "ON-DEVICE FIRST", "먼저 기기 안에서, 다듬기도 기기 안에서.", "화면·메일·브라우저 번역 모두 Mac 기본 번역을 사용하며 외부로 아무것도 보내지 않습니다.", "지원 기기에서는 Apple Intelligence가 기기 안에서 표현만 다듬습니다.", "lock-local"],
+      ["06", "ON-DEVICE FIRST", "먼저 기기 안에서, 다듬기도 기기 안에서.", "기본 번역과 다듬기는 기기 안에서 처리합니다. 구글·딥플은 서비스별 전송 동의 후 직접 선택할 때만 글자를 전송합니다.", "지원 기기에서는 Apple Intelligence가 기기 안에서 표현만 다듬습니다.", "lock-local"],
     ],
     storyIcons: ["region-capture", "mail-letter", "browser-image"],
     stories: [
@@ -842,7 +842,7 @@ const productCampaigns = {
     ],
     ctaEyebrow: "보던 자리에서 바로",
     ctaTitle: <>번역기를 따로 열지 말고.<br /><span>보던 자리에서 바로보기.</span></>,
-    ctaBody: "macOS 15 이상 Apple Silicon Mac에서 화면·Mail·웹 번역을 한 곳에서 시작하세요. 현재 공개 다운로드는 0.7.3입니다.",
+    ctaBody: "macOS 15 이상 Apple Silicon Mac에서 화면·Mail·웹 번역을 한 곳에서 시작하세요. 현재 공개 다운로드는 0.7.90입니다.",
     ctaLabel: "Mac용 바로보기 받기",
   },
 } as const;
