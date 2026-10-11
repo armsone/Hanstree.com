@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import Image from "../../components/SiteImage";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -8,7 +9,7 @@ import { AppArtwork, AppHeroArtwork, AppIcon } from "../../components/AppVisuals
 import { CleanUSBPage } from "../../components/CleanUSBPage";
 import { ContactReveal } from "../../components/ContactReveal";
 import { DownloadQrCode } from "../../components/DownloadQrCode";
-import { apps, familyApps, findApp, productFamilyOf } from "../../data";
+import { apps, familyApps, findApp, productFamilyOf, type AppData } from "../../data";
 import { SiteFooter, SiteHeader } from "../../components/SiteChrome";
 import { testFlightBuilds } from "../../testflight";
 import { getSiteBrand } from "../../site-brand";
@@ -199,6 +200,46 @@ function downloadQrUrl(url: string) {
   return new URL(url, "https://hanstree.com").toString();
 }
 
+type PlatformGroupKey = "mac" | "windows" | "ios";
+const platformGroupLabels: Record<PlatformGroupKey, string> = { mac: "Mac", windows: "Windows", ios: "iPhone·iPad" };
+const platformGroupOrder: PlatformGroupKey[] = ["mac", "windows", "ios"];
+
+// 지정한 platformGroup이 하나도 없으면 null을 돌려줘 기존 제품은 기존 방식 그대로 렌더링됩니다.
+function groupByPlatform<T extends { platformGroup?: PlatformGroupKey }>(items: T[]): { group: PlatformGroupKey; items: T[] }[] | null {
+  if (!items.some((item) => item.platformGroup)) return null;
+  return platformGroupOrder
+    .map((group) => ({ group, items: items.filter((item) => item.platformGroup === group) }))
+    .filter((bucket) => bucket.items.length > 0);
+}
+
+// 안내문에 섞인 특정 안전한 외부 주소(iCloud 단축어)만 실제 링크로 바꿔 보여줍니다.
+const ALLOWED_INLINE_LINK_HOSTS = ["www.icloud.com"];
+function renderGuideBody(body: string) {
+  const urlPattern = /https:\/\/([a-z0-9.-]+)\/[^\s)]+/gi;
+  const nodes: ReactNode[] = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+  while ((match = urlPattern.exec(body))) {
+    if (!ALLOWED_INLINE_LINK_HOSTS.includes(match[1].toLowerCase())) continue;
+    nodes.push(body.slice(lastIndex, match.index));
+    nodes.push(
+      <a key={match.index} href={match[0]} target="_blank" rel="noreferrer">
+        {match[0]}
+      </a>
+    );
+    lastIndex = match.index + match[0].length;
+  }
+  nodes.push(body.slice(lastIndex));
+  return nodes;
+}
+
+function platformAnchorId(name: string) {
+  return `download-${name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "")}`;
+}
+
 const progressStateVisual: Record<"done" | "active" | "next", AdvantageVariant> = {
   done: "check-badge",
   active: "spark",
@@ -311,6 +352,58 @@ function HeroAvailability({ app }: { app: NonNullable<ReturnType<typeof findApp>
   );
 }
 
+// 바로보기 전용: 첫 화면에서 Mac/Windows/iPhone·iPad의 쓰임과 제공 상태를 한눈에 비교하고 각 설치 영역으로 이동합니다.
+function BarobogiPlatformOverview({ app }: { app: NonNullable<ReturnType<typeof findApp>> }) {
+  const cards: { group: PlatformGroupKey; label: string; usage: string; status: string; links: { href: string; label: string }[] }[] = [
+    {
+      group: "mac",
+      label: "Mac",
+      usage: "화면 어디든 지정한 영역, Apple Mail, Chrome·Whale·Safari 브라우저까지 한 앱에서 번역합니다.",
+      status: "공개 다운로드 0.7.92",
+      links: [{ href: "#download-mac", label: "Mac용 DMG로 이동" }],
+    },
+    {
+      group: "windows",
+      label: "Windows",
+      usage: "Chrome·Whale 브라우저 확장으로 웹페이지 이미지 속 글자를 번역합니다. 화면 전체·Mail 번역은 포함하지 않습니다.",
+      status: "테스트용 0.3.0 · Chrome·Whale 두 ZIP 제공",
+      links: [
+        { href: "#download-windows-chrome", label: "Chrome용 ZIP으로 이동" },
+        { href: "#download-windows-whale", label: "Whale용 ZIP으로 이동" },
+      ],
+    },
+    {
+      group: "ios",
+      label: "iPhone · iPad",
+      usage: "단축어·공유 사진·클립보드는 기기 안에서 번역하고, 인앱 웹 본문은 동의 후 Google·DeepL도 선택할 수 있습니다.",
+      status: "내부 초대 테스터 설치 가능 · 공개 참여는 Apple 외부 베타 심사 중",
+      links: [{ href: "#download-iphone-ipad", label: "iPhone · iPad 안내로 이동" }],
+    },
+  ];
+
+  return (
+    <section className="platform-overview shell reveal" aria-label={`${app.name} 플랫폼별 쓰임과 제공 상태 비교`}>
+      <div className="section-heading"><div><p className="eyebrow">기기별로 다르게 쓰입니다</p><h2>Mac · Windows · iPhone·iPad,<br />쓰임도 제공 상태도 다릅니다.</h2></div></div>
+      <div className="platform-overview-grid">
+        {cards.map((card) => (
+          <article className="platform-overview-card" key={card.group}>
+            <h3>{card.label}</h3>
+            <p>{card.usage}</p>
+            <strong>{card.status}</strong>
+            <div className="platform-overview-links">
+              {card.links.map((link) => (
+                <Link className="button button-quiet" href={link.href} key={link.href}>
+                  {link.label} <span aria-hidden="true">↓</span>
+                </Link>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 export async function generateMetadata({ params }: RouteProps): Promise<Metadata> {
   const { path } = await params;
   const brand = await getSiteBrand();
@@ -348,6 +441,30 @@ export default async function AppRoute({ params }: RouteProps) {
   const family = productFamilyOf(app.slug);
   const hasScreenSection = Boolean(app.screenshots?.length || app.systemImage || app.artwork === "directions");
   const hasActualScreens = Boolean(app.screenshots?.some((screen) => screen.src.includes("/screens/") && !screen.src.endsWith("usage-square.png")));
+  const featureGroups = groupByPlatform(app.features);
+  const guideGroups = groupByPlatform(app.guide);
+  const screenshotGroups = app.screenshots ? groupByPlatform(app.screenshots) : null;
+  const renderFeatureCard = (feature: AppData["features"][number], index: number) => {
+    const icon = feature.icon;
+    const cardClassName = `feature-card feature-card-iconized reveal${icon ? " feature-card-inline-icon" : ""}`;
+    return <article className={cardClassName} key={feature.title}><span>{String(index + 1).padStart(2, "0")}</span>{icon ? <Image className="feature-icon" src={icon} alt="" aria-hidden="true" width={72} height={72} unoptimized /> : <AdvantageVisual variant={pickContentVisual(feature.title)} />}<h3>{feature.title}</h3><p>{feature.body}</p></article>;
+  };
+  const renderScreenshotFigure = (screen: NonNullable<AppData["screenshots"]>[number]) => {
+    const dimensions = app.slug === "nasfinder"
+      ? { width: 1080, height: 2424 }
+      : screen.layout === "menu"
+        ? { width: 700, height: 968 }
+        : screen.layout === "landscape"
+          ? { width: 2622, height: 1206 }
+          : screen.layout === "tv"
+            ? { width: 1920, height: 1080 }
+          : screen.layout === "wide"
+            ? { width: 860, height: 60 }
+            : screen.layout === "square"
+              ? { width: 1254, height: 1254 }
+            : { width: 1206, height: 2622 };
+    return <figure className={`screen-${screen.layout ?? "phone"}`} key={screen.src}><div className="screenshot-media"><Image src={screen.src} alt={screen.alt} width={dimensions.width} height={dimensions.height} sizes={screen.layout ? "(max-width: 640px) 92vw, 1080px" : "(max-width: 640px) 78vw, 360px"} unoptimized /></div><figcaption>{screen.alt}</figcaption></figure>;
+  };
 
   return (
     <main className={`app-page app-${app.slug} theme-${app.theme}`}>
@@ -366,6 +483,8 @@ export default async function AppRoute({ params }: RouteProps) {
         </div>
       </section>
 
+      {app.slug === "barobogi" && <BarobogiPlatformOverview app={app} />}
+
       <nav className="section-nav" aria-label={`${app.name} 페이지 내부 메뉴`}>
         <div className="shell">
           {app.slug === "nasfinder" ? (
@@ -381,35 +500,32 @@ export default async function AppRoute({ params }: RouteProps) {
 
       <section className="feature-section shell" id="features">
         <div className="section-heading reveal"><div><p className="eyebrow">주요 특징</p><h2>복잡함은 덜고,<br />쓰임은 선명하게.</h2></div></div>
-        <div className="feature-grid">
-          {app.features.map((feature, index) => {
-            const icon = feature.icon;
-            const cardClassName = `feature-card feature-card-iconized reveal${icon ? " feature-card-inline-icon" : ""}`;
-            return <article className={cardClassName} key={feature.title}><span>{String(index + 1).padStart(2, "0")}</span>{icon ? <Image className="feature-icon" src={icon} alt="" aria-hidden="true" width={72} height={72} unoptimized /> : <AdvantageVisual variant={pickContentVisual(feature.title)} />}<h3>{feature.title}</h3><p>{feature.body}</p></article>;
-          })}
-        </div>
+        {featureGroups ? (
+          featureGroups.map(({ group, items }) => (
+            <div className="feature-platform-group" key={group}>
+              <h3 className="feature-platform-heading">{platformGroupLabels[group]}</h3>
+              <div className="feature-grid">{items.map(renderFeatureCard)}</div>
+            </div>
+          ))
+        ) : (
+          <div className="feature-grid">{app.features.map(renderFeatureCard)}</div>
+        )}
       </section>
 
       {hasScreenSection && <section className="screens-section" id="screens">
         <div className="shell">
           <div className="section-heading reveal"><div><p className="eyebrow">{hasActualScreens ? "제품 화면" : "작동 원리"}</p><h2>눈으로 먼저 만나보세요.</h2></div><p>{hasActualScreens ? "실제 제품 화면에서 주요 사용 흐름을 살펴보세요." : "제품의 사용 흐름을 설명하는 안내 이미지입니다."}</p></div>
           {app.screenshots && app.screenshots.length > 0 ? (
-            <div className="screenshot-rail">{app.screenshots.map((screen) => {
-              const dimensions = app.slug === "nasfinder"
-                ? { width: 1080, height: 2424 }
-                : screen.layout === "menu"
-                  ? { width: 700, height: 968 }
-                  : screen.layout === "landscape"
-                    ? { width: 2622, height: 1206 }
-                    : screen.layout === "tv"
-                      ? { width: 1920, height: 1080 }
-                    : screen.layout === "wide"
-                      ? { width: 860, height: 60 }
-                      : screen.layout === "square"
-                        ? { width: 1254, height: 1254 }
-                      : { width: 1206, height: 2622 };
-              return <figure className={`screen-${screen.layout ?? "phone"}`} key={screen.src}><div className="screenshot-media"><Image src={screen.src} alt={screen.alt} width={dimensions.width} height={dimensions.height} sizes={screen.layout ? "(max-width: 640px) 92vw, 1080px" : "(max-width: 640px) 78vw, 360px"} unoptimized /></div><figcaption>{screen.alt}</figcaption></figure>;
-            })}</div>
+            screenshotGroups ? (
+              screenshotGroups.map(({ group, items }) => (
+                <div className="screenshot-platform-group" key={group}>
+                  <h3 className="screenshot-platform-heading">{platformGroupLabels[group]}</h3>
+                  <div className="screenshot-rail">{items.map(renderScreenshotFigure)}</div>
+                </div>
+              ))
+            ) : (
+              <div className="screenshot-rail">{app.screenshots.map(renderScreenshotFigure)}</div>
+            )
           ) : (
             <div className="single-artwork reveal"><AppArtwork app={app} mode="system" /><p>{app.slug === "hanai" ? "사대문은 외부 연결의 관문이 되고, 한양도성은 개인 데이터의 경계가 됩니다." : "제품의 핵심 기능을 표현한 대표 이미지입니다."}</p></div>
           )}
@@ -420,7 +536,16 @@ export default async function AppRoute({ params }: RouteProps) {
         <div className="shell guide-layout">
           <div className="guide-sticky reveal"><p className="eyebrow">빠른 시작 안내</p><h2>처음부터<br />차근차근.</h2><p>필요한 준비부터 첫 사용까지 순서대로 안내합니다.</p></div>
           <div className="guide-steps">
-            {app.guide.map((step, index) => <article className="guide-step reveal" key={step.title}><span>{String(index + 1).padStart(2, "0")}</span><div><AdvantageVisual variant={pickContentVisual(step.title)} /><h3>{step.title}</h3><p>{step.body}</p></div></article>)}
+            {guideGroups ? (
+              guideGroups.map(({ group, items }) => (
+                <div className="guide-platform-group" key={group}>
+                  <h3 className="guide-platform-heading">{platformGroupLabels[group]}</h3>
+                  {items.map((step, index) => <article className="guide-step reveal" key={step.title}><span>{String(index + 1).padStart(2, "0")}</span><div><AdvantageVisual variant={pickContentVisual(step.title)} /><h3>{step.title}</h3><p>{renderGuideBody(step.body)}</p></div></article>)}
+                </div>
+              ))
+            ) : (
+              app.guide.map((step, index) => <article className="guide-step reveal" key={step.title}><span>{String(index + 1).padStart(2, "0")}</span><div><AdvantageVisual variant={pickContentVisual(step.title)} /><h3>{step.title}</h3><p>{renderGuideBody(step.body)}</p></div></article>)
+            )}
           </div>
         </div>
       </section>
@@ -434,7 +559,7 @@ export default async function AppRoute({ params }: RouteProps) {
             const pendingCopy = testFlight?.publicBetaState === "internalOnly" ? "회사 내부 전용" : testFlight?.publicBetaState === "rejected" ? "Apple 심사 수정 요청 · 새 빌드 준비 필요" : testFlight?.publicBetaState === "waitingForReview" ? "새 빌드는 Apple 심사 대기 중" : testFlight?.publicBetaState === "needsReviewAccount" ? "Apple 심사용 계정 준비 중" : "외부 테스트용 빌드 준비 중";
             const qrUrl = platform.url ? downloadQrUrl(platform.url) : inviteUrl;
             const qrLabel = platform.url ? platform.downloadLabel ?? "공식 다운로드" : "TestFlight 외부 테스터 참여";
-            return <article className={qrUrl ? "download-item-with-qr" : undefined} key={platform.name}><div className="download-platform-copy"><div className="download-platform-head"><AdvantageVisual variant={platformVisual(platform.name)} /><span className={`status-dot status-${platform.status.replace(" ", "-")}`} /><h3>{platform.name}</h3></div><p>{platform.detail} · {platform.status}</p>{platform.url ? <a href={platform.url}>{platform.downloadLabel ?? "다운로드 페이지"} <span aria-hidden="true">↗</span></a> : inviteUrl ? <a className="testflight-apply-download" href={inviteUrl}>{testFlight?.publicBetaState === "waitingForReview" ? "기존 TestFlight 공개 링크" : "TestFlight 바로 참여"} <span aria-hidden="true">↗</span></a> : <span>{platform.status === "TestFlight" ? pendingCopy : platform.availabilityNote ?? "공개 링크 준비 중"}</span>}{app.slug === "barobogi" && platform.name.includes("Windows") && platform.url && <a href="/apps/barobogi/downloads/install.html" target="_blank" rel="noreferrer">설치·사용 안내 보기 <span aria-hidden="true">↗</span></a>}</div>{qrUrl && <DownloadQrCode href={qrUrl} label={qrLabel} />}</article>;
+            return <article className={qrUrl ? "download-item-with-qr" : undefined} key={platform.name} id={platformAnchorId(platform.name)}><div className="download-platform-copy"><div className="download-platform-head"><AdvantageVisual variant={platformVisual(platform.name)} /><span className={`status-dot status-${platform.status.replace(" ", "-")}`} /><h3>{platform.name}</h3></div><p>{platform.detail} · {platform.status}</p>{platform.url ? <a href={platform.url}>{platform.downloadLabel ?? "다운로드 페이지"} <span aria-hidden="true">↗</span></a> : inviteUrl ? <a className="testflight-apply-download" href={inviteUrl}>{testFlight?.publicBetaState === "waitingForReview" ? "기존 TestFlight 공개 링크" : "TestFlight 바로 참여"} <span aria-hidden="true">↗</span></a> : <span>{platform.status === "TestFlight" ? pendingCopy : platform.availabilityNote ?? "공개 링크 준비 중"}</span>}{app.slug === "barobogi" && platform.url && platform.availabilityNote && <small className="download-availability-note">{platform.availabilityNote}</small>}{app.slug === "barobogi" && platform.name.includes("Windows") && platform.url && <a href="/apps/barobogi/downloads/install.html" target="_blank" rel="noreferrer">설치·사용 안내 보기 <span aria-hidden="true">↗</span></a>}</div>{qrUrl && <DownloadQrCode href={qrUrl} label={qrLabel} />}</article>;
           })}
         </div>
       </section>
@@ -819,9 +944,9 @@ const productCampaigns = {
   },
   barobogi: {
     tone: "meter",
-    eyebrow: "맥용 번역 앱",
+    eyebrow: "기기별 화면·웹 번역",
     headline: <>옮기지 말고,<br /><span>그 자리에서 바로보기.</span></>,
-    description: "브라우저 번역을 켜도 이미지 속 글자는 그대로 남는 경우가 많습니다. 일본 만화의 말풍선이나 잡지 이미지가 특히 그렇습니다. 바로보기는 텍스트뿐 아니라 이미지 속 글자도 읽어 한글로 보여주는 Mac 번역 앱입니다.",
+    description: "브라우저 번역을 켜도 이미지 속 글자는 그대로 남는 경우가 많습니다. 일본 만화의 말풍선이나 잡지 이미지가 특히 그렇습니다. 바로보기는 텍스트뿐 아니라 이미지 속 글자도 읽어 한글로 보여주며, Mac 앱은 화면·Mail·브라우저를, Windows는 브라우저 이미지 번역을, iPhone·iPad는 단축어·공유·클립보드·웹보기 번역을 각각 지원합니다.",
     image: "/apps/barobogi/barobogi-campaign.png",
     imageAlt: "화면 영역, Mail, 웹페이지를 각각 보던 자리에서 바로 번역으로 바꿔 보여주는 바로보기 캠페인 이미지",
     imageLabel: "SCREEN · MAIL · WEB → TRANSLATED, IN PLACE",
@@ -850,25 +975,25 @@ const productCampaigns = {
 const barobogiReadingShowcase = [
   {
     src: "/apps/barobogi/reading/web.png",
-    kicker: "웹페이지 번역",
+    kicker: "웹페이지 번역 · Mac",
     title: "브라우저 번역, 이미지 속 글자까지.",
     body: "Chrome·Whale·Safari 확장을 켜면 웹페이지의 일반 글자와 이미지 속 글자를 함께 번역합니다. 허용한 사이트는 스크롤하거나 페이지를 넘겨도 보이는 부분을 계속 번역합니다.",
   },
   {
     src: "/apps/barobogi/reading/magazine.png",
-    kicker: "외국 잡지 번역",
+    kicker: "외국 잡지 번역 · Mac",
     title: "사진 옆 설명과 제목 이미지도 함께.",
     body: "잡지의 사진 옆 설명이나 이미지로 된 제목처럼 글자가 그림 속에 있어 읽기 어려웠던 부분도 번역해서 볼 수 있습니다.",
   },
   {
     src: "/apps/barobogi/reading/mail.png",
-    kicker: "메일 번역",
+    kicker: "메일 번역 · Mac",
     title: "제목·본문·표·이미지를 서식 그대로.",
     body: "Apple Mail에서 선택한 메일의 제목과 본문, 표와 이미지 속 글자를 원본 서식과 배치를 살려 번역해 원문과 비교합니다.",
   },
   {
     src: "/apps/barobogi/reading/manga.png",
-    kicker: "일본 만화 번역",
+    kicker: "일본 만화 번역 · Mac",
     title: "일본어가 세로쓰기면, 한글도 세로쓰기.",
     body: "말풍선 속 일본어가 세로로 쓰여 있으면 한글 번역도 세로쓰기로 보여줘 말풍선 자리와 읽는 흐름을 그대로 살립니다. 세로쓰기 인식에는 macOS 26 이상이 필요합니다.",
   },
@@ -885,6 +1010,7 @@ function BarobogiReadingShowcase({ campaign }: { campaign: typeof productCampaig
           <p>
             일본 만화의 말풍선처럼 글자가 세로로 쓰여 있으면 한글 번역도 세로쓰기로 보여줍니다. 그림을 보며 대사를 읽는 흐름이 이어집니다.
             세로쓰기 인식에는 macOS 26 이상의 문서 인식 기능이 필요하며, 작은 글자·복잡한 배치·특이한 글꼴은 인식과 번역 결과가 달라질 수 있습니다.
+            아래 예시는 모두 Mac 앱(화면·웹·Mail 번역)을 기준으로 만든 것이며, Windows·iPhone·iPad의 실제 화면이 아닙니다.
           </p>
           <div className="product-promo-actions">
             <Link className="button product-promo-primary" href="#download">{campaign.ctaLabel} <span aria-hidden="true">↓</span></Link>

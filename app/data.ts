@@ -9,6 +9,9 @@ export type Platform = {
   availabilityNote?: string;
 };
 
+// 플랫폼별로 내용을 나눠 보여줄 때만 쓰는 선택 필드입니다. 지정하지 않으면 기존처럼 하나의 목록으로 표시됩니다.
+export type PlatformGroup = "mac" | "windows" | "ios";
+
 export type AppData = {
   slug: string;
   name: string;
@@ -23,10 +26,10 @@ export type AppData = {
   systemImage?: string;
   artwork: "files" | "phones" | "clock" | "menubar" | "cleanup" | "trackpad" | "thumbnail" | "search" | "church" | "server" | "intelligence" | "bridge" | "autoshorts" | "shorts" | "ai-search" | "directions";
   platforms: Platform[];
-  features: { title: string; body: string; icon?: string }[];
-  guide: { title: string; body: string }[];
+  features: { title: string; body: string; icon?: string; platformGroup?: PlatformGroup }[];
+  guide: { title: string; body: string; platformGroup?: PlatformGroup }[];
   progress: { state: "done" | "active" | "next"; title: string; body: string }[];
-  screenshots?: { src: string; alt: string; layout?: "phone" | "menu" | "landscape" | "tv" | "wide" | "square" }[];
+  screenshots?: { src: string; alt: string; layout?: "phone" | "menu" | "landscape" | "tv" | "wide" | "square"; platformGroup?: PlatformGroup }[];
   github: string[];
   privacy: string[];
   privacyUpdatedAt?: string;
@@ -1511,16 +1514,16 @@ const appCatalog: AppData[] = [
     slug: "barobogi",
     name: "바로보기",
     english: "Barobogi",
-    eyebrow: "SCREEN & MAIL & BROWSER, ONE TRANSLATOR",
+    eyebrow: "기기별 화면·웹 번역",
     tagline: "보던 자리에서, 바로 번역.",
-    summary: "화면은 읽던 자리에서, 메일은 서식을 살려서, 웹은 이미지 속 글자까지. 바로보기는 화면·Mail·웹 번역을 한곳에서 시작하는 Mac 앱이며, iPhone·iPad는 TestFlight 베타 심사를 기다리고 있고 Windows용 Chrome·Whale 웹 번역 확장도 테스트용으로 받아볼 수 있습니다. 필요할 때 번역하고 원문으로 돌아가 비교하세요.",
+    summary: "바로보기는 Mac·Windows·iPhone·iPad에서 쓰임이 서로 다른 번역 도구 모음입니다. Mac 앱은 화면 어디든 지정한 영역과 Apple Mail, 브라우저(Chrome·Whale·Safari)까지 한곳에서 번역합니다. Windows는 Chrome·Whale용 독립 확장으로 웹페이지 이미지 속 글자를 번역하고(일반 텍스트는 각 브라우저 기본 번역과 함께 사용), 화면 전체·Mail 번역은 포함하지 않습니다. iPhone·iPad는 내부 초대 테스터가 TestFlight로 설치해 단축어·공유 사진·클립보드·인앱 웹보기 번역을 쓸 수 있으며, 일반 방문자의 공개 참여는 Apple 외부 베타 심사 중이라 아직 열리지 않았습니다.",
     theme: "blue",
     icon: "/apps/barobogi/icon.png",
     heroImage: "/apps/barobogi/barobogi-campaign.png",
     screenshots: [
-      { src: "/apps/barobogi/screens/ios-translation-0.7.1.png", alt: "바로보기(Barobogi) iPhone 0.7.1 번역 방식 선택 화면", layout: "phone" },
-      { src: "/apps/barobogi/screens/ios-web-0.7.1.png", alt: "바로보기(Barobogi) iPhone 0.7.1 실제 인앱 웹 번역 화면", layout: "phone" },
-      { src: "/apps/barobogi/screens/settings-0.7.5.png", alt: "바로보기(Barobogi) 0.7.5 실제 일반 설정 화면 · Dock 표시, Mail 연동, 로그인 시 자동 시작 항목을 보여줍니다." },
+      { src: "/apps/barobogi/screens/ios-translation-0.7.1.png", alt: "바로보기(Barobogi) iPhone 0.7.1 번역 방식 선택 화면", layout: "phone", platformGroup: "ios" },
+      { src: "/apps/barobogi/screens/ios-web-0.7.1.png", alt: "바로보기(Barobogi) iPhone 0.7.1 실제 인앱 웹 번역 화면", layout: "phone", platformGroup: "ios" },
+      { src: "/apps/barobogi/screens/settings-0.7.5.png", alt: "바로보기(Barobogi) Mac 설정 · 0.7.5 촬영(구버전 캡처) · Dock 표시, Mail 연동, 로그인 시 자동 시작 항목을 보여줍니다. 현재 공개 버전은 0.7.92입니다.", platformGroup: "mac" },
     ],
     artwork: "menubar",
     platforms: [
@@ -1534,62 +1537,63 @@ const appCatalog: AppData[] = [
       },
       {
         name: "iPhone · iPad",
-        status: "준비 중",
-        detail: "0.7.1(30) · 빌드 202610112305 · 심사중 · iOS·iPadOS 18+",
-        availabilityNote: "2026-10-11 TestFlight 업로드 완료 · Apple 베타 앱 심사 대기(WAITING_FOR_REVIEW) · Internal Testing·Public Beta 그룹 모두 빌드 30 연결 · 공개 초대 링크는 아직 없습니다.",
+        status: "TestFlight",
+        detail: "0.7.1(30) · 빌드 202610112305 · iOS·iPadOS 18+ · 내부 초대 테스터는 설치 가능",
+        availabilityNote: "내부 초대 테스터만 TestFlight로 설치할 수 있습니다 · 공개 베타는 Apple 외부 베타 심사 중이라 일반 방문자 참여는 아직 열리지 않았습니다.",
       },
       {
         name: "Windows · Chrome",
-        status: "개발 중",
+        status: "공개",
         detail: "테스트용 0.3.0 · Chrome 116 이상 · Manifest V3 확장 · 이미지 속 글자(한국어·영어·일본어·중국어 간체 자동 인식, 일본어 가로·세로·혼재 자동 지원) 번역",
         url: "/apps/barobogi/downloads/Barobogi-Windows-Chrome-0.3.0.zip",
         downloadLabel: "Windows Chrome 테스트용 ZIP 받기",
-        availabilityNote: "Windows 실기기에서의 설치·실행·번역 속도·정확도는 아직 확인하지 않았습니다. 압축해제된 확장 프로그램(개발자 모드)으로만 설치하며, Chrome 웹 스토어 배포는 아직 없습니다.",
+        availabilityNote: "ZIP은 지금 바로 받을 수 있는 테스트용 배포입니다. 압축해제된 확장 프로그램(개발자 모드)으로만 설치하며, Chrome 웹 스토어 배포는 아직 없고 Windows 실기기에서의 설치·실행·번역 속도·정확도는 아직 확인하지 않았습니다.",
       },
       {
         name: "Windows · Whale",
-        status: "개발 중",
+        status: "공개",
         detail: "테스트용 0.3.0 · 네이버 웨일(Whale) · Manifest V3 확장 · 이미지 속 글자(한국어·영어·일본어·중국어 간체 자동 인식, 일본어 가로·세로·혼재 자동 지원) 번역",
         url: "/apps/barobogi/downloads/Barobogi-Windows-Whale-0.3.0.zip",
         downloadLabel: "Windows Whale 테스트용 ZIP 받기",
-        availabilityNote: "Windows 실기기에서의 설치·실행·번역 속도·정확도는 아직 확인하지 않았습니다. 압축해제된 확장앱(개발자 모드)으로만 설치하며, Whale 스토어 배포는 아직 없습니다.",
+        availabilityNote: "ZIP은 지금 바로 받을 수 있는 테스트용 배포입니다. 압축해제된 확장앱(개발자 모드)으로만 설치하며, Whale 스토어 배포는 아직 없고 Windows 실기기에서의 설치·실행·번역 속도·정확도는 아직 확인하지 않았습니다.",
       },
     ],
     features: [
-      { title: "화면 번역, 보던 자리에 그대로", body: "번역할 화면 영역을 지정하면 그 자리를 캡처해 텍스트를 인식하고, 번역문을 원문 줄이 있던 바로 그 위치에 겹쳐 보여줍니다. 자동·주기 캡처는 없으며 번역 버튼을 누를 때만 다시 캡처합니다." },
-      { title: "원문과 번역, 큰 전환 스위치 하나로", body: "창 위쪽의 원문/번역 전환 스위치로 지금 보는 쪽을 바로 압니다. Space는 이미 받은 번역과 실제 화면을 다시 번역하지 않고 오가고, Enter는 새로 캡처해 번역합니다." },
-      { title: "Mail 제목·본문을 서식 그대로", body: "Apple Mail에서 선택한 메시지나 .eml 파일의 제목·본문·표·이미지 속 글자를 원본 서식을 유지한 결과 창에서 번역해 비교합니다. 이미지 번역은 원본 이미지 위에 제자리로 덧씁니다." },
-      { title: "Chrome·Whale·Safari, 같은 자리에서", body: "브라우저 확장이 페이지 글자와 화면에 보이는 이미지 속 글자를 이 Mac의 바로보기로 보내 같은 위치에서 번역합니다. 전역 자동 번역은 허용한 사이트 전체에 적용되며, 페이지를 넘기거나 스크롤해도 보이는 부분을 계속 번역합니다." },
-      { title: "아이콘 한 번, 바로 번역 보기", body: "0.7.5부터 브라우저 툴바의 바로보기 아이콘을 누르면 지금 탭이 항상 번역 보기로 바뀝니다. 원문이 보고 싶으면 팝업에서 원문 보기를 눌러 전환하면 됩니다. 팝업에서 구글·딥플·번역·원문을 선택할 수 있고, 진행 시간과 이미지·문장 수를 확인할 수 있습니다." },
-      { title: "먼저 기기 안에서, 다듬기도 기기 안에서", body: "기본 번역은 Mac 안에서 처리합니다. 구글·딥플은 서비스별 전송 동의 후 직접 선택할 때만 인식한 글자를 전송합니다. macOS 26 이상 지원 기기에서는 이 번역문을 온디바이스 Apple Intelligence가 뜻을 바꾸지 않고 표현만 다시 다듬습니다(선택 UI 없이 자동, Safari 확장은 다듬기 없이 기본 번역만 사용)." },
-      { title: "언어는 자동으로 갈라 보고, 팩은 앱 안에서", body: "원문 언어 '자동 인식'을 고르면 화면이나 페이지에 섞인 여러 언어를 줄·문단 단위로 갈라 한 번에 번역 언어로 옮깁니다. 처음 쓰는 언어 조합의 번역 언어 팩은 Chrome·Whale 팝업의 '언어팩' 버튼으로 앱을 벗어나지 않고 받을 수 있습니다(Safari는 앱을 직접 실행해 같은 화면을 이용)." },
-      { title: "전역 단축키 두 개로 바로 열기", body: "화면 번역은 ⌃⌥⇧⌘T, 메일 번역은 ⌃⌥⇧⌘M로 메뉴 막대를 거치지 않고 바로 엽니다. 앱을 처음 켤 때도, Finder·Dock에서 다시 열 때도 화면 번역 창은 자동으로 뜨지 않고 단축키나 메뉴로 열 때만 나타납니다." },
-      { title: "메뉴 막대 상주와 기본 동작은 조용하게", body: "메뉴 막대 상주·Dock 표시, Mail 위 플로팅 번역 버튼, 로그인과 함께 자동 시작 여부를 일반 설정 한곳에서 고릅니다. 캡처 이미지·인식 텍스트·메일 내용·번역 결과는 메모리에서만 다루고 디스크에 저장하지 않습니다." },
-      { title: "Windows 브라우저에서도 이미지 글자 번역(테스트용)", body: "Windows의 Chrome·네이버 웨일(Whale)에서 쓰는 독립 확장(테스트용 0.3.0)입니다. 별도 번역 창 없이 툴바 아이콘으로 번역을 시작하고, 번역·원문 버튼으로 전환합니다. 처음 준비할 때 받은 용량과 퍼센트를 보여 주며, 팝업을 닫아도 받기는 계속됩니다. 웹페이지 이미지 속 글자를 PC 안에서 인식·번역해 원본 이미지 위 같은 자리에 겹쳐 그립니다. 기본값인 '자동'은 한 이미지에 섞인 한국어·영어·일본어·중국어(간체)를 영역별로 함께 인식하고, 일본어는 가로·세로·혼재를 자동으로 함께 지원합니다(세로 전용 수동 선택도 유지). 가나 없이 한자만 있는 짧은 글자는 일본어·중국어 구분이 어려울 수 있고, 작거나 흐린 글자·세로쓰기 인식 품질은 아직 확인하지 않았으며, 그런 경우 팝업에서 원문 언어를 수동으로 고를 수 있습니다. 공통 로컬 번역 모델(M2M100 418M, 약 640MB)을 처음 한 번만 내려받아 Chrome·Whale이 각자 저장하며(OCR 데이터는 확장 안에 포함), 두 브라우저는 저장소를 공유하지 않습니다. 페이지의 일반 글자는 Chrome·Whale 각 브라우저의 기본 번역 기능을 함께 쓰는 것을 권장합니다. 이 Windows 버전은 브라우저 확장에 한정되며, Mac 앱의 화면 전체·Mail 번역은 포함하지 않고, Windows 실기기에서의 동작·속도·정확도는 아직 확인하지 않았습니다." },
-      { title: "iPhone·iPad: 스크린샷 단축어로 화면 번역", body: "화면 번역 단축어를 실행하면 4초 뒤 자동으로 스크린샷을 찍어 그 사진을 선택한 상태로 번역을 시작합니다." },
-      { title: "iPhone·iPad: 공유한 사진 한 장 번역", body: "다른 앱에서 사진 한 장을 공유하면 바로보기가 받아 즉시 번역합니다." },
-      { title: "iPhone·iPad: 클립보드 자동 인식", body: "앱이 화면 앞으로 돌아올 때 클립보드에 있는 이미지·텍스트·URL을 시스템 권한 확인 절차에 따라 자동으로 읽어 번역을 시작합니다." },
-      { title: "iPhone·iPad: 인앱 웹보기 번역", body: "URL 이동·스크롤·새 페이지 전환으로 바뀌는 화면에서 보이는 텍스트와 이미지 속 글자를 기기 안에서 인식해 원문 위에 그대로 덧씌웁니다." },
-      { title: "iPhone·iPad: 번역 버튼과 제공자 선택", body: "번역 버튼을 누르면 Apple 기본 번역이 바로 시작되고, 하단 시트에서 Apple·Google·DeepL 중 고르면 선택 즉시 그 제공자로 다시 번역합니다. Google·DeepL은 처음 쓸 때 전송 동의를 받고, 동의 후에는 웹페이지에서 인식한 본문 글자만 전송하며 이미지는 기기 안에 남습니다." },
-      { title: "iPhone·iPad: Apple Intelligence 다듬기", body: "iOS 26 이상의 호환 기기에서는 기본 번역 결과를 기기 안의 Apple Intelligence가 다시 다듬습니다. 미지원 기기이거나 다듬기를 거부한 경우 기본 번역 결과를 이유와 함께 그대로 보여줍니다. 모든 언어·이미지에서 다듬기 품질이 보장되지는 않습니다." },
+      { title: "화면 번역, 보던 자리에 그대로", body: "번역할 화면 영역을 지정하면 그 자리를 캡처해 텍스트를 인식하고, 번역문을 원문 줄이 있던 바로 그 위치에 겹쳐 보여줍니다. 전환 스위치나 Space·Enter로 원문·번역을 오가며, 자동·주기 캡처 없이 번역 버튼을 누를 때만 다시 캡처합니다.", platformGroup: "mac" },
+      { title: "Mail 제목·본문을 서식 그대로", body: "Apple Mail에서 선택한 메시지나 .eml 파일의 제목·본문·표·이미지 속 글자를 원본 서식을 유지한 결과 창에서 번역해 비교합니다. 이미지 번역은 원본 이미지 위에 제자리로 덧씁니다.", platformGroup: "mac" },
+      { title: "Chrome·Whale·Safari, 같은 자리에서", body: "Mac 브라우저 확장이 페이지 글자와 화면에 보이는 이미지 속 글자를 바로보기로 보내 같은 위치에서 번역합니다. 0.7.5부터 툴바 아이콘을 누르면 지금 탭이 항상 번역 보기로 바뀌고, 허용한 사이트는 스크롤·페이지 이동에도 계속 번역합니다.", platformGroup: "mac" },
+      { title: "먼저 기기 안에서, 다듬기도 기기 안에서", body: "기본 번역은 Mac 안에서 처리합니다. 구글·딥플은 서비스별 전송 동의 후 직접 선택할 때만 인식한 글자를 전송합니다. macOS 26 이상 지원 기기에서는 이 번역문을 온디바이스 Apple Intelligence가 뜻을 바꾸지 않고 표현만 다시 다듬습니다(Safari 확장은 다듬기 없이 기본 번역만 사용).", platformGroup: "mac" },
+      { title: "언어는 자동으로 갈라 보고, 팩은 앱 안에서", body: "원문 언어 '자동 인식'을 고르면 화면이나 페이지에 섞인 여러 언어를 줄·문단 단위로 갈라 한 번에 옮깁니다. 처음 쓰는 언어 조합의 번역 언어 팩은 Chrome·Whale 팝업의 '언어팩' 버튼으로 받을 수 있습니다(Safari는 앱을 직접 실행).", platformGroup: "mac" },
+      { title: "전역 단축키와 조용한 기본 동작", body: "화면 번역은 ⌃⌥⇧⌘T, 메일 번역은 ⌃⌥⇧⌘M로 메뉴 막대 없이 바로 엽니다. 메뉴 막대 상주·Dock 표시, Mail 위 플로팅 번역 버튼, 로그인 자동 시작은 일반 설정에서 고르며, 캡처 이미지·인식 텍스트·메일 내용·번역 결과는 디스크에 저장하지 않습니다.", platformGroup: "mac" },
+      { title: "독립 확장으로 이미지 속 글자 번역", body: "Windows의 Chrome·네이버 웨일(Whale)에서 쓰는 테스트용 0.3.0 독립 확장입니다. 별도 번역 창 없이 툴바 아이콘을 누르면 번역 보기로 바뀌고, 팝업의 원문 버튼으로 돌아옵니다. 웹페이지 이미지 속 글자를 PC 안에서 인식·번역해 원본 이미지 위 같은 자리에 겹쳐 그립니다.", platformGroup: "windows" },
+      { title: "언어 자동 인식, 한 번에 네 가지", body: "기본값 '자동'은 한 이미지에 섞인 한국어·영어·일본어·중국어(간체)를 영역별로 함께 인식하고, 일본어는 가로·세로·혼재를 자동 지원합니다. 가나 없는 한자만 있는 짧은 글자나 작고 흐린 글자는 구분이 어려울 수 있어 팝업에서 원문 언어를 수동으로 고를 수도 있습니다.", platformGroup: "windows" },
+      { title: "일반 텍스트는 브라우저 기본 번역과 함께", body: "이 확장은 이미지 속 글자 번역에 집중합니다. 페이지의 일반 텍스트는 Chrome·Whale 각 브라우저의 기본 번역 기능을 함께 쓰는 것을 권장합니다.", platformGroup: "windows" },
+      { title: "번역 모델 약 640MB, 처음 한 번만", body: "공통 로컬 번역 모델(M2M100 418M)을 처음 한 번만 내려받습니다. 받은 용량과 퍼센트를 보여 주며 팝업을 닫아도 계속 받습니다. Chrome·Whale은 각자 저장하며 서로 공유하지 않습니다.", platformGroup: "windows" },
+      { title: "화면 전체·Mail 번역은 포함하지 않음", body: "이 Windows 확장은 브라우저 안의 웹페이지 번역에 한정됩니다. Mac 앱의 화면 전체 캡처 번역과 Mail 번역은 포함하지 않고, Windows 실기기에서의 동작·속도·정확도는 아직 확인하지 않았습니다.", platformGroup: "windows" },
+      { title: "스크린샷 단축어로 화면 번역", body: "화면 번역 단축어를 실행하면 4초 뒤 자동으로 스크린샷을 찍어 그 사진을 선택한 상태로 번역을 시작합니다.", platformGroup: "ios" },
+      { title: "공유한 사진 한 장 번역", body: "다른 앱에서 사진 한 장을 공유하면 바로보기가 받아 즉시 번역합니다.", platformGroup: "ios" },
+      { title: "클립보드 자동 인식", body: "앱이 화면 앞으로 돌아올 때 클립보드에 있는 이미지·텍스트·URL을 시스템 권한 확인 절차에 따라 자동으로 읽어 번역을 시작합니다.", platformGroup: "ios" },
+      { title: "인앱 웹보기 번역", body: "URL 이동·스크롤·새 페이지 전환으로 바뀌는 화면에서 보이는 텍스트와 이미지 속 글자를 기기 안에서 인식해 원문 위에 그대로 덧씌웁니다.", platformGroup: "ios" },
+      { title: "인앱 웹 번역 버튼과 제공자 선택", body: "인앱 웹보기의 번역 버튼을 누르면 Apple 기본 번역이 바로 시작되고, 하단 시트에서 Apple·Google·DeepL 중 고르면 그 제공자로 다시 번역합니다. Google·DeepL은 처음 쓸 때 전송 동의를 받고, 동의 후에는 웹페이지에서 인식한 본문 글자만 전송하며 이미지는 기기 안에 남습니다.", platformGroup: "ios" },
+      { title: "Apple Intelligence 다듬기", body: "iOS 26 이상의 호환 기기에서는 기본 번역 결과를 기기 안의 Apple Intelligence가 다시 다듬습니다. 미지원 기기이거나 다듬기를 거부한 경우 기본 번역 결과를 이유와 함께 그대로 보여줍니다.", platformGroup: "ios" },
     ],
     guide: [
-      { title: "화면 번역 열기", body: "전역 단축키(⌃⌥⇧⌘T) 또는 메뉴 막대에서 화면 번역 창을 엽니다. 번역할 영역을 지정하고 '번역'을 눌러 그 자리에서 캡처·번역하세요." },
-      { title: "메일 번역 열기", body: "Mail에서 메시지를 선택한 뒤 전역 단축키(⌃⌥⇧⌘M), 메뉴 막대, 또는 Mail 위 '번역' 버튼으로 제목·본문·이미지 속 글자를 번역해 비교하세요." },
-      { title: "브라우저 확장 설치", body: "메뉴 막대 '브라우저 번역…'에서 Chrome·Whale은 '설치 시작'으로 확장 폴더 준비부터 확장 관리 화면 열기까지 진행한 뒤 화면 안내대로 압축 해제된 확장을 로드하세요. Safari는 Safari 설정 › 확장 프로그램에서 '바로보기 웹 번역'을 켜고 사이트 접근을 허용하면 됩니다." },
-      { title: "번역 보기로 전환", body: "브라우저 툴바의 바로보기 아이콘을 누르면 지금 탭이 항상 번역 보기로 바뀝니다. 원문을 다시 보고 싶으면 팝업에서 원문 보기를 누르세요. 팝업에서 번역·원문을 전환하거나, 전송에 동의한 구글·딥플을 선택할 수 있습니다. 외부 번역을 선택해도 번역 보기로 결과를 표시합니다." },
-      { title: "필요하면 언어 팩 받기", body: "처음 쓰는 언어 조합은 팝업의 '언어팩' 버튼이나 화면 번역 실행 중 시스템 안내로 받습니다. Mac 기본 번역과 Apple Intelligence 다듬기 중 고르는 선택지는 따로 없습니다." },
-      { title: "Windows 테스트용 확장 설치 1 · 압축 풀고 로드", body: "Chrome·Whale 중 쓰는 브라우저에 맞는 ZIP을 받아 원하는 위치에 압축을 풉니다. 이 폴더는 지우지 말고 그대로 두세요. manifest.json 파일이 바로 보이는 폴더인지 확인한 뒤, chrome://extensions 또는 whale://extensions 주소로 가서 '개발자 모드'를 켜고 '압축해제된 확장 프로그램을 로드'로 그 폴더를 선택합니다. 버전 0.3.0으로 설치되면 확장 아이콘을 툴바에 고정해 두세요." },
-      { title: "Windows 테스트용 확장 설치 2 · 처음 한 번 준비", body: "웹페이지에서 바로보기 아이콘을 누른 뒤, 처음 한 번 '번역 준비하기'와 '허용'을 누릅니다. 약 640MB를 받는 동안 퍼센트와 용량을 보여 주며, 작은 화면을 닫아도 계속 받습니다. 준비가 끝나면 페이지를 번역합니다. 다음부터는 아이콘을 누르면 번역 보기로, '원문'을 누르면 원래 화면으로 바뀝니다. 별도 번역 창은 없습니다." },
-      { title: "Windows 테스트용 확장 설치 3 · 업데이트", body: "새 ZIP을 받으면 같은 폴더에 새 파일을 덮어쓰고, chrome://extensions 또는 whale://extensions의 확장 카드에서 새로고침(↻)을 누릅니다. 버전 표시가 바뀌었는지 확인하세요. 확장을 삭제하면 받아 둔 모델 캐시도 함께 지워지므로, 업데이트할 때는 확장을 삭제하지 말고 폴더만 덮어쓰세요." },
-      { title: "iPhone·iPad: TestFlight 참여 안내", body: "현재 Apple 베타 앱 심사 대기 중이라 공개 초대 링크가 아직 없습니다. 심사 승인 후 안내할 예정입니다." },
-      { title: "iPhone·iPad: 화면 번역 단축어 받기", body: "단축어 링크(https://www.icloud.com/shortcuts/8ad771fd67fa415a9e5027fbf8032d79)를 열어 설치한 뒤 실행하면 4초 뒤 스크린샷을 찍어 화면 번역으로 바로 넘겨줍니다." },
-      { title: "iPhone·iPad: 사진·클립보드로 번역", body: "사진 한 장을 공유 메뉴의 바로보기로 보내면 즉시 번역합니다. 이미지·텍스트·URL을 복사한 뒤 앱을 열면 시스템 권한 안내에 따라 읽고 번역을 시작합니다." },
-      { title: "iPhone·iPad: 인앱 웹보기와 번역 제공자 고르기", body: "앱 안에서 주소를 열어 둘러보다가 번역 버튼을 누르면 Apple 기본 번역이 바로 시작됩니다. 더 비교하고 싶으면 하단 시트에서 Google·DeepL을 고르고, 처음에는 전송 동의를 먼저 확인합니다." },
+      { title: "화면 번역 열기", body: "전역 단축키(⌃⌥⇧⌘T) 또는 메뉴 막대에서 화면 번역 창을 엽니다. 번역할 영역을 지정하고 '번역'을 눌러 그 자리에서 캡처·번역하세요.", platformGroup: "mac" },
+      { title: "메일 번역 열기", body: "Mail에서 메시지를 선택한 뒤 전역 단축키(⌃⌥⇧⌘M), 메뉴 막대, 또는 Mail 위 '번역' 버튼으로 제목·본문·이미지 속 글자를 번역해 비교하세요.", platformGroup: "mac" },
+      { title: "브라우저 확장 설치", body: "메뉴 막대 '브라우저 번역…'에서 Chrome·Whale은 '설치 시작'으로 확장 폴더 준비부터 확장 관리 화면 열기까지 진행한 뒤 화면 안내대로 압축 해제된 확장을 로드하세요. Safari는 Safari 설정 › 확장 프로그램에서 '바로보기 웹 번역'을 켜고 사이트 접근을 허용하면 됩니다.", platformGroup: "mac" },
+      { title: "번역 보기로 전환", body: "브라우저 툴바의 바로보기 아이콘을 누르면 지금 탭이 항상 번역 보기로 바뀝니다. 원문을 다시 보고 싶으면 팝업에서 원문 보기를 누르세요. 전송에 동의한 구글·딥플을 선택할 수도 있습니다.", platformGroup: "mac" },
+      { title: "필요하면 언어 팩 받기", body: "처음 쓰는 언어 조합은 팝업의 '언어팩' 버튼이나 화면 번역 실행 중 시스템 안내로 받습니다. Mac 기본 번역과 Apple Intelligence 다듬기 중 고르는 선택지는 따로 없습니다.", platformGroup: "mac" },
+      { title: "압축 풀고 로드", body: "Chrome·Whale 중 쓰는 브라우저에 맞는 ZIP을 받아 원하는 위치에 압축을 풉니다. 이 폴더는 지우지 말고 그대로 두세요. manifest.json 파일이 바로 보이는 폴더인지 확인한 뒤, chrome://extensions 또는 whale://extensions에서 '개발자 모드'를 켜고 '압축해제된 확장 프로그램을 로드'로 그 폴더를 선택합니다.", platformGroup: "windows" },
+      { title: "처음 한 번 준비", body: "웹페이지에서 바로보기 아이콘을 누른 뒤, 처음 한 번 '번역 준비하기'와 '허용'을 누릅니다. 약 640MB를 받는 동안 퍼센트와 용량을 보여 주며, 작은 화면을 닫아도 계속 받습니다. 준비가 끝나면 페이지를 번역하고, 다음부터는 아이콘을 누르면 번역 보기로 바뀝니다.", platformGroup: "windows" },
+      { title: "업데이트", body: "새 ZIP을 받으면 같은 폴더에 새 파일을 덮어쓰고, chrome://extensions 또는 whale://extensions의 확장 카드에서 새로고침(↻)을 누릅니다. 확장을 삭제하면 받아 둔 모델 캐시도 함께 지워지므로, 업데이트할 때는 확장을 삭제하지 말고 폴더만 덮어쓰세요.", platformGroup: "windows" },
+      { title: "TestFlight 설치 안내", body: "내부 초대 테스터는 TestFlight 초대에서 설치할 수 있습니다. 일반 방문자의 공개 참여는 Apple 외부 베타 심사 중이라 아직 열리지 않았으며, 심사 승인 후 공개 초대 링크를 안내할 예정입니다.", platformGroup: "ios" },
+      { title: "화면 번역 단축어 받기", body: "단축어 링크(https://www.icloud.com/shortcuts/8ad771fd67fa415a9e5027fbf8032d79)를 열어 설치한 뒤 실행하면 4초 뒤 스크린샷을 찍어 화면 번역으로 바로 넘겨줍니다.", platformGroup: "ios" },
+      { title: "사진·클립보드로 번역", body: "사진 한 장을 공유 메뉴의 바로보기로 보내면 즉시 번역합니다. 이미지·텍스트·URL을 복사한 뒤 앱을 열면 시스템 권한 안내에 따라 읽고 번역을 시작합니다.", platformGroup: "ios" },
+      { title: "인앱 웹보기와 번역 제공자 고르기", body: "앱 안에서 주소를 열어 둘러보다가 번역 버튼을 누르면 Apple 기본 번역이 바로 시작됩니다. 더 비교하고 싶으면 하단 시트에서 Google·DeepL을 고르고, 처음에는 전송 동의를 먼저 확인합니다.", platformGroup: "ios" },
     ],
     progress: [
-      { state: "active", title: "iPhone·iPad 0.7.1 TestFlight 제출", body: "빌드 202610112305 · 2026-10-11 23:23(KST) TestFlight 업로드 완료, Apple 베타 앱 심사 대기 중(WAITING_FOR_REVIEW)입니다. Internal Testing·Public Beta 그룹 모두 빌드 30에 연결되어 있으나 공개 초대 링크는 아직 없습니다. iPhone 실제 설치 0.7.1(30)을 확인했고, iPad에서의 실제 동작은 아직 확인하지 않았습니다." },
-      { state: "active", title: "Windows Chrome·Whale 테스트용 0.3.0 공개", body: "별도 번역 창을 없애고, Mac 확장처럼 아이콘을 누르면 번역 보기로 전환하도록 바꿨습니다. 처음에는 번역 준비하기 한 번으로 약 640MB를 받으며, 받은 용량과 퍼센트를 작은 화면에서 확인할 수 있습니다. 화면을 닫아도 계속 받고, 다시 열면 진행 상태를 이어서 보여 줍니다. 언어 자동 인식과 일본어 가로·세로·혼재 인식은 유지했습니다. Windows에서 실제 설치·실행·속도·정확도는 아직 확인하지 않았습니다." },
+      { state: "active", title: "iPhone·iPad 0.7.1 TestFlight 제출", body: "빌드 202610112305 · 2026-10-11 23:23(KST) TestFlight 업로드 완료, Apple 베타 앱 심사 진행 중(IN_BETA_REVIEW)입니다. Internal Testing·Public Beta 그룹 모두 빌드 30에 연결되어 있으나 Public Beta 그룹의 공개 링크가 아직 꺼져 있어 공개 초대 링크는 없습니다. iPhone 실제 설치 0.7.1(30)을 확인했고, iPad에서의 실제 동작은 아직 확인하지 않았습니다." },
+      { state: "done", title: "Windows Chrome·Whale 테스트용 0.3.0 공개", body: "별도 번역 창을 없애고, Mac 확장처럼 아이콘을 누르면 번역 보기로 전환하도록 바꿨습니다. 처음에는 번역 준비하기 한 번으로 약 640MB를 받으며, 받은 용량과 퍼센트를 작은 화면에서 확인할 수 있습니다. 화면을 닫아도 계속 받고, 다시 열면 진행 상태를 이어서 보여 줍니다. 언어 자동 인식과 일본어 가로·세로·혼재 인식은 유지했습니다. ZIP은 지금 바로 받을 수 있지만 Chrome·Whale 스토어 배포 전이며, Windows에서 실제 설치·실행·속도·정확도는 아직 확인하지 않았습니다." },
       { state: "done", title: "Windows Chrome·Whale 테스트용 0.2.0 공개", body: "기본 OCR을 '자동'으로 두면 한 이미지 안에 섞인 한국어·영어·일본어·중국어(간체)를 영역별로 함께 인식하고, 일본어는 가로쓰기·세로쓰기·혼재를 자동으로 함께 지원합니다. 번역 모델(M2M100 418M, 약 640MB)은 브라우저별로 처음 한 번만 내려받습니다. 이 0.2.0도 테스트용이며, Windows 실기기에서의 실제 설치·실행·번역 속도·정확도는 아직 확인하지 않았습니다." },
       { state: "done", title: "Windows Chrome·Whale 테스트용 0.1.0 공개", body: "작업 시작 시점의 Mac 앱 0.7.69 미커밋 BrowserExtension 소스(DOM/이미지 처리, 취소, 렌더러, sampleColors)를 참고해 이식한 Windows 독립 확장 두 개(Chrome용·Whale용)입니다. 공통 로컬 번역 모델(M2M100 418M, Transformers.js)로 이미지 속 글자를 번역합니다. Mac에서 소스·manifest·자원 수준으로 검증했을 뿐 Windows 실기기 설치·실행·번역 속도·품질은 아직 확인하지 않았습니다. Chrome 웹 스토어·Whale 스토어 배포 전이며 압축해제된 확장(개발자 모드)으로만 테스트할 수 있습니다." },
       { state: "done", title: "0.7.92 공개", body: "빌드 202610111336 · 세로쓰기를 유지하면서 번역글이 원문 칸 밖으로 이동하는 문제를 줄였습니다. Apple Intelligence의 중복 준비와 구글·딥플 결과 확인의 불필요한 대기를 제거했습니다. 구글·딥플은 식별자를 포함해 1400 UTF-16 단위 이내로 나눠 전송합니다. Developer ID 서명·Apple 공증·교체 설치와 서명된 업데이트 피드를 확인했습니다. 매우 긴 번역의 일부 잘림, 작은 효과음 인식과 복잡한 배경 복원에는 한계가 있으며 처리 시간은 달라질 수 있습니다." },

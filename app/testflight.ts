@@ -20,5 +20,5 @@ export const testFlightBuilds: TestFlightBuild[] = [
   { slug: "button", appName: "OurButton", build: "202609051204", uploadedAt: "2026-09-04T20:10:47-07:00", expiresAt: "2026-12-03T19:10:47-08:00", inviteUrl: "https://testflight.apple.com/join/RKcxgTkc", publicBetaState: "approved" },
   { slug: "whattoeat", appName: "오늘 뭐 먹지??", build: "202609132101", uploadedAt: "2026-09-13T05:09:41-07:00", expiresAt: "2026-12-12T04:09:41-08:00", inviteUrl: "https://testflight.apple.com/join/A444RsAc", inviteAvailable: true, publicBetaState: "approved" },
   { slug: "denimdex", appName: "데님덱스", build: "202610030015", uploadedAt: "2026-10-02T08:59:00-07:00", expiresAt: "2026-12-31T07:59:00-08:00", inviteUrl: "https://testflight.apple.com/join/5pBrz6ME", inviteAvailable: true, publicBetaState: "approved" },
-  { slug: "barobogi", appName: "바로보기", build: "30", uploadedAt: "2026-10-11T23:23:26+09:00", inviteUrl: null, inviteAvailable: false, publicBetaState: "waitingForReview" },
+  { slug: "barobogi", appName: "바로보기", build: "30", uploadedAt: "2026-10-11T07:24:07-07:00", expiresAt: "2027-01-09T06:24:07-08:00", inviteUrl: null, inviteAvailable: false, publicBetaState: "waitingForReview" },
 ];
