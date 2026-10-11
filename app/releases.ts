@@ -150,7 +150,7 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     label: "바로보기(Barobogi) Mac",
     repo: "Barobogi-MacOS",
     assetPattern: /^(?:SMTranslator|Barobogi)-\d+\.\d+\.\d+\.dmg$/i,
-    fallbackUrl: "https://github.com/armsone/Barobogi-MacOS/releases/download/v0.7.3/SMTranslator-0.7.3.dmg",
+    fallbackUrl: "https://github.com/armsone/Barobogi-MacOS/releases/download/v0.7.90/Barobogi-0.7.90.dmg",
   },
 };
 
