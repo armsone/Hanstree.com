@@ -380,7 +380,7 @@ function BarobogiPlatformOverview({ app }: { app: NonNullable<ReturnType<typeof 
       group: "ios",
       label: "iPhone · iPad",
       usage: "단축어·공유 사진·클립보드는 기기 안에서 번역하고, 인앱 웹 본문은 동의 후 Google·DeepL도 선택할 수 있습니다.",
-      status: "내부 초대 테스터 설치 가능 · 공개 참여는 Apple 외부 베타 심사 중",
+      status: "TestFlight 공개 베타 · 누구나 참여 가능 · 0.7.1",
       links: [{ href: "#download-iphone-ipad", label: "iPhone · iPad 안내로 이동" }],
     },
   ];
