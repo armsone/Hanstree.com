@@ -184,7 +184,7 @@ const appCatalog: AppData[] = [
       {
         name: "Mac용 NasFinder",
         status: "공개",
-        detail: "2.2.3 (202609051155) · macOS 14+ · Universal · Apple 공증 완료",
+        detail: "2.2.4 (202610130548) · macOS 14+ · Universal · Apple 공증 완료",
         url: releaseDownloadPath("NasFinder-Mac"),
         downloadLabel: "Mac용 DMG 바로 받기",
         availabilityNote: "Developer ID 서명 · Apple 공증 · Gatekeeper 확인",
@@ -231,6 +231,7 @@ const appCatalog: AppData[] = [
       { state: "done", title: "iPhone·iPad 2.2.2 Public Beta", body: "build 202608271227 처리 완료 · 기존 내부 그룹 9명 보존 · 10,000명 공개 링크 유지" },
       { state: "done", title: "iPhone·iPad 2.2.3 Public Beta 승인", body: "build 202609051155 Apple 외부 베타 심사 승인 완료 · 기존 Public Beta 링크와 10,000명 한도 유지 · 공개 테스트 참여 가능" },
       { state: "done", title: "Mac용 NasFinder 2.2.3 공개", body: "사진·영상 이어보기에서 사진을 건너뛰던 문제와 Mac의 배터리 조건 때문에 Super Thumbnail 작업이 막히던 문제를 수정했습니다. Developer ID 서명과 Apple 공증을 적용한 Universal DMG를 공개했습니다." },
+      { state: "done", title: "Mac용 NasFinder 2.2.4 공개", body: "스트리밍 영상의 공유 버튼을 활성화하고, 뒤로가기를 길게 누르면 첫 화면으로 돌아가도록 보완했습니다. 일반 보기와 Cover Flow에 적용했으며, Developer ID 서명과 Apple 공증을 적용한 앱을 담은 Universal DMG를 공개했습니다." },
       { state: "done", title: "Android 2.2.3 공개", body: "사진을 열면 슬라이드쇼를 시작하고, 영상이 끝난 뒤 사진도 설정한 간격대로 이어봅니다. 빌드 202609051155 · 내부 코드 356395의 서명 APK를 공개했습니다." },
       { state: "done", title: "Super Thumbnail 2.2.0 동기화", body: "3/13 대표 장면, 50% 검은 화면의 6/13 재시도, 최종 1.5pt 단일 블러와 우선 표시를 Apple·Android·Mac에 반영" },
     ],
