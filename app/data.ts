@@ -445,7 +445,7 @@ const appCatalog: AppData[] = [
     icon: "/apps/stand/icon.png",
     artwork: "clock",
     platforms: [
-      { name: "iOS · iPadOS", status: "TestFlight", detail: "2.5.9 (202610081804) · iOS·iPadOS 17+", availabilityNote: "2.5.9 외부 심사 대기 · 기존 공개 링크 유지" },
+      { name: "iOS · iPadOS", status: "TestFlight", detail: "2.5.9 (202610081804) · iOS·iPadOS 17+", availabilityNote: "2.5.9 외부 베타 승인 · 기존 공개 링크에서 참여 가능" },
       {
         name: "macOS",
         status: "공개",
@@ -497,7 +497,7 @@ const appCatalog: AppData[] = [
       { title: "Mac에서 시작", body: "공증된 DMG를 열고 S.tand를 응용 프로그램 폴더로 옮긴 뒤 실행합니다. 이후에는 앱이 업데이트를 확인하고 종료·교체 설치·재실행까지 이어서 처리합니다." },
     ],
     progress: [
-      { state: "done", title: "iPhone·iPad 2.5.9 외부 심사 제출", body: "build 202610081804를 업로드하고 기존 Public Beta 그룹에 추가했습니다. 화면 이탈 시 일시정지를 유지하고 복귀 후 직접 다시 재생하도록 바꿨습니다. 빠방 카테고리를 빠방넷과 같은 순서로 맞췄습니다. 이를 반영해 외부 심사를 제출했으며 현재 Apple 외부 심사 대기 상태입니다. 기존 공개 TestFlight 링크는 그대로 유지됩니다." },
+      { state: "done", title: "iPhone·iPad 2.5.9 외부 베타 승인", body: "build 202610081804가 Apple 외부 베타 심사 승인을 받아 기존 Public Beta 링크에서 참여할 수 있습니다. 화면 이탈 시 일시정지를 유지하고 복귀 후 직접 다시 재생하도록 바꿨으며, 빠방 카테고리를 빠방넷과 같은 순서로 맞췄습니다." },
       { state: "done", title: "Mac 2.5.9 공개", body: "화면 이탈 시 일시정지를 유지하고 복귀 후 직접 다시 재생하도록 바꿨습니다. 빠방 카테고리를 빠방넷과 같은 순서로 맞췄습니다. 이를 반영한 build 202610081804를 Apple 공증까지 마쳐 공개했습니다." },
       { state: "done", title: "Android·Google TV 2.6.7 공개", body: "화면 이탈 시 일시정지를 유지하고 복귀 후 직접 다시 재생하도록 바꿨습니다. 빠방 카테고리를 빠방넷과 같은 순서로 맞췄습니다. 이를 반영한 버전코드 404284 APK를 공개했습니다. 실제 기기에서 기존 데이터를 보존한 설치·재실행을 확인했습니다." },
       { state: "done", title: "Android·Google TV 2.6.6 공개", body: "구형 Wi-Fi 태블릿에서 새 위치를 기다리다가 날씨가 표시되지 않는 문제를 수정했습니다. 최근 시스템에 저장된 대략적 위치를 활용해 날씨를 불러옵니다. 이동 거리에 따른 갱신 규칙은 그대로이며 추가 권한은 없습니다. GitHub 태그 android-v2.6.6 · build 202610052308 · 코드 400268 APK를 공개했으며, 공개 자산 31,343,908바이트와 SHA-256 3240d0747d8565025a58c97112d275b786938327867e8e2033823ce203074995가 일치함을 확인했습니다. 실제 SM-T500(Android 10) 기기에서 기존 데이터를 보존한 재설치와 날씨 온도·상태·지역 표시까지 검증을 마쳤습니다." },
@@ -1114,7 +1114,7 @@ const appCatalog: AppData[] = [
     icon: "/apps/whattoeat/icon.png",
     artwork: "phones",
     platforms: [
-      { name: "iPhone · iPad", status: "TestFlight", detail: "0.5.0 (202609132101) · iOS·iPadOS 17+", availabilityNote: "0.5.0 Public Beta 승인 · 공개 TestFlight 링크에서 참여 가능" },
+      { name: "iPhone · iPad", status: "TestFlight", detail: "0.5.1 (202610061956) · iOS·iPadOS 17+", availabilityNote: "0.5.1 Public Beta 승인 · 공개 TestFlight 링크에서 참여 가능" },
       { name: "Mac", status: "공개", detail: "0.5.1 (202610061956) · macOS 14+ · Universal · Apple 공증 완료", url: releaseDownloadPath("WhattoEat"), downloadLabel: "Mac용 DMG 다운로드", availabilityNote: "Apple 공증과 공개 다운로드 무결성 확인 · Mac 교체 설치·실행 완료" },
       { name: "Android · Google TV", status: "공개", detail: "0.5.4 · 빌드 202610062007 · 내부 코드 401527 · Android 8.0+", url: releaseDownloadPath("WhattoEat-Android"), downloadLabel: "Android용 APK 다운로드", availabilityNote: "앱 실행 시 새 버전 안내 · 확인 후 업데이트 · GitHub 공개 릴리스" },
     ],
@@ -1141,7 +1141,7 @@ const appCatalog: AppData[] = [
       { title: "다음 선택 이어가기", body: "최근과 찜에서 지역별 식당을 다시 보고, 필요 없는 항목은 바로 지웁니다." },
     ],
     progress: [
-      { state: "done", title: "Apple 0.5.1 점심 알림에서 바로 추천", body: "점심 알림을 누르면 새 추천을 시작합니다. Mac 공증 DMG를 공개하고, iPhone·iPad 빌드 202610061956은 TestFlight 업로드·Public Beta 추가·외부 베타 심사 제출을 마쳤습니다. 새 빌드의 외부 제공 승인은 확인 대기입니다." },
+      { state: "done", title: "Apple 0.5.1 점심 알림에서 바로 추천", body: "점심 알림을 누르면 새 추천을 시작합니다. Mac 공증 DMG를 공개했으며, iPhone·iPad build 202610061956은 TestFlight 외부 베타 심사 승인을 받아 기존 Public Beta 링크에서 참여할 수 있습니다." },
       { state: "done", title: "iPhone·iPad·Mac 앱 완성", body: "한 소스로 iPhone, iPad와 Mac Catalyst 화면·기능 구현" },
       { state: "done", title: "추천과 사진·지도 연결", body: "위치 기반 후보 선정, 메뉴 사진 대체, 외부 지도 앱 연결 구현" },
       { state: "done", title: "0.2.3 내부 테스트", body: "build 202608240838 iOS·iPadOS와 macOS를 내부 TestFlight 그룹에 배포" },
