@@ -544,7 +544,7 @@ export default async function AppRoute({ params }: RouteProps) {
             <p>{plugin.summary}</p>
             {plugin.commands.map((command) => <p key={command}><code>{command}</code></p>)}
             <a href={plugin.url}>Alfred 워크플로우 다운로드 <span aria-hidden="true">↗</span></a>
-            <a href={plugin.guideUrl} target="_blank" rel="noreferrer">자유게시판 설치·사용법 <span aria-hidden="true">↗</span></a>
+            <a href={plugin.guideUrl} target="_blank" rel="noreferrer">설치·사용법 <span aria-hidden="true">↗</span></a>
             <p className="download-availability-note">{plugin.detail}</p>
           </div></article>)}
         </div>
