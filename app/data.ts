@@ -229,6 +229,7 @@ const appCatalog: AppData[] = [
       { state: "done", title: "iPhone·iPad·Mac 지원", body: "iPhone과 iPad 앱 완성, 동일 앱의 Apple Silicon Mac 설치와 실행 검증" },
       { state: "done", title: "Live Photo·Motion Photo 전송", body: "iPhone과 Android를 QR로 연결해 사진·영상·움직이는 사진의 원본 보존과 교차 변환 구현" },
       { state: "done", title: "iPhone·iPad 2.2.2 Public Beta", body: "build 202608271227 처리 완료 · 기존 내부 그룹 9명 보존 · 10,000명 공개 링크 유지" },
+      { state: "active", title: "iPhone·iPad 2.2.4 베타 심사 대기", body: "영상 공유와 뒤로가기 길게 누르기 수정 · 빌드 202610130548 · Public Beta에 등록하고 Apple 심사에 제출했습니다. 승인 전에는 기존 2.2.3에 참여할 수 있습니다." },
       { state: "done", title: "iPhone·iPad 2.2.3 Public Beta 승인", body: "build 202609051155 Apple 외부 베타 심사 승인 완료 · 기존 Public Beta 링크와 10,000명 한도 유지 · 공개 테스트 참여 가능" },
       { state: "done", title: "Mac용 NasFinder 2.2.3 공개", body: "사진·영상 이어보기에서 사진을 건너뛰던 문제와 Mac의 배터리 조건 때문에 Super Thumbnail 작업이 막히던 문제를 수정했습니다. Developer ID 서명과 Apple 공증을 적용한 Universal DMG를 공개했습니다." },
       { state: "done", title: "Mac용 NasFinder 2.2.4 공개", body: "스트리밍 영상의 공유 버튼을 활성화하고, 뒤로가기를 길게 누르면 첫 화면으로 돌아가도록 보완했습니다. 일반 보기와 Cover Flow에 적용했으며, Developer ID 서명과 Apple 공증을 적용한 앱을 담은 Universal DMG를 공개했습니다." },
