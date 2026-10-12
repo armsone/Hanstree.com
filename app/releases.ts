@@ -19,6 +19,7 @@ export const DOWNLOAD_KEYS = [
   "Stargram-Android",
   "AutoShorts",
   "Alfred-NaverMap",
+  "Alfred-Playground",
   "SMTranslator-MacOS",
 ] as const;
 
@@ -44,6 +45,12 @@ export type ReleaseDownload = {
 };
 
 export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
+  "Alfred-Playground": {
+    label: "놀이터 호출 Alfred",
+    repo: "Hanstree.com",
+    assetPattern: /^Noliter-Alfred-\d+\.\d+\.\d+\.alfredworkflow$/i,
+    fallbackUrl: "https://github.com/armsone/Hanstree.com/releases/download/alfred-playground-v0.1.5/Noliter-Alfred-0.1.5.alfredworkflow",
+  },
   "CleanUSB-MacOS": {
     label: "CleanUSB Mac",
     repo: "CleanUSB-MacOS",

@@ -30,6 +30,7 @@ export type AppData = {
   guide: { title: string; body: string; platformGroup?: PlatformGroup }[];
   progress: { state: "done" | "active" | "next"; title: string; body: string }[];
   screenshots?: { src: string; alt: string; layout?: "phone" | "menu" | "landscape" | "tv" | "wide" | "square"; platformGroup?: PlatformGroup }[];
+  plugins?: { name: string; summary: string; detail: string; url: string; guideUrl: string; commands: string[] }[];
   github: string[];
   privacy: string[];
   privacyUpdatedAt?: string;
@@ -58,12 +59,20 @@ const appCatalog: AppData[] = [
       {
         name: "Web · 개인용 웹 작업실",
         status: "개발 중",
-        detail: "0.16.0 · 빌드 202610071146 · 허용된 계정으로 이용 · NAS에서 실행",
+        detail: "0.19.4 · 빌드 202610122335 · 허용된 계정으로 이용 · NAS에서 실행",
         url: "https://hanstree.synology.me:5443",
         downloadLabel: "작업실 열기",
-        availabilityNote: "소유자가 허용한 계정 필요 · 공개 회원가입·설치 파일·TestFlight 없음",
+        availabilityNote: "소유자가 허용한 계정 필요 · 공개 회원가입·서버 설치 파일·TestFlight 없음 · Mac 확장은 아래에서 다운로드",
       },
     ],
+    plugins: [{
+      name: "놀이터 호출 · Alfred",
+      summary: "Mac에서 떠오른 질문을 바로 보내세요. Alfred에 ‘놀’ 또는 ‘놀이터’를 입력하면 웹 놀이터를 열고, 질문을 붙이면 전용 대화창에서 답을 이어갑니다.",
+      detail: "0.1.5 · Apple Silicon Mac · Alfred와 Powerpack · 허용된 놀이터 계정 필요. macOS 12 이상 대상 빌드, 실제 실행은 macOS 27에서 확인했습니다. Intel Mac과 이전 macOS의 실제 실행은 미확인입니다. 앱은 ad-hoc 서명이며 Apple 공증은 받지 않았습니다.",
+      url: releaseDownloadPath("Alfred-Playground"),
+      guideUrl: "https://hanstree.synology.me:5443/support?post=143d574793449e49",
+      commands: ["놀 → 웹 놀이터 열기", "놀 경기도 광주의 맛집 5곳 추천해줘 → 전용 창에 질문", "놀 자유 5 → 자유게시판 최신 5개", "놀 고객 5 → 권한이 있는 고객센터 최신 5개", "Esc · ⌘W → 창 숨기기 / ⌘N → 새 Alfred 대화"],
+    }],
     features: [
       { title: "댓글에서 이어가는 대화", body: "자유게시판 댓글 아래에 답글을 이어 갑니다. 내 글에 댓글이 달리거나 내 댓글에 답글이 달리면 커뮤니티 알림에서 확인하고 해당 댓글로 이동합니다." },
       { title: "놀이터의 변화 한눈에", body: "커뮤니티의 고객센터와 설정 사이에 있는 히스토리에서 첫 제작부터 기능 추가와 수정 기록을 오래된 순서로 살펴봅니다. 릴리즈할 때 지난 기록 이후 변경된 기능 영역을 자동으로 추가하며, 같은 변경은 중복 등록하지 않습니다." },

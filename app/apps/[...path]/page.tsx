@@ -494,7 +494,7 @@ export default async function AppRoute({ params }: RouteProps) {
           {app.slug === "nasfinder" ? (
             <><Link href="#motion-bridge">움직이는 사진</Link><Link href="#why-nasfinder">왜 나스파인더</Link><Link href="#stories">활용</Link><Link href="#features">특징</Link>{hasScreenSection && <Link href="#screens">화면과 흐름</Link>}<Link href="#download">설치</Link><Link href="#spec">사양</Link></>
           ) : (
-            <>{(campaignSlugs.has(app.slug) || app.slug === "hanai") && <Link href="#product-campaign">왜 {app.name}</Link>}<Link href="#features">특징</Link>{hasScreenSection && <Link href="#screens">화면과 흐름</Link>}{app.matchup && <Link href="#matchup">매치업</Link>}<Link href="#guide">사용 방법</Link><Link href="#download">다운로드</Link><Link href="#spec">사양</Link></>
+            <>{(campaignSlugs.has(app.slug) || app.slug === "hanai") && <Link href="#product-campaign">왜 {app.name}</Link>}<Link href="#features">특징</Link>{hasScreenSection && <Link href="#screens">화면과 흐름</Link>}{app.matchup && <Link href="#matchup">매치업</Link>}{app.plugins?.length && <Link href="#alfred-plugin">플러그인</Link>}<Link href="#guide">사용 방법</Link><Link href="#download">다운로드</Link><Link href="#spec">사양</Link></>
           )}
         </div>
       </nav>
@@ -533,6 +533,20 @@ export default async function AppRoute({ params }: RouteProps) {
           ) : (
             <div className="single-artwork reveal"><AppArtwork app={app} mode="system" /><p>{app.slug === "hanai" ? "사대문은 외부 연결의 관문이 되고, 한양도성은 개인 데이터의 경계가 됩니다." : "제품의 핵심 기능을 표현한 대표 이미지입니다."}</p></div>
           )}
+        </div>
+      </section>}
+
+      {app.plugins?.length && <section className="download-section shell reveal" id="alfred-plugin" aria-labelledby="plugins-title">
+        <div><p className="eyebrow">놀이터 플러그인</p><h2 id="plugins-title">Alfred에서,<br />놀이터를 바로 호출하세요.</h2><p>설치 파일은 GitHub에서 직접 내려받습니다. 다운로드한 .alfredworkflow를 더블클릭해 가져오면 됩니다. 압축 해제나 별도 앱 설치는 필요 없습니다.</p></div>
+        <div className="download-list">
+          {app.plugins.map((plugin) => <article key={plugin.name}><div className="download-platform-copy">
+            <div className="download-platform-head"><AppIcon app={app} /><h3>{plugin.name}</h3></div>
+            <p>{plugin.summary}</p>
+            {plugin.commands.map((command) => <p key={command}><code>{command}</code></p>)}
+            <a href={plugin.url}>Alfred 워크플로우 다운로드 <span aria-hidden="true">↗</span></a>
+            <a href={plugin.guideUrl} target="_blank" rel="noreferrer">자유게시판 설치·사용법 <span aria-hidden="true">↗</span></a>
+            <p className="download-availability-note">{plugin.detail}</p>
+          </div></article>)}
         </div>
       </section>}
 
