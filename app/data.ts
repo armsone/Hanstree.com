@@ -68,9 +68,9 @@ const appCatalog: AppData[] = [
     plugins: [{
       name: "놀이터 호출 · Alfred",
       summary: "Mac에서 떠오른 질문을 바로 보내세요. Alfred에 ‘놀’, ‘놀이터’, ‘한’, ‘한스트리’를 입력하면 웹 놀이터를 열고, 질문을 붙이면 전용 대화창에서 답을 이어갑니다.",
-      detail: "0.1.8 · 빌드 202610131718 · Intel·M 시리즈 Mac 공용 · Alfred와 Powerpack · 허용된 놀이터 계정 필요. 전용 앱을 포함한 워크플로를 Developer ID로 서명하고 Apple 공증을 완료했습니다. 앱 실행을 위해 macOS의 앱 허용 범위를 바꾸거나 전용 앱을 미리 실행할 필요가 없습니다. macOS 12 이상 대상 빌드이며 M 시리즈 Mac에서 설치와 전용 화면 실행을 확인했습니다. Intel 실기기와 이전 macOS의 실제 실행은 미확인입니다.",
+      detail: "0.1.9 · 빌드 202610131755 · Intel·M 시리즈 Mac 공용 · Alfred와 Powerpack · 허용된 놀이터 계정 필요. 전용 앱을 Developer ID로 서명하고 Apple 공증을 완료했습니다. Alfred 설정을 iCloud에 보관해도 앱은 Mac의 로컬 폴더에서 실행됩니다. macOS의 앱 허용 범위를 바꾸거나 전용 앱을 미리 실행할 필요가 없습니다. macOS 12 이상 대상 빌드이며 M 시리즈 Mac에서 설치와 전용 화면 실행을 확인했습니다. Intel 실기기와 이전 macOS의 실제 실행은 미확인입니다.",
       url: releaseDownloadPath("Alfred-Playground"),
-      guideUrl: "https://github.com/armsone/Hanstree.com/releases/tag/alfred-playground-v0.1.8",
+      guideUrl: "https://github.com/armsone/Hanstree.com/releases/tag/alfred-playground-v0.1.9",
       commands: ["놀 · 놀이터 · 한 · 한스트리 → 웹 놀이터 열기", "놀 경기도 광주의 맛집 5곳 추천해줘 → 전용 창에 질문", "놀 자유 5 → 자유게시판 최신 5개", "놀 고객 5 → 권한이 있는 고객센터 최신 5개", "Esc · ⌘W → 창 숨기기 / ⌘N → 새 Alfred 대화"],
     }],
     features: [
