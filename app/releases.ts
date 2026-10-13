@@ -73,7 +73,7 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     label: "NasFinder Mac",
     repo: "NasFinder",
     assetPattern: /^NasFinder-Mac-\d+\.\d+\.\d+-\d{12}\.dmg$/i,
-    fallbackUrl: "https://github.com/armsone/NasFinder/releases/download/mac-v2.2.9/NasFinder-Mac-2.2.9-202610130807.dmg",
+    fallbackUrl: "https://github.com/armsone/NasFinder/releases/download/mac-v2.4.0/NasFinder-Mac-2.4.0-202610131151.dmg",
   },
   "NasFinder-Super-Thumbnail": {
     label: "Super Thumbnail",
