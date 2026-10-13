@@ -49,7 +49,7 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     label: "놀이터 호출 Alfred",
     repo: "Hanstree.com",
     assetPattern: /^Noliter-Alfred-\d+\.\d+\.\d+\.alfredworkflow$/i,
-    fallbackUrl: "https://github.com/armsone/Hanstree.com/releases/download/alfred-playground-v0.1.6/Noliter-Alfred-0.1.6.alfredworkflow",
+    fallbackUrl: "https://github.com/armsone/Hanstree.com/releases/download/alfred-playground-v0.1.7/Noliter-Alfred-0.1.7.alfredworkflow",
   },
   "CleanUSB-MacOS": {
     label: "CleanUSB Mac",
