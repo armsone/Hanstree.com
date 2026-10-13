@@ -287,6 +287,13 @@ img { display: block; max-width: 100%; }
 .screenshot-platform-group+.screenshot-platform-group{margin-top:48px}.screenshot-platform-heading{margin:0 0 20px;font-size:1.05rem;font-weight:700;color:var(--ink)}
 .guide-platform-group+.guide-platform-group{margin-top:12px;padding-top:12px;border-top:1px solid #ffffff20}.guide-platform-heading{margin:28px 0 0;color:#fff;font-size:1.05rem;font-weight:700}.guide-platform-group:first-child .guide-platform-heading{margin-top:0}
 .download-availability-note{display:block;margin-top:8px;color:var(--muted);font-size:.78rem;line-height:1.6;font-weight:500}
+.plugin-download .download-platform-head .app-icon{width:48px;height:48px;flex-shrink:0;border-radius:14px}
+.plugin-download .plugin-summary{margin:16px 0;font-size:.9rem;line-height:1.75}
+.plugin-actions{display:flex;flex-wrap:wrap;gap:12px;margin:20px 0}
+.download-list .plugin-actions .button{min-height:48px;padding:0 20px;border-bottom:0;font-size:.9rem;gap:10px}
+.plugin-commands{margin:24px 0 20px;padding-left:20px;color:var(--muted);font-size:.85rem;line-height:1.75}
+.plugin-commands li+li{margin-top:6px}
+
 .platform-overview{padding-block:48px 10px}.platform-overview-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}.platform-overview-card{padding:24px;border:1px solid var(--line);border-radius:18px;background:var(--paper-card,#fff);display:flex;flex-direction:column;gap:10px}.platform-overview-card h3{margin:0;font-size:1.15rem}.platform-overview-card>p{margin:0;color:var(--ink-secondary);line-height:1.6;font-size:.86rem}.platform-overview-card>strong{color:var(--accent);font-size:.78rem;font-weight:700}.platform-overview-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto}.platform-overview-links .button{font-size:.76rem;padding:9px 14px;min-height:auto}
 @media (max-width: 760px){.platform-overview-grid{grid-template-columns:1fr}}
 .testflight-card-qr{margin:14px auto 0}.testflight-card-qr small{color:#d9f8ff}

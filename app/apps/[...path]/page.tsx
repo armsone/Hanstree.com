@@ -539,12 +539,14 @@ export default async function AppRoute({ params }: RouteProps) {
       {app.plugins?.length && <section className="download-section shell reveal" id="alfred-plugin" aria-labelledby="plugins-title">
         <div><p className="eyebrow">놀이터 플러그인</p><h2 id="plugins-title">Alfred에서,<br />놀이터를 바로 호출하세요.</h2><p>설치 파일은 GitHub에서 직접 내려받습니다. 다운로드한 .alfredworkflow를 더블클릭해 가져오면 됩니다. 압축 해제나 별도 앱 설치는 필요 없습니다.</p></div>
         <div className="download-list">
-          {app.plugins.map((plugin) => <article key={plugin.name}><div className="download-platform-copy">
+          {app.plugins.map((plugin) => <article className="plugin-download" key={plugin.name}><div className="download-platform-copy">
             <div className="download-platform-head"><AppIcon app={app} /><h3>{plugin.name}</h3></div>
-            <p>{plugin.summary}</p>
-            {plugin.commands.map((command) => <p key={command}><code>{command}</code></p>)}
-            <a href={plugin.url}>Alfred 워크플로우 다운로드 <span aria-hidden="true">↗</span></a>
-            <a href={plugin.guideUrl} target="_blank" rel="noreferrer">설치·사용법 <span aria-hidden="true">↗</span></a>
+            <p className="plugin-summary">{plugin.summary}</p>
+            <div className="plugin-actions">
+              <a className="button button-primary" href={plugin.url}>워크플로우 다운로드 <span aria-hidden="true">↓</span></a>
+              <a className="button button-quiet" href={plugin.guideUrl} target="_blank" rel="noreferrer">설치·사용법 <span aria-hidden="true">↗</span></a>
+            </div>
+            <ul className="plugin-commands">{plugin.commands.map((command) => <li key={command}>{command}</li>)}</ul>
             <p className="download-availability-note">{plugin.detail}</p>
           </div></article>)}
         </div>
