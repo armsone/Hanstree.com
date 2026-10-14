@@ -631,7 +631,7 @@ const appCatalog: AppData[] = [
     features: [
       { title: "자동 전환과 세 가지 전용 테마", body: "자동은 iPhone의 주간·야간 상태만 읽어 CCMB 자체 주간·야간 디자인을 전환합니다. 주간·야간·굵은 선의 캐주얼을 직접 고르면 화면과 전용 홈 화면 아이콘이 함께 바뀝니다.", icon: "/apps/stand/features/feature-11.webp" },
       { title: "누르는 순간 다시 시작하는 갱신", body: "iPhone·iPad 0.2.3부터 자동갱신 간격은 오른쪽 메뉴의 ‘자동 새로 고침 주기’에서 설정합니다. 홈의 자동갱신 줄을 누르면 NAS의 최신 값을 즉시 확인하고, 선택한 주기도 그 순간부터 다시 시작합니다. 겹친 요청은 버리지 않고 직전 조회가 끝난 뒤 한 번 더 확인합니다.", icon: "/apps/ccmb/features/feature-03.webp" },
-      { title: "서비스 색으로 움직이는 원형 그래프", body: "앱을 열거나 갱신하면 원형 그래프가 100%에서 0%로 줄어든 뒤 실제 잔량까지 다시 차오릅니다. Codex와 Claude는 고유색을, Gemini 네 한도는 파랑·빨강·노랑·초록을 사용합니다.", icon: "/apps/ccmb/features/feature-01.webp" },
+      { title: "서비스 색으로 움직이는 원형 그래프", body: "앱을 열거나 갱신하면 원형 그래프가 100%에서 0%로 줄어든 뒤 실제 잔량까지 다시 차오릅니다. Codex·Claude·Gemini는 각 서비스의 색으로 사용량을 구분합니다.", icon: "/apps/ccmb/features/feature-01.webp" },
       { title: "한눈에 읽는 iPhone 원형 그래프", body: "공개 승인된 iOS·iPadOS 0.2.3부터 원형 그래프 안의 남은 비율을 반올림한 정수로 보여 줍니다. 나의 AI 열정 그래프의 소수점 표시는 유지합니다.", icon: "/apps/ccmb/features/feature-01.webp" },
       { title: "가까운 날짜를 바로 읽는 24시간 표기", body: "Mac과 iPhone 모두 초기화 날짜가 오늘·내일·모레면 말로 표시하고, 그 이후에는 9/7(월) 19:00처럼 요일·24시간 형식으로 보여 줍니다. Gemini가 한국어·영어 문장으로 주는 시각도 같은 규칙으로 정리합니다.", icon: "/apps/ccmb/features/shared-clock.webp" },
       { title: "NAS에서 불러오는 실제 사용량 변화", body: "iPhone·iPad는 로그인한 NAS가 약 3분마다 기록한 사용량 변화 중 최근 40개까지 읽기 전용으로 불러옵니다. 기록이 40개보다 적게 쌓였다면 있는 만큼만 보여줍니다. iCloud·Dropbox·Google Drive 같은 다른 소스 선택은 제공하지 않습니다.", icon: "/apps/ccmb/features/feature-09.webp" },
