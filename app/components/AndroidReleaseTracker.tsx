@@ -24,6 +24,12 @@ type Release = {
   repo: DownloadKey;
   available: boolean;
   tagName?: string;
+  version?: string | null;
+  build?: string | null;
+  versionCode?: number | null;
+  downloadPath?: string;
+  verificationSource?: string;
+  checkedAt?: string | null;
   releaseName?: string;
   publishedAt?: string | null;
   releaseUrl?: string;
@@ -36,13 +42,11 @@ type ReleaseResponse = {
   source?: "github-live" | "verified-fallback";
 };
 
-function releaseIdentityFor(release: Release, androidDetail?: string) {
+function releaseIdentityFor(release: Release) {
   return {
-    productVersion: androidDetail?.match(/\b\d+\.\d+\.\d+\b/)?.[0]
-      || release.releaseName?.match(/\b\d+\.\d+\.\d+\b/)?.[0]
-      || "버전 확인 중",
-    buildNumber: androidDetail?.match(/빌드\s+(\d{12})/)?.[1] || "확인 중",
-    internalCode: androidDetail?.match(/내부 코드\s+(\d+)/)?.[1] || "확인 중",
+    productVersion: release.version || "버전 확인 중",
+    buildNumber: release.build || "미제공",
+    internalCode: release.versionCode || "미제공",
   };
 }
 
@@ -56,7 +60,7 @@ function formatBytes(bytes?: number) {
   return `${(bytes / 1024 / 1024).toFixed(1)} MB`;
 }
 
-export function AndroidReleaseTracker({ androidPlatformDetails }: { androidPlatformDetails: Record<string, string> }) {
+export function AndroidReleaseTracker() {
   const [data, setData] = useState<ReleaseResponse | null>(null);
   const [failed, setFailed] = useState(false);
   const [containerRef, isNearViewport] = useNearViewport<HTMLDivElement>();
@@ -92,12 +96,12 @@ export function AndroidReleaseTracker({ androidPlatformDetails }: { androidPlatf
       <div className="android-release-grid" aria-live="polite">
         {releases.map((release) => {
           const appSlug = ANDROID_APP_SLUGS[release.repo];
-          const { productVersion, buildNumber, internalCode } = releaseIdentityFor(release, androidPlatformDetails[appSlug]);
+          const { productVersion, buildNumber, internalCode } = releaseIdentityFor(release);
           const displayName = release.appName;
           return <article className="android-release-card" key={release.repo}>
             <div className="android-release-head"><span className="android-app-mark"><Image className="release-app-icon" src={`/apps/${appSlug}/icon-card.webp`} alt={`${displayName} 앱 아이콘`} width={256} height={256} sizes="56px" unoptimized /><span className="android-platform-badge"><img src="/brands/android.svg" alt="Android" /></span></span><div><p>{release.repo}</p><h3>{displayName}</h3></div></div>
             {release.available ? <>
-              <div className="android-version"><strong>{productVersion}</strong><span>최신 공개판</span></div>
+              <div className="android-version"><strong>{productVersion}</strong><span>{release.verificationSource === "github-live" ? "최신 확인 공개판" : "마지막 확인 공개판"}</span></div>
               <dl>
                 <div><dt>빌드</dt><dd>{buildNumber}</dd></div>
                 <div><dt>내부 코드</dt><dd>{internalCode}</dd></div>
@@ -106,9 +110,9 @@ export function AndroidReleaseTracker({ androidPlatformDetails }: { androidPlatf
                 <div><dt>크기</dt><dd>{formatBytes(release.asset?.size)}</dd></div>
               </dl>
               <div className="android-release-actions">
-                {release.asset && <><a className="android-download-link" href={releaseDownloadPath(release.repo)} aria-label={`${displayName} ${productVersion} APK 바로 받기`}>
+                {release.asset && <><a className="android-download-link" href={release.downloadPath || releaseDownloadPath(release.repo)} aria-label={`${displayName} ${productVersion} APK 바로 받기`}>
                   <span>APK 바로 받기</span><b aria-hidden="true">↓</b>
-                </a><ClientDownloadQrCode className="android-download-qr" href={new URL(releaseDownloadPath(release.repo), "https://hanstree.com").toString()} label={`${displayName} APK 다운로드`} /></>}
+                </a><ClientDownloadQrCode className="android-download-qr" href={new URL(release.downloadPath || releaseDownloadPath(release.repo), "https://hanstree.com").toString()} label={`${displayName} APK 다운로드`} /></>}
                 <a className="android-release-link" href={release.releaseUrl}>릴리스 설명 보기 <span aria-hidden="true">↗</span></a>
               </div>
               <p className="android-download-note">홈페이지가 확인한 공식 GitHub APK가 바로 다운로드됩니다.</p>
@@ -118,8 +122,8 @@ export function AndroidReleaseTracker({ androidPlatformDetails }: { androidPlatf
       </div>
       <p className="release-check-note">{data
         ? data.source === "verified-fallback"
-          ? `GitHub 일시 지연 · 마지막 검증 정보 유지 · ${formatDate(data.checkedAt)}`
-          : `GitHub 확인: ${formatDate(data.checkedAt)} · 30분 동안 캐시`
+          ? `GitHub 일시 지연 · 마지막 검증 정보 유지`
+          : `GitHub 확인: ${formatDate(data.checkedAt)} · 제품별 최대 5분 동안 보관`
         : "공개 저장소만 조회하며 GitHub 비밀키는 사용하지 않습니다."}</p>
       <section className="android-install-guide" aria-labelledby="android-install-title">
         <div className="install-guide-lead">

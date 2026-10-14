@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useSyncExternalStore } from "react";
+import { ReleaseLink } from "./ReleasePlatform";
+import { downloadKeyFromUrl } from "../releaseInfo";
 import type { Platform } from "../data";
 
 type Target = { href: string; label: string };
@@ -43,6 +45,9 @@ function detectTarget(platforms: Platform[]): Target {
 export function AppDownloadCta({ platforms, className }: { platforms: Platform[]; className: string }) {
   const isBrowser = useSyncExternalStore(subscribeToBrowser, getBrowserSnapshot, getServerSnapshot);
   const target = isBrowser ? detectTarget(platforms) : SAFE_FALLBACK;
+
+  const platform = platforms.find((platform) => platform.url === target.href);
+  if (platform && downloadKeyFromUrl(target.href)) return <ReleaseLink className={className} platform={{ ...platform, downloadLabel: target.label }} />;
 
   return (
     <Link className={className} href={target.href}>

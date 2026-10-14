@@ -1,3 +1,4 @@
+import { ReleaseDetail, ReleaseVersion, ReleaseDownload, ReleaseQr, ReleaseLink } from "../../components/ReleasePlatform";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import Image from "../../components/SiteImage";
@@ -281,11 +282,10 @@ function HeroAvailability({ app }: { app: NonNullable<ReturnType<typeof findApp>
 
       <div className="hero-platform-chips" aria-label="플랫폼별 제공 상태">
         {app.platforms.map((platform) => {
-          const version = platform.detail.match(/\d+\.\d+(?:\.\d+)?/)?.[0];
           return (
             <span className={`hero-platform-chip hero-platform-chip-${platform.status.replace(" ", "-")}`} key={platform.name}>
               {platform.name} {platform.status}
-              {version ? ` ${version}` : ""}
+              <ReleaseVersion platform={platform} />
             </span>
           );
         })}
@@ -348,7 +348,7 @@ function HeroAvailability({ app }: { app: NonNullable<ReturnType<typeof findApp>
             <span className={`status-dot status-${platform.status.replace(" ", "-")}`} />
             <strong>{platform.name}</strong>
             <span>{platform.status}</span>
-            <small>{platform.detail}</small>
+            <small><ReleaseDetail platform={platform} /></small>
           </div>
         ))}
       </details>
@@ -543,11 +543,11 @@ export default async function AppRoute({ params }: RouteProps) {
             <div className="download-platform-head"><AppIcon app={app} /><h3>{plugin.name}</h3></div>
             <p className="plugin-summary">{plugin.summary}</p>
             <div className="plugin-actions">
-              <a className="button button-primary" href={plugin.url}>워크플로우 다운로드 <span aria-hidden="true">↓</span></a>
+              <ReleaseLink className="button button-primary" platform={{ name: plugin.name, status: "공개", detail: plugin.detail, url: plugin.url, downloadLabel: "워크플로우 다운로드" }} />
               <a className="button button-quiet" href={plugin.guideUrl} target="_blank" rel="noreferrer">설치·사용법 <span aria-hidden="true">↗</span></a>
             </div>
             <ul className="plugin-commands">{plugin.commands.map((command) => <li key={command}>{command}</li>)}</ul>
-            <p className="download-availability-note">{plugin.detail}</p>
+            <p className="download-availability-note"><ReleaseDetail platform={{ name: plugin.name, status: "공개", detail: plugin.detail, url: plugin.url }} /></p>
           </div></article>)}
         </div>
       </section>}
@@ -581,7 +581,7 @@ export default async function AppRoute({ params }: RouteProps) {
               : testFlight?.publicBetaState === "internalOnly" ? "회사 내부 전용" : testFlight?.publicBetaState === "rejected" ? "Apple 심사 수정 요청 · 새 빌드 준비 필요" : testFlight?.publicBetaState === "waitingForReview" ? "새 빌드는 Apple 심사 대기 중" : testFlight?.publicBetaState === "needsReviewAccount" ? "Apple 심사용 계정 준비 중" : "외부 테스트용 빌드 준비 중";
             const qrUrl = platform.url ? downloadQrUrl(platform.url) : inviteUrl;
             const qrLabel = platform.url ? platform.downloadLabel ?? "공식 다운로드" : "TestFlight 외부 테스터 참여";
-            return <article className={qrUrl ? "download-item-with-qr" : undefined} key={platform.name} id={platformAnchorId(platform.name)}><div className="download-platform-copy"><div className="download-platform-head"><AdvantageVisual variant={platformVisual(platform.name)} /><span className={`status-dot status-${platform.status.replace(" ", "-")}`} /><h3>{platform.name}</h3></div><p>{platform.detail} · {platform.status}</p>{platform.url ? <a href={platform.url}>{platform.downloadLabel ?? "다운로드 페이지"} <span aria-hidden="true">↗</span></a> : inviteUrl ? <a className="testflight-apply-download" href={inviteUrl}>{testFlight?.publicBetaState === "waitingForReview" ? "기존 TestFlight 공개 링크" : "TestFlight 바로 참여"} <span aria-hidden="true">↗</span></a> : <span>{platform.status === "TestFlight" ? pendingCopy : platform.availabilityNote ?? "공개 링크 준비 중"}</span>}{app.slug === "barobogi" && platform.url && platform.availabilityNote && <small className="download-availability-note">{platform.availabilityNote}</small>}{app.slug === "barobogi" && platform.name.includes("Windows") && platform.url && <a href="/apps/barobogi/downloads/install.html" target="_blank" rel="noreferrer">설치·사용 안내 보기 <span aria-hidden="true">↗</span></a>}</div>{qrUrl && <DownloadQrCode href={qrUrl} label={qrLabel} />}</article>;
+            return <article className={qrUrl ? "download-item-with-qr" : undefined} key={platform.name} id={platformAnchorId(platform.name)}><div className="download-platform-copy"><div className="download-platform-head"><AdvantageVisual variant={platformVisual(platform.name)} /><span className={`status-dot status-${platform.status.replace(" ", "-")}`} /><h3>{platform.name}</h3></div>{platform.url ? <ReleaseDownload platform={platform} /> : <p>{platform.detail} · {platform.status}</p>}{platform.url ? null : inviteUrl ? <a className="testflight-apply-download" href={inviteUrl}>{testFlight?.publicBetaState === "waitingForReview" ? "기존 TestFlight 공개 링크" : "TestFlight 바로 참여"} <span aria-hidden="true">↗</span></a> : <span>{platform.status === "TestFlight" ? pendingCopy : platform.availabilityNote ?? "공개 링크 준비 중"}</span>}{app.slug === "barobogi" && platform.url && platform.availabilityNote && <small className="download-availability-note">{platform.availabilityNote}</small>}{app.slug === "barobogi" && platform.name.includes("Windows") && platform.url && <a href="/apps/barobogi/downloads/install.html" target="_blank" rel="noreferrer">설치·사용 안내 보기 <span aria-hidden="true">↗</span></a>}</div>{qrUrl && <ReleaseQr href={qrUrl} label={qrLabel} />}</article>;
           })}
         </div>
       </section>

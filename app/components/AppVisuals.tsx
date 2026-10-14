@@ -1,3 +1,4 @@
+import { ReleasePlatformChip } from "./ReleasePlatform";
 import Image from "./SiteImage";
 import type { AppData, Platform } from "../data";
 import { appCardIcon } from "../media";
@@ -20,8 +21,7 @@ export function AppIcon({ app, priority = false }: { app: AppData; priority?: bo
 }
 
 export function AppStatus({ platform }: { platform: Platform }) {
-  const content = <><span className={`status-dot status-${platform.status.replace(" ", "-")}`} />{platform.name}<small>{platform.detail}</small>{platform.status === "TestFlight" && <b className="chip-status">TestFlight</b>}</>;
-  return platform.url ? <a className="platform-chip" href={platform.url}>{content}<span aria-hidden="true">↗</span></a> : <span className="platform-chip">{content}</span>;
+  return <ReleasePlatformChip platform={platform} />;
 }
 
 function DirectionsFlow() {

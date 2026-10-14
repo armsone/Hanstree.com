@@ -116,12 +116,7 @@ export default async function Home() {
     (total, app) => total + app.platforms.reduce((sum, platform) => sum + countPlatformTargets(platform.name), 0),
     2, // Hanstree Studio · 먹탐자 Instagram
   );
-  const androidPlatformDetails = Object.fromEntries(
-    apps.flatMap((app) => {
-      const detail = app.platforms.find((platform) => platform.name.includes("Android"))?.detail;
-      return detail ? [[app.slug, detail]] : [];
-    }),
-  );
+
 
   const cleanusbApp = findApp("cleanusb");
   const ccmbApp = findApp("ccmb");
@@ -388,7 +383,7 @@ export default async function Home() {
             <strong>앱 안 업데이트를 준비하고 있습니다</strong>
             <p>직접 배포하는 Mac·Android 앱은 다음 공개판부터 시작할 때 새 버전을 확인하고, 자동 다운로드를 켜거나 끌 수 있으며, 필요할 때 직접 확인하고 받을 수도 있습니다. iPhone·iPad TestFlight 앱은 TestFlight가 업데이트를 관리합니다.</p>
           </div>
-          <AndroidReleaseTracker androidPlatformDetails={androidPlatformDetails} />
+          <AndroidReleaseTracker />
         </div>
       </section>
 

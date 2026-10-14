@@ -21,6 +21,14 @@ export const DOWNLOAD_KEYS = [
   "Alfred-NaverMap",
   "Alfred-Playground",
   "SMTranslator-MacOS",
+  "Alfred-AI-Search",
+  "AIBI",
+  "HanAI-JVM",
+  "HanAI-Swift",
+  "NasOS",
+  "Hanstree-Village",
+  "Barobogi-Windows-Chrome",
+  "Barobogi-Windows-Whale",
 ] as const;
 
 export type DownloadKey = (typeof DOWNLOAD_KEYS)[number];
@@ -42,12 +50,24 @@ export type ReleaseDownload = {
   assetPattern: RegExp;
   // GitHub 조회가 실패했을 때만 사용하는, 마지막으로 확인된 공식 주소입니다.
   fallbackUrl: string;
+  releasePage?: boolean;
+  tagPattern?: RegExp;
+  allowPreview?: boolean;
 };
 
 export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
+  "Alfred-AI-Search": { label: "Alfred AI Search", repo: "Alfred-AI-Search", assetPattern: /^Alfred-AI-Search-.*\.alfredworkflow$/i, fallbackUrl: "https://github.com/armsone/Alfred-AI-Search/releases/download/v0.7.2/Alfred-AI-Search-0.7.2.alfredworkflow" },
+  AIBI: { label: "AIBI 소스", repo: "AIBI", assetPattern: /^AIBI-.*\.zip$/i, fallbackUrl: "https://github.com/armsone/AIBI/releases/download/v0.5.2/AIBI-0.5.2.zip" },
+  "HanAI-JVM": { label: "한양 Kotlin/JVM", repo: "HanAI", assetPattern: /^hanai-core-.*\.jar$/i, fallbackUrl: "https://github.com/armsone/HanAI/releases/download/v0.2.0/hanai-core-0.2.0.jar" },
+  "HanAI-Swift": { label: "한양 Swift", repo: "HanAI", assetPattern: /^$/, releasePage: true, tagPattern: /^(?:swift-v\d|v0\.3\.0$)/, fallbackUrl: "https://github.com/armsone/HanAI/releases/tag/v0.3.0" },
+  NasOS: { label: "NasOS 서버 설정", repo: "NasOS", assetPattern: /^$/, releasePage: true, tagPattern: /^v\d/, fallbackUrl: "https://github.com/armsone/NasOS/releases/tag/v0.1.0" },
+  "Hanstree-Village": { label: "한스트리 마을", repo: "NasOS", assetPattern: /^Hanstree-Village-.*\.mcpack$/i, tagPattern: /^village-v/, fallbackUrl: "https://github.com/armsone/NasOS/releases/download/village-v0.4.0/Hanstree-Village-0.4.0.mcpack" },
+  "Barobogi-Windows-Chrome": { label: "바로보기 Windows Chrome 시험판", repo: "Hanstree.com", assetPattern: /^Barobogi-Windows-Chrome-.*\.zip$/i, tagPattern: /^windows-v/, allowPreview: true, fallbackUrl: "/apps/barobogi/downloads/Barobogi-Windows-Chrome-0.3.0.zip" },
+  "Barobogi-Windows-Whale": { label: "바로보기 Windows Whale 시험판", repo: "Hanstree.com", assetPattern: /^Barobogi-Windows-Whale-.*\.zip$/i, tagPattern: /^windows-v/, allowPreview: true, fallbackUrl: "/apps/barobogi/downloads/Barobogi-Windows-Whale-0.3.0.zip" },
   "Alfred-Playground": {
     label: "놀이터 호출 Alfred",
     repo: "Hanstree.com",
+    tagPattern: /^alfred-playground-v/,
     assetPattern: /^Noliter-Alfred-\d+\.\d+\.\d+\.alfredworkflow$/i,
     fallbackUrl: "https://github.com/armsone/Hanstree.com/releases/download/alfred-playground-v0.1.9/Noliter-Alfred-0.1.9.alfredworkflow",
   },

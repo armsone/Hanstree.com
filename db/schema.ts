@@ -1,6 +1,13 @@
 import { sql } from "drizzle-orm";
 import { index, integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
 
+export const releaseSnapshots = sqliteTable("release_snapshots", {
+  key: text("key").primaryKey(),
+  recordJson: text("record_json").notNull(),
+  checkedAt: text("checked_at").notNull(),
+  retryAfter: text("retry_after").notNull(),
+});
+
 export const siteCounters = sqliteTable("site_counters", {
   key: text("key").primaryKey(),
   value: integer("value").notNull().default(0),
