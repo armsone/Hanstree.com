@@ -916,7 +916,7 @@ const appCatalog: AppData[] = [
     icon: "/apps/button/icon.png",
     artwork: "phones",
     platforms: [
-      { name: "iPhone", status: "TestFlight", detail: "2.2.0 (202609051204) · iOS 17+", availabilityNote: "2.2.0 Public Beta 승인 · 공개 테스트 참여 가능" },
+      { name: "iPhone", status: "TestFlight", detail: "2.2.1 (202610141355) · iOS 17+", availabilityNote: "앱·위젯의 방 정보 공유와 자녀의 연속 호출 제한을 보강한 2.2.1은 Apple 외부 심사 대기 중입니다. 승인 전까지 기존 공개 링크에서 2.2.0 승인 빌드로 참여할 수 있습니다." },
       {
         name: "Android",
         status: "공개",
@@ -938,6 +938,7 @@ const appCatalog: AppData[] = [
       { title: "자녀의 연속 호출 방지", body: "자녀가 호출한 뒤에는 10초 동안 남은 시간을 표시해 실수로 연속 전송하는 일을 막고, 부모는 제한 없이 바로 다시 보낼 수 있습니다.", icon: "/apps/button/features/feature-09.webp" },
       { title: "부모와 자녀 모두 음성 전송", body: "부모와 자녀 모두 톡톡·띵동·음성을 보낼 수 있고, 자녀의 연속 호출만 10초 동안 제한합니다.", icon: "/apps/button/features/feature-10.webp" },
       { title: "Android 위젯 방 설정과 구성 확인", body: "Android 2.2.1의 부모·자녀 홈 위젯에 연결할 방을 바로 설정할 수 있습니다. 유효한 자사 위젯만 구성하도록 확인하고 기존 방·알림 설정은 그대로 유지합니다. iPhone에는 아직 제공하지 않습니다.", icon: "/apps/button/features/feature-05.webp" },
+      { title: "iPhone 앱과 위젯을 함께", body: "외부 심사 대기 중인 iPhone 2.2.1은 앱에서 연결한 방 정보를 위젯과 공유합니다. 자녀가 앱과 위젯을 번갈아 사용해도 띵동 호출의 10초 간격을 함께 유지하며, 위젯은 공유 상태를 확인하거나 저장하지 못하면 호출을 보내지 않고 안내합니다.", icon: "/apps/button/features/feature-09.webp" },
     ],
     guide: [
       { title: "공간 만들기", body: "한 기기에서 가족 공간을 만들고 표시된 QR 코드를 가족 기기에서 스캔합니다. 다른 가족용 공간도 별도로 추가할 수 있습니다." },
@@ -961,6 +962,7 @@ const appCatalog: AppData[] = [
       { state: "done", title: "NAS 여러 공간 중계 반영", body: "운영 서버를 최신 여러 공간 서버로 교체하고 원거리 가족 목록 경로까지 확인" },
       { state: "done", title: "Android 원격 수신", body: "FCM 등록·백그라운드 대상 검증·원본 띵동 소리·호출 기록까지 NAS 실전 전달 확인" },
       { state: "done", title: "iPhone 2.2.0 Public Beta 승인", body: "build 202609051204 Apple 외부 베타 심사 승인 완료 · 기존 Public Beta 링크와 10,000명 한도 유지 · 공개 테스트 참여 가능" },
+      { state: "done", title: "iPhone 2.2.1 외부 심사 제출", body: "앱과 위젯의 방 정보 공유 및 자녀 호출 간격 처리를 보강한 빌드 202610141355를 TestFlight에 업로드했습니다. 기존 내부·Public Beta 그룹과 공개 링크를 유지하고 변경 안내·자동 알림·Apple 심사 제출을 마쳤습니다. 새 빌드는 외부 심사 대기 중이며, 기존 2.2.0 승인 빌드로 계속 참여할 수 있습니다." },
       { state: "done", title: "Android 2.2.1 공개", body: "부모·자녀 위젯에 연결할 방을 설정할 수 있는 기능을 추가했습니다. 빌드 202610141349 · 내부 코드 412669의 공식 APK를 공개했습니다. 유효한 자사 위젯만 구성하도록 확인하고 기존 방·알림 설정은 그대로 유지합니다." },
     ],
     screenshots: [
@@ -974,6 +976,7 @@ const appCatalog: AppData[] = [
     github: ["https://github.com/armsone/OurButton", "https://github.com/armsone/OurButton-Android"],
     privacy: [
       "가족 공간 식별자, 기기 이름과 역할은 호출 연결을 위해 기기와 사용자가 지정한 개인 중계 서버에서 처리합니다.",
+      "iPhone 2.2.1은 연결한 방 정보와 자녀 호출 간격 상태를 기기 안에서 앱과 위젯이 함께 사용합니다.",
       "iPhone APNs와 Android FCM 기기 토큰은 해당 가족 공간의 원거리 호출 전달에만 사용합니다.",
       "목소리 메시지는 사용자가 녹음을 선택한 경우에만 생성되며 호출 전달을 위해 가족 기기와 개인 중계 서버 사이에서 처리됩니다.",
       "앱은 광고 추적 기능을 포함하지 않으며 가족 공간 밖의 사용자에게 호출 데이터를 판매하거나 제공하지 않습니다.",
