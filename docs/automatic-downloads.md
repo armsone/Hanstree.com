@@ -37,3 +37,15 @@ NasOS 서버 설정은 `v` 태그 릴리스 페이지, 한스트리 마을은 `v
 
 ## 반영되지 않는 항목
 새 기능 설명·스크린샷·법적 고지·지원 정책은 확인 후 별도로 수정한다. TestFlight는 승인·공개 상태가 별도로 필요하므로 이 GitHub 자동화의 대상이 아니다. 새 제품 등록과 파일명/플랫폼 구조 변경에는 홈페이지의 초기 등록이 필요하다.
+
+
+## 기존 공개 릴리즈 정보 보완
+
+`build/sync-release-metadata.mjs`는 현재 등록된 공개 릴리즈의 자산 사실과 기존 릴리즈 본문으로 배포 정보를 보완한다. 기본 실행은 읽기 전용이며 `--publish`를 명시한 경우에만 없는 `release.json`을 추가한다. 기존 파일·메타데이터를 덮어쓰지 않으며 내용 충돌이나 수정 불가능한 릴리즈는 별도로 보고한다. 이미 `release.json`이 있는 경우 실제 자산과 일치하는지 확인한다.
+
+```sh
+node build/sync-release-metadata.mjs --repo=NasFinder-Android
+node build/sync-release-metadata.mjs --repo=NasFinder-Android --publish
+```
+
+이 도구는 기존 공개판을 보완하는 용도다. 새로운 릴리즈는 빌드 직후 최종 파일로 `release-metadata.mjs`를 실행하여 초안에 패키지·메타데이터를 먼저 올리고, 업로드 확인 후 공개한다. 공통 릴리즈 스킬과 각 앱의 릴리즈 안내도 이 절차를 따른다. 이번 전환의 확인 결과는 [릴리즈 정보 반영 기록](release-metadata-transition.md)에 남겼다.
