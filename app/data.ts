@@ -1002,7 +1002,7 @@ const appCatalog: AppData[] = [
         detail: "2.6.5 · 빌드 202609242307 · 내부 코드 384427 · Android 8.0+",
         url: releaseDownloadPath("Stargram-Android"),
         downloadLabel: "Android APK 바로 받기",
-        availabilityNote: "휴대전화·태블릿·Google TV 지원 · 기존 배포 서명 유지 · 공개 다운로드는 승인된 2.6.5로 유지 · AIBI 0.5.2를 반영한 2.6.6은 소스 반영·빌드·Git 백업을 마쳤으나 서명 문제로 공개 게시는 보류 중입니다.",
+        availabilityNote: "휴대전화·태블릿·Google TV 지원 · 기존 공개 2.6.5와 동일 서명 · AIBI 0.5.2를 반영한 2.6.6(빌드 202610141331 · 내부 코드 412651)을 공개하고 기존 사용자 데이터를 보존한 교체 설치와 기본 화면 시작을 확인했습니다.",
       },
     ],
     features: [
@@ -1043,7 +1043,7 @@ const appCatalog: AppData[] = [
       { state: "done", title: "Android 2.6.4 공개", body: "사진·글 전송 확인, 중복 전송 방지, 진단 로그 공유와 하단 여백 개선을 담은 APK를 공개했습니다. 빌드 202609101658 · 내부 코드 363898 · 공개 파일 무결성 확인 완료" },
       { state: "done", title: "iOS·iPadOS 2.6.4 Public Beta 승인", body: "build 202609101649 Apple 외부 베타 심사 승인 완료 · 기존 Public Beta 링크와 10,000명 한도 유지 · 공개 테스트 참여 가능" },
       { state: "done", title: "2.6.5 릴리스·심사 제출", body: "Gemini·Claude 사진과 글 전달을 보강하고 취소된 첨부 정리 및 입력창 준비 감지를 적용했습니다. Android 2.6.5 서명 APK(빌드 202609242307) 공개 및 실기기 설치를 확인하고, iOS·iPadOS 새 빌드는 Apple 외부 베타 심사에 제출했습니다." },
-      { state: "done", title: "2.6.6 AIBI 0.5.2 반영·Public Beta 승인", body: "AIBI 0.5.2의 입력창 없는 첨부 오류와 대화 이력 영역 오탐 수정을 반영했습니다. iOS·iPadOS 빌드 202610030015가 Apple 외부 베타 심사 승인을 받았으며 기존 Public Beta 공개 링크로 참여할 수 있습니다. iPhone 앱 재시작 3회와 Gemini·ChatGPT·Claude 각 3회 생성을 확인했습니다. Android 2.6.6은 서명 문제로 공개 보류 중이며 기존 2.6.5 다운로드를 유지합니다." },
+      { state: "done", title: "2.6.6 AIBI 0.5.2 반영·Public Beta 승인", body: "AIBI 0.5.2의 입력창 없는 첨부 오류와 대화 이력 영역 오탐 수정을 반영했습니다. iOS·iPadOS 빌드 202610030015가 Apple 외부 베타 심사 승인을 받았으며 기존 Public Beta 공개 링크로 참여할 수 있습니다. iPhone 앱 재시작 3회와 Gemini·ChatGPT·Claude 각 3회 생성을 확인했습니다. Android 2.6.6(빌드 202610141331 · 내부 코드 412651)은 기존 2.6.5와 동일한 서명으로 공개했으며, 기존 사용자 데이터를 보존한 교체 설치와 기본 화면 시작을 확인했습니다." },
       { state: "next", title: "게시 흐름 다듬기", body: "실제 공유 앱별 게시 결과와 사용자 피드백을 바탕으로 다음 개선 항목을 정리" },
     ],
     screenshots: [
