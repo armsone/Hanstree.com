@@ -35,3 +35,9 @@
 - [패키징 스크립트](https://github.com/armsone/Hanstree.com/releases/download/windows-v0.3.0/Barobogi-Windows-build.sh)
 
 NasFinder의 원래 작업 폴더에는 기존 미커밋 파일이 있어 푸시 보호 절차가 차단했다. 이번 커밋만 포함한 깨끗한 작업 사본의 정식 브랜치에서 같은 원격 브랜치로 푸시하고 확인했으며 작업 사본은 정리했다. 원래 작업 폴더의 파일은 보존했다.
+
+## 푸시 차단 원인 수리
+
+2026-10-14 22:48 KST, NasFinder의 정상 pre-push 경로를 수정했다. 미커밋 파일이 있어도 훅에서 실제 전송할 커밋 전부가 현재 HEAD임을 확인한 경우에는 기존 파일을 보존하고 푸시한다. detached HEAD·미보존 스냅샷 검사는 유지하며, 다른 커밋이나 삭제를 보내는 경우는 허용하지 않는다. 변경 없는 푸시도 정상 처리한다.
+
+원래 작업 폴더에서 실제 커밋 푸시와 이미 최신 상태의 재확인을 모두 완료했으며 원격 커밋은 [993a3e88](https://github.com/armsone/NasFinder/commit/993a3e88a4fdee8dc755ec4cf80fa4889b7d27fe)이다. 원래 미커밋 파일의 내용과 기존 AGENTS 변경은 보존됐다. CLAUDE.md와 GEMINI.md는 AGENTS.md를 가리키는 기존 링크이며 함께 같은 규칙을 읽는다.
