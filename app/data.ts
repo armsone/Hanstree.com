@@ -621,7 +621,7 @@ const appCatalog: AppData[] = [
       {
         name: "iPhone · iPad",
         status: "TestFlight",
-        detail: "0.2.4 (202610141354) · iOS·iPadOS 17+",
+        detail: "0.3.0 (202610152345) · iOS·iPadOS 17+",
         url: "https://testflight.apple.com/join/q9jesHZa",
         downloadLabel: "Public Beta 참여",
         availabilityNote: "iOS 0.3.0 TestFlight 외부 베타 심사를 제출하고 승인을 기다리는 중입니다. 기존 참가 링크는 그대로 유지되며, 신규 빌드는 심사 통과 후 배포됩니다.",
