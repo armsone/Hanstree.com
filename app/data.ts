@@ -693,7 +693,7 @@ const appCatalog: AppData[] = [
       { state: "done", title: "CCMB 2.0.32 공개", body: "막대 열정 그래프의 갱신당 사용량과 막대 위 상세값만 0.1% 단위로 표시합니다. 원형 그래프와 메뉴 막대 등 다른 퍼센트는 정수로 표시합니다. 빌드 202610040900의 Apple 공증 Universal DMG와 자동 업데이트를 공개했습니다." },
     ],
     screenshots: [
-      { src: "/apps/ccmb/screens/ios-dashboard.jpg", alt: "이전 버전의 iPhone 앱 화면 캡처로, 신규 4개 고정 카드 및 NAS 기본 설정이 반영되지 않은 과거 인터페이스를 보여줍니다.", layout: "phone" },
+      { src: "/apps/ccmb/screens/ios-dashboard.jpg", alt: "이전 버전의 iPhone 화면입니다. 최신 NAS 연동과 베타 제공 상태는 기능·다운로드 안내를 확인하세요.", layout: "phone" },
       { src: "/apps/ccmb/ccmb-dashboard-private.png", alt: "이전 Mac 패널 캡처입니다. 현재의 NAS 요금제·초기화권 정보는 반영되지 않았으며 과거 Spark·구형 모델명 등이 포함될 수 있습니다.", layout: "menu" },
       { src: "/apps/ccmb/screens/macos-menubar.png", alt: "이전 버전의 Mac 메뉴바 화면입니다. 현재 공개판의 NAS 정보 복구 내용은 기능 안내를 확인하세요.", layout: "wide" },
     ],
