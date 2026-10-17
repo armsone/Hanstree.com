@@ -453,6 +453,7 @@ const appCatalog: AppData[] = [
       { title: "비슷한 사진은 줄이고 좋은 장면은 남기기", body: "사진 원본 대신 선명도·크기·거리 같은 익명 수치만 받아 가까운 중복을 묶고, 그중 품질이 좋은 대표 사진을 Swift와 Kotlin에서 같은 기준으로 고릅니다. 공개 한양 Swift/JVM 어댑터를 쓰면 기기 안에서 사진의 시각 특징을 한 번 더 비교해 비슷함을 확인할 수 있으며, 판단할 수 없으면 기존 방식으로 돌아가고 사용자가 고른 원본은 그대로 보존됩니다.", icon: "/apps/denimdex/features/photo-compression.webp" },
       { title: "영상 대표 썸네일 보완", body: "영상의 기존 중요 장면 분석과 골프 동작·오디오 분석, 이벤트 순위는 그대로 두고, 대표 썸네일만 주변 후보와 비교해 더 선명할 때 바꿉니다.", icon: "/apps/denimdex/features/photo-compression.webp" },
       { title: "기억에서 안전한 실행까지", body: "다음에는 사용자가 허용한 정보의 기억과 정리, 선택지 비교, 확인을 거친 일상 실행으로 차근차근 범위를 넓혀 갑니다.", icon: "/apps/hanai/features/feature-03.webp" },
+      { title: "기준 사진으로 관련 사진 찾기", body: "공개 로컬 분석 도구에서 기준 사진과 관련된 후보를 순서대로 찾아 직접 확인합니다. 작은 부분 변경은 선택적 픽셀 비교 수치로 함께 살펴볼 수 있으며, 이 검색 결과만으로 사진을 자동으로 묶거나 삭제하지 않습니다.", icon: "/apps/hanai/icon.png" },
     ],
     guide: [
       { title: "브랜드는 한양 HANYANG", body: "사용자가 만나는 이름은 한양과 HANYANG입니다. 공개 저장소와 기존 코드 패키지는 호환성을 위해 현재 HanAI 식별자를 유지합니다." },
