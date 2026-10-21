@@ -41,42 +41,6 @@
     "height": 512,
     "srcSet": "/optimized/2b066c31ee074d23-128.webp 128w, /optimized/2b066c31ee074d23-512.webp 512w"
   },
-  "/apps/alfred-ai-search/home-card-v2.png": {
-    "src": "/optimized/6a4321bc896c0051-1536.webp",
-    "width": 1536,
-    "height": 1024,
-    "srcSet": "/optimized/6a4321bc896c0051-128.webp 128w, /optimized/6a4321bc896c0051-640.webp 640w, /optimized/6a4321bc896c0051-1280.webp 1280w, /optimized/6a4321bc896c0051-1536.webp 1536w"
-  },
-  "/apps/alfred-ai-search/home-card.webp": {
-    "src": "/optimized/0b1e78157110fc91-1280.webp",
-    "width": 1280,
-    "height": 853,
-    "srcSet": "/optimized/0b1e78157110fc91-128.webp 128w, /optimized/0b1e78157110fc91-640.webp 640w, /optimized/0b1e78157110fc91-1280.webp 1280w"
-  },
-  "/apps/alfred-ai-search/icon.png": {
-    "src": "/optimized/7831dbd9372ce40e-512.webp",
-    "width": 512,
-    "height": 512,
-    "srcSet": "/optimized/7831dbd9372ce40e-128.webp 128w, /optimized/7831dbd9372ce40e-512.webp 512w"
-  },
-  "/apps/alfred-ai-search/providers/claude.png": {
-    "src": "/optimized/dd1707b6ee303a5f-512.webp",
-    "width": 512,
-    "height": 512,
-    "srcSet": "/optimized/dd1707b6ee303a5f-128.webp 128w, /optimized/dd1707b6ee303a5f-512.webp 512w"
-  },
-  "/apps/alfred-ai-search/providers/gemini.png": {
-    "src": "/optimized/fc9fc09ed4c996af-512.webp",
-    "width": 512,
-    "height": 512,
-    "srcSet": "/optimized/fc9fc09ed4c996af-128.webp 128w, /optimized/fc9fc09ed4c996af-512.webp 512w"
-  },
-  "/apps/alfred-ai-search/screens/alfred-answer-view.png": {
-    "src": "/optimized/6c5de47b97d7ea27-1238.webp",
-    "width": 1238,
-    "height": 1764,
-    "srcSet": "/optimized/6c5de47b97d7ea27-128.webp 128w, /optimized/6c5de47b97d7ea27-640.webp 640w, /optimized/6c5de47b97d7ea27-1238.webp 1238w"
-  },
   "/apps/alfred-navermap/hero-20260918.webp": {
     "src": "/optimized/18e6ead81d13ec4b-1536.webp",
     "width": 1536,

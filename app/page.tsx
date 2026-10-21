@@ -36,7 +36,6 @@ const homeKoreanNames: Record<string, string> = {
   "minecraft-server": "나스오에스",
   whattoeat: "오늘 뭐 먹지??",
   denimdex: "데님덱스",
-  "alfred-ai-search": "알프레드 AI 검색",
   "alfred-navermap": "네이버 지도 길찾기",
   aibi: "아이비",
   autoshorts: "자동쇼츠",

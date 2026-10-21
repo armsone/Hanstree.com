@@ -21,7 +21,6 @@ export const DOWNLOAD_KEYS = [
   "Alfred-NaverMap",
   "Alfred-Playground",
   "SMTranslator-MacOS",
-  "Alfred-AI-Search",
   "AIBI",
   "HanAI-JVM",
   "HanAI-Swift",
@@ -56,7 +55,6 @@ export type ReleaseDownload = {
 };
 
 export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
-  "Alfred-AI-Search": { label: "Alfred AI Search", repo: "Alfred-AI-Search", assetPattern: /^Alfred-AI-Search-.*\.alfredworkflow$/i, fallbackUrl: "https://github.com/armsone/Alfred-AI-Search/releases/download/v0.7.2/Alfred-AI-Search-0.7.2.alfredworkflow" },
   AIBI: { label: "AIBI 소스", repo: "AIBI", assetPattern: /^AIBI-.*\.zip$/i, fallbackUrl: "https://github.com/armsone/AIBI/releases/download/v0.5.2/AIBI-0.5.2.zip" },
   "HanAI-JVM": { label: "한양 Kotlin/JVM", repo: "HanAI", assetPattern: /^hanai-core-.*\.jar$/i, fallbackUrl: "https://github.com/armsone/HanAI/releases/download/v0.2.0/hanai-core-0.2.0.jar" },
   "HanAI-Swift": { label: "한양 Swift", repo: "HanAI", assetPattern: /^$/, releasePage: true, tagPattern: /^(?:swift-v\d|v0\.3\.0$)/, fallbackUrl: "https://github.com/armsone/HanAI/releases/tag/v0.3.0" },
