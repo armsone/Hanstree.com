@@ -28,6 +28,7 @@ export const DOWNLOAD_KEYS = [
   "Hanstree-Village",
   "Barobogi-Windows-Chrome",
   "Barobogi-Windows-Whale",
+  "Barobogi-Android",
 ] as const;
 
 export type DownloadKey = (typeof DOWNLOAD_KEYS)[number];
@@ -170,6 +171,13 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     repo: "AutoShorts",
     assetPattern: /^AutoShorts-\d+\.\d+\.\d+(?:-source)?\.zip$/i,
     fallbackUrl: "https://github.com/armsone/AutoShorts/releases/download/v0.1.4/AutoShorts-0.1.4-source.zip",
+  },
+  "Barobogi-Android": {
+    label: "바로보기 Android",
+    repo: "Barobogi-Android",
+    assetPattern: /^Barobogi-Android-\d+\.\d+\.\d+\.apk$/i,
+    tagPattern: /^android-v/,
+    fallbackUrl: "https://github.com/armsone/Barobogi-Android/releases/download/android-v0.3.0/Barobogi-Android-0.3.0.apk",
   },
   "SMTranslator-MacOS": {
     label: "바로보기(Barobogi) Mac",

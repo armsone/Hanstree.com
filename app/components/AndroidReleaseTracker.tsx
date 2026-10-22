@@ -15,6 +15,7 @@ const ANDROID_APP_SLUGS: Record<string, string> = {
   "Stargram-Android": "starmanager",
   "WhattoEat-Android": "whattoeat",
   "DenimDex-Android": "denimdex",
+  "Barobogi-Android": "barobogi",
 };
 
 const installStepVisuals: AdvantageVariant[] = ["check-source", "android-bot", "touch-zone", "shield-safe"];
@@ -88,6 +89,7 @@ export function AndroidReleaseTracker() {
     { appName: "Stargram", repo: "Stargram-Android", available: false },
     { appName: "오늘 뭐 먹지?", repo: "WhattoEat-Android", available: false },
     { appName: "데님덱스", repo: "DenimDex-Android", available: false },
+    { appName: "바로보기", repo: "Barobogi-Android", available: false },
   ];
   const releases = data?.releases || placeholders;
 

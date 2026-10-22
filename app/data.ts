@@ -1549,6 +1549,14 @@ const appCatalog: AppData[] = [
         availabilityNote: "누구나 참여할 수 있는 공개 베타입니다(최대 10,000명). 새 디자인과 네 가지 아이콘팩을 담은 0.8.12는 Apple 외부 심사를 통과(IN_BETA_TESTING)해 같은 공개 링크에서 제공됩니다. iOS·iPadOS 18+ 기기에서 TestFlight 앱으로 참여하세요.",
       },
       {
+        name: "Android",
+        status: "공개",
+        detail: "Android 8.0+ · 휴대전화·태블릿 · 사진·카메라·웹 번역",
+        url: releaseDownloadPath("Barobogi-Android"),
+        downloadLabel: "Android APK 받기",
+        availabilityNote: "GitHub 릴리스의 서명된 APK를 직접 내려받아 설치합니다. 휴대전화·태블릿용이며 Google TV는 지원하지 않습니다. 번역 언어 모델은 처음 쓸 때 앱에서 한 번 내려받습니다.",
+      },
+      {
         name: "Windows · Chrome",
         status: "공개",
         detail: "테스트용 0.3.0 · Chrome 116 이상 · Manifest V3 확장 · 이미지 속 글자(한국어·영어·일본어·중국어 간체 자동 인식, 일본어 가로·세로·혼재 자동 지원) 번역",

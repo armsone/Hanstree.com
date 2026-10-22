@@ -8,6 +8,7 @@ export const ANDROID_RELEASE_SOURCES = [
   { appName: "Stargram", repo: "Stargram-Android" },
   { appName: "오늘 뭐 먹지?", repo: "WhattoEat-Android" },
   { appName: "데님덱스", repo: "DenimDex-Android" },
+  { appName: "바로보기", repo: "Barobogi-Android" },
 ] as const satisfies readonly { appName: string; repo: DownloadKey }[];
 
 export type AndroidReleaseSource = (typeof ANDROID_RELEASE_SOURCES)[number];
