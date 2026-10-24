@@ -30,7 +30,8 @@ function loadTestFlight() {
 function liveTestFlightDetail(detail: string, live: TestFlightBuild | null) {
   if (live?.publicBetaState !== "approved" || !live.marketingVersion || !live.build) return detail;
   if (live.expiresAt && new Date(live.expiresAt).getTime() <= Date.now()) return detail;
-  return detail.replace(/^\d+\.\d+(?:\.\d+)?\s*\(\d+\)/, `${live.marketingVersion} (${live.build})`);
+  // 앞의 "버전", "(빌드)", "· 빌드 N"은 한 덩어리로 바꾸고, 뒤의 호환·플랫폼 설명은 그대로 둡니다.
+  return detail.replace(/^\d+\.\d+(?:\.\d+)?(?:\s*\(\d+\))?(?:\s*·\s*빌드\s*\d+)?/, `${live.marketingVersion} (${live.build})`);
 }
 function useLiveTestFlight(appSlug: string | undefined, enabled: boolean, near: boolean) {
   const [live, setLive] = useState<TestFlightBuild | null>(null);
