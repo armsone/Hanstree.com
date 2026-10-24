@@ -331,7 +331,7 @@ export default async function Home() {
                       <div className="app-card-foot">
                         <div className="chip-row">
                           {app.platforms.map((platform) => (
-                            <AppStatus key={platform.name} platform={platform} />
+                            <AppStatus key={platform.name} platform={platform} appSlug={app.slug} />
                           ))}
                         </div>
                         <Link className="editorial-detail-link" href={`/apps/${app.slug}`}>

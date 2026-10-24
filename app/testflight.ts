@@ -2,6 +2,8 @@ export type TestFlightBuild = {
   slug: "ccmb" | "nasfinder" | "hanclip" | "stand" | "starmanager" | "button" | "whattoeat" | "denimdex" | "barobogi";
   appName: string;
   build: string | null;
+  // ASC 실시간 조회로만 채우는 사용자용 버전(preReleaseVersion). 정적 목록에는 넣지 않습니다.
+  marketingVersion?: string | null;
   uploadedAt: string | null;
   expiresAt?: string | null;
   inviteUrl: string | null;

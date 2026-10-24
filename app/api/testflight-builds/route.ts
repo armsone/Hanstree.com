@@ -15,6 +15,7 @@ const APP_SOURCES = [
 
 type AppStoreResource<T> = { id: string; attributes: T };
 type AppStoreResponse<T> = { data: Array<AppStoreResource<T>> };
+type AppStoreSingleResponse<T> = { data: AppStoreResource<T> | null };
 
 function publicBetaStateFromReview(state: string | undefined, fallback: TestFlightBuild["publicBetaState"]): TestFlightBuild["publicBetaState"] {
   if (state === "APPROVED") return "approved";
@@ -74,6 +75,21 @@ async function appStoreRequest<T>(path: string, token: string) {
   return response.json() as Promise<AppStoreResponse<T>>;
 }
 
+async function readMarketingVersion(buildId: string, token: string) {
+  // 버전 조회가 실패해도 기존 빌드·심사 상태 조회에는 영향이 없도록 따로 읽고, 실패하면 정적 표시를 유지합니다.
+  try {
+    const response = await fetch(`${APP_STORE_CONNECT_API}/builds/${encodeURIComponent(buildId)}/preReleaseVersion?fields[preReleaseVersions]=version`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    if (!response.ok) return null;
+    const payload = await response.json() as AppStoreSingleResponse<{ version?: string }>;
+    const version = payload.data?.attributes.version;
+    return typeof version === "string" && /^\d+(?:\.\d+){1,3}$/.test(version) ? version : null;
+  } catch {
+    return null;
+  }
+}
+
 async function readLatestBuild(source: (typeof APP_SOURCES)[number], token: string): Promise<TestFlightBuild> {
   const fallback = testFlightBuilds.find((item) => item.slug === source.slug);
   const apps = await appStoreRequest<{ bundleId: string }>(
@@ -99,11 +115,13 @@ async function readLatestBuild(source: (typeof APP_SOURCES)[number], token: stri
     token,
   );
   const reviewState = submissions.data[0]?.attributes.betaReviewState;
+  const marketingVersion = await readMarketingVersion(build.id, token);
 
   return {
     slug: source.slug,
     appName: source.appName,
     build: build.attributes.version,
+    marketingVersion,
     uploadedAt: build.attributes.uploadedDate,
     expiresAt: build.attributes.expirationDate ?? null,
     inviteUrl: fallback?.inviteUrl ?? null,

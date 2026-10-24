@@ -1,4 +1,4 @@
-import { ReleaseDetail, ReleaseVersion, ReleaseDownload, ReleaseQr, ReleaseLink } from "../../components/ReleasePlatform";
+import { ReleaseDetail, ReleaseVersion, ReleaseDownload, ReleaseQr, ReleaseLink, TestFlightDetailLine, TestFlightBuildText } from "../../components/ReleasePlatform";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import Image from "../../components/SiteImage";
@@ -285,7 +285,7 @@ function HeroAvailability({ app }: { app: NonNullable<ReturnType<typeof findApp>
           return (
             <span className={`hero-platform-chip hero-platform-chip-${platform.status.replace(" ", "-")}`} key={platform.name}>
               {platform.name} {platform.status}
-              <ReleaseVersion platform={platform} />
+              <ReleaseVersion platform={platform} appSlug={app.slug} />
             </span>
           );
         })}
@@ -348,7 +348,7 @@ function HeroAvailability({ app }: { app: NonNullable<ReturnType<typeof findApp>
             <span className={`status-dot status-${platform.status.replace(" ", "-")}`} />
             <strong>{platform.name}</strong>
             <span>{platform.status}</span>
-            <small><ReleaseDetail platform={platform} /></small>
+            <small><ReleaseDetail platform={platform} appSlug={app.slug} /></small>
           </div>
         ))}
       </details>
@@ -581,7 +581,7 @@ export default async function AppRoute({ params }: RouteProps) {
               : testFlight?.publicBetaState === "internalOnly" ? "회사 내부 전용" : testFlight?.publicBetaState === "rejected" ? "Apple 심사 수정 요청 · 새 빌드 준비 필요" : testFlight?.publicBetaState === "waitingForReview" ? "새 빌드는 Apple 심사 대기 중" : testFlight?.publicBetaState === "needsReviewAccount" ? "Apple 심사용 계정 준비 중" : "외부 테스트용 빌드 준비 중";
             const qrUrl = platform.url ? downloadQrUrl(platform.url) : inviteUrl;
             const qrLabel = platform.url ? platform.downloadLabel ?? "공식 다운로드" : "TestFlight 외부 테스터 참여";
-            return <article className={qrUrl ? "download-item-with-qr" : undefined} key={platform.name} id={platformAnchorId(platform.name)}><div className="download-platform-copy"><div className="download-platform-head"><AdvantageVisual variant={platformVisual(platform.name)} /><span className={`status-dot status-${platform.status.replace(" ", "-")}`} /><h3>{platform.name}</h3></div>{platform.url ? <ReleaseDownload platform={platform} /> : <p>{platform.detail} · {platform.status}</p>}{platform.url ? null : inviteUrl ? <a className="testflight-apply-download" href={inviteUrl}>{testFlight?.publicBetaState === "waitingForReview" ? "기존 TestFlight 공개 링크" : "TestFlight 바로 참여"} <span aria-hidden="true">↗</span></a> : <span>{platform.status === "TestFlight" ? pendingCopy : platform.availabilityNote ?? "공개 링크 준비 중"}</span>}{app.slug === "barobogi" && platform.url && platform.availabilityNote && <small className="download-availability-note">{platform.availabilityNote}</small>}{app.slug === "barobogi" && platform.name.includes("Windows") && platform.url && <a href="/apps/barobogi/downloads/install.html" target="_blank" rel="noreferrer">설치·사용 안내 보기 <span aria-hidden="true">↗</span></a>}</div>{qrUrl && <ReleaseQr href={qrUrl} label={qrLabel} />}</article>;
+            return <article className={qrUrl ? "download-item-with-qr" : undefined} key={platform.name} id={platformAnchorId(platform.name)}><div className="download-platform-copy"><div className="download-platform-head"><AdvantageVisual variant={platformVisual(platform.name)} /><span className={`status-dot status-${platform.status.replace(" ", "-")}`} /><h3>{platform.name}</h3></div>{platform.url ? <ReleaseDownload platform={platform} /> : platform.status === "TestFlight" ? <TestFlightDetailLine platform={platform} appSlug={app.slug} /> : <p>{platform.detail} · {platform.status}</p>}{platform.url ? null : inviteUrl ? <a className="testflight-apply-download" href={inviteUrl}>{testFlight?.publicBetaState === "waitingForReview" ? "기존 TestFlight 공개 링크" : "TestFlight 바로 참여"} <span aria-hidden="true">↗</span></a> : <span>{platform.status === "TestFlight" ? pendingCopy : platform.availabilityNote ?? "공개 링크 준비 중"}</span>}{app.slug === "barobogi" && platform.url && platform.availabilityNote && <small className="download-availability-note">{platform.availabilityNote}</small>}{app.slug === "barobogi" && platform.name.includes("Windows") && platform.url && <a href="/apps/barobogi/downloads/install.html" target="_blank" rel="noreferrer">설치·사용 안내 보기 <span aria-hidden="true">↗</span></a>}</div>{qrUrl && <ReleaseQr href={qrUrl} label={qrLabel} />}</article>;
           })}
         </div>
       </section>
@@ -692,7 +692,7 @@ function ProductSpec({ app }: { app: NonNullable<ReturnType<typeof findApp>> }) 
                 ? "Apple 외부 베타 심사 중"
                 : testFlightStateLabel[testFlight.publicBetaState];
               return inviteUrl ? <a href={inviteUrl}>{label}</a> : label;
-            })()}{testFlight.build && <small>빌드 {testFlight.build}</small>}</> : "해당 없음"}</dd>
+            })()}{testFlight.build && <TestFlightBuildText appSlug={app.slug} fallback={testFlight.build} />}</> : "해당 없음"}</dd>
           </div>
           <div>
             <dt>진행 상황</dt>

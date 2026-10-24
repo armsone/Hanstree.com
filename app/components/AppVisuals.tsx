@@ -20,8 +20,8 @@ export function AppIcon({ app, priority = false }: { app: AppData; priority?: bo
   return <span className={`app-icon app-icon-letter theme-${app.theme}`} aria-hidden="true">{app.english.charAt(0).toUpperCase()}</span>;
 }
 
-export function AppStatus({ platform }: { platform: Platform }) {
-  return <ReleasePlatformChip platform={platform} />;
+export function AppStatus({ platform, appSlug }: { platform: Platform; appSlug?: string }) {
+  return <ReleasePlatformChip platform={platform} appSlug={appSlug} />;
 }
 
 function DirectionsFlow() {
