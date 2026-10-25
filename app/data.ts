@@ -1535,7 +1535,7 @@ const appCatalog: AppData[] = [
       { src: "/apps/barobogi/screens/ios-home-0.8.12.png", alt: "바로보기 iPhone 0.8.12 설치본 · 사진·카메라·웹·붙여넣기 홈 화면 · 공개 베타 참여 가능", layout: "phone", platformGroup: "ios" },
       { src: "/apps/barobogi/screens/ios-translation-0.8.12.png", alt: "바로보기 iPhone 0.8.12 설치본 · Apple·Google·DeepL 로고와 버튼 연결 번역 팝업", layout: "phone", platformGroup: "ios" },
       { src: "/apps/barobogi/screens/ios-settings-0.8.12.png", alt: "바로보기 iPhone 0.8.12 설치본 · 네 가지 아이콘팩과 화면 모드 설정", layout: "phone", platformGroup: "ios" },
-      { src: "/apps/barobogi/screens/settings-0.7.5.png", alt: "바로보기(Barobogi) Mac 설정 · 0.7.5 촬영(구버전 캡처) · Dock 표시, Mail 연동, 로그인 시 자동 시작 항목을 보여줍니다. 현재 공개 버전은 0.7.93입니다.", platformGroup: "mac" },
+      { src: "/apps/barobogi/screens/settings-0.7.5.png", alt: "바로보기(Barobogi) Mac 설정 · 0.7.5 촬영(구버전 캡처) · Dock 표시, Mail 연동, 로그인 시 자동 시작 항목을 보여줍니다.", platformGroup: "mac" },
     ],
     artwork: "menubar",
     platforms: [
@@ -1584,6 +1584,7 @@ const appCatalog: AppData[] = [
       { title: "화면 번역, 보던 자리에 그대로", body: "번역할 화면 영역을 지정하면 그 자리를 캡처해 텍스트를 인식하고, 번역문을 원문 줄이 있던 바로 그 위치에 겹쳐 보여줍니다. 전환 스위치나 Space·Enter로 원문·번역을 오가며, 자동·주기 캡처 없이 번역 버튼을 누를 때만 다시 캡처합니다.", platformGroup: "mac" },
       { title: "Mail 제목·본문을 서식 그대로", body: "Apple Mail에서 선택한 메시지나 .eml 파일의 제목·본문·표·이미지 속 글자를 원본 서식을 유지한 결과 창에서 번역해 비교합니다. 이미지 번역은 원본 이미지 위에 제자리로 덧씁니다.", platformGroup: "mac" },
       { title: "Chrome·Whale·Safari, 같은 자리에서", body: "Mac 브라우저 확장이 페이지 글자와 화면에 보이는 이미지 속 글자를 바로보기로 보내 같은 위치에서 번역합니다. 0.7.5부터 툴바 아이콘을 누르면 지금 탭이 항상 번역 보기로 바뀌고, 허용한 사이트는 스크롤·페이지 이동에도 계속 번역합니다.", platformGroup: "mac" },
+      { title: "이미지도 준비된 문장부터", body: "Mac의 Chrome·Whale 기본 번역에서는 이미지 속 글자도 번역이 준비된 문단부터 차례로 보여 줍니다. 아직 번역이 준비되지 않은 부분은 빈칸으로 두지 않고 원문을 그대로 유지합니다. 인식 단위가 문단이라 말풍선 하나가 여러 조각으로 나뉠 수 있습니다.", platformGroup: "mac" },
       { title: "먼저 기기 안에서, 다듬기도 기기 안에서", body: "기본 번역은 Mac 안에서 처리합니다. 구글·딥플은 서비스별 전송 동의 후 직접 선택할 때만 인식한 글자를 전송합니다. macOS 26 이상 지원 기기에서는 이 번역문을 온디바이스 Apple Intelligence가 뜻을 바꾸지 않고 표현만 다시 다듬습니다(Safari 확장은 다듬기 없이 기본 번역만 사용).", platformGroup: "mac" },
       { title: "언어는 자동으로 갈라 보고, 팩은 앱 안에서", body: "원문 언어 '자동 인식'을 고르면 화면이나 페이지에 섞인 여러 언어를 줄·문단 단위로 갈라 한 번에 옮깁니다. 처음 쓰는 언어 조합의 번역 언어 팩은 Chrome·Whale 팝업의 '언어팩' 버튼으로 받을 수 있습니다(Safari는 앱을 직접 실행).", platformGroup: "mac" },
       { title: "전역 단축키와 조용한 기본 동작", body: "화면 번역은 ⌃⌥⇧⌘T, 메일 번역은 ⌃⌥⇧⌘M로 메뉴 막대 없이 바로 엽니다. 메뉴 막대 상주·Dock 표시, Mail 위 플로팅 번역 버튼, 로그인 자동 시작은 일반 설정에서 고르며, 캡처 이미지·인식 텍스트·메일 내용·번역 결과는 디스크에 저장하지 않습니다.", platformGroup: "mac" },
