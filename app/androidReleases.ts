@@ -4,6 +4,7 @@ export const ANDROID_RELEASE_SOURCES = [
   { appName: "나스파인더", repo: "NasFinder-Android" },
   { appName: "한클립", repo: "HanClip-Android" },
   { appName: "S.tand", repo: "S.tand-Android" },
+  { appName: "CCMB", repo: "CCMB-Android" },
   { appName: "OurButton", repo: "OurButton-Android" },
   { appName: "Stargram", repo: "Stargram-Android" },
   { appName: "오늘 뭐 먹지?", repo: "WhattoEat-Android" },
@@ -40,7 +41,7 @@ export function verifiedFallbackRelease(source: AndroidReleaseSource): AndroidRe
     url.protocol !== "https:" ||
     url.hostname !== "github.com" ||
     owner !== "armsone" ||
-    repo !== source.repo ||
+    repo !== config.repo ||
     releases !== "releases" ||
     download !== "download" ||
     !tagName ||
@@ -60,7 +61,7 @@ export function verifiedFallbackRelease(source: AndroidReleaseSource): AndroidRe
     tagName,
     releaseName: productVersion ? `${config.label} ${productVersion}` : config.label,
     publishedAt: null,
-    releaseUrl: `https://github.com/armsone/${source.repo}/releases/tag/${encodeURIComponent(tagName)}`,
+    releaseUrl: `https://github.com/armsone/${config.repo}/releases/tag/${encodeURIComponent(tagName)}`,
     asset: {
       name: assetName,
       size: 0,

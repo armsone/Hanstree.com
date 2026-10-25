@@ -10,6 +10,7 @@ export const DOWNLOAD_KEYS = [
   "S.tand-macOS",
   "S.tand-Android",
   "CCMB",
+  "CCMB-Android",
   "BTN",
   "TrackpadGuard",
   "WhattoEat",
@@ -121,8 +122,16 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
   CCMB: {
     label: "CCMB Mac",
     repo: "CCMB",
+    tagPattern: /^v\d+\.\d+\.\d+$/,
     assetPattern: /\.dmg$/i,
     fallbackUrl: "https://github.com/armsone/CCMB/releases/download/v2.0.33/CCMB-2.0.33.dmg",
+  },
+  "CCMB-Android": {
+    label: "CCMB Android",
+    repo: "CCMB",
+    tagPattern: /^android-v\d+\.\d+\.\d+$/,
+    assetPattern: /^CCMB-Android-\d+\.\d+\.\d+\.apk$/i,
+    fallbackUrl: "https://github.com/armsone/CCMB/releases/download/android-v0.8.2/CCMB-Android-0.8.2.apk",
   },
   BTN: {
     label: "BTN Mac",
