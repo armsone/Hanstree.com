@@ -97,6 +97,7 @@ export async function SiteFooter({ currentPageName }: ChromeProps = {}) {
               <li><Link href="/space/hanstree">한스트리 스튜디오</Link></li>
               <li><Link href="/space/hanstree/instagram">먹탐자 Instagram</Link></li>
               <li><Link href={workroomHref}>Hanstree-AI</Link></li>
+              <li><Link href="/guides/webdav-macos-folders">WebDAV Mac 폴더 가이드</Link></li>
               <li><Link href="/#contact">이야기와 문의</Link></li>
               <li><Link href="/#records">사이트 기록</Link></li>
             </ul>

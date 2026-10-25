@@ -18,6 +18,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     { url: origin, changeFrequency: "weekly", priority: 1 },
     { url: `${origin}/space/hanstree`, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${origin}/guides/webdav-macos-folders`, changeFrequency: "monthly", priority: 0.7 },
     ...productPages,
     { url: `${origin}/apps/nasfinder/data-deletion`, changeFrequency: "monthly", priority: 0.4 },
     { url: `${origin}/apps/nasfinder/google-oauth`, changeFrequency: "monthly", priority: 0.4 },

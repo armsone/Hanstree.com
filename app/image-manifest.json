@@ -989,6 +989,18 @@
     "height": 512,
     "srcSet": "/optimized/8d1e268aee4ac17d-128.webp 128w, /optimized/8d1e268aee4ac17d-512.webp 512w"
   },
+  "/guides/webdav-macos-folders/finder-after.png": {
+    "src": "/optimized/6f4168b6068497d5-1920.webp",
+    "width": 1978,
+    "height": 1488,
+    "srcSet": "/optimized/6f4168b6068497d5-128.webp 128w, /optimized/6f4168b6068497d5-640.webp 640w, /optimized/6f4168b6068497d5-1280.webp 1280w, /optimized/6f4168b6068497d5-1920.webp 1920w"
+  },
+  "/guides/webdav-macos-folders/gateway-health.png": {
+    "src": "/optimized/a9bf422c918d19a7-1280.webp",
+    "width": 1280,
+    "height": 720,
+    "srcSet": "/optimized/a9bf422c918d19a7-128.webp 128w, /optimized/a9bf422c918d19a7-640.webp 640w, /optimized/a9bf422c918d19a7-1280.webp 1280w"
+  },
   "/hanstree/bedroom-art.jpg": {
     "src": "/optimized/fb2cee0841091e4f-1448.webp",
     "width": 1448,
