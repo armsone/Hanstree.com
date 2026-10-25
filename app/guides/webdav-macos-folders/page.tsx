@@ -89,7 +89,7 @@ export default function WebdavMacosFoldersGuidePage() {
           </section>
 
           {/* 1. 증상과 문제 정의 */}
-          <section className="guide-section">
+          <section className="webdav-guide-section">
             <h2>1. 증상: 특정 폴더만 Finder에서 사라짐</h2>
             <p>
               Synology NAS를 WebDAV 프로토콜로 macOS Finder(네이티브 &lsquo;서버에 연결&rsquo;)에 마운트했을 때, 특이한 누락 현상이 관찰되었습니다.
@@ -149,7 +149,7 @@ export default function WebdavMacosFoldersGuidePage() {
           </section>
 
           {/* 2. 기술적 원인 분석 */}
-          <section className="guide-section">
+          <section className="webdav-guide-section">
             <h2>2. 원인 분석: 유니코드 NFC/NFD와 UTF-16 길이 비교의 함정</h2>
             <p>
               왜 다른 폴더(<code>Android</code>, <code>Windows</code>)는 잘 보이는데 유독 <code>Mac</code>만 사라졌을까요?
@@ -227,7 +227,7 @@ export default function WebdavMacosFoldersGuidePage() {
           </section>
 
           {/* 3. 해결 구조와 인라인 SVG 다이어그램 */}
-          <section className="guide-section">
+          <section className="webdav-guide-section">
             <h2>3. 해결 구조: 무변형 저장과 실시간 NFD 응답 보정</h2>
             <p>
               핵심 해결 전략은 <strong>&ldquo;저장소의 원본 파일명과 폴더명은 절대 건드리지 않고, macOS 클라이언트의 요청 경로도 강제로 NFC로 역변환하지 않는 것&rdquo;</strong>입니다.
@@ -353,7 +353,7 @@ export default function WebdavMacosFoldersGuidePage() {
           </section>
 
           {/* 4. 실제 복구 증거와 스크린샷 */}
-          <section className="guide-section">
+          <section className="webdav-guide-section">
             <h2>4. 실제 복구 검증 및 스크린샷</h2>
             <p>
               보정 게이트웨이를 가동하고 DSM 역방향 프록시를 연결한 뒤, 클라이언트에서 기존 접속 주소(<code>https://nas.example.com:5006/home/</code>)로 다시 접속하여 실제 정상 동작을 확인했습니다.
@@ -401,7 +401,7 @@ export default function WebdavMacosFoldersGuidePage() {
           </section>
 
           {/* 5. 설치 및 DSM 포트 예약 해결 */}
-          <section className="guide-section">
+          <section className="webdav-guide-section">
             <h2>5. 상세 설치 가이드 및 DSM 포트 예약 회피 절차</h2>
             <p>
               Synology DSM 환경에서 외부 공개 포트 5006을 역방향 프록시로 전환하려 할 때, 가장 중요한 부분은 <strong>DSM의 비활성 포트 예약 잠금 현상</strong>을 해소하는 절차입니다.
@@ -490,7 +490,7 @@ docker compose build && docker compose up -d`}</code>
           </section>
 
           {/* 6. 안전한 원복 (Rollback) 절차 */}
-          <section className="guide-section">
+          <section className="webdav-guide-section">
             <h2>6. 안전한 원복 (Rollback) 절차</h2>
             <p>
               본 구성은 Synology 원본 시스템의 Nginx 설정 파일이나 SSL 인증서 개인키를 직접 수정·복사하지 않는 비침습적 구조입니다.
@@ -520,7 +520,7 @@ docker compose build && docker compose up -d`}</code>
           </section>
 
           {/* 7. 솔직한 성능 고지 및 기술적 한계 */}
-          <section className="guide-section">
+          <section className="webdav-guide-section">
             <h2>7. 성능 실측 미실시 및 기술적 한계 고지</h2>
             <p>
               투명하고 정직한 기술 공유를 위해 본 해결책 적용 시 인지해야 할 한계와 미확인 영역을 솔직히 밝힙니다:
@@ -568,7 +568,7 @@ docker compose build && docker compose up -d`}</code>
           </section>
 
           {/* 8. 참고 문헌 및 리소스 */}
-          <section className="guide-section">
+          <section className="webdav-guide-section">
             <h2>8. 참고 문헌 및 자료 출처</h2>
             <ul className="guide-references-list">
               <li>
@@ -799,10 +799,10 @@ docker compose build && docker compose up -d`}</code>
           color: #991b1b;
           border: 1px solid #fecaca;
         }
-        .guide-section {
+        .webdav-guide-section {
           margin-bottom: 64px;
         }
-        .guide-section h2 {
+        .webdav-guide-section h2 {
           font-size: clamp(1.6rem, 2.8vw, 2.1rem);
           line-height: 1.25;
           letter-spacing: -0.035em;
@@ -813,22 +813,22 @@ docker compose build && docker compose up -d`}</code>
           border-bottom: 1px solid var(--line, rgba(36, 38, 33, 0.12));
           word-break: keep-all;
         }
-        .guide-section h3 {
+        .webdav-guide-section h3 {
           font-size: 1.25rem;
           font-weight: 650;
           letter-spacing: -0.02em;
           color: var(--ink, #242621);
           margin: 32px 0 14px;
         }
-        .guide-section p, .guide-section li {
+        .webdav-guide-section p, .webdav-guide-section li {
           font-size: 0.96rem;
           line-height: 1.8;
           color: var(--ink-secondary, #4a4d45);
         }
-        .guide-section p {
+        .webdav-guide-section p {
           margin: 0 0 18px;
         }
-        .guide-section a {
+        .webdav-guide-section a {
           color: var(--accent, #a74628);
           font-weight: 600;
           text-decoration: underline;
