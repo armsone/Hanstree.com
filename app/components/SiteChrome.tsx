@@ -35,6 +35,7 @@ export async function SiteHeader({ currentPageName }: ChromeProps = {}) {
         <SiteHeaderBrand name={brand.name} koreanName={brand.koreanName} icon={brand.icon} showNasFinderIcon={brand.name === "NASFINDER"} currentPageName={currentPageName} />
         <nav className="site-nav" aria-label="주요 메뉴">
           <Link href="/#works">만든 것들</Link>
+          <Link href="/blog">블로그</Link>
           <details className="nav-space-menu">
             <summary>스페이스</summary>
             <div className="nav-space-panel">
@@ -52,6 +53,7 @@ export async function SiteHeader({ currentPageName }: ChromeProps = {}) {
           <summary>메뉴</summary>
           <div className="nav-mobile-panel" role="navigation" aria-label="작은 화면 메뉴">
             <Link href="/#works">만든 것들</Link>
+            <Link href="/blog">블로그</Link>
             <Link href={appsHref}>{app ? "제품 · 같은 계열" : "제품"}</Link>
             <Link href="/space/hanstree">한스트리 스튜디오</Link>
             <Link href="/space/hanstree/instagram">먹탐자 Instagram</Link>
@@ -97,7 +99,8 @@ export async function SiteFooter({ currentPageName }: ChromeProps = {}) {
               <li><Link href="/space/hanstree">한스트리 스튜디오</Link></li>
               <li><Link href="/space/hanstree/instagram">먹탐자 Instagram</Link></li>
               <li><Link href={workroomHref}>Hanstree-AI</Link></li>
-              <li><Link href="/guides/webdav-macos-folders">WebDAV Mac 폴더 가이드</Link></li>
+              <li><Link href="/blog">블로그</Link></li>
+              <li><Link href="/blog/webdav-macos-folders">WebDAV Mac 폴더 가이드</Link></li>
               <li><Link href="/#contact">이야기와 문의</Link></li>
               <li><Link href="/#records">사이트 기록</Link></li>
             </ul>

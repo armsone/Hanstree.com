@@ -57,3 +57,41 @@ export const testflightAdminSettings = sqliteTable("testflight_admin_settings", 
   createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
   updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
 });
+
+export const blogPosts = sqliteTable(
+  "blog_posts",
+  {
+    id: integer("id").primaryKey({ autoIncrement: true }),
+    slug: text("slug").notNull().unique(),
+    title: text("title").notNull(),
+    category: text("category").notNull().default("일반"),
+    summary: text("summary").notNull(),
+    body: text("body").notNull(),
+    coverImageUrl: text("cover_image_url"),
+    status: text("status").notNull().default("draft"),
+    isTrashed: integer("is_trashed", { mode: "boolean" }).notNull().default(false),
+    publishedAt: text("published_at"),
+    createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+    updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  },
+  (table) => [
+    index("idx_blog_posts_status_published").on(table.status, table.isTrashed, table.publishedAt),
+    index("idx_blog_posts_category").on(table.category),
+  ],
+);
+
+export const blogMedia = sqliteTable(
+  "blog_media",
+  {
+    id: text("id").primaryKey(),
+    postId: integer("post_id"),
+    storageKey: text("storage_key").notNull(),
+    mimeType: text("mime_type").notNull(),
+    size: integer("size").notNull(),
+    originalFilename: text("original_filename"),
+    createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  },
+  (table) => [
+    index("idx_blog_media_post").on(table.postId),
+  ],
+);

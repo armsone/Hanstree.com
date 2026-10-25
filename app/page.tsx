@@ -13,6 +13,37 @@ import { appCardImage } from "./media";
 import { testFlightBuilds } from "./testflight";
 import { getSiteBrand } from "./site-brand";
 import { SiteFooter, SiteHeader } from "./components/SiteChrome";
+import { getD1 } from "../db";
+import { ensureSeedPost } from "./blog/seed";
+
+type LatestPost = {
+  id: number;
+  slug: string;
+  title: string;
+  category: string;
+  summary: string;
+  coverImageUrl: string | null;
+  publishedAt: string | null;
+};
+
+async function getLatestBlogPosts(): Promise<LatestPost[]> {
+  try {
+    await ensureSeedPost();
+    const rows = await getD1()
+      .prepare(
+        `SELECT id, slug, title, category, summary, cover_image_url AS coverImageUrl,
+                published_at AS publishedAt
+         FROM blog_posts
+         WHERE status = 'published' AND is_trashed = 0
+         ORDER BY published_at DESC, id DESC
+         LIMIT 3`
+      )
+      .all<LatestPost>();
+    return rows.results ?? [];
+  } catch {
+    return [];
+  }
+}
 
 const principleVisuals: AdvantageVariant[] = ["target-swing", "check-source", "devices-pair"];
 
@@ -119,6 +150,7 @@ export default async function Home() {
 
   const cleanusbApp = findApp("cleanusb");
   const ccmbApp = findApp("ccmb");
+  const latestPosts = await getLatestBlogPosts();
 
   return (
     <main className="home-hanstree">
@@ -216,6 +248,174 @@ export default async function Home() {
             </div>
           </div>
         </div>
+
+        {latestPosts.length > 0 && (
+          <section className="blog-home-section" aria-label="블로그 최신 이야기">
+            <div className="blog-home-heading">
+              <div>
+                <p className="blog-home-eyebrow">BLOG &amp; ARTICLES</p>
+                <h2 className="blog-home-title">블로그 최신 이야기</h2>
+              </div>
+              <Link href="/blog" className="blog-home-viewall">
+                전체 글 보기 →
+              </Link>
+            </div>
+            <div className="blog-home-grid">
+              {latestPosts.map((post) => (
+                <article key={post.slug} className="blog-home-card">
+                  <Link href={`/blog/${post.slug}`} className="blog-home-card-link">
+                    {post.coverImageUrl ? (
+                      <div className="blog-home-card-thumb-wrap">
+                        <img
+                          src={post.coverImageUrl}
+                          alt=""
+                          className="blog-home-card-thumb"
+                          loading="lazy"
+                        />
+                      </div>
+                    ) : null}
+                    <div className="blog-home-card-body">
+                      <div className="blog-home-card-meta">
+                        <span className="blog-badge">{post.category}</span>
+                        {post.publishedAt ? (
+                          <time dateTime={post.publishedAt.slice(0, 10)}>
+                            {post.publishedAt.slice(0, 10)}
+                          </time>
+                        ) : null}
+                      </div>
+                      <h3 className="blog-home-card-title">{post.title}</h3>
+                      <p className="blog-home-card-summary">{post.summary}</p>
+                    </div>
+                  </Link>
+                </article>
+              ))}
+            </div>
+            <style>{`
+              .blog-home-section {
+                margin-top: 40px;
+                margin-bottom: 32px;
+                padding: 32px;
+                background: #ffffff;
+                border: 1px solid var(--line, rgba(36, 38, 33, 0.12));
+                border-radius: 28px;
+                box-shadow: 0 4px 20px rgba(36, 38, 33, 0.04);
+              }
+              .blog-home-heading {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
+                margin-bottom: 24px;
+                gap: 16px;
+                flex-wrap: wrap;
+              }
+              .blog-home-eyebrow {
+                margin: 0 0 6px;
+                font: 700 0.68rem var(--font-geist-mono), monospace;
+                letter-spacing: 0.12em;
+                color: var(--accent, #a74628);
+                text-transform: uppercase;
+              }
+              .blog-home-title {
+                margin: 0;
+                font-size: clamp(1.4rem, 2.4vw, 1.85rem);
+                font-weight: 700;
+                color: var(--ink, #242621);
+                letter-spacing: -0.03em;
+              }
+              .blog-home-viewall {
+                font-size: 0.88rem;
+                font-weight: 600;
+                color: var(--accent, #a74628);
+                transition: color 0.2s;
+                text-decoration: none;
+              }
+              .blog-home-viewall:hover {
+                text-decoration: underline;
+              }
+              .blog-home-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 20px;
+              }
+              .blog-home-card {
+                background: var(--paper, #f5f2eb);
+                border: 1px solid var(--line, rgba(36, 38, 33, 0.12));
+                border-radius: 18px;
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+                transition: transform 0.2s ease, box-shadow 0.2s ease;
+              }
+              .blog-home-card:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 8px 24px rgba(36, 38, 33, 0.08);
+              }
+              .blog-home-card-link {
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+                text-decoration: none;
+                color: inherit;
+              }
+              .blog-home-card-thumb-wrap {
+                width: 100%;
+                height: 170px;
+                overflow: hidden;
+                background: #e2ddd3;
+              }
+              .blog-home-card-thumb {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.3s ease;
+              }
+              .blog-home-card:hover .blog-home-card-thumb {
+                transform: scale(1.03);
+              }
+              .blog-home-card-body {
+                padding: 18px 20px;
+                display: flex;
+                flex-direction: column;
+                flex-grow: 1;
+              }
+              .blog-home-card-meta {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 10px;
+                font-size: 0.78rem;
+                color: var(--muted, #6e6d65);
+              }
+              .blog-badge {
+                display: inline-block;
+                padding: 2px 8px;
+                border-radius: 6px;
+                background: var(--accent-tint, #fbf0eb);
+                color: var(--accent, #a74628);
+                font: 700 0.7rem var(--font-geist-mono), monospace;
+                letter-spacing: 0.04em;
+              }
+              .blog-home-card-title {
+                margin: 0 0 8px;
+                font-size: 1.05rem;
+                font-weight: 700;
+                line-height: 1.35;
+                color: var(--ink, #242621);
+                letter-spacing: -0.02em;
+              }
+              .blog-home-card-summary {
+                margin: 0;
+                font-size: 0.85rem;
+                line-height: 1.55;
+                color: var(--ink-secondary, #4a4d45);
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+              }
+            `}</style>
+          </section>
+        )}
 
         <div className="hero-product-wall works-index-wall" id="works-index" aria-label="한스트리의 모든 제품과 공간">
           <div className="hero-product-wall-heading">

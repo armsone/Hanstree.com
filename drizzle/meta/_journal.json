@@ -43,6 +43,13 @@
       "when": 1791950797747,
       "tag": "0005_rainy_morg",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "6",
+      "when": 1792934974567,
+      "tag": "0006_blog_posts",
+      "breakpoints": true
     }
   ]
 }

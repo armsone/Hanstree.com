@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { apps } from "./data";
 import { getSiteBrand } from "./site-brand";
+import { getD1 } from "../db";
+import { ensureSeedPost } from "./blog/seed";
 
 const publicSections = ["privacy", "support", "terms"] as const;
 
@@ -15,10 +17,32 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
   ]);
 
+  let blogPosts: { slug: string; updatedAt?: string }[] = [];
+  try {
+    await ensureSeedPost();
+    const rows = await getD1()
+      .prepare(
+        "SELECT slug, updated_at AS updatedAt FROM blog_posts WHERE status = 'published' AND is_trashed = 0 ORDER BY published_at DESC"
+      )
+      .all<{ slug: string; updatedAt: string }>();
+    blogPosts = rows.results ?? [];
+  } catch {
+    blogPosts = [{ slug: "webdav-macos-folders" }];
+  }
+
+  const blogPages: MetadataRoute.Sitemap = [
+    { url: `${origin}/blog`, changeFrequency: "daily", priority: 0.8 },
+    ...blogPosts.map((post) => ({
+      url: `${origin}/blog/${post.slug}`,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
+  ];
+
   return [
     { url: origin, changeFrequency: "weekly", priority: 1 },
     { url: `${origin}/space/hanstree`, changeFrequency: "monthly", priority: 0.9 },
-    { url: `${origin}/guides/webdav-macos-folders`, changeFrequency: "monthly", priority: 0.7 },
+    ...blogPages,
     ...productPages,
     { url: `${origin}/apps/nasfinder/data-deletion`, changeFrequency: "monthly", priority: 0.4 },
     { url: `${origin}/apps/nasfinder/google-oauth`, changeFrequency: "monthly", priority: 0.4 },

@@ -125,9 +125,42 @@ export function AdminDashboardClient() {
       ) : (
         <div className="admin-dashboard">
           <header className="admin-dash-header">
-            <div><p className="eyebrow">사이트 기록 · 관리자</p><h1>사이트 기록</h1><p className="admin-ident">관리자 화면에서는 유입 경로까지 표시합니다.</p></div>
-            <button type="button" className="button button-primary admin-logout-btn" onClick={handleLogout}>로그아웃</button>
+            <div>
+              <p className="eyebrow">사이트 관리 · 관리자</p>
+              <h1>사이트 관리자</h1>
+              <p className="admin-ident">사이트 기록 확인 및 블로그 글 작성·관리를 할 수 있습니다.</p>
+            </div>
+            <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+              <Link href="/admin/blog" className="button button-primary admin-blog-link">
+                블로그 관리 →
+              </Link>
+              <button type="button" className="button button-primary admin-logout-btn" onClick={handleLogout}>
+                로그아웃
+              </button>
+            </div>
           </header>
+          <div style={{ marginBottom: "28px" }}>
+            <Link
+              href="/admin/blog"
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                padding: "18px 24px",
+                background: "#ffffff",
+                border: "1px solid var(--line, rgba(36, 38, 33, 0.12))",
+                borderRadius: "16px",
+                textDecoration: "none",
+                color: "var(--ink, #242621)",
+              }}
+            >
+              <div>
+                <strong style={{ display: "block", fontSize: "1.05rem", marginBottom: "4px" }}>✍️ 블로그 관리</strong>
+                <span style={{ fontSize: "0.86rem", color: "var(--muted, #6e6d65)" }}>새 글 작성, 수정, 임시저장, 발행 및 이미지 업로드</span>
+              </div>
+              <span style={{ fontWeight: 600, color: "var(--accent, #a74628)" }}>바로가기 →</span>
+            </Link>
+          </div>
           <SiteInsights embedded showSources />
         </div>
       )}
