@@ -14,7 +14,7 @@ export type TestFlightBuild = {
 // TestFlight 업로드가 확인되면 이 목록의 빌드 번호와 ISO 8601 시각만 갱신합니다.
 // 확인되지 않은 날짜를 추정해서 입력하지 않습니다.
 export const testFlightBuilds: TestFlightBuild[] = [
-  { slug: "ccmb", appName: "CCMB", build: "202610252029", uploadedAt: "2026-10-25T05:32:52-07:00", expiresAt: "2027-01-23T04:32:52-08:00", inviteUrl: "https://testflight.apple.com/join/q9jesHZa", inviteAvailable: true, publicBetaState: "waitingForReview" },
+  { slug: "ccmb", appName: "CCMB", build: "202610262006", uploadedAt: "2026-10-26T04:22:58-07:00", expiresAt: "2027-01-24T03:22:58-08:00", inviteUrl: "https://testflight.apple.com/join/q9jesHZa", inviteAvailable: true, publicBetaState: "waitingForReview" },
   { slug: "nasfinder", appName: "나스파인더", build: "202610180837", uploadedAt: "2026-10-17T17:34:31-07:00", expiresAt: "2027-01-15T16:34:31-08:00", inviteUrl: "https://testflight.apple.com/join/3m3bhwJz", inviteAvailable: true, publicBetaState: "waitingForReview" },
   { slug: "hanclip", appName: "한클립", build: "202610141351", uploadedAt: "2026-10-13T22:45:47-07:00", expiresAt: "2027-01-11T21:45:47-08:00", inviteUrl: "https://testflight.apple.com/join/m2YsgUJW", inviteAvailable: true, publicBetaState: "waitingForReview" },
   { slug: "stand", appName: "S.tand", build: "202610081804", uploadedAt: "2026-10-08T02:11:04-07:00", expiresAt: "2027-01-06T01:11:04-08:00", inviteAvailable: true, inviteUrl: "https://testflight.apple.com/join/mGUYTjdp", publicBetaState: "approved" },
