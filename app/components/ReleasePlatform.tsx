@@ -81,10 +81,11 @@ export function ReleaseVersion({ platform, appSlug }: { platform: Platform; appS
   const detail = useTestFlightDetail(platform, appSlug, near);
   return <span ref={ref}>{key ? info?.version ? ` ${info.version}${info.source !== "github" ? " (확인 정보)" : ""}` : "" : ` ${detail.match(/\d+\.\d+(?:\.\d+)?/)?.[0] ?? ""}`}</span>;
 }
-export function ReleaseDownload({ platform, className }: { platform: Platform; className?: string }) {
-  const { ref, key, info } = useRelease<HTMLDivElement>(platform.url);
+export function ReleaseDownload({ platform, className, appSlug }: { platform: Platform; className?: string; appSlug?: string }) {
+  const { ref, key, info, near } = useRelease<HTMLDivElement>(platform.url);
+  const detail = useTestFlightDetail(platform, appSlug, near);
   return <div ref={ref}>
-    <p>{key ? releaseDetail(platform.detail, info) : platform.detail} · {platform.status}</p>
+    <p>{key ? releaseDetail(platform.detail, info) : detail} · {platform.status}</p>
     <a className={className} href={info ? snapshotDownloadPath(info) : platform.url}>{platform.downloadLabel ?? "다운로드"} <span aria-hidden="true">↗</span></a>
     {info?.asset?.size && <small style={{ display: "block" }}>{(info.asset.size / 1024 / 1024).toFixed(1)} MB{info.publishedAt ? ` · ${new Intl.DateTimeFormat("ko-KR", { dateStyle: "medium" }).format(new Date(info.publishedAt))}` : ""}</small>}
   </div>;
