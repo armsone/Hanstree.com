@@ -380,7 +380,7 @@ function BarobogiPlatformOverview({ app }: { app: NonNullable<ReturnType<typeof 
       group: "ios",
       label: "iPhone · iPad",
       usage: "단축어·공유 사진·클립보드는 기기 안에서 번역하고, 인앱 웹 본문은 동의 후 Google·DeepL도 선택할 수 있습니다.",
-      status: "TestFlight 공개 베타 · 누구나 참여 가능 · 0.8.12",
+      status: "TestFlight 공개 베타 · 누구나 참여 가능 · 현재 승인 버전은 다운로드에서 확인",
       links: [{ href: "#download-iphone-ipad", label: "iPhone · iPad 안내로 이동" }],
     },
   ];
@@ -582,7 +582,7 @@ export default async function AppRoute({ params }: RouteProps) {
             const qrUrl = platform.url ? downloadQrUrl(platform.url) : inviteUrl;
             const qrLabel = platform.url ? platform.downloadLabel ?? "공식 다운로드" : "TestFlight 외부 테스터 참여";
             const availabilityNote = app.slug === "barobogi" && platform.status === "TestFlight" && platform.availabilityNote
-              ? platform.availabilityNote.replace("0.8.12는", "최신 빌드는")
+              ? platform.availabilityNote.replace(/새 디자인과 네 가지 아이콘팩을 담은 0\.8\.12는 Apple 외부 심사를 통과\(IN_BETA_TESTING\)해 같은 공개 링크에서 제공됩니다\./, "Apple 외부 심사를 통과한 빌드를 같은 공개 링크에서 제공합니다.")
               : platform.availabilityNote;
             return <article className={qrUrl ? "download-item-with-qr" : undefined} key={platform.name} id={platformAnchorId(platform.name)}><div className="download-platform-copy"><div className="download-platform-head"><AdvantageVisual variant={platformVisual(platform.name)} /><span className={`status-dot status-${platform.status.replace(" ", "-")}`} /><h3>{platform.name}</h3></div>{platform.url ? <ReleaseDownload platform={platform} appSlug={app.slug} /> : platform.status === "TestFlight" ? <TestFlightDetailLine platform={platform} appSlug={app.slug} /> : <p>{platform.detail} · {platform.status}</p>}{platform.url ? null : inviteUrl ? <a className="testflight-apply-download" href={inviteUrl}>{testFlight?.publicBetaState === "waitingForReview" ? "기존 TestFlight 공개 링크" : "TestFlight 바로 참여"} <span aria-hidden="true">↗</span></a> : <span>{platform.status === "TestFlight" ? pendingCopy : platform.availabilityNote ?? "공개 링크 준비 중"}</span>}{app.slug === "barobogi" && platform.url && availabilityNote && <small className="download-availability-note">{availabilityNote}</small>}{app.slug === "barobogi" && platform.name.includes("Windows") && platform.url && <a href="/apps/barobogi/downloads/install.html" target="_blank" rel="noreferrer">설치·사용 안내 보기 <span aria-hidden="true">↗</span></a>}</div>{qrUrl && <ReleaseQr href={qrUrl} label={qrLabel} />}</article>;
           })}
