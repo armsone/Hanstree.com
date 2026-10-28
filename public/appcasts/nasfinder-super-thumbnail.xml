@@ -3,6 +3,15 @@
     <channel>
         <title>NasFinder Super Thumbnail</title>
         <item>
+            <title>2.7.18</title>
+            <pubDate>Wed, 28 Oct 2026 22:30:22 +0900</pubDate>
+            <link>https://github.com/armsone/SuperThumbnail-MacOS/releases/tag/v2.7.18</link>
+            <sparkle:version>202610282222</sparkle:version>
+            <sparkle:shortVersionString>2.7.18</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/armsone/SuperThumbnail-MacOS/releases/download/v2.7.18/NasFinder-Super-Thumbnail-2.7.18.dmg" length="169437290" type="application/octet-stream" sparkle:edSignature="dyo2vNVKGkxbIlXkKnyIClIgZo8F4H5LRtjbgWPF1bM34jmJ9GtdVRxXs4j6C7yLnUHAJUau51fYNauid3o5Ag=="/>
+        </item>
+        <item>
             <title>2.7.17</title>
             <pubDate>Wed, 28 Oct 2026 21:06:41 +0900</pubDate>
             <link>https://github.com/armsone/SuperThumbnail-MacOS/releases/tag/v2.7.17</link>
@@ -19,15 +28,6 @@
             <sparkle:shortVersionString>2.7.16</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
             <enclosure url="https://github.com/armsone/SuperThumbnail-MacOS/releases/download/v2.7.16/NasFinder-Super-Thumbnail-2.7.16.dmg" length="169464066" type="application/octet-stream" sparkle:edSignature="FH7krgw0HOrGRbUAStv4AmUlVtJCqVWptO7HJ6ZBfUstQ8hl6yRC2XE8u6iI0IlpZHO8Imyt4JJjvntxYsbqCQ=="/>
-        </item>
-        <item>
-            <title>2.3.2</title>
-            <pubDate>Sat, 29 Aug 2026 14:29:47 +0900</pubDate>
-            <link>https://github.com/armsone/SuperThumbnail-MacOS/releases/tag/v2.3.2</link>
-            <sparkle:version>202608291428</sparkle:version>
-            <sparkle:shortVersionString>2.3.2</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/armsone/SuperThumbnail-MacOS/releases/download/v2.3.2/NasFinder-Super-Thumbnail-2.3.2.dmg" length="3663628" type="application/octet-stream" sparkle:edSignature="/g6jx7rSgc4JeyTOq1kUetIcR72TwDNR2qKE3ssdGB8hrPFL03OWCJhWjQzsLaHBxYj+JYRRSJxNWHmNSnfPAw=="/>
         </item>
     </channel>
 </rss>
