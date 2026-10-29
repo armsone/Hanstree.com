@@ -26,12 +26,20 @@ export function loadTestFlight() {
   testFlightRequest = { expiresAt: Date.now() + 5 * 60_000, value };
   return value;
 }
-// 승인되어 지금 설치할 수 있는 최신 빌드일 때만 버전과 빌드 번호를 바꾸고, 그 밖에는 기존 표시를 그대로 둡니다.
+// 지금 공개 링크로 설치할 수 있는 승인된 빌드입니다. 최신 업로드·심사 상태(live.build, publicBetaState)와는 따로 다룹니다.
+// 실시간 조회 결과(marketingVersion이 string|null)인데 확인된 승인 빌드가 없으면 정적 값을 현재 버전처럼 쓰지 않도록 null을 돌려줍니다.
+function availableTestFlightBuild(live: TestFlightBuild | null) {
+  if (!live || live.marketingVersion === undefined) return undefined;
+  // 이전 응답 형식(approvedBuild 없음)이 캐시에 남아 있으면 승인된 최신 빌드만 인정합니다.
+  const approved = live.approvedBuild !== undefined ? live.approvedBuild : live.publicBetaState === "approved" && live.build ? { build: live.build, marketingVersion: live.marketingVersion, expiresAt: live.expiresAt ?? null } : null;
+  return approved && !(approved.expiresAt && new Date(approved.expiresAt).getTime() <= Date.now()) ? approved : null;
+}
+// undefined: 실시간 값 없음(정적 표시 유지), null: 실시간 조회 결과에 확인된 승인 빌드 없음.
 function liveTestFlightDetail(detail: string, live: TestFlightBuild | null) {
-  if (live?.publicBetaState !== "approved" || !live.marketingVersion || !live.build) return detail;
-  if (live.expiresAt && new Date(live.expiresAt).getTime() <= Date.now()) return detail;
+  const available = availableTestFlightBuild(live);
+  if (available === undefined) return detail;
   // 앞의 "버전", "(빌드)", "· 빌드 N"은 한 덩어리로 바꾸고, 뒤의 호환·플랫폼 설명은 그대로 둡니다.
-  return detail.replace(/^\d+\.\d+(?:\.\d+)?(?:\s*\(\d+\))?(?:\s*·\s*빌드\s*\d+)?/, `${live.marketingVersion} (${live.build})`);
+  return detail.replace(/^\d+\.\d+(?:\.\d+)?(?:\s*\(\d+\))?(?:\s*·\s*빌드\s*\d+)?/, available?.marketingVersion ? `${available.marketingVersion} (${available.build})` : "승인된 버전 확인 중");
 }
 export function useLiveTestFlight(appSlug: string | undefined, enabled: boolean = true, near: boolean = true) {
   const [live, setLive] = useState<TestFlightBuild | null>(null);
@@ -69,12 +77,12 @@ export function TestFlightDetailLine({ platform, appSlug }: { platform: Platform
   const detail = useTestFlightDetail(platform, appSlug, near);
   return <p ref={ref}>{detail} · {platform.status}</p>;
 }
-// 제품 사양의 TestFlight 빌드 번호입니다. 승인된 최신 빌드를 확인했을 때만 정적 값을 바꿉니다.
+// 제품 사양의 TestFlight 빌드 번호입니다. 지금 설치할 수 있는 승인 빌드를 확인했을 때만 정적 값을 바꿉니다.
 export function TestFlightBuildText({ appSlug, fallback }: { appSlug: string; fallback: string }) {
   const [ref, near] = useNearViewport<HTMLElement>();
   const live = useLiveTestFlight(appSlug, true, near);
-  const approved = live?.publicBetaState === "approved" && !!live.build && !(live.expiresAt && new Date(live.expiresAt).getTime() <= Date.now());
-  return <small ref={ref}>빌드 {approved ? live.build : fallback}</small>;
+  const available = availableTestFlightBuild(live);
+  return <small ref={ref}>빌드 {available === undefined ? fallback : available?.build ?? "확인 중"}</small>;
 }
 export function ReleaseVersion({ platform, appSlug }: { platform: Platform; appSlug?: string }) {
   const { ref, key, info, near } = useRelease(platform.url);

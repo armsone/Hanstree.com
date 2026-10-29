@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { testFlightBuilds, type TestFlightBuild } from "../../testflight";
+import { testFlightBuilds, type TestFlightApprovedBuild, type TestFlightBuild } from "../../testflight";
 
 const APP_STORE_CONNECT_API = "https://api.appstoreconnect.apple.com/v1";
 const APP_SOURCES = [
@@ -13,8 +13,12 @@ const APP_SOURCES = [
   { slug: "barobogi", appName: "바로보기", bundleId: "com.hanstree.barobogi" },
 ] as const;
 
-type AppStoreResource<T> = { id: string; attributes: T };
-type AppStoreResponse<T> = { data: Array<AppStoreResource<T>> };
+type AppStoreRelation = { data?: { id: string } | null };
+type AppStoreResource<T> = { id: string; attributes: T; relationships?: Record<string, AppStoreRelation | undefined> };
+type AppStoreResponse<T> = {
+  data: Array<AppStoreResource<T>>;
+  included?: Array<{ id: string; type: string; attributes: { version?: string; externalBuildState?: string } }>;
+};
 type AppStoreSingleResponse<T> = { data: AppStoreResource<T> | null };
 
 function publicBetaStateFromReview(state: string | undefined, fallback: TestFlightBuild["publicBetaState"]): TestFlightBuild["publicBetaState"] {
@@ -90,6 +94,50 @@ async function readMarketingVersion(buildId: string, token: string) {
   }
 }
 
+// 최신 빌드가 심사 중이어도 공개 링크로 지금 설치할 수 있는 빌드는 따로 찾습니다. 읽기 전용 조회만 사용합니다.
+// 기존 Public Beta 그룹(정적 목록의 공개 링크와 일치) 소속의, 처리 완료·만료 전·외부 승인(BETA_APPROVED/IN_BETA_TESTING) 최신 빌드만 인정합니다.
+// 조회가 실패하거나 확인되지 않으면 null이며, 이는 링크 폐쇄를 뜻하지 않고 화면에서 버전만 표시하지 않습니다.
+async function readApprovedBuild(appId: string, inviteUrl: string | null, token: string): Promise<TestFlightApprovedBuild | null> {
+  if (!inviteUrl) return null;
+  try {
+    const groups = await appStoreRequest<{ publicLink?: string | null; publicLinkEnabled?: boolean; isInternalGroup?: boolean }>(
+      `/apps/${encodeURIComponent(appId)}/betaGroups?fields[betaGroups]=publicLink,publicLinkEnabled,isInternalGroup&limit=50`,
+      token,
+    );
+    const group = groups.data.find((item) => !item.attributes.isInternalGroup && item.attributes.publicLinkEnabled !== false && item.attributes.publicLink === inviteUrl);
+    if (!group) return null;
+    const builds = await appStoreRequest<{
+      version: string;
+      uploadedDate: string;
+      expirationDate?: string;
+      expired?: boolean;
+      processingState?: string;
+    }>(
+      `/builds?filter[app]=${encodeURIComponent(appId)}&filter[betaGroups]=${encodeURIComponent(group.id)}&include=preReleaseVersion,buildBetaDetail`
+        + "&fields[builds]=version,uploadedDate,expirationDate,expired,processingState,preReleaseVersion,buildBetaDetail&fields[preReleaseVersions]=version&fields[buildBetaDetails]=externalBuildState&sort=-uploadedDate&limit=10",
+      token,
+    );
+    for (const build of builds.data) {
+      const { expired, expirationDate, processingState } = build.attributes;
+      if (processingState !== "VALID" || expired || (expirationDate && new Date(expirationDate).getTime() <= Date.now())) continue;
+      const detailId = build.relationships?.buildBetaDetail?.data?.id ?? build.id;
+      const detail = builds.included?.find((item) => item.type === "buildBetaDetails" && item.id === detailId);
+      if (detail?.attributes.externalBuildState !== "BETA_APPROVED" && detail?.attributes.externalBuildState !== "IN_BETA_TESTING") continue;
+      const versionId = build.relationships?.preReleaseVersion?.data?.id;
+      const version = builds.included?.find((item) => item.type === "preReleaseVersions" && item.id === versionId)?.attributes.version;
+      return {
+        build: build.attributes.version,
+        marketingVersion: typeof version === "string" && /^\d+(?:\.\d+){1,3}$/.test(version) ? version : null,
+        uploadedAt: build.attributes.uploadedDate,
+        expiresAt: build.attributes.expirationDate ?? null,
+      };
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
+
 async function readLatestBuild(source: (typeof APP_SOURCES)[number], token: string): Promise<TestFlightBuild> {
   const fallback = testFlightBuilds.find((item) => item.slug === source.slug);
   const apps = await appStoreRequest<{ bundleId: string }>(
@@ -116,6 +164,12 @@ async function readLatestBuild(source: (typeof APP_SOURCES)[number], token: stri
   );
   const reviewState = submissions.data[0]?.attributes.betaReviewState;
   const marketingVersion = await readMarketingVersion(build.id, token);
+  const publicBetaState = publicBetaStateFromReview(reviewState, fallback?.publicBetaState ?? "needsExternalBuild");
+  const newestExpired = Boolean(build.attributes.expired) || Boolean(build.attributes.expirationDate && new Date(build.attributes.expirationDate).getTime() <= Date.now());
+  // 최신 빌드가 승인됐으면 그 빌드가 설치 가능한 빌드이고, 아니면 공개 그룹에서 승인된 이전 빌드를 찾습니다.
+  const approvedBuild: TestFlightApprovedBuild | null = publicBetaState === "approved"
+    ? newestExpired ? null : { build: build.attributes.version, marketingVersion, uploadedAt: build.attributes.uploadedDate, expiresAt: build.attributes.expirationDate ?? null }
+    : await readApprovedBuild(app.id, fallback?.inviteUrl ?? null, token);
 
   return {
     slug: source.slug,
@@ -126,7 +180,8 @@ async function readLatestBuild(source: (typeof APP_SOURCES)[number], token: stri
     expiresAt: build.attributes.expirationDate ?? null,
     inviteUrl: fallback?.inviteUrl ?? null,
     inviteAvailable: fallback?.inviteAvailable,
-    publicBetaState: publicBetaStateFromReview(reviewState, fallback?.publicBetaState ?? "needsExternalBuild"),
+    publicBetaState,
+    approvedBuild,
   };
 }
 

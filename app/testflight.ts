@@ -1,3 +1,11 @@
+// 공개 링크로 지금 설치할 수 있는 승인된 빌드입니다. 최신 빌드가 심사 중일 때는 최신 빌드와 다를 수 있습니다.
+export type TestFlightApprovedBuild = {
+  build: string;
+  marketingVersion: string | null;
+  uploadedAt: string;
+  expiresAt: string | null;
+};
+
 export type TestFlightBuild = {
   slug: "ccmb" | "nasfinder" | "hanclip" | "stand" | "starmanager" | "button" | "whattoeat" | "denimdex" | "barobogi";
   appName: string;
@@ -9,6 +17,8 @@ export type TestFlightBuild = {
   inviteUrl: string | null;
   inviteAvailable?: boolean;
   publicBetaState: "approved" | "waitingForReview" | "rejected" | "needsExternalBuild" | "needsReviewAccount" | "internalOnly";
+  // ASC 실시간 조회로만 채웁니다(정적 목록에는 없음). 확인된 승인 빌드가 없으면 null이며, 링크 폐쇄를 뜻하지 않습니다.
+  approvedBuild?: TestFlightApprovedBuild | null;
 };
 
 // TestFlight 업로드가 확인되면 이 목록의 빌드 번호와 ISO 8601 시각만 갱신합니다.
