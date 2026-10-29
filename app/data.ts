@@ -67,11 +67,11 @@ const appCatalog: AppData[] = [
     ],
     plugins: [{
       name: "놀이터 호출 · Alfred",
-      summary: "Mac에서 떠오른 질문을 바로 보내세요. Alfred에 ‘놀’, ‘놀이터’, ‘한’, ‘한스트리’를 입력하면 웹 놀이터를 열고, 질문을 붙이면 전용 대화창에서 답을 이어갑니다.",
+      summary: "Mac에서 떠오른 질문을 바로 보내세요. Alfred에 ‘하나’ 또는 ‘하나야’를 입력하면 하나와 대화하는 전용 창이 열리고, 뒤에 질문을 붙이면 대화를 이어갑니다. ‘놀’ 또는 ‘놀이터’를 입력하면 기본 브라우저에서 놀이터가 열립니다.",
       detail: "0.1.9 · 빌드 202610131755 · Intel·M 시리즈 Mac 공용 · Alfred와 Powerpack · 허용된 놀이터 계정 필요. 전용 앱을 Developer ID로 서명하고 Apple 공증을 완료했습니다. Alfred 설정을 iCloud에 보관해도 앱은 Mac의 로컬 폴더에서 실행됩니다. macOS의 앱 허용 범위를 바꾸거나 전용 앱을 미리 실행할 필요가 없습니다. macOS 12 이상 대상 빌드이며 M 시리즈 Mac에서 설치와 전용 화면 실행을 확인했습니다. Intel 실기기와 이전 macOS의 실제 실행은 미확인입니다.",
       url: releaseDownloadPath("Alfred-Playground"),
-      guideUrl: "https://github.com/armsone/Hanstree.com/releases/tag/alfred-playground-v0.1.9",
-      commands: ["놀 · 놀이터 · 한 · 한스트리 → 웹 놀이터 열기", "놀 경기도 광주의 맛집 5곳 추천해줘 → 전용 창에 질문", "놀 자유 5 → 자유게시판 최신 5개", "놀 고객 5 → 권한이 있는 고객센터 최신 5개", "Esc · ⌘W → 창 숨기기 / ⌘N → 새 Alfred 대화"],
+      guideUrl: "https://github.com/armsone/Hanstree.com/releases/tag/alfred-playground-v0.1.15",
+      commands: ["하나 · 하나야 → 하나 전용 창 열기", "놀 · 놀이터 → 기본 브라우저에서 놀이터 열기", "하나 경기도 광주의 맛집 5곳 추천해줘 → 전용 창에 질문", "하나 자유 5 → 자유게시판 최신 5개", "하나 고객 5 → 권한이 있는 고객센터 최신 5개", "Esc · ⌘W → 창 숨기기 / ⌘N → 새 Alfred 대화"],
     }],
     features: [
       { title: "대화에서 코드 수정과 빌드까지", body: "알프레도 전용창과 일반 프로젝트 대화에서 Claude와 Gemini에게 실제 코드 수정과 빌드를 맡깁니다. 접근·수정 권한이 있는 프로젝트에서 작업하고, 수정 파일과 빌드 결과를 대화로 확인합니다." },
