@@ -1,4 +1,11 @@
-import { ReleaseDetail, ReleaseVersion, ReleaseDownload, ReleaseQr, ReleaseLink, TestFlightDetailLine, TestFlightBuildText } from "../../components/ReleasePlatform";
+import { ReleaseDetail, ReleaseVersion, ReleaseDownload, ReleaseQr, ReleaseLink, TestFlightDetailLine } from "../../components/ReleasePlatform";
+import {
+  TestFlightHeroCard,
+  TestFlightHeroAction,
+  TestFlightDownloadAction,
+  TestFlightDownloadQr,
+  TestFlightSpecStatus,
+} from "../../components/TestFlightAvailability";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import Image from "../../components/SiteImage";
@@ -253,11 +260,6 @@ function testFlightStatus(appSlug: string) {
 
 function HeroAvailability({ app }: { app: NonNullable<ReturnType<typeof findApp>> }) {
   const testFlight = testFlightStatus(app.slug);
-  const inviteUrl = testFlight?.inviteAvailable !== false ? testFlight?.inviteUrl ?? null : null;
-  const waitingForReview = testFlight?.publicBetaState === "waitingForReview";
-  const rejected = testFlight?.publicBetaState === "rejected";
-  const needsReviewAccount = testFlight?.publicBetaState === "needsReviewAccount";
-  const internalOnly = testFlight?.publicBetaState === "internalOnly";
   const testFlightPlatforms = app.platforms.filter((platform) => platform.status === "TestFlight");
   const hasDownload = app.platforms.some((platform) => platform.url);
 
@@ -266,14 +268,8 @@ function HeroAvailability({ app }: { app: NonNullable<ReturnType<typeof findApp>
       <div className="hero-actions">
         {hasDownload ? (
           <AppDownloadCta className="button button-primary" platforms={app.platforms} />
-        ) : inviteUrl ? (
-          <a className="button button-primary" href={inviteUrl} target="_blank" rel="noreferrer">
-            TestFlight 참여 <span aria-hidden="true">↗</span>
-          </a>
         ) : (
-          <Link className="button button-primary" href="#progress">
-            진행 상황 보기 <span aria-hidden="true">↓</span>
-          </Link>
+          <TestFlightHeroAction appSlug={app.slug} fallback={testFlight} />
         )}
         <Link className="button button-quiet" href="#guide">
           사용 안내 <span aria-hidden="true">↓</span>
@@ -292,52 +288,7 @@ function HeroAvailability({ app }: { app: NonNullable<ReturnType<typeof findApp>
       </div>
 
       {testFlightPlatforms.length > 0 && (
-        <div className={`hero-beta-card${inviteUrl ? " hero-beta-card-ready" : ""}`}>
-          <div>
-            <span>
-              {internalOnly
-                ? "내부 전용 테스트"
-                : rejected
-                  ? "공개 베타 · Apple 심사 수정 요청"
-                  : waitingForReview
-                    ? app.slug === "barobogi"
-                      ? "공개 베타 · Apple 외부 심사 중"
-                      : "공개 베타 · Apple 심사 대기 중"
-                    : needsReviewAccount
-                      ? "공개 베타 · 심사용 계정 등록"
-                      : inviteUrl
-                        ? "TestFlight 공개 베타"
-                        : "공개 베타 · 빌드 준비 중"}
-            </span>
-            <strong>
-              {internalOnly
-                ? "회사 내부 업무용으로 공개 테스트를 운영하지 않습니다."
-                : rejected
-                  ? "Apple 심사에서 수정 요청이 있어 새 빌드가 필요합니다."
-                  : waitingForReview && inviteUrl
-                    ? "기존 공개 링크는 열려 있고, 최신 빌드는 Apple 심사를 기다리고 있습니다."
-                    : waitingForReview
-                      ? app.slug === "barobogi"
-                        ? "공개 참여는 Apple 심사 중입니다."
-                        : "Apple 공개 테스트 심사 중입니다."
-                      : needsReviewAccount
-                        ? "외부용 빌드는 준비됐고 심사용 계정을 등록하고 있습니다."
-                        : inviteUrl
-                          ? "신청서 없이 바로 테스트에 참여할 수 있습니다."
-                          : "외부 테스트용 새 빌드를 준비하고 있습니다."}
-            </strong>
-            <small>{testFlightPlatforms.map((platform) => platform.name).join(" · ")}</small>
-          </div>
-          {inviteUrl ? (
-            <a href={inviteUrl} target="_blank" rel="noreferrer">
-              {waitingForReview ? "기존 공개 링크 열기" : "TestFlight에서 참여"} <span aria-hidden="true">↗</span>
-            </a>
-          ) : (
-            <span className="hero-beta-pending">
-              {internalOnly ? "내부 전용" : rejected ? "새 빌드 준비 필요" : waitingForReview ? "심사 중" : needsReviewAccount ? "심사 계정 준비" : "빌드 준비"}
-            </span>
-          )}
-        </div>
+        <TestFlightHeroCard appSlug={app.slug} fallback={testFlight} platforms={app.platforms} />
       )}
 
       <details className="hero-platforms">
@@ -575,16 +526,43 @@ export default async function AppRoute({ params }: RouteProps) {
         <div className="download-list">
           {app.platforms.map((platform) => {
             const testFlight = platform.status === "TestFlight" ? testFlightStatus(app.slug) : null;
+            const isTestFlightPlatform = platform.status === "TestFlight" && !platform.url;
             const inviteUrl = testFlight?.inviteAvailable !== false ? testFlight?.inviteUrl ?? null : null;
-            const pendingCopy = app.slug === "barobogi" && testFlight?.publicBetaState === "waitingForReview" && platform.availabilityNote
-              ? platform.availabilityNote
-              : testFlight?.publicBetaState === "internalOnly" ? "회사 내부 전용" : testFlight?.publicBetaState === "rejected" ? "Apple 심사 수정 요청 · 새 빌드 준비 필요" : testFlight?.publicBetaState === "waitingForReview" ? "새 빌드는 Apple 심사 대기 중" : testFlight?.publicBetaState === "needsReviewAccount" ? "Apple 심사용 계정 준비 중" : "외부 테스트용 빌드 준비 중";
             const qrUrl = platform.url ? downloadQrUrl(platform.url) : inviteUrl;
             const qrLabel = platform.url ? platform.downloadLabel ?? "공식 다운로드" : "TestFlight 외부 테스터 참여";
             const availabilityNote = app.slug === "barobogi" && platform.status === "TestFlight" && platform.availabilityNote
               ? platform.availabilityNote.replace(/새 디자인과 네 가지 아이콘팩을 담은 0\.8\.12는 Apple 외부 심사를 통과\(IN_BETA_TESTING\)해 같은 공개 링크에서 제공됩니다\./, "Apple 외부 심사를 통과한 빌드를 같은 공개 링크에서 제공합니다.")
               : platform.availabilityNote;
-            return <article className={qrUrl ? "download-item-with-qr" : undefined} key={platform.name} id={platformAnchorId(platform.name)}><div className="download-platform-copy"><div className="download-platform-head"><AdvantageVisual variant={platformVisual(platform.name)} /><span className={`status-dot status-${platform.status.replace(" ", "-")}`} /><h3>{platform.name}</h3></div>{platform.url ? <ReleaseDownload platform={platform} appSlug={app.slug} /> : platform.status === "TestFlight" ? <TestFlightDetailLine platform={platform} appSlug={app.slug} /> : <p>{platform.detail} · {platform.status}</p>}{platform.url ? null : inviteUrl ? <a className="testflight-apply-download" href={inviteUrl}>{testFlight?.publicBetaState === "waitingForReview" ? "기존 TestFlight 공개 링크" : "TestFlight 바로 참여"} <span aria-hidden="true">↗</span></a> : <span>{platform.status === "TestFlight" ? pendingCopy : platform.availabilityNote ?? "공개 링크 준비 중"}</span>}{app.slug === "barobogi" && platform.url && availabilityNote && <small className="download-availability-note">{availabilityNote}</small>}{app.slug === "barobogi" && platform.name.includes("Windows") && platform.url && <a href="/apps/barobogi/downloads/install.html" target="_blank" rel="noreferrer">설치·사용 안내 보기 <span aria-hidden="true">↗</span></a>}</div>{qrUrl && <ReleaseQr href={qrUrl} label={qrLabel} />}</article>;
+            return (
+              <article className={qrUrl ? "download-item-with-qr" : undefined} key={platform.name} id={platformAnchorId(platform.name)}>
+                <div className="download-platform-copy">
+                  <div className="download-platform-head">
+                    <AdvantageVisual variant={platformVisual(platform.name)} />
+                    <span className={`status-dot status-${platform.status.replace(" ", "-")}`} />
+                    <h3>{platform.name}</h3>
+                  </div>
+                  {platform.url ? (
+                    <ReleaseDownload platform={platform} appSlug={app.slug} />
+                  ) : platform.status === "TestFlight" ? (
+                    <TestFlightDetailLine platform={platform} appSlug={app.slug} />
+                  ) : (
+                    <p>{platform.detail} · {platform.status}</p>
+                  )}
+                  {platform.url ? null : isTestFlightPlatform ? (
+                    <TestFlightDownloadAction appSlug={app.slug} fallback={testFlight} availabilityNote={availabilityNote} />
+                  ) : (
+                    <span>{platform.availabilityNote ?? "공개 링크 준비 중"}</span>
+                  )}
+                  {app.slug === "barobogi" && platform.url && availabilityNote && <small className="download-availability-note">{availabilityNote}</small>}
+                  {app.slug === "barobogi" && platform.name.includes("Windows") && platform.url && <a href="/apps/barobogi/downloads/install.html" target="_blank" rel="noreferrer">설치·사용 안내 보기 <span aria-hidden="true">↗</span></a>}
+                </div>
+                {platform.url ? (
+                  <ReleaseQr href={downloadQrUrl(platform.url)} label={qrLabel} />
+                ) : isTestFlightPlatform ? (
+                  <TestFlightDownloadQr appSlug={app.slug} fallback={testFlight} />
+                ) : null}
+              </article>
+            );
           })}
         </div>
       </section>
@@ -630,15 +608,6 @@ export default async function AppRoute({ params }: RouteProps) {
   );
 }
 
-const testFlightStateLabel: Record<NonNullable<ReturnType<typeof testFlightStatus>>["publicBetaState"], string> = {
-  approved: "공개 베타 참여 가능",
-  waitingForReview: "Apple 심사 대기",
-  rejected: "새 빌드 준비 필요",
-  needsExternalBuild: "외부용 빌드 준비",
-  needsReviewAccount: "심사 계정 준비",
-  internalOnly: "내부 전용",
-};
-
 function githubRepoLabel(url: string) {
   return url.replace(/^https?:\/\/(www\.)?github\.com\//, "").replace(/\/$/, "");
 }
@@ -647,7 +616,6 @@ function githubRepoLabel(url: string) {
 function ProductSpec({ app }: { app: NonNullable<ReturnType<typeof findApp>> }) {
   const family = productFamilyOf(app.slug);
   const testFlight = testFlightStatus(app.slug);
-  const inviteUrl = testFlight?.inviteAvailable !== false ? testFlight?.inviteUrl ?? null : null;
   const downloadPlatforms = app.platforms.filter((platform) => platform.url);
 
   return (
@@ -690,12 +658,7 @@ function ProductSpec({ app }: { app: NonNullable<ReturnType<typeof findApp>> }) 
           </div>
           <div>
             <dt>TestFlight</dt>
-            <dd>{testFlight ? <>{(() => {
-              const label = app.slug === "barobogi" && testFlight.publicBetaState === "waitingForReview"
-                ? "Apple 외부 베타 심사 중"
-                : testFlightStateLabel[testFlight.publicBetaState];
-              return inviteUrl ? <a href={inviteUrl}>{label}</a> : label;
-            })()}{testFlight.build && <TestFlightBuildText appSlug={app.slug} fallback={testFlight.build} />}</> : "해당 없음"}</dd>
+            <dd>{testFlight ? <TestFlightSpecStatus appSlug={app.slug} fallback={testFlight} /> : "해당 없음"}</dd>
           </div>
           <div>
             <dt>진행 상황</dt>

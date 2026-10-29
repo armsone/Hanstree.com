@@ -19,7 +19,7 @@ function load(key: DownloadKey) {
 }
 // TestFlight 표시 버전은 ASC 실시간 조회로만 갱신합니다. 한 화면의 여러 컴포넌트가 같은 요청을 공유합니다.
 let testFlightRequest: { expiresAt: number; value: Promise<TestFlightBuild[] | null> } | null = null;
-function loadTestFlight() {
+export function loadTestFlight() {
   if (testFlightRequest && testFlightRequest.expiresAt > Date.now()) return testFlightRequest.value;
   const value = fetch("/api/testflight-builds")
     .then(async (response) => response.ok ? (await response.json() as { builds?: TestFlightBuild[] }).builds ?? null : null).catch(() => null);
@@ -33,7 +33,7 @@ function liveTestFlightDetail(detail: string, live: TestFlightBuild | null) {
   // 앞의 "버전", "(빌드)", "· 빌드 N"은 한 덩어리로 바꾸고, 뒤의 호환·플랫폼 설명은 그대로 둡니다.
   return detail.replace(/^\d+\.\d+(?:\.\d+)?(?:\s*\(\d+\))?(?:\s*·\s*빌드\s*\d+)?/, `${live.marketingVersion} (${live.build})`);
 }
-function useLiveTestFlight(appSlug: string | undefined, enabled: boolean, near: boolean) {
+export function useLiveTestFlight(appSlug: string | undefined, enabled: boolean = true, near: boolean = true) {
   const [live, setLive] = useState<TestFlightBuild | null>(null);
   useEffect(() => {
     let active = true;
