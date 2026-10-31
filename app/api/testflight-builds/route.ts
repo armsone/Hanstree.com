@@ -21,11 +21,19 @@ type AppStoreResponse<T> = {
 };
 type AppStoreSingleResponse<T> = { data: AppStoreResource<T> | null };
 
-function publicBetaStateFromReview(state: string | undefined, fallback: TestFlightBuild["publicBetaState"]): TestFlightBuild["publicBetaState"] {
-  if (state === "APPROVED") return "approved";
-  if (state === "WAITING_FOR_REVIEW" || state === "IN_REVIEW") return "waitingForReview";
-  if (state === "REJECTED") return "rejected";
-  return fallback;
+// 상태는 최신 빌드의 실제 심사 상태와 외부 빌드 상태에서만 정하며, 이전 정적 값으로 승인 상태를 물려받지 않습니다.
+// 처리가 끝나지 않은(VALID가 아닌) 빌드는 승인으로 표시하지 않습니다.
+function publicBetaStateFromBuild(
+  reviewState: string | undefined,
+  externalBuildState: string | undefined,
+  processingState: string | undefined,
+): TestFlightBuild["publicBetaState"] {
+  const state = reviewState ?? externalBuildState;
+  if (state === "WAITING_FOR_REVIEW" || state === "IN_REVIEW" || state === "WAITING_FOR_BETA_REVIEW" || state === "IN_BETA_REVIEW") return "waitingForReview";
+  if (state === "REJECTED" || state === "BETA_REJECTED") return "rejected";
+  if (processingState !== "VALID") return "needsExternalBuild";
+  if (reviewState === "APPROVED" || (!reviewState && (externalBuildState === "BETA_APPROVED" || externalBuildState === "IN_BETA_TESTING"))) return "approved";
+  return "needsExternalBuild";
 }
 
 function base64Url(bytes: Uint8Array) {
@@ -152,8 +160,9 @@ async function readLatestBuild(source: (typeof APP_SOURCES)[number], token: stri
     uploadedDate: string;
     expirationDate?: string;
     expired?: boolean;
+    processingState?: string;
   }>(
-    `/builds?filter[app]=${encodeURIComponent(app.id)}&fields[builds]=version,uploadedDate,expirationDate,expired&sort=-uploadedDate&limit=1`,
+    `/builds?filter[app]=${encodeURIComponent(app.id)}&include=buildBetaDetail&fields[builds]=version,uploadedDate,expirationDate,expired,processingState,buildBetaDetail&fields[buildBetaDetails]=externalBuildState&sort=-uploadedDate&limit=1`,
     token,
   );
   const build = builds.data[0];
@@ -164,7 +173,9 @@ async function readLatestBuild(source: (typeof APP_SOURCES)[number], token: stri
   );
   const reviewState = submissions.data[0]?.attributes.betaReviewState;
   const marketingVersion = await readMarketingVersion(build.id, token);
-  const publicBetaState = publicBetaStateFromReview(reviewState, fallback?.publicBetaState ?? "needsExternalBuild");
+  const detailId = build.relationships?.buildBetaDetail?.data?.id ?? build.id;
+  const externalBuildState = builds.included?.find((item) => item.type === "buildBetaDetails" && item.id === detailId)?.attributes.externalBuildState;
+  const publicBetaState = publicBetaStateFromBuild(reviewState, externalBuildState, build.attributes.processingState);
   const newestExpired = Boolean(build.attributes.expired) || Boolean(build.attributes.expirationDate && new Date(build.attributes.expirationDate).getTime() <= Date.now());
   // 최신 빌드가 승인됐으면 그 빌드가 설치 가능한 빌드이고, 아니면 공개 그룹에서 승인된 이전 빌드를 찾습니다.
   const approvedBuild: TestFlightApprovedBuild | null = publicBetaState === "approved"
