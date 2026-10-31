@@ -313,9 +313,9 @@ function BarobogiPlatformOverview({ app }: { app: NonNullable<ReturnType<typeof 
     {
       group: "mac",
       label: "Mac",
-      usage: "화면 어디든 지정한 영역, Apple Mail, Chrome·Whale·Safari 브라우저까지 한 앱에서 번역합니다.",
-      status: "공개 다운로드 0.7.93",
-      links: [{ href: "#download-mac", label: "Mac용 DMG로 이동" }],
+      usage: "Mac에서는 이제 HTT로 제공됩니다. 번역·입력 관리·Mac 관리를 하나로 묶어, 화면 어디든 지정한 영역, Apple Mail, Chrome·Whale·Safari 브라우저까지 번역합니다.",
+      status: "HTT 통합판으로 제공",
+      links: [{ href: "/apps/htt", label: "Mac용 HTT 보기" }],
     },
     {
       group: "windows",
@@ -940,11 +940,11 @@ const productCampaigns = {
     tone: "meter",
     eyebrow: "기기별 화면·웹 번역",
     headline: <>옮기지 말고,<br /><span>그 자리에서 바로보기.</span></>,
-    description: "브라우저 번역을 켜도 이미지 속 글자는 그대로 남는 경우가 많습니다. 일본 만화의 말풍선이나 잡지 이미지가 특히 그렇습니다. 바로보기는 텍스트뿐 아니라 이미지 속 글자도 읽어 한글로 보여주며, Mac 앱은 화면·Mail·브라우저를, Windows는 브라우저 이미지 번역을, iPhone·iPad는 단축어·공유·클립보드·웹보기 번역을 각각 지원합니다.",
+    description: "브라우저 번역을 켜도 이미지 속 글자는 그대로 남는 경우가 많습니다. 일본 만화의 말풍선이나 잡지 이미지가 특히 그렇습니다. 바로보기는 텍스트뿐 아니라 이미지 속 글자도 읽어 한글로 보여주며, Mac은 HTT에서 화면·Mail·브라우저를, Windows는 브라우저 이미지 번역을, iPhone·iPad는 단축어·공유·클립보드·웹보기 번역을 각각 지원합니다.",
     image: "/apps/barobogi/barobogi-campaign.png",
     imageAlt: "화면 영역, Mail, 웹페이지를 각각 보던 자리에서 바로 번역으로 바꿔 보여주는 바로보기 캠페인 이미지",
     imageLabel: "SCREEN · MAIL · WEB → TRANSLATED, IN PLACE",
-    facts: [["03", "화면·Mail·웹 번역 범위"], ["0.7.93", "현재 공개 버전"], ["ON-DEVICE", "Mac 기본 번역 우선"]],
+    facts: [["03", "화면·Mail·웹 번역 범위"], ["HTT", "Mac 통합판으로 제공"], ["ON-DEVICE", "Mac 기본 번역 우선"]],
     advantages: [
       ["01", "SCREEN, IN PLACE", "화면 번역, 보던 자리에 그대로.", "번역할 화면 영역을 지정하면 그 자리를 캡처해 번역문을 원문 줄이 있던 바로 그 위치에 겹쳐 보여줍니다.", "번역 버튼을 누를 때만 다시 캡처하며 자동·주기 캡처는 없습니다.", "region-capture"],
       ["02", "SWITCH, NOT GUESS", "원문과 번역, 큰 전환 스위치 하나로.", "창 위쪽의 전환 스위치로 지금 보는 쪽을 바로 알고, Space로 다시 번역하지 않고 오갑니다.", "Enter는 새로 캡처해 번역합니다.", "doc-swap"],
@@ -961,8 +961,8 @@ const productCampaigns = {
     ],
     ctaEyebrow: "보던 자리에서 바로",
     ctaTitle: <>번역기를 따로 열지 말고.<br /><span>보던 자리에서 바로보기.</span></>,
-    ctaBody: "macOS 15 이상 Apple Silicon Mac에서 화면·Mail·웹 번역을 한 곳에서 시작하세요. 현재 공개 다운로드는 0.7.93입니다.",
-    ctaLabel: "Mac용 바로보기 받기",
+    ctaBody: "macOS 15 이상 Apple Silicon Mac에서 화면·Mail·웹 번역을 한 곳에서 시작하세요. Mac 번역은 입력 관리·Mac 관리와 함께 HTT에서 제공됩니다.",
+    ctaLabel: "Mac용 HTT 보기",
   },
 } as const;
 

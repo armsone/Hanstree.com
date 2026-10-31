@@ -509,6 +509,18 @@
     "height": 1323,
     "srcSet": "/optimized/1a9882fb6cebb0de-128.webp 128w, /apps/hanstree-workroom/screens/login-019.png 518w"
   },
+  "/apps/htt/home-card.webp": {
+    "src": "/optimized/a47180f3815bcb50-1254.webp",
+    "width": 1254,
+    "height": 1254,
+    "srcSet": "/optimized/a47180f3815bcb50-128.webp 128w, /optimized/a47180f3815bcb50-640.webp 640w, /optimized/a47180f3815bcb50-1254.webp 1254w"
+  },
+  "/apps/htt/icon.png": {
+    "src": "/optimized/c37cc1406e3e98e3-1254.webp",
+    "width": 1254,
+    "height": 1254,
+    "srcSet": "/optimized/c37cc1406e3e98e3-128.webp 128w, /optimized/c37cc1406e3e98e3-640.webp 640w, /optimized/c37cc1406e3e98e3-1254.webp 1254w"
+  },
   "/apps/intosharp/home-card.webp": {
     "src": "/apps/intosharp/home-card.webp",
     "width": 1280,

@@ -189,10 +189,10 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     fallbackUrl: "https://github.com/armsone/Barobogi-Android/releases/download/android-v0.3.0/Barobogi-Android-0.3.0.apk",
   },
   "SMTranslator-MacOS": {
-    label: "바로보기(Barobogi) Mac",
-    repo: "Barobogi-MacOS",
-    assetPattern: /^(?:SMTranslator|Barobogi)-\d+\.\d+\.\d+\.dmg$/i,
-    fallbackUrl: "https://github.com/armsone/Barobogi-MacOS/releases/download/v0.7.93/Barobogi-0.7.93.dmg",
+    label: "HTT Mac",
+    repo: "HTT-MacOS",
+    assetPattern: /^(?:HTT|SMTranslator|Barobogi)-\d+\.\d+\.\d+\.dmg$/i,
+    fallbackUrl: "https://github.com/armsone/HTT-MacOS/releases/download/v0.10.0/HTT-0.10.0.dmg",
   },
 };
 
