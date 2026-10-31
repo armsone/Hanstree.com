@@ -167,48 +167,6 @@
     "height": 1744,
     "srcSet": "/optimized/37e5844b6bb2766f-128.webp 128w, /optimized/37e5844b6bb2766f-640.webp 640w, /optimized/37e5844b6bb2766f-792.webp 792w"
   },
-  "/apps/barobogi/screens/settings-0.6.5.png": {
-    "src": "/optimized/8666980c2d4a84c6-1120.webp",
-    "width": 1120,
-    "height": 1304,
-    "srcSet": "/optimized/8666980c2d4a84c6-128.webp 128w, /optimized/8666980c2d4a84c6-640.webp 640w, /optimized/8666980c2d4a84c6-1120.webp 1120w"
-  },
-  "/apps/barobogi/screens/settings-0.7.5.png": {
-    "src": "/optimized/e8e51b905eed76d4-1120.webp",
-    "width": 1120,
-    "height": 1344,
-    "srcSet": "/optimized/e8e51b905eed76d4-128.webp 128w, /optimized/e8e51b905eed76d4-640.webp 640w, /optimized/e8e51b905eed76d4-1120.webp 1120w"
-  },
-  "/apps/btn/btn-hero-v2.png": {
-    "src": "/optimized/3d97254dbb31bbab-1536.webp",
-    "width": 1536,
-    "height": 1024,
-    "srcSet": "/optimized/3d97254dbb31bbab-128.webp 128w, /optimized/3d97254dbb31bbab-640.webp 640w, /optimized/3d97254dbb31bbab-1280.webp 1280w, /optimized/3d97254dbb31bbab-1536.webp 1536w"
-  },
-  "/apps/btn/home-card.webp": {
-    "src": "/apps/btn/home-card.webp",
-    "width": 1280,
-    "height": 853,
-    "srcSet": "/optimized/de8b4d742ba4e9d2-128.webp 128w, /optimized/de8b4d742ba4e9d2-640.webp 640w, /apps/btn/home-card.webp 1280w"
-  },
-  "/apps/btn/icon.png": {
-    "src": "/optimized/cdc46b2ea3f7ef02-512.webp",
-    "width": 512,
-    "height": 512,
-    "srcSet": "/optimized/cdc46b2ea3f7ef02-128.webp 128w, /optimized/cdc46b2ea3f7ef02-512.webp 512w"
-  },
-  "/apps/btn/screens/derived-data-clear.png": {
-    "src": "/optimized/40871ceb3fa5d46f-638.webp",
-    "width": 638,
-    "height": 112,
-    "srcSet": "/optimized/40871ceb3fa5d46f-128.webp 128w, /optimized/40871ceb3fa5d46f-638.webp 638w"
-  },
-  "/apps/btn/screens/overview.png": {
-    "src": "/optimized/08dc8bd141c7c3fd-1520.webp",
-    "width": 1520,
-    "height": 1000,
-    "srcSet": "/optimized/08dc8bd141c7c3fd-128.webp 128w, /optimized/08dc8bd141c7c3fd-640.webp 640w, /optimized/08dc8bd141c7c3fd-1280.webp 1280w, /optimized/08dc8bd141c7c3fd-1520.webp 1520w"
-  },
   "/apps/button/button-hero-v2.png": {
     "src": "/optimized/c3cdbca32fe7e316-1536.webp",
     "width": 1536,
@@ -898,36 +856,6 @@
     "width": 1536,
     "height": 1024,
     "srcSet": "/optimized/fea4bef3eb44a775-128.webp 128w, /optimized/fea4bef3eb44a775-640.webp 640w, /optimized/fea4bef3eb44a775-1280.webp 1280w, /optimized/fea4bef3eb44a775-1536.webp 1536w"
-  },
-  "/apps/trackpadguard/home-card.webp": {
-    "src": "/apps/trackpadguard/home-card.webp",
-    "width": 1280,
-    "height": 853,
-    "srcSet": "/optimized/95755887c635c9bb-128.webp 128w, /optimized/95755887c635c9bb-640.webp 640w, /apps/trackpadguard/home-card.webp 1280w"
-  },
-  "/apps/trackpadguard/icon.png": {
-    "src": "/optimized/651a9d2864e4dd55-1024.webp",
-    "width": 1024,
-    "height": 1024,
-    "srcSet": "/optimized/651a9d2864e4dd55-128.webp 128w, /optimized/651a9d2864e4dd55-640.webp 640w, /optimized/651a9d2864e4dd55-1024.webp 1024w"
-  },
-  "/apps/trackpadguard/screens/usage-square.png": {
-    "src": "/optimized/35f67b2a5ebe6ab4-1254.webp",
-    "width": 1254,
-    "height": 1254,
-    "srcSet": "/optimized/35f67b2a5ebe6ab4-128.webp 128w, /optimized/35f67b2a5ebe6ab4-640.webp 640w, /optimized/35f67b2a5ebe6ab4-1254.webp 1254w"
-  },
-  "/apps/trackpadguard/trackpadguard-campaign.png": {
-    "src": "/optimized/4a8b0676a3b8e68f-1672.webp",
-    "width": 1672,
-    "height": 941,
-    "srcSet": "/optimized/4a8b0676a3b8e68f-128.webp 128w, /optimized/4a8b0676a3b8e68f-640.webp 640w, /optimized/4a8b0676a3b8e68f-1280.webp 1280w, /optimized/4a8b0676a3b8e68f-1672.webp 1672w"
-  },
-  "/apps/trackpadguard/trackpadguard-hero-v2.png": {
-    "src": "/optimized/e27a637d11d2acdd-1536.webp",
-    "width": 1536,
-    "height": 1024,
-    "srcSet": "/optimized/e27a637d11d2acdd-128.webp 128w, /optimized/e27a637d11d2acdd-640.webp 640w, /optimized/e27a637d11d2acdd-1280.webp 1280w, /optimized/e27a637d11d2acdd-1536.webp 1536w"
   },
   "/apps/whattoeat/home-card.webp": {
     "src": "/apps/whattoeat/home-card.webp",

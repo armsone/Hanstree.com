@@ -10,7 +10,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import Image from "../../components/SiteImage";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { AdvantageVisual, type AdvantageVariant } from "../../components/AdvantageVisual";
 import { AppDownloadCta } from "../../components/AppDownloadCta";
 import { AppArtwork, AppHeroArtwork, AppIcon } from "../../components/AppVisuals";
@@ -24,7 +24,7 @@ import { getSiteBrand } from "../../site-brand";
 
 type RouteProps = { params: Promise<{ path: string[] }> };
 
-const campaignSlugs = new Set(["super-thumbnail", "hanclip", "stand", "ccmb", "trackpadguard", "intosharp", "airchurch", "barobogi"]);
+const campaignSlugs = new Set(["super-thumbnail", "hanclip", "stand", "ccmb", "intosharp", "airchurch", "barobogi"]);
 
 const contentVisuals: Record<string, AdvantageVariant> = {
   "연결 추가": "storage-network",
@@ -364,6 +364,8 @@ export async function generateMetadata({ params }: RouteProps): Promise<Metadata
   const brand = await getSiteBrand();
   const app = findApp(path[0]);
   if (!app) return {};
+  const isLegacyHttSlug = ["btn", "backtonormal", "trackpadguard", "inputmate"].includes(path[0]);
+  const canonicalSlug = isLegacyHttSlug ? "htt" : path[0];
   const section = path[1];
   const suffix = section === "privacy" ? "개인정보처리방침" : section === "terms" ? "이용약관" : section === "support" ? "지원" : section === "data-deletion" ? "데이터 삭제" : section === "google-oauth" ? "Google API Use & Data Handling" : null;
   const title = suffix ? `${app.name} ${suffix}` : `${app.name} — ${app.tagline}`;
@@ -371,7 +373,7 @@ export async function generateMetadata({ params }: RouteProps): Promise<Metadata
     ? app.heroImage ?? app.icon ?? (app.slug === "stand" ? "/og-stand.png" : undefined)
     : undefined;
   const socialImages = socialImage ? [new URL(socialImage, brand.canonical).toString()] : [];
-  const canonical = new URL(`/apps/${path.join("/")}`, brand.canonical).toString();
+  const canonical = new URL(`/apps/${[canonicalSlug, ...path.slice(1)].join("/")}`, brand.canonical).toString();
   return {
     title,
     description: app.summary,
@@ -383,6 +385,10 @@ export async function generateMetadata({ params }: RouteProps): Promise<Metadata
 
 export default async function AppRoute({ params }: RouteProps) {
   const { path } = await params;
+  if (["btn", "backtonormal", "trackpadguard", "inputmate"].includes(path[0])) {
+    const suffix = path.slice(1).join("/");
+    permanentRedirect(suffix ? `/apps/htt/${suffix}` : "/apps/htt");
+  }
   const app = findApp(path[0]);
   if (!app) notFound();
 
@@ -794,34 +800,6 @@ const productCampaigns = {
     ctaTitle: <>카메라 롤에 머문 순간을.<br /><span>지금 재생되는 이야기로.</span></>,
     ctaBody: "사진 몇 장과 영상 몇 개면 충분합니다. HanClip에서 고르고, 음악을 얹고, 한 편으로 완성하세요.",
     ctaLabel: "HanClip 시작하기",
-  },
-  trackpadguard: {
-    tone: "guard",
-    eyebrow: "APP-SPECIFIC LANGUAGE · CLEAN TYPING",
-    headline: <>앱마다 입력 언어를 맞추고,<br /><span>오타와 커서 튐까지 한 번에.</span></>,
-    description: "앱을 오갈 때마다 원하는 언어로 자동 전환하고, 여러 앱을 한 번에 묶어 설정하세요. 실시간 영타 오타 교정, 작은따옴표 두 번으로 바꾸는 수동 변환과 내 Mac에만 쌓이는 개인 사전, 타이핑 중 트랙패드 커서 튐 방지까지 한곳에서 돕습니다.",
-    image: "/apps/trackpadguard/trackpadguard-campaign.png",
-    imageAlt: "기존 TrackpadGuard 트랙패드 보호 안내 개념 설명 그림 (신규 화면 스크린샷 아님)",
-    imageLabel: "기존 TrackpadGuard 트랙패드 보호 안내 · 실제 신규 화면 아님",
-    facts: [["AUTO", "앱 전환 시 입력 소스 자동 선택"], ["MULTI", "Command/Shift 다중 앱 일괄 설정"], ["SAFE", "기기 내 로컬 동작 · 클라우드 동기화 없음"]],
-    advantages: [
-      ["01", "APP-SPECIFIC LANGUAGE", "앱마다 원하는 입력 언어로 바로 시작합니다.", "앱이 활성화될 때마다 지정한 입력 소스를 자동으로 선택합니다.", "앱 내에서 직접 변경한 언어는 다른 앱으로 전환했다 복귀할 때까지 유지되며, 원치 않으면 기능을 끌 수 있습니다.", "defaults-star"],
-      ["02", "BATCH SETUP", "여러 앱을 한 번에 묶어 빠르게 지정합니다.", "Command나 Shift로 여러 앱 번들을 한꺼번에 선택해 같은 입력 소스를 부여합니다.", "등록된 목록에서도 여러 줄을 함께 골라 언어를 일괄 변경하거나 삭제할 수 있습니다.", "groups-grid"],
-      ["03", "TYPO CORRECTION", "영타로 친 한글 오타를 알아서 바로잡습니다.", "ABC·US 영문 자판에서 친 한글 단어를 기기 안에서 판별해 자연스럽게 교정합니다.", "앱별 기본 언어 설정과 별개로 동작하며, 한글로 교정된 단어를 공백으로 확정하면 한글 입력 소스로 전환해 다음 입력을 이어갑니다.", "toggle-control"],
-      ["04", "LOCK WHILE TYPING", "글을 쓰는 동안, 트랙패드 커서 튐을 막습니다.", "키보드 입력 중 트랙패드의 포인터 이동·클릭·스크롤을 즉시 차단합니다.", "손바닥이 트랙패드에 닿아 엉뚱한 문단으로 튀거나 원치 않는 클릭이 생기는 문제를 방지합니다.", "keyboard-lock"],
-      ["05", "AUTO & TOUCH RELEASE", "1초 뒤 자동 해제, 정해 둔 영역 터치로 즉시 해제.", "마지막 키 입력 후 1초가 지나면 자동으로 풀리고, 네 점으로 편집한 영역을 터치해 바로 풉니다.", "마우스·펜 등 외부 포인터 입력은 감지 즉시 잠금을 해제해 작업 흐름을 지킵니다.", "touch-zone"],
-      ["06", "LOCAL BY DESIGN", "앱 목록과 설정은 이 Mac에만 안전하게 남깁니다.", "앱 설정과 성공한 단어 쌍 사전은 이 Mac에만 저장되며 직접 수정하거나 삭제할 수 있습니다. 서버 전송이나 클라우드 동기화는 하지 않습니다.", "문장 전체 번역 내용은 저장하지 않고, 터치 좌표도 기록하지 않습니다.", "lock-local"],
-    ],
-    storyIcons: ["defaults-star", "groups-grid", "keyboard-lock"],
-    stories: [
-      ["01", "앱마다 다른 언어로 작업할 때", "터미널과 에디터는 영문으로, 메신저와 문서는 한글로 지정해 둡니다. 앱을 전환할 때마다 한영키를 누르지 않아도 원하는 언어로 타이핑을 바로 시작합니다.", "앱별 언어 · 자동 선택 · 작업 흐름"],
-      ["02", "여러 작업 앱을 한 번에 세팅할 때", "설정에서 Command나 Shift를 누른 채 개발 도구들을 한 번에 선택해 영문 입력 소스를 일괄 지정합니다. 나중에 언어를 바꾸거나 목록을 정리할 때도 다중 선택으로 한 번에 처리합니다.", "다중 선택 · 일괄 설정 · 간편 관리"],
-      ["03", "긴 문서 작성과 트랙패드 보호", "노트북 키보드에 손을 편하게 얹고 긴 글을 작성합니다. 손바닥이 트랙패드에 닿아도 커서가 튀지 않고, 입력을 멈추면 1초 뒤 혹은 지정 영역 터치로 바로 트랙패드를 사용합니다.", "글쓰기 · 커서 보호 · 터치 해제"],
-    ],
-    ctaEyebrow: "SMART INPUT FOR MAC",
-    ctaTitle: <>입력 언어 고민은 덜고.<br /><span>타이핑 흐름은 지키세요.</span></>,
-    ctaBody: "macOS 13 이상에서 앱별 기본 언어 지정, 한영 오타 교정, 트랙패드 보호를 InputMate 하나로 가볍게 시작하세요. 일반 번역은 macOS 26 이상에서 지원합니다.",
-    ctaLabel: "InputMate 받기",
   },
   ccmb: {
     tone: "meter",

@@ -58,8 +58,6 @@ const homeKoreanNames: Record<string, string> = {
   hanai: "한양",
   stand: "스탠드",
   ccmb: "씨씨엠비",
-  btn: "비티엔",
-  trackpadguard: "인풋메이트",
   intosharp: "인투샾",
   airchurch: "에어처치",
   button: "아워버튼",
