@@ -799,7 +799,7 @@ const productCampaigns = {
     tone: "guard",
     eyebrow: "APP-SPECIFIC LANGUAGE · CLEAN TYPING",
     headline: <>앱마다 입력 언어를 맞추고,<br /><span>오타와 커서 튐까지 한 번에.</span></>,
-    description: "앱을 오갈 때마다 원하는 언어로 자동 전환하고, 여러 앱을 한 번에 묶어 설정하세요. 실시간 영타 오타 교정과 타이핑 중 트랙패드 커서 튐 방지까지 한곳에서 돕습니다.",
+    description: "앱을 오갈 때마다 원하는 언어로 자동 전환하고, 여러 앱을 한 번에 묶어 설정하세요. 실시간 영타 오타 교정, 작은따옴표 두 번으로 바꾸는 수동 변환과 내 Mac에만 쌓이는 개인 사전, 타이핑 중 트랙패드 커서 튐 방지까지 한곳에서 돕습니다.",
     image: "/apps/trackpadguard/trackpadguard-campaign.png",
     imageAlt: "기존 TrackpadGuard 트랙패드 보호 안내 개념 설명 그림 (신규 화면 스크린샷 아님)",
     imageLabel: "기존 TrackpadGuard 트랙패드 보호 안내 · 실제 신규 화면 아님",
@@ -820,7 +820,7 @@ const productCampaigns = {
     ],
     ctaEyebrow: "SMART INPUT FOR MAC",
     ctaTitle: <>입력 언어 고민은 덜고.<br /><span>타이핑 흐름은 지키세요.</span></>,
-    ctaBody: "macOS 13 이상에서 앱별 기본 언어 지정, 한영 오타 교정, 트랙패드 보호를 InputMate 하나로 가볍게 시작하세요.",
+    ctaBody: "macOS 13 이상에서 앱별 기본 언어 지정, 한영 오타 교정, 트랙패드 보호를 InputMate 하나로 가볍게 시작하세요. 일반 번역은 macOS 26 이상에서 지원합니다.",
     ctaLabel: "InputMate 받기",
   },
   ccmb: {
