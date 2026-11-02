@@ -24,7 +24,7 @@ import { getSiteBrand } from "../../site-brand";
 
 type RouteProps = { params: Promise<{ path: string[] }> };
 
-const campaignSlugs = new Set(["super-thumbnail", "hanclip", "stand", "ccmb", "intosharp", "airchurch", "barobogi"]);
+const campaignSlugs = new Set(["super-thumbnail", "hanclip", "stand", "ccmb", "intosharp", "barobogi"]);
 
 const contentVisuals: Record<string, AdvantageVariant> = {
   "연결 추가": "storage-network",
@@ -885,34 +885,6 @@ const productCampaigns = {
     ctaTitle: <>인터넷의 첫 화면을.<br /><span>내가 기억하는 방식으로.</span></>,
     ctaBody: "설치 없이 바로 열고, 이름과 검색어만으로 나만의 웹 시작점을 만들어 보세요.",
     ctaLabel: "인투샾 바로 열기",
-  },
-  airchurch: {
-    tone: "faith",
-    eyebrow: "DISCOVER FAITH, SHARE GOOD WILL",
-    headline: <>큰 곳보다.<br /><span>좋은 말씀과 선한 마음이 보이게.</span></>,
-    description: "큰 바로가기와 읽기 쉬운 화면에서 교단과 공식 채널을 대조한 설교와 찬양을 발견하고, 작은 교회와 지역의 꾸준한 사역을 만납니다.",
-    image: "/apps/airchurch/airchurch-campaign.png",
-    imageAlt: "여러 지역 교회의 말씀과 찬양, 나눔과 기도가 따뜻한 빛으로 이어지는 에어처치 캠페인 이미지",
-    imageLabel: "SERMON · WORSHIP · COMMUNITY · GOOD SHARING",
-    facts: [["NO", "목회자 순위"], ["CROSS", "여러 공식 출처 대조"], ["OPEN", "가입 없이 공개 콘텐츠 탐색"]],
-    advantages: [
-      ["01", "SERMON & WORSHIP", "오늘 필요한 말씀과 찬양을 발견합니다.", "많이 찾는 교회와 목사의 공식 채널을 먼저 확인하고, 지역 교회의 최신 설교와 찬양도 한곳에서 찾습니다.", "흩어진 공식 채널을 하나씩 찾기 전에 교회와 지역을 기준으로 둘러봅니다.", "sermon-mic"],
-      ["02", "DISCOVERY, NOT RANKING", "경쟁보다 발견을 앞에 둡니다.", "목회자의 서열을 만들지 않고 작은 교회와 지역의 꾸준한 사역이 보이도록 구성합니다.", "규모와 인기 순위 밖에 있던 가까운 교회의 말씀도 함께 살펴봅니다.", "discovery-map"],
-      ["03", "GOOD SHARING", "가진 달란트를 필요한 곳으로 잇습니다.", "시간·경험·공간·기술·기도를 교회와 이웃의 필요에 연결하고 공개 전 내용을 검토합니다.", "돈만이 아니라 내가 이미 가진 것으로 참여할 가능성을 엽니다. 연결 성사를 보장하지는 않습니다.", "heart-share"],
-      ["04", "SAFER COMMUNITY", "적은 개인정보로 이야기를 나눕니다.", "별칭을 사용하고 공동체 운영 원칙에 따라 첫 글을 검토합니다.", "공개 대화에 불필요한 연락처를 먼저 내놓지 않고 참여합니다.", "shield-community"],
-      ["05", "CHECKED SOURCES", "확인하고, 틀리면 다시 살펴봅니다.", "교단·노회·공식 홈페이지·영상 채널을 교차 확인하고 신고·재검토·이의제기 절차를 둡니다.", "정보의 출처와 수정 경로를 함께 두되 검증의 완전성을 보장한다고 주장하지 않습니다.", "check-source"],
-      ["06", "EASY FIRST", "큰 글씨와 넓은 버튼으로 시작하세요.", "말씀 보기·찬양 듣기·교회 찾기를 첫 화면의 큰 바로가기에서 고를 수 있습니다.", "복잡한 메뉴를 헤매지 않고 원하는 일을 바로 시작하며, 가입 없이 공개 콘텐츠를 둘러봅니다.", "eye-browse"],
-    ],
-    storyIcons: ["discovery-map", "heart-share", "eye-browse"],
-    stories: [
-      ["01", "새로운 동네에서 교회를 찾을 때", "첫 화면의 큰 ‘교회 찾기’ 버튼을 누르고 지역과 교회 이름으로 말씀을 찾습니다. 순위 없이 작은 교회와 지역 교회의 최신 설교와 찬양을 함께 살펴봅니다.", "큰 바로가기 · 지역 교회 · 공식 채널"],
-      ["02", "내 달란트를 나누고 싶을 때", "할 수 있는 일과 가능한 지역을 착한나눔에 남깁니다. 공개 전 검토를 거친 뒤 실제 필요와 이어질 가능성을 기다립니다.", "시간 · 기술 · 공간 · 기도"],
-      ["03", "가입 전에 먼저 보고 싶을 때", "연락처를 입력하지 않고 설교와 찬양을 둘러봅니다. 출처가 잘못된 것 같다면 신고와 재검토 절차를 확인합니다.", "공개 탐색 · 최소 개인정보 · 재검토"],
-    ],
-    ctaEyebrow: "FAITH MEETS GOOD WILL",
-    ctaTitle: <>좋은 말씀을 발견하고.<br /><span>선한 마음을 이어 보세요.</span></>,
-    ctaBody: "가입 없이 먼저 둘러보고, 우리 교회를 응원하고, 내가 가진 달란트로 가까운 필요에 참여하세요.",
-    ctaLabel: "에어처치 바로 열기",
   },
   barobogi: {
     tone: "meter",

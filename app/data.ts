@@ -806,48 +806,6 @@ const appCatalog: AppData[] = [
     ],
   },
   {
-    slug: "airchurch",
-    name: "에어처치",
-    english: "airChurch",
-    eyebrow: "FAITH MEETS GOOD WILL",
-    tagline: "좋은 말씀과 선한 마음이 만나는 곳.",
-    summary: "검증된 교회의 설교와 찬양을 큰 글씨와 넓은 버튼으로 편하게 찾고 싶다면. 에어처치는 확인을 거친 교회의 말씀과 찬양을 발견하고, 우리 교회를 응원하며, 가진 달란트로 이웃의 필요를 잇는 크리스천 웹 포털입니다.",
-    theme: "coral",
-    icon: "/apps/airchurch/icon.png",
-    artwork: "church",
-    platforms: [
-      { name: "Web", status: "공개", detail: "PC · 모바일 반응형", url: "https://airchurch.net/", downloadLabel: "에어처치 열기" },
-    ],
-    features: [
-      { title: "누구나 편한 첫 화면", body: "말씀 보기·찬양 듣기·교회 찾기를 큰 바로가기와 넓은 버튼으로 쉽게 시작합니다.", icon: "/apps/intosharp/features/feature-04.webp" },
-      { title: "오늘의 말씀과 찬양", body: "많이 찾는 교회와 목사의 공식 채널을 먼저 확인하면서, 지역 교회의 최신 설교와 찬양도 함께 발견합니다.", icon: "/apps/airchurch/features/feature-01.webp" },
-      { title: "목사님 발견 이어가기", body: "목사님 페이지 하단에서 다른 목회자 8명을 새롭게 추천받고, 한 사람의 사역 기록을 계속 둘러봅니다.", icon: "/apps/airchurch/features/feature-02.webp" },
-      { title: "경쟁보다 발견", body: "목회자의 서열을 만들기보다 작은 교회와 지역의 꾸준한 사역이 발견되도록 보여줍니다.", icon: "/apps/intosharp/features/feature-02.webp" },
-      { title: "착한나눔", body: "시간, 경험, 공간, 기술과 기도를 필요한 교회와 이웃에게 연결합니다.", icon: "/apps/airchurch/features/feature-03.webp" },
-      { title: "서로를 지키는 광장", body: "개인정보를 최소화한 별칭으로 이야기를 나누고 운영 원칙에 따라 첫 글을 검토합니다.", icon: "/apps/airchurch/features/feature-04.webp" },
-      { title: "분명한 검증 기준", body: "교단·노회·공식 홈페이지와 영상 채널을 교차 확인하고 신고·재검토·이의제기 절차를 둡니다.", icon: "/apps/airchurch/features/feature-05.webp" },
-    ],
-    guide: [
-      { title: "말씀 찾기", body: "교회명, 목사님 또는 지역을 검색하고 공식 채널의 설교를 확인합니다." },
-      { title: "찬양 듣기", body: "여러 교회의 최신 찬양을 둘러보고 공식 YouTube 영상으로 이어서 듣습니다." },
-      { title: "교회 응원하기", body: "건강한 발견에 도움이 되도록 마음을 전하고, 지역별 교회를 살펴봅니다." },
-      { title: "달란트 나누기", body: "도울 수 있는 일과 활동 지역을 남기면 공개 전 확인을 거쳐 실제 필요와 연결합니다." },
-      { title: "광장 참여하기", body: "공동체 원칙을 확인하고 별칭으로 신앙과 삶의 이야기를 나눕니다." },
-    ],
-    progress: [
-      { state: "done", title: "공개 웹 포털", body: "airchurch.net에서 PC와 모바일로 이용 가능" },
-      { state: "done", title: "설교·찬양 발견", body: "공식 채널 기반 콘텐츠 검색과 지역 필터 구현" },
-      { state: "active", title: "검증과 운영 안정화", body: "교회 정보 검토, 콘텐츠 동기화와 운영자 관리 흐름을 개선 중" },
-      { state: "active", title: "착한나눔과 광장", body: "접수·검토·공개 절차와 안전 장치를 실제 운영에 맞춰 다듬는 중" },
-    ],
-    github: [],
-    privacy: [
-      "공개 콘텐츠를 둘러보는 데 회원 가입이나 개인 연락처 입력을 요구하지 않습니다.",
-      "달란트 나눔과 광장에 사용자가 직접 입력한 내용은 접수와 공개 전 검토를 위해 처리합니다.",
-      "외부 설교와 찬양을 열면 YouTube 등 해당 서비스의 개인정보처리방침이 적용됩니다.",
-    ],
-  },
-  {
     slug: "button",
     name: "OurButton",
     english: "OurButton",
@@ -1110,7 +1068,7 @@ const appCatalog: AppData[] = [
     ],
     features: [
       { title: "공공기관이 이용한 식당을 먼저", body: "28개 수집 기관(17개 내부 지역)의 공공 식사 이용 기록(2026년 9월 13일 기준 11,091곳 번들 카탈로그, 전국 완전 전수 조사는 아님)을 바탕으로 합니다. 앱 실행 시점 기준 최근 18개월 내 1건 이상 결제 기록이 있고 이름과 정규화된 주소가 일치하는 곳을 우선순위로 먼저 보여 줍니다.", icon: "/apps/whattoeat/features/feature-01.webp" },
-      { title: "추천의 근거를 직접 확인", body: "공공기관 이용 기록 표시를 보고 식당을 고른 뒤 결제일과 공식 원문을 확인하세요. 주소가 빠진 일부 기록은 기관 주변의 공식 사업장 정보로 보완했습니다.", icon: "/apps/airchurch/features/feature-05.webp" },
+      { title: "추천의 근거를 직접 확인", body: "공공기관 이용 기록 표시를 보고 식당을 고른 뒤 결제일과 공식 원문을 확인하세요. 주소가 빠진 일부 기록은 기관 주변의 공식 사업장 정보로 보완했습니다.", icon: "/apps/whattoeat/features/feature-02.webp" },
       { title: "가까운 최대 13곳에서 한 끼 고르기", body: "현 위치 또는 직접 고른 지역에서 가까운 음식점을 최대 13곳까지 추린 뒤, 오늘의 한 끼와 함께 볼 맛집을 사진이 시원하게 보이는 2열 목록으로 보여줍니다.", icon: "/apps/whattoeat/features/feature-03.webp" },
       { title: "기다리는 순간도 한 끼답게", body: "추천을 고르는 동안 음식 토큰과 주사위가 움직이는 애니메이션으로 선택의 기대감을 이어갑니다.", icon: "/apps/whattoeat/features/feature-07.webp" },
       { title: "사진으로 먼저 맛보기", body: "Kakao Local에서 가까운 식당을 찾고 TourAPI의 검증된 식당 사진을 우선합니다. 사진이 없으면 Openverse에서 대표 메뉴와 이름을 함께 판단한 예시 사진을 찾아 빈 화면 없이 제안합니다.", icon: "/apps/super-thumbnail/features/feature-04.webp" },
@@ -1626,7 +1584,7 @@ export const productFamilies: ProductFamily[] = [
   { id: "media", name: "미디어·저장공간", english: "MEDIA & STORAGE", summary: "파일과 사진·영상을 보고, 만들고, 곁에 두는 앱", slugs: ["nasfinder", "super-thumbnail", "hanclip", "stand", "htd"] },
   { id: "ai", name: "AI·창작", english: "AI & CREATION", summary: "AI 도구와 함께 배우고, 확인하고, 만드는 제품", slugs: ["ccmb", "starmanager", "denimdex", "hanstree-workroom"] },
   { id: "mac", name: "Mac 생산성·유틸리티", english: "MAC PRODUCTIVITY & UTILITIES", summary: "작업 흐름을 지키는 작은 도구와 확장", slugs: ["cleanusb", "htt", "alfred-navermap", "autoshorts", "barobogi"] },
-  { id: "life", name: "생활·가족·커뮤니티", english: "LIFE, FAMILY & COMMUNITY", summary: "일상과 가족, 모임에서 쓰는 웹과 앱", slugs: ["whattoeat", "button", "intosharp", "airchurch", "ppabang"] },
+  { id: "life", name: "생활·가족·커뮤니티", english: "LIFE, FAMILY & COMMUNITY", summary: "일상과 가족, 모임에서 쓰는 웹과 앱", slugs: ["whattoeat", "button", "intosharp", "ppabang"] },
   { id: "engine", name: "엔진·인프라", english: "ENGINES & INFRASTRUCTURE", summary: "다른 제품을 받치는 코어와 서버, 업무 도구", slugs: ["hanai", "aibi", "minecraft-server"] },
 ];
 

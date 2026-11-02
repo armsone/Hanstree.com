@@ -59,7 +59,6 @@ const homeKoreanNames: Record<string, string> = {
   stand: "스탠드",
   ccmb: "씨씨엠비",
   intosharp: "인투샾",
-  airchurch: "에어처치",
   button: "아워버튼",
   starmanager: "스타그램",
   "minecraft-server": "나스오에스",

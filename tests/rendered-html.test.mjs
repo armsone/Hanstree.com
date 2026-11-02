@@ -39,7 +39,6 @@ test("server-renders the NasFinder.com homepage", async () => {
   assert.match(html, /BTN/);
   assert.match(html, /TrackpadGuard/);
   assert.match(html, /intoSharp/);
-  assert.match(html, /airChurch/);
   assert.match(html, /iManager/);
   assert.match(html, /HtOMS Brief/);
   assert.match(html, /Button/);
@@ -47,7 +46,7 @@ test("server-renders the NasFinder.com homepage", async () => {
   assert.match(html, /AutoShorts/);
   for (const slug of [
     "nasfinder", "super-thumbnail", "hanclip", "stand", "btn", "trackpadguard",
-    "htoms-brief", "intosharp", "airchurch", "button", "starmanager", "minecraft-server", "whattoeat", "denimdex", "aibi", "autoshorts",
+    "htoms-brief", "intosharp", "button", "starmanager", "minecraft-server", "whattoeat", "denimdex", "aibi", "autoshorts",
   ]) {
     assert.match(html, new RegExp(`/apps/${slug}/home-card\\.webp`), slug);
   }
@@ -132,7 +131,7 @@ test("keeps every home product card title readable without ellipsis", async () =
 test("keeps every app detail hero focused on one clear entry path and a representative product scene", async () => {
   const slugs = [
     "nasfinder", "super-thumbnail", "hanclip", "stand", "ccmb", "btn", "trackpadguard",
-    "htoms-brief", "intosharp", "airchurch", "button", "starmanager", "minecraft-server", "whattoeat", "denimdex", "aibi",
+    "htoms-brief", "intosharp", "button", "starmanager", "minecraft-server", "whattoeat", "denimdex", "aibi",
   ];
 
   for (const slug of slugs) {
@@ -544,11 +543,10 @@ test("renders full promotional campaigns for every remaining product", async () 
   const responses = await Promise.all([
     render("/apps/super-thumbnail"),
     render("/apps/intosharp"),
-    render("/apps/airchurch"),
   ]);
   responses.forEach((response) => assert.equal(response.status, 200));
 
-  const [superThumbnail, intoSharp, airChurch] = await Promise.all(responses.map((response) => response.text()));
+  const [superThumbnail, intoSharp] = await Promise.all(responses.map((response) => response.text()));
   assert.match(superThumbnail, /수만 개의 파일을/);
   assert.match(superThumbnail, /super-thumbnail-campaign\.png/);
   assert.match(superThumbnail, /16,540/);
@@ -556,10 +554,7 @@ test("renders full promotional campaigns for every remaining product", async () 
   assert.match(intoSharp, /주소는 잊고/);
   assert.match(intoSharp, /intosharp-campaign\.png/);
   assert.match(intoSharp, /인터넷의 첫 화면을/);
-  assert.match(airChurch, /좋은 말씀과 선한 마음이 보이게/);
-  assert.match(airChurch, /airchurch-campaign\.png/);
-  assert.match(airChurch, /연결 성사를 보장하지는 않습니다/);
-  for (const html of [superThumbnail, intoSharp, airChurch]) {
+  for (const html of [superThumbnail, intoSharp]) {
     assert.match(html, /id="product-campaign"/);
     assert.match(html, /실제 기능으로 가능한 대표 사용 장면이며, 사용자 후기를 인용한 내용은 아닙니다/);
   }
@@ -590,19 +585,13 @@ test("renders the TrackpadGuard product, support link, and requested default reg
   assert.match(supportHTML, /https:\/\/github\.com\/armsone\/TrackpadGuard/);
 });
 
-test("renders the intoSharp and airChurch product pages", async () => {
-  const [intoResponse, churchResponse] = await Promise.all([
-    render("/apps/intosharp"),
-    render("/apps/airchurch"),
-  ]);
+test("renders the intoSharp product page", async () => {
+  const intoResponse = await render("/apps/intosharp");
   assert.equal(intoResponse.status, 200);
-  assert.equal(churchResponse.status, 200);
 
-  const [intoSharp, airChurch] = await Promise.all([intoResponse.text(), churchResponse.text()]);
+  const intoSharp = await intoResponse.text();
   assert.match(intoSharp, /주소 대신 이름으로 여는 첫 화면/);
   assert.match(intoSharp, /https:\/\/intosharp\.com\//);
-  assert.match(airChurch, /좋은 말씀과 선한 마음이 만나는 곳/);
-  assert.match(airChurch, /https:\/\/airchurch\.net\//);
 });
 
 test("keeps the support address out of the public source", async () => {
