@@ -365,6 +365,7 @@ const appCatalog: AppData[] = [
     features: [
       { title: "빠른 영화 만들기", body: "실제 장면 수와 영상 분량에 맞춰 시간을 고르게 배분하고, 엔딩을 포함한 완성시간을 음악 길이에 맞춘 뒤 결과를 다듬습니다.", icon: "/apps/hanclip/features/feature-01.webp" },
       { title: "Android 사진 선별", body: "갤러리에서 공유한 사진 중 원하는 장수만큼 좋은 사진을 골라 봅니다. 결과를 확인하고 앨범을 지정하면 복사본 없이 원본을 이동합니다. 이전 앨범에서 빠지는 이동 방식은 실행 전에 안내하고 승인을 받습니다.", icon: "/apps/hanclip/features/feature-05.webp" },
+      { title: "Android 큰 사진 보기와 자동 재생", body: "Android의 ‘한양 사진 고르기’ 큰 사진 보기에서 좌우 스와이프로 넘겨보거나 설정한 간격으로 자동 재생할 수 있습니다. 사진 재생 간격과 반복 모드를 기억하며, 영상은 반복 및 화면 맞춤 설정을 기억합니다.", icon: "/apps/hanclip/features/feature-05.webp" },
       { title: "빠른 결과 편집에서 그룹 보존", body: "빠른 결과 편집에서 숨겨진 유사사진 후보와 되돌리기 상태를 그대로 유지합니다. 대표 사진을 제거해도 기존 그룹 처리 방식을 유지합니다.", icon: "/apps/hanclip/features/feature-05.webp" },
       { title: "AiShot", body: "Apple과 Android에서 골프 스윙의 준비·동작·임팩트와 타격음을 함께 살핍니다. 소리가 거의 없는 퍼팅은 준비 자세부터 작은 백스윙·전진·팔로스루까지 몸동작 순서가 확실하고 화면이 안정적일 때만 보수적으로 촬영합니다.", icon: "/apps/hanclip/features/feature-02.webp" },
       { title: "비슷한 사진 확인과 대표 썸네일", body: "비슷한 사진은 기존 판정에 더해 기기 안에서 한 번 더 비교해 확인하고, 하나라도 판단할 수 없으면 기존 방식으로 돌아갑니다. 영상의 중요 장면과 선택 구간, 순위는 그대로 두고 대표 썸네일만 더 선명한 컷이 있을 때 바꿉니다. 이 비교에서는 사진 원본과 특징을 기기 밖으로 보내지 않으며 선택한 장수와 순서, 원본은 그대로 유지됩니다.", icon: "/apps/hanclip/features/feature-03.webp" },
@@ -612,6 +613,48 @@ const appCatalog: AppData[] = [
       ],
       note: "기능·문구·주요 구조는 정렬했습니다. Android 실기기 카탈로그 11개 상태는 두 차례 모두 통과했으며, 트라이폴드 다중 디스플레이의 캡처 프레임 차이로 홈 세로 화면의 반복 해시는 후속 검증 항목입니다.",
     },
+  },
+  {
+    slug: "htd",
+    name: "HTD",
+    english: "HTD",
+    eyebrow: "개발 진행 중",
+    tagline: "개발 중인 Mac용 다운로드 앱",
+    summary: "앱 내 브라우저와 다운로드 대기열, 완료 내역을 한곳에 모은 Mac용 다운로드 앱입니다. 사이트와 콘텐츠에 따라 지원 범위가 다를 수 있습니다.",
+    theme: "blue",
+    icon: "/apps/htd/icon.png",
+    heroImage: "/apps/htd/icon.png",
+    spotlightImage: "/apps/htd/icon.png",
+    systemImage: "/apps/htd/icon.png",
+    artwork: "files",
+    platforms: [
+      {
+        name: "Mac",
+        status: "공개",
+        detail: "0.10.6 · 빌드 202611011621 · 내부 번들 28 · Apple Silicon arm64 · macOS 27.0+",
+        url: releaseDownloadPath("HTD-MacOS"),
+        downloadLabel: "Mac용 DMG 받기",
+        availabilityNote: "ad-hoc 서명 · Apple 공증 미완료",
+      },
+    ],
+    features: [
+      { title: "앱 내 브라우저 탐색", body: "앱 안에서 웹페이지를 탐색하고 원하는 다운로드 대상을 찾습니다." },
+      { title: "다운로드 대기열과 완료 내역", body: "진행 중인 다운로드 대기열을 확인하고 완료된 다운로드 내역을 한곳에서 모아봅니다." },
+      { title: "내장 실행 도구", body: "지원되는 Mac에서 별도의 개발자 도구를 설치하지 않아도 바로 실행할 수 있도록 필요한 도구를 함께 내장했습니다." },
+    ],
+    guide: [
+      { title: "설치", body: "다운로드한 DMG 파일을 열고 HTD를 응용 프로그램 폴더로 드래그해 옮깁니다." },
+      { title: "실행 확인", body: "Apple 공증 미완료 상태이므로 macOS에서 첫 실행 시 확인을 요청하거나 실행이 차단될 수 있습니다." },
+    ],
+    progress: [
+      { state: "done", title: "0.10.6 공개 배포", body: "Apple Silicon Mac용 0.10.6 공개 배포를 시작했습니다." },
+      { state: "active", title: "개발 진행 중", body: "앱 내 브라우저와 다운로드 기능을 지속 개발 중이며, 사이트와 콘텐츠에 따라 지원 범위가 다를 수 있습니다." },
+    ],
+    github: ["https://github.com/armsone/HTD"],
+    privacy: [
+      "공개 배포 파일에는 개인 기록, 쿠키, 북마크가 포함되어 있지 않습니다.",
+      "사이트 이용 및 다운로드 시 사용자가 선택한 웹사이트와 직접 통신합니다.",
+    ],
   },
   {
     slug: "ccmb",
@@ -1582,7 +1625,7 @@ export type ProductFamily = {
 
 // 제품군 순서 = 카탈로그 공개 순서. 새 제품은 알맞은 slugs에 추가하면 됩니다.
 export const productFamilies: ProductFamily[] = [
-  { id: "media", name: "미디어·저장공간", english: "MEDIA & STORAGE", summary: "파일과 사진·영상을 보고, 만들고, 곁에 두는 앱", slugs: ["nasfinder", "super-thumbnail", "hanclip", "stand"] },
+  { id: "media", name: "미디어·저장공간", english: "MEDIA & STORAGE", summary: "파일과 사진·영상을 보고, 만들고, 곁에 두는 앱", slugs: ["nasfinder", "super-thumbnail", "hanclip", "stand", "htd"] },
   { id: "ai", name: "AI·창작", english: "AI & CREATION", summary: "AI 도구와 함께 배우고, 확인하고, 만드는 제품", slugs: ["ccmb", "starmanager", "denimdex", "hanstree-workroom"] },
   { id: "mac", name: "Mac 생산성·유틸리티", english: "MAC PRODUCTIVITY & UTILITIES", summary: "작업 흐름을 지키는 작은 도구와 확장", slugs: ["cleanusb", "htt", "alfred-navermap", "autoshorts", "barobogi"] },
   { id: "life", name: "생활·가족·커뮤니티", english: "LIFE, FAMILY & COMMUNITY", summary: "일상과 가족, 모임에서 쓰는 웹과 앱", slugs: ["whattoeat", "button", "intosharp", "airchurch", "ppabang"] },

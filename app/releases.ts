@@ -30,6 +30,7 @@ export const DOWNLOAD_KEYS = [
   "Barobogi-Windows-Chrome",
   "Barobogi-Windows-Whale",
   "Barobogi-Android",
+  "HTD-MacOS",
 ] as const;
 
 export type DownloadKey = (typeof DOWNLOAD_KEYS)[number];
@@ -193,6 +194,13 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
     repo: "HTT-MacOS",
     assetPattern: /^(?:HTT|SMTranslator|Barobogi)-\d+\.\d+\.\d+\.dmg$/i,
     fallbackUrl: "https://github.com/armsone/HTT-MacOS/releases/download/v0.10.0/HTT-0.10.0.dmg",
+  },
+  "HTD-MacOS": {
+    label: "HTD Mac",
+    repo: "HTD",
+    tagPattern: /^mac-v/,
+    assetPattern: /^HTD-Mac-\d+\.\d+\.\d+\.dmg$/i,
+    fallbackUrl: "https://github.com/armsone/HTD/releases/download/mac-v0.10.6/HTD-Mac-0.10.6.dmg",
   },
 };
 
