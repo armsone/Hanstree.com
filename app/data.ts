@@ -632,7 +632,7 @@ const appCatalog: AppData[] = [
         detail: "0.10.6 · 빌드 202611011621 · 내부 번들 28 · Apple Silicon arm64 · macOS 27.0+",
         url: releaseDownloadPath("HTD-MacOS"),
         downloadLabel: "Mac용 DMG 받기",
-        availabilityNote: "ad-hoc 서명 · Apple 공증 미완료",
+        availabilityNote: "Developer ID 서명 · Apple 공증 완료",
       },
     ],
     features: [
@@ -642,7 +642,7 @@ const appCatalog: AppData[] = [
     ],
     guide: [
       { title: "설치", body: "다운로드한 DMG 파일을 열고 HTD를 응용 프로그램 폴더로 드래그해 옮깁니다." },
-      { title: "실행 확인", body: "Apple 공증 미완료 상태이므로 macOS에서 첫 실행 시 확인을 요청하거나 실행이 차단될 수 있습니다." },
+      { title: "실행 확인", body: "Developer ID로 서명하고 Apple 공증을 마친 앱입니다. 일반 DMG와 마찬가지로 앱을 처음 열 때 macOS가 확인 창을 표시할 수 있습니다." },
     ],
     progress: [
       { state: "done", title: "0.10.6 공개 배포", body: "Apple Silicon Mac용 0.10.6 공개 배포를 시작했습니다." },
