@@ -364,7 +364,7 @@ export async function generateMetadata({ params }: RouteProps): Promise<Metadata
   const brand = await getSiteBrand();
   const app = findApp(path[0]);
   if (!app) return {};
-  const isLegacyHttSlug = ["btn", "backtonormal", "trackpadguard", "inputmate"].includes(path[0]);
+  const isLegacyHttSlug = ["btn", "backtonormal", "trackpadguard", "inputmate", "htd"].includes(path[0]);
   const canonicalSlug = isLegacyHttSlug ? "htt" : path[0];
   const section = path[1];
   const suffix = section === "privacy" ? "개인정보처리방침" : section === "terms" ? "이용약관" : section === "support" ? "지원" : section === "data-deletion" ? "데이터 삭제" : section === "google-oauth" ? "Google API Use & Data Handling" : null;
@@ -385,7 +385,7 @@ export async function generateMetadata({ params }: RouteProps): Promise<Metadata
 
 export default async function AppRoute({ params }: RouteProps) {
   const { path } = await params;
-  if (["btn", "backtonormal", "trackpadguard", "inputmate"].includes(path[0])) {
+  if (["btn", "backtonormal", "trackpadguard", "inputmate", "htd"].includes(path[0])) {
     const suffix = path.slice(1).join("/");
     permanentRedirect(suffix ? `/apps/htt/${suffix}` : "/apps/htt");
   }
