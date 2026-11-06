@@ -39,7 +39,13 @@ function liveTestFlightDetail(detail: string, live: TestFlightBuild | null) {
   const available = availableTestFlightBuild(live);
   if (available === undefined) return detail;
   // 앞의 "버전", "(빌드)", "· 빌드 N"은 한 덩어리로 바꾸고, 뒤의 호환·플랫폼 설명은 그대로 둡니다.
-  return detail.replace(/^\d+\.\d+(?:\.\d+)?(?:\s*\(\d+\))?(?:\s*·\s*빌드\s*\d+)?/, available?.marketingVersion ? `${available.marketingVersion} (${available.build})` : "승인된 버전 확인 중");
+  let text = detail.replace(/^\d+\.\d+(?:\.\d+)?(?:\s*\(\d+\))?(?:\s*·\s*빌드\s*\d+)?/, available?.marketingVersion ? `${available.marketingVersion} (${available.build})` : "승인된 버전 확인 중");
+  if (available?.marketingVersion) {
+    text = text.replace(/(?:외부\s*)?심사\s*(?:대기|중)/g, "참여 가능");
+  } else {
+    text = text.replace(/참여\s*가능/g, "참여 가능 여부 확인 중");
+  }
+  return text;
 }
 export function useLiveTestFlight(appSlug: string | undefined, enabled: boolean = true, near: boolean = true) {
   const [live, setLive] = useState<TestFlightBuild | null>(null);
