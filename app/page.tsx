@@ -5,8 +5,8 @@ import { AdvantageVisual, type AdvantageVariant } from "./components/AdvantageVi
 import { AppIcon, AppStatus } from "./components/AppVisuals";
 import { AndroidReleaseTracker } from "./components/AndroidReleaseTracker";
 import { ContactReveal } from "./components/ContactReveal";
-import { DownloadQrCode } from "./components/DownloadQrCode";
 import { SiteCounter } from "./components/SiteCounter";
+import { TestFlightInviteCard } from "./components/TestFlightAvailability";
 import { TestFlightTracker } from "./components/TestFlightTracker";
 import { apps, familyApps, findApp, productFamilies } from "./data";
 import { appCardImage } from "./media";
@@ -104,34 +104,14 @@ function countPlatformTargets(platformName: string) {
   return Math.max(matched, 1); // Web · Swift Package · Kotlin/JVM 등 단일 레코드는 기본 1
 }
 
-function verifiedTestFlightInviteUrl(inviteUrl: string | null) {
-  return inviteUrl?.startsWith("https://testflight.apple.com/join/") ? inviteUrl : null;
-}
-
 function TestFlightInviteLinks() {
   return (
     <div className="testflight-invite-grid">
         {testFlightBuilds.filter((build) => build.publicBetaState !== "internalOnly").map((build) => {
         const app = findApp(build.slug);
-        const inviteUrl = build.inviteAvailable !== false ? verifiedTestFlightInviteUrl(build.inviteUrl) : null;
-        const waitingForReview = build.publicBetaState === "waitingForReview";
-        const rejected = build.publicBetaState === "rejected";
         if (!app) return null;
 
-        return (
-          <article className={`testflight-invite-card${inviteUrl ? " testflight-invite-card-ready" : ""}`} key={build.slug}>
-            <div className="testflight-invite-head">
-              <AppIcon app={app} />
-              <div><p>PUBLIC BETA</p><h3>{build.appName}</h3></div>
-            </div>
-            <p className="testflight-invite-copy">{rejected ? "Apple 심사에서 수정 요청이 있어 새 빌드가 필요합니다." : waitingForReview && inviteUrl ? "기존 공개 링크는 열려 있고, 최신 빌드는 Apple 심사를 기다리고 있습니다." : waitingForReview ? "Apple 공개 테스트 심사에 제출되어 승인을 기다리고 있습니다." : inviteUrl ? "신청서 없이 TestFlight에서 바로 참여할 수 있습니다." : build.publicBetaState === "needsReviewAccount" ? "외부용 빌드는 준비됐고 Apple 심사용 계정을 등록하고 있습니다." : "외부 테스트용 새 빌드를 준비하고 있습니다."}</p>
-            {inviteUrl ? (
-              <><a className="testflight-invite-action" href={inviteUrl}>{waitingForReview ? "기존 공개 링크 열기" : "외부 테스터로 참여"} <span aria-hidden="true">↗</span></a><DownloadQrCode className="testflight-invite-qr" href={inviteUrl} label={`${build.appName} TestFlight 공개 링크`} /></>
-            ) : (
-              <span className="testflight-invite-pending"><i aria-hidden="true" />{rejected ? "새 빌드 준비 필요" : waitingForReview ? "Apple 심사 중" : build.publicBetaState === "needsReviewAccount" ? "심사 계정 준비" : "외부용 빌드 준비"}</span>
-            )}
-          </article>
-        );
+        return <TestFlightInviteCard build={build} icon={<AppIcon app={app} />} key={build.slug} />;
       })}
     </div>
   );

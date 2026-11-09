@@ -3,6 +3,8 @@
 import Link from "next/link";
 import type { Platform } from "../data";
 import type { TestFlightBuild } from "../testflight";
+import type { ReactNode } from "react";
+import { ClientDownloadQrCode } from "./ClientDownloadQrCode";
 import { useLiveTestFlight, ReleaseQr, TestFlightBuildText } from "./ReleasePlatform";
 
 // 실시간 상태를 적용하는 공개 베타 앱입니다. 그 밖의 제품은 기존 정적 표시를 그대로 유지합니다.
@@ -146,6 +148,35 @@ export function resolveTestFlight(
     pendingBadge,
     pendingCopy,
   };
+}
+
+function verifiedTestFlightInviteUrl(inviteUrl: string | null) {
+  return inviteUrl?.startsWith("https://testflight.apple.com/join/") ? inviteUrl : null;
+}
+
+export function TestFlightInviteCard({ build, icon }: { build: TestFlightBuild; icon: ReactNode }) {
+  const live = useLiveTestFlight(build.slug, isLiveStatusApp(build.slug));
+  const resolved = resolveTestFlight(build.slug, build, live);
+  const inviteUrl = verifiedTestFlightInviteUrl(resolved.inviteUrl);
+  const state = resolved.publicBetaState;
+  const waitingForReview = state === "waitingForReview";
+  const rejected = state === "rejected";
+  const liveApp = isLiveStatusApp(build.slug);
+
+  return (
+    <article className={`testflight-invite-card${inviteUrl ? " testflight-invite-card-ready" : ""}`}>
+      <div className="testflight-invite-head">
+        {icon}
+        <div><p>PUBLIC BETA</p><h3>{build.appName}</h3></div>
+      </div>
+      <p className="testflight-invite-copy">{rejected ? "Apple 심사에서 수정 요청이 있어 새 빌드가 필요합니다." : waitingForReview && inviteUrl ? "기존 공개 링크는 열려 있고, 최신 빌드는 Apple 심사를 기다리고 있습니다." : inviteUrl ? "신청서 없이 TestFlight에서 바로 참여할 수 있습니다." : liveApp ? resolved.heroDescription : waitingForReview ? "Apple 공개 테스트 심사에 제출되어 승인을 기다리고 있습니다." : state === "needsReviewAccount" ? "외부용 빌드는 준비됐고 Apple 심사용 계정을 등록하고 있습니다." : "외부 테스트용 새 빌드를 준비하고 있습니다."}</p>
+      {inviteUrl ? (
+        <><a className="testflight-invite-action" href={inviteUrl}>{waitingForReview ? "기존 공개 링크 열기" : "외부 테스터로 참여"} <span aria-hidden="true">↗</span></a><ClientDownloadQrCode className="testflight-invite-qr" href={inviteUrl} label={`${build.appName} TestFlight 공개 링크`} /></>
+      ) : (
+        <span className="testflight-invite-pending"><i aria-hidden="true" />{liveApp ? resolved.pendingBadge : rejected ? "새 빌드 준비 필요" : waitingForReview ? "Apple 심사 중" : state === "needsReviewAccount" ? "심사 계정 준비" : "외부용 빌드 준비"}</span>
+      )}
+    </article>
+  );
 }
 
 export function TestFlightHeroCard({
