@@ -57,6 +57,41 @@ async function fromRelease(key: DownloadKey, release: Release): Promise<ReleaseI
   return info;
 }
 
+// GitHub API가 403/429로 막힐 때만, 일반 정식 최신 채널의 공개 release.json으로 현재 릴리스를 확인합니다. APK는 내려받지 않습니다.
+async function fromPublicMetadata(key: DownloadKey): Promise<ReleaseInfo> {
+  const config = RELEASE_DOWNLOADS[key];
+  const prefix = `/armsone/${config.repo}/releases/download/`;
+  // latest -> tag의 release.json 주소로 가는 첫 리다이렉트만 직접 확인하고, 그 뒤 저장소 CDN 리다이렉트는 따라갑니다.
+  const hop = await fetch(`https://github.com/armsone/${encodeURIComponent(config.repo)}/releases/latest/download/release.json`, { redirect: "manual", signal: AbortSignal.timeout(8000) });
+  const location = hop.headers.get("location");
+  if (hop.status < 300 || hop.status > 399 || !location) throw new Error("Public release metadata unavailable");
+  const finalUrl = new URL(location, "https://github.com");
+  const rest = finalUrl.pathname.slice(prefix.length).split("/");
+  if (finalUrl.origin !== "https://github.com" || !finalUrl.pathname.startsWith(prefix) || rest.length !== 2 || rest[1] !== "release.json") throw new Error("Public release metadata unavailable");
+  const tagName = decodeURIComponent(rest[0]);
+  if (config.tagPattern && !config.tagPattern.test(tagName)) throw new Error("Public release metadata tag mismatch");
+  const response = await fetch(finalUrl, { redirect: "follow", signal: AbortSignal.timeout(8000) });
+  if (!response.ok) throw new Error("Public release metadata unavailable");
+  const body = await response.text();
+  if (body.length > 65536) throw new Error("Release metadata too large");
+  const data = JSON.parse(body) as { schemaVersion: number; downloads: { key: string; version: string; build?: string; versionCode?: number; minimumOS?: string; asset: { name: string; size: number; sha256: string } }[] };
+  if (data.schemaVersion !== 1 || !Array.isArray(data.downloads)) throw new Error("Invalid release metadata");
+  const entries = data.downloads.filter((item) => item.key === key);
+  if (entries.length !== 1) throw new Error("Missing or ambiguous release metadata");
+  const entry = entries[0];
+  const version = tagName.match(/\d+\.\d+\.\d+/)?.[0];
+  if (!version || entry.version !== version || typeof entry.asset?.name !== "string" || !config.assetPattern.test(entry.asset.name) || !Number.isSafeInteger(entry.asset.size) || entry.asset.size <= 0 || !/^[a-f0-9]{64}$/i.test(entry.asset.sha256)) throw new Error("Invalid public release metadata");
+  const build = typeof entry.build === "string" && /^\d{1,20}$/.test(entry.build) ? entry.build : null;
+  const versionCode = Number.isSafeInteger(entry.versionCode) && entry.versionCode! > 0 ? entry.versionCode! : null;
+  if (build === null && entry.build !== undefined) throw new Error("Invalid public release metadata");
+  if (entry.versionCode !== undefined && versionCode === null) throw new Error("Invalid public release metadata");
+  const downloadUrl = `https://github.com${prefix}${encodeURIComponent(tagName)}/${encodeURIComponent(entry.asset.name)}`;
+  const head = await fetch(downloadUrl, { method: "HEAD", redirect: "follow", signal: AbortSignal.timeout(8000) });
+  const length = head.headers.get("content-length");
+  if (head.status !== 200 || (length !== null && Number(length) !== entry.asset.size)) throw new Error("Public release asset unavailable");
+  return { key, releaseId: null, tagName, version, publishedAt: null, checkedAt: new Date().toISOString(), source: "github", preview: false, downloadUrl, releaseUrl: `https://github.com/armsone/${config.repo}/releases/tag/${encodeURIComponent(tagName)}`, asset: { name: entry.asset.name, size: entry.asset.size, sha256: entry.asset.sha256.toLowerCase() }, build, versionCode, minimumOS: typeof entry.minimumOS === "string" && entry.minimumOS.length <= 100 ? entry.minimumOS : null };
+}
+
 async function current(key: DownloadKey): Promise<ReleaseInfo> {
   const config = RELEASE_DOWNLOADS[key];
   const base = `/repos/armsone/${encodeURIComponent(config.repo)}/releases`;
@@ -67,7 +102,11 @@ async function current(key: DownloadKey): Promise<ReleaseInfo> {
   }
   // Mixed product/preview repositories need their own channel, not the repository-wide Latest.
   if (!config.tagPattern && !config.allowPreview) {
-    const latest = await github<Release>(`${base}/latest`);
+    let latest: Release;
+    try { latest = await github<Release>(`${base}/latest`); } catch (error) {
+      if (config.releasePage || !/: (403|429)$/.test(error instanceof Error ? error.message : "")) throw error;
+      return fromPublicMetadata(key);
+    }
     const info = await fromRelease(key, latest);
     if (info) return info;
   }
@@ -93,7 +132,7 @@ export async function readRelease(key: DownloadKey): Promise<ReleaseInfo> {
   const lease = await db.prepare(`INSERT INTO release_snapshots (key, record_json, checked_at, retry_after) VALUES (?, ?, ?, ?)
     ON CONFLICT(key) DO UPDATE SET retry_after = excluded.retry_after WHERE release_snapshots.retry_after <= ? RETURNING key`)
     .bind(key, JSON.stringify(previous), previous.checkedAt ?? "", new Date(Date.now() + 60_000).toISOString(), now).first();
-  if (!lease) return { ...previous, source: previous.releaseId ? "saved" : "bootstrap" };
+  if (!lease) return { ...previous, source: previous.checkedAt ? "saved" : "bootstrap" };
   try {
     const info = await current(key);
     await db.prepare("UPDATE release_snapshots SET record_json = ?, checked_at = ?, retry_after = ? WHERE key = ?")
@@ -101,7 +140,7 @@ export async function readRelease(key: DownloadKey): Promise<ReleaseInfo> {
     return info;
   } catch (error) {
     console.warn("Release refresh failed", key, error instanceof Error ? error.message : "unknown");
-    const fallback = { ...previous, source: previous.releaseId ? "saved" as const : "bootstrap" as const };
+    const fallback = { ...previous, source: previous.checkedAt ? "saved" as const : "bootstrap" as const };
     await db.prepare("UPDATE release_snapshots SET record_json = ?, retry_after = ? WHERE key = ?")
       .bind(JSON.stringify(fallback), new Date(Date.now() + 60_000).toISOString(), key).run();
     return fallback;

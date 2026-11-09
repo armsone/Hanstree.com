@@ -24,7 +24,9 @@ export function downloadKeyFromUrl(value?: string): DownloadKey | null {
 }
 
 export function snapshotDownloadPath(info: ReleaseInfo) {
-  return `${releaseDownloadPath(info.key)}&release=${info.releaseId ?? "bootstrap"}`;
+  // 공개 메타데이터로 확인한 기록(releaseId 없음)은 정적 bootstrap이 아니라 현재 최신 릴리스를 따라갑니다.
+  const release = info.releaseId ?? (info.checkedAt ? null : "bootstrap");
+  return release === null ? releaseDownloadPath(info.key) : `${releaseDownloadPath(info.key)}&release=${release}`;
 }
 
 // Compatibility and historical descriptions stay editorial; only current release fields are replaced.
