@@ -13,6 +13,7 @@ import { appCardImage } from "./media";
 import { testFlightBuilds } from "./testflight";
 import { getSiteBrand } from "./site-brand";
 import { SiteFooter, SiteHeader } from "./components/SiteChrome";
+import { HanToolCover } from "./components/HanToolMagazine";
 import { getD1 } from "../db";
 import { ensureSeedPost } from "./blog/seed";
 
@@ -50,6 +51,7 @@ const principleVisuals: AdvantageVariant[] = ["target-swing", "check-source", "d
 export const dynamic = "force-dynamic";
 
 const homeKoreanNames: Record<string, string> = {
+  hantool: "한툴",
   "hanstree-workroom": "Hanstree-AI",
   cleanusb: "클린USB",
   nasfinder: "나스파인더",
@@ -72,19 +74,35 @@ const homeKoreanNames: Record<string, string> = {
 
 export async function generateMetadata(): Promise<Metadata> {
   const brand = await getSiteBrand();
-  const shareImage = brand.name === "NASFINDER" ? brand.icon : "/og-catalog-20260918.png";
+  const isNasFinder = brand.name === "NASFINDER";
+  const shareImage = isNasFinder ? brand.icon : "/og-catalog-20260918.png";
+  const title = isNasFinder
+    ? brand.title
+    : "Hanstree — 한툴 HanTool Mac 플래그십과 일상의 도구들";
+  const description = isNasFinder
+    ? "나스파인더의 기능과 지원 플랫폼, 최신 설치 정보를 한곳에서 확인하세요."
+    : "브라우저에서 시작해 화면·메일 제자리 번역, AI 비서, 플래너, Mac 자원 관리까지 한 창에서 잇는 한툴(macOS 15.4+ Apple Silicon 출시, Windows 새 디자인 기획 중). 한스트리가 직접 만들고 다듬는 앱과 도구를 한곳에서 만나보세요.";
+
   return {
-  description: brand.name === "NASFINDER" ? "나스파인더의 기능과 지원 플랫폼, 최신 설치 정보를 한곳에서 확인하세요." : "NAS 속 사진 보기, 가족 호출, 밤새 수면 기록, AI 사용량 확인까지. 한스트리가 직접 만들고 다듬는 앱과 도구를 한곳에서 고르고 바로 받아 보세요.",
-  alternates: { canonical: brand.canonical },
-  openGraph: {
-    type: "website",
-    locale: "ko_KR",
-    siteName: brand.koreanName,
-    title: brand.title,
-    description: brand.description,
-    url: brand.canonical,
-    images: [{ url: shareImage, width: brand.name === "NASFINDER" ? 1024 : 1727, height: brand.name === "NASFINDER" ? 1024 : 910, alt: `${brand.koreanName}의 앱과 도구` }],
-  },
+    title,
+    description,
+    alternates: { canonical: brand.canonical },
+    openGraph: {
+      type: "website",
+      locale: "ko_KR",
+      siteName: brand.koreanName,
+      title,
+      description,
+      url: brand.canonical,
+      images: [
+        {
+          url: shareImage,
+          width: isNasFinder ? 1024 : 1727,
+          height: isNasFinder ? 1024 : 910,
+          alt: isNasFinder ? `${brand.koreanName}의 앱과 도구` : `${brand.koreanName}의 앱과 도구`,
+        },
+      ],
+    },
   };
 }
 
@@ -119,6 +137,9 @@ function TestFlightInviteLinks() {
 
 export default async function Home() {
   const brand = await getSiteBrand();
+  const isHanstree = brand.name !== "NASFINDER";
+  const hantoolApp = findApp("hantool");
+  const showHanToolCover = isHanstree && Boolean(hantoolApp);
   const workCount = apps.reduce(
     (total, app) => total + app.platforms.reduce((sum, platform) => sum + countPlatformTargets(platform.name), 0),
     2, // Hanstree Studio · 먹탐자 Instagram
@@ -133,11 +154,17 @@ export default async function Home() {
     <main className="home-hanstree">
       <SiteHeader />
 
+      {showHanToolCover && hantoolApp && <HanToolCover app={hantoolApp} />}
+
       <section className="works-index-hero shell reveal" id="works">
         <div className="works-index-intro">
           <div className="hero-intro-copy">
             <p className="eyebrow">{brand.name} · INDEPENDENT MAKER</p>
-            <h1>일상의 작은 불편,<br /><span>마음에 드는 도구 하나로.</span></h1>
+            {showHanToolCover ? (
+              <h2>일상의 작은 불편,<br /><span>마음에 드는 도구 하나로.</span></h2>
+            ) : (
+              <h1>일상의 작은 불편,<br /><span>마음에 드는 도구 하나로.</span></h1>
+            )}
             <p className="hero-lead">
               NAS 속 사진을 폰에서 바로 열고, 가족을 버튼 하나로 부르고, 밤새 잠소리를 기록하고. 일상의 작은 불편에서 시작해 직접 쓰며 다듬은 한스트리의 앱과 도구를, 지금 바로 받아 써 보세요.
             </p>
@@ -163,7 +190,7 @@ export default async function Home() {
                   alt="한스트리 스튜디오 작업 공간"
                   width={1448}
                   height={1086}
-                  priority
+                  priority={!showHanToolCover}
                   sizes="(max-width: 920px) 100vw, 42vw"
                 />
                 <span className="editorial-feature-tag">STUDIO SPACE</span>

@@ -29,11 +29,13 @@ async function chromeLinks(currentPageName?: string) {
 export async function SiteHeader({ currentPageName }: ChromeProps = {}) {
   const { brand, app, appsHref, supportHref, supportLabel, showHeaderSupport } = await chromeLinks(currentPageName);
   const supportTitle = app ? `${app.name} 지원과 문의` : undefined;
+  const isHanstree = brand.name !== "NASFINDER";
   return (
     <header className="site-header">
       <div className="shell header-inner">
         <SiteHeaderBrand name={brand.name} koreanName={brand.koreanName} icon={brand.icon} showNasFinderIcon={brand.name === "NASFINDER"} currentPageName={currentPageName} />
         <nav className="site-nav" aria-label="주요 메뉴">
+          {isHanstree && <Link href="/apps/hantool">한툴</Link>}
           <Link href="/#works">만든 것들</Link>
           <Link href="/blog">블로그</Link>
           <details className="nav-space-menu">
@@ -52,6 +54,7 @@ export async function SiteHeader({ currentPageName }: ChromeProps = {}) {
         <details className="nav-mobile">
           <summary>메뉴</summary>
           <div className="nav-mobile-panel" role="navigation" aria-label="작은 화면 메뉴">
+            {isHanstree && <Link href="/apps/hantool">한툴</Link>}
             <Link href="/#works">만든 것들</Link>
             <Link href="/blog">블로그</Link>
             <Link href={appsHref}>{app ? "제품 · 같은 계열" : "제품"}</Link>
