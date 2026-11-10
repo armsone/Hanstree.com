@@ -20,7 +20,7 @@
 | HanClip-Android | [android-v2.4.0](https://github.com/armsone/HanClip-Android/releases/tag/android-v2.4.0) | HanClip-Android | release.json 추가 및 공개 내용 확인 |
 | S.tand | [macos-v2.5.9](https://github.com/armsone/S.tand/releases/tag/macos-v2.5.9) | S.tand-macOS | release.json 추가 및 공개 내용 확인 |
 | S.tand-Android | [android-v2.6.7](https://github.com/armsone/S.tand-Android/releases/tag/android-v2.6.7) | S.tand-Android | release.json 추가 및 공개 내용 확인 |
-| CCMB | [v2.0.33](https://github.com/armsone/CCMB/releases/tag/v2.0.33) | CCMB | release.json 추가 및 공개 내용 확인 |
+| CCMB (Mac 은퇴 · HTT 이관) | - | CCMB | Mac 독립 앱 은퇴 · HTT 통합으로 이관 (/apps/htt 안내) |
 | BTN | [v2.0.3](https://github.com/armsone/BTN/releases/tag/v2.0.3) | BTN | release.json 추가 및 공개 내용 확인 |
 | TrackpadGuard | [v2.0.6](https://github.com/armsone/TrackpadGuard/releases/tag/v2.0.6) | TrackpadGuard | release.json 추가 및 공개 내용 확인 |
 | WhattoEat | [v0.5.1](https://github.com/armsone/WhattoEat/releases/tag/v0.5.1) | WhattoEat | release.json 추가 및 공개 내용 확인 |

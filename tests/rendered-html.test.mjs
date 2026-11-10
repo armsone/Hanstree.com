@@ -50,7 +50,7 @@ test("server-renders the NasFinder.com homepage", async () => {
   ]) {
     assert.match(html, new RegExp(`/apps/${slug}/home-card\\.webp`), slug);
   }
-  assert.match(html, /\/apps\/ccmb\/ccmb-dashboard-private\.png/);
+  assert.match(html, /\/apps\/ccmb\/screens\/ios-dashboard\.jpg/);
   assert.match(html, /class="hero-product-image"/);
   assert.match(html, /class="app-row-representative"/);
   assert.match(html, /What to Eat/);
@@ -516,8 +516,8 @@ test("renders full promotional campaigns for HanClip, TrackpadGuard, CCMB, and S
   assert.match(trackpadGuard, /타이핑할 때/);
   assert.match(trackpadGuard, /trackpadguard-campaign\.png/);
   assert.match(trackpadGuard, /키 내용도, 터치 좌표도 쌓지 않습니다/);
-  assert.match(ccmb, /AI 사용량/);
-  assert.match(ccmb, /ccmb-dashboard-private\.png/);
+  assert.match(ccmb, /AI 한도와 날씨를/);
+  assert.match(ccmb, /ios-dashboard\.jpg/);
   assert.match(ccmb, /세 서비스의 남은 여유를 한눈에/);
   assert.match(ccmb, /advantage-visual/);
   assert.match(stand, /밤에는 조용한 메이트/);
@@ -615,19 +615,17 @@ test("shows the current CCMB three-service release", async () => {
   assert.doesNotMatch(html, /WEEKLY REMAINING/);
   assert.doesNotMatch(html, /81% · ₩12\.4/);
   assert.doesNotMatch(html, /v0\.4\.3/);
-  assert.match(html, /2\.0\.20/);
+  assert.match(html, /0\.8\.6/);
   assert.match(html, /Codex·Claude·Gemini/);
-  assert.match(html, /release-download\?app=CCMB/);
-  assert.match(html, /9dba2e2c2531cec8dc48c03e8b4853cd09c7398fef4fc17f19095b48b26b13cf/);
-  assert.match(html, /CCMB 전용 Claude 연결/);
-  assert.match(html, /CCMB 안의 브라우저에서 Claude 계정을 한 번 연결합니다/);
-  assert.match(html, /낭비를 줄이는 스마트 갱신/);
-  assert.match(html, /간결해진 하단 조작/);
-  assert.match(html, /Claude Code의 키체인 인증 정보를 읽지 않아/);
-  assert.match(html, /데이터 연결만 안전하게 다시 시작/);
+  assert.match(html, /release-download\?app=CCMB-Android/);
+  assert.doesNotMatch(html, /release-download\?app=CCMB"/);
+  assert.match(html, /https:\/\/testflight\.apple\.com\/join\/q9jesHZa/);
+  assert.match(html, /5개 계정/);
+  assert.match(html, /시간별 예보 7개와 7일간 예보/);
+  assert.match(html, /사라지지 않는 연결 복구/);
   assert.match(html, /한 줄로 온전히 보이는 갱신 기록/);
   assert.match(html, /초 없는 24시간제/);
-  assert.match(html, /별도의 자동 다운로드 선택은 필요 없습니다/);
+  assert.doesNotMatch(html, /Sparkle|메뉴 막대|macOS|Universal DMG/);
 });
 
 test("publishes browser and home-screen app icons", async () => {
@@ -740,7 +738,7 @@ test("routes public download buttons through the allowlisted release redirect", 
     }),
   ]);
   assert.equal(ccmb.status, 302);
-  assert.match(ccmb.headers.get("location") ?? "", /^https:\/\/github\.com\/armsone\/CCMB\/releases\//);
+  assert.equal(ccmb.headers.get("location"), "/apps/htt");
   // TrackpadGuard must resolve to a downloadable asset path, never an arbitrary host.
   assert.equal(trackpadGuard.status, 302);
   assert.match(trackpadGuard.headers.get("location") ?? "", /^https:\/\/github\.com\/armsone\/TrackpadGuard\/releases\//);
@@ -756,11 +754,11 @@ test("routes public download buttons through the allowlisted release redirect", 
 
 test("refuses bot and direct download requests before redirecting", async () => {
   const [knownBot, directRequest] = await Promise.all([
-    render("/api/release-download?app=CCMB", {
+    render("/api/release-download?app=CCMB-Android", {
       referer: "http://localhost/apps/ccmb",
       "user-agent": "Mozilla/5.0 (compatible; MJ12bot/v1.4.8; http://mj12bot.com/)",
     }),
-    render("/api/release-download?app=CCMB", {
+    render("/api/release-download?app=CCMB-Android", {
       "user-agent": "Mozilla/5.0 Safari/605.1.15",
     }),
   ]);
@@ -823,7 +821,7 @@ test("tracks every public download in the site counter with download wording", a
     "HanClip Android",
     "S.tand Mac",
     "S.tand Android",
-    "CCMB Mac",
+    "CCMB Android",
     "BTN Mac",
     "TrackpadGuard Mac",
     "OurButton Android",

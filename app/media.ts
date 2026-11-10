@@ -3,7 +3,7 @@ import type { AppData } from "./data";
 export function appCardImage(app: AppData) {
   const featuredCards: Partial<Record<AppData["slug"], string>> = {
     ppabang: "/apps/ppabang/hero-20260918.webp",
-    ccmb: "/apps/ccmb/home-card-v2.png",
+    ccmb: "/apps/ccmb/screens/ios-dashboard.jpg",
     "alfred-navermap": "/apps/alfred-navermap/hero-20260918.webp",
     autoshorts: "/apps/autoshorts/home-card-v2.png",
     "hanstree-workroom": "/apps/hanstree-workroom/icon-019.png",

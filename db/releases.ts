@@ -124,6 +124,9 @@ export async function readRelease(key: DownloadKey): Promise<ReleaseInfo> {
   const row = await db.prepare("SELECT record_json, retry_after FROM release_snapshots WHERE key = ?").bind(key).first<{ record_json: string; retry_after: string }>();
   if (row) {
     try { saved = JSON.parse(row.record_json) as ReleaseInfo; } catch { /* Keep the bootstrap address available if a stored row is invalid. */ }
+    if (saved && key === "CCMB-Android" && !saved.downloadUrl.startsWith("https://github.com/armsone/CCMB-Android/releases/")) {
+      saved = null;
+    }
     if (saved && Date.parse(row.retry_after) > Date.now()) return saved;
   }
   const previous = saved ?? bootstrap(key);

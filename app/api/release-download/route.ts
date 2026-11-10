@@ -6,6 +6,15 @@ export const dynamic = "force-dynamic";
 
 export async function GET(request: Request) {
   const requested = new URL(request.url).searchParams.get("app");
+  if (requested === "CCMB") {
+    const routerFetch = request.headers.has("rsc") ||
+      request.headers.has("next-router-prefetch") ||
+      /prefetch/i.test(request.headers.get("purpose") || request.headers.get("sec-purpose") || "");
+    if (routerFetch) {
+      return Response.json({ redirect: "/apps/htt" }, { headers: { "Cache-Control": "no-store" } });
+    }
+    return new Response(null, { status: 302, headers: { Location: "/apps/htt", "Cache-Control": "no-store" } });
+  }
   const normalizedRequest = requested === "StarManager-Android" || requested === "iManager-Android" || requested === "iManagerAI-Android"
     ? "Stargram-Android"
     : requested === "button-Android" || requested === "Button-Android"

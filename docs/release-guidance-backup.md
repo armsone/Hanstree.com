@@ -10,7 +10,7 @@
 | AutoShorts | main | [f2e039bf](https://github.com/armsone/AutoShorts/commit/f2e039bf7cdf91d42a252e2bb0f32dc4bbb76f44) |
 | BTN | main | [8578d89a](https://github.com/armsone/BTN/commit/8578d89acab6489bf2d3fe59c500b4b6991af2bd) |
 | Barobogi-MacOS | main | [ca4a0c00](https://github.com/armsone/Barobogi-MacOS/commit/ca4a0c004aae18826f90d4850c6b5f9727f8b80c) |
-| CCMB | main | [5806bec8](https://github.com/armsone/CCMB/commit/5806bec8c26b8c64bc13a7e52c79b7b511039fb9) |
+| CCMB (Mac 은퇴 · HTT 이관) | - | Mac 독립 앱 은퇴 · HTT 통합으로 이관 (/apps/htt 안내) |
 | CleanUSB-MacOS | main | [ca346192](https://github.com/armsone/CleanUSB-MacOS/commit/ca346192be81fb84c8ef9366d7ecb8aad8393ba4) |
 | DenimDex-Android | main | [b29ef524](https://github.com/armsone/DenimDex-Android/commit/b29ef524b54dda386d72eae7fef7d12db04c7ec4) |
 | HanAI | main | [48fe5bc9](https://github.com/armsone/HanAI/commit/48fe5bc9c81b7b93dedc898ae1c4a9743764c57f) |

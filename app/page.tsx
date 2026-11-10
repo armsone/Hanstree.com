@@ -206,7 +206,7 @@ export default async function Home() {
                 <Link className="editorial-feature-sub" href={`/apps/${ccmbApp.slug}`} aria-label={`${ccmbApp.name} 제품 자세히 보기`}>
                   <div className="editorial-feature-sub-thumb">
                     <Image
-                      src="/apps/ccmb/ccmb-campaign-v044.png"
+                      src={appCardImage(ccmbApp)}
                       alt={`${ccmbApp.name} 대표 이미지`}
                       width={640}
                       height={427}
@@ -216,7 +216,7 @@ export default async function Home() {
                     <AppIcon app={ccmbApp} />
                   </div>
                   <div className="editorial-feature-sub-text">
-                    <span className="editorial-sub-tag">MENUBAR TOOL</span>
+                    <span className="editorial-sub-tag">MOBILE DASHBOARD</span>
                     <strong>{homeKoreanNames[ccmbApp.slug] ?? ccmbApp.name}</strong>
                     <small>{ccmbApp.tagline}</small>
                   </div>
@@ -495,7 +495,7 @@ export default async function Home() {
 
                       <Link className="app-row-representative" href={`/apps/${app.slug}`} aria-label={`${app.name} 제품 자세히 보기`}>
                         <Image
-                          src={app.slug === "ccmb" ? "/apps/ccmb/ccmb-dashboard-private.png" : appCardImage(app)}
+                          src={appCardImage(app)}
                           alt={`${app.name} 대표 이미지`}
                           width={1280}
                           height={853}

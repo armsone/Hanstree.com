@@ -197,65 +197,17 @@
     "height": 1918,
     "srcSet": "/optimized/a12f2bcad53f24de-128.webp 128w, /optimized/a12f2bcad53f24de-822.webp 822w"
   },
-  "/apps/ccmb/ccmb-campaign-v044.png": {
-    "src": "/optimized/deee26e6bbf3818a-1672.webp",
-    "width": 1672,
-    "height": 941,
-    "srcSet": "/optimized/deee26e6bbf3818a-128.webp 128w, /optimized/deee26e6bbf3818a-640.webp 640w, /optimized/deee26e6bbf3818a-1280.webp 1280w, /optimized/deee26e6bbf3818a-1672.webp 1672w"
-  },
-  "/apps/ccmb/ccmb-campaign.png": {
-    "src": "/optimized/deee26e6bbf3818a-1672.webp",
-    "width": 1672,
-    "height": 941,
-    "srcSet": "/optimized/deee26e6bbf3818a-128.webp 128w, /optimized/deee26e6bbf3818a-640.webp 640w, /optimized/deee26e6bbf3818a-1280.webp 1280w, /optimized/deee26e6bbf3818a-1672.webp 1672w"
-  },
-  "/apps/ccmb/ccmb-dashboard-private.png": {
-    "src": "/optimized/e2ec383a4622b39f-1279.webp",
-    "width": 1279,
-    "height": 1230,
-    "srcSet": "/optimized/e2ec383a4622b39f-128.webp 128w, /optimized/e2ec383a4622b39f-640.webp 640w, /optimized/e2ec383a4622b39f-1279.webp 1279w"
-  },
-  "/apps/ccmb/ccmb-hero-v2.png": {
-    "src": "/optimized/f8cc5cf1d649c3b3-1536.webp",
-    "width": 1536,
-    "height": 1024,
-    "srcSet": "/optimized/f8cc5cf1d649c3b3-128.webp 128w, /optimized/f8cc5cf1d649c3b3-640.webp 640w, /optimized/f8cc5cf1d649c3b3-1280.webp 1280w, /optimized/f8cc5cf1d649c3b3-1536.webp 1536w"
-  },
-  "/apps/ccmb/home-card-v2.png": {
-    "src": "/optimized/c7acf923205c8b61-1536.webp",
-    "width": 1536,
-    "height": 1024,
-    "srcSet": "/optimized/c7acf923205c8b61-128.webp 128w, /optimized/c7acf923205c8b61-640.webp 640w, /optimized/c7acf923205c8b61-1280.webp 1280w, /optimized/c7acf923205c8b61-1536.webp 1536w"
-  },
-  "/apps/ccmb/home-card.webp": {
-    "src": "/apps/ccmb/home-card.webp",
-    "width": 1280,
-    "height": 853,
-    "srcSet": "/optimized/e2113e4a4d4083f7-128.webp 128w, /optimized/e2113e4a4d4083f7-640.webp 640w, /apps/ccmb/home-card.webp 1280w"
-  },
   "/apps/ccmb/icon.png": {
     "src": "/optimized/0e0936b902820d27-1024.webp",
     "width": 1024,
     "height": 1024,
     "srcSet": "/optimized/0e0936b902820d27-128.webp 128w, /optimized/0e0936b902820d27-640.webp 640w, /optimized/0e0936b902820d27-1024.webp 1024w"
   },
-  "/apps/ccmb/screens/ccmb-usage-menu.png": {
-    "src": "/optimized/66659ef0280c14e2-1636.webp",
-    "width": 1636,
-    "height": 1206,
-    "srcSet": "/optimized/66659ef0280c14e2-128.webp 128w, /optimized/66659ef0280c14e2-640.webp 640w, /optimized/66659ef0280c14e2-1280.webp 1280w, /optimized/66659ef0280c14e2-1636.webp 1636w"
-  },
   "/apps/ccmb/screens/ios-dashboard.jpg": {
     "src": "/apps/ccmb/screens/ios-dashboard.jpg",
     "width": 588,
     "height": 1280,
     "srcSet": "/optimized/f0021ea66244410e-128.webp 128w, /apps/ccmb/screens/ios-dashboard.jpg 588w"
-  },
-  "/apps/ccmb/screens/macos-menubar.png": {
-    "src": "/optimized/ce5eff9b6053d115-860.webp",
-    "width": 860,
-    "height": 60,
-    "srcSet": "/optimized/ce5eff9b6053d115-128.webp 128w, /optimized/ce5eff9b6053d115-640.webp 640w, /optimized/ce5eff9b6053d115-860.webp 860w"
   },
   "/apps/cleanusb/campaign-hero.webp": {
     "src": "/optimized/0a8e24fc68af2348-1536.webp",
