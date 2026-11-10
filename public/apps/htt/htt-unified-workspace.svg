@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" width="1280" height="800" style="background:#F6F4EE; font-family:-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Apple SD Gothic Neo', sans-serif;">
+  <defs>
+    <filter id="win-shadow" x="-3%" y="-3%" width="106%" height="106%">
+      <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#2D231B" flood-opacity="0.10" />
+    </filter>
+    <filter id="card-shadow" x="-2%" y="-2%" width="104%" height="106%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#2D231B" flood-opacity="0.05" />
+    </filter>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="1280" height="800" fill="#F6F4EE" />
+
+  <!-- Top Title Banner -->
+  <g transform="translate(60, 40)">
+    <rect x="0" y="0" width="230" height="34" rx="8" fill="#EAE2D5" />
+    <text x="115" y="23" text-anchor="middle" font-size="15" font-weight="700" fill="#6E5A47" letter-spacing="0.5">기능 구성도 · 실제 화면 아님</text>
+    <text x="250" y="25" font-size="22" font-weight="700" fill="#2E241E">HTT 하나의 작업대 구조 안내</text>
+  </g>
+
+  <!-- Main Window -->
+  <g transform="translate(60, 92)" filter="url(#win-shadow)">
+    <!-- Window Outer Frame -->
+    <rect width="1160" height="668" rx="16" fill="#FBF9F5" stroke="#DDD4C5" stroke-width="1.5" />
+
+    <!-- Window Title Bar -->
+    <path d="M0,16 Q0,0 16,0 L1144,0 Q1160,0 1160,16 L1160,52 L0,52 Z" fill="#EFE8DC" stroke="#DDD4C5" stroke-width="1" />
+    <circle cx="28" cy="26" r="6.5" fill="#FF5F56" />
+    <circle cx="50" cy="26" r="6.5" fill="#FFBD2E" />
+    <circle cx="72" cy="26" r="6.5" fill="#27C93F" />
+    <text x="580" y="32" text-anchor="middle" font-size="15" font-weight="600" fill="#5C4A3A">HTT — 통합 작업대</text>
+
+    <!-- Content Workspace -->
+    <g transform="translate(0, 52)">
+
+      <!-- 1. LEFT SIDEBAR (240px wide) -->
+      <g>
+        <rect width="240" height="616" fill="#F4EDE1" stroke="#DDD4C5" stroke-width="1" />
+
+        <text x="24" y="42" font-size="13" font-weight="700" fill="#8C7764" letter-spacing="0.5">작업 분류</text>
+
+        <!-- Category 1: 통합 브라우저 (Active) -->
+        <rect x="14" y="58" width="212" height="48" rx="10" fill="#E4D9C8" />
+        <circle cx="36" cy="82" r="5" fill="#2E75D3" />
+        <text x="50" y="88" font-size="16" font-weight="700" fill="#2E241E">통합 브라우저</text>
+
+        <!-- Category 2: AI 비서 · 플래너 -->
+        <rect x="14" y="114" width="212" height="46" rx="10" fill="transparent" />
+        <circle cx="36" cy="137" r="4.5" fill="#A18E7C" />
+        <text x="50" y="143" font-size="15" font-weight="600" fill="#4A3D31">AI 비서 · 플래너</text>
+
+        <!-- Category 3: 다운로드 · 기록 -->
+        <rect x="14" y="168" width="212" height="46" rx="10" fill="transparent" />
+        <circle cx="36" cy="191" r="4.5" fill="#A18E7C" />
+        <text x="50" y="197" font-size="15" font-weight="600" fill="#4A3D31">다운로드 · 기록</text>
+
+        <!-- Category 4: 번역 도구 (화면·메일) -->
+        <rect x="14" y="222" width="212" height="46" rx="10" fill="transparent" />
+        <circle cx="36" cy="245" r="4.5" fill="#A18E7C" />
+        <text x="50" y="251" font-size="15" font-weight="600" fill="#4A3D31">번역 (화면·메일)</text>
+
+        <!-- Category 5: 입력 도우미 · Mac 정리 -->
+        <rect x="14" y="276" width="212" height="46" rx="10" fill="transparent" />
+        <circle cx="36" cy="299" r="4.5" fill="#A18E7C" />
+        <text x="50" y="305" font-size="15" font-weight="600" fill="#4A3D31">입력 보조 · Mac 정리</text>
+
+        <!-- Category 6: 서버 현황 (선택) -->
+        <rect x="14" y="330" width="212" height="46" rx="10" fill="transparent" />
+        <circle cx="36" cy="353" r="4.5" fill="#A18E7C" />
+        <text x="50" y="359" font-size="15" font-weight="600" fill="#4A3D31">서버 현황 (선택)</text>
+
+        <!-- Bottom: 환경설정 -->
+        <rect x="14" y="552" width="212" height="44" rx="10" fill="transparent" stroke="#DDD4C5" stroke-width="1" />
+        <text x="120" y="579" text-anchor="middle" font-size="14" font-weight="600" fill="#756250">앱 환경설정</text>
+      </g>
+
+      <!-- 2. CENTER WORKBENCH / BROWSER (630px wide) -->
+      <g transform="translate(240, 0)">
+        <rect width="630" height="616" fill="#FFFFFF" />
+
+        <!-- Top Address / Header Bar -->
+        <rect width="630" height="58" fill="#F8F4EC" stroke="#DDD4C5" stroke-width="1" />
+        <rect x="24" y="11" width="582" height="36" rx="8" fill="#FFFFFF" stroke="#D7CEBF" stroke-width="1.2" />
+        <circle cx="44" cy="29" r="4" fill="#2E75D3" />
+        <text x="58" y="35" font-size="15" font-weight="600" fill="#2E241E">https://hanstree.com</text>
+        <text x="235" y="35" font-size="13" fill="#9C8B7B">| 슬래시(/) 명령어 · 빠른 길찾기</text>
+
+        <!-- Main Display Region -->
+        <g transform="translate(36, 82)">
+          <!-- Big Central Header (32px+) -->
+          <text x="0" y="38" font-size="34" font-weight="800" fill="#241B15" letter-spacing="-0.5">통합 브라우저 작업 공간</text>
+          <text x="0" y="74" font-size="17" font-weight="500" fill="#6E5A47">작업 창을 열면 브라우저가 기본으로 표시되며,</text>
+          <text x="0" y="100" font-size="17" font-weight="500" fill="#6E5A47">필요한 모든 도구를 즉시 전환해 사용합니다.</text>
+
+          <!-- Large Functional Feature Chips (24px+ text labels) -->
+          <g transform="translate(0, 134)">
+            <!-- Chip 1: AI 비서 · 플래너 -->
+            <g transform="translate(0, 0)" filter="url(#card-shadow)">
+              <rect width="558" height="74" rx="12" fill="#FAF6EE" stroke="#DDD4C5" stroke-width="1.2" />
+              <rect x="18" y="18" width="38" height="38" rx="8" fill="#EAE1D2" />
+              <text x="37" y="42" text-anchor="middle" font-size="18" font-weight="700" fill="#6E5A47">AI</text>
+              <text x="70" y="45" font-size="24" font-weight="700" fill="#2E241E">비서 사이드 패널 · 플래너 작업 위임</text>
+            </g>
+
+            <!-- Chip 2: 제자리 번역 -->
+            <g transform="translate(0, 88)" filter="url(#card-shadow)">
+              <rect width="558" height="74" rx="12" fill="#FAF6EE" stroke="#DDD4C5" stroke-width="1.2" />
+              <rect x="18" y="18" width="38" height="38" rx="8" fill="#2E75D3" />
+              <text x="37" y="42" text-anchor="middle" font-size="18" font-weight="700" fill="#FFFFFF">文</text>
+              <text x="70" y="45" font-size="24" font-weight="700" fill="#2E241E">보던 자리 번역 · 화면 및 메일 비교</text>
+            </g>
+
+            <!-- Chip 3: 다운로드 및 북마크 -->
+            <g transform="translate(0, 176)" filter="url(#card-shadow)">
+              <rect width="558" height="74" rx="12" fill="#FAF6EE" stroke="#DDD4C5" stroke-width="1.2" />
+              <rect x="18" y="18" width="38" height="38" rx="8" fill="#EAE1D2" />
+              <text x="37" y="42" text-anchor="middle" font-size="18" font-weight="700" fill="#6E5A47">↓</text>
+              <text x="70" y="45" font-size="24" font-weight="700" fill="#2E241E">다운로드 내역 · 즐겨찾기 일괄 열기</text>
+            </g>
+          </g>
+        </g>
+      </g>
+
+      <!-- 3. RIGHT PANEL: Optional Server Status (290px wide, Clean Unclipped) -->
+      <g transform="translate(870, 0)">
+        <rect width="290" height="616" fill="#F7F3EB" stroke="#DDD4C5" stroke-width="1" />
+
+        <!-- Panel Header -->
+        <rect width="290" height="58" fill="#EDE5D7" stroke="#DDD4C5" stroke-width="1" />
+        <text x="20" y="35" font-size="16" font-weight="700" fill="#2E241E">서버 현황 (선택 기능)</text>
+        <rect x="212" y="19" width="60" height="22" rx="5" fill="#DCD3C3" />
+        <text x="242" y="34" text-anchor="middle" font-size="11" font-weight="700" fill="#5C4A3A">기본 끔</text>
+
+        <!-- Brief Settings Content Cards -->
+        <g transform="translate(18, 76)">
+          <!-- Card 1: 대상 장비 설정 -->
+          <g filter="url(#card-shadow)">
+            <rect width="254" height="152" rx="12" fill="#FBF9F5" stroke="#DDD4C5" stroke-width="1.2" />
+            <text x="18" y="44" font-size="25" font-weight="700" fill="#2E241E">접속 대상 안내</text>
+            <text x="18" y="82" font-size="15" font-weight="600" fill="#5C4A3A">• 사용자 지정 SSH 키 인증</text>
+            <text x="18" y="108" font-size="15" font-weight="600" fill="#5C4A3A">• 또는 이 Mac 로컬 측정</text>
+            <text x="18" y="132" font-size="13" font-weight="500" fill="#8C7764">고정된 내부 주소 없음</text>
+          </g>
+
+          <!-- Card 2: 읽기 전용 조회 -->
+          <g transform="translate(0, 172)" filter="url(#card-shadow)">
+            <rect width="254" height="152" rx="12" fill="#FBF9F5" stroke="#DDD4C5" stroke-width="1.2" />
+            <text x="18" y="44" font-size="25" font-weight="700" fill="#2E241E">읽기 전용 조회</text>
+            <text x="18" y="82" font-size="15" font-weight="600" fill="#5C4A3A">• 설정된 대상만 직접 확인</text>
+            <text x="18" y="108" font-size="15" font-weight="600" fill="#5C4A3A">• 임의 변경 없는 순수 모니터</text>
+            <text x="18" y="132" font-size="13" font-weight="500" fill="#8C7764">원래의 게이지 디자인 유지</text>
+          </g>
+        </g>
+      </g>
+
+    </g>
+  </g>
+</svg>

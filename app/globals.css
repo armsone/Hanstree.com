@@ -2603,3 +2603,11 @@ img { display: block; max-width: 100%; }
 .space-experience-icon{display:block;width:80px;height:80px;margin-top:26px;border-radius:18px;object-fit:cover}
 .legal-section>div,.legal-section h2{min-width:0;overflow-wrap:anywhere}
 .legal-shell .limited-use{min-width:0;overflow-wrap:anywhere}
+
+.hero-artwork-htt .hero-artwork-backdrop {
+  object-fit: contain;
+  padding: 96px 16px 72px;
+  box-sizing: border-box;
+  background: #f5f3ec;
+}
+
