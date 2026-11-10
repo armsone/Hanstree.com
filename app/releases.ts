@@ -121,7 +121,6 @@ export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
   "CCMB-Android": {
     label: "CCMB Android",
     repo: "CCMB-Android",
-    tagPattern: /^android-v\d+\.\d+\.\d+$/,
     assetPattern: /^CCMB-Android-\d+\.\d+\.\d+\.apk$/i,
     fallbackUrl: "https://github.com/armsone/CCMB-Android/releases/download/android-v0.8.6/CCMB-Android-0.8.6.apk",
   },
