@@ -284,6 +284,17 @@ export function TestFlightSpecStatus({
   const live = useLiveTestFlight(appSlug, isLiveStatusApp(appSlug));
   const resolved = resolveTestFlight(appSlug, fallback, live);
   const buildFallback = fallback?.build ?? "";
+  // 나스파인더: 최신 업로드(심사 대기)와 지금 참여할 수 있는 승인 빌드를 따로 보여 줍니다.
+  const approved = live?.approvedBuild;
+  if (appSlug === "nasfinder" && resolved.publicBetaState === "waitingForReview" && resolved.inviteUrl && approved?.marketingVersion && live?.marketingVersion) {
+    return (
+      <>
+        <a href={resolved.inviteUrl}>공개 베타 참여 가능</a>
+        <small>승인 {approved.marketingVersion} · 빌드 {approved.build}</small>
+        <small>최신 {live.marketingVersion} · 빌드 {live.build} Apple 심사 대기 (아직 공개 제공 아님)</small>
+      </>
+    );
+  }
 
   return (
     <>
