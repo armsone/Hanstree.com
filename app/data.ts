@@ -275,9 +275,9 @@ const appCatalog: AppData[] = [
       { state: "done", title: "Super Thumbnail 2.2.0 동기화", body: "3/13 대표 장면, 50% 검은 화면의 6/13 재시도, 최종 1.5pt 단일 블러와 우선 표시를 Apple·Android·Mac에 반영" },
     ],
     screenshots: [
-      { src: "/apps/nasfinder/screens/editor-mac.png", alt: "나스파인더 Mac 편집 화면 · 기능 확인용 색상 장면으로 보정 도구를 확인한 화면(실제 사용자 작품 아님)", layout: "wide" },
+      { src: "/apps/nasfinder/screens/editor-mac.png", alt: "나스파인더 Mac 편집 화면 · 기능 확인용 색상 장면으로 선택 클립·효과·타임라인을 확인한 화면(실제 사용자 작품 아님)", layout: "menu" },
       { src: "/apps/nasfinder/screens/editor-android-phone.png", alt: "나스파인더 Android 휴대전화 편집 화면 · 기능 확인용 색상 장면으로 색상 보정을 확인한 화면(실제 사용자 작품 아님)", layout: "phone" },
-      { src: "/apps/nasfinder/screens/editor-android-tablet.png", alt: "나스파인더 Android 태블릿 가로 편집 화면 · 기능 확인용 색상 장면으로 색상 보정을 확인한 화면(실제 사용자 작품 아님)", layout: "landscape" },
+      { src: "/apps/nasfinder/screens/editor-android-tablet.png", alt: "나스파인더 Android 태블릿 가로 편집 화면 · 기능 확인용 색상 장면으로 색상 보정을 확인한 화면(실제 사용자 작품 아님)", layout: "menu" },
       { src: "/apps/nasfinder/screens/android-add-connection.png", alt: "나스파인더 Android 연결 추가 (이전 UI 예시)" },
       { src: "/apps/nasfinder/screens/android-thumbnail-cache.png", alt: "나스파인더 Android 썸네일 캐시 관리 (이전 UI 예시)" },
     ],
