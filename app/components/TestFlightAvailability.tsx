@@ -283,7 +283,8 @@ export function TestFlightSpecStatus({
 }) {
   const live = useLiveTestFlight(appSlug, isLiveStatusApp(appSlug));
   const resolved = resolveTestFlight(appSlug, fallback, live);
-  const buildFallback = fallback?.build ?? "";
+  // 정적 빌드가 없는 실시간 앱은 조회 전까지 "확인 중"으로 두고, 승인 빌드가 확인되면 바꿉니다.
+  const buildFallback = fallback?.build ?? (isLiveStatusApp(appSlug) ? "확인 중" : "");
   // 나스파인더: 최신 업로드(심사 대기)와 지금 참여할 수 있는 승인 빌드를 따로 보여 줍니다.
   const approved = live?.approvedBuild;
   if (appSlug === "nasfinder" && resolved.publicBetaState === "waitingForReview" && resolved.inviteUrl && approved?.marketingVersion && live?.marketingVersion) {

@@ -557,6 +557,12 @@
     "height": 2424,
     "srcSet": "/optimized/c56e40ada6a2d339-128.webp 128w, /optimized/c56e40ada6a2d339-640.webp 640w, /optimized/c56e40ada6a2d339-1080.webp 1080w"
   },
+  "/apps/nasfinder/screens/android-wide-editor-qa.png": {
+    "src": "/optimized/0c576cc46d62de09-1920.webp",
+    "width": 2160,
+    "height": 1584,
+    "srcSet": "/optimized/0c576cc46d62de09-128.webp 128w, /optimized/0c576cc46d62de09-640.webp 640w, /optimized/0c576cc46d62de09-1280.webp 1280w, /optimized/0c576cc46d62de09-1920.webp 1920w"
+  },
   "/apps/nasfinder/screens/editor-android-phone.png": {
     "src": "/optimized/c8efdbfad83b98bc-968.webp",
     "width": 968,
@@ -586,6 +592,18 @@
     "width": 676,
     "height": 1496,
     "srcSet": "/optimized/738424d75283c953-128.webp 128w, /optimized/738424d75283c953-640.webp 640w, /optimized/738424d75283c953-676.webp 676w"
+  },
+  "/apps/nasfinder/screens/iphone-editor-output-qa.png": {
+    "src": "/optimized/3c0b2c27a0c23e18-940.webp",
+    "width": 940,
+    "height": 1900,
+    "srcSet": "/optimized/3c0b2c27a0c23e18-128.webp 128w, /optimized/3c0b2c27a0c23e18-640.webp 640w, /optimized/3c0b2c27a0c23e18-940.webp 940w"
+  },
+  "/apps/nasfinder/screens/iphone-editor-preview-qa.png": {
+    "src": "/optimized/a034a06b3c79839d-940.webp",
+    "width": 940,
+    "height": 1900,
+    "srcSet": "/optimized/a034a06b3c79839d-128.webp 128w, /optimized/a034a06b3c79839d-640.webp 640w, /optimized/a034a06b3c79839d-940.webp 940w"
   },
   "/apps/nasfinder/screens/iphone-favorites-folder-thumbnails.png": {
     "src": "/optimized/52d709bef2b94e01-418.webp",
