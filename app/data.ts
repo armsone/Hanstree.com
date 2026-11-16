@@ -44,6 +44,42 @@ export type AppData = {
 // 제품 사실은 아래 카탈로그 리터럴에만 둡니다. 공개 순서는 파일 끝의 productFamilies 순서로 정렬해 내보냅니다.
 const appCatalog: AppData[] = [
   {
+    slug: "hana",
+    name: "하나",
+    english: "Hana",
+    eyebrow: "YOUR AI COMPANION",
+    tagline: "생각이 떠오를 때, 휴대폰에서 하나와 대화하세요.",
+    summary: "하나 앱에서 허용된 계정으로 로그인하고 놀이터의 하나와 대화를 이어가세요. 사용하려면 소유자가 허용한 계정이 필요합니다.",
+    theme: "violet",
+    icon: "/apps/hana/icon.png",
+    heroImage: "/apps/hana/icon.png",
+    artwork: "intelligence",
+    platforms: [
+      { name: "Android", status: "공개", detail: "Android 8.0 이상 · 허용된 계정 필요", url: releaseDownloadPath("Hana-Android"), downloadLabel: "Android용 APK 다운로드", availabilityNote: "설치 후 소유자가 허용한 하나 계정으로 로그인해야 합니다." },
+      { name: "iPhone · iPad", status: "준비 중", detail: "0.4.0 빌드 202611170655 · 외부 베타 준비 중", availabilityNote: "공개 베타는 아직 참여할 수 없습니다." },
+    ],
+    features: [
+      { title: "휴대폰에서 하나와 대화", body: "하나를 열어 계정으로 로그인하고 놀이터의 대화를 이용합니다." },
+      { title: "필요한 자료 첨부", body: "기기에서 파일을 선택해 대화에 첨부할 수 있습니다." },
+      { title: "음성으로 질문하고 답변 듣기", body: "기기의 음성 인식으로 질문을 준비하고 하나의 답변을 소리로 들을 수 있습니다. 음성 인식 처리는 기기와 설정에 따라 달라질 수 있습니다." },
+    ],
+    guide: [
+      { title: "앱 설치", body: "Android 설치 파일을 내려받아 기기의 설치 안내를 따릅니다. iPhone·iPad 공개 베타는 준비 중입니다." },
+      { title: "계정으로 로그인", body: "소유자가 허용한 하나 계정으로 로그인합니다. 공개 회원가입은 제공하지 않습니다." },
+      { title: "하나에게 이야기하기", body: "질문을 입력하거나 음성으로 준비하고 필요한 파일을 첨부합니다." },
+    ],
+    progress: [
+      { state: "done", title: "Android 0.4.0 공개", body: "Android 8.0 이상용 설치 파일을 공개했습니다. 사용하려면 허용된 계정이 필요합니다." },
+      { state: "active", title: "iPhone·iPad TestFlight 준비", body: "0.4.0 빌드 202611170655의 Apple 처리가 완료되어 내부 테스트를 준비했습니다. 외부 베타는 준비 중이며 아직 공개 참여할 수 없습니다." },
+    ],
+    github: [],
+    privacy: [
+      "로그인 세션은 앱의 웹 저장소에 보관됩니다. 대화와 첨부 자료는 연결된 하나 서비스에서 처리합니다.",
+      "음성 입력을 선택하면 기기 및 설정에 따라 Apple 또는 Android 음성 인식 서비스에서 음성을 처리할 수 있습니다.",
+      "알림은 사용자가 허용한 경우에만 사용하며 기기 알림 식별자가 서비스에 등록될 수 있습니다.",
+    ],
+  },
+  {
     slug: "hanstree-workroom",
     name: "Hanstree-AI",
     english: "Hanstree-AI",
@@ -1554,7 +1590,7 @@ export type ProductFamily = {
 // 제품군 순서 = 카탈로그 공개 순서. 새 제품은 알맞은 slugs에 추가하면 됩니다.
 export const productFamilies: ProductFamily[] = [
   { id: "media", name: "미디어·저장공간", english: "MEDIA & STORAGE", summary: "파일과 사진·영상을 보고, 만들고, 곁에 두는 앱", slugs: ["nasfinder", "super-thumbnail", "hanclip", "stand"] },
-  { id: "ai", name: "AI·창작", english: "AI & CREATION", summary: "AI 도구와 함께 배우고, 확인하고, 만드는 제품", slugs: ["ccmb", "starmanager", "denimdex", "hanstree-workroom"] },
+  { id: "ai", name: "AI·창작", english: "AI & CREATION", summary: "AI 도구와 함께 배우고, 확인하고, 만드는 제품", slugs: ["ccmb", "starmanager", "denimdex", "hana", "hanstree-workroom"] },
   { id: "mac", name: "Mac 생산성·유틸리티", english: "MAC PRODUCTIVITY & UTILITIES", summary: "작업 흐름을 지키는 작은 도구와 확장", slugs: ["hantool", "cleanusb", "alfred-navermap", "autoshorts", "barobogi"] },
   { id: "life", name: "생활·가족·커뮤니티", english: "LIFE, FAMILY & COMMUNITY", summary: "일상과 가족, 모임에서 쓰는 웹과 앱", slugs: ["whattoeat", "button", "intosharp", "ppabang"] },
   { id: "engine", name: "엔진·인프라", english: "ENGINES & INFRASTRUCTURE", summary: "다른 제품을 받치는 코어와 서버, 업무 도구", slugs: ["hanai", "aibi", "minecraft-server"] },

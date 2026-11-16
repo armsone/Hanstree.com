@@ -269,6 +269,12 @@
     "height": 2622,
     "srcSet": "/optimized/3a4a5c87ef35e76d-128.webp 128w, /optimized/3a4a5c87ef35e76d-640.webp 640w, /optimized/3a4a5c87ef35e76d-1206.webp 1206w"
   },
+  "/apps/hana/icon.png": {
+    "src": "/optimized/b366fd430f21cda2-1024.webp",
+    "width": 1024,
+    "height": 1024,
+    "srcSet": "/optimized/b366fd430f21cda2-128.webp 128w, /optimized/b366fd430f21cda2-640.webp 640w, /optimized/b366fd430f21cda2-1024.webp 1024w"
+  },
   "/apps/hanai/hanai-hero-v2.png": {
     "src": "/optimized/a96ed8dcabe6ca15-1672.webp",
     "width": 1672,

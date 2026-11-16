@@ -8,6 +8,7 @@ import { releaseDownloadPath, type DownloadKey } from "../releases";
 import { useNearViewport } from "./useNearViewport";
 
 const ANDROID_APP_SLUGS: Record<string, string> = {
+  "Hana-Android": "hana",
   "NasFinder-Android": "nasfinder",
   "HanClip-Android": "hanclip",
   "S.tand-Android": "stand",
@@ -83,6 +84,7 @@ export function AndroidReleaseTracker() {
   }, [isNearViewport]);
 
   const placeholders: Release[] = [
+    { appName: "하나", repo: "Hana-Android", available: false },
     { appName: "나스파인더", repo: "NasFinder-Android", available: false },
     { appName: "한클립", repo: "HanClip-Android", available: false },
     { appName: "S.tand", repo: "S.tand-Android", available: false },

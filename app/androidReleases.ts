@@ -1,6 +1,7 @@
 import { RELEASE_DOWNLOADS, type DownloadKey } from "./releases.ts";
 
 export const ANDROID_RELEASE_SOURCES = [
+  { appName: "하나", repo: "Hana-Android" },
   { appName: "나스파인더", repo: "NasFinder-Android" },
   { appName: "한클립", repo: "HanClip-Android" },
   { appName: "S.tand", repo: "S.tand-Android" },

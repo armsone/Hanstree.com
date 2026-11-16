@@ -4,6 +4,7 @@
 export const DOWNLOAD_KEYS = [
   "CleanUSB-MacOS",
   "NasFinder-Android",
+  "Hana-Android",
   "NasFinder-Mac",
   "NasFinder-Super-Thumbnail",
   "HanClip-Android",
@@ -56,6 +57,7 @@ export type ReleaseDownload = {
 };
 
 export const RELEASE_DOWNLOADS: Record<DownloadKey, ReleaseDownload> = {
+  "Hana-Android": { label: "하나 Android", repo: "Hana-Download", tagPattern: /^android-v/, assetPattern: /^Hana-Android-\d+\.\d+\.\d+\.apk$/i, fallbackUrl: "https://github.com/armsone/Hana-Download/releases/download/android-v0.4.0/Hana-Android-0.4.0.apk" },
   AIBI: { label: "AIBI 소스", repo: "AIBI", assetPattern: /^AIBI-.*\.zip$/i, fallbackUrl: "https://github.com/armsone/AIBI/releases/download/v0.5.2/AIBI-0.5.2.zip" },
   "HanAI-JVM": { label: "한양 Kotlin/JVM", repo: "HanAI", assetPattern: /^hanai-core-.*\.jar$/i, fallbackUrl: "https://github.com/armsone/HanAI/releases/download/v0.2.0/hanai-core-0.2.0.jar" },
   "HanAI-Swift": { label: "한양 Swift", repo: "HanAI", assetPattern: /^$/, releasePage: true, tagPattern: /^(?:swift-v\d|v0\.3\.0$)/, fallbackUrl: "https://github.com/armsone/HanAI/releases/tag/v0.3.0" },
