@@ -396,10 +396,10 @@
     "srcSet": "/optimized/1a9882fb6cebb0de-128.webp 128w, /apps/hanstree-workroom/screens/login-019.png 518w"
   },
   "/apps/hantool/icon.png": {
-    "src": "/optimized/154779345744ce60-1254.webp",
+    "src": "/optimized/56a916ae2aa1c4a6-1254.webp",
     "width": 1254,
     "height": 1254,
-    "srcSet": "/optimized/154779345744ce60-128.webp 128w, /optimized/154779345744ce60-640.webp 640w, /optimized/154779345744ce60-1254.webp 1254w"
+    "srcSet": "/optimized/56a916ae2aa1c4a6-128.webp 128w, /optimized/56a916ae2aa1c4a6-640.webp 640w, /optimized/56a916ae2aa1c4a6-1254.webp 1254w"
   },
   "/apps/hantool/screens/guide.png": {
     "src": "/optimized/995a35024864cf65-1800.webp",
