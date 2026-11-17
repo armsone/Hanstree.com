@@ -56,7 +56,7 @@ const appCatalog: AppData[] = [
     artwork: "intelligence",
     platforms: [
       { name: "Android", status: "공개", detail: "Android 8.0 이상 · 허용된 계정 필요", url: releaseDownloadPath("Hana-Android"), downloadLabel: "Android용 APK 다운로드", availabilityNote: "설치 후 소유자가 허용한 하나 계정으로 로그인해야 합니다." },
-      { name: "iPhone · iPad", status: "준비 중", detail: "0.4.0 빌드 202611170655 · 외부 베타 준비 중", availabilityNote: "공개 베타는 아직 참여할 수 없습니다." },
+      { name: "iPhone · iPad", status: "TestFlight", detail: "0.4.0 (202611170655) · iOS·iPadOS 17+", url: "https://testflight.apple.com/join/ss4nfE3z", availabilityNote: "공개 TestFlight 링크로 Apple 승인을 마친 0.4.0 빌드에 참여할 수 있습니다. 정원은 10,000명입니다." },
     ],
     features: [
       { title: "휴대폰에서 하나와 대화", body: "하나를 열어 계정으로 로그인하고 놀이터의 대화를 이용합니다." },
@@ -64,13 +64,13 @@ const appCatalog: AppData[] = [
       { title: "음성으로 질문하고 답변 듣기", body: "기기의 음성 인식으로 질문을 준비하고 하나의 답변을 소리로 들을 수 있습니다. 음성 인식 처리는 기기와 설정에 따라 달라질 수 있습니다." },
     ],
     guide: [
-      { title: "앱 설치", body: "Android 설치 파일을 내려받아 기기의 설치 안내를 따릅니다. iPhone·iPad 공개 베타는 준비 중입니다." },
+      { title: "앱 설치", body: "Android 설치 파일을 내려받아 기기의 설치 안내를 따릅니다. iPhone·iPad는 공개 TestFlight 링크로 베타에 참여합니다." },
       { title: "계정으로 로그인", body: "소유자가 허용한 하나 계정으로 로그인합니다. 공개 회원가입은 제공하지 않습니다." },
       { title: "하나에게 이야기하기", body: "질문을 입력하거나 음성으로 준비하고 필요한 파일을 첨부합니다." },
     ],
     progress: [
       { state: "done", title: "Android 0.4.0 공개", body: "Android 8.0 이상용 설치 파일을 공개했습니다. 사용하려면 허용된 계정이 필요합니다." },
-      { state: "active", title: "iPhone·iPad TestFlight 준비", body: "0.4.0 빌드 202611170655의 Apple 처리가 완료되어 내부 테스트를 준비했습니다. 외부 베타는 준비 중이며 아직 공개 참여할 수 없습니다." },
+      { state: "done", title: "iPhone·iPad 0.4.0 공개 베타 승인", body: "0.4.0 빌드 202611170655가 Apple 외부 베타 심사를 승인받아 공개 TestFlight 링크에서 참여할 수 있습니다(정원 10,000명)." },
     ],
     github: [],
     privacy: [

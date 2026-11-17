@@ -8,7 +8,7 @@ import { ClientDownloadQrCode } from "./ClientDownloadQrCode";
 import { useLiveTestFlight, ReleaseQr, TestFlightBuildText } from "./ReleasePlatform";
 
 // 실시간 상태를 적용하는 공개 베타 앱입니다. 그 밖의 제품은 기존 정적 표시를 그대로 유지합니다.
-const LIVE_STATUS_SLUGS = new Set(["nasfinder", "hanclip", "stand", "starmanager", "denimdex", "button", "whattoeat", "barobogi"]);
+const LIVE_STATUS_SLUGS = new Set(["nasfinder", "hanclip", "stand", "starmanager", "denimdex", "button", "whattoeat", "barobogi", "hana"]);
 const isLiveStatusApp = (appSlug: string) => LIVE_STATUS_SLUGS.has(appSlug);
 
 export type ResolvedTestFlight = {

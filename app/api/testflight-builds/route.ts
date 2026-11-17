@@ -11,6 +11,7 @@ const APP_SOURCES = [
   { slug: "button", appName: "OurButton", bundleId: "com.armsone.button" },
   { slug: "whattoeat", appName: "오늘 뭐 먹지??", bundleId: "com.nasfinder.WhattoEat" },
   { slug: "barobogi", appName: "바로보기", bundleId: "com.hanstree.barobogi" },
+  { slug: "hana", appName: "하나", bundleId: "com.hanstree.hana" },
 ] as const;
 
 type AppStoreRelation = { data?: { id: string } | null };
