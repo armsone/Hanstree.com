@@ -401,8 +401,8 @@ const appCatalog: AppData[] = [
     icon: "/apps/hanclip/icon.png",
     artwork: "phones",
     platforms: [
-      { name: "iOS · iPadOS", status: "TestFlight", detail: "2.4.1 (202610141351) · iOS·iPadOS 17+", availabilityNote: "기존 공개 베타 참여 링크는 유지됩니다. 숨겨진 유사사진 후보와 대표 사진 제거 그룹 처리를 개선한 2.4.1은 Public Beta 그룹에 추가되어 Apple 외부 심사 대기 중입니다. 승인 전까지는 기존 2.3.0 승인 빌드로 참여합니다." },
-      { name: "Mac", status: "TestFlight", detail: "2.4.1 · Apple Silicon · iPad 앱 호환 모드", availabilityNote: "같은 TestFlight 빌드 · 2.4.1은 Apple 외부 심사 대기 중이며, 기존 공개 링크는 2.3.0 승인 빌드로 유지됩니다." },
+      { name: "iOS · iPadOS", status: "TestFlight", detail: "iOS·iPadOS 17+", availabilityNote: "기존 공개 베타 참여 링크는 유지됩니다. 설치 가능한 버전과 빌드는 Apple 승인 상태에 따라 위에 실시간으로 표시됩니다." },
+      { name: "Mac", status: "TestFlight", detail: "Apple Silicon · iPad 앱 호환 모드", availabilityNote: "같은 TestFlight 빌드 · 설치 가능한 버전과 빌드는 Apple 승인 상태에 따라 위에 실시간으로 표시됩니다." },
       {
         name: "Android",
         status: "공개",
