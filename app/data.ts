@@ -56,7 +56,7 @@ const appCatalog: AppData[] = [
     artwork: "intelligence",
     platforms: [
       { name: "Android", status: "공개", detail: "Android 8.0 이상 · 허용된 계정 필요", url: releaseDownloadPath("Hana-Android"), downloadLabel: "Android용 APK 다운로드", availabilityNote: "설치 후 소유자가 허용한 하나 계정으로 로그인해야 합니다." },
-      { name: "iPhone · iPad", status: "TestFlight", detail: "0.6.10 (202611262220) · iOS·iPadOS 17+", availabilityNote: "공개 TestFlight 링크로 Apple 승인을 마친 0.6.10 빌드에 참여할 수 있습니다. 정원은 10,000명입니다." },
+      { name: "iPhone · iPad", status: "TestFlight", detail: "0.6.10 (202611262220) · iOS·iPadOS 17+", url: "https://testflight.apple.com/join/ss4nfE3z", availabilityNote: "공개 TestFlight 링크로 Apple 승인을 마친 0.6.10 빌드에 참여할 수 있습니다. 정원은 10,000명입니다." },
     ],
     features: [
       { title: "휴대폰에서 하나와 대화", body: "하나를 열어 계정으로 로그인하고 놀이터의 대화를 이용합니다." },

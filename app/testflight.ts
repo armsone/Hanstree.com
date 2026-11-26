@@ -33,5 +33,5 @@ export const testFlightBuilds: TestFlightBuild[] = [
   { slug: "whattoeat", appName: "오늘 뭐 먹지??", build: "202610061956", uploadedAt: "2026-10-06T04:06:40-07:00", expiresAt: "2027-01-04T03:06:40-08:00", inviteUrl: "https://testflight.apple.com/join/A444RsAc", inviteAvailable: true, publicBetaState: "approved" },
   { slug: "denimdex", appName: "데님덱스", build: "202610030015", uploadedAt: "2026-10-02T08:59:00-07:00", expiresAt: "2026-12-31T07:59:00-08:00", inviteUrl: "https://testflight.apple.com/join/5pBrz6ME", inviteAvailable: true, publicBetaState: "approved" },
   { slug: "barobogi", appName: "바로보기", build: "43", uploadedAt: "2026-10-12T05:55:10-07:00", expiresAt: "2027-01-10T04:55:10-08:00", inviteUrl: "https://testflight.apple.com/join/98v2mG4q", inviteAvailable: true, publicBetaState: "approved" },
-  { slug: "hana", appName: "하나", build: "202611170655", uploadedAt: null, expiresAt: "2027-02-14T15:01:35-08:00", inviteUrl: "https://testflight.apple.com/join/ss4nfE3z", inviteAvailable: true, publicBetaState: "approved" },
+  { slug: "hana", appName: "하나", build: "202611262220", uploadedAt: "2026-11-26T05:31:08-08:00", expiresAt: "2027-02-24T05:31:08-08:00", inviteUrl: "https://testflight.apple.com/join/ss4nfE3z", inviteAvailable: true, publicBetaState: "approved" },
 ];
