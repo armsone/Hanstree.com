@@ -25,7 +25,7 @@ import { getSiteBrand } from "../../site-brand";
 
 type RouteProps = { params: Promise<{ path: string[] }> };
 
-const campaignSlugs = new Set(["super-thumbnail", "hanclip", "stand", "ccmb", "intosharp", "barobogi"]);
+const campaignSlugs = new Set(["super-thumbnail", "hanclip", "stand", "intosharp", "barobogi"]);
 
 const contentVisuals: Record<string, AdvantageVariant> = {
   "연결 추가": "storage-network",
@@ -386,6 +386,9 @@ export async function generateMetadata({ params }: RouteProps): Promise<Metadata
 
 export default async function AppRoute({ params }: RouteProps) {
   const { path } = await params;
+  if (path[0] === "ccmb") {
+    permanentRedirect("/apps/hana");
+  }
   if (["htt", "btn", "backtonormal", "trackpadguard", "inputmate", "htd"].includes(path[0])) {
     const suffix = path.slice(1).join("/");
     permanentRedirect(suffix ? `/apps/hantool/${suffix}` : "/apps/hantool");
@@ -802,34 +805,6 @@ const productCampaigns = {
     ctaTitle: <>카메라 롤에 머문 순간을.<br /><span>지금 재생되는 이야기로.</span></>,
     ctaBody: "사진 몇 장과 영상 몇 개면 충분합니다. HanClip에서 고르고, 음악을 얹고, 한 편으로 완성하세요.",
     ctaLabel: "HanClip 시작하기",
-  },
-  ccmb: {
-    tone: "meter",
-    eyebrow: "AI USAGE AT A GLANCE",
-    headline: <>AI 한도와 날씨를,<br /><span>모바일 대시보드로 한눈에.</span></>,
-    description: "iPhone·iPad와 Android에서 Codex·Claude·Gemini 3개 서비스 5개 계정 카드로 남은 사용량과 날씨, 플립 시계를 한눈에 확인합니다. NAS 로그인으로 안전하게 연결됩니다.",
-    image: "/apps/ccmb/screens/ios-dashboard.jpg",
-    imageAlt: "이전 버전의 iPhone 대시보드 화면입니다. 최신 NAS 연동과 모바일 제공 상태는 기능 안내를 확인하세요.",
-    imageLabel: "이전 버전 화면 · 최신 연동은 안내 참고",
-    facts: [["05", "5개 계정 카드"], ["04", "전용 테마"], ["NAS", "안전한 원격 연동"]],
-    advantages: [
-      ["01", "FIVE ACCOUNTS", "5개 계정을 한눈에", "Codex 1개, Claude 1개, Gemini 3개로 구성된 총 5장의 독립 카드로 남은 AI 사용량을 한눈에 비교합니다.", "각 서비스 앱을 일일이 열지 않고도 남은 쿼터와 다음 초기화 시각을 한 화면에서 확인합니다.", "three-rings"],
-      ["02", "TABLET & PHONE", "스마트폰과 태블릿 맞춤 배치", "휴대전화의 직관적인 화면과 태블릿 가로·세로에 최적화된 2열 그리드 배치를 제공합니다.", "기기 크기에 맞춰 시계와 날씨, 계정 카드가 최적의 비율로 정렬됩니다.", "two-panels"],
-      ["03", "CLOCK & WEATHER", "플립 시계와 시간별·7일 예보", "네 개의 숫자판으로 구성된 플립 시계와 7개 시간별 예보, 7일간의 날씨를 함께 제공합니다.", "화면 사용 중에는 3분 주기로 최신 사용량과 날씨를 자동으로 갱신합니다.", "clock-refresh"],
-      ["04", "USAGE HISTORY", "실제 기록 기반 24시간 차트", "최근 24시간의 실제 수집 기록을 바탕으로 최고사용량 이력 차트를 정직하게 표시합니다.", "누락 구간은 빈칸으로 두고 임의의 0이나 추정치로 채우지 않습니다.", "timeline-dots"],
-      ["05", "FOUR THEMES", "취향에 맞는 네 가지 테마", "Light, Friday, Jarvis, Ultron 네 가지 전용 테마를 제공합니다.", "테마 분위기에 맞춘 전용 카드 디자인과 플립 시계가 자연스럽게 어우러집니다.", "palette"],
-      ["06", "NAS READ-ONLY", "안전한 읽기 전용 NAS 연동", "앱 내부에 API 키를 저장하지 않고, 소유자의 NAS에서 정제된 잔여량 데이터만 안전하게 읽어옵니다.", "토큰이나 인증정보를 기기 밖으로 노출하지 않는 읽기 전용 구조를 유지합니다.", "shield-safe"],
-    ],
-    storyIcons: ["three-rings", "two-panels", "clock-refresh"],
-    stories: [
-      ["01", "모바일에서 남은 AI 한도 확인할 때", "이동 중이나 작업 중 스마트폰을 열어 5개 계정의 잔여량과 초기화 시각을 한눈에 파악합니다.", "스마트폰 · 5개 계정 · 한눈에"],
-      ["02", "태블릿을 작업실 탁상 대시보드로 둘 때", "태블릿을 거치대에 올려두면 플립 시계와 날씨, 5개 계정 카드가 넓은 화면에 펼쳐져 작업 대시보드가 됩니다.", "태블릿 · 플립 시계 · 대시보드"],
-      ["03", "날씨와 최고사용량 추이를 함께 볼 때", "시간별 날씨 예보와 24시간 최고사용량 기록 차트를 보며 오늘 작업 흐름을 차분히 계획합니다.", "날씨 예보 · 24시간 차트 · 실시간 갱신"],
-    ],
-    ctaEyebrow: "YOUR MOBILE AI DASHBOARD",
-    ctaTitle: <>모바일에서 언제 어디서나.<br /><span>남은 여유부터 확인하세요.</span></>,
-    ctaBody: "Codex·Claude·Gemini를 넘나드는 작업이라면, iPhone·iPad와 Android 모바일 CCMB로 사용량 확인을 한곳에 모으세요.",
-    ctaLabel: "CCMB 시작하기",
   },
 
   stand: {

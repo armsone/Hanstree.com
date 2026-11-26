@@ -59,7 +59,6 @@ const homeKoreanNames: Record<string, string> = {
   hanclip: "한클립",
   hanai: "한양",
   stand: "스탠드",
-  ccmb: "씨씨엠비",
   intosharp: "인투샾",
   button: "아워버튼",
   starmanager: "스타그램",
@@ -147,7 +146,6 @@ export default async function Home() {
 
 
   const cleanusbApp = findApp("cleanusb");
-  const ccmbApp = findApp("ccmb");
   const latestPosts = await getLatestBlogPosts();
 
   return (
@@ -225,27 +223,6 @@ export default async function Home() {
                     <span className="editorial-sub-tag">MAC UTILITY</span>
                     <strong>{homeKoreanNames[cleanusbApp.slug] ?? cleanusbApp.name}</strong>
                     <small>{cleanusbApp.tagline}</small>
-                  </div>
-                </Link>
-              )}
-
-              {ccmbApp && (
-                <Link className="editorial-feature-sub" href={`/apps/${ccmbApp.slug}`} aria-label={`${ccmbApp.name} 제품 자세히 보기`}>
-                  <div className="editorial-feature-sub-thumb">
-                    <Image
-                      src={appCardImage(ccmbApp)}
-                      alt={`${ccmbApp.name} 대표 이미지`}
-                      width={640}
-                      height={427}
-                      sizes="(max-width: 600px) 44vw, 20vw"
-                      unoptimized
-                    />
-                    <AppIcon app={ccmbApp} />
-                  </div>
-                  <div className="editorial-feature-sub-text">
-                    <span className="editorial-sub-tag">MOBILE DASHBOARD</span>
-                    <strong>{homeKoreanNames[ccmbApp.slug] ?? ccmbApp.name}</strong>
-                    <small>{ccmbApp.tagline}</small>
                   </div>
                 </Link>
               )}

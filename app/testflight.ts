@@ -7,7 +7,7 @@ export type TestFlightApprovedBuild = {
 };
 
 export type TestFlightBuild = {
-  slug: "ccmb" | "nasfinder" | "hanclip" | "stand" | "starmanager" | "button" | "whattoeat" | "denimdex" | "barobogi" | "hana";
+  slug: "nasfinder" | "hanclip" | "stand" | "starmanager" | "button" | "whattoeat" | "denimdex" | "barobogi" | "hana";
   appName: string;
   build: string | null;
   // ASC 실시간 조회로만 채우는 사용자용 버전(preReleaseVersion). 정적 목록에는 넣지 않습니다.
@@ -25,7 +25,6 @@ export type TestFlightBuild = {
 // 확인되지 않은 날짜를 추정해서 입력하지 않습니다.
 // 나스파인더는 현재 빌드를 실시간 조회로만 보여 주고, 지난 빌드는 data.ts 진행 이력에 남깁니다.
 export const testFlightBuilds: TestFlightBuild[] = [
-  { slug: "ccmb", appName: "CCMB", build: "202610262006", uploadedAt: "2026-10-26T04:22:58-07:00", expiresAt: "2027-01-24T03:22:58-08:00", inviteUrl: "https://testflight.apple.com/join/q9jesHZa", inviteAvailable: true, publicBetaState: "waitingForReview" },
   { slug: "nasfinder", appName: "나스파인더", build: null, uploadedAt: null, expiresAt: null, inviteUrl: "https://testflight.apple.com/join/3m3bhwJz", inviteAvailable: true, publicBetaState: "waitingForReview" },
   { slug: "hanclip", appName: "한클립", build: "202611121250", uploadedAt: "2026-11-11T23:28:19-08:00", expiresAt: "2027-02-09T23:28:19-08:00", inviteUrl: "https://testflight.apple.com/join/m2YsgUJW", inviteAvailable: true, publicBetaState: "approved" },
   { slug: "stand", appName: "S.tand", build: "202610081804", uploadedAt: "2026-10-08T02:11:04-07:00", expiresAt: "2027-01-06T01:11:04-08:00", inviteAvailable: true, inviteUrl: "https://testflight.apple.com/join/mGUYTjdp", publicBetaState: "approved" },

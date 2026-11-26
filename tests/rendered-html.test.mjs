@@ -35,7 +35,6 @@ test("server-renders the NasFinder.com homepage", async () => {
   assert.match(html, /Super Thumbnail/);
   assert.match(html, /HanClip/);
   assert.match(html, /S\.tand/);
-  assert.match(html, /CCMB/);
   assert.match(html, /BTN/);
   assert.match(html, /TrackpadGuard/);
   assert.match(html, /intoSharp/);
@@ -50,14 +49,14 @@ test("server-renders the NasFinder.com homepage", async () => {
   ]) {
     assert.match(html, new RegExp(`/apps/${slug}/home-card\\.webp`), slug);
   }
-  assert.match(html, /\/apps\/ccmb\/screens\/ios-dashboard\.jpg/);
+  assert.doesNotMatch(html, /\/apps\/ccmb\/screens\/ios-dashboard\.jpg/);
   assert.match(html, /class="hero-product-image"/);
   assert.match(html, /class="app-row-representative"/);
   assert.match(html, /What to Eat/);
   assert.match(html, /NasOS · Minecraft Server/);
-  assert.equal((html.match(/class="hero-product(?:\s|")/g) ?? []).length, 18);
+  assert.equal((html.match(/class="hero-product(?:\s|")/g) ?? []).length, 17);
   assert.match(html, /href="\/apps\/intosharp" class="hero-product hero-product-intosharp"[^>]*aria-label="인투샾 제품 자세히 보기"/);
-  assert.equal((html.match(/class="app-row-hit-area"/g) ?? []).length, 18);
+  assert.equal((html.match(/class="app-row-hit-area"/g) ?? []).length, 17);
   assert.match(html, /href="\/apps\/intosharp" class="app-row-hit-area" aria-label="인투샾 제품 자세히 보기"/);
   assert.match(html, />40<\/strong><span>현재 소개하는 제품/);
   assert.doesNotMatch(html, /플랫폼별 제공 버전/);
@@ -130,7 +129,7 @@ test("keeps every home product card title readable without ellipsis", async () =
 
 test("keeps every app detail hero focused on one clear entry path and a representative product scene", async () => {
   const slugs = [
-    "nasfinder", "super-thumbnail", "hanclip", "stand", "ccmb", "btn", "trackpadguard",
+    "nasfinder", "super-thumbnail", "hanclip", "stand", "btn", "trackpadguard",
     "htoms-brief", "intosharp", "button", "starmanager", "minecraft-server", "whattoeat", "denimdex", "aibi",
   ];
 
@@ -202,15 +201,15 @@ test("collects verified external tester links between TestFlight and Android dow
 
   const section = html.slice(inviteIndex, androidIndex);
   assert.match(section, /외부 테스터 참여/);
-  assert.equal((section.match(/class="testflight-invite-card/g) ?? []).length, 8);
-  assert.equal((section.match(/class="app-icon/g) ?? []).length, 8);
-  assert.equal((section.match(/최신 빌드는 Apple 심사를 기다리고 있습니다/g) ?? []).length, 2);
-  assert.match(section, /CCMB[\s\S]*?최신 빌드는 Apple 심사를 기다리고 있습니다/);
+  assert.equal((section.match(/class="testflight-invite-card/g) ?? []).length, 7);
+  assert.equal((section.match(/class="app-icon/g) ?? []).length, 7);
+  assert.equal((section.match(/최신 빌드는 Apple 심사를 기다리고 있습니다/g) ?? []).length, 1);
+  assert.doesNotMatch(section, /CCMB/);
   assert.match(section, /S\.tand[\s\S]*?최신 빌드는 Apple 심사를 기다리고 있습니다/);
   assert.equal((section.match(/심사 계정 준비/g) ?? []).length, 0);
   assert.equal((section.match(/외부용 빌드 준비/g) ?? []).length, 0);
-  assert.equal((section.match(/href="https:\/\/testflight\.apple\.com\/join\//g) ?? []).length, 8);
-  assert.match(section, /href="https:\/\/testflight\.apple\.com\/join\/q9jesHZa"/);
+  assert.equal((section.match(/href="https:\/\/testflight\.apple\.com\/join\//g) ?? []).length, 7);
+  assert.doesNotMatch(section, /href="https:\/\/testflight\.apple\.com\/join\/q9jesHZa"/);
   assert.match(section, /href="https:\/\/testflight\.apple\.com\/join\/3m3bhwJz"/);
   assert.match(section, /href="https:\/\/testflight\.apple\.com\/join\/m2YsgUJW"/);
   assert.match(section, /href="https:\/\/testflight\.apple\.com\/join\/A444RsAc"/);
@@ -500,26 +499,21 @@ test("renders the source-implemented Google Photos OAuth disclosure without clai
   assert.doesNotMatch(oauth, /production Google Photos integration/i);
 });
 
-test("renders full promotional campaigns for HanClip, TrackpadGuard, CCMB, and S.tand", async () => {
+test("renders full promotional campaigns for HanClip, TrackpadGuard, and S.tand", async () => {
   const responses = await Promise.all([
     render("/apps/hanclip"),
     render("/apps/trackpadguard"),
-    render("/apps/ccmb"),
     render("/apps/stand"),
   ]);
   responses.forEach((response) => assert.equal(response.status, 200));
 
-  const [hanClip, trackpadGuard, ccmb, stand] = await Promise.all(responses.map((response) => response.text()));
+  const [hanClip, trackpadGuard, stand] = await Promise.all(responses.map((response) => response.text()));
   assert.match(hanClip, /찍어 둔 순간을/);
   assert.match(hanClip, /hanclip-campaign\.png/);
   assert.match(hanClip, /여행의 마지막 밤/);
   assert.match(trackpadGuard, /타이핑할 때/);
   assert.match(trackpadGuard, /trackpadguard-campaign\.png/);
   assert.match(trackpadGuard, /키 내용도, 터치 좌표도 쌓지 않습니다/);
-  assert.match(ccmb, /AI 한도와 날씨를/);
-  assert.match(ccmb, /ios-dashboard\.jpg/);
-  assert.match(ccmb, /세 서비스의 남은 여유를 한눈에/);
-  assert.match(ccmb, /advantage-visual/);
   assert.match(stand, /밤에는 조용한 메이트/);
   assert.match(stand, /stand-campaign\.png/);
   assert.match(stand, /의료 진단 기능은 아닙니다/);
@@ -530,7 +524,7 @@ test("renders full promotional campaigns for HanClip, TrackpadGuard, CCMB, and S
   assert.match(stand, /Google TV 공개/);
   assert.match(stand, /google-tv-home\.png/);
   assert.equal((stand.match(/class="screen-tv"/g) ?? []).length, 1);
-  for (const html of [hanClip, trackpadGuard, ccmb, stand]) {
+  for (const html of [hanClip, trackpadGuard, stand]) {
     assert.match(html, /실제 기능으로 가능한 대표 사용 장면이며, 사용자 후기를 인용한 내용은 아닙니다/);
     assert.match(html, /id="product-campaign"/);
     assert.match(html, /id="campaign-stories"/);
@@ -607,25 +601,10 @@ test("keeps the support address out of the public source", async () => {
   assert.match(component, /\/api\/support-contact/);
 });
 
-test("shows the current CCMB three-service release", async () => {
+test("redirects retired standalone CCMB route to Hana without standalone install", async () => {
   const response = await render("/apps/ccmb");
-  assert.equal(response.status, 200);
-
-  const html = await response.text();
-  assert.doesNotMatch(html, /WEEKLY REMAINING/);
-  assert.doesNotMatch(html, /81% · ₩12\.4/);
-  assert.doesNotMatch(html, /v0\.4\.3/);
-  assert.match(html, /0\.8\.6/);
-  assert.match(html, /Codex·Claude·Gemini/);
-  assert.match(html, /release-download\?app=CCMB-Android/);
-  assert.doesNotMatch(html, /release-download\?app=CCMB"/);
-  assert.match(html, /https:\/\/testflight\.apple\.com\/join\/q9jesHZa/);
-  assert.match(html, /5개 계정/);
-  assert.match(html, /시간별 예보 7개와 7일간 예보/);
-  assert.match(html, /사라지지 않는 연결 복구/);
-  assert.match(html, /한 줄로 온전히 보이는 갱신 기록/);
-  assert.match(html, /초 없는 24시간제/);
-  assert.doesNotMatch(html, /Sparkle|메뉴 막대|macOS|Universal DMG/);
+  assert.ok([307, 308].includes(response.status));
+  assert.equal(response.headers.get("location"), "/apps/hana");
 });
 
 test("publishes browser and home-screen app icons", async () => {
@@ -737,8 +716,7 @@ test("routes public download buttons through the allowlisted release redirect", 
       referer: "http://localhost/apps/starmanager",
     }),
   ]);
-  assert.equal(ccmb.status, 302);
-  assert.equal(ccmb.headers.get("location"), "/apps/htt");
+  assert.equal(ccmb.status, 404);
   // TrackpadGuard must resolve to a downloadable asset path, never an arbitrary host.
   assert.equal(trackpadGuard.status, 302);
   assert.match(trackpadGuard.headers.get("location") ?? "", /^https:\/\/github\.com\/armsone\/TrackpadGuard\/releases\//);
@@ -754,11 +732,11 @@ test("routes public download buttons through the allowlisted release redirect", 
 
 test("refuses bot and direct download requests before redirecting", async () => {
   const [knownBot, directRequest] = await Promise.all([
-    render("/api/release-download?app=CCMB-Android", {
-      referer: "http://localhost/apps/ccmb",
+    render("/api/release-download?app=S.tand-Android", {
+      referer: "http://localhost/apps/stand",
       "user-agent": "Mozilla/5.0 (compatible; MJ12bot/v1.4.8; http://mj12bot.com/)",
     }),
-    render("/api/release-download?app=CCMB-Android", {
+    render("/api/release-download?app=S.tand-Android", {
       "user-agent": "Mozilla/5.0 Safari/605.1.15",
     }),
   ]);
@@ -821,7 +799,6 @@ test("tracks every public download in the site counter with download wording", a
     "HanClip Android",
     "S.tand Mac",
     "S.tand Android",
-    "CCMB Android",
     "BTN Mac",
     "TrackpadGuard Mac",
     "OurButton Android",

@@ -5,7 +5,6 @@ export const ANDROID_RELEASE_SOURCES = [
   { appName: "나스파인더", repo: "NasFinder-Android" },
   { appName: "한클립", repo: "HanClip-Android" },
   { appName: "S.tand", repo: "S.tand-Android" },
-  { appName: "CCMB", repo: "CCMB-Android" },
   { appName: "OurButton", repo: "OurButton-Android" },
   { appName: "Stargram", repo: "Stargram-Android" },
   { appName: "오늘 뭐 먹지?", repo: "WhattoEat-Android" },

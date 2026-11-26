@@ -40,7 +40,7 @@ for (const path of ['/api/android-releases', '/api/testflight-builds']) {
   assert.equal((await f.request(path)).headers.get('X-Hanstree-Cache'), 'MISS');
   assert.equal(f.calls(), 5);
 }
-for (const path of ['/admin', '/api/site-stats', '/api/support-contact', '/api/release-download?app=CCMB', '/apps/nasfinder']) {
+for (const path of ['/admin', '/api/site-stats', '/api/support-contact', '/api/release-download?app=CleanUSB-MacOS', '/apps/nasfinder']) {
   assert.equal((await fixture().request(path)).headers.get('X-Hanstree-Cache'), null);
 }
 for (const [policy, cookie, status] of [['private', false, 200], ['public, no-store', false, 200], ['public, max-age=60', true, 200], ['public, max-age=60', false, 500], ['public, max-age=0', false, 200]]) {
