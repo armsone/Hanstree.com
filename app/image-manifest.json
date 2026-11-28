@@ -749,6 +749,12 @@
     "height": 2622,
     "srcSet": "/optimized/e1f0363146595185-128.webp 128w, /optimized/e1f0363146595185-640.webp 640w, /optimized/e1f0363146595185-1206.webp 1206w"
   },
+  "/apps/stand/screens/iphone-landscape-263.webp": {
+    "src": "/apps/stand/screens/iphone-landscape-263.webp",
+    "width": 1360,
+    "height": 2957,
+    "srcSet": "/optimized/535d6ae6e7c6daae-128.webp 128w, /apps/stand/screens/iphone-landscape-263.webp 1360w"
+  },
   "/apps/stand/stand-campaign.png": {
     "src": "/optimized/622c98a3902fef55-1672.webp",
     "width": 1672,

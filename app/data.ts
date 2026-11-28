@@ -541,7 +541,7 @@ const appCatalog: AppData[] = [
     icon: "/apps/stand/icon.png",
     artwork: "clock",
     platforms: [
-      { name: "iOS · iPadOS", status: "TestFlight", detail: "iOS·iPadOS 17+", availabilityNote: "2.6.1(202611281718)은 Apple 외부 베타 심사 대기 중이며, 심사 완료 전까지 기존 공개 TestFlight 링크에서 2.5.9 승인 빌드로 참여할 수 있습니다." },
+      { name: "iOS · iPadOS", status: "TestFlight", detail: "iOS·iPadOS 17+", availabilityNote: "2.6.3(202611290011)은 Apple 외부 베타 심사 대기 중이며, 심사 완료 전까지 기존 공개 TestFlight 링크에서 2.5.9 승인 빌드로 참여할 수 있습니다." },
       {
         name: "macOS",
         status: "공개",
@@ -559,14 +559,14 @@ const appCatalog: AppData[] = [
       },
     ],
     features: [
-      { title: "빠방의 현재 채널", body: "음악 목록 맨 앞에서 빠방을 선택하면 서버에 준비된 채널이 바로 나타납니다. 카테고리는 빠방넷과 같은 순서로 표시합니다. 휴대전화·태블릿은 카드 전체를 눌러 미니 영상을 열고 닫으며 영상 오른쪽의 재생·일시정지, 다음 곡, 카테고리 버튼으로 조작합니다. Android 2.6.2의 Google TV는 같은 버튼들이 상단 빠방 음악 카드 바로 왼쪽으로 옮겨져 영상은 아래쪽에 단독으로 보이며, 카테고리는 3열 목록에서 고릅니다.", icon: "/apps/stand/features/feature-07.webp" },
+      { title: "빠방의 현재 채널", body: "음악 목록 맨 앞에서 빠방을 선택하면 서버에 준비된 채널이 바로 나타납니다. 카테고리는 빠방넷과 같은 순서로 표시합니다. 세로 화면의 휴대전화·태블릿은 카드 전체를 눌러 미니 영상을 열고 닫으며 영상 오른쪽의 재생·일시정지, 다음 곡, 카테고리 버튼으로 조작합니다. Android 2.6.2의 Google TV는 같은 버튼들이 상단 빠방 음악 카드 바로 왼쪽으로 옮겨져 영상은 아래쪽에 단독으로 보이며, 카테고리는 3열 목록에서 고릅니다.", icon: "/apps/stand/features/feature-07.webp" },
       { title: "덜 겹치는 빠방 재생목록", body: "최근에 들은 영상과 제목으로 확인한 같은 곡을 피하고, 아직 듣지 않은 곡부터 섞습니다. 후보를 모두 들으면 가장 오래전에 들은 곡부터 다시 준비합니다.", icon: "/apps/stand/features/feature-10.webp" },
       { title: "잠깐 다녀와도 같은 위치에서", body: "다른 앱이나 잠금화면으로 이동하면 영상을 일시정지합니다. 1분이 지나도 미니플레이어는 그대로 유지되며, 돌아와 재생 버튼을 누르면 같은 위치에서 다시 듣습니다. 운영체제가 플레이어를 종료한 경우에는 새로 재생합니다.", icon: "/apps/super-thumbnail/features/feature-08.webp" },
       { title: "열고 닫는 미니플레이어", body: "미니플레이어를 열고 닫을 수 있으며, 재생·일시정지와 다음 곡 버튼으로 바로 제어합니다. 카테고리와 잠소리 화면도 함께 다듬었습니다.", icon: "/apps/stand/features/feature-06.webp" },
       { title: "켜 둔 동안 새로 받는 날씨", body: "위치 사용을 켜면 앱 화면이 열려 있는 동안 15분마다 날씨를 갱신하고, 약 3km 이상 이동했을 때도 다시 가져옵니다. 통신이 끊기면 기존 날씨를 유지하고 5분 뒤 재시도합니다. 화면을 벗어나거나 위치 사용을 끄면 위치 확인을 멈춥니다. Google TV에서는 시스템 위치 확인이 실패하면 IP 기반으로 추정한 대략적 지역으로 날씨를 대신 가져오며, 화면에는 IP 추정 지역임을 표시합니다.", icon: "/icons/weather-20260918.webp" },
       { title: "미니플레이어도 그레이 테마로", body: "Android에서도 그레이 테마를 고르면 미니플레이어의 영상과 미리보기에 흑백 처리가 적용됩니다. 다른 테마로 바꾸면 원래 색으로 돌아옵니다.", icon: "/apps/stand/features/feature-11.webp" },
       { title: "오브제 모드", body: "플립시계, 날씨와 배터리를 가로·세로 화면에 차분하게 표시합니다.", icon: "/apps/stand/features/feature-01.webp" },
-      { title: "가로 분할 제어", body: "휴대폰을 가로로 돌리면 왼쪽에서 폭 조절 손잡이로 미니플레이어 영역을 맞추고 하단에서 빠방넷 영상과 라디오를 손쉽게 전환할 수 있으며, 오른쪽에서 시계·날씨 확인과 함께 잠소리 및 설정을 바로 다듬을 수 있습니다. iPhone 2.6.1에도 동일한 화면 배치가 포함됩니다.", icon: "/apps/stand/features/feature-06.webp" },
+      { title: "가로로 두고 듣는 음악과 시계", body: "폰을 가로로 두면 왼쪽에서 빠방넷 영상과 라디오를 고르고 재생할 수 있습니다. 오른쪽에는 날짜, 플립 시계, 날씨가 차례로 보입니다. 아래쪽 잠소리와 설정 버튼은 소스 선택 버튼과 한 줄에 놓입니다. 설정에서 가로 시계 숫자의 글꼴만 따로 고를 수 있습니다.", icon: "/apps/stand/features/feature-06.webp" },
       { title: "매이트와 화들짝", body: "어두운 환경에서 최소 밝기를 유지하고, 매이트 모드 진입 2분 뒤부터 움직임이나 큰소리에 화면과 조명이 반응합니다.", icon: "/apps/stand/features/feature-02.webp" },
       { title: "아이폰 자동 밝기 존중", body: "iPhone·iPad의 시스템 자동 밝기는 그대로 두고 S.tand의 세로 밝기 제스처는 앱 화면의 조명만 조절합니다. 고정 매이트·오브제에서는 선택한 앱 밝기를 유지하고, 자동 모드에서는 실제 시스템 밝기가 바뀔 때 자연스럽게 따라갑니다.", icon: "/apps/stand/features/feature-02.webp" },
       { title: "밤새 이어지는 로컬 수면 기록", body: "화면을 잠그거나 다른 앱으로 나가면 자동으로 매이트 모드가 이어집니다. 코골이·잠꼬대·뒤척임 후보는 기기 안에 기록하며, 아무 소리도 없었던 밤과 감지 실패를 구분해 알려줍니다.", icon: "/apps/stand/features/feature-03.webp" },
@@ -594,6 +594,7 @@ const appCatalog: AppData[] = [
       { title: "Mac에서 시작", body: "공증된 DMG를 열고 S.tand를 응용 프로그램 폴더로 옮긴 뒤 실행합니다. 이후에는 앱이 업데이트를 확인하고 종료·교체 설치·재실행까지 이어서 처리합니다." },
     ],
     progress: [
+      { state: "done", title: "Android 2.6.13 공개 · iPhone·iPad 2.6.3 외부 베타 심사 제출", body: "휴대전화 가로 화면에서 플레이어와 시계를 나란히 보고, 플립 시계 숫자의 글꼴을 따로 선택할 수 있습니다. Android는 공식 APK로 받을 수 있습니다. iPhone·iPad 2.6.3은 외부 베타 심사 중이며, 공개 링크에서는 승인된 2.5.9를 이용할 수 있습니다." },
       { state: "done", title: "iPhone·iPad 2.5.9 외부 베타 승인", body: "build 202610081804가 Apple 외부 베타 심사 승인을 받아 기존 Public Beta 링크에서 참여할 수 있습니다. 화면 이탈 시 일시정지를 유지하고 복귀 후 직접 다시 재생하도록 바꿨으며, 빠방 카테고리를 빠방넷과 같은 순서로 맞췄습니다." },
       { state: "done", title: "Mac 2.5.9 공개", body: "화면 이탈 시 일시정지를 유지하고 복귀 후 직접 다시 재생하도록 바꿨습니다. 빠방 카테고리를 빠방넷과 같은 순서로 맞췄습니다. 이를 반영한 build 202610081804를 Apple 공증까지 마쳐 공개했습니다." },
       { state: "done", title: "Android·Google TV 2.6.7 공개", body: "화면 이탈 시 일시정지를 유지하고 복귀 후 직접 다시 재생하도록 바꿨습니다. 빠방 카테고리를 빠방넷과 같은 순서로 맞췄습니다. 이를 반영한 버전코드 404284 APK를 공개했습니다. 실제 기기에서 기존 데이터를 보존한 설치·재실행을 확인했습니다." },
@@ -631,6 +632,7 @@ const appCatalog: AppData[] = [
       { state: "next", title: "장시간 실기기 검증", body: "오디오·센서 흐름과 접근성을 다양한 기기에서 추가 검증" },
     ],
     screenshots: [
+      { src: "/apps/stand/screens/iphone-landscape-263.webp", alt: "iPhone 2.6.3 가로 화면 시뮬레이터 예시 · 왼쪽 영상과 오른쪽 플립 시계", layout: "landscape" },
       { src: "/apps/stand/screens/ios-home-portrait.png", alt: "큰 글자에서도 중앙 두 줄 음악 카드와 잠소리·보이소·설정 카드가 겹치지 않는 S.tand iOS 세로 오브제 시계" },
       { src: "/apps/stand/screens/ios-sleep-report.png", alt: "S.tand iOS 수면 기록 리포트" },
       { src: "/apps/stand/screens/android-editor.png", alt: "S.tand Android 내 화면 편집" },
